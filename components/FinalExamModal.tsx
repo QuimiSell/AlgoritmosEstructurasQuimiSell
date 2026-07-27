@@ -1,39 +1,45 @@
-import React, { useState, useEffect } from 'react';
-import { COURSE_MODULES } from '../constants';
-import { QuizQuestion } from '../domain/models';
+import React, { useState, useEffect, useMemo } from 'react';
+import { Course, QuizQuestion } from '../domain/models';
 
 interface FinalExamModalProps {
+  course: Course;
   onClose: () => void;
 }
 
-// Extraemos la primera pregunta de cada módulo de manera determinista (10 preguntas en total)
-const examQuestions = COURSE_MODULES.map(m => {
-  if (m.quiz && m.quiz.length > 0) {
-    return {
-      question: m.quiz[0],
-      moduleTitle: m.title.split(': ')[1] || m.title,
-      moduleId: m.id
-    };
-  }
-  return null;
-}).filter((x): x is { question: QuizQuestion; moduleTitle: string; moduleId: number } => x !== null);
+const FinalExamModal: React.FC<FinalExamModalProps> = ({ course, onClose }) => {
+  // Extraemos la primera pregunta de cada módulo del curso actual (10 preguntas en total)
+  const examQuestions = useMemo(() => {
+    return course.modules.map(m => {
+      if (m.quiz && m.quiz.length > 0) {
+        return {
+          question: m.quiz[0],
+          moduleTitle: m.title.split(': ')[1] || m.title,
+          moduleId: m.id
+        };
+      }
+      return null;
+    }).filter((x): x is { question: QuizQuestion; moduleTitle: string; moduleId: number } => x !== null);
+  }, [course]);
 
-const FinalExamModal: React.FC<FinalExamModalProps> = ({ onClose }) => {
+  const storageKeyAnswers = `quimisell_exam_answers_${course.id}`;
+  const storageKeySubmitted = `quimisell_exam_submitted_${course.id}`;
+  const storageKeyScore = `quimisell_exam_score_${course.id}`;
+
   // Respuestas seleccionadas: { [indicePregunta]: oIdx }
   const [answers, setAnswers] = useState<{ [key: number]: number }>(() => {
-    const saved = localStorage.getItem('quimisell_exam_answers');
+    const saved = localStorage.getItem(storageKeyAnswers);
     return saved ? JSON.parse(saved) : {};
   });
 
   // Estado de envío
   const [submitted, setSubmitted] = useState<boolean>(() => {
-    const saved = localStorage.getItem('quimisell_exam_submitted');
+    const saved = localStorage.getItem(storageKeySubmitted);
     return saved === 'true';
   });
 
   // Puntuación obtenida
   const [score, setScore] = useState<number | null>(() => {
-    const saved = localStorage.getItem('quimisell_exam_score');
+    const saved = localStorage.getItem(storageKeyScore);
     return saved ? Number(saved) : null;
   });
 
@@ -43,8 +49,8 @@ const FinalExamModal: React.FC<FinalExamModalProps> = ({ onClose }) => {
 
   // Persistir respuestas en localStorage mientras se avanza
   useEffect(() => {
-    localStorage.setItem('quimisell_exam_answers', JSON.stringify(answers));
-  }, [answers]);
+    localStorage.setItem(storageKeyAnswers, JSON.stringify(answers));
+  }, [answers, storageKeyAnswers]);
 
   const totalAnswered = Object.keys(answers).length;
   const isFinished = totalAnswered === examQuestions.length;
@@ -65,8 +71,8 @@ const FinalExamModal: React.FC<FinalExamModalProps> = ({ onClose }) => {
     const calculatedScore = (correctCount / examQuestions.length) * 100;
     setScore(calculatedScore);
     setSubmitted(true);
-    localStorage.setItem('quimisell_exam_submitted', 'true');
-    localStorage.setItem('quimisell_exam_score', String(calculatedScore));
+    localStorage.setItem(storageKeySubmitted, 'true');
+    localStorage.setItem(storageKeyScore, String(calculatedScore));
   };
 
   const handleReset = () => {
@@ -77,9 +83,9 @@ const FinalExamModal: React.FC<FinalExamModalProps> = ({ onClose }) => {
     setAnswers({});
     setSubmitted(false);
     setScore(null);
-    localStorage.removeItem('quimisell_exam_answers');
-    localStorage.removeItem('quimisell_exam_submitted');
-    localStorage.removeItem('quimisell_exam_score');
+    localStorage.removeItem(storageKeyAnswers);
+    localStorage.removeItem(storageKeySubmitted);
+    localStorage.removeItem(storageKeyScore);
     setShowResetConfirm(false);
   };
 
@@ -94,15 +100,15 @@ const FinalExamModal: React.FC<FinalExamModalProps> = ({ onClose }) => {
               ✍️
             </div>
             <div>
-              <h2 className="text-xl font-extrabold text-slate-900 leading-none">Evaluación Final</h2>
+              <h2 className="text-xl font-extrabold text-slate-900 leading-none">Evaluación Final: {course.shortTitle}</h2>
               <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block mt-1.5">
-                Práctica final de 10 preguntas (1 por cada módulo)
+                Práctica final de {examQuestions.length} preguntas (1 por cada módulo)
               </span>
             </div>
           </div>
           <button 
             onClick={onClose} 
-            className="w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:bg-slate-200 hover:text-slate-800 transition active:scale-90 font-bold"
+            className="w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:bg-slate-200 hover:text-slate-800 transition active:scale-90 font-bold cursor-pointer"
           >
             ✕
           </button>
@@ -111,133 +117,112 @@ const FinalExamModal: React.FC<FinalExamModalProps> = ({ onClose }) => {
         {/* Contenido Deslizable */}
         <div className="flex-1 overflow-y-auto p-6 md:p-8 space-y-8 scrollbar-hide">
           
-          {/* Banner de Resultados */}
-          {submitted && score !== null && (
-            <div className={`p-8 rounded-[2rem] border text-center relative overflow-hidden animate-in zoom-in-95 duration-300 ${
-              score >= 70 
-                ? 'bg-gradient-to-r from-emerald-500 to-indigo-600 border-emerald-500 text-white shadow-xl shadow-indigo-100'
-                : 'bg-gradient-to-r from-orange-500 to-rose-600 border-rose-500 text-white shadow-xl shadow-rose-100'
+          {/* Banner de Estado o Resultado */}
+          {submitted ? (
+            <section className={`p-8 rounded-[2rem] text-white border relative overflow-hidden shadow-xl ${
+              (score ?? 0) >= 70 
+                ? 'bg-gradient-to-br from-emerald-600 to-teal-800 border-emerald-500/30' 
+                : 'bg-gradient-to-br from-amber-600 to-orange-800 border-amber-500/30'
             }`}>
-              <div className="relative z-10 max-w-xl mx-auto space-y-4">
-                <span className="text-4xl block">
-                  {score >= 70 ? "🏆 🎉" : "📚 👍"}
+              <div className="relative z-10 space-y-2">
+                <span className="inline-block px-3 py-1 rounded-full bg-white/20 text-white text-[10px] font-bold uppercase tracking-widest">
+                  Resultado de la Evaluación
                 </span>
-                
-                {score >= 70 ? (
-                  <>
-                    <h3 className="text-2xl md:text-3xl font-black tracking-tight">
-                      ¡QuimiSell te felicita por ganar el curso!
-                    </h3>
-                    <p className="text-sm font-semibold opacity-90 leading-relaxed">
-                      Has obtenido una calificación sobresaliente de <strong className="text-yellow-300 text-xl font-black">{score} de 100</strong>.
-                      Has completado con éxito la Master Class y dominado los fundamentos de complejidad algorítmica, estructuras de datos avanzadas, teoría de grafos y optimizaciones reales. ¡Felicidades!
-                    </p>
-                  </>
-                ) : (
-                  <>
-                    <h3 className="text-2xl md:text-3xl font-black tracking-tight">
-                      ¡Sigue estudiando!
-                    </h3>
-                    <p className="text-sm font-semibold opacity-90 leading-relaxed">
-                      Tu calificación obtenida es de <strong className="text-yellow-200 text-xl font-black">{score} de 100</strong>.
-                      Para ganar la Master Class necesitas un mínimo de **70 puntos**. Repasa los temas de los módulos donde tuviste dudas y vuelve a intentarlo presionando el botón de reinicio.
-                    </p>
-                  </>
-                )}
-                
-                <div className="pt-2">
-                  <button
-                    onClick={handleReset}
-                    className="bg-white text-slate-900 px-6 py-2.5 rounded-full text-xs font-black shadow-lg hover:bg-slate-100 transition active:scale-95 flex items-center gap-1.5 mx-auto"
-                  >
-                    🔄 Reiniciar Evaluación
-                  </button>
+                <h3 className="text-4xl font-extrabold">
+                  {(score ?? 0) >= 70 ? '🎉 ¡Examen Aprobado!' : '📚 Se Requiere Repaso'}
+                </h3>
+                <p className="text-white/90 text-sm font-medium">
+                  Has obtenido una puntuación de <span className="font-extrabold text-2xl ml-1">{score}%</span> ({answers ? Object.keys(answers).filter(idx => answers[Number(idx)] === examQuestions[Number(idx)].question.answerIndex).length : 0} de {examQuestions.length} correctas).
+                </p>
+              </div>
+            </section>
+          ) : (
+            <section className="bg-slate-900 p-6 rounded-[2rem] text-white flex items-center justify-between border border-slate-800">
+              <div>
+                <h3 className="font-bold text-lg">Progreso de la Prueba</h3>
+                <p className="text-slate-400 text-xs mt-0.5">Responde todas las preguntas para calificar tu nivel.</p>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="text-sm font-black text-indigo-400">{totalAnswered} / {examQuestions.length}</span>
+                <div className="w-24 h-3 bg-slate-800 rounded-full overflow-hidden border border-slate-700">
+                  <div 
+                    className="h-full bg-indigo-500 transition-all duration-300"
+                    style={{ width: `${(totalAnswered / examQuestions.length) * 100}%` }}
+                  ></div>
                 </div>
               </div>
-              <div className="absolute right-0 top-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-20 -mt-20"></div>
-            </div>
+            </section>
           )}
 
-          {/* Formulario de Preguntas */}
-          <div className="space-y-8">
+          {/* Preguntas del Examen */}
+          <div className="space-y-6">
             {examQuestions.map((eq, idx) => {
-              const selected = answers[idx];
-              const isAnswered = selected !== undefined;
-              
+              const selectedOpt = answers[idx];
+              const isCorrect = selectedOpt === eq.question.answerIndex;
+
               return (
-                <div key={idx} className="bg-slate-50/50 p-6 rounded-2xl border border-slate-150 space-y-4">
-                  <div className="flex items-center justify-between gap-3">
-                    <span className="text-[9px] bg-indigo-50 text-indigo-700 px-2 py-0.5 rounded-full font-black uppercase tracking-wider">
+                <div 
+                  key={idx} 
+                  className={`p-6 rounded-2xl border transition ${
+                    submitted 
+                      ? isCorrect 
+                        ? 'bg-emerald-50/40 border-emerald-200' 
+                        : 'bg-rose-50/40 border-rose-200'
+                      : selectedOpt !== undefined
+                        ? 'bg-indigo-50/30 border-indigo-200'
+                        : 'bg-slate-50/50 border-slate-150'
+                  }`}
+                >
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-[10px] font-black uppercase tracking-wider text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-md">
                       Módulo {eq.moduleId}: {eq.moduleTitle}
                     </span>
-                    {submitted && (
-                      <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
-                        selected === eq.question.answerIndex
-                          ? 'bg-emerald-100 text-emerald-800'
-                          : 'bg-rose-100 text-rose-800'
-                      }`}>
-                        {selected === eq.question.answerIndex ? "✓ Correcta" : "✗ Incorrecta"}
-                      </span>
-                    )}
+                    <span className="text-xs font-bold text-slate-400">Pregunta {idx + 1}</span>
                   </div>
-                  
-                  <h4 className="text-slate-800 font-bold text-base leading-snug">
-                    {idx + 1}. {eq.question.question}
+
+                  <h4 className="font-bold text-slate-900 text-base mb-4 leading-snug">
+                    {eq.question.question}
                   </h4>
 
-                  <div className="grid grid-cols-1 gap-2.5">
+                  <div className="space-y-2 mb-4">
                     {eq.question.options.map((opt, oIdx) => {
-                      const isSelected = selected === oIdx;
-                      const isCorrect = oIdx === eq.question.answerIndex;
-                      
-                      let btnStyle = "border-slate-200 bg-white hover:border-indigo-300 hover:bg-indigo-50/10 text-slate-700";
-                      
+                      let btnStyle = "border-slate-200 bg-white hover:border-indigo-300 text-slate-700";
+
                       if (submitted) {
-                        if (isCorrect) {
+                        if (oIdx === eq.question.answerIndex) {
                           btnStyle = "border-emerald-500 bg-emerald-50 text-emerald-950 font-bold";
-                        } else if (isSelected) {
+                        } else if (selectedOpt === oIdx) {
                           btnStyle = "border-rose-500 bg-rose-50 text-rose-950 font-bold";
                         } else {
-                          btnStyle = "border-slate-100 opacity-60 text-slate-400 bg-slate-50/30";
+                          btnStyle = "border-slate-100 bg-slate-50 text-slate-400 opacity-60";
                         }
-                      } else if (isSelected) {
-                        btnStyle = "border-indigo-600 bg-indigo-50/30 text-indigo-950 font-bold ring-2 ring-indigo-600/20";
+                      } else if (selectedOpt === oIdx) {
+                        btnStyle = "border-indigo-600 bg-indigo-50/80 text-indigo-950 font-bold shadow-sm";
                       }
 
                       return (
                         <button
                           key={oIdx}
-                          onClick={() => {
-                            if (!submitted) {
-                              setAnswers(prev => ({ ...prev, [idx]: oIdx }));
-                            }
-                          }}
                           disabled={submitted}
-                          className={`flex items-center text-left px-5 py-3.5 rounded-xl border text-xs font-semibold transition-all duration-200 ${btnStyle}`}
+                          onClick={() => setAnswers(prev => ({ ...prev, [idx]: oIdx }))}
+                          className={`w-full text-left p-3.5 rounded-xl border text-xs transition flex items-center justify-between cursor-pointer ${btnStyle}`}
                         >
-                          <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] mr-3 shrink-0 font-mono ${
-                            isSelected 
-                              ? 'bg-indigo-600 text-white' 
-                              : submitted && isCorrect
-                                ? 'bg-emerald-600 text-white'
-                                : 'bg-slate-100 text-slate-500'
-                          }`}>
-                            {String.fromCharCode(65 + oIdx)}
-                          </span>
                           <span>{opt}</span>
+                          {submitted && oIdx === eq.question.answerIndex && (
+                            <span className="text-emerald-600 font-bold">✓ Correcta</span>
+                          )}
+                          {submitted && selectedOpt === oIdx && oIdx !== eq.question.answerIndex && (
+                            <span className="text-rose-600 font-bold">✕ Incorrecta</span>
+                          )}
                         </button>
                       );
                     })}
                   </div>
 
                   {submitted && (
-                    <div className="bg-slate-100/50 p-4 rounded-xl border border-slate-200 text-xs">
-                      <span className="text-[9px] font-bold uppercase tracking-wider text-indigo-600 block mb-1 font-sans">
-                        Explicación Académica
-                      </span>
-                      <p className="text-slate-600 font-medium leading-relaxed">
-                        {eq.question.explanation}
-                      </p>
+                    <div className="bg-white/80 p-4 rounded-xl border border-slate-200/60 text-xs text-slate-600">
+                      <span className="font-bold text-slate-900 block mb-1">💡 Explicación:</span>
+                      {eq.question.explanation}
                     </div>
                   )}
                 </div>
@@ -247,52 +232,35 @@ const FinalExamModal: React.FC<FinalExamModalProps> = ({ onClose }) => {
 
         </div>
 
-        {/* Footer */}
-        <footer className="p-6 border-t border-slate-100 bg-slate-50 flex flex-col sm:flex-row justify-between items-center gap-4 shrink-0">
-          <div className="text-xs text-slate-500 font-bold">
-            {submitted ? (
-              <span>Examen calificado. ¡Felicidades por finalizar!</span>
-            ) : (
-              <span>Progreso: {totalAnswered} de {examQuestions.length} respondidas</span>
-            )}
-          </div>
-          
-          <div className="flex gap-3 w-full sm:w-auto">
-            {submitted ? (
-              <>
-                <button
-                  onClick={handleReset}
-                  className="flex-1 sm:flex-none border border-slate-200 hover:border-indigo-600 hover:text-indigo-600 text-slate-600 px-6 py-3 rounded-full text-xs font-bold transition active:scale-95"
-                >
-                  🔄 Reiniciar Evaluación
-                </button>
-                <button
-                  onClick={onClose}
-                  className="flex-1 sm:flex-none bg-slate-900 text-white px-6 py-3 rounded-full text-xs font-bold hover:bg-slate-800 transition active:scale-95"
-                >
-                  Cerrar
-                </button>
-              </>
-            ) : (
-              <>
-                <button
-                  onClick={onClose}
-                  className="flex-1 sm:flex-none border border-slate-200 text-slate-600 px-6 py-3 rounded-full text-xs font-bold hover:bg-slate-100 transition active:scale-95"
-                >
-                  Cancelar
-                </button>
-                <button
-                  onClick={handleSubmit}
-                  disabled={!isFinished}
-                  className={`flex-1 sm:flex-none px-6 py-3 rounded-full text-xs font-black transition text-white shadow-md ${
-                    isFinished 
-                      ? 'bg-indigo-600 hover:bg-indigo-700 active:scale-95 cursor-pointer shadow-indigo-200' 
-                      : 'bg-slate-300 cursor-not-allowed shadow-none'
-                  }`}
-                >
-                  Enviar Evaluación
-                </button>
-              </>
+        {/* Footer de Acciones */}
+        <footer className="p-6 border-t border-slate-100 bg-slate-50 flex items-center justify-between shrink-0">
+          {submitted ? (
+            <button
+              onClick={handleReset}
+              className="text-xs font-bold text-rose-600 hover:text-rose-700 hover:underline cursor-pointer"
+            >
+              🔄 Reiniciar y Volver a Intentar
+            </button>
+          ) : (
+            <span className="text-xs font-semibold text-slate-400">
+              Completado: {totalAnswered} de {examQuestions.length}
+            </span>
+          )}
+
+          <div className="flex gap-3">
+            <button
+              onClick={onClose}
+              className="px-5 py-2.5 rounded-full text-xs font-bold text-slate-600 hover:bg-slate-200 transition cursor-pointer"
+            >
+              Cerrar
+            </button>
+            {!submitted && (
+              <button
+                onClick={handleSubmit}
+                className="bg-indigo-600 text-white px-6 py-2.5 rounded-full text-xs font-bold hover:bg-indigo-700 transition shadow-md cursor-pointer"
+              >
+                Entregar y Calificar
+              </button>
             )}
           </div>
         </footer>
@@ -301,23 +269,25 @@ const FinalExamModal: React.FC<FinalExamModalProps> = ({ onClose }) => {
 
       {/* Modal de Confirmación de Reinicio */}
       {showResetConfirm && (
-        <div className="fixed inset-0 bg-slate-950/70 backdrop-blur-md z-[60] flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl border border-slate-100 text-center space-y-4 animate-in zoom-in-95 duration-200">
-            <span className="text-4xl block">⚠️</span>
-            <h3 className="text-lg font-extrabold text-slate-900">¿Reiniciar Evaluación?</h3>
-            <p className="text-xs text-slate-500 font-semibold leading-relaxed">
-              Estás a punto de borrar todas tus respuestas actuales. Tendrás que responder las 10 preguntas desde el principio. ¿Estás seguro?
+        <div className="fixed inset-0 bg-slate-950/40 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white p-6 rounded-2xl max-w-sm w-full shadow-2xl border border-slate-100 text-center space-y-4 animate-in zoom-in-95 duration-150">
+            <div className="w-12 h-12 bg-rose-100 text-rose-600 rounded-full flex items-center justify-center mx-auto text-xl font-bold">
+              ⚠️
+            </div>
+            <h3 className="font-extrabold text-slate-900 text-base">¿Reiniciar Evaluación?</h3>
+            <p className="text-xs text-slate-500 font-medium leading-relaxed">
+              Se borrarán tus respuestas guardadas y calificación actual. Deberás responder las 10 preguntas desde el principio.
             </p>
-            <div className="flex gap-3 pt-2">
+            <div className="flex gap-2 justify-center pt-2">
               <button
                 onClick={() => setShowResetConfirm(false)}
-                className="flex-1 border border-slate-200 hover:bg-slate-50 text-slate-700 py-2.5 rounded-xl text-xs font-bold transition active:scale-95"
+                className="px-4 py-2 bg-slate-100 text-slate-700 text-xs font-bold rounded-full hover:bg-slate-200 transition cursor-pointer"
               >
-                No, Cancelar
+                Cancelar
               </button>
               <button
                 onClick={executeReset}
-                className="flex-1 bg-rose-600 hover:bg-rose-700 text-white py-2.5 rounded-xl text-xs font-bold transition active:scale-95 shadow-md shadow-rose-100"
+                className="px-4 py-2 bg-rose-600 text-white text-xs font-bold rounded-full hover:bg-rose-700 transition shadow-md cursor-pointer"
               >
                 Sí, Reiniciar
               </button>
@@ -326,26 +296,28 @@ const FinalExamModal: React.FC<FinalExamModalProps> = ({ onClose }) => {
         </div>
       )}
 
-      {/* Modal de Alerta de Validación (Preguntas Faltantes) */}
+      {/* Alerta de Validación (Preguntas Incompletas) */}
       {showValidationAlert && (
-        <div className="fixed inset-0 bg-slate-950/70 backdrop-blur-md z-[60] flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl border border-slate-100 text-center space-y-4 animate-in zoom-in-95 duration-200">
-            <span className="text-4xl block">📝</span>
-            <h3 className="text-lg font-extrabold text-slate-900">Evaluación Incompleta</h3>
-            <p className="text-xs text-slate-500 font-semibold leading-relaxed">
-              Para poder calificar tu examen, debes responder las 10 preguntas planteadas. Revisa y completa las respuestas pendientes antes de enviar.
-            </p>
-            <div className="pt-2">
-              <button
-                onClick={() => setShowValidationAlert(false)}
-                className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2.5 rounded-xl text-xs font-bold transition active:scale-95 shadow-md shadow-indigo-150"
-              >
-                Entendido
-              </button>
+        <div className="fixed inset-0 bg-slate-950/40 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white p-6 rounded-2xl max-w-sm w-full shadow-2xl border border-slate-100 text-center space-y-4 animate-in zoom-in-95 duration-150">
+            <div className="w-12 h-12 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center mx-auto text-xl font-bold">
+              📝
             </div>
+            <h3 className="font-extrabold text-slate-900 text-base">Preguntas Pendientes</h3>
+            <p className="text-xs text-slate-500 font-medium leading-relaxed">
+              Por favor responde las {examQuestions.length} preguntas antes de entregar el examen. 
+              Has respondido <span className="font-bold text-slate-900">{totalAnswered} de {examQuestions.length}</span>.
+            </p>
+            <button
+              onClick={() => setShowValidationAlert(false)}
+              className="w-full py-2.5 bg-indigo-600 text-white text-xs font-bold rounded-full hover:bg-indigo-700 transition shadow-md cursor-pointer"
+            >
+              Continuar Respondiendo
+            </button>
           </div>
         </div>
       )}
+
     </div>
   );
 };

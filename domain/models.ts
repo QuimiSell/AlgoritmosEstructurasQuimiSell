@@ -26,3 +26,34 @@ export interface Module {
   quiz?: QuizQuestion[];
   exercises?: TutorExercise[];
 }
+
+export interface StudyPlanReason {
+  id: number;
+  title: string;
+  why: string;
+}
+
+export interface LabChallenge {
+  title: string;
+  badge: string;
+  description: string;
+  requirements: string[];
+  cleanCodeRules: string[];
+  emailSubject: string;
+  emailBodyTemplate: string;
+}
+
+export interface Course {
+  id: string;
+  title: string;
+  shortTitle: string;
+  badge: string;
+  icon: string;
+  description: string;
+  whyStudyTitle: string;
+  whyStudyText: string;
+  modules: Module[];
+  studyPlanReasons: StudyPlanReason[];
+  labChallenge: LabChallenge;
+}
+

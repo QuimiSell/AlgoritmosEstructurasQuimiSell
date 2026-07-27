@@ -1,0 +1,15 @@
+import { Course } from '../domain/models';
+import { ALGORITHMS_COURSE } from './algorithmsCourse';
+import { MATH_COURSE } from './mathCourse';
+
+export const COURSES: Course[] = [
+  ALGORITHMS_COURSE,
+  MATH_COURSE
+];
+
+export const COURSES_MAP: Record<string, Course> = {
+  algoritmos: ALGORITHMS_COURSE,
+  matematica: MATH_COURSE
+};
+
+export { ALGORITHMS_COURSE, MATH_COURSE };

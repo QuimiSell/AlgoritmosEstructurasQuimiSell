@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { COURSE_MODULES } from './constants';
+import { COURSES, COURSES_MAP } from './courses';
 import BigOChart from './components/BigOChart';
 import CodeBlock from './components/CodeBlock';
 import AIChatDrawer from './components/AIChatDrawer';
@@ -7,16 +7,23 @@ import QuizSection from './components/QuizSection';
 import FinalExamModal from './components/FinalExamModal';
 import StudyPlanModal from './components/StudyPlanModal';
 import LabChallengeModal from './components/LabChallengeModal';
-import { Module } from './domain/models';
 
 const App: React.FC = () => {
+  const [activeCourseId, setActiveCourseId] = useState<string>('algoritmos');
   const [activeModuleId, setActiveModuleId] = useState<number>(1);
   const [courseMenuOpen, setCourseMenuOpen] = useState<boolean>(false);
   const [showFinalExam, setShowFinalExam] = useState<boolean>(false);
   const [showStudyPlan, setShowStudyPlan] = useState<boolean>(false);
   const [showLabChallenge, setShowLabChallenge] = useState<boolean>(false);
 
-  const activeModule = COURSE_MODULES.find(m => m.id === activeModuleId) || COURSE_MODULES[0];
+  const activeCourse = COURSES_MAP[activeCourseId] || COURSES[0];
+  const activeModule = activeCourse.modules.find(m => m.id === activeModuleId) || activeCourse.modules[0];
+
+  const handleSelectCourse = (courseId: string) => {
+    setActiveCourseId(courseId);
+    setActiveModuleId(1);
+    setCourseMenuOpen(false);
+  };
 
   return (
     <div className="min-h-screen flex flex-col selection:bg-indigo-100 selection:text-indigo-900">
@@ -25,15 +32,18 @@ const App: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold shadow-lg shadow-indigo-200">
-              QS
+              {activeCourse.icon}
             </div>
             <div className="flex flex-col">
-               <h1 className="text-lg font-bold tracking-tight text-slate-900 leading-none">
+               <h1 className="text-lg font-bold tracking-tight text-slate-900 leading-none flex items-center gap-2">
                 Master Class <span className="gradient-text">QuimiSell</span>
               </h1>
-              <span className="text-[10px] text-slate-500 font-medium uppercase tracking-widest">Algoritmos y Estructuras de Datos</span>
+              <span className="text-[10px] text-indigo-600 font-bold uppercase tracking-widest mt-0.5">
+                {activeCourse.shortTitle}
+              </span>
             </div>
           </div>
+
           <nav className="hidden md:flex gap-6 items-center">
              <button 
                onClick={() => setShowStudyPlan(true)}
@@ -52,49 +62,70 @@ const App: React.FC = () => {
              <div className="relative">
                <button
                  onClick={() => setCourseMenuOpen(!courseMenuOpen)}
-                 className="flex items-center gap-1.5 bg-slate-100 hover:bg-slate-200 text-slate-800 px-4 py-2 rounded-full text-xs font-extrabold transition shadow-sm border border-slate-200 cursor-pointer"
+                 className="flex items-center gap-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-950 border border-indigo-200 px-4 py-2 rounded-full text-xs font-extrabold transition shadow-sm cursor-pointer"
                >
-                 📚 Cursos <span className="text-[8px] opacity-60">▼</span>
+                 <span>{activeCourse.icon}</span>
+                 <span>{activeCourse.shortTitle}</span>
+                 <span className="text-[8px] opacity-60 ml-1">▼</span>
                </button>
                
                {courseMenuOpen && (
-                 <div className="absolute right-0 mt-2 w-72 bg-white rounded-2xl shadow-2xl border border-slate-200 p-2 z-50 animate-in fade-in slide-in-from-top-3 duration-200">
+                 <div className="absolute right-0 mt-2 w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 p-2 z-50 animate-in fade-in slide-in-from-top-3 duration-200">
                    <span className="block px-3 py-1.5 text-[8px] font-black text-slate-400 uppercase tracking-widest border-b border-slate-100 mb-1">
-                     Selector de Materia
+                     Seleccionar Materia Universitaria
                    </span>
-                   <button
-                     className="w-full text-left px-3 py-2.5 rounded-xl hover:bg-indigo-50/50 flex items-center gap-2 group transition"
-                     onClick={() => setCourseMenuOpen(false)}
-                   >
-                     <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0"></span>
-                     <div className="flex flex-col">
-                       <span className="text-xs font-bold text-slate-900">Algoritmos y Estructuras</span>
-                       <span className="text-[9px] text-slate-400 font-bold uppercase">Clase Activa</span>
-                     </div>
-                   </button>
+
+                   {COURSES.map(course => {
+                     const isSelected = activeCourseId === course.id;
+                     return (
+                       <button
+                         key={course.id}
+                         onClick={() => handleSelectCourse(course.id)}
+                         className={`w-full text-left px-3 py-2.5 rounded-xl flex items-center justify-between group transition cursor-pointer ${
+                           isSelected ? 'bg-indigo-50/90 text-indigo-950 font-bold' : 'hover:bg-slate-50 text-slate-700'
+                         }`}
+                       >
+                         <div className="flex items-center gap-2.5">
+                           <span className="text-lg">{course.icon}</span>
+                           <div className="flex flex-col">
+                             <span className="text-xs font-bold leading-snug">{course.title}</span>
+                             <span className="text-[9px] text-slate-400 font-bold uppercase">{course.badge}</span>
+                           </div>
+                         </div>
+                         {isSelected ? (
+                           <span className="text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-md font-extrabold">Activo</span>
+                         ) : (
+                           <span className="text-xs text-indigo-600 opacity-0 group-hover:opacity-100 font-bold">Ver →</span>
+                         )}
+                       </button>
+                     );
+                   })}
                    
-                   <div className="px-3 py-2.5 rounded-xl flex items-center gap-2 opacity-50 cursor-not-allowed select-none">
-                     <span className="w-2 h-2 rounded-full bg-slate-400 shrink-0"></span>
-                     <div className="flex flex-col">
-                       <span className="text-xs font-bold text-slate-700">Patrones de Diseño & SOLID</span>
-                       <span className="text-[8px] bg-slate-200 text-slate-600 px-1.5 py-0.5 rounded font-black uppercase tracking-wider w-max mt-0.5">Próximamente</span>
+                   <div className="border-t border-slate-100 my-1 pt-1">
+                     <div className="px-3 py-2 rounded-xl flex items-center gap-2 opacity-50 cursor-not-allowed select-none">
+                       <span className="text-base">🏗️</span>
+                       <div className="flex flex-col">
+                         <span className="text-xs font-bold text-slate-700">Patrones de Diseño & SOLID</span>
+                         <span className="text-[8px] bg-slate-200 text-slate-600 px-1.5 py-0.5 rounded font-black uppercase tracking-wider w-max mt-0.5">Próximamente</span>
+                       </div>
+                     </div>
+
+                     <div className="px-3 py-2 rounded-xl flex items-center gap-2 opacity-50 cursor-not-allowed select-none">
+                       <span className="text-base">🏛️</span>
+                       <div className="flex flex-col">
+                         <span className="text-xs font-bold text-slate-700">Arquitectura Hexagonal</span>
+                         <span className="text-[8px] bg-slate-200 text-slate-600 px-1.5 py-0.5 rounded font-black uppercase tracking-wider w-max mt-0.5">Próximamente</span>
+                       </div>
                      </div>
                    </div>
 
-                   <div className="px-3 py-2.5 rounded-xl flex items-center gap-2 opacity-50 cursor-not-allowed select-none">
-                     <span className="w-2 h-2 rounded-full bg-slate-400 shrink-0"></span>
-                     <div className="flex flex-col">
-                       <span className="text-xs font-bold text-slate-700">Arquitectura Hexagonal & SOLID</span>
-                       <span className="text-[8px] bg-slate-200 text-slate-600 px-1.5 py-0.5 rounded font-black uppercase tracking-wider w-max mt-0.5">Próximamente</span>
-                     </div>
-                   </div>
                  </div>
                )}
              </div>
 
               <button 
                 onClick={() => setShowFinalExam(true)}
-                className="bg-slate-900 text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-slate-800 transition shadow-md active:scale-95"
+                className="bg-slate-900 text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-slate-800 transition shadow-md active:scale-95 cursor-pointer"
               >
                 Práctica Final
               </button>
@@ -106,12 +137,20 @@ const App: React.FC = () => {
         {/* Sidebar Navigation */}
         <aside className="w-full md:w-80 p-4 border-r border-slate-200 overflow-y-auto max-h-[calc(100vh-64px)] scrollbar-hide bg-slate-50/50">
           <div className="space-y-2">
-            <h2 className="px-3 text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-4">Progreso del Plan de Estudios</h2>
-            {COURSE_MODULES.map((mod) => (
+            <div className="px-3 mb-4">
+              <span className="text-[9px] font-extrabold text-indigo-600 bg-indigo-50 px-2 py-1 rounded-md uppercase tracking-wider block w-max mb-1">
+                {activeCourse.badge}
+              </span>
+              <h2 className="text-xs font-bold text-slate-400 uppercase tracking-widest">
+                Progreso del Plan de Estudios
+              </h2>
+            </div>
+
+            {activeCourse.modules.map((mod) => (
               <button
                 key={mod.id}
                 onClick={() => setActiveModuleId(mod.id)}
-                className={`w-full text-left px-3 py-3 rounded-xl transition-all duration-200 flex items-center gap-3 group relative ${
+                className={`w-full text-left px-3 py-3 rounded-xl transition-all duration-200 flex items-center gap-3 group relative cursor-pointer ${
                   activeModuleId === mod.id 
                     ? 'bg-white text-indigo-700 shadow-md ring-1 ring-slate-200' 
                     : 'text-slate-600 hover:bg-white hover:shadow-sm'
@@ -124,7 +163,7 @@ const App: React.FC = () => {
                 </div>
                 <div className="flex flex-col overflow-hidden">
                   <span className={`text-sm font-bold truncate ${activeModuleId === mod.id ? 'text-slate-900' : 'text-slate-600'}`}>
-                    {mod.title.split(': ')[1]}
+                    {mod.title.split(': ')[1] || mod.title}
                   </span>
                   <span className="text-[10px] opacity-60 font-medium">Contenido Universitario</span>
                 </div>
@@ -142,7 +181,7 @@ const App: React.FC = () => {
           <section className="bg-slate-900 rounded-[2rem] p-8 md:p-12 text-white relative overflow-hidden shadow-2xl shadow-slate-200 group">
             <div className="relative z-10 max-w-2xl">
               <span className="inline-block px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 text-[10px] font-bold uppercase tracking-widest mb-4 border border-indigo-500/30">
-                Unidad Académica {activeModule.id}
+                {activeCourse.shortTitle} • Unidad Académica {activeModule.id}
               </span>
               <h2 className="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight leading-tight group-hover:translate-x-1 transition-transform duration-500">
                 {activeModule.title}
@@ -162,8 +201,8 @@ const App: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             <div className="lg:col-span-2 space-y-12">
               
-              {/* Big O Specific Content for Module 1 */}
-              {activeModule.id === 1 && (
+              {/* Big O Specific Content for Algoritmos Module 1 */}
+              {activeCourseId === 'algoritmos' && activeModule.id === 1 && (
                 <div className="space-y-8 animate-in fade-in slide-in-from-bottom-6 duration-700">
                   <BigOChart />
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
@@ -185,6 +224,26 @@ const App: React.FC = () => {
                 </div>
               )}
 
+              {/* Math Highlights for Matematica Module 1 */}
+              {activeCourseId === 'matematica' && activeModule.id === 1 && (
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 animate-in fade-in slide-in-from-bottom-6 duration-700">
+                  {[
+                    { l: 'P → Q', t: 'Implicación Lógica', c: 'Falsa solo si P=V y Q=F' },
+                    { l: '¬(P ∧ Q)', t: 'De Morgan I', c: 'Equivalente a ¬P ∨ ¬Q' },
+                    { l: 'P ∨ ¬P', t: 'Tautología', c: 'Verdadera para todo valor' },
+                    { l: 'P ∧ ¬P', t: 'Contradicción', c: 'Falsa para todo valor' },
+                    { l: 'P ⊕ Q', t: 'XOR (Disyunción)', c: 'Verdadera si difieren' },
+                    { l: 'P ↔ Q', t: 'Bicondicional', c: 'Verdadera si son iguales' },
+                  ].map(card => (
+                    <div key={card.l} className="group bg-slate-50 p-5 rounded-2xl border border-slate-100 transition-all hover:bg-white hover:shadow-xl hover:-translate-y-1">
+                      <span className="text-indigo-600 font-black block text-xl mb-1 font-mono">{card.l}</span>
+                      <span className="text-slate-900 text-sm font-bold block">{card.t}</span>
+                      <span className="text-slate-400 text-[11px] mt-2 block font-mono italic">{card.c}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+
               <article className="space-y-6">
                 <div className="flex items-center gap-3">
                   <h3 className="text-2xl font-bold text-slate-900">Profundización Teórica</h3>
@@ -197,7 +256,7 @@ const App: React.FC = () => {
                 <div className="bg-slate-50 p-8 rounded-[2rem] border border-slate-100">
                   <h4 className="font-bold text-slate-900 mb-6 flex items-center gap-3 text-lg">
                     <span className="w-2 h-8 bg-indigo-600 rounded-full"></span>
-                    Conceptos de Ingeniería
+                    Conceptos de Ingeniería & Matemática
                   </h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {activeModule.items.map((item, i) => (
@@ -215,7 +274,7 @@ const App: React.FC = () => {
               {activeModule.codeSnippet && (
                 <div className="space-y-6">
                   <div className="flex items-center justify-between">
-                     <h3 className="text-2xl font-bold text-slate-900">Implementación de Referencia</h3>
+                     <h3 className="text-2xl font-bold text-slate-900">Implementación / Demostración</h3>
                      <span className="text-xs font-bold text-slate-400 font-mono">Lenguaje: Python</span>
                   </div>
                   <CodeBlock code={activeModule.codeSnippet} />
@@ -230,7 +289,11 @@ const App: React.FC = () => {
             {/* Right Sidebar */}
             <div className="space-y-8">
               {/* IA Assistant Component */}
-              <AIChatDrawer moduleTitle={activeModule.title} moduleId={activeModule.id} />
+              <AIChatDrawer 
+                moduleTitle={activeModule.title} 
+                moduleId={activeModule.id} 
+                moduleExercises={activeModule.exercises}
+              />
               
               <div className="bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-100 p-8 rounded-[2rem] space-y-4 shadow-sm relative overflow-hidden">
                 <div className="relative z-10">
@@ -238,9 +301,13 @@ const App: React.FC = () => {
                     <span>💡</span> Perspectiva Profesional
                   </h4>
                   <p className="text-amber-800/80 leading-relaxed font-medium">
-                    En las Big Tech como Google o Microsoft, no solo evalúan si tu código funciona, sino su eficiencia asintótica. 
+                    {activeCourseId === 'matematica' ? (
+                      "En ciencias de la computación e Inteligencia Artificial, la matemática no es abstracta: es la herramienta analítica para formular modelos, optimizar funciones y garantizar el correcto funcionamiento del software."
+                    ) : (
+                      "En las Big Tech como Google o Microsoft, no solo evalúan si tu código funciona, sino su eficiencia asintótica. Aprende a derivar la complejidad desde los principios fundamentales."
+                    )}
                     <span className="block mt-4 text-xs font-bold uppercase tracking-wider text-amber-900/50">Pro-Tip:</span>
-                    Aprende a derivar la complejidad desde los principios fundamentales, no solo de memoria.
+                    Aprende a derivar los conceptos desde los principios fundamentales, no solo de memoria.
                   </p>
                 </div>
                 <div className="absolute top-0 right-0 -mr-4 -mt-4 opacity-10">
@@ -248,99 +315,20 @@ const App: React.FC = () => {
                 </div>
               </div>
 
-              {/* Redes Sociales QuimiSell */}
-              <div className="bg-white border border-slate-200 p-8 rounded-[2rem] space-y-6 shadow-xl relative overflow-hidden">
-                <div>
-                  <h4 className="font-extrabold text-slate-900 flex items-center gap-2 text-lg">
-                    <span>📢</span> Comunidad QuimiSell
-                  </h4>
-                  <p className="text-slate-500 text-xs mt-1 font-semibold leading-relaxed">
-                    ¡Aprende algoritmos de forma divertida y rápida! Síguenos en nuestras redes oficiales.
-                  </p>
-                </div>
-                
-                <div className="flex flex-col gap-3">
-                  {/* YouTube Link */}
-                  <a
-                    href="https://www.youtube.com/@Quimisell"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 px-5 py-3.5 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white rounded-2xl font-bold text-xs shadow-md shadow-red-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 active:scale-95 group"
-                  >
-                    <svg className="w-5 h-5 fill-current text-white shrink-0" viewBox="0 0 24 24">
-                      <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.107C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.387.511a3.002 3.002 0 0 0-2.11 2.107C0 8.053 0 12 0 12s0 3.947.503 5.837a3.003 3.003 0 0 0 2.11 2.107c1.882.511 9.387.511 9.387.511s7.505 0 9.387-.511a3.003 3.003 0 0 0 2.11-2.107C24 15.947 24 12 24 12s0-3.947-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                    </svg>
-                    <span>Canal de YouTube</span>
-                    <span className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity">➜</span>
-                  </a>
-
-                  {/* TikTok Link */}
-                  <a
-                    href="https://www.tiktok.com/@quimisell0?_r=1&_t=ZS-96glB24PNTk"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 px-5 py-3.5 bg-slate-950 hover:bg-black text-white rounded-2xl font-bold text-xs shadow-md shadow-slate-300 hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 active:scale-95 group border border-slate-800"
-                  >
-                    <svg className="w-5 h-5 fill-current text-white shrink-0" viewBox="0 0 24 24">
-                      <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.02 1.59 4.23.94.94 2.19 1.57 3.53 1.8V9.8c-1.4-.07-2.77-.59-3.87-1.46v6.94c.05 1.56-.37 3.12-1.22 4.43-.88 1.15-2.14 1.94-3.53 2.22-1.44.33-2.97.2-4.32-.38-1.37-.53-2.54-1.54-3.32-2.82-.82-1.24-1.21-2.72-1.12-4.19.12-1.46.77-2.84 1.8-3.8 1.08-.88 2.45-1.36 3.85-1.33.68.01 1.36.13 2.01.35v3.9c-.66-.23-1.38-.28-2.07-.15-.69.11-1.33.46-1.81.97-.48.51-.76 1.19-.79 1.89-.04.7.17 1.41.6 1.96.43.53 1.05.88 1.73.97.69.11 1.4-.04 1.99-.41.6-.39.99-.98 1.11-1.67.06-.9.03-1.81.04-2.72V.02z"/>
-                    </svg>
-                    <span>Perfil de TikTok</span>
-                    <span className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity">➜</span>
-                  </a>
-                </div>
-              </div>
-
-              <div className="bg-slate-900 p-8 rounded-[2rem] text-white shadow-2xl relative overflow-hidden">
-                <h4 className="font-bold mb-6 text-lg">Status Académico</h4>
-                <div className="space-y-4">
-                  <div className="flex justify-between text-xs font-bold text-slate-400 uppercase tracking-widest">
-                    <span>Progreso Total</span>
-                    <span>{activeModule.id * 10}%</span>
-                  </div>
-                  <div className="w-full bg-slate-800 h-3 rounded-full overflow-hidden">
-                    <div 
-                      className="bg-gradient-to-r from-indigo-500 to-purple-500 h-full rounded-full transition-all duration-1000 ease-out" 
-                      style={{ width: `${(activeModule.id / 10) * 100}%` }}
-                    ></div>
-                  </div>
-                  <p className="text-xs text-slate-500 italic mt-2">
-                    Estás navegando el módulo de {activeModule.title.split(': ')[1].toLowerCase()}.
-                  </p>
-                </div>
-              </div>
             </div>
           </div>
         </main>
       </div>
 
-      {/* Mobile Footer Navigation */}
-      <footer className="fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-md border-t border-slate-200 p-4 md:hidden z-50">
-        <div className="flex gap-4">
-           <button 
-             onClick={() => setActiveModuleId(prev => Math.max(1, prev - 1))}
-             disabled={activeModuleId === 1}
-             className="flex-1 border border-slate-200 py-3 rounded-2xl font-bold disabled:opacity-30 bg-white shadow-sm"
-           >
-             Anterior
-           </button>
-           <button 
-             onClick={() => setActiveModuleId(prev => Math.min(10, prev + 1))}
-             disabled={activeModuleId === 10}
-             className="flex-1 bg-indigo-600 text-white py-3 rounded-2xl font-bold shadow-lg shadow-indigo-200 active:scale-95 transition"
-           >
-             Siguiente
-           </button>
-        </div>
-      </footer>
-
-      {showFinalExam && (
-        <FinalExamModal onClose={() => setShowFinalExam(false)} />
-      )}
+      {/* Modals */}
       {showStudyPlan && (
-        <StudyPlanModal onClose={() => setShowStudyPlan(false)} />
+        <StudyPlanModal course={activeCourse} onClose={() => setShowStudyPlan(false)} />
       )}
       {showLabChallenge && (
-        <LabChallengeModal onClose={() => setShowLabChallenge(false)} />
+        <LabChallengeModal course={activeCourse} onClose={() => setShowLabChallenge(false)} />
+      )}
+      {showFinalExam && (
+        <FinalExamModal course={activeCourse} onClose={() => setShowFinalExam(false)} />
       )}
     </div>
   );
