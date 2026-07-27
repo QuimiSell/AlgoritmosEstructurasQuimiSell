@@ -72,7 +72,7 @@ const App: React.FC = () => {
                {courseMenuOpen && (
                  <div className="absolute right-0 mt-2 w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 p-2 z-50 animate-in fade-in slide-in-from-top-3 duration-200">
                    <span className="block px-3 py-1.5 text-[8px] font-black text-slate-400 uppercase tracking-widest border-b border-slate-100 mb-1">
-                     Seleccionar Materia Universitaria
+                     Selector de Materias Habilitadas ({COURSES.length} Cursos)
                    </span>
 
                    {COURSES.map(course => {
@@ -87,38 +87,19 @@ const App: React.FC = () => {
                        >
                          <div className="flex items-center gap-2.5">
                            <span className="text-lg">{course.icon}</span>
-                           <div className="flex flex-col">
-                             <span className="text-xs font-bold leading-snug">{course.title}</span>
-                             <span className="text-[9px] text-slate-400 font-bold uppercase">{course.badge}</span>
+                           <div className="flex flex-col overflow-hidden">
+                             <span className="text-xs font-bold leading-snug truncate">{course.title}</span>
+                             <span className="text-[9px] text-slate-400 font-bold uppercase">{course.modules.length} Módulos</span>
                            </div>
                          </div>
                          {isSelected ? (
-                           <span className="text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-md font-extrabold">Activo</span>
+                           <span className="text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-md font-extrabold shrink-0">Activo</span>
                          ) : (
-                           <span className="text-xs text-indigo-600 opacity-0 group-hover:opacity-100 font-bold">Ver →</span>
+                           <span className="text-xs text-indigo-600 opacity-0 group-hover:opacity-100 font-bold shrink-0">Ver →</span>
                          )}
                        </button>
                      );
                    })}
-                   
-                   <div className="border-t border-slate-100 my-1 pt-1">
-                     <div className="px-3 py-2 rounded-xl flex items-center gap-2 opacity-50 cursor-not-allowed select-none">
-                       <span className="text-base">🏗️</span>
-                       <div className="flex flex-col">
-                         <span className="text-xs font-bold text-slate-700">Patrones de Diseño & SOLID</span>
-                         <span className="text-[8px] bg-slate-200 text-slate-600 px-1.5 py-0.5 rounded font-black uppercase tracking-wider w-max mt-0.5">Próximamente</span>
-                       </div>
-                     </div>
-
-                     <div className="px-3 py-2 rounded-xl flex items-center gap-2 opacity-50 cursor-not-allowed select-none">
-                       <span className="text-base">🏛️</span>
-                       <div className="flex flex-col">
-                         <span className="text-xs font-bold text-slate-700">Arquitectura Hexagonal</span>
-                         <span className="text-[8px] bg-slate-200 text-slate-600 px-1.5 py-0.5 rounded font-black uppercase tracking-wider w-max mt-0.5">Próximamente</span>
-                       </div>
-                     </div>
-                   </div>
-
                  </div>
                )}
              </div>
@@ -244,7 +225,7 @@ const App: React.FC = () => {
                 </div>
               )}
 
-              {/* Automata & Compilers Highlights for Module 1 */}
+              {/* Automata Highlights for Module 1 */}
               {activeCourseId === 'automatas_compiladores' && activeModule.id === 1 && (
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 animate-in fade-in slide-in-from-bottom-6 duration-700">
                   {[
@@ -254,6 +235,46 @@ const App: React.FC = () => {
                     { l: 'Σ*', t: 'Estrella de Kleene', c: 'Todas las cadenas posibles (incluye ε)' },
                     { l: 'Σ+', t: 'Clausura Positiva', c: 'Cadenas de longitud ≥ 1 (excluye ε)' },
                     { l: 'L ⊆ Σ*', t: 'Lenguaje Formal', c: 'Cualquier subconjunto de cadenas de Σ*' },
+                  ].map(card => (
+                    <div key={card.l} className="group bg-slate-50 p-5 rounded-2xl border border-slate-100 transition-all hover:bg-white hover:shadow-xl hover:-translate-y-1">
+                      <span className="text-indigo-600 font-black block text-xl mb-1 font-mono">{card.l}</span>
+                      <span className="text-slate-900 text-sm font-bold block">{card.t}</span>
+                      <span className="text-slate-400 text-[11px] mt-2 block font-mono italic">{card.c}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Clean Code Highlights for Module 1 */}
+              {activeCourseId === 'clean_code_solid' && activeModule.id === 1 && (
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 animate-in fade-in slide-in-from-bottom-6 duration-700">
+                  {[
+                    { l: 'Tío Bob', t: 'Robert C. Martin', c: 'Autor de "Clean Code" & SOLID' },
+                    { l: 'Boy Scout', t: 'Regla de Oro', c: 'Deja el código más limpio que como estaba' },
+                    { l: 'Nombres', t: 'Intención Reveladora', c: 'Expresa el propósito sin comentarios' },
+                    { l: '10 a 1', t: 'Ratio Lectura/Escritura', c: 'Pasamos más tiempo leyendo código' },
+                    { l: 'Deuda', t: 'Deuda Técnica', c: 'Costo futuro por tomar atajos hoy' },
+                    { l: 'Pequeñas', t: 'Funciones de 10 líneas', c: 'Funciones que hacen una sola cosa bien' },
+                  ].map(card => (
+                    <div key={card.l} className="group bg-slate-50 p-5 rounded-2xl border border-slate-100 transition-all hover:bg-white hover:shadow-xl hover:-translate-y-1">
+                      <span className="text-indigo-600 font-black block text-xl mb-1 font-mono">{card.l}</span>
+                      <span className="text-slate-900 text-sm font-bold block">{card.t}</span>
+                      <span className="text-slate-400 text-[11px] mt-2 block font-mono italic">{card.c}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* AI Engineer Highlights for Module 1 */}
+              {activeCourseId === 'ingeniero_ia' && activeModule.id === 1 && (
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 animate-in fade-in slide-in-from-bottom-6 duration-700">
+                  {[
+                    { l: 'Arquitecto', t: 'De Vibe Coder a Arquitecto', c: 'La sintaxis la genera la IA; el diseño es tuyo' },
+                    { l: 'Hardware', t: 'RAM & CPU Cache', c: 'La IA no siente la latencia física de la CPU' },
+                    { l: 'TDD', t: 'Test Automated Harness', c: 'Barrera de contención contra alucinaciones' },
+                    { l: 'Seguridad', t: 'DevSecOps & OWASP', c: 'Auditoría estricta de vulnerabilidades' },
+                    { l: 'Agentes', t: 'Bucle ReAct & Tools', c: 'Dirigir equipos de subagentes con contexto' },
+                    { l: 'Sistemas', t: 'System Design & CAP', c: 'Diseño para millones de usuarios simultáneos' },
                   ].map(card => (
                     <div key={card.l} className="group bg-slate-50 p-5 rounded-2xl border border-slate-100 transition-all hover:bg-white hover:shadow-xl hover:-translate-y-1">
                       <span className="text-indigo-600 font-black block text-xl mb-1 font-mono">{card.l}</span>
@@ -276,7 +297,7 @@ const App: React.FC = () => {
                 <div className="bg-slate-50 p-8 rounded-[2rem] border border-slate-100">
                   <h4 className="font-bold text-slate-900 mb-6 flex items-center gap-3 text-lg">
                     <span className="w-2 h-8 bg-indigo-600 rounded-full"></span>
-                    Conceptos Clave de Ingeniería & Teoría
+                    Conceptos Clave de Ingeniería & Arquitectura
                   </h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {activeModule.items.map((item, i) => (
@@ -294,7 +315,7 @@ const App: React.FC = () => {
               {activeModule.codeSnippet && (
                 <div className="space-y-6">
                   <div className="flex items-center justify-between">
-                     <h3 className="text-2xl font-bold text-slate-900">Implementación de Referencia</h3>
+                     <h3 className="text-2xl font-bold text-slate-900">Implementación / Demostración</h3>
                      <span className="text-xs font-bold text-slate-400 font-mono">Lenguaje: Python</span>
                   </div>
                   <CodeBlock code={activeModule.codeSnippet} />
@@ -321,12 +342,16 @@ const App: React.FC = () => {
                     <span>💡</span> Perspectiva Profesional
                   </h4>
                   <p className="text-amber-800/80 leading-relaxed font-medium">
-                    {activeCourseId === 'automatas_compiladores' ? (
-                      "Dominar autómatas y compiladores te permite entender lo que ocurre en las entrañas de los lenguajes de programación, motores de expresiones regulares, parseadores sintácticos y optimizadores de código."
+                    {activeCourseId === 'clean_code_solid' ? (
+                      "Cualquier programador puede escribir código que una computadora entienda; los ingenieros de elite escriben código que los humanos pueden entender (Tío Bob)."
+                    ) : activeCourseId === 'ingeniero_ia' ? (
+                      "En la era de la IA, teclear sintaxis es un commoditie. Tu mayor activo es el razonamiento de sistemas, el criterio de arquitectura y la verificación formal."
+                    ) : activeCourseId === 'automatas_compiladores' ? (
+                      "Dominar autómatas y compiladores te permite entender lo que ocurre en las entrañas de los lenguajes de programación y optimizadores."
                     ) : activeCourseId === 'matematica' ? (
-                      "En ciencias de la computación e Inteligencia Artificial, la matemática no es abstracta: es la herramienta analítica para formular modelos, optimizar funciones y garantizar el correcto funcionamiento del software."
+                      "La matemática es la herramienta analítica para formular modelos, optimizar funciones y garantizar el correcto funcionamiento del software."
                     ) : (
-                      "En las Big Tech como Google o Microsoft, no solo evalúan si tu código funciona, sino su eficiencia asintótica. Aprende a derivar la complejidad desde los principios fundamentales."
+                      "En las Big Tech como Google o Microsoft, no solo evalúan si tu código funciona, sino su eficiencia asintótica."
                     )}
                     <span className="block mt-4 text-xs font-bold uppercase tracking-wider text-amber-900/50">Técnica Feynman:</span>
                     Explicar cada concepto con tus propias palabras y código simple es el camino más efectivo para el aprendizaje profundo.
