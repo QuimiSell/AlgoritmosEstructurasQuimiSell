@@ -139,7 +139,7 @@ const App: React.FC = () => {
           <div className="space-y-2">
             <div className="px-3 mb-4">
               <span className="text-[9px] font-extrabold text-indigo-600 bg-indigo-50 px-2 py-1 rounded-md uppercase tracking-wider block w-max mb-1">
-                {activeCourse.badge}
+                {activeCourse.badge} ({activeCourse.modules.length} Módulos)
               </span>
               <h2 className="text-xs font-bold text-slate-400 uppercase tracking-widest">
                 Progreso del Plan de Estudios
@@ -181,7 +181,7 @@ const App: React.FC = () => {
           <section className="bg-slate-900 rounded-[2rem] p-8 md:p-12 text-white relative overflow-hidden shadow-2xl shadow-slate-200 group">
             <div className="relative z-10 max-w-2xl">
               <span className="inline-block px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 text-[10px] font-bold uppercase tracking-widest mb-4 border border-indigo-500/30">
-                {activeCourse.shortTitle} • Unidad Académica {activeModule.id}
+                {activeCourse.shortTitle} • Unidad Académica {activeModule.id} de {activeCourse.modules.length}
               </span>
               <h2 className="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight leading-tight group-hover:translate-x-1 transition-transform duration-500">
                 {activeModule.title}
@@ -244,6 +244,26 @@ const App: React.FC = () => {
                 </div>
               )}
 
+              {/* Automata & Compilers Highlights for Module 1 */}
+              {activeCourseId === 'automatas_compiladores' && activeModule.id === 1 && (
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 animate-in fade-in slide-in-from-bottom-6 duration-700">
+                  {[
+                    { l: 'Σ', t: 'Alfabeto', c: 'Conjunto finito de símbolos (ej: {0,1})' },
+                    { l: 'w', t: 'Cadena', c: 'Secuencia finita de símbolos de Σ' },
+                    { l: 'ε', t: 'Cadena Vacía', c: 'Cadena de longitud |ε| = 0' },
+                    { l: 'Σ*', t: 'Estrella de Kleene', c: 'Todas las cadenas posibles (incluye ε)' },
+                    { l: 'Σ+', t: 'Clausura Positiva', c: 'Cadenas de longitud ≥ 1 (excluye ε)' },
+                    { l: 'L ⊆ Σ*', t: 'Lenguaje Formal', c: 'Cualquier subconjunto de cadenas de Σ*' },
+                  ].map(card => (
+                    <div key={card.l} className="group bg-slate-50 p-5 rounded-2xl border border-slate-100 transition-all hover:bg-white hover:shadow-xl hover:-translate-y-1">
+                      <span className="text-indigo-600 font-black block text-xl mb-1 font-mono">{card.l}</span>
+                      <span className="text-slate-900 text-sm font-bold block">{card.t}</span>
+                      <span className="text-slate-400 text-[11px] mt-2 block font-mono italic">{card.c}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+
               <article className="space-y-6">
                 <div className="flex items-center gap-3">
                   <h3 className="text-2xl font-bold text-slate-900">Profundización Teórica</h3>
@@ -256,7 +276,7 @@ const App: React.FC = () => {
                 <div className="bg-slate-50 p-8 rounded-[2rem] border border-slate-100">
                   <h4 className="font-bold text-slate-900 mb-6 flex items-center gap-3 text-lg">
                     <span className="w-2 h-8 bg-indigo-600 rounded-full"></span>
-                    Conceptos de Ingeniería & Matemática
+                    Conceptos Clave de Ingeniería & Teoría
                   </h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {activeModule.items.map((item, i) => (
@@ -274,7 +294,7 @@ const App: React.FC = () => {
               {activeModule.codeSnippet && (
                 <div className="space-y-6">
                   <div className="flex items-center justify-between">
-                     <h3 className="text-2xl font-bold text-slate-900">Implementación / Demostración</h3>
+                     <h3 className="text-2xl font-bold text-slate-900">Implementación de Referencia</h3>
                      <span className="text-xs font-bold text-slate-400 font-mono">Lenguaje: Python</span>
                   </div>
                   <CodeBlock code={activeModule.codeSnippet} />
@@ -301,13 +321,15 @@ const App: React.FC = () => {
                     <span>💡</span> Perspectiva Profesional
                   </h4>
                   <p className="text-amber-800/80 leading-relaxed font-medium">
-                    {activeCourseId === 'matematica' ? (
+                    {activeCourseId === 'automatas_compiladores' ? (
+                      "Dominar autómatas y compiladores te permite entender lo que ocurre en las entrañas de los lenguajes de programación, motores de expresiones regulares, parseadores sintácticos y optimizadores de código."
+                    ) : activeCourseId === 'matematica' ? (
                       "En ciencias de la computación e Inteligencia Artificial, la matemática no es abstracta: es la herramienta analítica para formular modelos, optimizar funciones y garantizar el correcto funcionamiento del software."
                     ) : (
                       "En las Big Tech como Google o Microsoft, no solo evalúan si tu código funciona, sino su eficiencia asintótica. Aprende a derivar la complejidad desde los principios fundamentales."
                     )}
-                    <span className="block mt-4 text-xs font-bold uppercase tracking-wider text-amber-900/50">Pro-Tip:</span>
-                    Aprende a derivar los conceptos desde los principios fundamentales, no solo de memoria.
+                    <span className="block mt-4 text-xs font-bold uppercase tracking-wider text-amber-900/50">Técnica Feynman:</span>
+                    Explicar cada concepto con tus propias palabras y código simple es el camino más efectivo para el aprendizaje profundo.
                   </p>
                 </div>
                 <div className="absolute top-0 right-0 -mr-4 -mt-4 opacity-10">
