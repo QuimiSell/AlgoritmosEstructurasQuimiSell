@@ -7,6 +7,7 @@ import QuizSection from './components/QuizSection';
 import FinalExamModal from './components/FinalExamModal';
 import StudyPlanModal from './components/StudyPlanModal';
 import LabChallengeModal from './components/LabChallengeModal';
+import KaliTerminalSimulator from './components/KaliTerminalSimulator';
 
 const App: React.FC = () => {
   const [activeCourseId, setActiveCourseId] = useState<string>('algoritmos');
@@ -285,6 +286,41 @@ const App: React.FC = () => {
                 </div>
               )}
 
+              {/* Kali Linux Highlights for Module 1 */}
+              {activeCourseId === 'kali_linux' && activeModule.id === 1 && (
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 animate-in fade-in slide-in-from-bottom-6 duration-700">
+                  {[
+                    { l: '-sS', t: 'TCP SYN Stealth', c: 'Escaneo semiabierto que no completa el handshake' },
+                    { l: 'FHS & /proc', t: 'Kernel en Memoria', c: 'Árbol de directorios estándar y pseudo-FS' },
+                    { l: 'NSE (Lua)', t: 'Scripting Engine', c: 'Automatización de auditorías y detección de CVEs' },
+                    { l: '-T0 a -T5', t: 'Timing Templates', c: 'Control de temporización y evasión de IDS' },
+                    { l: 'Decoys -D', t: 'Señuelos de Red', c: 'Ofuscación de IP real mediante tráfico señuelo' },
+                    { l: 'CVSS v3.1', t: 'Reporte Técnico', c: 'Métricas estándar de severidad 0.0 a 10.0' },
+                  ].map(card => (
+                    <div key={card.l} className="group bg-slate-50 p-5 rounded-2xl border border-slate-100 transition-all hover:bg-white hover:shadow-xl hover:-translate-y-1">
+                      <span className="text-indigo-600 font-black block text-xl mb-1 font-mono">{card.l}</span>
+                      <span className="text-slate-900 text-sm font-bold block">{card.t}</span>
+                      <span className="text-slate-400 text-[11px] mt-2 block font-mono italic">{card.c}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Kali Linux Interactive Terminal Sandbox */}
+              {activeCourseId === 'kali_linux' && (
+                <div className="space-y-4 animate-in fade-in duration-500">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-2xl font-bold text-slate-900 flex items-center gap-2.5">
+                      <span>🐉</span> Consola de Práctica Kali Linux en Vivo
+                    </h3>
+                    <span className="text-xs font-bold text-emerald-600 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full">
+                      ● Terminal Activa
+                    </span>
+                  </div>
+                  <KaliTerminalSimulator />
+                </div>
+              )}
+
               <article className="space-y-6">
                 <div className="flex items-center gap-3">
                   <h3 className="text-2xl font-bold text-slate-900">Profundización Teórica</h3>
@@ -316,7 +352,9 @@ const App: React.FC = () => {
                 <div className="space-y-6">
                   <div className="flex items-center justify-between">
                      <h3 className="text-2xl font-bold text-slate-900">Implementación / Demostración</h3>
-                     <span className="text-xs font-bold text-slate-400 font-mono">Lenguaje: Python</span>
+                     <span className="text-xs font-bold text-slate-400 font-mono">
+                       {activeCourseId === 'kali_linux' ? 'Lenguaje: Bash / Kali Linux CLI' : 'Lenguaje: Python'}
+                     </span>
                   </div>
                   <CodeBlock code={activeModule.codeSnippet} />
                 </div>
@@ -342,7 +380,9 @@ const App: React.FC = () => {
                     <span>💡</span> Perspectiva Profesional
                   </h4>
                   <p className="text-amber-800/80 leading-relaxed font-medium">
-                    {activeCourseId === 'clean_code_solid' ? (
+                    {activeCourseId === 'kali_linux' ? (
+                      "En ciberseguridad, un escáner automático sin comprensión del paquete TCP subyacente es ruido inútil. Dominar cada flag (-sS, -T, NSE) y el estándar PTES te convierte en un auditor ético de precisión quirúrgica."
+                    ) : activeCourseId === 'clean_code_solid' ? (
                       "Cualquier programador puede escribir código que una computadora entienda; los ingenieros de elite escriben código que los humanos pueden entender (Tío Bob)."
                     ) : activeCourseId === 'ingeniero_ia' ? (
                       "En la era de la IA, teclear sintaxis es un commoditie. Tu mayor activo es el razonamiento de sistemas, el criterio de arquitectura y la verificación formal."

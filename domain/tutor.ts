@@ -126,7 +126,7 @@ export function validateExerciseCode(code: string, expectedKeywords: string[]): 
     return { success: false, feedback: "Por favor, escribe alguna solución en el editor de arriba." };
   }
 
-  // 1. Detección de Comentarios (Anti-IA y Anti-Copia)
+  // 1. Detección de Comentarios (Anti-IA y Anti-Copia para ejercicios tradicionales)
   // Limpiamos los comentarios de la plantilla base para no penalizarlos
   let userContent = code;
   const templateComments = [
@@ -154,27 +154,31 @@ export function validateExerciseCode(code: string, expectedKeywords: string[]): 
     userContent = userContent.replace(pattern, "");
   }
 
-  // Si después de limpiar el código de plantilla, aún contiene símbolos de comentario
-  if (userContent.includes("#") || userContent.includes("//") || userContent.includes("/*") || userContent.includes("'''") || userContent.includes('"""')) {
+  // Si no es un comando de una sola línea (como bash/kali) y contiene comentarios extensos tipo IA
+  const isCommandLine = expectedKeywords.some(kw => 
+    ["nmap", "grep", "find", "lsof", "ss", "dig", "tcpdump", "gobuster", "ffuf", "nikto", "airmon-ng", "john", "hashcat", "nc", "ssh", "sudo", "sha256sum", "awk", "ufw", "iptables", "CVSS", "Pre-engagement"].includes(kw)
+  );
+
+  if (!isCommandLine && (userContent.includes("//") || userContent.includes("/*") || userContent.includes("'''") || userContent.includes('"""'))) {
     return {
       success: false,
-      feedback: "⚠️ **Se detectaron comentarios en tu código.**\n\nPara esta práctica, está prohibido incluir comentarios explicativos. Esto nos ayuda a asegurar que has escrito el código directamente y no has copiado una explicación generada por IA. Por favor, remueve todos los comentarios y deja únicamente el código limpio."
+      feedback: "⚠️ **Se detectaron comentarios explicativos en tu código.**\n\nPara esta práctica, escribe únicamente el código o comando limpio y directo."
     };
   }
 
-  // 2. Control de Verbocidad (Evitar soluciones redundantes tipo 1+1+1+1)
-  const maxLength = 350;
+  // 2. Control de Verbocidad (Evitar soluciones redundantes)
+  const maxLength = 600;
   if (userContent.length > maxLength) {
     return {
       success: false,
-      feedback: `⚠️ **Código demasiado extenso e indirecto (${userContent.length} caracteres).**\n\nBusca la solución estándar y óptima más corta. No des rodeos innecesarios (escribe "2+2" en lugar de "1+1+1+1"). Evita código redundante o estructuras repetitivas innecesarias.`
+      feedback: `⚠️ **Código demasiado extenso e indirecto (${userContent.length} caracteres).**\n\nBusca la solución estándar y óptima más corta. Evita código redundante o estructuras repetitivas innecesarias.`
     };
   }
 
   // 3. Verificar si faltan palabras clave indispensables
   const missingKeywords: string[] = [];
   for (const kw of expectedKeywords) {
-    if (!code.includes(kw)) {
+    if (!code.toLowerCase().includes(kw.toLowerCase())) {
       missingKeywords.push(kw);
     }
   }
@@ -182,13 +186,13 @@ export function validateExerciseCode(code: string, expectedKeywords: string[]): 
   if (missingKeywords.length > 0) {
     return {
       success: false,
-      feedback: `⚠️ **Tu código está incompleto o no sigue la estructura estándar.**\n\nFaltan elementos obligatorios para que sea correcto. Asegúrate de incluir: ${missingKeywords.map(k => `\`${k}\``).join(", ")}.`
+      feedback: `⚠️ **Tu solución está incompleta o no sigue la sintaxis esperada.**\n\nFaltan elementos obligatorios para que sea correcta. Asegúrate de incluir: ${missingKeywords.map(k => `\`${k}\``).join(", ")}.`
     };
   }
 
   return {
     success: true,
-    feedback: "✅ **¡Excelente trabajo!** Tu código es limpio, va al grano (sin comentarios ni código redundante) e incluye la estructura de lógica asintótica óptima esperada."
+    feedback: "✅ **¡Excelente trabajo!** Tu solución es precisa, va al grano e incluye la sintaxis y comandos óptimos esperados."
   };
 }
 

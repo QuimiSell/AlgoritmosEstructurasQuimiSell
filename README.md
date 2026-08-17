@@ -1,29 +1,50 @@
-# Master Class QuimiSell: Algoritmos y Estructuras de Datos
+# Master Class QuimiSell: Plataforma Integral de Ingeniería, Algoritmos y Kali Linux
 
-Una plataforma educativa interactiva premium, diseñada al 100% para funcionar de forma **local y sin conexión (offline)**, pensada para que los estudiantes universitarios dominen la complejidad algorítmica y las estructuras de datos sin depender de APIs de nube ni incurrir en costos financieros.
+Una plataforma educativa interactiva premium, diseñada al 100% para funcionar de forma **local y sin conexión (offline)**, pensada para que los estudiantes universitarios dominen la complejidad algorítmica, la arquitectura de software, la computación teórica y la ciberseguridad práctica sin depender de APIs de nube ni incurrir en costos financieros.
+
+---
+
+## 📚 Cursos Habilitados
+
+1. **🐉 Kali Linux: Dominio de Comandos, Auditoría y Diagnóstico de Redes (20 Módulos)**
+   - Domina el Kernel Linux, terminal Bash, sondeos stealth con Nmap (`-sS`, `-Pn`, `-sV`), evasión de IDS (`-T0 a -T5`, fragmentación `-f`, decoys `-D`), Nmap Scripting Engine (NSE), OSINT, análisis de tráfico con Tcpdump, fuzzing web con Gobuster/FFuF, auditoría con Nikto, análisis inalámbrico (Aircrack-ng), hashing con Hashcat/John, pivoting/túneles SSH y reporte técnico bajo estándar PTES/CVSS v3.1.
+   - Incluye **100 preguntas de autoevaluación académica** (5 por módulo) y una **Consola Interactiva de Kali Linux en Vivo (CLI Sandbox)**.
+
+2. **⚡ Algoritmos y Estructuras de Datos (10 Módulos)**
+   - Complejidad Big-O, Listas Enlazadas, Pilas, Colas, Tablas Hash, Árboles Binarios, Grafos (BFS/DFS), Ordenamiento, Búsqueda Binaria y Programación Dinámica.
+
+3. **🧼 Clean Code, SOLID y Patrones de Diseño (10 Módulos)**
+   - Principios de Robert C. Martin (Tío Bob), los 5 principios SOLID, y patrones de diseño Creacionales, Estructurales y de Comportamiento (GoF).
+
+4. **⚙️ Autómatas, Gramáticas y Compiladores (10 Módulos)**
+   - Teoría de la computación, autómatas finitos (DFA/NFA), expresiones regulares, gramáticas libres de contexto y análisis léxico/sintáctico.
+
+5. **🧠 Fundamentos de Matemáticas Discretas (10 Módulos)**
+   - Lógica proposicional, teoría de conjuntos, relaciones, inducción matemática, combinatoria y teoría de grafos.
+
+6. **🤖 Ingeniero de IA: De Vibe Coder a Arquitecto (10 Módulos)**
+   - Arquitectura de software guiada por IA, pipelines de evaluación continua, DevSecOps y orquestación de agentes.
 
 ---
 
 ## 🌟 Características Principales
 
-- 🎓 **Plan de Estudios Académico:** 10 módulos de aprendizaje secuenciales estructurados bajo principios de ingeniería (Complejidad Big-O, Listas Enlazadas, Tablas Hash, Árboles, Grafos, Ordenamiento, Búsqueda, Programación Dinámica y Casos Reales).
-- ✏️ **Cuestionarios de Autoevaluación:** Cada módulo cuenta con un quiz de 5 preguntas (50 preguntas en total) con explicaciones académicas detalladas e inmediatas.
-- ✍️ **Evaluación Final (Práctica Final):** Un examen integrador de 10 preguntas (1 de cada módulo) que evalúa el desempeño global del estudiante. Guarda el progreso en `localStorage` y permite **reiniciar la evaluación** si el estudiante se equivoca.
-- 💻 **Tutor de Ejercicios Prácticos:** Editor de código en Python integrado con simulación de terminal. Valida la lógica de forma offline y cuenta con:
-  - **Detector de Copia/Pega (Anti-IA):** Advierte si el estudiante intenta evadir el desarrollo manual.
-  - **Filtro de Comentarios:** Rechaza el código con explicaciones comentadas para asegurar el desarrollo genuino del código limpio.
-- 🧪 **Laboratorio de Retos:** Un desafío avanzado de ingeniería (*Simulador de Dijkstra + Caché LRU de capacidad 3*) con un formato de envío rápido al correo de revisión oficial.
-- 📱 **Diseño Premium y Responsivo:** Estética cuidada (modo oscuro/claro, gradientes, animaciones y compatibilidad móvil).
+- 🎓 **Planes de Estudio Académicos:** Módulos de aprendizaje secuenciales estructurados bajo rigor universitario.
+- ✏️ **Cuestionarios de Autoevaluación:** Cientos de preguntas con explicaciones académicas detalladas e inmediatas estilo certificación/Duolingo.
+- 🐉 **Simulador de Terminal Kali Linux:** Ejecución interactiva de comandos de red (`nmap`, `gobuster`, `nikto`, `tcpdump`, `dig`, `whois`, `ss`, `ip route`).
+- ✍️ **Evaluaciones Finales Dinámicas:** Exámenes integradores por materia que evalúan el progreso global con guardado en `localStorage`.
+- 💻 **Tutor de Ejercicios Prácticos:** Editor con validación local y soporte para código Python y comandos Linux/Bash.
+- 🧪 **Laboratorios de Retos:** Retos prácticos con plantillas de correo para revisión académica.
 
 ---
 
 ## 🏗️ Arquitectura del Proyecto
 
-El proyecto está estructurado bajo **Arquitectura Hexagonal (SOLID)**, separando limpiamente las reglas de negocio de la vista de presentación:
-- `/domain`: Contiene los modelos (`models.ts`) y la lógica de validación de código y profesor de autoevaluación local (`tutor.ts`).
-- `/components`: Componentes UI reutilizables como la consola del tutor, gráficos de complejidad, cuestionarios y modales interactivos.
-- `App.tsx`: Punto de entrada de la aplicación y gestor de estados globales.
-- `constants.tsx`: Base de datos de contenido teórico, snippets y cuestionarios.
+El proyecto está estructurado bajo **Arquitectura Hexagonal (SOLID)**:
+- `/domain`: Modelos compartidos (`models.ts`) y validador de ejercicios (`tutor.ts`).
+- `/courses`: Catálogo de cursos modulares (`kaliLinuxCourse.ts`, `algorithmsCourse.ts`, `cleanCodeCourse.ts`, etc.).
+- `/components`: Componentes UI reutilizables (Consola Kali, Modales de Examen, Quiz, Chat Drawer, Gráficos Big-O).
+- `App.tsx`: Entrada principal de la aplicación y gestor de estados.
 
 ---
 
@@ -41,7 +62,7 @@ Tener instalado [Node.js](https://nodejs.org/).
    ```bash
    npm run dev
    ```
-3. **Compilar para producción (opcional):**
+3. **Compilar para producción:**
    ```bash
    npm run build
    ```
@@ -51,5 +72,5 @@ Tener instalado [Node.js](https://nodejs.org/).
 ## 🌐 Publicación y Despliegue en la Web (Vercel)
 Este proyecto está optimizado para desplegarse de manera gratuita en **Vercel**:
 1. Conecta tu cuenta de Vercel con el repositorio de GitHub.
-2. Importa el proyecto. Vercel autodetectará la configuración de Vite.
+2. Importa el proyecto (`master-class-quimisell-algoritmos-y-estructuras-de-datos`).
 3. Haz clic en **Deploy** y ¡listo!
