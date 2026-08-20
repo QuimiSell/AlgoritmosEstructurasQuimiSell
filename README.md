@@ -45,6 +45,8 @@ El proyecto está estructurado bajo **Arquitectura Hexagonal (SOLID)**:
 - `/courses`: Catálogo de cursos modulares (`kaliLinuxCourse.ts`, `algorithmsCourse.ts`, `cleanCodeCourse.ts`, etc.).
 - `/components`: Componentes UI reutilizables (Consola Kali, Modales de Examen, Quiz, Chat Drawer, Gráficos Big-O).
 - `App.tsx`: Entrada principal de la aplicación y gestor de estados.
+- `/backend`: API REST (Node/TypeScript) — salud, catálogo, progreso, exámenes y tutor. Ver [`backend/README.md`](backend/README.md).
+- `/docs/DOCKER_INTEGRACION.md`: plan para integrar frontend + API con Docker (compose pendiente).
 
 ---
 
@@ -66,6 +68,21 @@ Tener instalado [Node.js](https://nodejs.org/).
    ```bash
    npm run build
    ```
+
+### Backend API (local)
+
+```bash
+cd backend
+npm install
+npm run dev
+```
+
+El API queda en `http://localhost:4000` (`GET /api/v1/health`). Detalle de endpoints en [`backend/README.md`](backend/README.md).
+
+### Docker
+
+- Imagen del API lista: `backend/Dockerfile`.
+- Integración multi-servicio (web + api + volumen): guía en [`docs/DOCKER_INTEGRACION.md`](docs/DOCKER_INTEGRACION.md).
 
 ---
 

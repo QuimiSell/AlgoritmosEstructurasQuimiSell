@@ -11,6 +11,13 @@ node_modules
 dist
 dist-ssr
 *.local
+.env
+.env.*
+!.env.example
+
+# Backend persistence (JSON store)
+backend/data/*.json
+!backend/data/.gitkeep
 
 # Editor directories and files
 .vscode/*
