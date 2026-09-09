@@ -85,13 +85,17 @@ export const MATH_COURSE: Course = {
       title: "MÓDULO 1: LÓGICA MATEMÁTICA Y ÁLGEBRA DE BOOLE",
       description: "El cimiento de la programación y los circuitos digitales. Tablas de verdad, condicionales y De Morgan.",
       items: [
+        
         "Proposiciones y Sentencias de Control de Software.",
         "Conectores Lógicos: AND (∧), OR (∨), NOT (¬), Implicación (→) y XOR (⊕).",
         "Tablas de Verdad y Evaluación de Expresiones Booleanas.",
         "Leyes de De Morgan para la simplificación de código condicional.",
-        "Tautologías, Contradicciones y Circuitos Lógicos de Hardware."
+        "Tautologías, Contradicciones y Circuitos Lógicos de Hardware.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Para un Ingeniero en Sistemas, la Lógica Matemática es la herramienta para construir y verificar algoritmos correctos. La sentencia 'if' en un lenguaje de programación evalúa una proposición lógica a Verdadero (1) o Falso (0). La Implicación (P → Q) rige las precondiciones y postcondiciones en arquitectura de software. Las Leyes de De Morgan (¬(P ∧ Q) ≡ ¬P ∨ ¬Q) se utilizan a diario en refactorización de código para transformar condicionales complejas y difíciles de mantener en expresiones limpias y legibles.",
+      content: "Para un Ingeniero en Sistemas, la Lógica Matemática es la herramienta para construir y verificar algoritmos correctos. La sentencia 'if' en un lenguaje de programación evalúa una proposición lógica a Verdadero (1) o Falso (0). La Implicación (P → Q) rige las precondiciones y postcondiciones en arquitectura de software. Las Leyes de De Morgan (¬(P ∧ Q) ≡ ¬P ∨ ¬Q) se utilizan a diario en refactorización de código para transformar condicionales complejas y difíciles de mantener en expresiones limpias y legibles. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Ejemplo en Python: Refactorización de condicionales con De Morgan
 # Queremos verificar si un usuario NO es administrador O NO está activo
 es_admin = False
@@ -136,20 +140,67 @@ print(f"¿Son idénticas?: {condicion_a == condicion_b}") # True`,
           answerIndex: 0,
           explanation: "La doble negación cancela la inversión booleana: negar dos veces un valor 0 entrega 0, y de 1 entrega 1."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 1: LÓGICA MATEMÁTICA Y ÁLGEBRA DE BOOLE', ¿cuál afirmación es correcta sobre: Proposiciones y Sentencias de Control de Software?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Proposiciones y Sentencias de Control de Software", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Proposiciones y Sentencias de Control de Software. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 1: LÓGICA MATEMÁTICA Y ÁLGEBRA DE BOOLE', ¿cuál afirmación es correcta sobre: Conectores Lógicos: AND (∧), OR (∨), NOT (¬), Implicación (→) y XOR (⊕)?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Conectores Lógicos: AND (∧), OR (∨), NOT (¬), Implicación (→) y XOR...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Conectores Lógicos: AND (∧), OR (∨), NOT (¬), Implicación (→) y XOR (⊕). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 1: LÓGICA MATEMÁTICA Y ÁLGEBRA DE BOOLE', ¿cuál afirmación es correcta sobre: Tablas de Verdad y Evaluación de Expresiones Booleanas?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Tablas de Verdad y Evaluación de Expresiones Booleanas", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Tablas de Verdad y Evaluación de Expresiones Booleanas. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 1: LÓGICA MATEMÁTICA Y ÁLGEBRA DE BOOLE', ¿cuál afirmación es correcta sobre: Leyes de De Morgan para la simplificación de código condicional?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Leyes de De Morgan para la simplificación de código condicional", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Leyes de De Morgan para la simplificación de código condicional. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 1: LÓGICA MATEMÁTICA Y ÁLGEBRA DE BOOLE', ¿cuál afirmación es correcta sobre: Tautologías, Contradicciones y Circuitos Lógicos de Hardware?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Tautologías, Contradicciones y Circuitos Lógicos de Hardware", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Tautologías, Contradicciones y Circuitos Lógicos de Hardware. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 1: LÓGICA MATEMÁTICA Y ÁLGEBRA DE BOOLE', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 1: LÓGICA MATEMÁTICA Y ÁLGEBRA DE BOOLE', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 2,
       title: "MÓDULO 2: TEORÍA DE CONJUNTOS Y ÁLGEBRA RELACIONAL",
       description: "Modelado de colecciones de datos, operaciones de conjuntos y su aplicación en bases de datos SQL.",
       items: [
+        
         "Conjuntos: Extensión, Comprensión y Cardinalidad |A|.",
         "Operaciones de Conjuntos: Unión (∪), Intersección (∩), Diferencia (\) y Complemento.",
         "El Producto Cartesiano A × B y la operación CROSS JOIN en bases de datos.",
         "Mapeo de Operaciones de Conjuntos a Consultas SQL (UNION, INTERSECT, EXCEPT).",
-        "Diagramas de Venn y Conjunto Potencia P(A) de 2ⁿ elementos."
+        "Diagramas de Venn y Conjunto Potencia P(A) de 2ⁿ elementos.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Las Bases de Datos Relacionales (SQL) están completamente construidas sobre la Teoría de Conjuntos de Edgar F. Codd. Una tabla es un conjunto de tuplas. Una consulta INNER JOIN calcula la intersección A ∩ B entre dos tablas basándose en una clave de coincidencia. La operación UNION equivale a A ∪ B, mientras que EXCEPT realiza la diferencia de conjuntos A \\ B. Comprender la cardinalidad del Producto Cartesiano |A × B| = |A| · |B| advierte al ingeniero sobre los peligros de consultas SQL sin cláusula JOIN, las cuales saturan el servidor.",
+      content: "Las Bases de Datos Relacionales (SQL) están completamente construidas sobre la Teoría de Conjuntos de Edgar F. Codd. Una tabla es un conjunto de tuplas. Una consulta INNER JOIN calcula la intersección A ∩ B entre dos tablas basándose en una clave de coincidencia. La operación UNION equivale a A ∪ B, mientras que EXCEPT realiza la diferencia de conjuntos A \\\\ B. Comprender la cardinalidad del Producto Cartesiano |A × B| = |A| · |B| advierte al ingeniero sobre los peligros de consultas SQL sin cláusula JOIN, las cuales saturan el servidor. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Demostración de Operaciones de Conjuntos vs SQL en Python
 usuarios_activos = {"juan", "maria", "pedro", "luis"}
 usuarios_premium = {"maria", "luis", "carlos"}
@@ -193,20 +244,67 @@ print(f"Activos NO Premium (EXCEPT): {diferencia_sql}")`,
           answerIndex: 0,
           explanation: "Como todos los elementos de A están contenidos en B, los elementos comunes a ambos son exactamente los elementos de A."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 2: TEORÍA DE CONJUNTOS Y ÁLGEBRA RELACIONAL', ¿cuál afirmación es correcta sobre: Conjuntos: Extensión, Comprensión y Cardinalidad |A|?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Conjuntos: Extensión, Comprensión y Cardinalidad |A|", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Conjuntos: Extensión, Comprensión y Cardinalidad |A|. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 2: TEORÍA DE CONJUNTOS Y ÁLGEBRA RELACIONAL', ¿cuál afirmación es correcta sobre: Operaciones de Conjuntos: Unión (∪), Intersección (∩), Diferencia (\\) y Compl...?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Operaciones de Conjuntos: Unión (∪), Intersección (∩), Diferencia (...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Operaciones de Conjuntos: Unión (∪), Intersección (∩), Diferencia (\\) y Complemento. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 2: TEORÍA DE CONJUNTOS Y ÁLGEBRA RELACIONAL', ¿cuál afirmación es correcta sobre: El Producto Cartesiano A × B y la operación CROSS JOIN en bases de datos?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: El Producto Cartesiano A × B y la operación CROSS JOIN en bases de ...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que El Producto Cartesiano A × B y la operación CROSS JOIN en bases de datos. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 2: TEORÍA DE CONJUNTOS Y ÁLGEBRA RELACIONAL', ¿cuál afirmación es correcta sobre: Mapeo de Operaciones de Conjuntos a Consultas SQL (UNION, INTERSECT, EXCEPT)?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Mapeo de Operaciones de Conjuntos a Consultas SQL (UNION, INTERSECT...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Mapeo de Operaciones de Conjuntos a Consultas SQL (UNION, INTERSECT, EXCEPT). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 2: TEORÍA DE CONJUNTOS Y ÁLGEBRA RELACIONAL', ¿cuál afirmación es correcta sobre: Diagramas de Venn y Conjunto Potencia P(A) de 2ⁿ elementos?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Diagramas de Venn y Conjunto Potencia P(A) de 2ⁿ elementos", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Diagramas de Venn y Conjunto Potencia P(A) de 2ⁿ elementos. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 2: TEORÍA DE CONJUNTOS Y ÁLGEBRA RELACIONAL', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 2: TEORÍA DE CONJUNTOS Y ÁLGEBRA RELACIONAL', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 3,
       title: "MÓDULO 3: RELACIONES, FUNCIONES Y ARQUITECTURA DE SOFTWARE",
       description: "Mapeos de entrada y salida, funciones puras, inyectivas, biyectivas y composición.",
       items: [
+        
         "Relaciones Binarias y Propiedades: Reflexiva, Simétrica y Transitiva.",
         "Relaciones de Equivalencia y Algoritmo Union-Find (DSU).",
         "Funciones f: X → Y: Dominio, Codominio y Rango.",
         "Funciones Inyectivas (Uno a Uno), Sobreyectivas (Sobre) y Biyectivas.",
-        "Composición de Funciones (f ∘ g)(x) y Funciones Inversas f⁻¹."
+        "Composición de Funciones (f ∘ g)(x) y Funciones Inversas f⁻¹.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "En la arquitectura de software moderna (y en particular en Programación Funcional), una Función Pura es un mapeo matemático estricto: dada una entrada x del dominio, siempre produce la misma salida y del codominio sin efectos secundarios. Una función es Inyectiva si no existen dos entradas diferentes mapeadas al mismo destino (crucial para funciones Hash sin colisiones). Si una función es Biyectiva, admite una Función Inversa f⁻¹, lo cual permite construir sistemas de encriptación y desencriptación reversibles.",
+      content: "En la arquitectura de software moderna (y en particular en Programación Funcional), una Función Pura es un mapeo matemático estricto: dada una entrada x del dominio, siempre produce la misma salida y del codominio sin efectos secundarios. Una función es Inyectiva si no existen dos entradas diferentes mapeadas al mismo destino (crucial para funciones Hash sin colisiones). Si una función es Biyectiva, admite una Función Inversa f⁻¹, lo cual permite construir sistemas de encriptación y desencriptación reversibles. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Composición de Funciones en Pipeline de Datos
 def limpiar_texto(s: str) -> str:
     return s.strip().lower()
@@ -250,20 +348,67 @@ print(pipeline_procesamiento("  Hola Mundo  ")) # Output limpio y encriptado`,
           answerIndex: 1,
           explanation: "Una función pura se comporta idénticamente a una función matemática: mapea entradas a salidas de forma determinista y aislada."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 3: RELACIONES, FUNCIONES Y ARQUITECTURA DE SOFTWARE', ¿cuál afirmación es correcta sobre: Relaciones Binarias y Propiedades: Reflexiva, Simétrica y Transitiva?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Relaciones Binarias y Propiedades: Reflexiva, Simétrica y Transitiva", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Relaciones Binarias y Propiedades: Reflexiva, Simétrica y Transitiva. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 3: RELACIONES, FUNCIONES Y ARQUITECTURA DE SOFTWARE', ¿cuál afirmación es correcta sobre: Relaciones de Equivalencia y Algoritmo Union-Find (DSU)?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Relaciones de Equivalencia y Algoritmo Union-Find (DSU)", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Relaciones de Equivalencia y Algoritmo Union-Find (DSU). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 3: RELACIONES, FUNCIONES Y ARQUITECTURA DE SOFTWARE', ¿cuál afirmación es correcta sobre: Funciones f: X → Y: Dominio, Codominio y Rango?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Funciones f: X → Y: Dominio, Codominio y Rango", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Funciones f: X → Y: Dominio, Codominio y Rango. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 3: RELACIONES, FUNCIONES Y ARQUITECTURA DE SOFTWARE', ¿cuál afirmación es correcta sobre: Funciones Inyectivas (Uno a Uno), Sobreyectivas (Sobre) y Biyectivas?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Funciones Inyectivas (Uno a Uno), Sobreyectivas (Sobre) y Biyectivas", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Funciones Inyectivas (Uno a Uno), Sobreyectivas (Sobre) y Biyectivas. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 3: RELACIONES, FUNCIONES Y ARQUITECTURA DE SOFTWARE', ¿cuál afirmación es correcta sobre: Composición de Funciones (f ∘ g)(x) y Funciones Inversas f⁻¹?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Composición de Funciones (f ∘ g)(x) y Funciones Inversas f⁻¹", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Composición de Funciones (f ∘ g)(x) y Funciones Inversas f⁻¹. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 3: RELACIONES, FUNCIONES Y ARQUITECTURA DE SOFTWARE', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 3: RELACIONES, FUNCIONES Y ARQUITECTURA DE SOFTWARE', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 4,
       title: "MÓDULO 4: SISTEMAS NUMÉRICOS Y OPERACIONES BITWISE",
       description: "Representación de datos a bajo nivel en la CPU: Binario, Hexadecimal y Complemento a 2.",
       items: [
+        
         "Bases Numéricas: Decimal (10), Binario (2), Octal (8) y Hexadecimal (16).",
         "Algoritmos de Conversión de Base y Punteros de Memoria (0x...)",
         "Representación de Enteros Negativos: Complemento a 2 en la ALU.",
         "Operadores Bitwise: AND (&), OR (|), XOR (^), NOT (~) y Shifts (<<, >>).",
-        "Máscaras de Bits y Banderas de Estado (Bitmasks & Flags)."
+        "Máscaras de Bits y Banderas de Estado (Bitmasks & Flags).",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "A nivel de hardware, una computadora solo manipula voltajes digitales representados por 0s y 1s. Los ingenieros en sistemas leen direcciones de memoria en Hexadecimal (base 16) porque cada dígito hex representa exactamente 4 bits (nibble). El formato Complemento a 2 es el estándar de procesadores x86/ARM para representar enteros negativos, ya que permite realizar la resta A - B mediante un circuito de suma A + (-B). Los operadores bitwise permiten activar, desactivar y consultar permisos (flags) en tiempo de ejecución de $O(1)$.",
+      content: "A nivel de hardware, una computadora solo manipula voltajes digitales representados por 0s y 1s. Los ingenieros en sistemas leen direcciones de memoria en Hexadecimal (base 16) porque cada dígito hex representa exactamente 4 bits (nibble). El formato Complemento a 2 es el estándar de procesadores x86/ARM para representar enteros negativos, ya que permite realizar la resta A - B mediante un circuito de suma A + (-B). Los operadores bitwise permiten activar, desactivar y consultar permisos (flags) en tiempo de ejecución de $O(1)$. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Gestión de Permisos de Usuario mediante Bitmask en Python
 READ_PERMISSION = 0b001  # 1
 WRITE_PERMISSION = 0b010 # 2
@@ -311,20 +456,67 @@ print(f"¿Tiene permiso de Ejecución?: {tiene_ejecucion}") # False`,
           answerIndex: 1,
           explanation: "La operación `valor & ~mask` coloca en 0 los bits seleccionados por la máscara manteniendo intactos los demás."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 4: SISTEMAS NUMÉRICOS Y OPERACIONES BITWISE', ¿cuál afirmación es correcta sobre: Bases Numéricas: Decimal (10), Binario (2), Octal (8) y Hexadecimal (16)?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Bases Numéricas: Decimal (10), Binario (2), Octal (8) y Hexadecimal...", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Bases Numéricas: Decimal (10), Binario (2), Octal (8) y Hexadecimal (16). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 4: SISTEMAS NUMÉRICOS Y OPERACIONES BITWISE', ¿cuál afirmación es correcta sobre: Algoritmos de Conversión de Base y Punteros de Memoria (0x...)?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Algoritmos de Conversión de Base y Punteros de Memoria (0x...)", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Algoritmos de Conversión de Base y Punteros de Memoria (0x...). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 4: SISTEMAS NUMÉRICOS Y OPERACIONES BITWISE', ¿cuál afirmación es correcta sobre: Representación de Enteros Negativos: Complemento a 2 en la ALU?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Representación de Enteros Negativos: Complemento a 2 en la ALU", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Representación de Enteros Negativos: Complemento a 2 en la ALU. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 4: SISTEMAS NUMÉRICOS Y OPERACIONES BITWISE', ¿cuál afirmación es correcta sobre: Operadores Bitwise: AND (&), OR (|), XOR (^), NOT (~) y Shifts (<<, >>)?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Operadores Bitwise: AND (&), OR (|), XOR (^), NOT (~) y Shifts (<<,...", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Operadores Bitwise: AND (&), OR (|), XOR (^), NOT (~) y Shifts (<<, >>). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 4: SISTEMAS NUMÉRICOS Y OPERACIONES BITWISE', ¿cuál afirmación es correcta sobre: Máscaras de Bits y Banderas de Estado (Bitmasks & Flags)?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Máscaras de Bits y Banderas de Estado (Bitmasks & Flags)", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Máscaras de Bits y Banderas de Estado (Bitmasks & Flags). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 4: SISTEMAS NUMÉRICOS Y OPERACIONES BITWISE', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 4: SISTEMAS NUMÉRICOS Y OPERACIONES BITWISE', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 5,
       title: "MÓDULO 5: MATEMÁTICA DISCRETA Y TEORÍA DE GRAFOS",
       description: "Modelado de redes, caminos óptimos, árboles de decisión y matrices de adyacencia.",
       items: [
+        
         "Definición de Grafo G = (V, E): Dirigidos, No Dirigidos y Ponderados.",
         "Representación de Grafos: Lista de Adyacencia vs Matriz de Adyacencia.",
         "Caminos, Ciclos y Grado de un Vértice.",
         "Árboles: Árboles Generadores Mínimos (Kruskal y Prim).",
-        "Algoritmos de Recorrido: Búsqueda en Anchura (BFS) y Profundidad (DFS)."
+        "Algoritmos de Recorrido: Búsqueda en Anchura (BFS) y Profundidad (DFS).",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "La Teoría de Grafos es la rama discreta por excelencia en la carrera de Sistemas. Una red de computadoras, una red social (Facebook), el mapa de carreteras de Waze o el árbol de dependencias de `npm` son grafos G = (V, E). La Matriz de Adyacencia A(n×n) almacena si existe una arista entre los vértices i y j. Algoritmos como Dijkstra o A* resuelven el camino de menor costo en redes ponderadas, mientras que BFS calcula la ruta con menor número de saltos en tiempo $O(V + E)$.",
+      content: "La Teoría de Grafos es la rama discreta por excelencia en la carrera de Sistemas. Una red de computadoras, una red social (Facebook), el mapa de carreteras de Waze o el árbol de dependencias de `npm` son grafos G = (V, E). La Matriz de Adyacencia A(n×n) almacena si existe una arista entre los vértices i y j. Algoritmos como Dijkstra o A* resuelven el camino de menor costo en redes ponderadas, mientras que BFS calcula la ruta con menor número de saltos en tiempo $O(V + E)$. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Representación de una Red de Paquetes en Python
 grafo_red = {
     'Router_A': ['Router_B', 'Router_C'],
@@ -369,20 +561,67 @@ print(f"Grado del Router_A (número de aristas): {obtener_grado_nodo(grafo_red, 
           answerIndex: 1,
           explanation: "Los DAGs son esenciales para representar compilaciones de código, flujos de trabajo (Git) y ordenamientos topológicos."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 5: MATEMÁTICA DISCRETA Y TEORÍA DE GRAFOS', ¿cuál afirmación es correcta sobre: Definición de Grafo G = (V, E): Dirigidos, No Dirigidos y Ponderados?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Definición de Grafo G = (V, E): Dirigidos, No Dirigidos y Ponderados", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Definición de Grafo G = (V, E): Dirigidos, No Dirigidos y Ponderados. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 5: MATEMÁTICA DISCRETA Y TEORÍA DE GRAFOS', ¿cuál afirmación es correcta sobre: Representación de Grafos: Lista de Adyacencia vs Matriz de Adyacencia?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Representación de Grafos: Lista de Adyacencia vs Matriz de Adyacencia", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Representación de Grafos: Lista de Adyacencia vs Matriz de Adyacencia. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 5: MATEMÁTICA DISCRETA Y TEORÍA DE GRAFOS', ¿cuál afirmación es correcta sobre: Caminos, Ciclos y Grado de un Vértice?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Caminos, Ciclos y Grado de un Vértice", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Caminos, Ciclos y Grado de un Vértice. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 5: MATEMÁTICA DISCRETA Y TEORÍA DE GRAFOS', ¿cuál afirmación es correcta sobre: Árboles: Árboles Generadores Mínimos (Kruskal y Prim)?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Árboles: Árboles Generadores Mínimos (Kruskal y Prim)", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Árboles: Árboles Generadores Mínimos (Kruskal y Prim). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 5: MATEMÁTICA DISCRETA Y TEORÍA DE GRAFOS', ¿cuál afirmación es correcta sobre: Algoritmos de Recorrido: Búsqueda en Anchura (BFS) y Profundidad (DFS)?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Algoritmos de Recorrido: Búsqueda en Anchura (BFS) y Profundidad (DFS)", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Algoritmos de Recorrido: Búsqueda en Anchura (BFS) y Profundidad (DFS). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 5: MATEMÁTICA DISCRETA Y TEORÍA DE GRAFOS', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 5: MATEMÁTICA DISCRETA Y TEORÍA DE GRAFOS', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 6,
       title: "MÓDULO 6: ÁLGEBRA LINEAL Y MATRICES EN COMPUTACIÓN",
       description: "Operaciones matriciales, gráficos 2D/3D, vectores y modelos de Inteligencia Artificial.",
       items: [
+        
         "Matrices M(m×n): Filas, Columnas y Elementos a_ij.",
         "Suma, Resta, Multiplicación por Escalar y Multiplicación de Matrices A×B.",
         "Matriz Identidad, Transpuesta Aᵀ y Determinantes 2x2/3x3.",
         "Transformaciones Geométricas 2D/3D (Rotación, Escalado y Traslación).",
-        "Vectores, Producto Escalar (Dot Product) y Embeddings de Inteligencia Artificial."
+        "Vectores, Producto Escalar (Dot Product) y Embeddings de Inteligencia Artificial.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "El Álgebra Lineal es la columna vertebral de la informática gráfica y el aprendizaje profundo (Deep Learning). La multiplicación de matrices A(m×n) × B(n×p) proyecta transformaciones de espacio. En videojuegos 3D, una matriz de transformaciones 4×4 posiciona, rota y escala modelos poligonales en pantalla. En Inteligencia Artificial (LLMs), los Embeddings de texto representan palabras como vectores de números de alta dimensión, calculando su similitud mediante el Producto Escalar u · v.",
+      content: "El Álgebra Lineal es la columna vertebral de la informática gráfica y el aprendizaje profundo (Deep Learning). La multiplicación de matrices A(m×n) × B(n×p) proyecta transformaciones de espacio. En videojuegos 3D, una matriz de transformaciones 4×4 posiciona, rota y escala modelos poligonales en pantalla. En Inteligencia Artificial (LLMs), los Embeddings de texto representan palabras como vectores de números de alta dimensión, calculando su similitud mediante el Producto Escalar u · v. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Multiplicación de Matriz x Vector en Python (Transformación 2D)
 import math
 
@@ -427,20 +666,67 @@ print(f"Vector rotado 90°: {rotar_vector_2d(vec_original, 90)}") # (0.0, 1.0)`,
           answerIndex: 1,
           explanation: "Si det(A) = 0 la matriz es singular (no invertible) porque la fórmula invoca la división entre su determinante."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 6: ÁLGEBRA LINEAL Y MATRICES EN COMPUTACIÓN', ¿cuál afirmación es correcta sobre: Matrices M(m×n): Filas, Columnas y Elementos a_ij?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Matrices M(m×n): Filas, Columnas y Elementos a_ij", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Matrices M(m×n): Filas, Columnas y Elementos a_ij. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 6: ÁLGEBRA LINEAL Y MATRICES EN COMPUTACIÓN', ¿cuál afirmación es correcta sobre: Suma, Resta, Multiplicación por Escalar y Multiplicación de Matrices A×B?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Suma, Resta, Multiplicación por Escalar y Multiplicación de Matrice...", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Suma, Resta, Multiplicación por Escalar y Multiplicación de Matrices A×B. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 6: ÁLGEBRA LINEAL Y MATRICES EN COMPUTACIÓN', ¿cuál afirmación es correcta sobre: Matriz Identidad, Transpuesta Aᵀ y Determinantes 2x2/3x3?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Matriz Identidad, Transpuesta Aᵀ y Determinantes 2x2/3x3", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Matriz Identidad, Transpuesta Aᵀ y Determinantes 2x2/3x3. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 6: ÁLGEBRA LINEAL Y MATRICES EN COMPUTACIÓN', ¿cuál afirmación es correcta sobre: Transformaciones Geométricas 2D/3D (Rotación, Escalado y Traslación)?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Transformaciones Geométricas 2D/3D (Rotación, Escalado y Traslación)", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Transformaciones Geométricas 2D/3D (Rotación, Escalado y Traslación). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 6: ÁLGEBRA LINEAL Y MATRICES EN COMPUTACIÓN', ¿cuál afirmación es correcta sobre: Vectores, Producto Escalar (Dot Product) y Embeddings de Inteligencia Artificial?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Vectores, Producto Escalar (Dot Product) y Embeddings de Inteligenc...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Vectores, Producto Escalar (Dot Product) y Embeddings de Inteligencia Artificial. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 6: ÁLGEBRA LINEAL Y MATRICES EN COMPUTACIÓN', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 6: ÁLGEBRA LINEAL Y MATRICES EN COMPUTACIÓN', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 7,
       title: "MÓDULO 7: TRIGONOMETRÍA Y SIMULACIÓN FÍSICA",
       description: "Razones trigonométricas, funciones periódicas y física para videojuegos.",
       items: [
+        
         "Grados Sexagesimales vs Radianes (π rad = 180°).",
         "Funciones Trigonométricas: Seno, Coseno y Tangente.",
         "Identidad Trigonométrica Fundamental: sin²(θ) + cos²(θ) = 1.",
         "Cálculo de Ángulos con Arcotangente 2 (atan2(y, x)) en desarrollo de software.",
-        "Ondas Sinusoidales y Funciones Periódicas para animaciones."
+        "Ondas Sinusoidales y Funciones Periódicas para animaciones.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "En desarrollo de software de juegos, gráficos y robótica, la Trigonometría traduce ángulos de rotación a coordenadas X, Y en pantalla. La función `math.atan2(y, x)` es fundamental en código para hacer que un personaje u objeto gire apuntando hacia la posición del cursor del mouse. Las funciones Seno y Coseno producen oscilaciones suaves continuas entre -1 y 1, utilizadas para animar respiración de personajes, movimiento de olas y procesamiento de audio digital.",
+      content: "En desarrollo de software de juegos, gráficos y robótica, la Trigonometría traduce ángulos de rotación a coordenadas X, Y en pantalla. La función `math.atan2(y, x)` es fundamental en código para hacer que un personaje u objeto gire apuntando hacia la posición del cursor del mouse. Las funciones Seno y Coseno producen oscilaciones suaves continuas entre -1 y 1, utilizadas para animar respiración de personajes, movimiento de olas y procesamiento de audio digital. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Cálculo del ángulo del mouse en desarrollo de juegos en Python
 import math
 
@@ -484,20 +770,67 @@ print(f"Ángulo de giro del personaje: {calcular_angulo_apuntado(jugador, mouse)
           answerIndex: 0,
           explanation: "Proviene directamente del Teorema de Pitágoras en el círculo de radio 1: x² + y² = 1."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 7: TRIGONOMETRÍA Y SIMULACIÓN FÍSICA', ¿cuál afirmación es correcta sobre: Grados Sexagesimales vs Radianes (π rad = 180°)?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Grados Sexagesimales vs Radianes (π rad = 180°)", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Grados Sexagesimales vs Radianes (π rad = 180°). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 7: TRIGONOMETRÍA Y SIMULACIÓN FÍSICA', ¿cuál afirmación es correcta sobre: Funciones Trigonométricas: Seno, Coseno y Tangente?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Funciones Trigonométricas: Seno, Coseno y Tangente", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Funciones Trigonométricas: Seno, Coseno y Tangente. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 7: TRIGONOMETRÍA Y SIMULACIÓN FÍSICA', ¿cuál afirmación es correcta sobre: Identidad Trigonométrica Fundamental: sin²(θ) + cos²(θ) = 1?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Identidad Trigonométrica Fundamental: sin²(θ) + cos²(θ) = 1", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Identidad Trigonométrica Fundamental: sin²(θ) + cos²(θ) = 1. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 7: TRIGONOMETRÍA Y SIMULACIÓN FÍSICA', ¿cuál afirmación es correcta sobre: Cálculo de Ángulos con Arcotangente 2 (atan2(y, x)) en desarrollo de software?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Cálculo de Ángulos con Arcotangente 2 (atan2(y, x)) en desarrollo d...", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Cálculo de Ángulos con Arcotangente 2 (atan2(y, x)) en desarrollo de software. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 7: TRIGONOMETRÍA Y SIMULACIÓN FÍSICA', ¿cuál afirmación es correcta sobre: Ondas Sinusoidales y Funciones Periódicas para animaciones?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Ondas Sinusoidales y Funciones Periódicas para animaciones", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Ondas Sinusoidales y Funciones Periódicas para animaciones. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 7: TRIGONOMETRÍA Y SIMULACIÓN FÍSICA', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 7: TRIGONOMETRÍA Y SIMULACIÓN FÍSICA', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 8,
       title: "MÓDULO 8: ÁLGEBRA ANALÍTICA Y CRECIMIENTO LOGARÍTMICO",
       description: "Exponentes, logaritmos y fundamentación matemática del análisis de algoritmos Big-O.",
       items: [
+        
         "Propiedades de Exponentes y Radicales.",
         "Logaritmos: Definición log_b(x) = y ⇔ b^y = x.",
         "Propiedades Logarítmicas: log(A·B), log(A/B) y Cambio de Base.",
         "Inecuaciones y Cotas Matemáticas f(n) ≤ c · g(n).",
-        "Demostración Formal de la Notación Big-O, Big-Omega y Theta."
+        "Demostración Formal de la Notación Big-O, Big-Omega y Theta.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "El análisis de algoritmos se apoya directamente en el comportamiento de las funciones logarítmicas y exponenciales. Un algoritmo con complejidad $O(\\log n)$ (como la Búsqueda Binaria) reduce el problema a la mitad en cada paso. Para $n = 1,000,000$ de elementos, un algoritmo lineal $O(n)$ realiza 1,000,000 de operaciones, mientras que uno logarítmico $O(\\log_2 n)$ realiza solo 20 comparaciones. Comprender el crecimiento analítico permite elegir las mejores estructuras de datos.",
+      content: "El análisis de algoritmos se apoya directamente en el comportamiento de las funciones logarítmicas y exponenciales. Un algoritmo con complejidad $O(\\\\log n)$ (como la Búsqueda Binaria) reduce el problema a la mitad en cada paso. Para $n = 1,000,000$ de elementos, un algoritmo lineal $O(n)$ realiza 1,000,000 de operaciones, mientras que uno logarítmico $O(\\\\log_2 n)$ realiza solo 20 comparaciones. Comprender el crecimiento analítico permite elegir las mejores estructuras de datos. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Comparativa de pasos: Lineal O(n) vs Logarítmico O(log2 n)
 import math
 
@@ -540,20 +873,67 @@ print(f"Pasos Búsqueda Binaria O(log2 n): {pasos_log}") # ¡Solo 30 pasos!`,
           answerIndex: 0,
           explanation: "La fórmula de cambio de base establece que log_b(x) = log_k(x) / log_k(b)."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 8: ÁLGEBRA ANALÍTICA Y CRECIMIENTO LOGARÍTMICO', ¿cuál afirmación es correcta sobre: Propiedades de Exponentes y Radicales?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Propiedades de Exponentes y Radicales", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Propiedades de Exponentes y Radicales. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 8: ÁLGEBRA ANALÍTICA Y CRECIMIENTO LOGARÍTMICO', ¿cuál afirmación es correcta sobre: Logaritmos: Definición log_b(x) = y ⇔ b^y = x?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Logaritmos: Definición log_b(x) = y ⇔ b^y = x", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Logaritmos: Definición log_b(x) = y ⇔ b^y = x. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 8: ÁLGEBRA ANALÍTICA Y CRECIMIENTO LOGARÍTMICO', ¿cuál afirmación es correcta sobre: Propiedades Logarítmicas: log(A·B), log(A/B) y Cambio de Base?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Propiedades Logarítmicas: log(A·B), log(A/B) y Cambio de Base", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Propiedades Logarítmicas: log(A·B), log(A/B) y Cambio de Base. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 8: ÁLGEBRA ANALÍTICA Y CRECIMIENTO LOGARÍTMICO', ¿cuál afirmación es correcta sobre: Inecuaciones y Cotas Matemáticas f(n) ≤ c · g(n)?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Inecuaciones y Cotas Matemáticas f(n) ≤ c · g(n)", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Inecuaciones y Cotas Matemáticas f(n) ≤ c · g(n). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 8: ÁLGEBRA ANALÍTICA Y CRECIMIENTO LOGARÍTMICO', ¿cuál afirmación es correcta sobre: Demostración Formal de la Notación Big-O, Big-Omega y Theta?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Demostración Formal de la Notación Big-O, Big-Omega y Theta", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Demostración Formal de la Notación Big-O, Big-Omega y Theta. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 8: ÁLGEBRA ANALÍTICA Y CRECIMIENTO LOGARÍTMICO', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 8: ÁLGEBRA ANALÍTICA Y CRECIMIENTO LOGARÍTMICO', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 9,
       title: "MÓDULO 9: CÁLCULO DIFERENCIAL Y OPTIMIZACIÓN EN SOFTWARE",
       description: "Razones de cambio instantáneas, derivadas y el algoritmo Descenso de Gradiente.",
       items: [
+        
         "Concepto de Límite lim x→a f(x) y Continuidad de funciones.",
         "Definición de la Derivada f'(x) como razón de cambio instantánea.",
         "Reglas de Derivación: Potencia, Suma, Producto, Cociente y Cadena.",
         "Optimización de Funciones: Puntos Mínimos y Máximos (f'(x) = 0).",
-        "El Gradiente ∇f y Descenso de Gradiente en Machine Learning."
+        "El Gradiente ∇f y Descenso de Gradiente en Machine Learning.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "El Cálculo Diferencial es la herramienta para optimizar software y modelos de Inteligencia Artificial. La Derivada f'(x) mide la tasa de cambio de una función. En redes neuronales, el algoritmo de Descenso de Gradiente busca los pesos óptimos ajustando los parámetros en la dirección opuesta al Gradiente ∇f de la función de error. Encontrar los puntos críticos (donde la derivada f'(x) = 0) permite calcular la máxima eficiencia o el menor costo operativo de un sistema de software.",
+      content: "El Cálculo Diferencial es la herramienta para optimizar software y modelos de Inteligencia Artificial. La Derivada f'(x) mide la tasa de cambio de una función. En redes neuronales, el algoritmo de Descenso de Gradiente busca los pesos óptimos ajustando los parámetros en la dirección opuesta al Gradiente ∇f de la función de error. Encontrar los puntos críticos (donde la derivada f'(x) = 0) permite calcular la máxima eficiencia o el menor costo operativo de un sistema de software. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Algoritmo Simplificado de Descenso de Gradiente en Python
 # Queremos encontrar el mínimo de f(x) = x^2 (cuya derivada es f'(x) = 2x)
 x = 10.0 # Punto inicial de búsqueda
@@ -596,20 +976,67 @@ for paso in range(15):
           answerIndex: 0,
           explanation: "Una constante no cambia su valor al variar x; por lo tanto, su tasa de cambio instantánea es exactamente 0."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 9: CÁLCULO DIFERENCIAL Y OPTIMIZACIÓN EN SOFTWARE', ¿cuál afirmación es correcta sobre: Concepto de Límite lim x→a f(x) y Continuidad de funciones?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Concepto de Límite lim x→a f(x) y Continuidad de funciones", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Concepto de Límite lim x→a f(x) y Continuidad de funciones. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 9: CÁLCULO DIFERENCIAL Y OPTIMIZACIÓN EN SOFTWARE', ¿cuál afirmación es correcta sobre: Definición de la Derivada f'(x) como razón de cambio instantánea?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Definición de la Derivada f'(x) como razón de cambio instantánea", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Definición de la Derivada f'(x) como razón de cambio instantánea. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 9: CÁLCULO DIFERENCIAL Y OPTIMIZACIÓN EN SOFTWARE', ¿cuál afirmación es correcta sobre: Reglas de Derivación: Potencia, Suma, Producto, Cociente y Cadena?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Reglas de Derivación: Potencia, Suma, Producto, Cociente y Cadena", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Reglas de Derivación: Potencia, Suma, Producto, Cociente y Cadena. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 9: CÁLCULO DIFERENCIAL Y OPTIMIZACIÓN EN SOFTWARE', ¿cuál afirmación es correcta sobre: Optimización de Funciones: Puntos Mínimos y Máximos (f'(x) = 0)?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Optimización de Funciones: Puntos Mínimos y Máximos (f'(x) = 0)", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Optimización de Funciones: Puntos Mínimos y Máximos (f'(x) = 0). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 9: CÁLCULO DIFERENCIAL Y OPTIMIZACIÓN EN SOFTWARE', ¿cuál afirmación es correcta sobre: El Gradiente ∇f y Descenso de Gradiente en Machine Learning?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: El Gradiente ∇f y Descenso de Gradiente en Machine Learning", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que El Gradiente ∇f y Descenso de Gradiente en Machine Learning. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 9: CÁLCULO DIFERENCIAL Y OPTIMIZACIÓN EN SOFTWARE', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 9: CÁLCULO DIFERENCIAL Y OPTIMIZACIÓN EN SOFTWARE', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 10,
       title: "MÓDULO 10: COMBINATORIA, RECURRENCIA Y CRIPTOGRAFÍA",
       description: "Conteo discreto, Teorema Maestro para algoritmos recursivos y aritmética modular para cifrado RSA.",
       items: [
+        
         "Principios Combinatorios: Regla de la Suma y del Producto.",
         "Permutaciones P(n, k) y Combinaciones C(n, k).",
         "Ecuaciones de Recurrencia T(n) = aT(n/b) + f(n) y Teorema Maestro.",
         "Aritmética Modular: a ≡ b (mod m) y Algoritmo de Euclides (MCD).",
-        "Cifrado Asimétrico RSA y Teoría de Números Primos."
+        "Cifrado Asimétrico RSA y Teoría de Números Primos.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Este módulo conecta la matemática avanzada directamente con la ciberseguridad y el diseño algorítmico. Las Combinaciones C(n,k) determinan el espacio de claves posibles de un sistema criptográfico. El Teorema Maestro resuelve la complejidad asintótica de algoritmos recursivos de Divide y Vencerás como Merge Sort T(n) = 2T(n/2) + O(n) → O(n log n). La Aritmética Modular a mod m sostiene toda la infraestructura de seguridad en internet (HTTPS/SSL, SSH) mediante la dificultad de factorizar números primos gigantes en el cifrado RSA.",
+      content: "Este módulo conecta la matemática avanzada directamente con la ciberseguridad y el diseño algorítmico. Las Combinaciones C(n,k) determinan el espacio de claves posibles de un sistema criptográfico. El Teorema Maestro resuelve la complejidad asintótica de algoritmos recursivos de Divide y Vencerás como Merge Sort T(n) = 2T(n/2) + O(n) → O(n log n). La Aritmética Modular a mod m sostiene toda la infraestructura de seguridad en internet (HTTPS/SSL, SSH) mediante la dificultad de factorizar números primos gigantes en el cifrado RSA. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Demostración de Aritmética Modular y Euclides (MCD) en Python
 def mcd_euclides(a: int, b: int) -> int:
     # Algoritmo de Euclides para MCD en tiempo O(log(min(a,b)))
@@ -656,6 +1083,49 @@ print(f"Mensaje cifrado con RSA (mod 33): {cifrado}")`,
           options: ["El Máximo Común Divisor (MCD) entre dos enteros de forma ultra-eficiente", "La derivada de un polinomio", "La suma de una matriz"],
           answerIndex: 0,
           explanation: "El algoritmo de Euclides calcula el MCD mediante divisiones sucesivas con módulos en tiempo O(log(min(a,b)))."
+        }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 10: COMBINATORIA, RECURRENCIA Y CRIPTOGRAFÍA', ¿cuál afirmación es correcta sobre: Principios Combinatorios: Regla de la Suma y del Producto?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Principios Combinatorios: Regla de la Suma y del Producto", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Principios Combinatorios: Regla de la Suma y del Producto. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 10: COMBINATORIA, RECURRENCIA Y CRIPTOGRAFÍA', ¿cuál afirmación es correcta sobre: Permutaciones P(n, k) y Combinaciones C(n, k)?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Permutaciones P(n, k) y Combinaciones C(n, k)", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Permutaciones P(n, k) y Combinaciones C(n, k). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 10: COMBINATORIA, RECURRENCIA Y CRIPTOGRAFÍA', ¿cuál afirmación es correcta sobre: Ecuaciones de Recurrencia T(n) = aT(n/b) + f(n) y Teorema Maestro?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Ecuaciones de Recurrencia T(n) = aT(n/b) + f(n) y Teorema Maestro", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Ecuaciones de Recurrencia T(n) = aT(n/b) + f(n) y Teorema Maestro. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 10: COMBINATORIA, RECURRENCIA Y CRIPTOGRAFÍA', ¿cuál afirmación es correcta sobre: Aritmética Modular: a ≡ b (mod m) y Algoritmo de Euclides (MCD)?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Aritmética Modular: a ≡ b (mod m) y Algoritmo de Euclides (MCD)", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aritmética Modular: a ≡ b (mod m) y Algoritmo de Euclides (MCD). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 10: COMBINATORIA, RECURRENCIA Y CRIPTOGRAFÍA', ¿cuál afirmación es correcta sobre: Cifrado Asimétrico RSA y Teoría de Números Primos?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Cifrado Asimétrico RSA y Teoría de Números Primos", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Cifrado Asimétrico RSA y Teoría de Números Primos. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 10: COMBINATORIA, RECURRENCIA Y CRIPTOGRAFÍA', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 10: COMBINATORIA, RECURRENCIA Y CRIPTOGRAFÍA', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
         }
       ]
     }

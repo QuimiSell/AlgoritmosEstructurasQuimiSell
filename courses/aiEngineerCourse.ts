@@ -60,13 +60,17 @@ export const AI_ENGINEER_COURSE: Course = {
       title: "MÓDULO 1: LA EVOLUCIÓN DEL INGENIERO: DE 'VIBE CODER' A ARQUITECTO DEL PENSAMIENTO",
       description: "El cambio de paradigma en la era de la IA: por qué teclear sintaxis es commodities y el razonamiento arquitectónico es el activo supremo.",
       items: [
+        
         "El peligro del 'Vibe Coding' y la falsa ilusión de productividad.",
         "El rol del Ingeniero como Revisor, Verificador y Arquitecto del Sistema.",
         "La pirámide del valor del software: Sintaxis < Algoritmos < Arquitectura < Negocio.",
         "Pensamiento Crítico e Inquisitivo frente al código generado por LLMs.",
-        "Cómo formular especificaciones técnicas inequívocas para herramientas IA."
+        "Cómo formular especificaciones técnicas inequívocas para herramientas IA.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Con el advenimiento de los modelos de lenguaje masivos y los agentes de codificación, escribir líneas de código repetitivas se ha vuelto un commoditie. El 'Vibe Coder' o el 'simio de copy-paste' se limita a dar enter y aceptar sugerencias sin entender la memoria, el costo de red ni las fallas de seguridad subyacentes. El Ingeniero en Sistemas Senior de la era IA opera en un nivel superior: define el modelo de dominio, establece los contratos de API, especifica las suites de pruebas y audita con rigor matemático cada módulo generado.",
+      content: "Con el advenimiento de los modelos de lenguaje masivos y los agentes de codificación, escribir líneas de código repetitivas se ha vuelto un commoditie. El 'Vibe Coder' o el 'simio de copy-paste' se limita a dar enter y aceptar sugerencias sin entender la memoria, el costo de red ni las fallas de seguridad subyacentes. El Ingeniero en Sistemas Senior de la era IA opera en un nivel superior: define el modelo de dominio, establece los contratos de API, especifica las suites de pruebas y audita con rigor matemático cada módulo generado. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Ejemplo de la Mentalidad del Ingeniero: Especificación estricta vs Prompt vago
 # Vibe Coder Prompt Vago: "hazme un login en python"
 # Ingeniero Senior: Especificación de Contrato y Aserciones
@@ -105,20 +109,67 @@ def autenticar_usuario_seguro(email: str, password_hash: str, hasher_service) ->
           answerIndex: 0,
           explanation: "Las pruebas automatizadas sirven como barrera de contención imparcial para validar que el código de la IA cumple el contrato exacto."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 1: LA EVOLUCIÓN DEL INGENIERO: DE 'VIBE CODER' A ARQUITECTO DEL PENSAMIENTO', ¿cuál afirmación es correcta sobre: El peligro del 'Vibe Coding' y la falsa ilusión de productividad?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: El peligro del 'Vibe Coding' y la falsa ilusión de productividad", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que El peligro del 'Vibe Coding' y la falsa ilusión de productividad. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 1: LA EVOLUCIÓN DEL INGENIERO: DE 'VIBE CODER' A ARQUITECTO DEL PENSAMIENTO', ¿cuál afirmación es correcta sobre: El rol del Ingeniero como Revisor, Verificador y Arquitecto del Sistema?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: El rol del Ingeniero como Revisor, Verificador y Arquitecto del Sis...", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que El rol del Ingeniero como Revisor, Verificador y Arquitecto del Sistema. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 1: LA EVOLUCIÓN DEL INGENIERO: DE 'VIBE CODER' A ARQUITECTO DEL PENSAMIENTO', ¿cuál afirmación es correcta sobre: La pirámide del valor del software: Sintaxis < Algoritmos < Arquitectura < Ne...?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: La pirámide del valor del software: Sintaxis < Algoritmos < Arquite...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que La pirámide del valor del software: Sintaxis < Algoritmos < Arquitectura < Negocio. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 1: LA EVOLUCIÓN DEL INGENIERO: DE 'VIBE CODER' A ARQUITECTO DEL PENSAMIENTO', ¿cuál afirmación es correcta sobre: Pensamiento Crítico e Inquisitivo frente al código generado por LLMs?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Pensamiento Crítico e Inquisitivo frente al código generado por LLMs", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Pensamiento Crítico e Inquisitivo frente al código generado por LLMs. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 1: LA EVOLUCIÓN DEL INGENIERO: DE 'VIBE CODER' A ARQUITECTO DEL PENSAMIENTO', ¿cuál afirmación es correcta sobre: Cómo formular especificaciones técnicas inequívocas para herramientas IA?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Cómo formular especificaciones técnicas inequívocas para herramient...", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Cómo formular especificaciones técnicas inequívocas para herramientas IA. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 1: LA EVOLUCIÓN DEL INGENIERO: DE 'VIBE CODER' A ARQUITECTO DEL PENSAMIENTO', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 1: LA EVOLUCIÓN DEL INGENIERO: DE 'VIBE CODER' A ARQUITECTO DEL PENSAMIENTO', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 2,
       title: "MÓDULO 2: COMPRENSIÓN PROFUNDA DEL HARDWARE, KERNEL Y RECURSOS DEL SISTEMA",
       description: "Lo que la IA no puede sentir: CPU caches (L1/L2/L3), RAM, llamadas al sistema (syscalls) y E/S de disco.",
       items: [
+        
         "Jerarquía de Memoria: Registros CPU (1ns) < L1/L2/L3 Cache < RAM (100ns) < SSD/NVMe.",
         "Cache Misses y Localidad Espacial/Temporal de datos.",
         "Llamadas al Sistema Kernel (syscalls) y cambio de contexto (Context Switch).",
         "Efecto de la Memoria Virtual, Paginación y Thrashing.",
-        "Interrupciones de Hardware y Manejo de I/O Asíncrono."
+        "Interrupciones de Hardware y Manejo de I/O Asíncrono.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Los agentes IA generan texto plano; no 'sienten' la latencia física del hardware. Un algoritmo que recorre una matriz por columnas en lugar de por filas puede ser 10 veces más lento debido a constantes **Cache Misses** en la CPU L1. Un ingeniero sabe que una llamada al sistema (`syscall`) para escribir 1 byte en disco tiene un costo enorme en cambios de contexto de kernel. Dominar la jerarquía de memoria y el comportamiento de la CPU diferencia a los arquitectos de sistemas de los usuarios casuales.",
+      content: "Los agentes IA generan texto plano; no 'sienten' la latencia física del hardware. Un algoritmo que recorre una matriz por columnas en lugar de por filas puede ser 10 veces más lento debido a constantes **Cache Misses** en la CPU L1. Un ingeniero sabe que una llamada al sistema (`syscall`) para escribir 1 byte en disco tiene un costo enorme en cambios de contexto de kernel. Dominar la jerarquía de memoria y el comportamiento de la CPU diferencia a los arquitectos de sistemas de los usuarios casuales. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Ejemplo en Python de Localidad de Referencia y Cache en CPU
 import time
 
@@ -167,20 +218,67 @@ print(f"Tiempo por columnas (Cache Miss): {t_cols*1000:.2f}ms")`,
           answerIndex: 0,
           explanation: "Una syscall cruza la frontera de seguridad entre espacio de usuario y espacio de kernel, lo cual requiere validación y cambio de contexto."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 2: COMPRENSIÓN PROFUNDA DEL HARDWARE, KERNEL Y RECURSOS DEL SISTEMA', ¿cuál afirmación es correcta sobre: Jerarquía de Memoria: Registros CPU (1ns) < L1/L2/L3 Cache < RAM (100ns) < SS...?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Jerarquía de Memoria: Registros CPU (1ns) < L1/L2/L3 Cache < RAM (1...", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Jerarquía de Memoria: Registros CPU (1ns) < L1/L2/L3 Cache < RAM (100ns) < SSD/NVMe. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 2: COMPRENSIÓN PROFUNDA DEL HARDWARE, KERNEL Y RECURSOS DEL SISTEMA', ¿cuál afirmación es correcta sobre: Cache Misses y Localidad Espacial/Temporal de datos?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Cache Misses y Localidad Espacial/Temporal de datos", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Cache Misses y Localidad Espacial/Temporal de datos. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 2: COMPRENSIÓN PROFUNDA DEL HARDWARE, KERNEL Y RECURSOS DEL SISTEMA', ¿cuál afirmación es correcta sobre: Llamadas al Sistema Kernel (syscalls) y cambio de contexto (Context Switch)?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Llamadas al Sistema Kernel (syscalls) y cambio de contexto (Context...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Llamadas al Sistema Kernel (syscalls) y cambio de contexto (Context Switch). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 2: COMPRENSIÓN PROFUNDA DEL HARDWARE, KERNEL Y RECURSOS DEL SISTEMA', ¿cuál afirmación es correcta sobre: Efecto de la Memoria Virtual, Paginación y Thrashing?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Efecto de la Memoria Virtual, Paginación y Thrashing", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Efecto de la Memoria Virtual, Paginación y Thrashing. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 2: COMPRENSIÓN PROFUNDA DEL HARDWARE, KERNEL Y RECURSOS DEL SISTEMA', ¿cuál afirmación es correcta sobre: Interrupciones de Hardware y Manejo de I/O Asíncrono?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Interrupciones de Hardware y Manejo de I/O Asíncrono", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Interrupciones de Hardware y Manejo de I/O Asíncrono. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 2: COMPRENSIÓN PROFUNDA DEL HARDWARE, KERNEL Y RECURSOS DEL SISTEMA', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 2: COMPRENSIÓN PROFUNDA DEL HARDWARE, KERNEL Y RECURSOS DEL SISTEMA', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 3,
       title: "MÓDULO 3: ARQUITECTURA DE SISTEMAS Y PENSAMIENTO DE DISEÑO (SYSTEM DESIGN)",
       description: "Diseño de sistemas distribuidos a gran escala: balanceo de carga, escalabilidad horizontal vs vertical y capas de almacenamiento.",
       items: [
+        
         "Escalabilidad Vertical (Scale Up) vs Escalabilidad Horizontal (Scale Out).",
         "Balanceadores de Carga (Load Balancers - Nginx, HAProxy, ALB).",
         "Estrategias de Caché a Nivel de Sistema (CDN, Redis, Memcached).",
         "Desacoplamiento de Base de Datos: Read Replicas y Sharding.",
-        "Estimación de Recursos en la Servilleta (Back-of-the-envelope estimation)."
+        "Estimación de Recursos en la Servilleta (Back-of-the-envelope estimation).",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "El Diseño de Sistemas (System Design) es la disciplina que permite a un Ingeniero proyectar plataformas capaces de soportar millones de solicitudes por segundo. Un 'vibe coder' asume que un solo servidor ejecutará todo el software. Un Arquitecto diseña sistemas desacoplados: un **Load Balancer** distribuye el tráfico entre N instancias de cómputo sin estado (Stateless), las lecturas intensivas se resuelven en una capa de **Caché en memoria (Redis)** o **CDN**, y las escrituras en la base de datos se distribuyen mediante **Sharding**.",
+      content: "El Diseño de Sistemas (System Design) es la disciplina que permite a un Ingeniero proyectar plataformas capaces de soportar millones de solicitudes por segundo. Un 'vibe coder' asume que un solo servidor ejecutará todo el software. Un Arquitecto diseña sistemas desacoplados: un **Load Balancer** distribuye el tráfico entre N instancias de cómputo sin estado (Stateless), las lecturas intensivas se resuelven en una capa de **Caché en memoria (Redis)** o **CDN**, y las escrituras en la base de datos se distribuyen mediante **Sharding**. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Ejemplo conceptual de un Balanceador de Carga Round-Robin en Python
 class LoadBalancerRoundRobin:
     def __init__(self, servidores: list[str]):
@@ -226,20 +324,67 @@ for i in range(5):
           answerIndex: 0,
           explanation: "Permite validar la viabilidad técnica y financiera de una arquitectura mediante estimaciones ordenadas de magnitud."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 3: ARQUITECTURA DE SISTEMAS Y PENSAMIENTO DE DISEÑO (SYSTEM DESIGN)', ¿cuál afirmación es correcta sobre: Escalabilidad Vertical (Scale Up) vs Escalabilidad Horizontal (Scale Out)?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Escalabilidad Vertical (Scale Up) vs Escalabilidad Horizontal (Scal...", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Escalabilidad Vertical (Scale Up) vs Escalabilidad Horizontal (Scale Out). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 3: ARQUITECTURA DE SISTEMAS Y PENSAMIENTO DE DISEÑO (SYSTEM DESIGN)', ¿cuál afirmación es correcta sobre: Balanceadores de Carga (Load Balancers - Nginx, HAProxy, ALB)?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Balanceadores de Carga (Load Balancers - Nginx, HAProxy, ALB)", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Balanceadores de Carga (Load Balancers - Nginx, HAProxy, ALB). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 3: ARQUITECTURA DE SISTEMAS Y PENSAMIENTO DE DISEÑO (SYSTEM DESIGN)', ¿cuál afirmación es correcta sobre: Estrategias de Caché a Nivel de Sistema (CDN, Redis, Memcached)?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Estrategias de Caché a Nivel de Sistema (CDN, Redis, Memcached)", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Estrategias de Caché a Nivel de Sistema (CDN, Redis, Memcached). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 3: ARQUITECTURA DE SISTEMAS Y PENSAMIENTO DE DISEÑO (SYSTEM DESIGN)', ¿cuál afirmación es correcta sobre: Desacoplamiento de Base de Datos: Read Replicas y Sharding?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Desacoplamiento de Base de Datos: Read Replicas y Sharding", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Desacoplamiento de Base de Datos: Read Replicas y Sharding. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 3: ARQUITECTURA DE SISTEMAS Y PENSAMIENTO DE DISEÑO (SYSTEM DESIGN)', ¿cuál afirmación es correcta sobre: Estimación de Recursos en la Servilleta (Back-of-the-envelope estimation)?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Estimación de Recursos en la Servilleta (Back-of-the-envelope estim...", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Estimación de Recursos en la Servilleta (Back-of-the-envelope estimation). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 3: ARQUITECTURA DE SISTEMAS Y PENSAMIENTO DE DISEÑO (SYSTEM DESIGN)', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 3: ARQUITECTURA DE SISTEMAS Y PENSAMIENTO DE DISEÑO (SYSTEM DESIGN)', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 4,
       title: "MÓDULO 4: WORKFLOWS AGÉNTICOS E INGENIERÍA DE PROMPTS AVANZADA",
       description: "Cómo dirigir equipos de subagentes IA, gestionar contextos, herramientas (Tools) y patrones de razonamiento.",
       items: [
+        
         "Arquitectura de Agentes Inteligentes: Modelo + Memoria + Herramientas (Tools) + Bucle de Planificación.",
         "Patrones Agénticos: ReAct (Reason + Act), Reflection, Plan-and-Solve.",
         "Gestión de Ventana de Contexto (Context Window Management) y Compresión.",
         "Ingeniería de Prompts Estructurados (XML/JSON/Markdown Schemas).",
-        "Uso de Agentes Especializados para Investigación, Refactor y Testing."
+        "Uso de Agentes Especializados para Investigación, Refactor y Testing.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Dirigir Inteligencia Artificial requiere conocer la arquitectura interna de un Agente Inteligente. Un Agente combina un LLM de razonamiento con una memoria de trabajo, herramientas ejecutables (como shell, lectores de archivos o APIs) y un bucle de planificación (ej: ReAct: Pensar → Actuar → Observar). El Ingeniero en Sistemas moderno no escribe prompts informales; diseña arquitecturas de agentes, define herramientas con contratos rígidos y controla la ventana de contexto.",
+      content: "Dirigir Inteligencia Artificial requiere conocer la arquitectura interna de un Agente Inteligente. Un Agente combina un LLM de razonamiento con una memoria de trabajo, herramientas ejecutables (como shell, lectores de archivos o APIs) y un bucle de planificación (ej: ReAct: Pensar → Actuar → Observar). El Ingeniero en Sistemas moderno no escribe prompts informales; diseña arquitecturas de agentes, define herramientas con contratos rígidos y controla la ventana de contexto. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Ejemplo conceptual del bucle ReAct de un Agente IA en Python
 class AgenteReAct:
     def __init__(self, herramientas: dict):
@@ -287,20 +432,67 @@ agente.paso_razonamiento("Analizar código main.py")`,
           answerIndex: 0,
           explanation: "Saturar el contexto degrada la atención del modelo hacia las instrucciones clave e incrementa el costo por token procesado."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 4: WORKFLOWS AGÉNTICOS E INGENIERÍA DE PROMPTS AVANZADA', ¿cuál afirmación es correcta sobre: Arquitectura de Agentes Inteligentes: Modelo + Memoria + Herramientas (Tools)...?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Arquitectura de Agentes Inteligentes: Modelo + Memoria + Herramient...", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Arquitectura de Agentes Inteligentes: Modelo + Memoria + Herramientas (Tools) + Bucle de Planificación. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 4: WORKFLOWS AGÉNTICOS E INGENIERÍA DE PROMPTS AVANZADA', ¿cuál afirmación es correcta sobre: Patrones Agénticos: ReAct (Reason + Act), Reflection, Plan-and-Solve?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Patrones Agénticos: ReAct (Reason + Act), Reflection, Plan-and-Solve", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Patrones Agénticos: ReAct (Reason + Act), Reflection, Plan-and-Solve. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 4: WORKFLOWS AGÉNTICOS E INGENIERÍA DE PROMPTS AVANZADA', ¿cuál afirmación es correcta sobre: Gestión de Ventana de Contexto (Context Window Management) y Compresión?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Gestión de Ventana de Contexto (Context Window Management) y Compre...", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Gestión de Ventana de Contexto (Context Window Management) y Compresión. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 4: WORKFLOWS AGÉNTICOS E INGENIERÍA DE PROMPTS AVANZADA', ¿cuál afirmación es correcta sobre: Ingeniería de Prompts Estructurados (XML/JSON/Markdown Schemas)?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Ingeniería de Prompts Estructurados (XML/JSON/Markdown Schemas)", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Ingeniería de Prompts Estructurados (XML/JSON/Markdown Schemas). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 4: WORKFLOWS AGÉNTICOS E INGENIERÍA DE PROMPTS AVANZADA', ¿cuál afirmación es correcta sobre: Uso de Agentes Especializados para Investigación, Refactor y Testing?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Uso de Agentes Especializados para Investigación, Refactor y Testing", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Uso de Agentes Especializados para Investigación, Refactor y Testing. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 4: WORKFLOWS AGÉNTICOS E INGENIERÍA DE PROMPTS AVANZADA', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 4: WORKFLOWS AGÉNTICOS E INGENIERÍA DE PROMPTS AVANZADA', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 5,
       title: "MÓDULO 5: VERIFICACIÓN FORMAL, TDD Y TESTING AUTOMATIZADO RIGUROSO",
       description: "Construcción de arneses de pruebas deterministas (Unit, Integration, E2E) para verificar código de IA.",
       items: [
+        
         "Desarrollo Guiado por Pruebas (TDD - Test-Driven Development): Red-Green-Refactor.",
         "Pruebas Unitarias, de Integración y de Extremo a Extremo (E2E).",
         "Objetos Falsos: Mocks, Stubs, Fakes y Spies.",
         "Property-Based Testing (Pruebas basadas en propiedades probabilísticas con Hypothesis/QuickCheck).",
-        "Cobertura de Código (Code Coverage) y Análisis Estático de Mutación."
+        "Cobertura de Código (Code Coverage) y Análisis Estático de Mutación.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "La forma más efectiva de evitar que el código generado por IA rompa tu sistema es contar con un arnés de pruebas automatizadas insuperable. El principio de **Test-Driven Development (TDD)** exige escribir primero la prueba que falla (Red), luego el código mínimo que la satisface (Green) y finalmente refactorizar (Refactor). Las **Pruebas Basadas en Propiedades (Property-Based Testing)** generan miles de insumos aleatorios para encontrar casos extremos (Edge Cases) que ningún desarrollador ni IA habría previsto.",
+      content: "La forma más efectiva de evitar que el código generado por IA rompa tu sistema es contar con un arnés de pruebas automatizadas insuperable. El principio de **Test-Driven Development (TDD)** exige escribir primero la prueba que falla (Red), luego el código mínimo que la satisface (Green) y finalmente refactorizar (Refactor). Las **Pruebas Basadas en Propiedades (Property-Based Testing)** generan miles de insumos aleatorios para encontrar casos extremos (Edge Cases) que ningún desarrollador ni IA habría previsto. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Ejemplo de TDD y Testing en Python con unittest
 import unittest
 
@@ -350,20 +542,67 @@ if __name__ == '__main__':
           answerIndex: 1,
           explanation: "Mide la calidad de tus tests: si un mutante introducido no hace fallar ningún test, la suite de pruebas es insuficiente."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 5: VERIFICACIÓN FORMAL, TDD Y TESTING AUTOMATIZADO RIGUROSO', ¿cuál afirmación es correcta sobre: Desarrollo Guiado por Pruebas (TDD - Test-Driven Development): Red-Green-Refa...?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Desarrollo Guiado por Pruebas (TDD - Test-Driven Development): Red-...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Desarrollo Guiado por Pruebas (TDD - Test-Driven Development): Red-Green-Refactor. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 5: VERIFICACIÓN FORMAL, TDD Y TESTING AUTOMATIZADO RIGUROSO', ¿cuál afirmación es correcta sobre: Pruebas Unitarias, de Integración y de Extremo a Extremo (E2E)?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Pruebas Unitarias, de Integración y de Extremo a Extremo (E2E)", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Pruebas Unitarias, de Integración y de Extremo a Extremo (E2E). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 5: VERIFICACIÓN FORMAL, TDD Y TESTING AUTOMATIZADO RIGUROSO', ¿cuál afirmación es correcta sobre: Objetos Falsos: Mocks, Stubs, Fakes y Spies?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Objetos Falsos: Mocks, Stubs, Fakes y Spies", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Objetos Falsos: Mocks, Stubs, Fakes y Spies. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 5: VERIFICACIÓN FORMAL, TDD Y TESTING AUTOMATIZADO RIGUROSO', ¿cuál afirmación es correcta sobre: Property-Based Testing (Pruebas basadas en propiedades probabilísticas con Hy...?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Property-Based Testing (Pruebas basadas en propiedades probabilísti...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Property-Based Testing (Pruebas basadas en propiedades probabilísticas con Hypothesis/QuickCheck). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 5: VERIFICACIÓN FORMAL, TDD Y TESTING AUTOMATIZADO RIGUROSO', ¿cuál afirmación es correcta sobre: Cobertura de Código (Code Coverage) y Análisis Estático de Mutación?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Cobertura de Código (Code Coverage) y Análisis Estático de Mutación", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Cobertura de Código (Code Coverage) y Análisis Estático de Mutación. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 5: VERIFICACIÓN FORMAL, TDD Y TESTING AUTOMATIZADO RIGUROSO', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 5: VERIFICACIÓN FORMAL, TDD Y TESTING AUTOMATIZADO RIGUROSO', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 6,
       title: "MÓDULO 6: DOMAIN-DRIVEN DESIGN (DDD): MODELADO DE NEGOCIO EN EL MUNDO REAL",
       description: "Modelado de software orientado al dominio: Bounded Contexts, Ubiquitous Language, Entities, Value Objects y Aggregates.",
       items: [
+        
         "Filosofía de Domain-Driven Design (Eric Evans 2003).",
         "Lenguaje Ubicuo (Ubiquitous Language) entre ingenieros y expertos de negocio.",
         "Contextos Delimitados (Bounded Contexts) y Context Mapping.",
         "Entidades (Entities) con Identidad vs Objetos de Valor (Value Objects) inmutables.",
-        "Agregados (Aggregates), Raíz de Agregado (Aggregate Root) y Eventos de Dominio."
+        "Agregados (Aggregates), Raíz de Agregado (Aggregate Root) y Eventos de Dominio.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Domain-Driven Design (DDD) es la metodología para traducir problemas de negocio complejos en modelos de software mantenibles. El principio central es el **Lenguaje Ubicuo**: el código debe usar los exactos términos y conceptos que emplean los expertos del dominio de negocio (evitando tecnicismos abstractos). Los **Value Objects** (como `Dinero` o `Direccion`) son inmutables y se definen por sus valores, mientras que las **Entidades** poseen una identidad única persistente en el tiempo (como `ClienteID`).",
+      content: "Domain-Driven Design (DDD) es la metodología para traducir problemas de negocio complejos en modelos de software mantenibles. El principio central es el **Lenguaje Ubicuo**: el código debe usar los exactos términos y conceptos que emplean los expertos del dominio de negocio (evitando tecnicismos abstractos). Los **Value Objects** (como `Dinero` o `Direccion`) son inmutables y se definen por sus valores, mientras que las **Entidades** poseen una identidad única persistente en el tiempo (como `ClienteID`). En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Ejemplo de Value Object inmutable y Entidad en DDD con Python
 from dataclasses import dataclass
 
@@ -417,20 +656,67 @@ print(f"Total Value Object: {d1.sumar(d2)}") # Dinero(monto=150.0, moneda='USD')
           answerIndex: 1,
           explanation: "Los eventos de dominio notifican a otras partes del sistema sobre cambios de estado significativos que han sucedido."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 6: DOMAIN-DRIVEN DESIGN (DDD): MODELADO DE NEGOCIO EN EL MUNDO REAL', ¿cuál afirmación es correcta sobre: Filosofía de Domain-Driven Design (Eric Evans 2003)?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Filosofía de Domain-Driven Design (Eric Evans 2003)", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Filosofía de Domain-Driven Design (Eric Evans 2003). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 6: DOMAIN-DRIVEN DESIGN (DDD): MODELADO DE NEGOCIO EN EL MUNDO REAL', ¿cuál afirmación es correcta sobre: Lenguaje Ubicuo (Ubiquitous Language) entre ingenieros y expertos de negocio?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Lenguaje Ubicuo (Ubiquitous Language) entre ingenieros y expertos d...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Lenguaje Ubicuo (Ubiquitous Language) entre ingenieros y expertos de negocio. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 6: DOMAIN-DRIVEN DESIGN (DDD): MODELADO DE NEGOCIO EN EL MUNDO REAL', ¿cuál afirmación es correcta sobre: Contextos Delimitados (Bounded Contexts) y Context Mapping?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Contextos Delimitados (Bounded Contexts) y Context Mapping", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Contextos Delimitados (Bounded Contexts) y Context Mapping. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 6: DOMAIN-DRIVEN DESIGN (DDD): MODELADO DE NEGOCIO EN EL MUNDO REAL', ¿cuál afirmación es correcta sobre: Entidades (Entities) con Identidad vs Objetos de Valor (Value Objects) inmuta...?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Entidades (Entities) con Identidad vs Objetos de Valor (Value Objec...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Entidades (Entities) con Identidad vs Objetos de Valor (Value Objects) inmutables. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 6: DOMAIN-DRIVEN DESIGN (DDD): MODELADO DE NEGOCIO EN EL MUNDO REAL', ¿cuál afirmación es correcta sobre: Agregados (Aggregates), Raíz de Agregado (Aggregate Root) y Eventos de Dominio?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Agregados (Aggregates), Raíz de Agregado (Aggregate Root) y Eventos...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Agregados (Aggregates), Raíz de Agregado (Aggregate Root) y Eventos de Dominio. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 6: DOMAIN-DRIVEN DESIGN (DDD): MODELADO DE NEGOCIO EN EL MUNDO REAL', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 6: DOMAIN-DRIVEN DESIGN (DDD): MODELADO DE NEGOCIO EN EL MUNDO REAL', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 7,
       title: "MÓDULO 7: PROFILING DE CÓDIGO, DIAGNÓSTICO DE MEMORIA Y CUELLOS DE BOTELLA",
       description: "Diagnóstico profundo de rendimiento: Profilers de CPU, Heap Dumps, Fugas de Memoria y Flame Graphs.",
       items: [
+        
         "Diferencia entre benchmarking superficial y Profiling científico de rendimiento.",
         "Profilers de CPU (cProfile, pprof, VisualVM) y análisis de Flame Graphs.",
         "Diagnóstico de Fugas de Memoria (Memory Leaks) y análisis de Heap Dumps.",
         "Sobrecarga del Recolector de Basura (Garbage Collection Pauses).",
-        "Optimización de Consultas I/O y problema de la consulta N+1."
+        "Optimización de Consultas I/O y problema de la consulta N+1.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Optimizar código sin métricas de profiling es adivinar. El **Profiling** es la técnica científica para medir exactamente en qué líneas de código se consume el tiempo de CPU o la memoria RAM. Los **Flame Graphs** visualizan el árbol de llamadas de funciones donde el ancho de cada bloque representa el tiempo gastado. Identificar la sobrecarga del **Garbage Collector (GC)** o corregir el problema de la consulta N+1 en bases de datos resuelve cuellos de botella reales en segundos.",
+      content: "Optimizar código sin métricas de profiling es adivinar. El **Profiling** es la técnica científica para medir exactamente en qué líneas de código se consume el tiempo de CPU o la memoria RAM. Los **Flame Graphs** visualizan el árbol de llamadas de funciones donde el ancho de cada bloque representa el tiempo gastado. Identificar la sobrecarga del **Garbage Collector (GC)** o corregir el problema de la consulta N+1 en bases de datos resuelve cuellos de botella reales en segundos. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Ejemplo de Profiling de CPU en Python con cProfile
 import cProfile
 
@@ -480,20 +766,67 @@ cProfile.run('flujo_principal()')`,
           answerIndex: 1,
           explanation: "Nunca se debe optimizar por intuición sin antes obtener mediciones precisas del profiler de CPU/RAM."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 7: PROFILING DE CÓDIGO, DIAGNÓSTICO DE MEMORIA Y CUELLOS DE BOTELLA', ¿cuál afirmación es correcta sobre: Diferencia entre benchmarking superficial y Profiling científico de rendimiento?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Diferencia entre benchmarking superficial y Profiling científico de...", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Diferencia entre benchmarking superficial y Profiling científico de rendimiento. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 7: PROFILING DE CÓDIGO, DIAGNÓSTICO DE MEMORIA Y CUELLOS DE BOTELLA', ¿cuál afirmación es correcta sobre: Profilers de CPU (cProfile, pprof, VisualVM) y análisis de Flame Graphs?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Profilers de CPU (cProfile, pprof, VisualVM) y análisis de Flame Gr...", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Profilers de CPU (cProfile, pprof, VisualVM) y análisis de Flame Graphs. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 7: PROFILING DE CÓDIGO, DIAGNÓSTICO DE MEMORIA Y CUELLOS DE BOTELLA', ¿cuál afirmación es correcta sobre: Diagnóstico de Fugas de Memoria (Memory Leaks) y análisis de Heap Dumps?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Diagnóstico de Fugas de Memoria (Memory Leaks) y análisis de Heap D...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Diagnóstico de Fugas de Memoria (Memory Leaks) y análisis de Heap Dumps. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 7: PROFILING DE CÓDIGO, DIAGNÓSTICO DE MEMORIA Y CUELLOS DE BOTELLA', ¿cuál afirmación es correcta sobre: Sobrecarga del Recolector de Basura (Garbage Collection Pauses)?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Sobrecarga del Recolector de Basura (Garbage Collection Pauses)", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Sobrecarga del Recolector de Basura (Garbage Collection Pauses). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 7: PROFILING DE CÓDIGO, DIAGNÓSTICO DE MEMORIA Y CUELLOS DE BOTELLA', ¿cuál afirmación es correcta sobre: Optimización de Consultas I/O y problema de la consulta N+1?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Optimización de Consultas I/O y problema de la consulta N+1", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Optimización de Consultas I/O y problema de la consulta N+1. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 7: PROFILING DE CÓDIGO, DIAGNÓSTICO DE MEMORIA Y CUELLOS DE BOTELLA', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 7: PROFILING DE CÓDIGO, DIAGNÓSTICO DE MEMORIA Y CUELLOS DE BOTELLA', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 8,
       title: "MÓDULO 8: CIBERSEGURIDAD DESDE EL DISEÑO: OWASP TOP 10 Y DEVSECOPS",
       description: "Seguridad de software integral: OWASP Top 10, sanitización de insumos, JWT, OAuth2 y auditoría de código IA.",
       items: [
+        
         "Inyección SQL, XSS (Cross-Site Scripting) y CSRF (Cross-Site Request Forgery).",
         "Autenticación y Autorización Robusta: OAuth2, OpenID Connect y JWT.",
         "Principio de Menor Privilegio (Least Privilege) y Defensa en Profundidad.",
         "Sanitización y Validación de Entradas de Usuario.",
-        "Auditoría de Dependencias Vulnerables (Snyk, Dependabot, OWASP Dependency Check)."
+        "Auditoría de Dependencias Vulnerables (Snyk, Dependabot, OWASP Dependency Check).",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "La ciberseguridad debe ser una propiedad intrínseca del diseño de software (Security by Design). Los agentes de IA frecuentemente sugieren código vulnerable a la **Inyección SQL** (concatenando strings de consultas en lugar de usar consultas preparadas parametradas) o vulnerabilidades **XSS** (inyectando scripts HTML sin escapar en el cliente). Un Ingeniero en Sistemas audita proactivamente el **OWASP Top 10**, implementa autenticación basada en estándares y aplica el Principio de Menor Privilegio.",
+      content: "La ciberseguridad debe ser una propiedad intrínseca del diseño de software (Security by Design). Los agentes de IA frecuentemente sugieren código vulnerable a la **Inyección SQL** (concatenando strings de consultas en lugar de usar consultas preparadas parametradas) o vulnerabilidades **XSS** (inyectando scripts HTML sin escapar en el cliente). Un Ingeniero en Sistemas audita proactivamente el **OWASP Top 10**, implementa autenticación basada en estándares y aplica el Principio de Menor Privilegio. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Vulnerabilidad de Inyección SQL vs Código Seguro en Python
 # VULNERABLE (Típico sugerido sin criterio):
 def login_vulnerable(cursor, user_input, pass_input):
@@ -535,20 +868,67 @@ def login_seguro(cursor, user_input, pass_input):
           answerIndex: 0,
           explanation: "DevSecOps automatiza el escaneo de código estático (SAST), análisis de dependencias y vulnerabilidades en la integración continua."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 8: CIBERSEGURIDAD DESDE EL DISEÑO: OWASP TOP 10 Y DEVSECOPS', ¿cuál afirmación es correcta sobre: Inyección SQL, XSS (Cross-Site Scripting) y CSRF (Cross-Site Request Forgery)?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Inyección SQL, XSS (Cross-Site Scripting) y CSRF (Cross-Site Reques...", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Inyección SQL, XSS (Cross-Site Scripting) y CSRF (Cross-Site Request Forgery). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 8: CIBERSEGURIDAD DESDE EL DISEÑO: OWASP TOP 10 Y DEVSECOPS', ¿cuál afirmación es correcta sobre: Autenticación y Autorización Robusta: OAuth2, OpenID Connect y JWT?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Autenticación y Autorización Robusta: OAuth2, OpenID Connect y JWT", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Autenticación y Autorización Robusta: OAuth2, OpenID Connect y JWT. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 8: CIBERSEGURIDAD DESDE EL DISEÑO: OWASP TOP 10 Y DEVSECOPS', ¿cuál afirmación es correcta sobre: Principio de Menor Privilegio (Least Privilege) y Defensa en Profundidad?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Principio de Menor Privilegio (Least Privilege) y Defensa en Profun...", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Principio de Menor Privilegio (Least Privilege) y Defensa en Profundidad. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 8: CIBERSEGURIDAD DESDE EL DISEÑO: OWASP TOP 10 Y DEVSECOPS', ¿cuál afirmación es correcta sobre: Sanitización y Validación de Entradas de Usuario?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Sanitización y Validación de Entradas de Usuario", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Sanitización y Validación de Entradas de Usuario. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 8: CIBERSEGURIDAD DESDE EL DISEÑO: OWASP TOP 10 Y DEVSECOPS', ¿cuál afirmación es correcta sobre: Auditoría de Dependencias Vulnerables (Snyk, Dependabot, OWASP Dependency Check)?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Auditoría de Dependencias Vulnerables (Snyk, Dependabot, OWASP Depe...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Auditoría de Dependencias Vulnerables (Snyk, Dependabot, OWASP Dependency Check). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 8: CIBERSEGURIDAD DESDE EL DISEÑO: OWASP TOP 10 Y DEVSECOPS', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 8: CIBERSEGURIDAD DESDE EL DISEÑO: OWASP TOP 10 Y DEVSECOPS', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 9,
       title: "MÓDULO 9: SISTEMAS DISTRIBUIDOS, ALGORITMOS DE CONSENSO Y TEOREMA CAP",
       description: "Desafíos de la distribución: Consistencia, Disponibilidad, Tolerancia a Particiones y Algoritmos de Consenso (Raft/Paxos).",
       items: [
+        
         "El Teorema CAP (Brewer): Consistencia (C), Disponibilidad (A) y Tolerancia al Particionado (P).",
         "Sistemas CP vs Sistemas AP.",
         "Consistencia Eventual (Eventual Consistency) y Relojes Vectoriales.",
         "Algoritmos de Consenso Distribuido: Raft y Paxos.",
-        "Modelos de Fallas: Redes no confiables, Split-Brain y Latencia de Red."
+        "Modelos de Fallas: Redes no confiables, Split-Brain y Latencia de Red.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "En un sistema distribuido, la red NUNCA es confiable. El **Teorema CAP** demuestra que ante una partición de red inevitable (P), un sistema solo puede garantizar o bien **Consistencia (C)** (todos los nodos ven los mismos datos al mismo tiempo) o bien **Disponibilidad (A)** (cada petición recibe respuesta sin error, aunque los datos estén desactualizados). Algoritmos de Consenso como **Raft** permiten a clusters distribuidos de nodos acordar un estado común y elegir líderes de forma segura.",
+      content: "En un sistema distribuido, la red NUNCA es confiable. El **Teorema CAP** demuestra que ante una partición de red inevitable (P), un sistema solo puede garantizar o bien **Consistencia (C)** (todos los nodos ven los mismos datos al mismo tiempo) o bien **Disponibilidad (A)** (cada petición recibe respuesta sin error, aunque los datos estén desactualizados). Algoritmos de Consenso como **Raft** permiten a clusters distribuidos de nodos acordar un estado común y elegir líderes de forma segura. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Ejemplo conceptual de Consistencia Eventual con Timestamp Vectorial
 class NodoDistribuido:
     def __init__(self, nombre: str):
@@ -603,20 +983,67 @@ print(f"Valor sincronizado en Nodo A: {nodo_A.valor}") # 'Dato_V2`,
           answerIndex: 0,
           explanation: "Exigir una mayoría estricta (Quórum) previene el fenómeno de Split-Brain garantizando que solo un subgrupo decida."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 9: SISTEMAS DISTRIBUIDOS, ALGORITMOS DE CONSENSO Y TEOREMA CAP', ¿cuál afirmación es correcta sobre: El Teorema CAP (Brewer): Consistencia (C), Disponibilidad (A) y Tolerancia al...?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: El Teorema CAP (Brewer): Consistencia (C), Disponibilidad (A) y Tol...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que El Teorema CAP (Brewer): Consistencia (C), Disponibilidad (A) y Tolerancia al Particionado (P). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 9: SISTEMAS DISTRIBUIDOS, ALGORITMOS DE CONSENSO Y TEOREMA CAP', ¿cuál afirmación es correcta sobre: Sistemas CP vs Sistemas AP?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Sistemas CP vs Sistemas AP", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Sistemas CP vs Sistemas AP. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 9: SISTEMAS DISTRIBUIDOS, ALGORITMOS DE CONSENSO Y TEOREMA CAP', ¿cuál afirmación es correcta sobre: Consistencia Eventual (Eventual Consistency) y Relojes Vectoriales?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Consistencia Eventual (Eventual Consistency) y Relojes Vectoriales", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Consistencia Eventual (Eventual Consistency) y Relojes Vectoriales. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 9: SISTEMAS DISTRIBUIDOS, ALGORITMOS DE CONSENSO Y TEOREMA CAP', ¿cuál afirmación es correcta sobre: Algoritmos de Consenso Distribuido: Raft y Paxos?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Algoritmos de Consenso Distribuido: Raft y Paxos", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Algoritmos de Consenso Distribuido: Raft y Paxos. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 9: SISTEMAS DISTRIBUIDOS, ALGORITMOS DE CONSENSO Y TEOREMA CAP', ¿cuál afirmación es correcta sobre: Modelos de Fallas: Redes no confiables, Split-Brain y Latencia de Red?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Modelos de Fallas: Redes no confiables, Split-Brain y Latencia de Red", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Modelos de Fallas: Redes no confiables, Split-Brain y Latencia de Red. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 9: SISTEMAS DISTRIBUIDOS, ALGORITMOS DE CONSENSO Y TEOREMA CAP', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 9: SISTEMAS DISTRIBUIDOS, ALGORITMOS DE CONSENSO Y TEOREMA CAP', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 10,
       title: "MÓDULO 10: BASES DE DATOS A ESCALA: SQL, NOSQL, VECTORES Y MOTORES DE BÚSQUEDA",
       description: "Selección estratégica del motor de almacenamiento adecuado: ACID relacional, NoSQL Documental, Columnar y Búsqueda Vectorial.",
       items: [
+        
         "Transacciones ACID (Atomicidad, Consistencia, Aislamiento, Durabilidad) y Niveles de Aislamiento.",
         "Modelado NoSQL: Documental (MongoDB), Llave-Valor (Redis), Columnar (Cassandra) y Grafos (Neo4j).",
         "Índices de Base de Datos: B+ Trees, Hash Indexes y LSM Trees.",
         "Búsqueda Vectorial e Índices HNSW para embeddings de IA.",
-        "Motores de Búsqueda de Texto Completo (Elasticsearch / OpenSearch)."
+        "Motores de Búsqueda de Texto Completo (Elasticsearch / OpenSearch).",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "No existe una base de datos universal para todos los casos de uso (Persistence Ignorance). Las **Bases de Datos Relacionales (PostgreSQL/MySQL)** garantizan propiedades **ACID** y relaciones complejas estructuradas. Las bases **Documentales (MongoDB)** ofrecen esquemas flexibles. Las **Columnares (Cassandra/ClickHouse)** procesan analítica masiva (OLAP). Y las **Bases Vectoriales (Pinecone, Qdrant, pgvector)** indexan embeddings de Inteligencia Artificial para búsqueda semántica.",
+      content: "No existe una base de datos universal para todos los casos de uso (Persistence Ignorance). Las **Bases de Datos Relacionales (PostgreSQL/MySQL)** garantizan propiedades **ACID** y relaciones complejas estructuradas. Las bases **Documentales (MongoDB)** ofrecen esquemas flexibles. Las **Columnares (Cassandra/ClickHouse)** procesan analítica masiva (OLAP). Y las **Bases Vectoriales (Pinecone, Qdrant, pgvector)** indexan embeddings de Inteligencia Artificial para búsqueda semántica. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Ejemplo conceptual de pgvector / Búsqueda Semántica Vectorial en SQL
 # CREATE EXTENSION vector;
 # CREATE TABLE documentos (id serial PRIMARY KEY, contenido text, embedding vector(1536));
@@ -667,20 +1094,67 @@ print(f"Similitud Doc 2: {similitud_coseno(v_query, v_doc2):.4f}") # ~0.08`,
           answerIndex: 0,
           explanation: "OLTP (Online Transaction Processing) atiende el uso operacional diario; OLAP (Online Analytical Processing) ejecuta reportes masivos."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 10: BASES DE DATOS A ESCALA: SQL, NOSQL, VECTORES Y MOTORES DE BÚSQUEDA', ¿cuál afirmación es correcta sobre: Transacciones ACID (Atomicidad, Consistencia, Aislamiento, Durabilidad) y Niv...?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Transacciones ACID (Atomicidad, Consistencia, Aislamiento, Durabili...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Transacciones ACID (Atomicidad, Consistencia, Aislamiento, Durabilidad) y Niveles de Aislamiento. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 10: BASES DE DATOS A ESCALA: SQL, NOSQL, VECTORES Y MOTORES DE BÚSQUEDA', ¿cuál afirmación es correcta sobre: Modelado NoSQL: Documental (MongoDB), Llave-Valor (Redis), Columnar (Cassandr...?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Modelado NoSQL: Documental (MongoDB), Llave-Valor (Redis), Columnar...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Modelado NoSQL: Documental (MongoDB), Llave-Valor (Redis), Columnar (Cassandra) y Grafos (Neo4j). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 10: BASES DE DATOS A ESCALA: SQL, NOSQL, VECTORES Y MOTORES DE BÚSQUEDA', ¿cuál afirmación es correcta sobre: Índices de Base de Datos: B+ Trees, Hash Indexes y LSM Trees?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Índices de Base de Datos: B+ Trees, Hash Indexes y LSM Trees", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Índices de Base de Datos: B+ Trees, Hash Indexes y LSM Trees. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 10: BASES DE DATOS A ESCALA: SQL, NOSQL, VECTORES Y MOTORES DE BÚSQUEDA', ¿cuál afirmación es correcta sobre: Búsqueda Vectorial e Índices HNSW para embeddings de IA?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Búsqueda Vectorial e Índices HNSW para embeddings de IA", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Búsqueda Vectorial e Índices HNSW para embeddings de IA. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 10: BASES DE DATOS A ESCALA: SQL, NOSQL, VECTORES Y MOTORES DE BÚSQUEDA', ¿cuál afirmación es correcta sobre: Motores de Búsqueda de Texto Completo (Elasticsearch / OpenSearch)?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Motores de Búsqueda de Texto Completo (Elasticsearch / OpenSearch)", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Motores de Búsqueda de Texto Completo (Elasticsearch / OpenSearch). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 10: BASES DE DATOS A ESCALA: SQL, NOSQL, VECTORES Y MOTORES DE BÚSQUEDA', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 10: BASES DE DATOS A ESCALA: SQL, NOSQL, VECTORES Y MOTORES DE BÚSQUEDA', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 11,
       title: "MÓDULO 11: ARQUITECTURA EVENT-DRIVEN Y MENSAJERÍA ASÍNCRONA (KAFKA, RABBITMQ)",
       description: "Desacoplamiento asíncrono masivo: colas de mensajes, Event Streaming, Kafka y idempotencia.",
       items: [
+        
         "Patrón Productor-Consumidor y Buses de Eventos (Event Bus).",
         "Message Brokers de Colas (RabbitMQ) vs Event Streaming Logs (Apache Kafka).",
         "Garantías de Entrega: At-most-once, At-least-once, Exactly-once.",
         "Idempotencia de Consumidores (Manejo seguro de duplicados).",
-        "Patrones Outbox y Event Sourcing."
+        "Patrones Outbox y Event Sourcing.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "En arquitecturas distribuidas modernas, la comunicación sincrónica HTTP REST acopla los servicios: si el servicio de correos falla, la compra de un usuario rebota. La **Arquitectura Orientada a Eventos (Event-Driven Architecture)** resuelve esto mediante **Mensajería Asíncrona**. El servicio de ventas publica un evento `OrdenCreada` en un **Message Broker (Kafka/RabbitMQ)** y continúa de inmediato. Los consumidores leen el evento a su propio ritmo. La **Idempotencia** garantiza que si un mensaje se reprocesa dos veces, el resultado sea exactamente el mismo.",
+      content: "En arquitecturas distribuidas modernas, la comunicación sincrónica HTTP REST acopla los servicios: si el servicio de correos falla, la compra de un usuario rebota. La **Arquitectura Orientada a Eventos (Event-Driven Architecture)** resuelve esto mediante **Mensajería Asíncrona**. El servicio de ventas publica un evento `OrdenCreada` en un **Message Broker (Kafka/RabbitMQ)** y continúa de inmediato. Los consumidores leen el evento a su propio ritmo. La **Idempotencia** garantiza que si un mensaje se reprocesa dos veces, el resultado sea exactamente el mismo. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Ejemplo de Consumidor Idempotente en Python
 class ConsumidorIdempotente:
     def __init__(self):
@@ -729,20 +1203,67 @@ consumidor.procesar_evento("evt_101", {"monto": 500}) # ¡Duplicado ignorado!`,
           answerIndex: 0,
           explanation: "El estado actual se reconstruye recalculando la secuencia completa de eventos históricos acumulados."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 11: ARQUITECTURA EVENT-DRIVEN Y MENSAJERÍA ASÍNCRONA (KAFKA, RABBITMQ)', ¿cuál afirmación es correcta sobre: Patrón Productor-Consumidor y Buses de Eventos (Event Bus)?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Patrón Productor-Consumidor y Buses de Eventos (Event Bus)", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Patrón Productor-Consumidor y Buses de Eventos (Event Bus). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 11: ARQUITECTURA EVENT-DRIVEN Y MENSAJERÍA ASÍNCRONA (KAFKA, RABBITMQ)', ¿cuál afirmación es correcta sobre: Message Brokers de Colas (RabbitMQ) vs Event Streaming Logs (Apache Kafka)?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Message Brokers de Colas (RabbitMQ) vs Event Streaming Logs (Apache...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Message Brokers de Colas (RabbitMQ) vs Event Streaming Logs (Apache Kafka). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 11: ARQUITECTURA EVENT-DRIVEN Y MENSAJERÍA ASÍNCRONA (KAFKA, RABBITMQ)', ¿cuál afirmación es correcta sobre: Garantías de Entrega: At-most-once, At-least-once, Exactly-once?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Garantías de Entrega: At-most-once, At-least-once, Exactly-once", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Garantías de Entrega: At-most-once, At-least-once, Exactly-once. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 11: ARQUITECTURA EVENT-DRIVEN Y MENSAJERÍA ASÍNCRONA (KAFKA, RABBITMQ)', ¿cuál afirmación es correcta sobre: Idempotencia de Consumidores (Manejo seguro de duplicados)?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Idempotencia de Consumidores (Manejo seguro de duplicados)", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Idempotencia de Consumidores (Manejo seguro de duplicados). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 11: ARQUITECTURA EVENT-DRIVEN Y MENSAJERÍA ASÍNCRONA (KAFKA, RABBITMQ)', ¿cuál afirmación es correcta sobre: Patrones Outbox y Event Sourcing?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Patrones Outbox y Event Sourcing", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Patrones Outbox y Event Sourcing. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 11: ARQUITECTURA EVENT-DRIVEN Y MENSAJERÍA ASÍNCRONA (KAFKA, RABBITMQ)', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 11: ARQUITECTURA EVENT-DRIVEN Y MENSAJERÍA ASÍNCRONA (KAFKA, RABBITMQ)', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 12,
       title: "MÓDULO 12: CONTENEDORES, CI/CD E INFRAESTRUCTURA COMO CÓDIGO",
       description: "Empaquetamiento y despliegue moderno: Docker, Kubernetes, tuberías CI/CD y Terraform.",
       items: [
+        
         "Contenedores vs Máquinas Virtuales: Aislamiento a nivel de Kernel (Namespaces y Cgroups).",
         "Construcción de Imágenes de Docker Optimizadas (Multi-stage builds).",
         "Orquestación de Contenedores con Kubernetes (Pods, Deployments, Services, Ingress).",
         "Tuberías de Integración y Despliegue Continuo (CI/CD con GitHub Actions/GitLab CI).",
-        "Infraestructura como Código (IaC con Terraform / CloudFormation)."
+        "Infraestructura como Código (IaC con Terraform / CloudFormation).",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "En la ingeniería moderna, 'en mi máquina sí funciona' es inaceptable. **Docker** aisla la aplicación y sus dependencias mediante contenedores ligeros utilizando tecnologías del kernel de Linux (Namespaces y Cgroups). **Kubernetes (K8s)** orquesta la alta disponibilidad de miles de contenedores: autoescalado, reinicio ante fallas y despliegues sin tiempo de inactividad (Zero Downtime / Blue-Green Deployments). **Terraform** permite definir toda la infraestructura en código versionado.",
+      content: "En la ingeniería moderna, 'en mi máquina sí funciona' es inaceptable. **Docker** aisla la aplicación y sus dependencias mediante contenedores ligeros utilizando tecnologías del kernel de Linux (Namespaces y Cgroups). **Kubernetes (K8s)** orquesta la alta disponibilidad de miles de contenedores: autoescalado, reinicio ante fallas y despliegues sin tiempo de inactividad (Zero Downtime / Blue-Green Deployments). **Terraform** permite definir toda la infraestructura en código versionado. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Ejemplo de Dockerfile Multi-Stage de Producción para React/Vite
 # Stage 1: Construcción
 FROM node:20-alpine AS builder
@@ -788,20 +1309,67 @@ CMD ["nginx", "-g", "daemon off;"]`,
           answerIndex: 0,
           explanation: "Garantiza un cambio inmediato sin interrupciones para los usuarios y permite un rollback instantáneo si la nueva versión falla."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 12: CONTENEDORES, CI/CD E INFRAESTRUCTURA COMO CÓDIGO', ¿cuál afirmación es correcta sobre: Contenedores vs Máquinas Virtuales: Aislamiento a nivel de Kernel (Namespaces...?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Contenedores vs Máquinas Virtuales: Aislamiento a nivel de Kernel (...", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Contenedores vs Máquinas Virtuales: Aislamiento a nivel de Kernel (Namespaces y Cgroups). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 12: CONTENEDORES, CI/CD E INFRAESTRUCTURA COMO CÓDIGO', ¿cuál afirmación es correcta sobre: Construcción de Imágenes de Docker Optimizadas (Multi-stage builds)?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Construcción de Imágenes de Docker Optimizadas (Multi-stage builds)", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Construcción de Imágenes de Docker Optimizadas (Multi-stage builds). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 12: CONTENEDORES, CI/CD E INFRAESTRUCTURA COMO CÓDIGO', ¿cuál afirmación es correcta sobre: Orquestación de Contenedores con Kubernetes (Pods, Deployments, Services, Ing...?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Orquestación de Contenedores con Kubernetes (Pods, Deployments, Ser...", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Orquestación de Contenedores con Kubernetes (Pods, Deployments, Services, Ingress). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 12: CONTENEDORES, CI/CD E INFRAESTRUCTURA COMO CÓDIGO', ¿cuál afirmación es correcta sobre: Tuberías de Integración y Despliegue Continuo (CI/CD con GitHub Actions/GitLa...?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Tuberías de Integración y Despliegue Continuo (CI/CD con GitHub Act...", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Tuberías de Integración y Despliegue Continuo (CI/CD con GitHub Actions/GitLab CI). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 12: CONTENEDORES, CI/CD E INFRAESTRUCTURA COMO CÓDIGO', ¿cuál afirmación es correcta sobre: Infraestructura como Código (IaC con Terraform / CloudFormation)?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Infraestructura como Código (IaC con Terraform / CloudFormation)", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Infraestructura como Código (IaC con Terraform / CloudFormation). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 12: CONTENEDORES, CI/CD E INFRAESTRUCTURA COMO CÓDIGO', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 12: CONTENEDORES, CI/CD E INFRAESTRUCTURA COMO CÓDIGO', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 13,
       title: "MÓDULO 13: OBSERVABILIDAD, MÉTRICAS, LOGS Y TRACING DISTRIBUIDO (OPENTELEMETRY)",
       description: "Los 3 pilares de la observabilidad: Logs Estructurados, Métricas (Prometheus) y Tracing Distribuido (Jaeger).",
       items: [
+        
         "Los 3 Pilares de la Observabilidad: Logs, Métricas y Traces.",
         "Logs Estructurados en formato JSON (Evitar print de texto plano).",
         "Métricas con Prometheus: Counters, Gauges y Histograms.",
         "Tracing Distribuido con OpenTelemetry (Trace ID, Span ID).",
-        "Dashboards de Monitoreo en Grafana y Alertas (PagerDuty)."
+        "Dashboards de Monitoreo en Grafana y Alertas (PagerDuty).",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "La Monitorización te dice si un sistema está vivo o muerto; la **Observabilidad** te permite inferir por qué está fallando internamente basándote en sus salidas. Los **Logs Estructurados (JSON)** permiten realizar consultas agregadas en Elasticsearch. Las **Métricas (Prometheus)** miden el estado continuo (ej: consumo de CPU o tasa de errores 5xx). El **Tracing Distribuido (OpenTelemetry)** propaga un `TraceID` único a través de 10 microservicios para visualizar exactamente cuál de ellos demoró la petición del cliente.",
+      content: "La Monitorización te dice si un sistema está vivo o muerto; la **Observabilidad** te permite inferir por qué está fallando internamente basándote en sus salidas. Los **Logs Estructurados (JSON)** permiten realizar consultas agregadas en Elasticsearch. Las **Métricas (Prometheus)** miden el estado continuo (ej: consumo de CPU o tasa de errores 5xx). El **Tracing Distribuido (OpenTelemetry)** propaga un `TraceID` único a través de 10 microservicios para visualizar exactamente cuál de ellos demoró la petición del cliente. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Ejemplo de Log Estructurado en JSON con Contexto en Python
 import json
 import time
@@ -849,20 +1417,67 @@ log_evento_estructurado("ERROR", "Fallo al procesar pago", {"trace_id": "abc-123
           answerIndex: 0,
           explanation: "Un Span mide la duración y metadatos de un paso específico (una query SQL, una llamada HTTP externa) dentro del Trace."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 13: OBSERVABILIDAD, MÉTRICAS, LOGS Y TRACING DISTRIBUIDO (OPENTELEMETRY)', ¿cuál afirmación es correcta sobre: Los 3 Pilares de la Observabilidad: Logs, Métricas y Traces?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Los 3 Pilares de la Observabilidad: Logs, Métricas y Traces", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Los 3 Pilares de la Observabilidad: Logs, Métricas y Traces. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 13: OBSERVABILIDAD, MÉTRICAS, LOGS Y TRACING DISTRIBUIDO (OPENTELEMETRY)', ¿cuál afirmación es correcta sobre: Logs Estructurados en formato JSON (Evitar print de texto plano)?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Logs Estructurados en formato JSON (Evitar print de texto plano)", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Logs Estructurados en formato JSON (Evitar print de texto plano). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 13: OBSERVABILIDAD, MÉTRICAS, LOGS Y TRACING DISTRIBUIDO (OPENTELEMETRY)', ¿cuál afirmación es correcta sobre: Métricas con Prometheus: Counters, Gauges y Histograms?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Métricas con Prometheus: Counters, Gauges y Histograms", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Métricas con Prometheus: Counters, Gauges y Histograms. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 13: OBSERVABILIDAD, MÉTRICAS, LOGS Y TRACING DISTRIBUIDO (OPENTELEMETRY)', ¿cuál afirmación es correcta sobre: Tracing Distribuido con OpenTelemetry (Trace ID, Span ID)?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Tracing Distribuido con OpenTelemetry (Trace ID, Span ID)", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Tracing Distribuido con OpenTelemetry (Trace ID, Span ID). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 13: OBSERVABILIDAD, MÉTRICAS, LOGS Y TRACING DISTRIBUIDO (OPENTELEMETRY)', ¿cuál afirmación es correcta sobre: Dashboards de Monitoreo en Grafana y Alertas (PagerDuty)?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Dashboards de Monitoreo en Grafana y Alertas (PagerDuty)", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Dashboards de Monitoreo en Grafana y Alertas (PagerDuty). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 13: OBSERVABILIDAD, MÉTRICAS, LOGS Y TRACING DISTRIBUIDO (OPENTELEMETRY)', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 13: OBSERVABILIDAD, MÉTRICAS, LOGS Y TRACING DISTRIBUIDO (OPENTELEMETRY)', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 14,
       title: "MÓDULO 14: ARQUITECTURA RAG Y FINE-TUNING DE LLMS",
       description: "Integración de conocimiento empresarial con modelos de lenguaje: RAG, Chunking, Embeddings y Fine-tuning.",
       items: [
+        
         "Limitaciones de los LLMs: Alucinaciones, Ventana de Contexto y Conocimiento Estático.",
         "Retrieval-Augmented Generation (RAG): Recuperación + Generación Guiada.",
         "Estrategias de Divisibilidad de Documentos (Chunking Strategies).",
         "Re-ranking de Documentos y Filtrado Semántico.",
-        "Cuándo usar RAG vs Cuándo hacer Fine-Tuning (Ajuste Fino de Pesos)."
+        "Cuándo usar RAG vs Cuándo hacer Fine-Tuning (Ajuste Fino de Pesos).",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Los Modelos de Lenguaje (LLMs) sufren de dos grandes limitaciones: alucinan información y su conocimiento está congelado en la fecha de su entrenamiento. **Retrieval-Augmented Generation (RAG)** resuelve esto inyectando contexto verificado en tiempo de ejecución: ante una pregunta, se busca en una base de conocimiento los fragmentos (`chunks`) más relevantes y se le pasan al LLM en el prompt. El **Fine-Tuning** se utiliza cuando se requiere cambiar la forma, estilo o formato de respuesta del modelo.",
+      content: "Los Modelos de Lenguaje (LLMs) sufren de dos grandes limitaciones: alucinan información y su conocimiento está congelado en la fecha de su entrenamiento. **Retrieval-Augmented Generation (RAG)** resuelve esto inyectando contexto verificado en tiempo de ejecución: ante una pregunta, se busca en una base de conocimiento los fragmentos (`chunks`) más relevantes y se le pasan al LLM en el prompt. El **Fine-Tuning** se utiliza cuando se requiere cambiar la forma, estilo o formato de respuesta del modelo. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Flujo conceptual de una Arquitectura RAG en Python
 def arquitectura_rag_demo(pregunta_usuario: str, db_vectorial, llm_service) -> str:
     print(f"1. Pregunta recibida: '{pregunta_usuario}'")
@@ -907,20 +1522,67 @@ def arquitectura_rag_demo(pregunta_usuario: str, db_vectorial, llm_service) -> s
           answerIndex: 0,
           explanation: "Los LLMs son generadores estadísticos de texto y pueden inventar hechos, números o citas inexistentes si no se les proporciona contexto."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 14: ARQUITECTURA RAG Y FINE-TUNING DE LLMS', ¿cuál afirmación es correcta sobre: Limitaciones de los LLMs: Alucinaciones, Ventana de Contexto y Conocimiento E...?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Limitaciones de los LLMs: Alucinaciones, Ventana de Contexto y Cono...", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Limitaciones de los LLMs: Alucinaciones, Ventana de Contexto y Conocimiento Estático. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 14: ARQUITECTURA RAG Y FINE-TUNING DE LLMS', ¿cuál afirmación es correcta sobre: Retrieval-Augmented Generation (RAG): Recuperación + Generación Guiada?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Retrieval-Augmented Generation (RAG): Recuperación + Generación Guiada", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Retrieval-Augmented Generation (RAG): Recuperación + Generación Guiada. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 14: ARQUITECTURA RAG Y FINE-TUNING DE LLMS', ¿cuál afirmación es correcta sobre: Estrategias de Divisibilidad de Documentos (Chunking Strategies)?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Estrategias de Divisibilidad de Documentos (Chunking Strategies)", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Estrategias de Divisibilidad de Documentos (Chunking Strategies). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 14: ARQUITECTURA RAG Y FINE-TUNING DE LLMS', ¿cuál afirmación es correcta sobre: Re-ranking de Documentos y Filtrado Semántico?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Re-ranking de Documentos y Filtrado Semántico", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Re-ranking de Documentos y Filtrado Semántico. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 14: ARQUITECTURA RAG Y FINE-TUNING DE LLMS', ¿cuál afirmación es correcta sobre: Cuándo usar RAG vs Cuándo hacer Fine-Tuning (Ajuste Fino de Pesos)?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Cuándo usar RAG vs Cuándo hacer Fine-Tuning (Ajuste Fino de Pesos)", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Cuándo usar RAG vs Cuándo hacer Fine-Tuning (Ajuste Fino de Pesos). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 14: ARQUITECTURA RAG Y FINE-TUNING DE LLMS', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 14: ARQUITECTURA RAG Y FINE-TUNING DE LLMS', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 15,
       title: "MÓDULO 15: VECTOR DATABASES Y EMBEDDINGS EN SISTEMAS INTELIGENTES",
       description: "Representación semántica de la información: Vectores de alta dimensión, distancia Coseno e índices HNSW.",
       items: [
+        
         "Qué son los Embeddings de Texto y su representación vectorial en $\\mathbb{R}^n$.",
         "Métricas de Distancia: Distancia Coseno, Producto Punto y Distancia Euclidiana ($L_2$).",
         "Algoritmo HNSW (Hierarchical Navigable Small World) para Búsqueda Vectorial Aproximada (ANN).",
         "Motores Vectoriales: Qdrant, Pinecone, Milvus y pgvector.",
-        "Indexación de Embeddings Multimodales (Texto, Imagen, Audio)."
+        "Indexación de Embeddings Multimodales (Texto, Imagen, Audio).",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Un **Embedding** es una representación numérica vectorial de un objeto (un texto, una imagen) en un espacio de cientos de dimensiones (ej: 1536 dimensiones en OpenAI ada-002). Conceptos similares quedan ubicados cerca en este espacio vectorial. Las **Bases de Datos Vectoriales** no buscan por palabras exactas, sino por significado conceptual (Búsqueda Semántica) utilizando métricas como la **Similitud Coseno** y estructuras de búsqueda aproximada como **HNSW**.",
+      content: "Un **Embedding** es una representación numérica vectorial de un objeto (un texto, una imagen) en un espacio de cientos de dimensiones (ej: 1536 dimensiones en OpenAI ada-002). Conceptos similares quedan ubicados cerca en este espacio vectorial. Las **Bases de Datos Vectoriales** no buscan por palabras exactas, sino por significado conceptual (Búsqueda Semántica) utilizando métricas como la **Similitud Coseno** y estructuras de búsqueda aproximada como **HNSW**. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Cálculo de Similitud Coseno entre 3 vectores en Python
 import math
 
@@ -968,20 +1630,67 @@ print(f"Similitud (perro, PC): {coseno(v_perro, v_pc):.4f}")           # ~0.15 (
           answerIndex: 0,
           explanation: "`pgvector` añade soporte nativo de tipo de datos `vector` e índices HNSW/IVFFlat dentro de la misma base de datos PostgreSQL."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 15: VECTOR DATABASES Y EMBEDDINGS EN SISTEMAS INTELIGENTES', ¿cuál afirmación es correcta sobre: Qué son los Embeddings de Texto y su representación vectorial en $\\\\mathbb{R}^n$?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Qué son los Embeddings de Texto y su representación vectorial en $\\...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Qué son los Embeddings de Texto y su representación vectorial en $\\\\mathbb{R}^n$. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 15: VECTOR DATABASES Y EMBEDDINGS EN SISTEMAS INTELIGENTES', ¿cuál afirmación es correcta sobre: Métricas de Distancia: Distancia Coseno, Producto Punto y Distancia Euclidian...?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Métricas de Distancia: Distancia Coseno, Producto Punto y Distancia...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Métricas de Distancia: Distancia Coseno, Producto Punto y Distancia Euclidiana ($L_2$). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 15: VECTOR DATABASES Y EMBEDDINGS EN SISTEMAS INTELIGENTES', ¿cuál afirmación es correcta sobre: Algoritmo HNSW (Hierarchical Navigable Small World) para Búsqueda Vectorial A...?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Algoritmo HNSW (Hierarchical Navigable Small World) para Búsqueda V...", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Algoritmo HNSW (Hierarchical Navigable Small World) para Búsqueda Vectorial Aproximada (ANN). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 15: VECTOR DATABASES Y EMBEDDINGS EN SISTEMAS INTELIGENTES', ¿cuál afirmación es correcta sobre: Motores Vectoriales: Qdrant, Pinecone, Milvus y pgvector?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Motores Vectoriales: Qdrant, Pinecone, Milvus y pgvector", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Motores Vectoriales: Qdrant, Pinecone, Milvus y pgvector. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 15: VECTOR DATABASES Y EMBEDDINGS EN SISTEMAS INTELIGENTES', ¿cuál afirmación es correcta sobre: Indexación de Embeddings Multimodales (Texto, Imagen, Audio)?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Indexación de Embeddings Multimodales (Texto, Imagen, Audio)", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Indexación de Embeddings Multimodales (Texto, Imagen, Audio). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 15: VECTOR DATABASES Y EMBEDDINGS EN SISTEMAS INTELIGENTES', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 15: VECTOR DATABASES Y EMBEDDINGS EN SISTEMAS INTELIGENTES', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 16,
       title: "MÓDULO 16: AUDITORÍA Y CODE REVIEW DE CÓDIGO GENERADO POR IA",
       description: "Lista de verificación para Code Reviews de IA: antipatrones, acoplamiento, fallas de borde y seguridad.",
       items: [
+        
         "Antipatrones comunes del código generado por IA (Complejidad innecesaria, redundancia).",
         "Lista de verificación (Checklist) para Code Reviews de sugerencias de IA.",
         "Detección de 'Hallucinated Imports' (Librerías inexistentes o maliciosas).",
         "Auditoría de Acoplamiento y Cohesión en código autogenerado.",
-        "Pruebas de Esfuerzo sobre Casos de Borde (Edge Cases)."
+        "Pruebas de Esfuerzo sobre Casos de Borde (Edge Cases).",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Hacer un Code Review de código escrito por una IA exige mayor rigor que revisar código humano. Las IAs sufren de **alucinación de dependencias** (importar librerías que no existen o son vulnerables a typosquatting), producen abstracciones sobre-diseñadas (Over-engineering) y suelen omitir el manejo de bordes (edge cases) como desbordamientos numéricos o timeouts de red. El Ingeniero Senior actúa como filtro de calidad auditando cada línea antes de autorizar un Merge.",
+      content: "Hacer un Code Review de código escrito por una IA exige mayor rigor que revisar código humano. Las IAs sufren de **alucinación de dependencias** (importar librerías que no existen o son vulnerables a typosquatting), producen abstracciones sobre-diseñadas (Over-engineering) y suelen omitir el manejo de bordes (edge cases) como desbordamientos numéricos o timeouts de red. El Ingeniero Senior actúa como filtro de calidad auditando cada línea antes de autorizar un Merge. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Checklist en Python para Auditoría de Código IA
 def auditar_codigo_generado_ia(ast_nodo) -> list[str]:
     hallazgos = []
@@ -1021,20 +1730,67 @@ def auditar_codigo_generado_ia(ast_nodo) -> list[str]:
           answerIndex: 0,
           explanation: "Si un desarrollador instala a ciegas una librería inventada por la IA, un atacante puede haber creado un paquete malicioso con ese nombre."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 16: AUDITORÍA Y CODE REVIEW DE CÓDIGO GENERADO POR IA', ¿cuál afirmación es correcta sobre: Antipatrones comunes del código generado por IA (Complejidad innecesaria, red...?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Antipatrones comunes del código generado por IA (Complejidad innece...", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Antipatrones comunes del código generado por IA (Complejidad innecesaria, redundancia). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 16: AUDITORÍA Y CODE REVIEW DE CÓDIGO GENERADO POR IA', ¿cuál afirmación es correcta sobre: Lista de verificación (Checklist) para Code Reviews de sugerencias de IA?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Lista de verificación (Checklist) para Code Reviews de sugerencias ...", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Lista de verificación (Checklist) para Code Reviews de sugerencias de IA. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 16: AUDITORÍA Y CODE REVIEW DE CÓDIGO GENERADO POR IA', ¿cuál afirmación es correcta sobre: Detección de 'Hallucinated Imports' (Librerías inexistentes o maliciosas)?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Detección de 'Hallucinated Imports' (Librerías inexistentes o malic...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Detección de 'Hallucinated Imports' (Librerías inexistentes o maliciosas). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 16: AUDITORÍA Y CODE REVIEW DE CÓDIGO GENERADO POR IA', ¿cuál afirmación es correcta sobre: Auditoría de Acoplamiento y Cohesión en código autogenerado?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Auditoría de Acoplamiento y Cohesión en código autogenerado", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Auditoría de Acoplamiento y Cohesión en código autogenerado. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 16: AUDITORÍA Y CODE REVIEW DE CÓDIGO GENERADO POR IA', ¿cuál afirmación es correcta sobre: Pruebas de Esfuerzo sobre Casos de Borde (Edge Cases)?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Pruebas de Esfuerzo sobre Casos de Borde (Edge Cases)", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Pruebas de Esfuerzo sobre Casos de Borde (Edge Cases). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 16: AUDITORÍA Y CODE REVIEW DE CÓDIGO GENERADO POR IA', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 16: AUDITORÍA Y CODE REVIEW DE CÓDIGO GENERADO POR IA', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 17,
       title: "MÓDULO 17: DISEÑO DE APIS ROBUSTAS: REST, GRPC, GRAPHQL Y OPENAPI",
       description: "Contratos de interfaz rígidos: RESTful APIs, gRPC con Protocol Buffers, GraphQL y esquemas OpenAPI.",
       items: [
+        
         "Diseño de RESTful APIs: Verbos HTTP, Códigos de Estado (2xx, 4xx, 5xx) e Idempotencia.",
         "Especificaciones OpenAPI 3.0 (Swagger) como contrato de comunicación.",
         "gRPC y Protocol Buffers (protobuf) para comunicación entre microservicios de ultra-baja latencia.",
         "GraphQL: Consultas flexibles en el cliente y prevención de Over-fetching.",
-        "Versionado de APIs (URI vs Headers) y Depreciación de Contratos."
+        "Versionado de APIs (URI vs Headers) y Depreciación de Contratos.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Las APIs son los contratos de comunicación entre sistemas. Un mal diseño de API acopla el cliente con el servidor y provoca fallos de integración. **REST** es el estándar de la web utilizando verbos HTTP semánticos y esquemas **OpenAPI**. **gRPC** utiliza especificaciones binarias **Protocol Buffers** para llamadas entre microservicios con latencias de microsegundos. **GraphQL** permite al frontend pedir exactamente los campos requeridos evitando Over-fetching.",
+      content: "Las APIs son los contratos de comunicación entre sistemas. Un mal diseño de API acopla el cliente con el servidor y provoca fallos de integración. **REST** es el estándar de la web utilizando verbos HTTP semánticos y esquemas **OpenAPI**. **gRPC** utiliza especificaciones binarias **Protocol Buffers** para llamadas entre microservicios con latencias de microsegundos. **GraphQL** permite al frontend pedir exactamente los campos requeridos evitando Over-fetching. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Ejemplo de esquema Protocol Buffers (gRPC) para Contrato de API
 # syntax = "proto3";
 # message UsuarioRequest {
@@ -1080,20 +1836,67 @@ def procesar_respuesta_api_grpc(request_bytes: bytes) -> bytes:
           answerIndex: 0,
           explanation: "PUT reemplaza el recurso completo de forma idempotente, a diferencia de POST que crea nuevos recursos duplicados."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 17: DISEÑO DE APIS ROBUSTAS: REST, GRPC, GRAPHQL Y OPENAPI', ¿cuál afirmación es correcta sobre: Diseño de RESTful APIs: Verbos HTTP, Códigos de Estado (2xx, 4xx, 5xx) e Idem...?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Diseño de RESTful APIs: Verbos HTTP, Códigos de Estado (2xx, 4xx, 5...", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Diseño de RESTful APIs: Verbos HTTP, Códigos de Estado (2xx, 4xx, 5xx) e Idempotencia. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 17: DISEÑO DE APIS ROBUSTAS: REST, GRPC, GRAPHQL Y OPENAPI', ¿cuál afirmación es correcta sobre: Especificaciones OpenAPI 3.0 (Swagger) como contrato de comunicación?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Especificaciones OpenAPI 3.0 (Swagger) como contrato de comunicación", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Especificaciones OpenAPI 3.0 (Swagger) como contrato de comunicación. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 17: DISEÑO DE APIS ROBUSTAS: REST, GRPC, GRAPHQL Y OPENAPI', ¿cuál afirmación es correcta sobre: gRPC y Protocol Buffers (protobuf) para comunicación entre microservicios de ...?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: gRPC y Protocol Buffers (protobuf) para comunicación entre microser...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que gRPC y Protocol Buffers (protobuf) para comunicación entre microservicios de ultra-baja latencia. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 17: DISEÑO DE APIS ROBUSTAS: REST, GRPC, GRAPHQL Y OPENAPI', ¿cuál afirmación es correcta sobre: GraphQL: Consultas flexibles en el cliente y prevención de Over-fetching?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: GraphQL: Consultas flexibles en el cliente y prevención de Over-fet...", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que GraphQL: Consultas flexibles en el cliente y prevención de Over-fetching. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 17: DISEÑO DE APIS ROBUSTAS: REST, GRPC, GRAPHQL Y OPENAPI', ¿cuál afirmación es correcta sobre: Versionado de APIs (URI vs Headers) y Depreciación de Contratos?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Versionado de APIs (URI vs Headers) y Depreciación de Contratos", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Versionado de APIs (URI vs Headers) y Depreciación de Contratos. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 17: DISEÑO DE APIS ROBUSTAS: REST, GRPC, GRAPHQL Y OPENAPI', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 17: DISEÑO DE APIS ROBUSTAS: REST, GRPC, GRAPHQL Y OPENAPI', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 18,
       title: "MÓDULO 18: PATRONES DE RESILIENCIA EN PRODUCCIÓN (CIRCUIT BREAKER, BULKHEAD)",
       description: "Tolerancia a fallas en producción: Circuit Breaker, Rate Limiting, Bulkhead y Retry con Exponential Backoff.",
       items: [
+        
         "Patrón Circuit Breaker (Cortacircuitos): Estados Closed, Open, Half-Open.",
         "Patrón Retry con Jitter y Exponential Backoff.",
         "Patrón Bulkhead (Aislamiento de Recursos).",
         "Rate Limiting y Throttling (Algoritmo Leaky Bucket / Token Bucket).",
-        "Degradación Elegante (Graceful Degradation) y Respuestas Fallback."
+        "Degradación Elegante (Graceful Degradation) y Respuestas Fallback.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "En un entorno de microservicios distribuido, los fallos son inevitables. El patrón **Circuit Breaker** actúa igual que un cortacircuitos eléctrico: si un servicio externo empieza a fallar, el cortacircuitos se 'Abre' interrumpiendo las llamadas de inmediato y respondiendo con un **Fallback**, evitando bloquear los hilos del servidor. Las reintentos deben incluir **Exponential Backoff con Jitter** para no saturar al servicio en proceso de recuperación.",
+      content: "En un entorno de microservicios distribuido, los fallos son inevitables. El patrón **Circuit Breaker** actúa igual que un cortacircuitos eléctrico: si un servicio externo empieza a fallar, el cortacircuitos se 'Abre' interrumpiendo las llamadas de inmediato y respondiendo con un **Fallback**, evitando bloquear los hilos del servidor. Las reintentos deben incluir **Exponential Backoff con Jitter** para no saturar al servicio en proceso de recuperación. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Ejemplo del Patrón Circuit Breaker en Python
 import time
 
@@ -1154,20 +1957,67 @@ class CircuitBreaker:
           answerIndex: 0,
           explanation: "Permite que la aplicación siga funcionando parcialmente para el usuario en lugar de mostrar una pantalla de error total."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 18: PATRONES DE RESILIENCIA EN PRODUCCIÓN (CIRCUIT BREAKER, BULKHEAD)', ¿cuál afirmación es correcta sobre: Patrón Circuit Breaker (Cortacircuitos): Estados Closed, Open, Half-Open?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Patrón Circuit Breaker (Cortacircuitos): Estados Closed, Open, Half...", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Patrón Circuit Breaker (Cortacircuitos): Estados Closed, Open, Half-Open. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 18: PATRONES DE RESILIENCIA EN PRODUCCIÓN (CIRCUIT BREAKER, BULKHEAD)', ¿cuál afirmación es correcta sobre: Patrón Retry con Jitter y Exponential Backoff?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Patrón Retry con Jitter y Exponential Backoff", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Patrón Retry con Jitter y Exponential Backoff. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 18: PATRONES DE RESILIENCIA EN PRODUCCIÓN (CIRCUIT BREAKER, BULKHEAD)', ¿cuál afirmación es correcta sobre: Patrón Bulkhead (Aislamiento de Recursos)?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Patrón Bulkhead (Aislamiento de Recursos)", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Patrón Bulkhead (Aislamiento de Recursos). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 18: PATRONES DE RESILIENCIA EN PRODUCCIÓN (CIRCUIT BREAKER, BULKHEAD)', ¿cuál afirmación es correcta sobre: Rate Limiting y Throttling (Algoritmo Leaky Bucket / Token Bucket)?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Rate Limiting y Throttling (Algoritmo Leaky Bucket / Token Bucket)", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Rate Limiting y Throttling (Algoritmo Leaky Bucket / Token Bucket). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 18: PATRONES DE RESILIENCIA EN PRODUCCIÓN (CIRCUIT BREAKER, BULKHEAD)', ¿cuál afirmación es correcta sobre: Degradación Elegante (Graceful Degradation) y Respuestas Fallback?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Degradación Elegante (Graceful Degradation) y Respuestas Fallback", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Degradación Elegante (Graceful Degradation) y Respuestas Fallback. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 18: PATRONES DE RESILIENCIA EN PRODUCCIÓN (CIRCUIT BREAKER, BULKHEAD)', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 18: PATRONES DE RESILIENCIA EN PRODUCCIÓN (CIRCUIT BREAKER, BULKHEAD)', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 19,
       title: "MÓDULO 19: REFACTORIZACIÓN Y GESTIÓN DE DEUDA TÉCNICA EN SISTEMAS LEGACY",
       description: "Estrategias para modernizar sistemas monolíticos masivos sin detener la operación del negocio.",
       items: [
+        
         "El Patrón Strangler Fig (Higuera Estranguladora) para migración de monolitos a microservicios.",
         "Medición cuantitativa de Deuda Técnica y Complejidad Ciclomática.",
         "Refactorización segura respaldada por Pruebas de Caracterización (Characterization Tests).",
         "Manejo de Paridad de Datos y Migraciones Paralelas (Dual Writing).",
-        "Técnica Branch by Abstraction para cambios estructurales en repositorios activos."
+        "Técnica Branch by Abstraction para cambios estructurales en repositorios activos.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Un Ingeniero Senior no reescribe aplicaciones desde cero impulsivamente ('Big Bang Rewrite', el cual suele fracasar). Aplica el **Patrón Strangler Fig (Higuera Estranguladora)**: intercepta peticiones en el borde y reemplaza incrementalmente pequeñas funcionalidades del monolito por nuevos módulos o servicios limpios. Para refactorizar código legacy sin pruebas, primero escribe **Pruebas de Caracterización** que documentan el comportamiento actual del sistema antes de alterar una sola línea.",
+      content: "Un Ingeniero Senior no reescribe aplicaciones desde cero impulsivamente ('Big Bang Rewrite', el cual suele fracasar). Aplica el **Patrón Strangler Fig (Higuera Estranguladora)**: intercepta peticiones en el borde y reemplaza incrementalmente pequeñas funcionalidades del monolito por nuevos módulos o servicios limpios. Para refactorizar código legacy sin pruebas, primero escribe **Pruebas de Caracterización** que documentan el comportamiento actual del sistema antes de alterar una sola línea. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Ejemplo conceptual del Patrón Strangler Fig en un Router
 def router_strangler_fig(request):
     # Migración progresiva: Si el endpoint ya fue migrado, ir al nuevo servicio
@@ -1206,20 +2056,67 @@ def router_strangler_fig(request):
           answerIndex: 0,
           explanation: "El sistema legacy contiene años de conocimiento acumulado y parches de casos de borde que la reescritura desde cero suele omitir."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 19: REFACTORIZACIÓN Y GESTIÓN DE DEUDA TÉCNICA EN SISTEMAS LEGACY', ¿cuál afirmación es correcta sobre: El Patrón Strangler Fig (Higuera Estranguladora) para migración de monolitos ...?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: El Patrón Strangler Fig (Higuera Estranguladora) para migración de ...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que El Patrón Strangler Fig (Higuera Estranguladora) para migración de monolitos a microservicios. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 19: REFACTORIZACIÓN Y GESTIÓN DE DEUDA TÉCNICA EN SISTEMAS LEGACY', ¿cuál afirmación es correcta sobre: Medición cuantitativa de Deuda Técnica y Complejidad Ciclomática?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Medición cuantitativa de Deuda Técnica y Complejidad Ciclomática", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Medición cuantitativa de Deuda Técnica y Complejidad Ciclomática. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 19: REFACTORIZACIÓN Y GESTIÓN DE DEUDA TÉCNICA EN SISTEMAS LEGACY', ¿cuál afirmación es correcta sobre: Refactorización segura respaldada por Pruebas de Caracterización (Characteriz...?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Refactorización segura respaldada por Pruebas de Caracterización (C...", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Refactorización segura respaldada por Pruebas de Caracterización (Characterization Tests). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 19: REFACTORIZACIÓN Y GESTIÓN DE DEUDA TÉCNICA EN SISTEMAS LEGACY', ¿cuál afirmación es correcta sobre: Manejo de Paridad de Datos y Migraciones Paralelas (Dual Writing)?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Manejo de Paridad de Datos y Migraciones Paralelas (Dual Writing)", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Manejo de Paridad de Datos y Migraciones Paralelas (Dual Writing). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 19: REFACTORIZACIÓN Y GESTIÓN DE DEUDA TÉCNICA EN SISTEMAS LEGACY', ¿cuál afirmación es correcta sobre: Técnica Branch by Abstraction para cambios estructurales en repositorios activos?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Técnica Branch by Abstraction para cambios estructurales en reposit...", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Técnica Branch by Abstraction para cambios estructurales en repositorios activos. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 19: REFACTORIZACIÓN Y GESTIÓN DE DEUDA TÉCNICA EN SISTEMAS LEGACY', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 19: REFACTORIZACIÓN Y GESTIÓN DE DEUDA TÉCNICA EN SISTEMAS LEGACY', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 20,
       title: "MÓDULO 20: TEOREMA DE CONCURRENCIA, PARALELISMO Y MEMORIA COMPARTIDA",
       description: "Programación concurrente y paralela: Race Conditions, Deadlocks, Mutex, Semáforos y Modelo de Actores.",
       items: [
+        
         "Concurrencia (Estructura) vs Paralelismo (Ejecución Simultánea en Múltiples Cores).",
         "Condiciones de Carrera (Race Conditions) y Secciones Críticas.",
         "Mecanismos de Sincronización: Mutex (Lock), Semáforos y Operaciones Atómicas.",
         "Las 4 Condiciones de Coffman para un Deadlock (Bloqueo Mutuo).",
-        "Modelo de Actores (Erlang/Akka) y Canales en Go/Rust (CSP)."
+        "Modelo de Actores (Erlang/Akka) y Canales en Go/Rust (CSP).",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "La Concurrencia es la capacidad de estructurar un programa en tareas independientes; el Paralelismo es la ejecución simultánea real en múltiples núcleos físicos de CPU. Cuando dos hilos intentan modificar una misma variable en memoria compartida sin sincronización, ocurre una **Race Condition**. Para evitarla se utilizan **Mutex (Locks)**. Sin embargo, un uso incorrecto de locks puede desencadenar un **Deadlock** (donde el hilo A espera por el lock B y el hilo B por el lock A indefinidamente).",
+      content: "La Concurrencia es la capacidad de estructurar un programa en tareas independientes; el Paralelismo es la ejecución simultánea real en múltiples núcleos físicos de CPU. Cuando dos hilos intentan modificar una misma variable en memoria compartida sin sincronización, ocurre una **Race Condition**. Para evitarla se utilizan **Mutex (Locks)**. Sin embargo, un uso incorrecto de locks puede desencadenar un **Deadlock** (donde el hilo A espera por el lock B y el hilo B por el lock A indefinidamente). En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Race Condition vs Lock de Sincronización en Python
 import threading
 
@@ -1267,20 +2164,67 @@ print(f"Contador final sincronizado: {contador}") # Exactamente 200,000`,
           answerIndex: 0,
           explanation: "Evita los peligros de memoria compartida pasando mensajes aislados a través de Canales seguros."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 20: TEOREMA DE CONCURRENCIA, PARALELISMO Y MEMORIA COMPARTIDA', ¿cuál afirmación es correcta sobre: Concurrencia (Estructura) vs Paralelismo (Ejecución Simultánea en Múltiples C...?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Concurrencia (Estructura) vs Paralelismo (Ejecución Simultánea en M...", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Concurrencia (Estructura) vs Paralelismo (Ejecución Simultánea en Múltiples Cores). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 20: TEOREMA DE CONCURRENCIA, PARALELISMO Y MEMORIA COMPARTIDA', ¿cuál afirmación es correcta sobre: Condiciones de Carrera (Race Conditions) y Secciones Críticas?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Condiciones de Carrera (Race Conditions) y Secciones Críticas", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Condiciones de Carrera (Race Conditions) y Secciones Críticas. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 20: TEOREMA DE CONCURRENCIA, PARALELISMO Y MEMORIA COMPARTIDA', ¿cuál afirmación es correcta sobre: Mecanismos de Sincronización: Mutex (Lock), Semáforos y Operaciones Atómicas?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Mecanismos de Sincronización: Mutex (Lock), Semáforos y Operaciones...", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Mecanismos de Sincronización: Mutex (Lock), Semáforos y Operaciones Atómicas. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 20: TEOREMA DE CONCURRENCIA, PARALELISMO Y MEMORIA COMPARTIDA', ¿cuál afirmación es correcta sobre: Las 4 Condiciones de Coffman para un Deadlock (Bloqueo Mutuo)?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Las 4 Condiciones de Coffman para un Deadlock (Bloqueo Mutuo)", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Las 4 Condiciones de Coffman para un Deadlock (Bloqueo Mutuo). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 20: TEOREMA DE CONCURRENCIA, PARALELISMO Y MEMORIA COMPARTIDA', ¿cuál afirmación es correcta sobre: Modelo de Actores (Erlang/Akka) y Canales en Go/Rust (CSP)?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Modelo de Actores (Erlang/Akka) y Canales en Go/Rust (CSP)", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Modelo de Actores (Erlang/Akka) y Canales en Go/Rust (CSP). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 20: TEOREMA DE CONCURRENCIA, PARALELISMO Y MEMORIA COMPARTIDA', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 20: TEOREMA DE CONCURRENCIA, PARALELISMO Y MEMORIA COMPARTIDA', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 21,
       title: "MÓDULO 21: GESTIÓN DE COSTOS EN LA NUBE Y OPTIMIZACIÓN FINOPS",
       description: "Ingeniería económica de la nube: FinOps, arquitectura Serverless, Spot Instances y dimensionamiento correcto.",
       items: [
+        
         "La disciplina de FinOps (Financial Operations) en la nube.",
         "Modelos de Cobro en AWS/GCP/Azure: Cómputo (EC2/Lambda), Transferencia de Red y Almacenamiento.",
         "Dimensionamiento Correcto (Right-Sizing) de servidores y bases de datos.",
         "Uso de Instancias Spot / Preemptible para cargas de trabajo batch tolerantes a fallos.",
-        "Estrategias de Caché y Compresión para reducir costos de egress de red."
+        "Estrategias de Caché y Compresión para reducir costos de egress de red.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Un código ineficiente en la era cloud no solo es lento: cuesta miles de dólares en la factura de la empresa. **FinOps** une la ingeniería con las finanzas. Un Ingeniero Senior entiende los costos de transferencia de red (Egress Costs) entre zonas de disponibilidad, aplica **Right-Sizing** para no pagar servidores sobredimensionados al 5% de CPU, e implementa **Instancias Spot** (con descuentos de hasta el 80%) para procesos por lotes asíncronos.",
+      content: "Un código ineficiente en la era cloud no solo es lento: cuesta miles de dólares en la factura de la empresa. **FinOps** une la ingeniería con las finanzas. Un Ingeniero Senior entiende los costos de transferencia de red (Egress Costs) entre zonas de disponibilidad, aplica **Right-Sizing** para no pagar servidores sobredimensionados al 5% de CPU, e implementa **Instancias Spot** (con descuentos de hasta el 80%) para procesos por lotes asíncronos. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Cálculo de optimización de costos Cloud (Ejemplo Serverless Lambda)
 def calcular_costo_lambda(invocaciones: int, duracion_ms: float, memoria_mb: int) -> float:
     # Precios de referencia ilustrativos
@@ -1327,20 +2271,67 @@ print(f"Costo con optimización de código: \\\${costo_despues:.2f} (Ahorro del 
           answerIndex: 0,
           explanation: "En Serverless, la facturación está ligada al tiempo de ejecución; reducir el tiempo de un algoritmo de 500ms a 100ms reduce la factura un 80%."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 21: GESTIÓN DE COSTOS EN LA NUBE Y OPTIMIZACIÓN FINOPS', ¿cuál afirmación es correcta sobre: La disciplina de FinOps (Financial Operations) en la nube?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: La disciplina de FinOps (Financial Operations) en la nube", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que La disciplina de FinOps (Financial Operations) en la nube. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 21: GESTIÓN DE COSTOS EN LA NUBE Y OPTIMIZACIÓN FINOPS', ¿cuál afirmación es correcta sobre: Modelos de Cobro en AWS/GCP/Azure: Cómputo (EC2/Lambda), Transferencia de Red...?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Modelos de Cobro en AWS/GCP/Azure: Cómputo (EC2/Lambda), Transferen...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Modelos de Cobro en AWS/GCP/Azure: Cómputo (EC2/Lambda), Transferencia de Red y Almacenamiento. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 21: GESTIÓN DE COSTOS EN LA NUBE Y OPTIMIZACIÓN FINOPS', ¿cuál afirmación es correcta sobre: Dimensionamiento Correcto (Right-Sizing) de servidores y bases de datos?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Dimensionamiento Correcto (Right-Sizing) de servidores y bases de d...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Dimensionamiento Correcto (Right-Sizing) de servidores y bases de datos. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 21: GESTIÓN DE COSTOS EN LA NUBE Y OPTIMIZACIÓN FINOPS', ¿cuál afirmación es correcta sobre: Uso de Instancias Spot / Preemptible para cargas de trabajo batch tolerantes ...?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Uso de Instancias Spot / Preemptible para cargas de trabajo batch t...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Uso de Instancias Spot / Preemptible para cargas de trabajo batch tolerantes a fallos. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 21: GESTIÓN DE COSTOS EN LA NUBE Y OPTIMIZACIÓN FINOPS', ¿cuál afirmación es correcta sobre: Estrategias de Caché y Compresión para reducir costos de egress de red?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Estrategias de Caché y Compresión para reducir costos de egress de red", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Estrategias de Caché y Compresión para reducir costos de egress de red. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 21: GESTIÓN DE COSTOS EN LA NUBE Y OPTIMIZACIÓN FINOPS', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 21: GESTIÓN DE COSTOS EN LA NUBE Y OPTIMIZACIÓN FINOPS', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 22,
       title: "MÓDULO 22: ÉTICA, PRIVACIDAD Y LICENCIAMIENTO DE CÓDIGO CON IA",
       description: "Gobernanza de software: Licencias Open Source (MIT, GPL, Apache), privacidad de datos (GDPR) y propiedad intelectual.",
       items: [
+        
         "Licencias de Software Open Source: Permisivas (MIT, Apache 2.0) vs Copyleft (GPL v3).",
         "Riesgos de Propiedad Intelectual al entrenar o usar código con IA generativa.",
         "Privacidad de Datos y Regulaciones (GDPR, CCPA, Leyes Locales).",
         "Soberanía de Datos: Modelos Locales (Ollama/Llama 3) vs APIs de Nube.",
-        "Responsabilidad Ética y Sesgos Algorítmicos en Sistemas Autónomos."
+        "Responsabilidad Ética y Sesgos Algorítmicos en Sistemas Autónomos.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Un Ingeniero en Sistemas debe ser consciente de las implicaciones legales y éticas de su software. Copiar código amparado por licencias **GPL v3** en un proyecto propietario comercial puede forzar a la empresa a liberar todo su código fuente. Enviar datos sensibles de clientes o llaves privadas hacia APIs de IA de terceros puede violar la ley **GDPR**. La soberanía de datos exige evaluar **Modelos de IA Locales (Ollama / Llama 3)** cuando se procesan datos confidenciales.",
+      content: "Un Ingeniero en Sistemas debe ser consciente de las implicaciones legales y éticas de su software. Copiar código amparado por licencias **GPL v3** en un proyecto propietario comercial puede forzar a la empresa a liberar todo su código fuente. Enviar datos sensibles de clientes o llaves privadas hacia APIs de IA de terceros puede violar la ley **GDPR**. La soberanía de datos exige evaluar **Modelos de IA Locales (Ollama / Llama 3)** cuando se procesan datos confidenciales. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Ejemplo conceptual de Sanitización de Datos Sensibles (PII) antes de llamar a un LLM
 import re
 
@@ -1385,20 +2376,67 @@ print(f"Prompt sanitizado para enviar a la IA:\\\\n{prompt_seguro}")`,
           answerIndex: 0,
           explanation: "Los modelos imitan los sesgos presentes en sus datos de entrenamiento, pudiendo discriminar de forma injusta en aprobaciones de crédito o contrataciones."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 22: ÉTICA, PRIVACIDAD Y LICENCIAMIENTO DE CÓDIGO CON IA', ¿cuál afirmación es correcta sobre: Licencias de Software Open Source: Permisivas (MIT, Apache 2.0) vs Copyleft (...?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Licencias de Software Open Source: Permisivas (MIT, Apache 2.0) vs ...", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Licencias de Software Open Source: Permisivas (MIT, Apache 2.0) vs Copyleft (GPL v3). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 22: ÉTICA, PRIVACIDAD Y LICENCIAMIENTO DE CÓDIGO CON IA', ¿cuál afirmación es correcta sobre: Riesgos de Propiedad Intelectual al entrenar o usar código con IA generativa?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Riesgos de Propiedad Intelectual al entrenar o usar código con IA g...", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Riesgos de Propiedad Intelectual al entrenar o usar código con IA generativa. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 22: ÉTICA, PRIVACIDAD Y LICENCIAMIENTO DE CÓDIGO CON IA', ¿cuál afirmación es correcta sobre: Privacidad de Datos y Regulaciones (GDPR, CCPA, Leyes Locales)?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Privacidad de Datos y Regulaciones (GDPR, CCPA, Leyes Locales)", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Privacidad de Datos y Regulaciones (GDPR, CCPA, Leyes Locales). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 22: ÉTICA, PRIVACIDAD Y LICENCIAMIENTO DE CÓDIGO CON IA', ¿cuál afirmación es correcta sobre: Soberanía de Datos: Modelos Locales (Ollama/Llama 3) vs APIs de Nube?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Soberanía de Datos: Modelos Locales (Ollama/Llama 3) vs APIs de Nube", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Soberanía de Datos: Modelos Locales (Ollama/Llama 3) vs APIs de Nube. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 22: ÉTICA, PRIVACIDAD Y LICENCIAMIENTO DE CÓDIGO CON IA', ¿cuál afirmación es correcta sobre: Responsabilidad Ética y Sesgos Algorítmicos en Sistemas Autónomos?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Responsabilidad Ética y Sesgos Algorítmicos en Sistemas Autónomos", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Responsabilidad Ética y Sesgos Algorítmicos en Sistemas Autónomos. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 22: ÉTICA, PRIVACIDAD Y LICENCIAMIENTO DE CÓDIGO CON IA', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 22: ÉTICA, PRIVACIDAD Y LICENCIAMIENTO DE CÓDIGO CON IA', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 23,
       title: "MÓDULO 23: INGENIERÍA DE REQUERIMIENTOS Y REFINAMIENTO DE ESPECIFICACIONES",
       description: "Traducción de necesidades de negocio ambiguas en especificidades técnicas rígidas (BDD / User Stories).",
       items: [
+        
         "El costo exponencial de corregir un error en Producción vs en la fase de Requerimientos.",
         "Desarrollo Guiado por Comportamiento (BDD - Behavior-Driven Development con sintaxis Given-When-Then).",
         "Historias de Usuario (User Stories) con Criterios de Aceptación Inambiguos.",
         "Técnica de los 3 Amigos (Desarrollador, Tester, Producto).",
-        "Manejo de Especificaciones Incompletas y Preguntas Clave de Arquitectura."
+        "Manejo de Especificaciones Incompletas y Preguntas Clave de Arquitectura.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "El error más caro en ingeniería de software es construir con perfección el producto equivocado. La **Ingeniería de Requerimientos** transforma ideas difusas en especificidades técnicas inambiguas. La metodología **BDD (Behavior-Driven Development)** utiliza el formato `GIVEN` (Dado un contexto), `WHEN` (Cuando ocurre una acción) y `THEN` (Entonces se espera este resultado). Esta especificación formal sirve de entrada perfecta tanto para pruebas automatizadas como para guiar a los agentes de IA sin margen de error.",
+      content: "El error más caro en ingeniería de software es construir con perfección el producto equivocado. La **Ingeniería de Requerimientos** transforma ideas difusas en especificidades técnicas inambiguas. La metodología **BDD (Behavior-Driven Development)** utiliza el formato `GIVEN` (Dado un contexto), `WHEN` (Cuando ocurre una acción) y `THEN` (Entonces se espera este resultado). Esta especificación formal sirve de entrada perfecta tanto para pruebas automatizadas como para guiar a los agentes de IA sin margen de error. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Ejemplo de Especificación BDD (Sintaxis Gherkin / behave en Python)
 # Feature: Retiro de efectivo en cajero automático
 
@@ -1449,20 +2487,67 @@ print(f"Resultado BDD (Entregado, Nuevo Saldo): {simular_escenario_bdd(500, 100)
           answerIndex: 0,
           explanation: "El formato estructurado GIVEN-WHEN-THEN elimina la vaguedad del lenguaje natural permitiendo al agente generar código exacto."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 23: INGENIERÍA DE REQUERIMIENTOS Y REFINAMIENTO DE ESPECIFICACIONES', ¿cuál afirmación es correcta sobre: El costo exponencial de corregir un error en Producción vs en la fase de Requ...?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: El costo exponencial de corregir un error en Producción vs en la fa...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que El costo exponencial de corregir un error en Producción vs en la fase de Requerimientos. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 23: INGENIERÍA DE REQUERIMIENTOS Y REFINAMIENTO DE ESPECIFICACIONES', ¿cuál afirmación es correcta sobre: Desarrollo Guiado por Comportamiento (BDD - Behavior-Driven Development con s...?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Desarrollo Guiado por Comportamiento (BDD - Behavior-Driven Develop...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Desarrollo Guiado por Comportamiento (BDD - Behavior-Driven Development con sintaxis Given-When-Then). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 23: INGENIERÍA DE REQUERIMIENTOS Y REFINAMIENTO DE ESPECIFICACIONES', ¿cuál afirmación es correcta sobre: Historias de Usuario (User Stories) con Criterios de Aceptación Inambiguos?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Historias de Usuario (User Stories) con Criterios de Aceptación Ina...", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Historias de Usuario (User Stories) con Criterios de Aceptación Inambiguos. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 23: INGENIERÍA DE REQUERIMIENTOS Y REFINAMIENTO DE ESPECIFICACIONES', ¿cuál afirmación es correcta sobre: Técnica de los 3 Amigos (Desarrollador, Tester, Producto)?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Técnica de los 3 Amigos (Desarrollador, Tester, Producto)", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Técnica de los 3 Amigos (Desarrollador, Tester, Producto). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 23: INGENIERÍA DE REQUERIMIENTOS Y REFINAMIENTO DE ESPECIFICACIONES', ¿cuál afirmación es correcta sobre: Manejo de Especificaciones Incompletas y Preguntas Clave de Arquitectura?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Manejo de Especificaciones Incompletas y Preguntas Clave de Arquite...", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Manejo de Especificaciones Incompletas y Preguntas Clave de Arquitectura. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 23: INGENIERÍA DE REQUERIMIENTOS Y REFINAMIENTO DE ESPECIFICACIONES', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 23: INGENIERÍA DE REQUERIMIENTOS Y REFINAMIENTO DE ESPECIFICACIONES', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 24,
       title: "MÓDULO 24: DIAGNÓSTICO DE INCIDENTES EN PRODUCCIÓN (ROOT CAUSE ANALYSIS)",
       description: "Gestión de crisis en caliente: Análisis de Causa Raíz (RCA), Blameless Post-Mortems y depuración en producción.",
       items: [
+        
         "Metodología de respuesta a incidentes en caliente (Triage, Mitigación, Resolución).",
         "Análisis de Causa Raíz (RCA - Root Cause Analysis) y la técnica de los 5 Porqués.",
         "Post-Mortems Sin Culpas (Blameless Post-Mortems) para fomentar la cultura de aprendizaje.",
         "Depuración de problemas esporádicos (Heisenbugs e Intermittent Failures).",
-        "Creación de Libros de Jugadas (Runbooks / Playbooks) para soporte de operaciones."
+        "Creación de Libros de Jugadas (Runbooks / Playbooks) para soporte de operaciones.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Cuando el sistema de producción se cae a las 2 AM, no es momento de entrar en pánico ni de buscar culpables. El Ingeniero Senior sigue una metodología de respuesta a incidentes: primero **Mitigar** (estabilizar el servicio con rollback o degradación), luego **Investigar** el problema mediante métricas y logs correlacionados, y finalmente realizar un **Post-Mortem Sin Culpas (Blameless Post-Mortem)** aplicando los **5 Porqués** para corregir el proceso de fondo.",
+      content: "Cuando el sistema de producción se cae a las 2 AM, no es momento de entrar en pánico ni de buscar culpables. El Ingeniero Senior sigue una metodología de respuesta a incidentes: primero **Mitigar** (estabilizar el servicio con rollback o degradación), luego **Investigar** el problema mediante métricas y logs correlacionados, y finalmente realizar un **Post-Mortem Sin Culpas (Blameless Post-Mortem)** aplicando los **5 Porqués** para corregir el proceso de fondo. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Ejemplo de Técnica de los 5 Porqués (Root Cause Analysis en Python)
 def analisis_5_porques_incidente() -> list[str]:
     return [
@@ -1506,20 +2591,67 @@ for paso in analisis_5_porques_incidente():
           answerIndex: 0,
           explanation: "Proporciona guías de acción claras al equipo de guardia para responder eficientemente ante emergencias."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 24: DIAGNÓSTICO DE INCIDENTES EN PRODUCCIÓN (ROOT CAUSE ANALYSIS)', ¿cuál afirmación es correcta sobre: Metodología de respuesta a incidentes en caliente (Triage, Mitigación, Resolu...?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Metodología de respuesta a incidentes en caliente (Triage, Mitigaci...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Metodología de respuesta a incidentes en caliente (Triage, Mitigación, Resolución). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 24: DIAGNÓSTICO DE INCIDENTES EN PRODUCCIÓN (ROOT CAUSE ANALYSIS)', ¿cuál afirmación es correcta sobre: Análisis de Causa Raíz (RCA - Root Cause Analysis) y la técnica de los 5 Porqués?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Análisis de Causa Raíz (RCA - Root Cause Analysis) y la técnica de ...", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Análisis de Causa Raíz (RCA - Root Cause Analysis) y la técnica de los 5 Porqués. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 24: DIAGNÓSTICO DE INCIDENTES EN PRODUCCIÓN (ROOT CAUSE ANALYSIS)', ¿cuál afirmación es correcta sobre: Post-Mortems Sin Culpas (Blameless Post-Mortems) para fomentar la cultura de ...?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Post-Mortems Sin Culpas (Blameless Post-Mortems) para fomentar la c...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Post-Mortems Sin Culpas (Blameless Post-Mortems) para fomentar la cultura de aprendizaje. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 24: DIAGNÓSTICO DE INCIDENTES EN PRODUCCIÓN (ROOT CAUSE ANALYSIS)', ¿cuál afirmación es correcta sobre: Depuración de problemas esporádicos (Heisenbugs e Intermittent Failures)?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Depuración de problemas esporádicos (Heisenbugs e Intermittent Fail...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Depuración de problemas esporádicos (Heisenbugs e Intermittent Failures). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 24: DIAGNÓSTICO DE INCIDENTES EN PRODUCCIÓN (ROOT CAUSE ANALYSIS)', ¿cuál afirmación es correcta sobre: Creación de Libros de Jugadas (Runbooks / Playbooks) para soporte de operaciones?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Creación de Libros de Jugadas (Runbooks / Playbooks) para soporte d...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Creación de Libros de Jugadas (Runbooks / Playbooks) para soporte de operaciones. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 24: DIAGNÓSTICO DE INCIDENTES EN PRODUCCIÓN (ROOT CAUSE ANALYSIS)', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 24: DIAGNÓSTICO DE INCIDENTES EN PRODUCCIÓN (ROOT CAUSE ANALYSIS)', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 25,
       title: "MÓDULO 25: EL MANIFIESTO DEL INGENIERO SENIOR: LIDERAZGO TÉCNICO Y MENTALIDAD IRREEMPLAZABLE",
       description: "La síntesis final: Liderazgo técnico, mentalidad de resolución de problemas, ética y aprendizaje continuo en la era de la IA.",
       items: [
+        
         "El perfil del Ingeniero en Sistemas Senior de la era moderna.",
         "Pensamiento de Primeros Principios (First Principles Thinking).",
         "Comunicación efectiva de decisiones técnicas a directivos y clientes.",
         "Curiosidad intelectual, desaprendizaje y adaptación tecnológica continua.",
-        "El Manifiesto QuimiSell del Ingeniero de Software Irreemplazable."
+        "El Manifiesto QuimiSell del Ingeniero de Software Irreemplazable.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Llegamos a la cumbre del programa. La Inteligencia Artificial continuará evolucionando a un ritmo vertiginoso, pero el **Ingeniero en Sistemas Senior** es y seguirá siendo irreemplazable. La combinación de Razonamiento desde Primeros Principios, Ética Inquebrantable, Capacidad de Comunicación Estratégica, Criterio de Arquitectura y Pasión por Resolver Problemas Humanos convierte a un profesional en el líder indiscutible que guía la transformación del software en la era artificial.",
+      content: "Llegamos a la cumbre del programa. La Inteligencia Artificial continuará evolucionando a un ritmo vertiginoso, pero el **Ingeniero en Sistemas Senior** es y seguirá siendo irreemplazable. La combinación de Razonamiento desde Primeros Principios, Ética Inquebrantable, Capacidad de Comunicación Estratégica, Criterio de Arquitectura y Pasión por Resolver Problemas Humanos convierte a un profesional en el líder indiscutible que guía la transformación del software en la era artificial. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# El Manifiesto del Ingeniero de Software de Elite
 2. No copio ni pego código sin auditar su seguridad, complejidad y correctness.
 3. Uso la Inteligencia Artificial como un amplificador de mi intelecto, no como mi reemplazo.
@@ -1558,6 +2690,49 @@ print(MANIFIESTO_INGENIERO_SENIOR)`,
           options: ["Que el conocimiento profundo de los sistemas te convierte en un profesional libre, autónomo e irreemplazable en cualquier época", "Que la sintaxis es lo único importante", "Que las computadoras piensan por sí solas"],
           answerIndex: 0,
           explanation: "El dominio de los principios fundamentales de la ingeniería te distingue de un ejecutor pasivo y te posiciona como un verdadero arquitecto del futuro."
+        }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 25: EL MANIFIESTO DEL INGENIERO SENIOR: LIDERAZGO TÉCNICO Y MENTALIDAD IRREEMPLAZABLE', ¿cuál afirmación es correcta sobre: El perfil del Ingeniero en Sistemas Senior de la era moderna?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: El perfil del Ingeniero en Sistemas Senior de la era moderna", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que El perfil del Ingeniero en Sistemas Senior de la era moderna. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 25: EL MANIFIESTO DEL INGENIERO SENIOR: LIDERAZGO TÉCNICO Y MENTALIDAD IRREEMPLAZABLE', ¿cuál afirmación es correcta sobre: Pensamiento de Primeros Principios (First Principles Thinking)?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Pensamiento de Primeros Principios (First Principles Thinking)", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Pensamiento de Primeros Principios (First Principles Thinking). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 25: EL MANIFIESTO DEL INGENIERO SENIOR: LIDERAZGO TÉCNICO Y MENTALIDAD IRREEMPLAZABLE', ¿cuál afirmación es correcta sobre: Comunicación efectiva de decisiones técnicas a directivos y clientes?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Comunicación efectiva de decisiones técnicas a directivos y clientes", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Comunicación efectiva de decisiones técnicas a directivos y clientes. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 25: EL MANIFIESTO DEL INGENIERO SENIOR: LIDERAZGO TÉCNICO Y MENTALIDAD IRREEMPLAZABLE', ¿cuál afirmación es correcta sobre: Curiosidad intelectual, desaprendizaje y adaptación tecnológica continua?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Curiosidad intelectual, desaprendizaje y adaptación tecnológica con...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Curiosidad intelectual, desaprendizaje y adaptación tecnológica continua. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 25: EL MANIFIESTO DEL INGENIERO SENIOR: LIDERAZGO TÉCNICO Y MENTALIDAD IRREEMPLAZABLE', ¿cuál afirmación es correcta sobre: El Manifiesto QuimiSell del Ingeniero de Software Irreemplazable?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: El Manifiesto QuimiSell del Ingeniero de Software Irreemplazable", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que El Manifiesto QuimiSell del Ingeniero de Software Irreemplazable. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 25: EL MANIFIESTO DEL INGENIERO SENIOR: LIDERAZGO TÉCNICO Y MENTALIDAD IRREEMPLAZABLE', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 25: EL MANIFIESTO DEL INGENIERO SENIOR: LIDERAZGO TÉCNICO Y MENTALIDAD IRREEMPLAZABLE', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
         }
       ]
     }

@@ -80,13 +80,17 @@ export const ALGORITHMIC_COMPLEXITY_COURSE: Course = {
       title: "MÓDULO 1: INTRODUCCIÓN AL ANÁLISIS DE ALGORITMOS",
       description: "Por qué medimos eficiencia con matemáticas y no con cronómetros.",
       items: [
+        
         "Definición formal de algoritmo y costo computacional.",
         "Entrada n y crecimiento asintótico: la variable que importa.",
         "Tiempo de CPU vs número de operaciones elementales.",
         "Modelo RAM: acceso O(1) a memoria y costo de lectura/escritura.",
-        "Por qué el análisis previo al código evita deuda técnica en producción."
+        "Por qué el análisis previo al código evita deuda técnica en producción.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Antes de escribir una sola línea de código, un ingeniero debe responder: ¿qué pasa si mañana los datos crecen 100 veces? El análisis de algoritmos no mide segundos en tu laptop; mide cómo crece el número de operaciones elementales (comparaciones, asignaciones, accesos a memoria) en función del tamaño de entrada n. Un algoritmo que tarda 0.001 s con 1,000 registros pero 400 s con 100,000 registros tiene un problema de escalabilidad, no de hardware. Este curso entero se dedica a dominar esa lenguaje matemático: la notación Big-O y sus aplicaciones, desde bucles en Python hasta kernels en GPUs de Inteligencia Artificial.",
+      content: "Antes de escribir una sola línea de código, un ingeniero debe responder: ¿qué pasa si mañana los datos crecen 100 veces? El análisis de algoritmos no mide segundos en tu laptop; mide cómo crece el número de operaciones elementales (comparaciones, asignaciones, accesos a memoria) en función del tamaño de entrada n. Un algoritmo que tarda 0.001 s con 1,000 registros pero 400 s con 100,000 registros tiene un problema de escalabilidad, no de hardware. Este curso entero se dedica a dominar esa lenguaje matemático: la notación Big-O y sus aplicaciones, desde bucles en Python hasta kernels en GPUs de Inteligencia Artificial. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Comparación empírica vs análisis teórico
 import time
 
@@ -132,20 +136,67 @@ n_grande  = list(range(1_000_000))
           answerIndex: 1,
           explanation: "O(1) indica que el número de operaciones permanece acotado aunque n aumente."
         },
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 1: INTRODUCCIÓN AL ANÁLISIS DE ALGORITMOS', ¿cuál afirmación es correcta sobre: Definición formal de algoritmo y costo computacional?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Definición formal de algoritmo y costo computacional", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Definición formal de algoritmo y costo computacional. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 1: INTRODUCCIÓN AL ANÁLISIS DE ALGORITMOS', ¿cuál afirmación es correcta sobre: Entrada n y crecimiento asintótico: la variable que importa?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Entrada n y crecimiento asintótico: la variable que importa", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Entrada n y crecimiento asintótico: la variable que importa. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 1: INTRODUCCIÓN AL ANÁLISIS DE ALGORITMOS', ¿cuál afirmación es correcta sobre: Tiempo de CPU vs número de operaciones elementales?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Tiempo de CPU vs número de operaciones elementales", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Tiempo de CPU vs número de operaciones elementales. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 1: INTRODUCCIÓN AL ANÁLISIS DE ALGORITMOS', ¿cuál afirmación es correcta sobre: Modelo RAM: acceso O(1) a memoria y costo de lectura/escritura?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Modelo RAM: acceso O(1) a memoria y costo de lectura/escritura", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Modelo RAM: acceso O(1) a memoria y costo de lectura/escritura. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 1: INTRODUCCIÓN AL ANÁLISIS DE ALGORITMOS', ¿cuál afirmación es correcta sobre: Por qué el análisis previo al código evita deuda técnica en producción?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Por qué el análisis previo al código evita deuda técnica en producción", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Por qué el análisis previo al código evita deuda técnica en producción. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 1: INTRODUCCIÓN AL ANÁLISIS DE ALGORITMOS', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 1: INTRODUCCIÓN AL ANÁLISIS DE ALGORITMOS', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 2,
       title: "MÓDULO 2: NOTACIÓN O — LÍMITE SUPERIOR",
       description: "La definición formal de O(f(n)): el peor escenario que garantizamos.",
       items: [
+        
         "Definición: T(n) ∈ O(f(n)) si ∃ c, n₀ tal que T(n) ≤ c·f(n) para n ≥ n₀.",
         "O como cota superior: prometemos que nunca será peor que esto.",
         "Ejemplos: 2n + 5 ∈ O(n), n² + n ∈ O(n²), 100 ∈ O(1).",
         "Jerarquía de crecimiento: O(1) < O(log n) < O(n) < O(n log n) < O(n²) < O(2ⁿ).",
-        "Errores comunes: confundir O con '=' exacto."
+        "Errores comunes: confundir O con '=' exacto.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "La notación O (Big-O) responde a la pregunta del jefe de ingeniería: ¿cuál es lo PEOR que puede pasar? Formalmente, decimos que T(n) ∈ O(f(n)) si existe una constante c y un umbral n₀ a partir del cual T(n) nunca supera c·f(n). Esto es una cota superior, no una igualdad exacta. Decir que un algoritmo es O(n²) no significa que siempre ejecute exactamente n² pasos; significa que está acotado por algo proporcional a n². En entrevistas técnicas y diseño de sistemas, O representa la garantía de escalabilidad.",
+      content: "La notación O (Big-O) responde a la pregunta del jefe de ingeniería: ¿cuál es lo PEOR que puede pasar? Formalmente, decimos que T(n) ∈ O(f(n)) si existe una constante c y un umbral n₀ a partir del cual T(n) nunca supera c·f(n). Esto es una cota superior, no una igualdad exacta. Decir que un algoritmo es O(n²) no significa que siempre ejecute exactamente n² pasos; significa que está acotado por algo proporcional a n². En entrevistas técnicas y diseño de sistemas, O representa la garantía de escalabilidad. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Demostración intuitiva: 3n + 10 ∈ O(n)
 def T(n):
     return 3 * n + 10
@@ -191,20 +242,67 @@ def ejemplo_cuadratico(arr):
           answerIndex: 1,
           explanation: "Big-O abstrae el hardware y permite comparación objetiva entre algoritmos."
         },
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 2: NOTACIÓN O — LÍMITE SUPERIOR', ¿cuál afirmación es correcta sobre: Definición: T(n) ∈ O(f(n)) si ∃ c, n₀ tal que T(n) ≤ c·f(n) para n ≥ n₀?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Definición: T(n) ∈ O(f(n)) si ∃ c, n₀ tal que T(n) ≤ c·f(n) para n ...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Definición: T(n) ∈ O(f(n)) si ∃ c, n₀ tal que T(n) ≤ c·f(n) para n ≥ n₀. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 2: NOTACIÓN O — LÍMITE SUPERIOR', ¿cuál afirmación es correcta sobre: O como cota superior: prometemos que nunca será peor que esto?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: O como cota superior: prometemos que nunca será peor que esto", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que O como cota superior: prometemos que nunca será peor que esto. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 2: NOTACIÓN O — LÍMITE SUPERIOR', ¿cuál afirmación es correcta sobre: Ejemplos: 2n + 5 ∈ O(n), n² + n ∈ O(n²), 100 ∈ O(1)?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Ejemplos: 2n + 5 ∈ O(n), n² + n ∈ O(n²), 100 ∈ O(1)", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Ejemplos: 2n + 5 ∈ O(n), n² + n ∈ O(n²), 100 ∈ O(1). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 2: NOTACIÓN O — LÍMITE SUPERIOR', ¿cuál afirmación es correcta sobre: Jerarquía de crecimiento: O(1) < O(log n) < O(n) < O(n log n) < O(n²) < O(2ⁿ)?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Jerarquía de crecimiento: O(1) < O(log n) < O(n) < O(n log n) < O(n...", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Jerarquía de crecimiento: O(1) < O(log n) < O(n) < O(n log n) < O(n²) < O(2ⁿ). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 2: NOTACIÓN O — LÍMITE SUPERIOR', ¿cuál afirmación es correcta sobre: Errores comunes: confundir O con '=' exacto?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Errores comunes: confundir O con '=' exacto", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores comunes: confundir O con '=' exacto. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 2: NOTACIÓN O — LÍMITE SUPERIOR', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 2: NOTACIÓN O — LÍMITE SUPERIOR', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 3,
       title: "MÓDULO 3: NOTACIÓN Ω Y Θ — LÍMITES INFERIOR Y AJUSTADO",
       description: "Completando el panorama: peor caso, mejor caso y costo exacto asintótico.",
       items: [
+        
         "Ω(f(n)): cota inferior — el algoritmo no puede ser más rápido que esto.",
         "Θ(f(n)): cota ajustada — T(n) crece exactamente como f(n) (O y Ω a la vez).",
         "Relación: T(n) ∈ Θ(f(n)) ⇔ T(n) ∈ O(f(n)) y T(n) ∈ Ω(f(n)).",
         "Ejemplo: Merge Sort es Θ(n log n) en todos los casos.",
-        "Cuándo importa Ω: límites teóricos de problemas (ordenamiento por comparación Ω(n log n))."
+        "Cuándo importa Ω: límites teóricos de problemas (ordenamiento por comparación Ω(n log n)).",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Big-O solo cuenta la mitad de la historia. La notación Ω (Omega) describe la cota inferior: ningún input puede forzar al algoritmo a hacer menos trabajo que Ω(f(n)) en el peor análisis dual. La notación Θ (Theta) es el caso perfecto: el algoritmo crece tanto por arriba como por abajo como f(n). Por ejemplo, recorrer un arreglo para encontrar el máximo es Θ(n) porque siempre debes mirar cada elemento (Ω(n)) y nunca haces más de n comparaciones (O(n)). En teoría de algoritmos, demostrar que un problema de ordenamiento por comparaciones requiere Ω(n log n) operaciones es un resultado fundamental que explica por qué Merge Sort y Heap Sort son óptimos.",
+      content: "Big-O solo cuenta la mitad de la historia. La notación Ω (Omega) describe la cota inferior: ningún input puede forzar al algoritmo a hacer menos trabajo que Ω(f(n)) en el peor análisis dual. La notación Θ (Theta) es el caso perfecto: el algoritmo crece tanto por arriba como por abajo como f(n). Por ejemplo, recorrer un arreglo para encontrar el máximo es Θ(n) porque siempre debes mirar cada elemento (Ω(n)) y nunca haces más de n comparaciones (O(n)). En teoría de algoritmos, demostrar que un problema de ordenamiento por comparaciones requiere Ω(n log n) operaciones es un resultado fundamental que explica por qué Merge Sort y Heap Sort son óptimos. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Búsqueda lineal del máximo: Θ(n)
 def maximo(arr):
     if not arr:
@@ -249,20 +347,67 @@ def maximo(arr):
           answerIndex: 1,
           explanation: "Las cotas pueden diferir; Θ requiere mismo orden arriba y abajo en todos los casos analizados."
         },
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 3: NOTACIÓN Ω Y Θ — LÍMITES INFERIOR Y AJUSTADO', ¿cuál afirmación es correcta sobre: Ω(f(n)): cota inferior — el algoritmo no puede ser más rápido que esto?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Ω(f(n)): cota inferior — el algoritmo no puede ser más rápido que esto", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Ω(f(n)): cota inferior — el algoritmo no puede ser más rápido que esto. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 3: NOTACIÓN Ω Y Θ — LÍMITES INFERIOR Y AJUSTADO', ¿cuál afirmación es correcta sobre: Θ(f(n)): cota ajustada — T(n) crece exactamente como f(n) (O y Ω a la vez)?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Θ(f(n)): cota ajustada — T(n) crece exactamente como f(n) (O y Ω a ...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Θ(f(n)): cota ajustada — T(n) crece exactamente como f(n) (O y Ω a la vez). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 3: NOTACIÓN Ω Y Θ — LÍMITES INFERIOR Y AJUSTADO', ¿cuál afirmación es correcta sobre: Relación: T(n) ∈ Θ(f(n)) ⇔ T(n) ∈ O(f(n)) y T(n) ∈ Ω(f(n))?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Relación: T(n) ∈ Θ(f(n)) ⇔ T(n) ∈ O(f(n)) y T(n) ∈ Ω(f(n))", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Relación: T(n) ∈ Θ(f(n)) ⇔ T(n) ∈ O(f(n)) y T(n) ∈ Ω(f(n)). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 3: NOTACIÓN Ω Y Θ — LÍMITES INFERIOR Y AJUSTADO', ¿cuál afirmación es correcta sobre: Ejemplo: Merge Sort es Θ(n log n) en todos los casos?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Ejemplo: Merge Sort es Θ(n log n) en todos los casos", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Ejemplo: Merge Sort es Θ(n log n) en todos los casos. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 3: NOTACIÓN Ω Y Θ — LÍMITES INFERIOR Y AJUSTADO', ¿cuál afirmación es correcta sobre: Cuándo importa Ω: límites teóricos de problemas (ordenamiento por comparación...?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Cuándo importa Ω: límites teóricos de problemas (ordenamiento por c...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Cuándo importa Ω: límites teóricos de problemas (ordenamiento por comparación Ω(n log n)). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 3: NOTACIÓN Ω Y Θ — LÍMITES INFERIOR Y AJUSTADO', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 3: NOTACIÓN Ω Y Θ — LÍMITES INFERIOR Y AJUSTADO', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 4,
       title: "MÓDULO 4: BEST, WORST Y AVERAGE CASE",
       description: "Tres escenarios de entrada y cuál elige la industria para garantías reales.",
       items: [
+        
         "Best Case: la entrada más favorable (ej. bubble sort en arreglo ya ordenado).",
         "Worst Case: la entrada más adversa (ej. quicksort con pivote mínimo siempre).",
         "Average Case: expectativa matemática sobre entradas aleatorias.",
         "Amortized vs Average: promedios sobre secuencias de operaciones.",
-        "Por qué contratos SLA y sistemas críticos exigen análisis de peor caso."
+        "Por qué contratos SLA y sistemas críticos exigen análisis de peor caso.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Un mismo algoritmo puede comportarse muy distinto según la entrada. Quick Sort promedio O(n log n) pero peor caso O(n²) si el pivote es siempre el mínimo. Insertion Sort es O(n) en el mejor caso (casi ordenado) pero O(n²) en el peor. En producción, los ingenieros de Google, AWS o bancos diseñan para el PEOR caso porque un atacante o un pico de tráfico puede empujar exactamente ese escenario. El caso promedio es útil en simulaciones probabilísticas, pero nunca sustituye la garantía de peor caso cuando la fiabilidad es crítica.",
+      content: "Un mismo algoritmo puede comportarse muy distinto según la entrada. Quick Sort promedio O(n log n) pero peor caso O(n²) si el pivote es siempre el mínimo. Insertion Sort es O(n) en el mejor caso (casi ordenado) pero O(n²) en el peor. En producción, los ingenieros de Google, AWS o bancos diseñan para el PEOR caso porque un atacante o un pico de tráfico puede empujar exactamente ese escenario. El caso promedio es útil en simulaciones probabilísticas, pero nunca sustituye la garantía de peor caso cuando la fiabilidad es crítica. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Quick Sort: peor caso O(n²), promedio O(n log n)
 def quicksort(arr):
     if len(arr) <= 1:
@@ -305,20 +450,67 @@ def quicksort(arr):
           answerIndex: 0,
           explanation: "Una pasada detecta que no hubo intercambios y termina."
         },
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 4: BEST, WORST Y AVERAGE CASE', ¿cuál afirmación es correcta sobre: Best Case: la entrada más favorable (ej. bubble sort en arreglo ya ordenado)?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Best Case: la entrada más favorable (ej. bubble sort en arreglo ya ...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Best Case: la entrada más favorable (ej. bubble sort en arreglo ya ordenado). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 4: BEST, WORST Y AVERAGE CASE', ¿cuál afirmación es correcta sobre: Worst Case: la entrada más adversa (ej. quicksort con pivote mínimo siempre)?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Worst Case: la entrada más adversa (ej. quicksort con pivote mínimo...", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Worst Case: la entrada más adversa (ej. quicksort con pivote mínimo siempre). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 4: BEST, WORST Y AVERAGE CASE', ¿cuál afirmación es correcta sobre: Average Case: expectativa matemática sobre entradas aleatorias?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Average Case: expectativa matemática sobre entradas aleatorias", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Average Case: expectativa matemática sobre entradas aleatorias. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 4: BEST, WORST Y AVERAGE CASE', ¿cuál afirmación es correcta sobre: Amortized vs Average: promedios sobre secuencias de operaciones?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Amortized vs Average: promedios sobre secuencias de operaciones", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Amortized vs Average: promedios sobre secuencias de operaciones. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 4: BEST, WORST Y AVERAGE CASE', ¿cuál afirmación es correcta sobre: Por qué contratos SLA y sistemas críticos exigen análisis de peor caso?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Por qué contratos SLA y sistemas críticos exigen análisis de peor caso", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Por qué contratos SLA y sistemas críticos exigen análisis de peor caso. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 4: BEST, WORST Y AVERAGE CASE', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 4: BEST, WORST Y AVERAGE CASE', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 5,
       title: "MÓDULO 5: REGLAS DE SIMPLIFICACIÓN ASINTÓTICA",
       description: "Eliminar constantes, términos menores y dominar el análisis en minutos.",
       items: [
+        
         "Regla 1: descartar coeficientes (4n² → O(n²)).",
         "Regla 2: quedarse con el término dominante (n² + n + 100 → O(n²)).",
         "Regla 3: suma de complejidades = máximo de los sumandos.",
         "Regla 4: producto de bucles anidados = producto de rangos.",
-        "Regla 5: logaritmos de distinta base difieren solo por constante → O(log n)."
+        "Regla 5: logaritmos de distinta base difieren solo por constante → O(log n).",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "El análisis asintótico tiene reglas algebraicas simples que aceleran el trabajo diario. Si T(n) = 7n³ + 2n² + 999, el término dominante es 7n³ y la complejidad es O(n³). Si tienes un bucle O(n) seguido de otro O(n²), el total es O(n²) porque el segundo domina. Si tienes bucles anidados de n y m iteraciones, obtienes O(n·m). Estas reglas evitan perder horas contando instrucciones máquina y permiten leer código ajeno con velocidad profesional.",
+      content: "El análisis asintótico tiene reglas algebraicas simples que aceleran el trabajo diario. Si T(n) = 7n³ + 2n² + 999, el término dominante es 7n³ y la complejidad es O(n³). Si tienes un bucle O(n) seguido de otro O(n²), el total es O(n²) porque el segundo domina. Si tienes bucles anidados de n y m iteraciones, obtienes O(n·m). Estas reglas evitan perder horas contando instrucciones máquina y permiten leer código ajeno con velocidad profesional. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Ejemplo: simplificar T(n) = 2n² + 50n + log(n) + 1000
 # Dominante: n² → O(n²)
 
@@ -364,20 +556,67 @@ def ejemplo_mixto(n):
           answerIndex: 0,
           explanation: "Cambiar base del logaritmo solo multiplica por constante."
         },
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 5: REGLAS DE SIMPLIFICACIÓN ASINTÓTICA', ¿cuál afirmación es correcta sobre: Regla 1: descartar coeficientes (4n² → O(n²))?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Regla 1: descartar coeficientes (4n² → O(n²))", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Regla 1: descartar coeficientes (4n² → O(n²)). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 5: REGLAS DE SIMPLIFICACIÓN ASINTÓTICA', ¿cuál afirmación es correcta sobre: Regla 2: quedarse con el término dominante (n² + n + 100 → O(n²))?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Regla 2: quedarse con el término dominante (n² + n + 100 → O(n²))", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Regla 2: quedarse con el término dominante (n² + n + 100 → O(n²)). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 5: REGLAS DE SIMPLIFICACIÓN ASINTÓTICA', ¿cuál afirmación es correcta sobre: Regla 3: suma de complejidades = máximo de los sumandos?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Regla 3: suma de complejidades = máximo de los sumandos", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Regla 3: suma de complejidades = máximo de los sumandos. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 5: REGLAS DE SIMPLIFICACIÓN ASINTÓTICA', ¿cuál afirmación es correcta sobre: Regla 4: producto de bucles anidados = producto de rangos?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Regla 4: producto de bucles anidados = producto de rangos", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Regla 4: producto de bucles anidados = producto de rangos. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 5: REGLAS DE SIMPLIFICACIÓN ASINTÓTICA', ¿cuál afirmación es correcta sobre: Regla 5: logaritmos de distinta base difieren solo por constante → O(log n)?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Regla 5: logaritmos de distinta base difieren solo por constante → ...", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Regla 5: logaritmos de distinta base difieren solo por constante → O(log n). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 5: REGLAS DE SIMPLIFICACIÓN ASINTÓTICA', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 5: REGLAS DE SIMPLIFICACIÓN ASINTÓTICA', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 6,
       title: "MÓDULO 6: ANÁLISIS DE BUCLES ITERATIVOS",
       description: "Contar iteraciones: simples, anidados, dependientes y con saltos.",
       items: [
+        
         "Bucle simple for i in range(n): → O(n).",
         "Bucles anidados independientes: O(n·k) o O(n²).",
         "Bucle dependiente: for i in range(n): for j in range(i): → O(n²).",
         "Bucle con división: while n > 1: n //= 2 → O(log n).",
-        "Patrones híbridos: dos punteros, ventana deslizante O(n)."
+        "Patrones híbridos: dos punteros, ventana deslizante O(n).",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "La mayoría del código imperativo se analiza contando cuántas veces se ejecuta el cuerpo del bucle. Un solo bucle sobre n elementos es O(n). Dos bucles anidados completos son O(n²). Pero cuidado: un bucle interno que corre i veces (triangular) suma 0+1+2+...+(n-1) = n(n-1)/2, que sigue siendo O(n²). Un while que divide n entre 2 en cada paso ejecuta O(log n) iteraciones. Dominar estos patrones permite auditar pull requests en segundos.",
+      content: "La mayoría del código imperativo se analiza contando cuántas veces se ejecuta el cuerpo del bucle. Un solo bucle sobre n elementos es O(n). Dos bucles anidados completos son O(n²). Pero cuidado: un bucle interno que corre i veces (triangular) suma 0+1+2+...+(n-1) = n(n-1)/2, que sigue siendo O(n²). Un while que divide n entre 2 en cada paso ejecuta O(log n) iteraciones. Dominar estos patrones permite auditar pull requests en segundos. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Triangular: O(n²)
 def triangular(n):
     count = 0
@@ -424,20 +663,67 @@ def potencia_dos(n):
           answerIndex: 1,
           explanation: "Cada puntero avanza como máximo n veces en total."
         },
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 6: ANÁLISIS DE BUCLES ITERATIVOS', ¿cuál afirmación es correcta sobre: Bucle simple for i in range(n): → O(n)?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Bucle simple for i in range(n): → O(n)", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Bucle simple for i in range(n): → O(n). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 6: ANÁLISIS DE BUCLES ITERATIVOS', ¿cuál afirmación es correcta sobre: Bucles anidados independientes: O(n·k) o O(n²)?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Bucles anidados independientes: O(n·k) o O(n²)", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Bucles anidados independientes: O(n·k) o O(n²). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 6: ANÁLISIS DE BUCLES ITERATIVOS', ¿cuál afirmación es correcta sobre: Bucle dependiente: for i in range(n): for j in range(i): → O(n²)?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Bucle dependiente: for i in range(n): for j in range(i): → O(n²)", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Bucle dependiente: for i in range(n): for j in range(i): → O(n²). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 6: ANÁLISIS DE BUCLES ITERATIVOS', ¿cuál afirmación es correcta sobre: Bucle con división: while n > 1: n //= 2 → O(log n)?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Bucle con división: while n > 1: n //= 2 → O(log n)", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Bucle con división: while n > 1: n //= 2 → O(log n). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 6: ANÁLISIS DE BUCLES ITERATIVOS', ¿cuál afirmación es correcta sobre: Patrones híbridos: dos punteros, ventana deslizante O(n)?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Patrones híbridos: dos punteros, ventana deslizante O(n)", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Patrones híbridos: dos punteros, ventana deslizante O(n). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 6: ANÁLISIS DE BUCLES ITERATIVOS', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 6: ANÁLISIS DE BUCLES ITERATIVOS', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 7,
       title: "MÓDULO 7: RECURSIÓN Y ECUACIONES DE RECURRENCIA",
       description: "Árboles de llamadas, profundidad de pila y el Teorema Maestro.",
       items: [
+        
         "Cada llamada recursiva consume espacio de pila O(profundidad).",
         "Fibonacci ingenuo: O(2ⁿ) llamadas; con memoización: O(n).",
         "Divide y vencerás: T(n) = aT(n/b) + f(n).",
         "Teorema Maestro: casos según comparar f(n) con n^(log_b a).",
-        "Recursión de cola vs recursión estándar y TCO."
+        "Recursión de cola vs recursión estándar y TCO.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "La recursión duplica el análisis: tiempo y espacio. Cada activación de función guarda frames en la pila; una recursión de profundidad n puede agotar el stack. Fibonacci recursivo sin memo repite trabajo exponencialmente. Merge Sort define T(n) = 2T(n/2) + O(n), resuelto por el Teorema Maestro como Θ(n log n). Entender recurrencias es puente hacia algoritmos avanzados y hacia el análisis de backtracking en IA (búsqueda en árboles de decisión).",
+      content: "La recursión duplica el análisis: tiempo y espacio. Cada activación de función guarda frames en la pila; una recursión de profundidad n puede agotar el stack. Fibonacci recursivo sin memo repite trabajo exponencialmente. Merge Sort define T(n) = 2T(n/2) + O(n), resuelto por el Teorema Maestro como Θ(n log n). Entender recurrencias es puente hacia algoritmos avanzados y hacia el análisis de backtracking en IA (búsqueda en árboles de decisión). En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Fibonacci ingenuo: O(2ⁿ) tiempo, O(n) espacio de pila
 def fib(n):
     if n <= 1:
@@ -483,20 +769,67 @@ def merge_sort(arr):
           answerIndex: 0,
           explanation: "Cada subproblema se calcula una sola vez."
         },
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 7: RECURSIÓN Y ECUACIONES DE RECURRENCIA', ¿cuál afirmación es correcta sobre: Cada llamada recursiva consume espacio de pila O(profundidad)?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Cada llamada recursiva consume espacio de pila O(profundidad)", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Cada llamada recursiva consume espacio de pila O(profundidad). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 7: RECURSIÓN Y ECUACIONES DE RECURRENCIA', ¿cuál afirmación es correcta sobre: Fibonacci ingenuo: O(2ⁿ) llamadas; con memoización: O(n)?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Fibonacci ingenuo: O(2ⁿ) llamadas; con memoización: O(n)", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Fibonacci ingenuo: O(2ⁿ) llamadas; con memoización: O(n). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 7: RECURSIÓN Y ECUACIONES DE RECURRENCIA', ¿cuál afirmación es correcta sobre: Divide y vencerás: T(n) = aT(n/b) + f(n)?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Divide y vencerás: T(n) = aT(n/b) + f(n)", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Divide y vencerás: T(n) = aT(n/b) + f(n). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 7: RECURSIÓN Y ECUACIONES DE RECURRENCIA', ¿cuál afirmación es correcta sobre: Teorema Maestro: casos según comparar f(n) con n^(log_b a)?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Teorema Maestro: casos según comparar f(n) con n^(log_b a)", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Teorema Maestro: casos según comparar f(n) con n^(log_b a). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 7: RECURSIÓN Y ECUACIONES DE RECURRENCIA', ¿cuál afirmación es correcta sobre: Recursión de cola vs recursión estándar y TCO?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Recursión de cola vs recursión estándar y TCO", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Recursión de cola vs recursión estándar y TCO. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 7: RECURSIÓN Y ECUACIONES DE RECURRENCIA', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 7: RECURSIÓN Y ECUACIONES DE RECURRENCIA', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 8,
       title: "MÓDULO 8: O(1) — TIEMPO CONSTANTE",
       description: "La clase más deseada: operaciones instantáneas independientes de n.",
       items: [
+        
         "Acceso indexado a arreglos y strings en O(1).",
         "Operaciones aritméticas, comparaciones y asignaciones simples.",
         "Hash tables: inserción/búsqueda O(1) promedio.",
         "Operaciones en extremos de deque y push/pop de stack.",
-        "Límites: O(1) no significa 'rápido absoluto', solo 'no crece con n'."
+        "Límites: O(1) no significa 'rápido absoluto', solo 'no crece con n'.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "O(1) es el santo grial de estructuras de datos: el costo no aumenta cuando crece la entrada. Acceder a arr[i] calcula dirección base + i × tamaño_elemento en una operación. Las tablas hash bien dimensionadas ofrecen O(1) promedio para get/set. En sistemas de alto rendimiento (cachés Redis, CDN edge lookups), diseñar para O(1) es prioritario. Ojo: O(1) con constante gigante (copiar 1 GB fijo) sigue siendo O(1) asintóticamente pero lento en práctica.",
+      content: "O(1) es el santo grial de estructuras de datos: el costo no aumenta cuando crece la entrada. Acceder a arr[i] calcula dirección base + i × tamaño_elemento en una operación. Las tablas hash bien dimensionadas ofrecen O(1) promedio para get/set. En sistemas de alto rendimiento (cachés Redis, CDN edge lookups), diseñar para O(1) es prioritario. Ojo: O(1) con constante gigante (copiar 1 GB fijo) sigue siendo O(1) asintóticamente pero lento en práctica. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Operaciones O(1) clásicas
 def acceso_directo(datos, indice):
     return datos[indice]       # O(1)
@@ -543,20 +876,67 @@ cache["user:42"]`,
           answerIndex: 0,
           explanation: "Dispersión uniforme minimiza colisiones."
         },
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 8: O(1) — TIEMPO CONSTANTE', ¿cuál afirmación es correcta sobre: Acceso indexado a arreglos y strings en O(1)?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Acceso indexado a arreglos y strings en O(1)", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Acceso indexado a arreglos y strings en O(1). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 8: O(1) — TIEMPO CONSTANTE', ¿cuál afirmación es correcta sobre: Operaciones aritméticas, comparaciones y asignaciones simples?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Operaciones aritméticas, comparaciones y asignaciones simples", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Operaciones aritméticas, comparaciones y asignaciones simples. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 8: O(1) — TIEMPO CONSTANTE', ¿cuál afirmación es correcta sobre: Hash tables: inserción/búsqueda O(1) promedio?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Hash tables: inserción/búsqueda O(1) promedio", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Hash tables: inserción/búsqueda O(1) promedio. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 8: O(1) — TIEMPO CONSTANTE', ¿cuál afirmación es correcta sobre: Operaciones en extremos de deque y push/pop de stack?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Operaciones en extremos de deque y push/pop de stack", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Operaciones en extremos de deque y push/pop de stack. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 8: O(1) — TIEMPO CONSTANTE', ¿cuál afirmación es correcta sobre: Límites: O(1) no significa 'rápido absoluto', solo 'no crece con n'?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Límites: O(1) no significa 'rápido absoluto', solo 'no crece con n'", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Límites: O(1) no significa 'rápido absoluto', solo 'no crece con n'. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 8: O(1) — TIEMPO CONSTANTE', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 8: O(1) — TIEMPO CONSTANTE', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 9,
       title: "MÓDULO 9: O(log n) — LOGARÍTMICA",
       description: "Divide y reduce: la magia de partir el problema a la mitad.",
       items: [
+        
         "Definición: duplicar n añade solo 1 paso extra.",
         "Búsqueda binaria en arreglo ordenado: Θ(log n).",
         "Árboles balanceados (AVL, Red-Black): altura O(log n).",
         "Exponentiación rápida: x^n en O(log n) multiplicaciones.",
-        "Relación con log₂(n): ~20 pasos para n = 1,000,000."
+        "Relación con log₂(n): ~20 pasos para n = 1,000,000.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Los algoritmos O(log n) explotan la reducción exponencial del espacio de búsqueda. Búsqueda binaria descarta la mitad de elementos en cada comparación: para un millón de elementos, solo ~20 comparaciones. Los árboles auto-balanceados mantienen altura logarítmica garantizando operaciones eficientes. En bases de datos, los índices B+ Tree buscan claves en O(log n) accesos a disco. Esta clase separa sistemas que escalan de sistemas que colapsan.",
+      content: "Los algoritmos O(log n) explotan la reducción exponencial del espacio de búsqueda. Búsqueda binaria descarta la mitad de elementos en cada comparación: para un millón de elementos, solo ~20 comparaciones. Los árboles auto-balanceados mantienen altura logarítmica garantizando operaciones eficientes. En bases de datos, los índices B+ Tree buscan claves en O(log n) accesos a disco. Esta clase separa sistemas que escalan de sistemas que colapsan. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `def busqueda_binaria(arr, objetivo):
     izq, der = 0, len(arr) - 1
     pasos = 0
@@ -603,20 +983,67 @@ cache["user:42"]`,
           answerIndex: 1,
           explanation: "Recorrer todo el arreglo es O(n)."
         },
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 9: O(log n) — LOGARÍTMICA', ¿cuál afirmación es correcta sobre: Definición: duplicar n añade solo 1 paso extra?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Definición: duplicar n añade solo 1 paso extra", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Definición: duplicar n añade solo 1 paso extra. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 9: O(log n) — LOGARÍTMICA', ¿cuál afirmación es correcta sobre: Búsqueda binaria en arreglo ordenado: Θ(log n)?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Búsqueda binaria en arreglo ordenado: Θ(log n)", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Búsqueda binaria en arreglo ordenado: Θ(log n). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 9: O(log n) — LOGARÍTMICA', ¿cuál afirmación es correcta sobre: Árboles balanceados (AVL, Red-Black): altura O(log n)?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Árboles balanceados (AVL, Red-Black): altura O(log n)", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Árboles balanceados (AVL, Red-Black): altura O(log n). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 9: O(log n) — LOGARÍTMICA', ¿cuál afirmación es correcta sobre: Exponentiación rápida: x^n en O(log n) multiplicaciones?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Exponentiación rápida: x^n en O(log n) multiplicaciones", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Exponentiación rápida: x^n en O(log n) multiplicaciones. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 9: O(log n) — LOGARÍTMICA', ¿cuál afirmación es correcta sobre: Relación con log₂(n): ~20 pasos para n = 1,000,000?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Relación con log₂(n): ~20 pasos para n = 1,000,000", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Relación con log₂(n): ~20 pasos para n = 1,000,000. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 9: O(log n) — LOGARÍTMICA', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 9: O(log n) — LOGARÍTMICA', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 10,
       title: "MÓDULO 10: O(n) — LINEAL",
       description: "Un paso por elemento: el baseline de la mayoría de procesamiento de datos.",
       items: [
+        
         "Recorridos: for x in arr, map/filter en una pasada.",
         "Búsqueda lineal en datos no ordenados: O(n) peor caso.",
         "Copiar arreglo completo: O(n) tiempo y espacio.",
         "Two-sum con hash: O(n) vs O(n²) con fuerza bruta.",
-        "Streaming y procesamiento de logs en una pasada."
+        "Streaming y procesamiento de logs en una pasada.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "O(n) significa trabajo proporcional al tamaño de entrada: inevitable cuando debes examinar cada dato al menos una vez (encontrar máximo, calcular suma, validar formato). Muchos pipelines ETL, parsers y validadores son lineales por naturaleza. La optimización consiste en evitar pasadas redundantes: combinar dos bucles O(n) en uno solo sigue siendo O(n), no O(2n) en notación asintótica, pero reduce constantes reales importantes en producción.",
+      content: "O(n) significa trabajo proporcional al tamaño de entrada: inevitable cuando debes examinar cada dato al menos una vez (encontrar máximo, calcular suma, validar formato). Muchos pipelines ETL, parsers y validadores son lineales por naturaleza. La optimización consiste en evitar pasadas redundantes: combinar dos bucles O(n) en uno solo sigue siendo O(n), no O(2n) en notación asintótica, pero reduce constantes reales importantes en producción. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Two Sum O(n) con hash set
 def two_sum(nums, target):
     vistos = {}
@@ -661,20 +1088,67 @@ def two_sum(nums, target):
           answerIndex: 0,
           explanation: "Una operación por línea."
         },
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 10: O(n) — LINEAL', ¿cuál afirmación es correcta sobre: Recorridos: for x in arr, map/filter en una pasada?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Recorridos: for x in arr, map/filter en una pasada", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Recorridos: for x in arr, map/filter en una pasada. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 10: O(n) — LINEAL', ¿cuál afirmación es correcta sobre: Búsqueda lineal en datos no ordenados: O(n) peor caso?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Búsqueda lineal en datos no ordenados: O(n) peor caso", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Búsqueda lineal en datos no ordenados: O(n) peor caso. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 10: O(n) — LINEAL', ¿cuál afirmación es correcta sobre: Copiar arreglo completo: O(n) tiempo y espacio?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Copiar arreglo completo: O(n) tiempo y espacio", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Copiar arreglo completo: O(n) tiempo y espacio. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 10: O(n) — LINEAL', ¿cuál afirmación es correcta sobre: Two-sum con hash: O(n) vs O(n²) con fuerza bruta?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Two-sum con hash: O(n) vs O(n²) con fuerza bruta", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Two-sum con hash: O(n) vs O(n²) con fuerza bruta. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 10: O(n) — LINEAL', ¿cuál afirmación es correcta sobre: Streaming y procesamiento de logs en una pasada?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Streaming y procesamiento de logs en una pasada", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Streaming y procesamiento de logs en una pasada. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 10: O(n) — LINEAL', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 10: O(n) — LINEAL', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 11,
       title: "MÓDULO 11: O(n log n) — CUASILINEAL",
       description: "El techo eficiente del ordenamiento por comparación y muchos algoritmos óptimos.",
       items: [
+        
         "Merge Sort, Heap Sort: Θ(n log n) garantizado.",
         "Quick Sort promedio O(n log n), peor O(n²).",
         "Introsort en C++ std::sort: híbrido optimizado.",
         "Construcción de heap: O(n) pero heapify por elemento O(log n).",
-        "Aparece en: ordenamiento, closest pair, algunos divide-and-conquer."
+        "Aparece en: ordenamiento, closest pair, algunos divide-and-conquer.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "O(n log n) es el punto dulce entre eficiencia y generalidad. Ningún algoritmo de ordenamiento basado en comparaciones puede hacer mejor que Ω(n log n), y Merge Sort lo alcanza. Aparece cuando divides en log n niveles y haces O(n) trabajo por nivel. En la práctica, Quick Sort con pivote aleatorio y Introsort son los workhorses de lenguajes de producción. Reconocer O(n log n) en un diseño te dice: 'este es probablemente óptimo para comparaciones'.",
+      content: "O(n log n) es el punto dulce entre eficiencia y generalidad. Ningún algoritmo de ordenamiento basado en comparaciones puede hacer mejor que Ω(n log n), y Merge Sort lo alcanza. Aparece cuando divides en log n niveles y haces O(n) trabajo por nivel. En la práctica, Quick Sort con pivote aleatorio y Introsort son los workhorses de lenguajes de producción. Reconocer O(n log n) en un diseño te dice: 'este es probablemente óptimo para comparaciones'. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `def merge(L, R):
     resultado, i, j = [], 0, 0
     while i < len(L) and j < len(R):
@@ -717,20 +1191,67 @@ def two_sum(nums, target):
           answerIndex: 1,
           explanation: "n extracciones × O(log n) cada una."
         },
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 11: O(n log n) — CUASILINEAL', ¿cuál afirmación es correcta sobre: Merge Sort, Heap Sort: Θ(n log n) garantizado?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Merge Sort, Heap Sort: Θ(n log n) garantizado", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Merge Sort, Heap Sort: Θ(n log n) garantizado. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 11: O(n log n) — CUASILINEAL', ¿cuál afirmación es correcta sobre: Quick Sort promedio O(n log n), peor O(n²)?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Quick Sort promedio O(n log n), peor O(n²)", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Quick Sort promedio O(n log n), peor O(n²). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 11: O(n log n) — CUASILINEAL', ¿cuál afirmación es correcta sobre: Introsort en C++ std::sort: híbrido optimizado?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Introsort en C++ std::sort: híbrido optimizado", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Introsort en C++ std::sort: híbrido optimizado. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 11: O(n log n) — CUASILINEAL', ¿cuál afirmación es correcta sobre: Construcción de heap: O(n) pero heapify por elemento O(log n)?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Construcción de heap: O(n) pero heapify por elemento O(log n)", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Construcción de heap: O(n) pero heapify por elemento O(log n). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 11: O(n log n) — CUASILINEAL', ¿cuál afirmación es correcta sobre: Aparece en: ordenamiento, closest pair, algunos divide-and-conquer?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Aparece en: ordenamiento, closest pair, algunos divide-and-conquer", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aparece en: ordenamiento, closest pair, algunos divide-and-conquer. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 11: O(n log n) — CUASILINEAL', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 11: O(n log n) — CUASILINEAL', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 12,
       title: "MÓDULO 12: O(n²) Y O(n³) — POLINOMIAL",
       description: "Bucles anidados: cuando el crecimiento se vuelve peligroso rápidamente.",
       items: [
+        
         "Bubble, Selection, Insertion Sort peor caso: O(n²).",
         "Matrices densas n×n: multiplicación ingenua O(n³).",
         "Grafos: Floyd-Warshall O(V³).",
         "n=10,000 → n²=100 millones operaciones (límite práctico).",
-        "Cuándo aceptar O(n²): n pequeño y constante (< 500)."
+        "Cuándo aceptar O(n²): n pequeño y constante (< 500).",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Las complejidades polinómicas son manejables para n pequeño pero explotan en producción. O(n²) con n=100,000 son 10 mil millones de operaciones — segundos o minutos. Muchos algoritmos ingenuos de grafos y DP sin optimizar caen aquí. La ingeniería consiste en reconocer el patrón de bucles anidados y refactorizar hacia O(n log n) o O(n) con estructuras auxiliares (hash, árboles, ordenamiento previo).",
+      content: "Las complejidades polinómicas son manejables para n pequeño pero explotan en producción. O(n²) con n=100,000 son 10 mil millones de operaciones — segundos o minutos. Muchos algoritmos ingenuos de grafos y DP sin optimizar caen aquí. La ingeniería consiste en reconocer el patrón de bucles anidados y refactorizar hacia O(n log n) o O(n) con estructuras auxiliares (hash, árboles, ordenamiento previo). En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Bubble Sort: O(n²)
 def bubble_sort(arr):
     n = len(arr)
@@ -778,20 +1299,67 @@ def matmul(A, B):
           answerIndex: 1,
           explanation: "Triple bucle sobre vértices."
         },
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 12: O(n²) Y O(n³) — POLINOMIAL', ¿cuál afirmación es correcta sobre: Bubble, Selection, Insertion Sort peor caso: O(n²)?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Bubble, Selection, Insertion Sort peor caso: O(n²)", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Bubble, Selection, Insertion Sort peor caso: O(n²). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 12: O(n²) Y O(n³) — POLINOMIAL', ¿cuál afirmación es correcta sobre: Matrices densas n×n: multiplicación ingenua O(n³)?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Matrices densas n×n: multiplicación ingenua O(n³)", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Matrices densas n×n: multiplicación ingenua O(n³). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 12: O(n²) Y O(n³) — POLINOMIAL', ¿cuál afirmación es correcta sobre: Grafos: Floyd-Warshall O(V³)?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Grafos: Floyd-Warshall O(V³)", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Grafos: Floyd-Warshall O(V³). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 12: O(n²) Y O(n³) — POLINOMIAL', ¿cuál afirmación es correcta sobre: n=10,000 → n²=100 millones operaciones (límite práctico)?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: n=10,000 → n²=100 millones operaciones (límite práctico)", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que n=10,000 → n²=100 millones operaciones (límite práctico). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 12: O(n²) Y O(n³) — POLINOMIAL', ¿cuál afirmación es correcta sobre: Cuándo aceptar O(n²): n pequeño y constante (< 500)?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Cuándo aceptar O(n²): n pequeño y constante (< 500)", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Cuándo aceptar O(n²): n pequeño y constante (< 500). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 12: O(n²) Y O(n³) — POLINOMIAL', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 12: O(n²) Y O(n³) — POLINOMIAL', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 13,
       title: "MÓDULO 13: O(2ⁿ) Y O(n!) — EXPONENCIAL Y FACTORIAL",
       description: "Explosión combinatoria: problemas NP-hard y backtracking ingenuo.",
       items: [
+        
         "Subconjuntos: 2ⁿ combinaciones; permutaciones: n!.",
         "Fibonacci recursivo sin memo: O(2ⁿ).",
         "Traveling Salesman fuerza bruta: O(n!).",
         "n=30 → 2³⁰ ≈ 1 mil millones (límite práctico ~2ⁿ con n≤25).",
-        "Técnicas de escape: DP, poda, heurísticas, aproximación."
+        "Técnicas de escape: DP, poda, heurísticas, aproximación.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Exponencial y factorial marcan la frontera de lo tratable exactamente. Generar todos los subconjuntos de n elementos son 2ⁿ; todas las permutaciones son n!. El problema del viajante (TSP) con fuerza bruta es O(n!). Estos algoritmos sirven para n muy pequeño (≤ 20) o como baseline teórico. En IA, búsqueda en espacio de configuraciones sin poda cae aquí. La solución profesional es reformular: programación dinámica, branch & bound, simulated annealing o algoritmos de aproximación.",
+      content: "Exponencial y factorial marcan la frontera de lo tratable exactamente. Generar todos los subconjuntos de n elementos son 2ⁿ; todas las permutaciones son n!. El problema del viajante (TSP) con fuerza bruta es O(n!). Estos algoritmos sirven para n muy pequeño (≤ 20) o como baseline teórico. En IA, búsqueda en espacio de configuraciones sin poda cae aquí. La solución profesional es reformular: programación dinámica, branch & bound, simulated annealing o algoritmos de aproximación. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Generar todos los subconjuntos: O(2ⁿ)
 def subconjuntos(arr):
     n = len(arr)
@@ -834,20 +1402,67 @@ def subconjuntos(arr):
           answerIndex: 1,
           explanation: "2³⁵ ≈ 34×10⁹."
         },
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 13: O(2ⁿ) Y O(n!) — EXPONENCIAL Y FACTORIAL', ¿cuál afirmación es correcta sobre: Subconjuntos: 2ⁿ combinaciones; permutaciones: n!?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Subconjuntos: 2ⁿ combinaciones; permutaciones: n!", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Subconjuntos: 2ⁿ combinaciones; permutaciones: n!. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 13: O(2ⁿ) Y O(n!) — EXPONENCIAL Y FACTORIAL', ¿cuál afirmación es correcta sobre: Fibonacci recursivo sin memo: O(2ⁿ)?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Fibonacci recursivo sin memo: O(2ⁿ)", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Fibonacci recursivo sin memo: O(2ⁿ). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 13: O(2ⁿ) Y O(n!) — EXPONENCIAL Y FACTORIAL', ¿cuál afirmación es correcta sobre: Traveling Salesman fuerza bruta: O(n!)?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Traveling Salesman fuerza bruta: O(n!)", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Traveling Salesman fuerza bruta: O(n!). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 13: O(2ⁿ) Y O(n!) — EXPONENCIAL Y FACTORIAL', ¿cuál afirmación es correcta sobre: n=30 → 2³⁰ ≈ 1 mil millones (límite práctico ~2ⁿ con n≤25)?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: n=30 → 2³⁰ ≈ 1 mil millones (límite práctico ~2ⁿ con n≤25)", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que n=30 → 2³⁰ ≈ 1 mil millones (límite práctico ~2ⁿ con n≤25). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 13: O(2ⁿ) Y O(n!) — EXPONENCIAL Y FACTORIAL', ¿cuál afirmación es correcta sobre: Técnicas de escape: DP, poda, heurísticas, aproximación?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Técnicas de escape: DP, poda, heurísticas, aproximación", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Técnicas de escape: DP, poda, heurísticas, aproximación. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 13: O(2ⁿ) Y O(n!) — EXPONENCIAL Y FACTORIAL', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 13: O(2ⁿ) Y O(n!) — EXPONENCIAL Y FACTORIAL', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 14,
       title: "MÓDULO 14: ANÁLISIS AMORTIZADO",
       description: "Costo promedio por operación en secuencias largas: dynamic arrays y Union-Find.",
       items: [
+        
         "Amortizado ≠ promedio probabilístico: peor caso por operación puede ser alto.",
         "Dynamic array append: O(1) amortizado (doblar capacidad).",
         "Aggregate method: n inserciones O(n) total → O(1) cada una.",
         "Accounting method y potential method (introducción).",
-        "Union-Find con compresión de caminos: casi O(1) amortizado."
+        "Union-Find con compresión de caminos: casi O(1) amortizado.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "El análisis amortizado responde: 'si hago n operaciones seguidas, ¿cuánto cuesta cada una en promedio?' Un arreglo dinámico ocasionalmente copia todos los elementos al redimensionar (O(n) esa vez), pero si duplica capacidad, las copias son raras y el costo promedio por append es O(1). Union-Find con path compression y rank tiene operaciones casi constantes amortizadas. Este análisis es esencial para estructuras en stdlib de C++, Java y Python.",
+      content: "El análisis amortizado responde: 'si hago n operaciones seguidas, ¿cuánto cuesta cada una en promedio?' Un arreglo dinámico ocasionalmente copia todos los elementos al redimensionar (O(n) esa vez), pero si duplica capacidad, las copias son raras y el costo promedio por append es O(1). Union-Find con path compression y rank tiene operaciones casi constantes amortizadas. Este análisis es esencial para estructuras en stdlib de C++, Java y Python. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `class DynamicArray:
     def __init__(self):
         self.data = [None] * 1
@@ -897,20 +1512,67 @@ def subconjuntos(arr):
           answerIndex: 0,
           explanation: "O(n)/n = O(1) por operación."
         },
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 14: ANÁLISIS AMORTIZADO', ¿cuál afirmación es correcta sobre: Amortizado ≠ promedio probabilístico: peor caso por operación puede ser alto?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Amortizado ≠ promedio probabilístico: peor caso por operación puede...", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Amortizado ≠ promedio probabilístico: peor caso por operación puede ser alto. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 14: ANÁLISIS AMORTIZADO', ¿cuál afirmación es correcta sobre: Dynamic array append: O(1) amortizado (doblar capacidad)?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Dynamic array append: O(1) amortizado (doblar capacidad)", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Dynamic array append: O(1) amortizado (doblar capacidad). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 14: ANÁLISIS AMORTIZADO', ¿cuál afirmación es correcta sobre: Aggregate method: n inserciones O(n) total → O(1) cada una?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Aggregate method: n inserciones O(n) total → O(1) cada una", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aggregate method: n inserciones O(n) total → O(1) cada una. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 14: ANÁLISIS AMORTIZADO', ¿cuál afirmación es correcta sobre: Accounting method y potential method (introducción)?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Accounting method y potential method (introducción)", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Accounting method y potential method (introducción). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 14: ANÁLISIS AMORTIZADO', ¿cuál afirmación es correcta sobre: Union-Find con compresión de caminos: casi O(1) amortizado?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Union-Find con compresión de caminos: casi O(1) amortizado", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Union-Find con compresión de caminos: casi O(1) amortizado. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 14: ANÁLISIS AMORTIZADO', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 14: ANÁLISIS AMORTIZADO', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 15,
       title: "MÓDULO 15: TIEMPO VS ESPACIO Y SELECCIÓN DE ALGORITMOS",
       description: "Trade-offs, límites de memoria y criterios de decisión en ingeniería real.",
       items: [
+        
         "Complejidad espacial: auxiliar vs total (in-place vs extra array).",
         "Merge Sort O(n) espacio extra vs Quick Sort O(log n) stack.",
         "Memoización: comprar O(n) espacio por O(2ⁿ) → O(n) tiempo.",
         "Tabla de decisión: restricciones n, memoria, latencia, paralelismo.",
-        "Benchmarking complementa pero no reemplaza Big-O."
+        "Benchmarking complementa pero no reemplaza Big-O.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Todo algoritmo negocia tiempo por espacio. Merge Sort usa O(n) memoria extra para lograr O(n log n) estable. Quick Sort es in-place pero peor caso O(n²). Memoización en DP almacena subproblemas: más RAM, menos CPU. En dispositivos móviles o embedded, O(n) espacio puede ser inaceptable. En servidores con 512 GB RAM, prefetch y caché importan más que Big-O en papel. El ingeniero combina análisis asintótico, perfilado real y restricciones del dominio.",
+      content: "Todo algoritmo negocia tiempo por espacio. Merge Sort usa O(n) memoria extra para lograr O(n log n) estable. Quick Sort es in-place pero peor caso O(n²). Memoización en DP almacena subproblemas: más RAM, menos CPU. En dispositivos móviles o embedded, O(n) espacio puede ser inaceptable. En servidores con 512 GB RAM, prefetch y caché importan más que Big-O en papel. El ingeniero combina análisis asintótico, perfilado real y restricciones del dominio. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Fibonacci: trade-off tiempo vs espacio
 def fib_memo(n, cache={}):
     if n in cache:
@@ -957,20 +1619,67 @@ def fib_iter(n):
           answerIndex: 0,
           explanation: "Recursión profunda en peor caso."
         },
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 15: TIEMPO VS ESPACIO Y SELECCIÓN DE ALGORITMOS', ¿cuál afirmación es correcta sobre: Complejidad espacial: auxiliar vs total (in-place vs extra array)?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Complejidad espacial: auxiliar vs total (in-place vs extra array)", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Complejidad espacial: auxiliar vs total (in-place vs extra array). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 15: TIEMPO VS ESPACIO Y SELECCIÓN DE ALGORITMOS', ¿cuál afirmación es correcta sobre: Merge Sort O(n) espacio extra vs Quick Sort O(log n) stack?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Merge Sort O(n) espacio extra vs Quick Sort O(log n) stack", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Merge Sort O(n) espacio extra vs Quick Sort O(log n) stack. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 15: TIEMPO VS ESPACIO Y SELECCIÓN DE ALGORITMOS', ¿cuál afirmación es correcta sobre: Memoización: comprar O(n) espacio por O(2ⁿ) → O(n) tiempo?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Memoización: comprar O(n) espacio por O(2ⁿ) → O(n) tiempo", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Memoización: comprar O(n) espacio por O(2ⁿ) → O(n) tiempo. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 15: TIEMPO VS ESPACIO Y SELECCIÓN DE ALGORITMOS', ¿cuál afirmación es correcta sobre: Tabla de decisión: restricciones n, memoria, latencia, paralelismo?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Tabla de decisión: restricciones n, memoria, latencia, paralelismo", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Tabla de decisión: restricciones n, memoria, latencia, paralelismo. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 15: TIEMPO VS ESPACIO Y SELECCIÓN DE ALGORITMOS', ¿cuál afirmación es correcta sobre: Benchmarking complementa pero no reemplaza Big-O?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Benchmarking complementa pero no reemplaza Big-O", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Benchmarking complementa pero no reemplaza Big-O. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 15: TIEMPO VS ESPACIO Y SELECCIÓN DE ALGORITMOS', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 15: TIEMPO VS ESPACIO Y SELECCIÓN DE ALGORITMOS', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 16,
       title: "MÓDULO 16: BIG-O EN REDES NEURONALES — FORWARD PASS",
       description: "Contando operaciones en capas densas, convoluciones y activaciones.",
       items: [
+        
         "Capa densa: O(batch · in · out) multiplicaciones.",
         "Convolución: O(batch · H · W · C_in · C_out · k²).",
         "Activaciones (ReLU, GELU): O(n) elemento a elemento.",
         "Parámetros vs FLOPs: modelo grande ≠ inferencia más lenta si batch=1.",
-        "Batch size multiplica costo linealmente."
+        "Batch size multiplica costo linealmente.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "En deep learning, Big-O se traduce a FLOPs (floating point operations). Una capa fully-connected con entrada d_in y salida d_out realiza O(d_in · d_out) multiplicaciones por muestra. Una convolución 2D agrega dimensiones espaciales y del kernel. El forward pass de un LLM con L capas, dimensión d y secuencia n escala aproximadamente O(L · n · d²) en atención clásica. Entender esto permite estimar latencia de inferencia antes de desplegar en producción.",
+      content: "En deep learning, Big-O se traduce a FLOPs (floating point operations). Una capa fully-connected con entrada d_in y salida d_out realiza O(d_in · d_out) multiplicaciones por muestra. Una convolución 2D agrega dimensiones espaciales y del kernel. El forward pass de un LLM con L capas, dimensión d y secuencia n escala aproximadamente O(L · n · d²) en atención clásica. Entender esto permite estimar latencia de inferencia antes de desplegar en producción. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Capa densa: y = x @ W + b
 # x: (batch, in_features), W: (in, out)
 # FLOPs ≈ batch * in * out * 2 (mul + add)
@@ -1011,20 +1720,67 @@ print(capa_densa_flops(32, 768, 3072))  # ~151 millones FLOPs`,
           answerIndex: 0,
           explanation: "Métrica estándar de costo computacional en IA."
         },
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 16: BIG-O EN REDES NEURONALES — FORWARD PASS', ¿cuál afirmación es correcta sobre: Capa densa: O(batch · in · out) multiplicaciones?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Capa densa: O(batch · in · out) multiplicaciones", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Capa densa: O(batch · in · out) multiplicaciones. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 16: BIG-O EN REDES NEURONALES — FORWARD PASS', ¿cuál afirmación es correcta sobre: Convolución: O(batch · H · W · C_in · C_out · k²)?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Convolución: O(batch · H · W · C_in · C_out · k²)", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Convolución: O(batch · H · W · C_in · C_out · k²). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 16: BIG-O EN REDES NEURONALES — FORWARD PASS', ¿cuál afirmación es correcta sobre: Activaciones (ReLU, GELU): O(n) elemento a elemento?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Activaciones (ReLU, GELU): O(n) elemento a elemento", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Activaciones (ReLU, GELU): O(n) elemento a elemento. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 16: BIG-O EN REDES NEURONALES — FORWARD PASS', ¿cuál afirmación es correcta sobre: Parámetros vs FLOPs: modelo grande ≠ inferencia más lenta si batch=1?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Parámetros vs FLOPs: modelo grande ≠ inferencia más lenta si batch=1", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Parámetros vs FLOPs: modelo grande ≠ inferencia más lenta si batch=1. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 16: BIG-O EN REDES NEURONALES — FORWARD PASS', ¿cuál afirmación es correcta sobre: Batch size multiplica costo linealmente?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Batch size multiplica costo linealmente", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Batch size multiplica costo linealmente. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 16: BIG-O EN REDES NEURONALES — FORWARD PASS', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 16: BIG-O EN REDES NEURONALES — FORWARD PASS', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 17,
       title: "MÓDULO 17: GAUSS-JORDAN VS MULTIPLICACIÓN EN GPUs",
       description: "Por qué eliminación gaussiana no alimenta el entrenamiento de redes en GPU.",
       items: [
+        
         "Gauss-Jordan: O(n³) con secuencialidad difícil de paralelizar.",
         "Multiplicación matricial GEMM: altamente paralelizable, O(n³) pero constantes GPU enormes.",
         "GPUs optimizadas para throughput masivo de ops independientes.",
         "Backprop = cadena de multiplicaciones matriciales, no resolver sistemas lineales.",
-        "cuBLAS/cuDNN implementan GEMM con tiling, shared memory y Tensor Cores."
+        "cuBLAS/cuDNN implementan GEMM con tiling, shared memory y Tensor Cores.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "¿Por qué no usamos Gauss-Jordan para entrenar redes en GPU? Porque las GPUs (CUDA) están diseñadas para miles de hilos ejecutando la MISMA operación sobre datos independientes (SIMT). La eliminación gaussiana tiene dependencias secuenciales en filas: el pivote de la fila k afecta todas las filas k+1 antes de continuar. Aunque ambos son O(n³), GEMM (General Matrix Multiply) reorganiza el trabajo en bloques independientes explotando cache L1/shared memory y Tensor Cores. PyTorch y TensorFlow nunca invierten matrices con Gauss-Jordan en el hot path del entrenamiento; usan multiplicación masiva y autodiff.",
+      content: "¿Por qué no usamos Gauss-Jordan para entrenar redes en GPU? Porque las GPUs (CUDA) están diseñadas para miles de hilos ejecutando la MISMA operación sobre datos independientes (SIMT). La eliminación gaussiana tiene dependencias secuenciales en filas: el pivote de la fila k afecta todas las filas k+1 antes de continuar. Aunque ambos son O(n³), GEMM (General Matrix Multiply) reorganiza el trabajo en bloques independientes explotando cache L1/shared memory y Tensor Cores. PyTorch y TensorFlow nunca invierten matrices con Gauss-Jordan en el hot path del entrenamiento; usan multiplicación masiva y autodiff. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# ❌ Gauss-Jordan: difícil de paralelizar (dependencias fila a fila)
 # O(n³) secuencial en peor caso de paralelismo
 
@@ -1067,20 +1823,67 @@ Y = X @ W   # O(batch·in·out) pero paralelismo masivo`,
           answerIndex: 0,
           explanation: "Librerías BLAS/CUDA optimizadas."
         },
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 17: GAUSS-JORDAN VS MULTIPLICACIÓN EN GPUs', ¿cuál afirmación es correcta sobre: Gauss-Jordan: O(n³) con secuencialidad difícil de paralelizar?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Gauss-Jordan: O(n³) con secuencialidad difícil de paralelizar", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Gauss-Jordan: O(n³) con secuencialidad difícil de paralelizar. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 17: GAUSS-JORDAN VS MULTIPLICACIÓN EN GPUs', ¿cuál afirmación es correcta sobre: Multiplicación matricial GEMM: altamente paralelizable, O(n³) pero constantes...?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Multiplicación matricial GEMM: altamente paralelizable, O(n³) pero ...", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Multiplicación matricial GEMM: altamente paralelizable, O(n³) pero constantes GPU enormes. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 17: GAUSS-JORDAN VS MULTIPLICACIÓN EN GPUs', ¿cuál afirmación es correcta sobre: GPUs optimizadas para throughput masivo de ops independientes?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: GPUs optimizadas para throughput masivo de ops independientes", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que GPUs optimizadas para throughput masivo de ops independientes. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 17: GAUSS-JORDAN VS MULTIPLICACIÓN EN GPUs', ¿cuál afirmación es correcta sobre: Backprop = cadena de multiplicaciones matriciales, no resolver sistemas lineales?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Backprop = cadena de multiplicaciones matriciales, no resolver sist...", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Backprop = cadena de multiplicaciones matriciales, no resolver sistemas lineales. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 17: GAUSS-JORDAN VS MULTIPLICACIÓN EN GPUs', ¿cuál afirmación es correcta sobre: cuBLAS/cuDNN implementan GEMM con tiling, shared memory y Tensor Cores?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: cuBLAS/cuDNN implementan GEMM con tiling, shared memory y Tensor Cores", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que cuBLAS/cuDNN implementan GEMM con tiling, shared memory y Tensor Cores. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 17: GAUSS-JORDAN VS MULTIPLICACIÓN EN GPUs', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 17: GAUSS-JORDAN VS MULTIPLICACIÓN EN GPUs', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 18,
       title: "MÓDULO 18: ENTRENAMIENTO VS INFERENCIA — BACKPROP",
       description: "Por qué entrenar cuesta ~3× inferencia y cómo escala el backward pass.",
       items: [
+        
         "Forward: una pasada O(F); Backward: ~2× F adicional (regla cadena).",
         "Entrenamiento total ≈ 3× FLOPs de inferencia por step.",
         "Gradientes requieren almacenar activaciones: costo de memoria O(batch·capas·activaciones).",
         "Optimizador (Adam): O(parámetros) extra por step.",
-        "Inferencia solo forward: despliegue en edge y batch=1."
+        "Inferencia solo forward: despliegue en edge y batch=1.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Entrenar una red es más caro que usarla. En backpropagation, cada operación del forward debe derivarse en reverse mode autodiff: típicamente ~2× FLOPs extra. Además hay que guardar activaciones intermedias para calcular gradientes (memoria). Adam mantiene dos momentos por parámetro (más memoria y ops). Por eso entrenar GPT-scale requiere clusters de miles de GPUs, pero inferencia puede correr en una sola con cuantización. Big-O del entrenamiento por epoch: O(epochs · batches · 3F).",
+      content: "Entrenar una red es más caro que usarla. En backpropagation, cada operación del forward debe derivarse en reverse mode autodiff: típicamente ~2× FLOPs extra. Además hay que guardar activaciones intermedias para calcular gradientes (memoria). Adam mantiene dos momentos por parámetro (más memoria y ops). Por eso entrenar GPT-scale requiere clusters de miles de GPUs, pero inferencia puede correr en una sola con cuantización. Big-O del entrenamiento por epoch: O(epochs · batches · 3F). En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Regla práctica: FLOPs entrenamiento ≈ 3 × FLOPs inferencia
 def estimar_flops(step):
     forward = step['forward_flops']
@@ -1121,20 +1924,67 @@ def estimar_flops(step):
           answerIndex: 0,
           explanation: "Recalcula activaciones para ahorrar RAM."
         },
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 18: ENTRENAMIENTO VS INFERENCIA — BACKPROP', ¿cuál afirmación es correcta sobre: Forward: una pasada O(F); Backward: ~2× F adicional (regla cadena)?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Forward: una pasada O(F); Backward: ~2× F adicional (regla cadena)", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Forward: una pasada O(F); Backward: ~2× F adicional (regla cadena). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 18: ENTRENAMIENTO VS INFERENCIA — BACKPROP', ¿cuál afirmación es correcta sobre: Entrenamiento total ≈ 3× FLOPs de inferencia por step?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Entrenamiento total ≈ 3× FLOPs de inferencia por step", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Entrenamiento total ≈ 3× FLOPs de inferencia por step. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 18: ENTRENAMIENTO VS INFERENCIA — BACKPROP', ¿cuál afirmación es correcta sobre: Gradientes requieren almacenar activaciones: costo de memoria O(batch·capas·a...?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Gradientes requieren almacenar activaciones: costo de memoria O(bat...", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Gradientes requieren almacenar activaciones: costo de memoria O(batch·capas·activaciones). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 18: ENTRENAMIENTO VS INFERENCIA — BACKPROP', ¿cuál afirmación es correcta sobre: Optimizador (Adam): O(parámetros) extra por step?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Optimizador (Adam): O(parámetros) extra por step", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Optimizador (Adam): O(parámetros) extra por step. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 18: ENTRENAMIENTO VS INFERENCIA — BACKPROP', ¿cuál afirmación es correcta sobre: Inferencia solo forward: despliegue en edge y batch=1?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Inferencia solo forward: despliegue en edge y batch=1", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Inferencia solo forward: despliegue en edge y batch=1. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 18: ENTRENAMIENTO VS INFERENCIA — BACKPROP', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 18: ENTRENAMIENTO VS INFERENCIA — BACKPROP', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 19,
       title: "MÓDULO 19: SELF-ATTENTION O(n²·d) EN TRANSFORMERS",
       description: "La cuadraticidad en longitud de secuencia y sus implicaciones en LLMs.",
       items: [
+        
         "Scores QK^T: matriz n×n → O(n²·d).",
         "Softmax @ V: otro O(n²·d).",
         "Memoria de atención: O(n²) por cabeza (problema con contexto largo).",
         "FlashAttention: mismo Big-O pero IO-aware reduce constantes.",
-        "Alternativas: sparse, linear attention, sliding window (Longformer)."
+        "Alternativas: sparse, linear attention, sliding window (Longformer).",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "El cuello de botella de Transformers clásicos es la atención cuadrática en la longitud de secuencia n. Calcular QK^T produce una matriz n×n por cabeza: O(n²·d) tiempo y O(n²) memoria. Para n=128K tokens, n²=16 mil millones entradas — prohibitivo. FlashAttention no cambia el Big-O pero reduce accesos a HBM mediante tiling en SRAM. Investigación activa busca atención subcuadrática (Performers, Mamba/SSM) para contextos largos.",
+      content: "El cuello de botella de Transformers clásicos es la atención cuadrática en la longitud de secuencia n. Calcular QK^T produce una matriz n×n por cabeza: O(n²·d) tiempo y O(n²) memoria. Para n=128K tokens, n²=16 mil millones entradas — prohibitivo. FlashAttention no cambia el Big-O pero reduce accesos a HBM mediante tiling en SRAM. Investigación activa busca atención subcuadrática (Performers, Mamba/SSM) para contextos largos. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Self-Attention simplificado
 # Q, K, V: (batch, heads, n, d_head)
 # scores = Q @ K.T  → (batch, heads, n, n)  O(n²·d)
@@ -1178,20 +2028,67 @@ def attention_flops(n, d, heads):
           answerIndex: 0,
           explanation: "Scores entre todos los pares de tokens."
         },
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 19: SELF-ATTENTION O(n²·d) EN TRANSFORMERS', ¿cuál afirmación es correcta sobre: Scores QK^T: matriz n×n → O(n²·d)?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Scores QK^T: matriz n×n → O(n²·d)", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Scores QK^T: matriz n×n → O(n²·d). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 19: SELF-ATTENTION O(n²·d) EN TRANSFORMERS', ¿cuál afirmación es correcta sobre: Softmax @ V: otro O(n²·d)?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Softmax @ V: otro O(n²·d)", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Softmax @ V: otro O(n²·d). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 19: SELF-ATTENTION O(n²·d) EN TRANSFORMERS', ¿cuál afirmación es correcta sobre: Memoria de atención: O(n²) por cabeza (problema con contexto largo)?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Memoria de atención: O(n²) por cabeza (problema con contexto largo)", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Memoria de atención: O(n²) por cabeza (problema con contexto largo). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 19: SELF-ATTENTION O(n²·d) EN TRANSFORMERS', ¿cuál afirmación es correcta sobre: FlashAttention: mismo Big-O pero IO-aware reduce constantes?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: FlashAttention: mismo Big-O pero IO-aware reduce constantes", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que FlashAttention: mismo Big-O pero IO-aware reduce constantes. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 19: SELF-ATTENTION O(n²·d) EN TRANSFORMERS', ¿cuál afirmación es correcta sobre: Alternativas: sparse, linear attention, sliding window (Longformer)?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Alternativas: sparse, linear attention, sliding window (Longformer)", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Alternativas: sparse, linear attention, sliding window (Longformer). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 19: SELF-ATTENTION O(n²·d) EN TRANSFORMERS', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 19: SELF-ATTENTION O(n²·d) EN TRANSFORMERS', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 20,
       title: "MÓDULO 20: OPTIMIZACIONES DE IA — BATCH, KV-CACHE Y CUANTIZACIÓN",
       description: "Reducir constantes reales sin cambiar Big-O: cómo escalan los LLMs en producción.",
       items: [
+        
         "Batching: throughput ↑, latencia por request puede ↑.",
         "KV-cache en autoregresión: O(n) por token nuevo vs O(n²) recomputar.",
         "Cuantización INT8/INT4: 2-4× menos memoria y bandwidth.",
         "Tensor parallelism y pipeline parallelism: particionar O(d²) en GPUs.",
-        "Speculative decoding: amortizar forward passes."
+        "Speculative decoding: amortizar forward passes.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "La ingeniería de IA moderna ataca las constantes del Big-O. En generación autoregresiva, recomputar atención completa por cada token nuevo sería O(n²) por token; el KV-cache almacena keys/values previos reduciendo a O(n) por token incremental. Cuantización FP16→INT4 reduce ancho de banda de memoria (cuello de botella real en inferencia). Tensor parallelism divide matrices grandes en múltiples GPUs. Estas técnicas no cambian el exponente teórico pero hacen viable desplegar modelos de 70B parámetros.",
+      content: "La ingeniería de IA moderna ataca las constantes del Big-O. En generación autoregresiva, recomputar atención completa por cada token nuevo sería O(n²) por token; el KV-cache almacena keys/values previos reduciendo a O(n) por token incremental. Cuantización FP16→INT4 reduce ancho de banda de memoria (cuello de botella real en inferencia). Tensor parallelism divide matrices grandes en múltiples GPUs. Estas técnicas no cambian el exponente teórico pero hacen viable desplegar modelos de 70B parámetros. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Autoregresión CON KV-cache (estándar en vLLM, llama.cpp)
 # Token t: solo calcula Q_t @ K_{1:t}^T → O(t·d) no O(t²·d) total
 
@@ -1230,6 +2127,49 @@ def attention_flops(n, d, heads):
           answerIndex: 0,
           explanation: "Reduce forward passes del modelo grande."
         },
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 20: OPTIMIZACIONES DE IA — BATCH, KV-CACHE Y CUANTIZACIÓN', ¿cuál afirmación es correcta sobre: Batching: throughput ↑, latencia por request puede ↑?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Batching: throughput ↑, latencia por request puede ↑", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Batching: throughput ↑, latencia por request puede ↑. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 20: OPTIMIZACIONES DE IA — BATCH, KV-CACHE Y CUANTIZACIÓN', ¿cuál afirmación es correcta sobre: KV-cache en autoregresión: O(n) por token nuevo vs O(n²) recomputar?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: KV-cache en autoregresión: O(n) por token nuevo vs O(n²) recomputar", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que KV-cache en autoregresión: O(n) por token nuevo vs O(n²) recomputar. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 20: OPTIMIZACIONES DE IA — BATCH, KV-CACHE Y CUANTIZACIÓN', ¿cuál afirmación es correcta sobre: Cuantización INT8/INT4: 2-4× menos memoria y bandwidth?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Cuantización INT8/INT4: 2-4× menos memoria y bandwidth", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Cuantización INT8/INT4: 2-4× menos memoria y bandwidth. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 20: OPTIMIZACIONES DE IA — BATCH, KV-CACHE Y CUANTIZACIÓN', ¿cuál afirmación es correcta sobre: Tensor parallelism y pipeline parallelism: particionar O(d²) en GPUs?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Tensor parallelism y pipeline parallelism: particionar O(d²) en GPUs", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Tensor parallelism y pipeline parallelism: particionar O(d²) en GPUs. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 20: OPTIMIZACIONES DE IA — BATCH, KV-CACHE Y CUANTIZACIÓN', ¿cuál afirmación es correcta sobre: Speculative decoding: amortizar forward passes?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Speculative decoding: amortizar forward passes", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Speculative decoding: amortizar forward passes. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 20: OPTIMIZACIONES DE IA — BATCH, KV-CACHE Y CUANTIZACIÓN', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 20: OPTIMIZACIONES DE IA — BATCH, KV-CACHE Y CUANTIZACIÓN', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     }
   ]
