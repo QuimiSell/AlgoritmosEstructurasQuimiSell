@@ -1,10 +1,30 @@
 /* Estilos globales y utilidades personalizadas para Master Class QuimiSell */
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+}
+
 body {
   font-family: 'Inter', sans-serif;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  overflow-x: hidden;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+#root {
+  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .font-mono {
@@ -24,8 +44,19 @@ body {
   display: none;
 }
 .scrollbar-hide {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Scroll horizontal suave en iOS (lista de módulos móvil) */
+.scroll-touch {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+}
+
+/* Evitar que modales propaguen scroll al body en iOS */
+.overscroll-contain {
+  overscroll-behavior: contain;
 }
 
 /* Micro-animaciones para mejorar la interactividad */

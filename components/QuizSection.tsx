@@ -32,8 +32,8 @@ const QuizSection: React.FC<QuizSectionProps> = ({ questions, moduleId }) => {
   const isFinished = totalAnswered === questions.length;
 
   return (
-    <div className="bg-white p-8 rounded-[2rem] border border-slate-200 shadow-xl space-y-8 animate-in fade-in duration-500">
-      <div className="flex justify-between items-start gap-3">
+    <div className="bg-white p-4 sm:p-8 rounded-2xl sm:rounded-[2rem] border border-slate-200 shadow-xl space-y-6 sm:space-y-8 animate-in fade-in duration-500 min-w-0">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-indigo-50 rounded-xl flex items-center justify-center text-xl shadow-sm">
             ✏️
