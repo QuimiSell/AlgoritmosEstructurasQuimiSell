@@ -45,13 +45,17 @@ export const CLEAN_CODE_COURSE: Course = {
       title: "MÓDULO 1: FILOSOFÍA CLEAN CODE Y NOMBRES EXPRESIVOS",
       description: "Las enseñanzas de Robert C. Martin (Tío Bob): código autodocumentado, nombres intencionados y la regla del Boy Scout.",
       items: [
+        
         "El costo real del código desordenado y la deuda técnica.",
         "Nombres con intención reveladora (Evitar variables a1, temp, data).",
         "Hacer distinciones con sentido y evitar desinformación.",
         "Nombres pronunciables y buscables en la base de código.",
-        "La Regla del Boy Scout: 'Deja el campamento más limpio de como lo encontraste'."
+        "La Regla del Boy Scout: 'Deja el campamento más limpio de como lo encontraste'.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Robert C. Martin (Tío Bob) abre su célebre libro 'Clean Code' con una verdad irrefutable: la proporción de tiempo dedicada a leer código frente a escribirlo es de más de 10 a 1. Escribir nombres expresivos como `dias_desde_ultimo_modificacion` en lugar de `d` le ahorra a tus compañeros (y a ti mismo en el futuro) horas de adivinanza. La Regla del Boy Scout exige que en cada commit dejas el módulo ligeramente mejor estructurado de como lo encontraste.",
+      content: "Robert C. Martin (Tío Bob) abre su célebre libro 'Clean Code' con una verdad irrefutable: la proporción de tiempo dedicada a leer código frente a escribirlo es de más de 10 a 1. Escribir nombres expresivos como `dias_desde_ultimo_modificacion` en lugar de `d` le ahorra a tus compañeros (y a ti mismo en el futuro) horas de adivinanza. La Regla del Boy Scout exige que en cada commit dejas el módulo ligeramente mejor estructurado de como lo encontraste. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Bad Code (Código sucio)
 def d(l):
     s = 0
@@ -103,20 +107,67 @@ def calcular_puntos_totales_usuarios_activos(usuarios: list[Usuario]) -> int:
           answerIndex: 1,
           explanation: "La deuda técnica representa el tiempo adicional de desarrollo que se debe pagar por no haber diseñado código limpio desde el principio."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 1: FILOSOFÍA CLEAN CODE Y NOMBRES EXPRESIVOS', ¿cuál afirmación es correcta sobre: El costo real del código desordenado y la deuda técnica?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: El costo real del código desordenado y la deuda técnica", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que El costo real del código desordenado y la deuda técnica. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 1: FILOSOFÍA CLEAN CODE Y NOMBRES EXPRESIVOS', ¿cuál afirmación es correcta sobre: Nombres con intención reveladora (Evitar variables a1, temp, data)?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Nombres con intención reveladora (Evitar variables a1, temp, data)", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Nombres con intención reveladora (Evitar variables a1, temp, data). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 1: FILOSOFÍA CLEAN CODE Y NOMBRES EXPRESIVOS', ¿cuál afirmación es correcta sobre: Hacer distinciones con sentido y evitar desinformación?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Hacer distinciones con sentido y evitar desinformación", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Hacer distinciones con sentido y evitar desinformación. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 1: FILOSOFÍA CLEAN CODE Y NOMBRES EXPRESIVOS', ¿cuál afirmación es correcta sobre: Nombres pronunciables y buscables en la base de código?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Nombres pronunciables y buscables en la base de código", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Nombres pronunciables y buscables en la base de código. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 1: FILOSOFÍA CLEAN CODE Y NOMBRES EXPRESIVOS', ¿cuál afirmación es correcta sobre: La Regla del Boy Scout: 'Deja el campamento más limpio de como lo encontraste'?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: La Regla del Boy Scout: 'Deja el campamento más limpio de como lo e...", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que La Regla del Boy Scout: 'Deja el campamento más limpio de como lo encontraste'. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 1: FILOSOFÍA CLEAN CODE Y NOMBRES EXPRESIVOS', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 1: FILOSOFÍA CLEAN CODE Y NOMBRES EXPRESIVOS', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 2,
       title: "MÓDULO 2: FUNCIONES, PARÁMETROS Y MANEJO DE ERRORES",
       description: "Reglas para escribir funciones pequeñas, el principio de nivel único de abstracción y el uso de excepciones.",
       items: [
+        
         "Las funciones deben ser PEQUEÑAS (idealmente de menos de 10-15 líneas).",
         "Hacer UNA sola cosa (Single Responsibility a nivel de función).",
         "Un solo nivel de abstracción por función (Single Level of Abstraction).",
         "Evitar argumentos de bandera (Flag Arguments booleanos).",
-        "Usar Excepciones en lugar de retornar códigos de error nulos."
+        "Usar Excepciones en lugar de retornar códigos de error nulos.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "La primera regla de las funciones de Tío Bob es: deben ser pequeñas. La segunda regla es: deben ser AÚN más pequeñas. Una función debe realizar una sola tarea y hacerla bien. Cuando le pasas un booleano como parámetro a una función (ej: `procesar_usuario(usuario, es_admin=True)`), estás indicando implícitamente que la función hace dos cosas distintas según la bandera. Se deben dividir en dos funciones independientes: `procesar_usuario_normal` y `procesar_usuario_admin`.",
+      content: "La primera regla de las funciones de Tío Bob es: deben ser pequeñas. La segunda regla es: deben ser AÚN más pequeñas. Una función debe realizar una sola tarea y hacerla bien. Cuando le pasas un booleano como parámetro a una función (ej: `procesar_usuario(usuario, es_admin=True)`), estás indicando implícitamente que la función hace dos cosas distintas según la bandera. Se deben dividir en dos funciones independientes: `procesar_usuario_normal` y `procesar_usuario_admin`. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Bad Practice: Flag Arguments & Códigos de Error
 def crear_usuario(nombre, es_admin):
     if es_admin:
@@ -165,20 +216,67 @@ def crear_usuario_administrador(nombre: str):
           answerIndex: 1,
           explanation: "Las funciones cortas son fáciles de leer de un vistazo, fáciles de testear unitariamente y enfocadas en una única responsabilidad."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 2: FUNCIONES, PARÁMETROS Y MANEJO DE ERRORES', ¿cuál afirmación es correcta sobre: Las funciones deben ser PEQUEÑAS (idealmente de menos de 10-15 líneas)?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Las funciones deben ser PEQUEÑAS (idealmente de menos de 10-15 líneas)", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Las funciones deben ser PEQUEÑAS (idealmente de menos de 10-15 líneas). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 2: FUNCIONES, PARÁMETROS Y MANEJO DE ERRORES', ¿cuál afirmación es correcta sobre: Hacer UNA sola cosa (Single Responsibility a nivel de función)?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Hacer UNA sola cosa (Single Responsibility a nivel de función)", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Hacer UNA sola cosa (Single Responsibility a nivel de función). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 2: FUNCIONES, PARÁMETROS Y MANEJO DE ERRORES', ¿cuál afirmación es correcta sobre: Un solo nivel de abstracción por función (Single Level of Abstraction)?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Un solo nivel de abstracción por función (Single Level of Abstraction)", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Un solo nivel de abstracción por función (Single Level of Abstraction). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 2: FUNCIONES, PARÁMETROS Y MANEJO DE ERRORES', ¿cuál afirmación es correcta sobre: Evitar argumentos de bandera (Flag Arguments booleanos)?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Evitar argumentos de bandera (Flag Arguments booleanos)", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Evitar argumentos de bandera (Flag Arguments booleanos). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 2: FUNCIONES, PARÁMETROS Y MANEJO DE ERRORES', ¿cuál afirmación es correcta sobre: Usar Excepciones en lugar de retornar códigos de error nulos?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Usar Excepciones en lugar de retornar códigos de error nulos", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Usar Excepciones en lugar de retornar códigos de error nulos. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 2: FUNCIONES, PARÁMETROS Y MANEJO DE ERRORES', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 2: FUNCIONES, PARÁMETROS Y MANEJO DE ERRORES', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 3,
       title: "MÓDULO 3: COMENTARIOS Y FORMATO DE CÓDIGO",
       description: "Cuándo los comentarios son un síntoma de mal código, formato vertical/horizontal y la ley de la claridad.",
       items: [
+        
         "El mito del código comentado: 'No comentes mal código, reescríbelo'.",
         "Comentarios verdaderamente necesarios (Legal, advertencia de consecuencias, TODOs legítimos).",
         "Comentarios ruidosos, redundantes y obsoletos.",
         "Formato Vertical: La metáfora del periódico (de lo general a lo específico).",
-        "Formato Horizontal: Anchura de líneas y sangrado transparente."
+        "Formato Horizontal: Anchura de líneas y sangrado transparente.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Tío Bob afirma: 'Los comentarios son, en el mejor de los casos, un mal necesario. Cada vez que escribes un comentario, deberías sentir que has fallado en expresarte mediante el código'. Los comentarios suelen mentir porque el código evoluciona y nadie actualiza los comentarios. En lugar de escribir `# Comprueba si el usuario tiene más de 18 años`, extrae esa condición a una función llamada `es_mayor_de_edad()`. El formato vertical debe leerse como un periódico: el concepto de alto nivel arriba y los detalles abajo.",
+      content: "Tío Bob afirma: 'Los comentarios son, en el mejor de los casos, un mal necesario. Cada vez que escribes un comentario, deberías sentir que has fallado en expresarte mediante el código'. Los comentarios suelen mentir porque el código evoluciona y nadie actualiza los comentarios. En lugar de escribir `# Comprueba si el usuario tiene más de 18 años`, extrae esa condición a una función llamada `es_mayor_de_edad()`. El formato vertical debe leerse como un periódico: el concepto de alto nivel arriba y los detalles abajo. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Mal comentario (redundante y mentiroso si cambia la condición)
 # Suma 1 a la variable i
 i = i + 1 
@@ -223,20 +321,67 @@ def es_usuario_valido_para_compra(usuario) -> bool:
           answerIndex: 0,
           explanation: "Mantener líneas de longitud moderada permite leer el código completo sin tener que desplazarse horizontalmente en la pantalla."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 3: COMENTARIOS Y FORMATO DE CÓDIGO', ¿cuál afirmación es correcta sobre: El mito del código comentado: 'No comentes mal código, reescríbelo'?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: El mito del código comentado: 'No comentes mal código, reescríbelo'", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que El mito del código comentado: 'No comentes mal código, reescríbelo'. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 3: COMENTARIOS Y FORMATO DE CÓDIGO', ¿cuál afirmación es correcta sobre: Comentarios verdaderamente necesarios (Legal, advertencia de consecuencias, T...?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Comentarios verdaderamente necesarios (Legal, advertencia de consec...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Comentarios verdaderamente necesarios (Legal, advertencia de consecuencias, TODOs legítimos). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 3: COMENTARIOS Y FORMATO DE CÓDIGO', ¿cuál afirmación es correcta sobre: Comentarios ruidosos, redundantes y obsoletos?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Comentarios ruidosos, redundantes y obsoletos", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Comentarios ruidosos, redundantes y obsoletos. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 3: COMENTARIOS Y FORMATO DE CÓDIGO', ¿cuál afirmación es correcta sobre: Formato Vertical: La metáfora del periódico (de lo general a lo específico)?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Formato Vertical: La metáfora del periódico (de lo general a lo esp...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Formato Vertical: La metáfora del periódico (de lo general a lo específico). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 3: COMENTARIOS Y FORMATO DE CÓDIGO', ¿cuál afirmación es correcta sobre: Formato Horizontal: Anchura de líneas y sangrado transparente?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Formato Horizontal: Anchura de líneas y sangrado transparente", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Formato Horizontal: Anchura de líneas y sangrado transparente. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 3: COMENTARIOS Y FORMATO DE CÓDIGO', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 3: COMENTARIOS Y FORMATO DE CÓDIGO', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 4,
       title: "MÓDULO 4: PRINCIPIO S - SINGLE RESPONSIBILITY PRINCIPLE (SRP)",
       description: "Una sola razón para cambiar. Alta cohesión, bajo acoplamiento y separación de aspectos.",
       items: [
+        
         "Definición exacta de SRP: 'Un módulo o clase debe tener una y solo una razón para cambiar'.",
         "Identificación de 'razones para cambiar' asociadas a actores de negocio.",
         "Separación de la Lógica de Negocio de la Lógica de Persistencia / UI.",
         "Síntomas de violación de SRP: Clases Dios (God Classes) y archivos gigantes.",
-        "Cohesión: El grado en que los métodos de una clase trabajan sobre sus atributos."
+        "Cohesión: El grado en que los métodos de una clase trabajan sobre sus atributos.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "El Primer Principio SOLID es el **Single Responsibility Principle (SRP)**. La definición del Tío Bob es muy específica: 'Un módulo debe ser responsable ante un solo actor de negocio'. Si una clase `ReporteEmpleado` calcula el salario para Finanzas y además imprime el formato PDF para Recursos Humanos, tiene DOS razones para cambiar. Si Finanzas cambia el cálculo de horas extra, podrías romper accidentalmente la impresión de RRHH. SRP exige separar estas responsabilidades en clases independientes.",
+      content: "El Primer Principio SOLID es el **Single Responsibility Principle (SRP)**. La definición del Tío Bob es muy específica: 'Un módulo debe ser responsable ante un solo actor de negocio'. Si una clase `ReporteEmpleado` calcula el salario para Finanzas y además imprime el formato PDF para Recursos Humanos, tiene DOS razones para cambiar. Si Finanzas cambia el cálculo de horas extra, podrías romper accidentalmente la impresión de RRHH. SRP exige separar estas responsabilidades en clases independientes. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Violación de SRP: Una sola clase calcula salario, guarda en DB e imprime PDF
 class EmpleadoSpaghetti:
     def calcular_salario(self): pass
@@ -283,20 +428,67 @@ class GeneradorReportePDFEmpleado:
           answerIndex: 0,
           explanation: "Al separar responsabilidades, modificar una regla de negocio no rompe ni afecta a las demás partes del sistema."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 4: PRINCIPIO S - SINGLE RESPONSIBILITY PRINCIPLE (SRP)', ¿cuál afirmación es correcta sobre: Definición exacta de SRP: 'Un módulo o clase debe tener una y solo una razón ...?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Definición exacta de SRP: 'Un módulo o clase debe tener una y solo ...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Definición exacta de SRP: 'Un módulo o clase debe tener una y solo una razón para cambiar'. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 4: PRINCIPIO S - SINGLE RESPONSIBILITY PRINCIPLE (SRP)', ¿cuál afirmación es correcta sobre: Identificación de 'razones para cambiar' asociadas a actores de negocio?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Identificación de 'razones para cambiar' asociadas a actores de neg...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Identificación de 'razones para cambiar' asociadas a actores de negocio. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 4: PRINCIPIO S - SINGLE RESPONSIBILITY PRINCIPLE (SRP)', ¿cuál afirmación es correcta sobre: Separación de la Lógica de Negocio de la Lógica de Persistencia / UI?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Separación de la Lógica de Negocio de la Lógica de Persistencia / UI", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Separación de la Lógica de Negocio de la Lógica de Persistencia / UI. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 4: PRINCIPIO S - SINGLE RESPONSIBILITY PRINCIPLE (SRP)', ¿cuál afirmación es correcta sobre: Síntomas de violación de SRP: Clases Dios (God Classes) y archivos gigantes?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Síntomas de violación de SRP: Clases Dios (God Classes) y archivos ...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Síntomas de violación de SRP: Clases Dios (God Classes) y archivos gigantes. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 4: PRINCIPIO S - SINGLE RESPONSIBILITY PRINCIPLE (SRP)', ¿cuál afirmación es correcta sobre: Cohesión: El grado en que los métodos de una clase trabajan sobre sus atributos?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Cohesión: El grado en que los métodos de una clase trabajan sobre s...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Cohesión: El grado en que los métodos de una clase trabajan sobre sus atributos. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 4: PRINCIPIO S - SINGLE RESPONSIBILITY PRINCIPLE (SRP)', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 4: PRINCIPIO S - SINGLE RESPONSIBILITY PRINCIPLE (SRP)', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 5,
       title: "MÓDULO 5: PRINCIPIO O - OPEN/CLOSED PRINCIPLE (OCP)",
       description: "Abierto para extensión, cerrado para modificación. Uso de interfaces y polimorfismo.",
       items: [
+        
         "Definición de OCP: 'Las entidades de software deben estar abiertas para extensión, pero cerradas para modificación'.",
         "El peligro de agregar nuevos tipos editando bloques `switch` / `if-else` existentes.",
         "Uso de Abstracciones (Interfaces y Clases Abstractas) para lograr OCP.",
         "Inyección de nuevos comportamientos creando nuevas clases sin alterar el código probado.",
-        "Relación entre OCP y los Patrones de Diseño (Strategy, Decorator)."
+        "Relación entre OCP y los Patrones de Diseño (Strategy, Decorator).",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "El segundo principio SOLID es el **Open/Closed Principle (OCP)**. Afirma que deberías poder extender el comportamiento de un sistema SIN modificar su código fuente existente ya probado y en producción. Si para agregar un nuevo método de pago (ej: PayPal) tienes que modificar la clase `ProcesadorPagos` agregando un `else if (tipo == 'PAYPAL')`, estás violando OCP. La solución es crear una interfaz `MetodoPago` y agregar una nueva clase `PagoPayPal` que la implemente.",
+      content: "El segundo principio SOLID es el **Open/Closed Principle (OCP)**. Afirma que deberías poder extender el comportamiento de un sistema SIN modificar su código fuente existente ya probado y en producción. Si para agregar un nuevo método de pago (ej: PayPal) tienes que modificar la clase `ProcesadorPagos` agregando un `else if (tipo == 'PAYPAL')`, estás violando OCP. La solución es crear una interfaz `MetodoPago` y agregar una nueva clase `PagoPayPal` que la implemente. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Violación de OCP: Editar la clase para cada nuevo descuento
 class CalculadorDescuentoSpaghetti:
     def calcular(self, tipo_cliente, monto):
@@ -347,20 +539,67 @@ class DescuentoPremium(EstrategiaDescuento): # ¡Nuevo tipo sin modificar códig
           answerIndex: 0,
           explanation: "Strategy permite intercambiar algoritmos e inyectar nuevas estrategias de forma transparente sin tocar el cliente."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 5: PRINCIPIO O - OPEN/CLOSED PRINCIPLE (OCP)', ¿cuál afirmación es correcta sobre: Definición de OCP: 'Las entidades de software deben estar abiertas para exten...?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Definición de OCP: 'Las entidades de software deben estar abiertas ...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Definición de OCP: 'Las entidades de software deben estar abiertas para extensión, pero cerradas para modificación'. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 5: PRINCIPIO O - OPEN/CLOSED PRINCIPLE (OCP)', ¿cuál afirmación es correcta sobre: El peligro de agregar nuevos tipos editando bloques `switch` / `if-else` exis...?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: El peligro de agregar nuevos tipos editando bloques `switch` / `if-...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que El peligro de agregar nuevos tipos editando bloques `switch` / `if-else` existentes. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 5: PRINCIPIO O - OPEN/CLOSED PRINCIPLE (OCP)', ¿cuál afirmación es correcta sobre: Uso de Abstracciones (Interfaces y Clases Abstractas) para lograr OCP?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Uso de Abstracciones (Interfaces y Clases Abstractas) para lograr OCP", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Uso de Abstracciones (Interfaces y Clases Abstractas) para lograr OCP. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 5: PRINCIPIO O - OPEN/CLOSED PRINCIPLE (OCP)', ¿cuál afirmación es correcta sobre: Inyección de nuevos comportamientos creando nuevas clases sin alterar el códi...?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Inyección de nuevos comportamientos creando nuevas clases sin alter...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Inyección de nuevos comportamientos creando nuevas clases sin alterar el código probado. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 5: PRINCIPIO O - OPEN/CLOSED PRINCIPLE (OCP)', ¿cuál afirmación es correcta sobre: Relación entre OCP y los Patrones de Diseño (Strategy, Decorator)?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Relación entre OCP y los Patrones de Diseño (Strategy, Decorator)", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Relación entre OCP y los Patrones de Diseño (Strategy, Decorator). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 5: PRINCIPIO O - OPEN/CLOSED PRINCIPLE (OCP)', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 5: PRINCIPIO O - OPEN/CLOSED PRINCIPLE (OCP)', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 6,
       title: "MÓDULO 6: PRINCIPIO L - LISKOV SUBSTITUTION PRINCIPLE (LSP)",
       description: "Sustituibilidad de subclases, contratos de interfaz, precondiciones y postcondiciones.",
       items: [
+        
         "Definición de Barbara Liskov (1987) para subtipado de datos.",
         "Si S es un subtipo de T, los objetos de tipo T deben poder reemplazarse por objetos de tipo S sin alterar la corrección del programa.",
         "El dilema clásico del Cuadrado y el Rectángulo.",
         "Reglas de Contrato: Precondiciones no pueden ser reforzadas en la subclase.",
-        "Postcondiciones y la preservación de invariantes."
+        "Postcondiciones y la preservación de invariantes.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "El tercer principio SOLID es el **Liskov Substitution Principle (LSP)**, formulado por Barbara Liskov. Establece que los objetos de una clase derivada deben poder sustituir a los objetos de la clase base sin que el programa falle o se comporte erróneamente. El ejemplo clásico es la clase `Cuadrado` heredando de `Rectangulo`. Si un método cambia el ancho del rectángulo esperando que el alto no cambie, y el Cuadrado altera ambas dimensiones a la vez, se violan los contratos de LSP.",
+      content: "El tercer principio SOLID es el **Liskov Substitution Principle (LSP)**, formulado por Barbara Liskov. Establece que los objetos de una clase derivada deben poder sustituir a los objetos de la clase base sin que el programa falle o se comporte erróneamente. El ejemplo clásico es la clase `Cuadrado` heredando de `Rectangulo`. Si un método cambia el ancho del rectángulo esperando que el alto no cambie, y el Cuadrado altera ambas dimensiones a la vez, se violan los contratos de LSP. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Violación de LSP: Cuadrado hereda de Rectángulo
 class Rectangulo:
     def __init__(self, ancho: float, alto: float):
@@ -410,20 +649,67 @@ def probar_rectangulo(r: Rectangulo):
           answerIndex: 0,
           explanation: "Cuando una relación 'es-un' falla el test semántico de Liskov, se debe usar composición ('tiene-un') mediante atributos internos."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 6: PRINCIPIO L - LISKOV SUBSTITUTION PRINCIPLE (LSP)', ¿cuál afirmación es correcta sobre: Definición de Barbara Liskov (1987) para subtipado de datos?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Definición de Barbara Liskov (1987) para subtipado de datos", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Definición de Barbara Liskov (1987) para subtipado de datos. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 6: PRINCIPIO L - LISKOV SUBSTITUTION PRINCIPLE (LSP)', ¿cuál afirmación es correcta sobre: Si S es un subtipo de T, los objetos de tipo T deben poder reemplazarse por o...?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Si S es un subtipo de T, los objetos de tipo T deben poder reemplaz...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Si S es un subtipo de T, los objetos de tipo T deben poder reemplazarse por objetos de tipo S sin alterar la correcci.... Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 6: PRINCIPIO L - LISKOV SUBSTITUTION PRINCIPLE (LSP)', ¿cuál afirmación es correcta sobre: El dilema clásico del Cuadrado y el Rectángulo?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: El dilema clásico del Cuadrado y el Rectángulo", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que El dilema clásico del Cuadrado y el Rectángulo. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 6: PRINCIPIO L - LISKOV SUBSTITUTION PRINCIPLE (LSP)', ¿cuál afirmación es correcta sobre: Reglas de Contrato: Precondiciones no pueden ser reforzadas en la subclase?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Reglas de Contrato: Precondiciones no pueden ser reforzadas en la s...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Reglas de Contrato: Precondiciones no pueden ser reforzadas en la subclase. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 6: PRINCIPIO L - LISKOV SUBSTITUTION PRINCIPLE (LSP)', ¿cuál afirmación es correcta sobre: Postcondiciones y la preservación de invariantes?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Postcondiciones y la preservación de invariantes", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Postcondiciones y la preservación de invariantes. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 6: PRINCIPIO L - LISKOV SUBSTITUTION PRINCIPLE (LSP)', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 6: PRINCIPIO L - LISKOV SUBSTITUTION PRINCIPLE (LSP)', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 7,
       title: "MÓDULO 7: PRINCIPIOS I Y D - INTERFACE SEGREGATION & DEPENDENCY INVERSION",
       description: "Interfaces específicas para cada cliente (ISP) e Inversión de Dependencias mediante inyección (DIP).",
       items: [
+        
         "Interface Segregation Principle (ISP): 'Ningún cliente debe ser forzado a depender de métodos que no usa'.",
         "Diseño de interfaces enfocadas y de granularidad fina.",
         "Dependency Inversion Principle (DIP): Módulos de alto nivel no deben depender de módulos de bajo nivel.",
         "Ambos deben depender de Abstracciones (Interfaces).",
-        "Inyección de Dependencias (DI): Constructor Injection y contenedores IoC."
+        "Inyección de Dependencias (DI): Constructor Injection y contenedores IoC.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Los últimos dos principios SOLID son **ISP** y **DIP**. **ISP** enseña que es preferible tener muchas interfaces pequeñas y especializadas en lugar de una interfaz gigante con decenas de métodos no relacionados. **DIP** establece la regla de oro de la arquitectura limpia: 'Los módulos de alto nivel (lógica de negocio) no deben depender de módulos de bajo nivel (DB, UI, HTTP); ambos deben depender de abstracciones'. Al inyectar la interfaz de la base de datos por el constructor, la lógica de negocio se vuelve independiente del motor SQL o NoSQL.",
+      content: "Los últimos dos principios SOLID son **ISP** y **DIP**. **ISP** enseña que es preferible tener muchas interfaces pequeñas y especializadas en lugar de una interfaz gigante con decenas de métodos no relacionados. **DIP** establece la regla de oro de la arquitectura limpia: 'Los módulos de alto nivel (lógica de negocio) no deben depender de módulos de bajo nivel (DB, UI, HTTP); ambos deben depender de abstracciones'. Al inyectar la interfaz de la base de datos por el constructor, la lógica de negocio se vuelve independiente del motor SQL o NoSQL. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Violación de DIP: La clase de Alto Nivel depende directamente de PostgresDB (Bajo Nivel)
 class ServicioUsuarioSpaghetti:
     def __init__(self):
@@ -475,20 +761,67 @@ class ServicioUsuarioClean:
           answerIndex: 0,
           explanation: "Obligar a una clase a implementar contratos que no utiliza es una violación directa del principio ISP."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 7: PRINCIPIOS I Y D - INTERFACE SEGREGATION & DEPENDENCY INVERSION', ¿cuál afirmación es correcta sobre: Interface Segregation Principle (ISP): 'Ningún cliente debe ser forzado a dep...?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Interface Segregation Principle (ISP): 'Ningún cliente debe ser for...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Interface Segregation Principle (ISP): 'Ningún cliente debe ser forzado a depender de métodos que no usa'. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 7: PRINCIPIOS I Y D - INTERFACE SEGREGATION & DEPENDENCY INVERSION', ¿cuál afirmación es correcta sobre: Diseño de interfaces enfocadas y de granularidad fina?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Diseño de interfaces enfocadas y de granularidad fina", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Diseño de interfaces enfocadas y de granularidad fina. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 7: PRINCIPIOS I Y D - INTERFACE SEGREGATION & DEPENDENCY INVERSION', ¿cuál afirmación es correcta sobre: Dependency Inversion Principle (DIP): Módulos de alto nivel no deben depender...?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Dependency Inversion Principle (DIP): Módulos de alto nivel no debe...", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Dependency Inversion Principle (DIP): Módulos de alto nivel no deben depender de módulos de bajo nivel. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 7: PRINCIPIOS I Y D - INTERFACE SEGREGATION & DEPENDENCY INVERSION', ¿cuál afirmación es correcta sobre: Ambos deben depender de Abstracciones (Interfaces)?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Ambos deben depender de Abstracciones (Interfaces)", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Ambos deben depender de Abstracciones (Interfaces). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 7: PRINCIPIOS I Y D - INTERFACE SEGREGATION & DEPENDENCY INVERSION', ¿cuál afirmación es correcta sobre: Inyección de Dependencias (DI): Constructor Injection y contenedores IoC?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Inyección de Dependencias (DI): Constructor Injection y contenedore...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Inyección de Dependencias (DI): Constructor Injection y contenedores IoC. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 7: PRINCIPIOS I Y D - INTERFACE SEGREGATION & DEPENDENCY INVERSION', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 7: PRINCIPIOS I Y D - INTERFACE SEGREGATION & DEPENDENCY INVERSION', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 8,
       title: "MÓDULO 8: PATRONES DE DISEÑO CREACIONALES (GANG OF FOUR)",
       description: "Mecanismos de creación de objetos flexibles: Singleton, Factory Method, Abstract Factory, Builder y Prototype.",
       items: [
+        
         "Origen de los Patrones de Diseño (Libro GoF - Gang of Four 1994).",
         "Patrón Singleton: Garantizar una única instancia global y cuándo EVITARLO.",
         "Patrón Factory Method: Delegar la instanciación a subclases especializadas.",
         "Patrón Abstract Factory: Familias de objetos relacionados.",
-        "Patrón Builder: Construcción paso a paso de objetos complejos."
+        "Patrón Builder: Construcción paso a paso de objetos complejos.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Los Patrones Creacionales abstraen el proceso de instanciación de objetos. El patrón **Factory Method** define una interfaz para crear un objeto, permitiendo a las subclases decidir qué clase concreta instanciar. El patrón **Builder** separa la construcción de un objeto complejo de su representación (ideal para evitar constructores con 10 parámetros). El patrón **Singleton** asegura que una clase tenga una única instancia en todo el sistema (aunque debe usarse con precaución para no crear un estado global acoplado).",
+      content: "Los Patrones Creacionales abstraen el proceso de instanciación de objetos. El patrón **Factory Method** define una interfaz para crear un objeto, permitiendo a las subclases decidir qué clase concreta instanciar. El patrón **Builder** separa la construcción de un objeto complejo de su representación (ideal para evitar constructores con 10 parámetros). El patrón **Singleton** asegura que una clase tenga una única instancia en todo el sistema (aunque debe usarse con precaución para no crear un estado global acoplado). En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Ejemplo del Patrón Builder en Python
 class ConsultaSQL:
     def __init__(self):
@@ -545,20 +878,67 @@ print(query) # SELECT * FROM usuarios WHERE edad > 18 AND activo = 1`,
           answerIndex: 0,
           explanation: "Prototype delega la copia al propio objeto a través de una interfaz de clonado (`clone()`)."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 8: PATRONES DE DISEÑO CREACIONALES (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Origen de los Patrones de Diseño (Libro GoF - Gang of Four 1994)?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Origen de los Patrones de Diseño (Libro GoF - Gang of Four 1994)", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Origen de los Patrones de Diseño (Libro GoF - Gang of Four 1994). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 8: PATRONES DE DISEÑO CREACIONALES (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Patrón Singleton: Garantizar una única instancia global y cuándo EVITARLO?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Patrón Singleton: Garantizar una única instancia global y cuándo EV...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Patrón Singleton: Garantizar una única instancia global y cuándo EVITARLO. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 8: PATRONES DE DISEÑO CREACIONALES (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Patrón Factory Method: Delegar la instanciación a subclases especializadas?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Patrón Factory Method: Delegar la instanciación a subclases especia...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Patrón Factory Method: Delegar la instanciación a subclases especializadas. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 8: PATRONES DE DISEÑO CREACIONALES (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Patrón Abstract Factory: Familias de objetos relacionados?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Patrón Abstract Factory: Familias de objetos relacionados", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Patrón Abstract Factory: Familias de objetos relacionados. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 8: PATRONES DE DISEÑO CREACIONALES (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Patrón Builder: Construcción paso a paso de objetos complejos?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Patrón Builder: Construcción paso a paso de objetos complejos", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Patrón Builder: Construcción paso a paso de objetos complejos. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 8: PATRONES DE DISEÑO CREACIONALES (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 8: PATRONES DE DISEÑO CREACIONALES (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 9,
       title: "MÓDULO 9: PATRONES DE DISEÑO ESTRUCTURALES (GANG OF FOUR)",
       description: "Composición de clases y objetos: Adapter, Decorator, Facade, Composite y Proxy.",
       items: [
+        
         "Patrón Adapter: Adaptar interfaces incompatibles sin tocar el código fuente.",
         "Patrón Decorator: Añadir funcionalidades a un objeto dinámicamente en tiempo de ejecución.",
         "Patrón Facade (Fachada): Proporcionar una interfaz simplificada a un sistema complejo.",
         "Patrón Composite: Tratar objetos individuales y composiciones de objetos de forma uniforme.",
-        "Patrón Proxy: Controlar el acceso a un objeto (Lazy loading, seguridad, almacenamiento en caché)."
+        "Patrón Proxy: Controlar el acceso a un objeto (Lazy loading, seguridad, almacenamiento en caché).",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Los Patrones Estructurales explican cómo ensamblar objetos y clases en estructuras más grandes manteniendo la flexibilidad. El patrón **Adapter** actúa como un conversor de enchufe de viaje entre dos interfaces incompatibles. El patrón **Decorator** envuelve un objeto para agregar responsabilidades dinámicamente sin usar herencia rígida. El patrón **Facade** ofrece un único punto de entrada sencillo para ocultar la complejidad de un subsistema con decenas de clases.",
+      content: "Los Patrones Estructurales explican cómo ensamblar objetos y clases en estructuras más grandes manteniendo la flexibilidad. El patrón **Adapter** actúa como un conversor de enchufe de viaje entre dos interfaces incompatibles. El patrón **Decorator** envuelve un objeto para agregar responsabilidades dinámicamente sin usar herencia rígida. El patrón **Facade** ofrece un único punto de entrada sencillo para ocultar la complejidad de un subsistema con decenas de clases. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Ejemplo del Patrón Decorator en Python
 class NotificadorBase:
     def enviar(self, mensaje: str):
@@ -609,20 +989,67 @@ notificador.enviar("¡Alerta de Seguridad!")
           answerIndex: 0,
           explanation: "Composite representa jerarquías parte-todo donde contenedores y elementos individuales comparten la misma interfaz."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 9: PATRONES DE DISEÑO ESTRUCTURALES (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Patrón Adapter: Adaptar interfaces incompatibles sin tocar el código fuente?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Patrón Adapter: Adaptar interfaces incompatibles sin tocar el códig...", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Patrón Adapter: Adaptar interfaces incompatibles sin tocar el código fuente. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 9: PATRONES DE DISEÑO ESTRUCTURALES (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Patrón Decorator: Añadir funcionalidades a un objeto dinámicamente en tiempo ...?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Patrón Decorator: Añadir funcionalidades a un objeto dinámicamente ...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Patrón Decorator: Añadir funcionalidades a un objeto dinámicamente en tiempo de ejecución. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 9: PATRONES DE DISEÑO ESTRUCTURALES (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Patrón Facade (Fachada): Proporcionar una interfaz simplificada a un sistema ...?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Patrón Facade (Fachada): Proporcionar una interfaz simplificada a u...", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Patrón Facade (Fachada): Proporcionar una interfaz simplificada a un sistema complejo. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 9: PATRONES DE DISEÑO ESTRUCTURALES (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Patrón Composite: Tratar objetos individuales y composiciones de objetos de f...?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Patrón Composite: Tratar objetos individuales y composiciones de ob...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Patrón Composite: Tratar objetos individuales y composiciones de objetos de forma uniforme. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 9: PATRONES DE DISEÑO ESTRUCTURALES (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Patrón Proxy: Controlar el acceso a un objeto (Lazy loading, seguridad, almac...?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Patrón Proxy: Controlar el acceso a un objeto (Lazy loading, seguri...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Patrón Proxy: Controlar el acceso a un objeto (Lazy loading, seguridad, almacenamiento en caché). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 9: PATRONES DE DISEÑO ESTRUCTURALES (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 9: PATRONES DE DISEÑO ESTRUCTURALES (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 10,
       title: "MÓDULO 10: PATRONES DE DISEÑO DE COMPORTAMIENTO (GANG OF FOUR)",
       description: "Interacción y distribución de responsabilidades: Strategy, Observer, Command, State y Chain of Responsibility.",
       items: [
+        
         "Patrón Strategy: Encapsular algoritmos intercambiables en tiempo de ejecución.",
         "Patrón Observer: Suscripción y notificación de eventos 1 a N.",
         "Patrón Command: Encapsular una petición como un objeto (Undo / Redo).",
         "Patrón State: Permitir a un objeto alterar su comportamiento cuando su estado interno cambia.",
-        "Patrón Chain of Responsibility: Cadena de manejadores de peticiones independientes."
+        "Patrón Chain of Responsibility: Cadena de manejadores de peticiones independientes.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Los Patrones de Comportamiento gestionan los algoritmos y la asignación de responsabilidades entre objetos. El patrón **Strategy** permite seleccionar un algoritmo en tiempo de ejecución de forma intercambiable (aplicando el OCP). El patrón **Observer** establece una relación uno-a-muchos donde un objeto notifica automáticamente a sus suscriptores cuando su estado cambia (base de la arquitectura orientada a eventos). El patrón **Command** convierte solicitudes en objetos para respaldar operaciones de deshacer (Undo).",
+      content: "Los Patrones de Comportamiento gestionan los algoritmos y la asignación de responsabilidades entre objetos. El patrón **Strategy** permite seleccionar un algoritmo en tiempo de ejecución de forma intercambiable (aplicando el OCP). El patrón **Observer** establece una relación uno-a-muchos donde un objeto notifica automáticamente a sus suscriptores cuando su estado cambia (base de la arquitectura orientada a eventos). El patrón **Command** convierte solicitudes en objetos para respaldar operaciones de deshacer (Undo). En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Ejemplo del Patrón Observer en Python
 class SistemaEventos:
     def __init__(self):
@@ -670,6 +1097,49 @@ emisor.notificar("¡Pago de usuario procesado!")`,
           options: ["Patrón State (Estado)", "Patrón Template Method", "Patrón Iterator"],
           answerIndex: 0,
           explanation: "State modela máquinas de estado finitas encapsulando el comportamiento de cada estado en objetos separados."
+        }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 10: PATRONES DE DISEÑO DE COMPORTAMIENTO (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Patrón Strategy: Encapsular algoritmos intercambiables en tiempo de ejecución?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Patrón Strategy: Encapsular algoritmos intercambiables en tiempo de...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Patrón Strategy: Encapsular algoritmos intercambiables en tiempo de ejecución. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 10: PATRONES DE DISEÑO DE COMPORTAMIENTO (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Patrón Observer: Suscripción y notificación de eventos 1 a N?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Patrón Observer: Suscripción y notificación de eventos 1 a N", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Patrón Observer: Suscripción y notificación de eventos 1 a N. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 10: PATRONES DE DISEÑO DE COMPORTAMIENTO (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Patrón Command: Encapsular una petición como un objeto (Undo / Redo)?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Patrón Command: Encapsular una petición como un objeto (Undo / Redo)", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Patrón Command: Encapsular una petición como un objeto (Undo / Redo). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 10: PATRONES DE DISEÑO DE COMPORTAMIENTO (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Patrón State: Permitir a un objeto alterar su comportamiento cuando su estado...?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Patrón State: Permitir a un objeto alterar su comportamiento cuando...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Patrón State: Permitir a un objeto alterar su comportamiento cuando su estado interno cambia. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 10: PATRONES DE DISEÑO DE COMPORTAMIENTO (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Patrón Chain of Responsibility: Cadena de manejadores de peticiones independi...?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Patrón Chain of Responsibility: Cadena de manejadores de peticiones...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Patrón Chain of Responsibility: Cadena de manejadores de peticiones independientes. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 10: PATRONES DE DISEÑO DE COMPORTAMIENTO (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 10: PATRONES DE DISEÑO DE COMPORTAMIENTO (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
         }
       ]
     }

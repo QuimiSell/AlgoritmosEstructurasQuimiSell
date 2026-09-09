@@ -50,13 +50,17 @@ export const AUTOMATA_COMPILER_COURSE: Course = {
       title: "MÓDULO 1: ALFABETOS, CADENAS Y LENGUAJES FORMALES",
       description: "Los bloques fundamentales de la Teoría de la Computación: símbolos, concatenación y operaciones sobre lenguajes.",
       items: [
+        
         "Alfabeto Σ: Conjuntos finitos no vacíos de símbolos.",
         "Cadenas (w): Secuencias finitas de símbolos y cadena vacía ε.",
         "Longitud de una cadena |w| y Operación de Concatenación.",
         "Operación Estrella de Kleene (Σ*) y Clausura Positiva (Σ+).",
-        "Definición Formal de Lenguaje L ⊆ Σ*."
+        "Definición Formal de Lenguaje L ⊆ Σ*.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "La Teoría de la Computación comienza definiendo qué es un Alfabeto Σ (un conjunto finito de símbolos). Una Cadena es una secuencia finita de símbolos elegidos de Σ. La longitud |w| es la cantidad de símbolos de w. La cadena vacía ε tiene longitud 0. La Estrella de Kleene Σ* representa el conjunto infinito de todas las cadenas posibles generables con Σ (incluyendo ε), mientras que Σ+ excluye ε. Un Lenguaje Formal L es cualquier subconjunto de Σ*.",
+      content: "La Teoría de la Computación comienza definiendo qué es un Alfabeto Σ (un conjunto finito de símbolos). Una Cadena es una secuencia finita de símbolos elegidos de Σ. La longitud |w| es la cantidad de símbolos de w. La cadena vacía ε tiene longitud 0. La Estrella de Kleene Σ* representa el conjunto infinito de todas las cadenas posibles generables con Σ (incluyendo ε), mientras que Σ+ excluye ε. Un Lenguaje Formal L es cualquier subconjunto de Σ*. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Operaciones con Cadenas y Kleene en Python
 alfabeto = {'0', '1'}
 
@@ -104,20 +108,67 @@ print(f"Σ* de longitud 2: {generar_cadenas_kleene(alfabeto, 2)}") # ['00', '01'
           answerIndex: 1,
           explanation: "La cadena vacía ε actúa como el elemento neutro de la concatenación de cadenas: w · ε = ε · w = w."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 1: ALFABETOS, CADENAS Y LENGUAJES FORMALES', ¿cuál afirmación es correcta sobre: Alfabeto Σ: Conjuntos finitos no vacíos de símbolos?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Alfabeto Σ: Conjuntos finitos no vacíos de símbolos", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Alfabeto Σ: Conjuntos finitos no vacíos de símbolos. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 1: ALFABETOS, CADENAS Y LENGUAJES FORMALES', ¿cuál afirmación es correcta sobre: Cadenas (w): Secuencias finitas de símbolos y cadena vacía ε?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Cadenas (w): Secuencias finitas de símbolos y cadena vacía ε", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Cadenas (w): Secuencias finitas de símbolos y cadena vacía ε. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 1: ALFABETOS, CADENAS Y LENGUAJES FORMALES', ¿cuál afirmación es correcta sobre: Longitud de una cadena |w| y Operación de Concatenación?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Longitud de una cadena |w| y Operación de Concatenación", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Longitud de una cadena |w| y Operación de Concatenación. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 1: ALFABETOS, CADENAS Y LENGUAJES FORMALES', ¿cuál afirmación es correcta sobre: Operación Estrella de Kleene (Σ*) y Clausura Positiva (Σ+)?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Operación Estrella de Kleene (Σ*) y Clausura Positiva (Σ+)", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Operación Estrella de Kleene (Σ*) y Clausura Positiva (Σ+). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 1: ALFABETOS, CADENAS Y LENGUAJES FORMALES', ¿cuál afirmación es correcta sobre: Definición Formal de Lenguaje L ⊆ Σ*?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Definición Formal de Lenguaje L ⊆ Σ*", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Definición Formal de Lenguaje L ⊆ Σ*. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 1: ALFABETOS, CADENAS Y LENGUAJES FORMALES', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 1: ALFABETOS, CADENAS Y LENGUAJES FORMALES', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 2,
       title: "MÓDULO 2: AUTÓMATAS FINITOS DETERMINISTAS (DFA)",
       description: "Reconocedores de lenguajes regulares mediante máquinas de estado finito sin ambigüedad.",
       items: [
+        
         "Definición Formal de DFA como Tupla de 5 elementos: M = (Q, Σ, δ, q₀, F).",
         "Conjunto de Estados Q, Estado Inicial q₀ y Estados de Aceptación F.",
         "Función de Transición Total δ: Q × Σ → Q.",
         "Tabla de Transiciones y Diagrama de Estados.",
-        "Evaluación de Cadenas y Lenguaje Aceptado L(M)."
+        "Evaluación de Cadenas y Lenguaje Aceptado L(M).",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Un Autómata Finito Determinista (DFA) es un modelo matemático de una máquina de estados finita. Para cada estado q y cada símbolo de entrada s, la función de transición δ(q, s) especifica EXACTAMENTE UN único estado siguiente. No existe ambigüedad ni decisiones múltiples. Una cadena w es aceptada por el DFA si, tras procesar cada símbolo de w desde el estado inicial q₀, la máquina finaliza en un estado perteneciente al conjunto de estados finales F.",
+      content: "Un Autómata Finito Determinista (DFA) es un modelo matemático de una máquina de estados finita. Para cada estado q y cada símbolo de entrada s, la función de transición δ(q, s) especifica EXACTAMENTE UN único estado siguiente. No existe ambigüedad ni decisiones múltiples. Una cadena w es aceptada por el DFA si, tras procesar cada símbolo de w desde el estado inicial q₀, la máquina finaliza en un estado perteneciente al conjunto de estados finales F. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Ejemplo de DFA en Python: Acepta cadenas binarias con un número PAR de 1s
 class DFA_ParUnos:
     def __init__(self):
@@ -166,20 +217,67 @@ print(f"¿'111' aceptada? (3 unos): {dfa.procesar_cadena('111')}")   # False`,
           answerIndex: 0,
           explanation: "Por definición determinista, todo DFA posee un único estado de partida q₀ ∈ Q."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 2: AUTÓMATAS FINITOS DETERMINISTAS (DFA)', ¿cuál afirmación es correcta sobre: Definición Formal de DFA como Tupla de 5 elementos: M = (Q, Σ, δ, q₀, F)?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Definición Formal de DFA como Tupla de 5 elementos: M = (Q, Σ, δ, q...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Definición Formal de DFA como Tupla de 5 elementos: M = (Q, Σ, δ, q₀, F). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 2: AUTÓMATAS FINITOS DETERMINISTAS (DFA)', ¿cuál afirmación es correcta sobre: Conjunto de Estados Q, Estado Inicial q₀ y Estados de Aceptación F?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Conjunto de Estados Q, Estado Inicial q₀ y Estados de Aceptación F", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Conjunto de Estados Q, Estado Inicial q₀ y Estados de Aceptación F. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 2: AUTÓMATAS FINITOS DETERMINISTAS (DFA)', ¿cuál afirmación es correcta sobre: Función de Transición Total δ: Q × Σ → Q?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Función de Transición Total δ: Q × Σ → Q", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Función de Transición Total δ: Q × Σ → Q. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 2: AUTÓMATAS FINITOS DETERMINISTAS (DFA)', ¿cuál afirmación es correcta sobre: Tabla de Transiciones y Diagrama de Estados?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Tabla de Transiciones y Diagrama de Estados", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Tabla de Transiciones y Diagrama de Estados. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 2: AUTÓMATAS FINITOS DETERMINISTAS (DFA)', ¿cuál afirmación es correcta sobre: Evaluación de Cadenas y Lenguaje Aceptado L(M)?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Evaluación de Cadenas y Lenguaje Aceptado L(M)", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Evaluación de Cadenas y Lenguaje Aceptado L(M). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 2: AUTÓMATAS FINITOS DETERMINISTAS (DFA)', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 2: AUTÓMATAS FINITOS DETERMINISTAS (DFA)', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 3,
       title: "MÓDULO 3: AUTÓMATAS FINITOS NO DETERMINISTAS (NFA & NFA-ε)",
       description: "No determinismo, transiciones vacías ε y el algoritmo de Construcción de Subconjuntos.",
       items: [
+        
         "Definición Formal de NFA: Función δ: Q × Σ → P(Q).",
         "Transiciones Vacías ε (NFA-ε) y Clausura-ε (ε-closure).",
         "Modelado de opciones múltiples y cómputo en árbol.",
         "Equivalencia de Poder Expresivo: NFA ≡ DFA.",
-        "Algoritmo de Construcción de Subconjuntos (Subset Construction)."
+        "Algoritmo de Construcción de Subconjuntos (Subset Construction).",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Un Autómata Finito No Determinista (NFA) permite que desde un mismo estado y con un mismo símbolo existan MÚLTIPLES estados siguientes posibles, o incluso transiciones espontáneas sin consumir ningún símbolo (transiciones ε). Aunque un NFA parece más potente, el Teorema de Equivalencia demuestra que todo NFA puede convertirse a un DFA equivalente mediante el Algoritmo de Construcción de Subconjuntos, aunque el DFA resultante puede tener hasta 2^|Q| estados.",
+      content: "Un Autómata Finito No Determinista (NFA) permite que desde un mismo estado y con un mismo símbolo existan MÚLTIPLES estados siguientes posibles, o incluso transiciones espontáneas sin consumir ningún símbolo (transiciones ε). Aunque un NFA parece más potente, el Teorema de Equivalencia demuestra que todo NFA puede convertirse a un DFA equivalente mediante el Algoritmo de Construcción de Subconjuntos, aunque el DFA resultante puede tener hasta 2^|Q| estados. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Cálculo de Clausura-ε (ε-closure) en Python
 def epsilon_closure(estados_iniciales: set, transiciones_eps: dict) -> set:
     stack = list(estados_iniciales)
@@ -227,20 +325,67 @@ print(f"Clausura-ε de {{Q0}}: {epsilon_closure({'Q0'}, eps_map)}") # {'Q0', 'Q1
           answerIndex: 0,
           explanation: "La clausura-ε engloba al estado q y a todos los estados a los que se puede llegar mediante saltos ε continuos."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 3: AUTÓMATAS FINITOS NO DETERMINISTAS (NFA & NFA-ε)', ¿cuál afirmación es correcta sobre: Definición Formal de NFA: Función δ: Q × Σ → P(Q)?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Definición Formal de NFA: Función δ: Q × Σ → P(Q)", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Definición Formal de NFA: Función δ: Q × Σ → P(Q). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 3: AUTÓMATAS FINITOS NO DETERMINISTAS (NFA & NFA-ε)', ¿cuál afirmación es correcta sobre: Transiciones Vacías ε (NFA-ε) y Clausura-ε (ε-closure)?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Transiciones Vacías ε (NFA-ε) y Clausura-ε (ε-closure)", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Transiciones Vacías ε (NFA-ε) y Clausura-ε (ε-closure). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 3: AUTÓMATAS FINITOS NO DETERMINISTAS (NFA & NFA-ε)', ¿cuál afirmación es correcta sobre: Modelado de opciones múltiples y cómputo en árbol?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Modelado de opciones múltiples y cómputo en árbol", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Modelado de opciones múltiples y cómputo en árbol. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 3: AUTÓMATAS FINITOS NO DETERMINISTAS (NFA & NFA-ε)', ¿cuál afirmación es correcta sobre: Equivalencia de Poder Expresivo: NFA ≡ DFA?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Equivalencia de Poder Expresivo: NFA ≡ DFA", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Equivalencia de Poder Expresivo: NFA ≡ DFA. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 3: AUTÓMATAS FINITOS NO DETERMINISTAS (NFA & NFA-ε)', ¿cuál afirmación es correcta sobre: Algoritmo de Construcción de Subconjuntos (Subset Construction)?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Algoritmo de Construcción de Subconjuntos (Subset Construction)", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Algoritmo de Construcción de Subconjuntos (Subset Construction). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 3: AUTÓMATAS FINITOS NO DETERMINISTAS (NFA & NFA-ε)', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 3: AUTÓMATAS FINITOS NO DETERMINISTAS (NFA & NFA-ε)', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 4,
       title: "MÓDULO 4: EXPRESIONES REGULARES (REGEX) Y TEOREMA DE KLEENE",
       description: "Patrones sintácticos, operadores algebraicos de lenguajes y equivalencia con autómatas.",
       items: [
+        
         "Sintaxis y Semántica de Expresiones Regulares (Regex).",
         "Operadores Básicos: Concatenación, Alternancia (|) y Clausura de Kleene (*).",
         "Teorema de Kleene: Lenguajes Regulares ≡ Regex ≡ DFA ≡ NFA.",
         "Algoritmo de Thompson: Conversión de Regex a NFA-ε.",
-        "Algoritmo de McNaughton-Yamada-Thompson."
+        "Algoritmo de McNaughton-Yamada-Thompson.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Una Expresión Regular (Regex) es una notación algebraica para especificar patrones de cadenas. El Teorema de Kleene es uno de los pilares de la teoría: demuestra que una expresión regular, un DFA y un NFA son formalmente equivalentes y reconocen exactamente la misma clase de Lenguajes Regulares. El Algoritmo de Thompson permite convertir cualquier Regex en un NFA-ε mediante componentes modulares simples.",
+      content: "Una Expresión Regular (Regex) es una notación algebraica para especificar patrones de cadenas. El Teorema de Kleene es uno de los pilares de la teoría: demuestra que una expresión regular, un DFA y un NFA son formalmente equivalentes y reconocen exactamente la misma clase de Lenguajes Regulares. El Algoritmo de Thompson permite convertir cualquier Regex en un NFA-ε mediante componentes modulares simples. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Uso del motor Regex interno de Python (re)
 import re
 
@@ -280,20 +425,67 @@ print(f"¿'correo_invalido.com' válido?: {bool(evaluador.match('correo_invalido
           answerIndex: 1,
           explanation: "El símbolo | (o +) denota disyunción o alternancia: la cadena puede cumplir la opción izquierda O la opción derecha."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 4: EXPRESIONES REGULARES (REGEX) Y TEOREMA DE KLEENE', ¿cuál afirmación es correcta sobre: Sintaxis y Semántica de Expresiones Regulares (Regex)?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Sintaxis y Semántica de Expresiones Regulares (Regex)", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Sintaxis y Semántica de Expresiones Regulares (Regex). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 4: EXPRESIONES REGULARES (REGEX) Y TEOREMA DE KLEENE', ¿cuál afirmación es correcta sobre: Operadores Básicos: Concatenación, Alternancia (|) y Clausura de Kleene (*)?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Operadores Básicos: Concatenación, Alternancia (|) y Clausura de Kl...", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Operadores Básicos: Concatenación, Alternancia (|) y Clausura de Kleene (*). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 4: EXPRESIONES REGULARES (REGEX) Y TEOREMA DE KLEENE', ¿cuál afirmación es correcta sobre: Teorema de Kleene: Lenguajes Regulares ≡ Regex ≡ DFA ≡ NFA?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Teorema de Kleene: Lenguajes Regulares ≡ Regex ≡ DFA ≡ NFA", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Teorema de Kleene: Lenguajes Regulares ≡ Regex ≡ DFA ≡ NFA. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 4: EXPRESIONES REGULARES (REGEX) Y TEOREMA DE KLEENE', ¿cuál afirmación es correcta sobre: Algoritmo de Thompson: Conversión de Regex a NFA-ε?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Algoritmo de Thompson: Conversión de Regex a NFA-ε", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Algoritmo de Thompson: Conversión de Regex a NFA-ε. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 4: EXPRESIONES REGULARES (REGEX) Y TEOREMA DE KLEENE', ¿cuál afirmación es correcta sobre: Algoritmo de McNaughton-Yamada-Thompson?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Algoritmo de McNaughton-Yamada-Thompson", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Algoritmo de McNaughton-Yamada-Thompson. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 4: EXPRESIONES REGULARES (REGEX) Y TEOREMA DE KLEENE', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 4: EXPRESIONES REGULARES (REGEX) Y TEOREMA DE KLEENE', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 5,
       title: "MÓDULO 5: LEMA DEL BOMBEO (PUMPING LEMMA) PARA LENGUAJES REGULARES",
       description: "Demostración rigurosa por contradicción para probar que un lenguaje NO es regular.",
       items: [
+        
         "Límites de los Autómatas Finitos (Falta de memoria infinita/conteo).",
         "Enunciado del Lema del Bombeo para Lenguajes Regulares.",
         "Descomposición de cadenas w = xyz con |xy| ≤ p y |y| ≥ 1.",
         "Demostración por Contradicción (Proof by Contradiction).",
-        "Ejemplo Clásico: Demostración de que L = {aⁿbⁿ | n ≥ 0} NO es regular."
+        "Ejemplo Clásico: Demostración de que L = {aⁿbⁿ | n ≥ 0} NO es regular.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Dado que los Autómatas Finitos tienen memoria finita (un número fijo de estados Q), NO pueden contar cantidades arbitrariamente grandes. Para demostrar rigurosamente que un lenguaje NO es regular, se utiliza el Lema del Bombeo (Pumping Lemma). Este establece que si un lenguaje L fuera regular, cualquier cadena suficientemente larga w (con |w| ≥ p) podría dividirse en 3 partes w = xyz de modo que la parte central y se pueda 'bombear' (repetir yⁱ para cualquier i ≥ 0) y la cadena resultante siga perteneciendo a L. Si al bombear y se genera una cadena fuera de L, se prueba por contradicción que L NO es regular.",
+      content: "Dado que los Autómatas Finitos tienen memoria finita (un número fijo de estados Q), NO pueden contar cantidades arbitrariamente grandes. Para demostrar rigurosamente que un lenguaje NO es regular, se utiliza el Lema del Bombeo (Pumping Lemma). Este establece que si un lenguaje L fuera regular, cualquier cadena suficientemente larga w (con |w| ≥ p) podría dividirse en 3 partes w = xyz de modo que la parte central y se pueda 'bombear' (repetir yⁱ para cualquier i ≥ 0) y la cadena resultante siga perteneciendo a L. Si al bombear y se genera una cadena fuera de L, se prueba por contradicción que L NO es regular. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Conceptualización en Python: Por qué un DFA no puede reconocer a^n b^n
 def simular_contador_a_n_b_n(cadena: str) -> bool:
     # Un DFA requiere un estado por cada 'n'. Para 'n' infinito necesitaría infinitos estados.
@@ -341,20 +533,67 @@ print(f"¿'aaabbb' cumple a^n b^n?: {simular_contador_a_n_b_n('aaabbb')}") # Tru
           answerIndex: 1,
           explanation: "p es la longitud mínima a partir de la cual se garantiza que cualquier cadena de L debe repetir al menos un estado (Principio del Palomar)."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 5: LEMA DEL BOMBEO (PUMPING LEMMA) PARA LENGUAJES REGULARES', ¿cuál afirmación es correcta sobre: Límites de los Autómatas Finitos (Falta de memoria infinita/conteo)?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Límites de los Autómatas Finitos (Falta de memoria infinita/conteo)", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Límites de los Autómatas Finitos (Falta de memoria infinita/conteo). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 5: LEMA DEL BOMBEO (PUMPING LEMMA) PARA LENGUAJES REGULARES', ¿cuál afirmación es correcta sobre: Enunciado del Lema del Bombeo para Lenguajes Regulares?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Enunciado del Lema del Bombeo para Lenguajes Regulares", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Enunciado del Lema del Bombeo para Lenguajes Regulares. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 5: LEMA DEL BOMBEO (PUMPING LEMMA) PARA LENGUAJES REGULARES', ¿cuál afirmación es correcta sobre: Descomposición de cadenas w = xyz con |xy| ≤ p y |y| ≥ 1?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Descomposición de cadenas w = xyz con |xy| ≤ p y |y| ≥ 1", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Descomposición de cadenas w = xyz con |xy| ≤ p y |y| ≥ 1. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 5: LEMA DEL BOMBEO (PUMPING LEMMA) PARA LENGUAJES REGULARES', ¿cuál afirmación es correcta sobre: Demostración por Contradicción (Proof by Contradiction)?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Demostración por Contradicción (Proof by Contradiction)", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Demostración por Contradicción (Proof by Contradiction). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 5: LEMA DEL BOMBEO (PUMPING LEMMA) PARA LENGUAJES REGULARES', ¿cuál afirmación es correcta sobre: Ejemplo Clásico: Demostración de que L = {aⁿbⁿ | n ≥ 0} NO es regular?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Ejemplo Clásico: Demostración de que L = {aⁿbⁿ | n ≥ 0} NO es regular", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Ejemplo Clásico: Demostración de que L = {aⁿbⁿ | n ≥ 0} NO es regular. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 5: LEMA DEL BOMBEO (PUMPING LEMMA) PARA LENGUAJES REGULARES', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 5: LEMA DEL BOMBEO (PUMPING LEMMA) PARA LENGUAJES REGULARES', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 6,
       title: "MÓDULO 6: GRAMÁTICAS LIBRES DE CONTEXTO (CFG) Y ÁRBOLES DE DERIVACIÓN",
       description: "Especificación formal de la sintaxis de lenguajes de programación mediante reglas de producción.",
       items: [
+        
         "Definición Formal de CFG: G = (V, Σ, R, S).",
         "Variables No-Terminales (V), Terminales (Σ) y Reglas de Producción (R).",
         "Derivación por la Izquierda (Leftmost) y por la Derecha (Rightmost).",
         "Árboles de Derivación Sintáctica (Parse Trees).",
-        "Ambigüedad Gramatical y Gramáticas No Ambiguas."
+        "Ambigüedad Gramatical y Gramáticas No Ambiguas.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Las Gramáticas Libres de Contexto (CFG) permiten definir la estructura sintáctica jerárquica de los lenguajes de programación (como bloques `if-else`, bucles `for` y expresiones aritméticas anidadas). Una CFG consta de variables No-Terminales V, símbolos Terminales Σ, un Símbolo Inicial S y Reglas de Producción de la forma A → α. Una gramática es Ambigua si existe una cadena que puede producir dos Árboles de Derivación distintos, lo cual es inaceptable en un compilador.",
+      content: "Las Gramáticas Libres de Contexto (CFG) permiten definir la estructura sintáctica jerárquica de los lenguajes de programación (como bloques `if-else`, bucles `for` y expresiones aritméticas anidadas). Una CFG consta de variables No-Terminales V, símbolos Terminales Σ, un Símbolo Inicial S y Reglas de Producción de la forma A → α. Una gramática es Ambigua si existe una cadena que puede producir dos Árboles de Derivación distintos, lo cual es inaceptable en un compilador. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Ejemplo de Parser Gramatical simple en Python para expresiones
 # Gramática: E -> E + T | T, T -> num
 class GramaticaExpresiones:
@@ -404,20 +643,67 @@ print(f"¿'5 + 3 * 2' sintácticamente válida?: {cfg.es_expresion_valida(['5', 
           answerIndex: 1,
           explanation: "Las hojas del árbol representan la secuencia ordenada de símbolos terminales que componen la cadena del lenguaje."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 6: GRAMÁTICAS LIBRES DE CONTEXTO (CFG) Y ÁRBOLES DE DERIVACIÓN', ¿cuál afirmación es correcta sobre: Definición Formal de CFG: G = (V, Σ, R, S)?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Definición Formal de CFG: G = (V, Σ, R, S)", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Definición Formal de CFG: G = (V, Σ, R, S). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 6: GRAMÁTICAS LIBRES DE CONTEXTO (CFG) Y ÁRBOLES DE DERIVACIÓN', ¿cuál afirmación es correcta sobre: Variables No-Terminales (V), Terminales (Σ) y Reglas de Producción (R)?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Variables No-Terminales (V), Terminales (Σ) y Reglas de Producción (R)", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Variables No-Terminales (V), Terminales (Σ) y Reglas de Producción (R). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 6: GRAMÁTICAS LIBRES DE CONTEXTO (CFG) Y ÁRBOLES DE DERIVACIÓN', ¿cuál afirmación es correcta sobre: Derivación por la Izquierda (Leftmost) y por la Derecha (Rightmost)?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Derivación por la Izquierda (Leftmost) y por la Derecha (Rightmost)", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Derivación por la Izquierda (Leftmost) y por la Derecha (Rightmost). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 6: GRAMÁTICAS LIBRES DE CONTEXTO (CFG) Y ÁRBOLES DE DERIVACIÓN', ¿cuál afirmación es correcta sobre: Árboles de Derivación Sintáctica (Parse Trees)?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Árboles de Derivación Sintáctica (Parse Trees)", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Árboles de Derivación Sintáctica (Parse Trees). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 6: GRAMÁTICAS LIBRES DE CONTEXTO (CFG) Y ÁRBOLES DE DERIVACIÓN', ¿cuál afirmación es correcta sobre: Ambigüedad Gramatical y Gramáticas No Ambiguas?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Ambigüedad Gramatical y Gramáticas No Ambiguas", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Ambigüedad Gramatical y Gramáticas No Ambiguas. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 6: GRAMÁTICAS LIBRES DE CONTEXTO (CFG) Y ÁRBOLES DE DERIVACIÓN', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 6: GRAMÁTICAS LIBRES DE CONTEXTO (CFG) Y ÁRBOLES DE DERIVACIÓN', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 7,
       title: "MÓDULO 7: AUTÓMATAS DE PILA (PDA) Y FORMAS NORMALES",
       description: "Reconocimiento de lenguajes libres de contexto usando memoria LIFO y Formas Normales de Chomsky.",
       items: [
+        
         "Definición Formal de Autómata de Pila (PDA): Tupla de 7 elementos.",
         "Memoria de Pila LIFO (Push, Pop, Top) y Alfabeto de Pila Γ.",
         "Equivalencia: Lenguaje Libre de Contexto ≡ PDA ≡ CFG.",
         "Forma Normal de Chomsky (CNF): Producciones A → BC o A → a.",
-        "Forma Normal de Greibach (GNF) y Algoritmo CYK."
+        "Forma Normal de Greibach (GNF) y Algoritmo CYK.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Un Autómata de Pila (Pushdown Automaton - PDA) es un autómata finito equipado con una memoria de estructura Pila LIFO (Last In, First Out). Esta memoria adicional le permite recordar estados anteriores con profundidad arbitraria, pudiendo reconocer lenguajes no regulares como $L = \\{a^n b^n \\mid n \\ge 0\\}$ (haciendo PUSH de las $a$'s y POP de las $b$'s). La Forma Normal de Chomsky (CNF) simplifica las gramáticas a reglas estandarizadas $A \\rightarrow BC$ o $A \\rightarrow a$, facilitando algoritmos de parsing como CYK.",
+      content: "Un Autómata de Pila (Pushdown Automaton - PDA) es un autómata finito equipado con una memoria de estructura Pila LIFO (Last In, First Out). Esta memoria adicional le permite recordar estados anteriores con profundidad arbitraria, pudiendo reconocer lenguajes no regulares como $L = \\\\{a^n b^n \\\\mid n \\\\ge 0\\\\}$ (haciendo PUSH de las $a$'s y POP de las $b$'s). La Forma Normal de Chomsky (CNF) simplifica las gramáticas a reglas estandarizadas $A \\\\rightarrow BC$ o $A \\\\rightarrow a$, facilitando algoritmos de parsing como CYK. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Simulación de PDA en Python para reconocer a^n b^n
 def pda_reconocer_an_bn(cadena: str) -> bool:
     pila = []
@@ -467,20 +753,67 @@ print(f"¿'aaabb' aceptada?: {pda_reconocer_an_bn('aaabb')}")             # Fals
           answerIndex: 0,
           explanation: "El algoritmo CYK utiliza programación dinámica sobre gramáticas en CNF para parsear cadenas en tiempo O(n³)."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 7: AUTÓMATAS DE PILA (PDA) Y FORMAS NORMALES', ¿cuál afirmación es correcta sobre: Definición Formal de Autómata de Pila (PDA): Tupla de 7 elementos?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Definición Formal de Autómata de Pila (PDA): Tupla de 7 elementos", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Definición Formal de Autómata de Pila (PDA): Tupla de 7 elementos. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 7: AUTÓMATAS DE PILA (PDA) Y FORMAS NORMALES', ¿cuál afirmación es correcta sobre: Memoria de Pila LIFO (Push, Pop, Top) y Alfabeto de Pila Γ?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Memoria de Pila LIFO (Push, Pop, Top) y Alfabeto de Pila Γ", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Memoria de Pila LIFO (Push, Pop, Top) y Alfabeto de Pila Γ. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 7: AUTÓMATAS DE PILA (PDA) Y FORMAS NORMALES', ¿cuál afirmación es correcta sobre: Equivalencia: Lenguaje Libre de Contexto ≡ PDA ≡ CFG?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Equivalencia: Lenguaje Libre de Contexto ≡ PDA ≡ CFG", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Equivalencia: Lenguaje Libre de Contexto ≡ PDA ≡ CFG. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 7: AUTÓMATAS DE PILA (PDA) Y FORMAS NORMALES', ¿cuál afirmación es correcta sobre: Forma Normal de Chomsky (CNF): Producciones A → BC o A → a?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Forma Normal de Chomsky (CNF): Producciones A → BC o A → a", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Forma Normal de Chomsky (CNF): Producciones A → BC o A → a. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 7: AUTÓMATAS DE PILA (PDA) Y FORMAS NORMALES', ¿cuál afirmación es correcta sobre: Forma Normal de Greibach (GNF) y Algoritmo CYK?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Forma Normal de Greibach (GNF) y Algoritmo CYK", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Forma Normal de Greibach (GNF) y Algoritmo CYK. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 7: AUTÓMATAS DE PILA (PDA) Y FORMAS NORMALES', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 7: AUTÓMATAS DE PILA (PDA) Y FORMAS NORMALES', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 8,
       title: "MÓDULO 8: MÁQUINAS DE TURING (TM), JERARQUÍA DE CHOMSKY Y DECIDIBILIDAD",
       description: "El límite absoluto de la computación, el Problema de la Parada (Halting Problem) y la Jerarquía de Chomsky.",
       items: [
+        
         "Definición Formal de Máquina de Turing: Cinta Infinita, Cabezal y Tabla de Control.",
         "Transiciones de TM: (q, s) → (q', s', Izquierda/Derecha).",
         "Jerarquía de Chomsky: Tipos 3 (Regular), 2 (Libre de Contexto), 1 (Sensible al Contexto) y 0 (Recursivamente Enumerable).",
         "Tesis de Church-Turing: Algoritmo ≡ Máquina de Turing.",
-        "Problema de la Parada (Halting Problem) e Indecidibilidad."
+        "Problema de la Parada (Halting Problem) e Indecidibilidad.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "La Máquina de Turing (TM), inventada por Alan Turing en 1936, representa el modelo matemático definitivo de lo que es un 'algoritmo'. Posee una cinta de memoria infinita y un cabezal que puede leer, escribir y desplazarse a la izquierda o derecha. La Tesis de Church-Turing postula que cualquier cálculo realizable por cualquier computadora moderna puede ser ejecutado por una Máquina de Turing. Turing demostró que existen problemas matemáticos INDECIDIBLES (imposibles de resolver por cualquier software), siendo el más famoso el Problema de la Parada (Halting Problem).",
+      content: "La Máquina de Turing (TM), inventada por Alan Turing en 1936, representa el modelo matemático definitivo de lo que es un 'algoritmo'. Posee una cinta de memoria infinita y un cabezal que puede leer, escribir y desplazarse a la izquierda o derecha. La Tesis de Church-Turing postula que cualquier cálculo realizable por cualquier computadora moderna puede ser ejecutado por una Máquina de Turing. Turing demostró que existen problemas matemáticos INDECIDIBLES (imposibles de resolver por cualquier software), siendo el más famoso el Problema de la Parada (Halting Problem). En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Simulador de una Máquina de Turing que incrementa un número binario en 1
 class MaquinaTuringIncremento:
     def __init__(self, cinta: str):
@@ -533,20 +866,67 @@ print(f"TM Incremento de '1011': {tm.ejecutar()}") # '1100' (12 en decimal)`,
           answerIndex: 1,
           explanation: "Un problema indecidible no posee solución algorítmica previa para todas sus entradas posibles."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 8: MÁQUINAS DE TURING (TM), JERARQUÍA DE CHOMSKY Y DECIDIBILIDAD', ¿cuál afirmación es correcta sobre: Definición Formal de Máquina de Turing: Cinta Infinita, Cabezal y Tabla de Co...?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Definición Formal de Máquina de Turing: Cinta Infinita, Cabezal y T...", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Definición Formal de Máquina de Turing: Cinta Infinita, Cabezal y Tabla de Control. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 8: MÁQUINAS DE TURING (TM), JERARQUÍA DE CHOMSKY Y DECIDIBILIDAD', ¿cuál afirmación es correcta sobre: Transiciones de TM: (q, s) → (q', s', Izquierda/Derecha)?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Transiciones de TM: (q, s) → (q', s', Izquierda/Derecha)", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Transiciones de TM: (q, s) → (q', s', Izquierda/Derecha). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 8: MÁQUINAS DE TURING (TM), JERARQUÍA DE CHOMSKY Y DECIDIBILIDAD', ¿cuál afirmación es correcta sobre: Jerarquía de Chomsky: Tipos 3 (Regular), 2 (Libre de Contexto), 1 (Sensible a...?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Jerarquía de Chomsky: Tipos 3 (Regular), 2 (Libre de Contexto), 1 (...", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Jerarquía de Chomsky: Tipos 3 (Regular), 2 (Libre de Contexto), 1 (Sensible al Contexto) y 0 (Recursivamente Enumerable). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 8: MÁQUINAS DE TURING (TM), JERARQUÍA DE CHOMSKY Y DECIDIBILIDAD', ¿cuál afirmación es correcta sobre: Tesis de Church-Turing: Algoritmo ≡ Máquina de Turing?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Tesis de Church-Turing: Algoritmo ≡ Máquina de Turing", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Tesis de Church-Turing: Algoritmo ≡ Máquina de Turing. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 8: MÁQUINAS DE TURING (TM), JERARQUÍA DE CHOMSKY Y DECIDIBILIDAD', ¿cuál afirmación es correcta sobre: Problema de la Parada (Halting Problem) e Indecidibilidad?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Problema de la Parada (Halting Problem) e Indecidibilidad", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Problema de la Parada (Halting Problem) e Indecidibilidad. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 8: MÁQUINAS DE TURING (TM), JERARQUÍA DE CHOMSKY Y DECIDIBILIDAD', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 8: MÁQUINAS DE TURING (TM), JERARQUÍA DE CHOMSKY Y DECIDIBILIDAD', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 9,
       title: "MÓDULO 9: ARQUITECTURA DE UN COMPILADOR",
       description: "Estructura interna: Frontend, Middle-end, Backend y fases de traducción de código.",
       items: [
+        
         "Definición de Compilador vs Intérprete vs Transpilador.",
         "Fases del Frontend: Análisis Léxico, Sintáctico y Semántico.",
         "Fases del Middle-end: Representación Intermedia (IR) y Optimización.",
         "Fases del Backend: Selección de Instrucciones, Asignación de Registros y Código Objeto.",
-        "Manejo Global de Errores y Tabla de Símbolos."
+        "Manejo Global de Errores y Tabla de Símbolos.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Un Compilador es un programa complejo que traduce código fuente de alto nivel (como C++ o Rust) a código objeto de bajo nivel (como ensamblador x86/ARM o lenguaje máquina). Se divide estructuralmente en 3 grandes capas: **Frontend** (analiza el código fuente y verifica corrección sintáctica/semántica), **Middle-end** (transforma el código a una Representación Intermedia IR y aplica optimizaciones independientes de la CPU) y **Backend** (genera el código ensamblador específico del procesador destino asignando registros físicos de la CPU).",
+      content: "Un Compilador es un programa complejo que traduce código fuente de alto nivel (como C++ o Rust) a código objeto de bajo nivel (como ensamblador x86/ARM o lenguaje máquina). Se divide estructuralmente en 3 grandes capas: **Frontend** (analiza el código fuente y verifica corrección sintáctica/semántica), **Middle-end** (transforma el código a una Representación Intermedia IR y aplica optimizaciones independientes de la CPU) y **Backend** (genera el código ensamblador específico del procesador destino asignando registros físicos de la CPU). En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Diagrama conceptual de las Fases de un Compilador en Python
 def compilador_pipeline_demo(codigo_fuente: str):
     print(f"1. Código Fuente Input: {codigo_fuente}")
@@ -591,20 +971,67 @@ compilador_pipeline_demo("x = 10 + 5")`,
           answerIndex: 0,
           explanation: "Un transpilador traduce entre dos lenguajes de nivel similar (ejemplo: Babel transpilando ES6 a ES5 JavaScript)."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 9: ARQUITECTURA DE UN COMPILADOR', ¿cuál afirmación es correcta sobre: Definición de Compilador vs Intérprete vs Transpilador?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Definición de Compilador vs Intérprete vs Transpilador", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Definición de Compilador vs Intérprete vs Transpilador. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 9: ARQUITECTURA DE UN COMPILADOR', ¿cuál afirmación es correcta sobre: Fases del Frontend: Análisis Léxico, Sintáctico y Semántico?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Fases del Frontend: Análisis Léxico, Sintáctico y Semántico", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Fases del Frontend: Análisis Léxico, Sintáctico y Semántico. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 9: ARQUITECTURA DE UN COMPILADOR', ¿cuál afirmación es correcta sobre: Fases del Middle-end: Representación Intermedia (IR) y Optimización?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Fases del Middle-end: Representación Intermedia (IR) y Optimización", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Fases del Middle-end: Representación Intermedia (IR) y Optimización. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 9: ARQUITECTURA DE UN COMPILADOR', ¿cuál afirmación es correcta sobre: Fases del Backend: Selección de Instrucciones, Asignación de Registros y Códi...?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Fases del Backend: Selección de Instrucciones, Asignación de Regist...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Fases del Backend: Selección de Instrucciones, Asignación de Registros y Código Objeto. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 9: ARQUITECTURA DE UN COMPILADOR', ¿cuál afirmación es correcta sobre: Manejo Global de Errores y Tabla de Símbolos?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Manejo Global de Errores y Tabla de Símbolos", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Manejo Global de Errores y Tabla de Símbolos. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 9: ARQUITECTURA DE UN COMPILADOR', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 9: ARQUITECTURA DE UN COMPILADOR', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 10,
       title: "MÓDULO 10: ANÁLISIS LÉXICO (LEXER / SCANNER)",
       description: "Transformación de texto plano en un flujo estructurado de Tokens mediante Expresiones Regulares.",
       items: [
+        
         "Rol del Lexer: Convertir secuencia de caracteres en secuencia de Tokens.",
         "Estructura de un Token: (Tipo, Valor, Línea, Columna).",
         "Eliminación de Espacios en Blanco, Tabulaciones y Comentarios.",
         "Generadores Léxicos Automáticos: Flex / Lex.",
-        "Manejo de Errores Léxicos (Caracteres ilegales)."
+        "Manejo de Errores Léxicos (Caracteres ilegales).",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "El Análisis Léxico es la primera fase del Frontend de un compilador. El **Lexer** (o Scanner) lee el archivo de código fuente caracter por caracter y agrupa las secuencias de caracteres que representan palabras clave, identificadores, números o símbolos (llamados Lexemas) en objetos estructurados llamados **Tokens**. Para reconocer cada tipo de Token, el Lexer utiliza expresiones regulares convertidas internamente a Autómatas Finitos Deterministas (DFA).",
+      content: "El Análisis Léxico es la primera fase del Frontend de un compilador. El **Lexer** (o Scanner) lee el archivo de código fuente caracter por caracter y agrupa las secuencias de caracteres que representan palabras clave, identificadores, números o símbolos (llamados Lexemas) en objetos estructurados llamados **Tokens**. Para reconocer cada tipo de Token, el Lexer utiliza expresiones regulares convertidas internamente a Autómatas Finitos Deterministas (DFA). En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Ejemplo de Lexer completo en Python
 import re
 
@@ -665,20 +1092,67 @@ print(lexer("total = 100 + 50 * 2"))`,
           answerIndex: 0,
           explanation: "Al no haber ninguna regla Regex que coincida con el carácter '@', el Lexer dispara un Error Léxico."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 10: ANÁLISIS LÉXICO (LEXER / SCANNER)', ¿cuál afirmación es correcta sobre: Rol del Lexer: Convertir secuencia de caracteres en secuencia de Tokens?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Rol del Lexer: Convertir secuencia de caracteres en secuencia de To...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Rol del Lexer: Convertir secuencia de caracteres en secuencia de Tokens. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 10: ANÁLISIS LÉXICO (LEXER / SCANNER)', ¿cuál afirmación es correcta sobre: Estructura de un Token: (Tipo, Valor, Línea, Columna)?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Estructura de un Token: (Tipo, Valor, Línea, Columna)", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Estructura de un Token: (Tipo, Valor, Línea, Columna). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 10: ANÁLISIS LÉXICO (LEXER / SCANNER)', ¿cuál afirmación es correcta sobre: Eliminación de Espacios en Blanco, Tabulaciones y Comentarios?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Eliminación de Espacios en Blanco, Tabulaciones y Comentarios", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Eliminación de Espacios en Blanco, Tabulaciones y Comentarios. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 10: ANÁLISIS LÉXICO (LEXER / SCANNER)', ¿cuál afirmación es correcta sobre: Generadores Léxicos Automáticos: Flex / Lex?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Generadores Léxicos Automáticos: Flex / Lex", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Generadores Léxicos Automáticos: Flex / Lex. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 10: ANÁLISIS LÉXICO (LEXER / SCANNER)', ¿cuál afirmación es correcta sobre: Manejo de Errores Léxicos (Caracteres ilegales)?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Manejo de Errores Léxicos (Caracteres ilegales)", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Manejo de Errores Léxicos (Caracteres ilegales). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 10: ANÁLISIS LÉXICO (LEXER / SCANNER)', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 10: ANÁLISIS LÉXICO (LEXER / SCANNER)', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 11,
       title: "MÓDULO 11: ANÁLISIS SINTÁCTICO (PARSER) LL Y LR",
       description: "Construcción del Árbol de Sintaxis Abstracta (AST) mediante parsing Top-Down y Bottom-Up.",
       items: [
+        
         "Rol del Parser: Validar la estructura gramatical de los Tokens.",
         "Parsing Descendente (Top-Down): Descenso Recursivo y Parsers LL(1).",
         "Parsing Ascendente (Bottom-Up): Parsers LR(0), SLR(1), LALR(1) y LR(1).",
         "Conjuntos Primero (FIRST) y Siguiente (FOLLOW).",
-        "Generadores Sintácticos Automáticos: Yacc / Bison."
+        "Generadores Sintácticos Automáticos: Yacc / Bison.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "El **Analizador Sintáctico (Parser)** recibe el flujo de Tokens generado por el Lexer y verifica que cumplan las reglas de la Gramática Libre de Contexto del lenguaje. Existen dos enfoques principales: **Top-Down (LL)** (construye el árbol desde la raíz hacia las hojas, utilizado en Parsers de Descenso Recursivo escritos a mano) y **Bottom-Up (LR)** (construye el árbol reduciendo tokens desde las hojas hacia la raíz, utilizado por herramientas automáticas como Yacc/Bison). Su salida es el **Árbol de Sintaxis Abstracta (AST)**.",
+      content: "El **Analizador Sintáctico (Parser)** recibe el flujo de Tokens generado por el Lexer y verifica que cumplan las reglas de la Gramática Libre de Contexto del lenguaje. Existen dos enfoques principales: **Top-Down (LL)** (construye el árbol desde la raíz hacia las hojas, utilizado en Parsers de Descenso Recursivo escritos a mano) y **Bottom-Up (LR)** (construye el árbol reduciendo tokens desde las hojas hacia la raíz, utilizado por herramientas automáticas como Yacc/Bison). Su salida es el **Árbol de Sintaxis Abstracta (AST)**. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Ejemplo de Parser por Descenso Recursivo en Python para expresiones simples
 class ParserSimple:
     def __init__(self, tokens):
@@ -731,20 +1205,67 @@ print(f"AST resultante: {parser.parse_expresion()}") # Add(Add(10, 20), 30)`,
           answerIndex: 0,
           explanation: "FIRST y FOLLOW permiten construir la tabla de parseo determinista sin ambigüedad."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 11: ANÁLISIS SINTÁCTICO (PARSER) LL Y LR', ¿cuál afirmación es correcta sobre: Rol del Parser: Validar la estructura gramatical de los Tokens?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Rol del Parser: Validar la estructura gramatical de los Tokens", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Rol del Parser: Validar la estructura gramatical de los Tokens. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 11: ANÁLISIS SINTÁCTICO (PARSER) LL Y LR', ¿cuál afirmación es correcta sobre: Parsing Descendente (Top-Down): Descenso Recursivo y Parsers LL(1)?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Parsing Descendente (Top-Down): Descenso Recursivo y Parsers LL(1)", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Parsing Descendente (Top-Down): Descenso Recursivo y Parsers LL(1). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 11: ANÁLISIS SINTÁCTICO (PARSER) LL Y LR', ¿cuál afirmación es correcta sobre: Parsing Ascendente (Bottom-Up): Parsers LR(0), SLR(1), LALR(1) y LR(1)?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Parsing Ascendente (Bottom-Up): Parsers LR(0), SLR(1), LALR(1) y LR(1)", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Parsing Ascendente (Bottom-Up): Parsers LR(0), SLR(1), LALR(1) y LR(1). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 11: ANÁLISIS SINTÁCTICO (PARSER) LL Y LR', ¿cuál afirmación es correcta sobre: Conjuntos Primero (FIRST) y Siguiente (FOLLOW)?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Conjuntos Primero (FIRST) y Siguiente (FOLLOW)", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Conjuntos Primero (FIRST) y Siguiente (FOLLOW). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 11: ANÁLISIS SINTÁCTICO (PARSER) LL Y LR', ¿cuál afirmación es correcta sobre: Generadores Sintácticos Automáticos: Yacc / Bison?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Generadores Sintácticos Automáticos: Yacc / Bison", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Generadores Sintácticos Automáticos: Yacc / Bison. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 11: ANÁLISIS SINTÁCTICO (PARSER) LL Y LR', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 11: ANÁLISIS SINTÁCTICO (PARSER) LL Y LR', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 12,
       title: "MÓDULO 12: ANÁLISIS SEMÁNTICO Y TABLAS DE SÍMBOLOS",
       description: "Verificación de tipos, alcance de variables (Scope) y validación semántica sobre el AST.",
       items: [
+        
         "Rol del Analizador Semántico: Garantizar que el programa tenga sentido lógico.",
         "La Tabla de Símbolos: Almacenamiento de variables, funciones, tipos y alcances.",
         "Chequeo de Tipos (Type Checking) e Inferencia de Tipos.",
         "Verificación de Declaración antes de Uso y Alcance (Scope Global/Local).",
-        "Decoración del Árbol Sintáctico (Annotated AST)."
+        "Decoración del Árbol Sintáctico (Annotated AST).",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Un programa puede ser perfectamente correcto en sintaxis (ej: `int x = 'hola' + true;`) pero carecer de sentido semántico. El **Analizador Semántico** recorre el AST construyendo la **Tabla de Símbolos** (que registra variables, sus tipos de datos, parámetros y su ámbito de alcance o Scope). Realiza comprobaciones estrictas de compatibilidad de tipos (Type Checking), verifica que las variables hayan sido declaradas antes de ser usadas y valida los retornos de las funciones.",
+      content: "Un programa puede ser perfectamente correcto en sintaxis (ej: `int x = 'hola' + true;`) pero carecer de sentido semántico. El **Analizador Semántico** recorre el AST construyendo la **Tabla de Símbolos** (que registra variables, sus tipos de datos, parámetros y su ámbito de alcance o Scope). Realiza comprobaciones estrictas de compatibilidad de tipos (Type Checking), verifica que las variables hayan sido declaradas antes de ser usadas y valida los retornos de las funciones. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Ejemplo de Tabla de Símbolos y Chequeo de Tipos en Python
 class TablaSimbolos:
     def __init__(self):
@@ -794,20 +1315,67 @@ print(f"Tipo de 'contador': {tabla.obtener_tipo('contador')}") # 'int'`,
           answerIndex: 1,
           explanation: "El árbol sintáctico se 'anota' agregando información de tipos y comprobaciones para ser usada por la fase de generación de código."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 12: ANÁLISIS SEMÁNTICO Y TABLAS DE SÍMBOLOS', ¿cuál afirmación es correcta sobre: Rol del Analizador Semántico: Garantizar que el programa tenga sentido lógico?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Rol del Analizador Semántico: Garantizar que el programa tenga sent...", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Rol del Analizador Semántico: Garantizar que el programa tenga sentido lógico. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 12: ANÁLISIS SEMÁNTICO Y TABLAS DE SÍMBOLOS', ¿cuál afirmación es correcta sobre: La Tabla de Símbolos: Almacenamiento de variables, funciones, tipos y alcances?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: La Tabla de Símbolos: Almacenamiento de variables, funciones, tipos...", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que La Tabla de Símbolos: Almacenamiento de variables, funciones, tipos y alcances. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 12: ANÁLISIS SEMÁNTICO Y TABLAS DE SÍMBOLOS', ¿cuál afirmación es correcta sobre: Chequeo de Tipos (Type Checking) e Inferencia de Tipos?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Chequeo de Tipos (Type Checking) e Inferencia de Tipos", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Chequeo de Tipos (Type Checking) e Inferencia de Tipos. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 12: ANÁLISIS SEMÁNTICO Y TABLAS DE SÍMBOLOS', ¿cuál afirmación es correcta sobre: Verificación de Declaración antes de Uso y Alcance (Scope Global/Local)?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Verificación de Declaración antes de Uso y Alcance (Scope Global/Lo...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Verificación de Declaración antes de Uso y Alcance (Scope Global/Local). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 12: ANÁLISIS SEMÁNTICO Y TABLAS DE SÍMBOLOS', ¿cuál afirmación es correcta sobre: Decoración del Árbol Sintáctico (Annotated AST)?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Decoración del Árbol Sintáctico (Annotated AST)", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Decoración del Árbol Sintáctico (Annotated AST). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 12: ANÁLISIS SEMÁNTICO Y TABLAS DE SÍMBOLOS', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 12: ANÁLISIS SEMÁNTICO Y TABLAS DE SÍMBOLOS', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 13,
       title: "MÓDULO 13: GENERACIÓN DE CÓDIGO INTERMEDIO (IR & TAC)",
       description: "Traducción a representaciones intermedias independientes de la arquitectura (Código de 3 Direcciones).",
       items: [
+        
         "Necesidad de la Representación Intermedia (IR).",
         "Código de Tres Direcciones (TAC - Three-Address Code).",
         "Estructura de Cuádruplas y Tripletas.",
         "Traducción Dirigida por la Sintaxis (SDT) de Expresiones y Condicionales.",
-        "Generación de Etiquetas y Saltos Temporales (Label & GOTO)."
+        "Generación de Etiquetas y Saltos Temporales (Label & GOTO).",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Una vez verificado el AST, el compilador lo traduce a una **Representación Intermedia (IR)**. La forma más popular es el **Código de Tres Direcciones (TAC)**. En TAC, cada instrucción tiene como máximo un operador y 3 direcciones (dos operandos y un resultado temporal, ej: `t1 = a + b`). La IR independiza la lógica del programa del procesador final, permitiendo que las optimizaciones se realicen una sola vez para cualquier arquitectura de CPU destino.",
+      content: "Una vez verificado el AST, el compilador lo traduce a una **Representación Intermedia (IR)**. La forma más popular es el **Código de Tres Direcciones (TAC)**. En TAC, cada instrucción tiene como máximo un operador y 3 direcciones (dos operandos y un resultado temporal, ej: `t1 = a + b`). La IR independiza la lógica del programa del procesador final, permitiendo que las optimizaciones se realicen una sola vez para cualquier arquitectura de CPU destino. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Generación de Código de 3 Direcciones (TAC) en Python
 class GeneradorTAC:
     def __init__(self):
@@ -862,20 +1430,67 @@ for inst in tac.instrucciones:
           answerIndex: 0,
           explanation: "LLVM utiliza una representación intermedia extremadamente optimizada en formato SSA donde cada variable se asigna una sola vez."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 13: GENERACIÓN DE CÓDIGO INTERMEDIO (IR & TAC)', ¿cuál afirmación es correcta sobre: Necesidad de la Representación Intermedia (IR)?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Necesidad de la Representación Intermedia (IR)", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Necesidad de la Representación Intermedia (IR). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 13: GENERACIÓN DE CÓDIGO INTERMEDIO (IR & TAC)', ¿cuál afirmación es correcta sobre: Código de Tres Direcciones (TAC - Three-Address Code)?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Código de Tres Direcciones (TAC - Three-Address Code)", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Código de Tres Direcciones (TAC - Three-Address Code). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 13: GENERACIÓN DE CÓDIGO INTERMEDIO (IR & TAC)', ¿cuál afirmación es correcta sobre: Estructura de Cuádruplas y Tripletas?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Estructura de Cuádruplas y Tripletas", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Estructura de Cuádruplas y Tripletas. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 13: GENERACIÓN DE CÓDIGO INTERMEDIO (IR & TAC)', ¿cuál afirmación es correcta sobre: Traducción Dirigida por la Sintaxis (SDT) de Expresiones y Condicionales?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Traducción Dirigida por la Sintaxis (SDT) de Expresiones y Condicio...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Traducción Dirigida por la Sintaxis (SDT) de Expresiones y Condicionales. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 13: GENERACIÓN DE CÓDIGO INTERMEDIO (IR & TAC)', ¿cuál afirmación es correcta sobre: Generación de Etiquetas y Saltos Temporales (Label & GOTO)?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Generación de Etiquetas y Saltos Temporales (Label & GOTO)", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Generación de Etiquetas y Saltos Temporales (Label & GOTO). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 13: GENERACIÓN DE CÓDIGO INTERMEDIO (IR & TAC)', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 13: GENERACIÓN DE CÓDIGO INTERMEDIO (IR & TAC)', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 14,
       title: "MÓDULO 14: OPTIMIZACIÓN DE CÓDIGO INTERMEDIO",
       description: "Técnicas de optimización de rendimiento: Plegado de constantes, eliminación de código muerto y optimización de bucles.",
       items: [
+        
         "Objetivos de la Optimización: Reducir tiempo de ejecución y tamaño del código.",
         "Plegado de Constantes (Constant Folding) y Propagación de Constantes.",
         "Eliminación de Código Muerto (Dead Code Elimination).",
         "Reducción de Fuerza (Strength Reduction) y Eliminación de Subexpresiones Comunes.",
-        "Optimización de Bucles: Invariantes de Bucle y Desenrollado (Loop Unrolling)."
+        "Optimización de Bucles: Invariantes de Bucle y Desenrollado (Loop Unrolling).",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "La **Optimización de Código** transforma el Código Intermedio (IR) para que se ejecute más rápido y consuma menos memoria, sin alterar el resultado del programa original. Las técnicas principales incluyen: **Plegado de Constantes** (calcular en tiempo de compilación expresiones fijas como `24 * 60 * 60` a `86400`), **Eliminación de Código Muerto** (remover ramas `if (false)` o instrucciones cuyos resultados nunca se leen) y **Reducción de Fuerza** (reemplazar operaciones costosas como `x * 2` por desplazamientos más rápidos `x << 1`).",
+      content: "La **Optimización de Código** transforma el Código Intermedio (IR) para que se ejecute más rápido y consuma menos memoria, sin alterar el resultado del programa original. Las técnicas principales incluyen: **Plegado de Constantes** (calcular en tiempo de compilación expresiones fijas como `24 * 60 * 60` a `86400`), **Eliminación de Código Muerto** (remover ramas `if (false)` o instrucciones cuyos resultados nunca se leen) y **Reducción de Fuerza** (reemplazar operaciones costosas como `x * 2` por desplazamientos más rápidos `x << 1`). En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Simulación de Plegado y Propagación de Constantes en Python
 def optimizar_instrucciones_tac(instrucciones_tac: list) -> list:
     optimizadas = []
@@ -926,20 +1541,67 @@ print(f"TAC Optimizado: {optimizar_instrucciones_tac(tac_raw)}") # ['t1 = 30', '
           answerIndex: 0,
           explanation: "El desenrollado de bucle intercambia un ligero incremento en tamaño de código por mayor velocidad al reducir las instrucciones de incremento y prueba."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 14: OPTIMIZACIÓN DE CÓDIGO INTERMEDIO', ¿cuál afirmación es correcta sobre: Objetivos de la Optimización: Reducir tiempo de ejecución y tamaño del código?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Objetivos de la Optimización: Reducir tiempo de ejecución y tamaño ...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Objetivos de la Optimización: Reducir tiempo de ejecución y tamaño del código. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 14: OPTIMIZACIÓN DE CÓDIGO INTERMEDIO', ¿cuál afirmación es correcta sobre: Plegado de Constantes (Constant Folding) y Propagación de Constantes?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Plegado de Constantes (Constant Folding) y Propagación de Constantes", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Plegado de Constantes (Constant Folding) y Propagación de Constantes. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 14: OPTIMIZACIÓN DE CÓDIGO INTERMEDIO', ¿cuál afirmación es correcta sobre: Eliminación de Código Muerto (Dead Code Elimination)?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Eliminación de Código Muerto (Dead Code Elimination)", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Eliminación de Código Muerto (Dead Code Elimination). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 14: OPTIMIZACIÓN DE CÓDIGO INTERMEDIO', ¿cuál afirmación es correcta sobre: Reducción de Fuerza (Strength Reduction) y Eliminación de Subexpresiones Comunes?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Reducción de Fuerza (Strength Reduction) y Eliminación de Subexpres...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Reducción de Fuerza (Strength Reduction) y Eliminación de Subexpresiones Comunes. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 14: OPTIMIZACIÓN DE CÓDIGO INTERMEDIO', ¿cuál afirmación es correcta sobre: Optimización de Bucles: Invariantes de Bucle y Desenrollado (Loop Unrolling)?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Optimización de Bucles: Invariantes de Bucle y Desenrollado (Loop U...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Optimización de Bucles: Invariantes de Bucle y Desenrollado (Loop Unrolling). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 14: OPTIMIZACIÓN DE CÓDIGO INTERMEDIO', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 14: OPTIMIZACIÓN DE CÓDIGO INTERMEDIO', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ]
     },
-    {
+        {
       id: 15,
       title: "MÓDULO 15: GENERACIÓN DE CÓDIGO OBJETO Y GESTIÓN EN TIEMPO DE EJECUCIÓN",
       description: "Generación final de Ensamblador (x86/ARM), asignación de registros físicos y la pila de llamadas (Call Stack).",
       items: [
+        
         "Backend: Selección de Instrucciones de la Arquitectura Destino (x86 / ARM).",
         "Asignación de Registros Físicos (Register Allocation) y Algoritmo de Coloreado de Grafos.",
         "Gestión de Memoria Runtime: Segmento de Código, Datos, Heap y Stack.",
         "Registros de Activación (Stack Frames) y Convenciones de Llamada (cdecl/stdcall).",
-        "El Enlazador (Linker) y Cargador (Loader): Generación del binario ejecutable final."
+        "El Enlazador (Linker) y Cargador (Loader): Generación del binario ejecutable final.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "La fase final del Backend traduce el Código Intermedio optimizado a **Ensamblador o Código Objeto** específico de la arquitectura del procesador (ej: x86-64 o ARM64). Dado que las CPU tienen un número limitado de registros físicos ultra-rápidos (ej: EAX, EBX, R1), la **Asignación de Registros** utiliza el Algoritmo de Coloreado de Grafos para maximizar el uso de registros y minimizar accesos lentos a la memoria RAM. El **Enlazador (Linker)** combina los archivos objeto con las librerías para producir el archivo ejecutable final.",
+      content: "La fase final del Backend traduce el Código Intermedio optimizado a **Ensamblador o Código Objeto** específico de la arquitectura del procesador (ej: x86-64 o ARM64). Dado que las CPU tienen un número limitado de registros físicos ultra-rápidos (ej: EAX, EBX, R1), la **Asignación de Registros** utiliza el Algoritmo de Coloreado de Grafos para maximizar el uso de registros y minimizar accesos lentos a la memoria RAM. El **Enlazador (Linker)** combina los archivos objeto con las librerías para producir el archivo ejecutable final. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Ejemplo conceptual de Generación de Ensamblador x86-64 en Python
 def traducir_tac_a_x86(tac_instruccion: str) -> list:
     # Traduce 't1 = a + b' a instrucciones x86
@@ -986,6 +1648,49 @@ print(traducir_tac_a_x86("t1 = a + b"))`,
           options: ["Aislar el espacio de memoria y variables locales de esa invocación de función particular", "Guardar el sistema operativo", "Limpiar la pantalla"],
           answerIndex: 0,
           explanation: "Cada llamada a función crea su propio marco en la pila garantizando que sus variables locales no sobrescriban otras funciones."
+        }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 15: GENERACIÓN DE CÓDIGO OBJETO Y GESTIÓN EN TIEMPO DE EJECUCIÓN', ¿cuál afirmación es correcta sobre: Backend: Selección de Instrucciones de la Arquitectura Destino (x86 / ARM)?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Backend: Selección de Instrucciones de la Arquitectura Destino (x86...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Backend: Selección de Instrucciones de la Arquitectura Destino (x86 / ARM). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 15: GENERACIÓN DE CÓDIGO OBJETO Y GESTIÓN EN TIEMPO DE EJECUCIÓN', ¿cuál afirmación es correcta sobre: Asignación de Registros Físicos (Register Allocation) y Algoritmo de Coloread...?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Asignación de Registros Físicos (Register Allocation) y Algoritmo d...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Asignación de Registros Físicos (Register Allocation) y Algoritmo de Coloreado de Grafos. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 15: GENERACIÓN DE CÓDIGO OBJETO Y GESTIÓN EN TIEMPO DE EJECUCIÓN', ¿cuál afirmación es correcta sobre: Gestión de Memoria Runtime: Segmento de Código, Datos, Heap y Stack?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Gestión de Memoria Runtime: Segmento de Código, Datos, Heap y Stack", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Gestión de Memoria Runtime: Segmento de Código, Datos, Heap y Stack. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 15: GENERACIÓN DE CÓDIGO OBJETO Y GESTIÓN EN TIEMPO DE EJECUCIÓN', ¿cuál afirmación es correcta sobre: Registros de Activación (Stack Frames) y Convenciones de Llamada (cdecl/stdcall)?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Registros de Activación (Stack Frames) y Convenciones de Llamada (c...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Registros de Activación (Stack Frames) y Convenciones de Llamada (cdecl/stdcall). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 15: GENERACIÓN DE CÓDIGO OBJETO Y GESTIÓN EN TIEMPO DE EJECUCIÓN', ¿cuál afirmación es correcta sobre: El Enlazador (Linker) y Cargador (Loader): Generación del binario ejecutable ...?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: El Enlazador (Linker) y Cargador (Loader): Generación del binario e...", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que El Enlazador (Linker) y Cargador (Loader): Generación del binario ejecutable final. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 15: GENERACIÓN DE CÓDIGO OBJETO Y GESTIÓN EN TIEMPO DE EJECUCIÓN', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 15: GENERACIÓN DE CÓDIGO OBJETO Y GESTIÓN EN TIEMPO DE EJECUCIÓN', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
         }
       ]
     }

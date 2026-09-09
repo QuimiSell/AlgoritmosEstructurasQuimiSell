@@ -6,19 +6,50 @@ interface FinalExamModalProps {
   onClose: () => void;
 }
 
+const EXAM_TARGET_QUESTIONS = 20;
+
 const FinalExamModal: React.FC<FinalExamModalProps> = ({ course, onClose }) => {
-  // Extraemos la primera pregunta de cada módulo del curso actual (10 preguntas en total)
+  // Selecciona al menos 20 preguntas repartidas entre todos los módulos del curso
   const examQuestions = useMemo(() => {
-    return course.modules.map(m => {
-      if (m.quiz && m.quiz.length > 0) {
-        return {
-          question: m.quiz[0],
-          moduleTitle: m.title.split(': ')[1] || m.title,
-          moduleId: m.id
-        };
+    const modulesWithQuiz = course.modules.filter(m => m.quiz && m.quiz.length > 0);
+    if (modulesWithQuiz.length === 0) return [];
+
+    const perModule = Math.max(1, Math.ceil(EXAM_TARGET_QUESTIONS / modulesWithQuiz.length));
+    const collected: { question: QuizQuestion; moduleTitle: string; moduleId: number }[] = [];
+
+    for (const m of modulesWithQuiz) {
+      const title = m.title.split(': ')[1] || m.title;
+      const slice = m.quiz!.slice(0, perModule);
+      for (const question of slice) {
+        collected.push({ question, moduleTitle: title, moduleId: m.id });
       }
-      return null;
-    }).filter((x): x is { question: QuizQuestion; moduleTitle: string; moduleId: number } => x !== null);
+    }
+
+    if (collected.length >= EXAM_TARGET_QUESTIONS) {
+      return collected.slice(0, EXAM_TARGET_QUESTIONS);
+    }
+
+    // Si aún faltan, tomar más preguntas de cada módulo en ronda adicional
+    let round = perModule;
+    while (collected.length < EXAM_TARGET_QUESTIONS) {
+      let added = false;
+      for (const m of modulesWithQuiz) {
+        if (collected.length >= EXAM_TARGET_QUESTIONS) break;
+        const title = m.title.split(': ')[1] || m.title;
+        if (m.quiz!.length > round) {
+          collected.push({
+            question: m.quiz![round],
+            moduleTitle: title,
+            moduleId: m.id
+          });
+          added = true;
+        }
+      }
+      if (!added) break;
+      round += 1;
+    }
+
+    return collected;
   }, [course]);
 
   const storageKeyAnswers = `quimisell_exam_answers_${course.id}`;
@@ -102,7 +133,7 @@ const FinalExamModal: React.FC<FinalExamModalProps> = ({ course, onClose }) => {
             <div className="min-w-0">
               <h2 className="text-base sm:text-xl font-extrabold text-slate-900 leading-snug break-words">Evaluación Final: {course.shortTitle}</h2>
               <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block mt-1.5">
-                Práctica final de {examQuestions.length} preguntas (1 por cada módulo)
+                Práctica final integradora de {examQuestions.length} preguntas (mínimo {EXAM_TARGET_QUESTIONS} por curso)
               </span>
             </div>
           </div>
@@ -276,7 +307,7 @@ const FinalExamModal: React.FC<FinalExamModalProps> = ({ course, onClose }) => {
             </div>
             <h3 className="font-extrabold text-slate-900 text-base">¿Reiniciar Evaluación?</h3>
             <p className="text-xs text-slate-500 font-medium leading-relaxed">
-              Se borrarán tus respuestas guardadas y calificación actual. Deberás responder las 10 preguntas desde el principio.
+              Se borrarán tus respuestas guardadas y calificación actual. Deberás responder las {examQuestions.length} preguntas desde el principio.
             </p>
             <div className="flex gap-2 justify-center pt-2">
               <button

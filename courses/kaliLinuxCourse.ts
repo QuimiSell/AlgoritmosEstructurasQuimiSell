@@ -55,13 +55,17 @@ export const KALI_LINUX_COURSE: Course = {
       title: "MÓDULO 1: KERNEL LINUX, ARQUITECTURA DE KALI Y ENTORNO BASH AVANZADO",
       description: "Estructura del Filesystem Hierarchy Standard (FHS), redirecciones de flujos estándar, tuberías avanzadas y gestión estricta de permisos.",
       items: [
+        
         "El estándar FHS (/etc, /var/log, /proc, /sys, /usr/share/wordlists).",
         "Redirección de descriptores de archivo (stdin: 0, stdout: 1, stderr: 2, 2>&1).",
         "Encadenamiento de comandos y tuberías (pipes |, ;, &&, ||).",
         "Manipulación de texto con grep (regex), awk, sed y cut.",
-        "Sistema de permisos Linux: representación octal, umask y atributos especiales."
+        "Sistema de permisos Linux: representación octal, umask y atributos especiales.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Kali Linux está basado en Debian Testing y optimizado para análisis de seguridad y pruebas de penetración. Comprender su arquitectura comienza por el conocimiento profundo del árbol de directorios FHS: el directorio /proc no contiene archivos reales en disco, sino una interfaz en memoria al kernel que expone el estado de los procesos y parámetros de red en vivo; /var/log almacena la bitácora histórica de eventos; y /usr/share alberga colecciones indispensables como diccionarios (/usr/share/wordlists) y scripts de Nmap (/usr/share/nmap/scripts). Dominar los flujos estándar (stdin 0, stdout 1, stderr 2) permite redirigir errores a /dev/null mientras se filtran salidas críticas con herramientas de procesamiento de texto como awk y sed.",
+      content: "Kali Linux está basado en Debian Testing y optimizado para análisis de seguridad y pruebas de penetración. Comprender su arquitectura comienza por el conocimiento profundo del árbol de directorios FHS: el directorio /proc no contiene archivos reales en disco, sino una interfaz en memoria al kernel que expone el estado de los procesos y parámetros de red en vivo; /var/log almacena la bitácora histórica de eventos; y /usr/share alberga colecciones indispensables como diccionarios (/usr/share/wordlists) y scripts de Nmap (/usr/share/nmap/scripts). Dominar los flujos estándar (stdin 0, stdout 1, stderr 2) permite redirigir errores a /dev/null mientras se filtran salidas críticas con herramientas de procesamiento de texto como awk y sed. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# 1. Búsqueda de archivos modificados en las últimas 24 horas excluyendo errores
 find /var/log -type f -mtime -1 2>/dev/null
 
@@ -127,6 +131,49 @@ stat -c "%a %n" /etc/shadow`,
           answerIndex: 1,
           explanation: "El bit 4000 corresponde al SUID. Localizar binarios SUID permite auditar programas que se ejecutan temporalmente con privilegios de root, lo cual es crítico para la seguridad y prevención de elevación de privilegios."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 1: KERNEL LINUX, ARQUITECTURA DE KALI Y ENTORNO BASH AVANZADO', ¿cuál afirmación es correcta sobre: El estándar FHS (/etc, /var/log, /proc, /sys, /usr/share/wordlists)?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: El estándar FHS (/etc, /var/log, /proc, /sys, /usr/share/wordlists)", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que El estándar FHS (/etc, /var/log, /proc, /sys, /usr/share/wordlists). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 1: KERNEL LINUX, ARQUITECTURA DE KALI Y ENTORNO BASH AVANZADO', ¿cuál afirmación es correcta sobre: Redirección de descriptores de archivo (stdin: 0, stdout: 1, stderr: 2, 2>&1)?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Redirección de descriptores de archivo (stdin: 0, stdout: 1, stderr...", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Redirección de descriptores de archivo (stdin: 0, stdout: 1, stderr: 2, 2>&1). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 1: KERNEL LINUX, ARQUITECTURA DE KALI Y ENTORNO BASH AVANZADO', ¿cuál afirmación es correcta sobre: Encadenamiento de comandos y tuberías (pipes |, ;, &&, ||)?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Encadenamiento de comandos y tuberías (pipes |, ;, &&, ||)", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Encadenamiento de comandos y tuberías (pipes |, ;, &&, ||). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 1: KERNEL LINUX, ARQUITECTURA DE KALI Y ENTORNO BASH AVANZADO', ¿cuál afirmación es correcta sobre: Manipulación de texto con grep (regex), awk, sed y cut?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Manipulación de texto con grep (regex), awk, sed y cut", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Manipulación de texto con grep (regex), awk, sed y cut. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 1: KERNEL LINUX, ARQUITECTURA DE KALI Y ENTORNO BASH AVANZADO', ¿cuál afirmación es correcta sobre: Sistema de permisos Linux: representación octal, umask y atributos especiales?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Sistema de permisos Linux: representación octal, umask y atributos ...", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Sistema de permisos Linux: representación octal, umask y atributos especiales. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 1: KERNEL LINUX, ARQUITECTURA DE KALI Y ENTORNO BASH AVANZADO', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 1: KERNEL LINUX, ARQUITECTURA DE KALI Y ENTORNO BASH AVANZADO', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ],
       exercises: [
         {
@@ -147,18 +194,22 @@ stat -c "%a %n" /etc/shadow`,
         }
       ]
     },
-    {
+        {
       id: 2,
       title: "MÓDULO 2: GESTIÓN DE PROCESOS, SEÑALES POSIX Y DEMONIOS SYSTEMD",
       description: "Administración de servicios con systemctl, análisis forense de procesos en ejecución (ps, top, lsof) y manejo de señales del sistema operativo.",
       items: [
+        
         "Control de servicios y demonios de red (systemctl start, stop, enable, status).",
         "Inspección de procesos y árboles de ejecución (ps aux, pstree, htop).",
         "Señales POSIX fundamentales: SIGTERM (15), SIGKILL (9), SIGHUP (1) y SIGINT (2).",
         "Inspección de archivos y sockets abiertos por procesos mediante lsof y fuser.",
-        "Monitoreo de logs centralizados del sistema mediante journalctl."
+        "Monitoreo de logs centralizados del sistema mediante journalctl.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "En Kali Linux, muchas herramientas operan como servicios en segundo plano (demonios), como PostgreSQL para la base de datos de Metasploit, el servidor OpenSSH o Apache2. La gestión moderna de servicios se realiza a través de systemd (\`systemctl\`). Para auditar el consumo y comportamiento de procesos, \`ps aux\` muestra el usuario ejecutor, el Process ID (PID), el porcentaje de CPU/Memoria y el comando exacto invocado. Cuando un proceso deja de responder o presenta anomalías, el administrador o auditor utiliza señales POSIX: \`kill -15\` (SIGTERM) solicita una terminación limpia permitiendo liberar recursos, mientras que \`kill -9\` (SIGKILL) fuerza la eliminación inmediata por parte del kernel sin posibilidad de captura.",
+      content: "En Kali Linux, muchas herramientas operan como servicios en segundo plano (demonios), como PostgreSQL para la base de datos de Metasploit, el servidor OpenSSH o Apache2. La gestión moderna de servicios se realiza a través de systemd (\\`systemctl\\`). Para auditar el consumo y comportamiento de procesos, \\`ps aux\\` muestra el usuario ejecutor, el Process ID (PID), el porcentaje de CPU/Memoria y el comando exacto invocado. Cuando un proceso deja de responder o presenta anomalías, el administrador o auditor utiliza señales POSIX: \\`kill -15\\` (SIGTERM) solicita una terminación limpia permitiendo liberar recursos, mientras que \\`kill -9\\` (SIGKILL) fuerza la eliminación inmediata por parte del kernel sin posibilidad de captura. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# 1. Verificación del estado de servicios esenciales en Kali
 sudo systemctl status ssh apache2 postgresql --no-pager
 
@@ -219,6 +270,49 @@ sudo journalctl -u ssh -f -n 50`,
           answerIndex: 0,
           explanation: "El parámetro \`-u ssh\` filtra los registros de la unidad ssh, y el flag \`-f\` (follow) mantiene la salida abierta en tiempo real a medida que ingresan nuevos eventos."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 2: GESTIÓN DE PROCESOS, SEÑALES POSIX Y DEMONIOS SYSTEMD', ¿cuál afirmación es correcta sobre: Control de servicios y demonios de red (systemctl start, stop, enable, status)?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Control de servicios y demonios de red (systemctl start, stop, enab...", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Control de servicios y demonios de red (systemctl start, stop, enable, status). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 2: GESTIÓN DE PROCESOS, SEÑALES POSIX Y DEMONIOS SYSTEMD', ¿cuál afirmación es correcta sobre: Inspección de procesos y árboles de ejecución (ps aux, pstree, htop)?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Inspección de procesos y árboles de ejecución (ps aux, pstree, htop)", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Inspección de procesos y árboles de ejecución (ps aux, pstree, htop). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 2: GESTIÓN DE PROCESOS, SEÑALES POSIX Y DEMONIOS SYSTEMD', ¿cuál afirmación es correcta sobre: Señales POSIX fundamentales: SIGTERM (15), SIGKILL (9), SIGHUP (1) y SIGINT (2)?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Señales POSIX fundamentales: SIGTERM (15), SIGKILL (9), SIGHUP (1) ...", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Señales POSIX fundamentales: SIGTERM (15), SIGKILL (9), SIGHUP (1) y SIGINT (2). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 2: GESTIÓN DE PROCESOS, SEÑALES POSIX Y DEMONIOS SYSTEMD', ¿cuál afirmación es correcta sobre: Inspección de archivos y sockets abiertos por procesos mediante lsof y fuser?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Inspección de archivos y sockets abiertos por procesos mediante lso...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Inspección de archivos y sockets abiertos por procesos mediante lsof y fuser. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 2: GESTIÓN DE PROCESOS, SEÑALES POSIX Y DEMONIOS SYSTEMD', ¿cuál afirmación es correcta sobre: Monitoreo de logs centralizados del sistema mediante journalctl?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Monitoreo de logs centralizados del sistema mediante journalctl", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Monitoreo de logs centralizados del sistema mediante journalctl. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 2: GESTIÓN DE PROCESOS, SEÑALES POSIX Y DEMONIOS SYSTEMD', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 2: GESTIÓN DE PROCESOS, SEÑALES POSIX Y DEMONIOS SYSTEMD', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ],
       exercises: [
         {
@@ -239,18 +333,22 @@ sudo journalctl -u ssh -f -n 50`,
         }
       ]
     },
-    {
+        {
       id: 3,
       title: "MÓDULO 3: ARQUITECTURA DE REDES TCP/IP, INTERFACES Y DIAGNÓSTICO DE ENRUTAMIENTO",
       description: "Análisis del modelo TCP/IP, subredes CIDR, diagnóstico de sockets con 'ss', gestión de interfaces de red con 'ip' y resolución ARP.",
       items: [
+        
         "Capas del modelo TCP/IP vs OSI y encapsulación de tramas/paquetes/segmentos.",
         "Comandos modernos de red: ip addr, ip route, ip link (reemplazo de ifconfig/route).",
         "Inspección avanzada de sockets con 'ss -tulpn' y filtrado de estados TCP.",
         "Mecanismo de resolución de direcciones de capa 2 (ARP) y tabla de vecinos con 'ip neigh'.",
-        "Diagnóstico de conectividad, MTU, latencia y saltos con ping, traceroute y mtr."
+        "Diagnóstico de conectividad, MTU, latencia y saltos con ping, traceroute y mtr.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Comprender la pila de protocolos TCP/IP es imperativo para cualquier profesional de seguridad. En la capa de enlace de datos (capa 2), las tramas utilizan direcciones MAC físicas; en la capa de red (capa 3), los datagramas IP manejan direccionamiento lógico y enrutamiento; y en la capa de transporte (capa 4), TCP y UDP asignan puertos de comunicación. En las versiones actuales de Kali Linux, las herramientas tradicionales de net-tools (ifconfig, netstat, route) han sido sustituidas por la suite \`iproute2\` (\`ip addr\`, \`ip route\`, \`ss\`). El comando \`ss -tulpn\` inspecciona los sockets abiertos en modo escucha (TCP y UDP), mostrando el PID exacto y la dirección de enlace.",
+      content: "Comprender la pila de protocolos TCP/IP es imperativo para cualquier profesional de seguridad. En la capa de enlace de datos (capa 2), las tramas utilizan direcciones MAC físicas; en la capa de red (capa 3), los datagramas IP manejan direccionamiento lógico y enrutamiento; y en la capa de transporte (capa 4), TCP y UDP asignan puertos de comunicación. En las versiones actuales de Kali Linux, las herramientas tradicionales de net-tools (ifconfig, netstat, route) han sido sustituidas por la suite \\`iproute2\\` (\\`ip addr\\`, \\`ip route\\`, \\`ss\\`). El comando \\`ss -tulpn\\` inspecciona los sockets abiertos en modo escucha (TCP y UDP), mostrando el PID exacto y la dirección de enlace. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# 1. Visualización de direcciones IP y estado de interfaces
 ip -brief addr show
 
@@ -306,6 +404,49 @@ traceroute -n -T -p 443 1.1.1.1`,
           answerIndex: 2,
           explanation: "TCP (Transmission Control Protocol) establece una conexión previa mediante un saludo de 3 vías, asigna números de secuencia y garantiza confiabilidad y retransmisión."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 3: ARQUITECTURA DE REDES TCP/IP, INTERFACES Y DIAGNÓSTICO DE ENRUTAMIENTO', ¿cuál afirmación es correcta sobre: Capas del modelo TCP/IP vs OSI y encapsulación de tramas/paquetes/segmentos?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Capas del modelo TCP/IP vs OSI y encapsulación de tramas/paquetes/s...", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Capas del modelo TCP/IP vs OSI y encapsulación de tramas/paquetes/segmentos. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 3: ARQUITECTURA DE REDES TCP/IP, INTERFACES Y DIAGNÓSTICO DE ENRUTAMIENTO', ¿cuál afirmación es correcta sobre: Comandos modernos de red: ip addr, ip route, ip link (reemplazo de ifconfig/r...?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Comandos modernos de red: ip addr, ip route, ip link (reemplazo de ...", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Comandos modernos de red: ip addr, ip route, ip link (reemplazo de ifconfig/route). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 3: ARQUITECTURA DE REDES TCP/IP, INTERFACES Y DIAGNÓSTICO DE ENRUTAMIENTO', ¿cuál afirmación es correcta sobre: Inspección avanzada de sockets con 'ss -tulpn' y filtrado de estados TCP?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Inspección avanzada de sockets con 'ss -tulpn' y filtrado de estado...", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Inspección avanzada de sockets con 'ss -tulpn' y filtrado de estados TCP. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 3: ARQUITECTURA DE REDES TCP/IP, INTERFACES Y DIAGNÓSTICO DE ENRUTAMIENTO', ¿cuál afirmación es correcta sobre: Mecanismo de resolución de direcciones de capa 2 (ARP) y tabla de vecinos con...?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Mecanismo de resolución de direcciones de capa 2 (ARP) y tabla de v...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Mecanismo de resolución de direcciones de capa 2 (ARP) y tabla de vecinos con 'ip neigh'. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 3: ARQUITECTURA DE REDES TCP/IP, INTERFACES Y DIAGNÓSTICO DE ENRUTAMIENTO', ¿cuál afirmación es correcta sobre: Diagnóstico de conectividad, MTU, latencia y saltos con ping, traceroute y mtr?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Diagnóstico de conectividad, MTU, latencia y saltos con ping, trace...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Diagnóstico de conectividad, MTU, latencia y saltos con ping, traceroute y mtr. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 3: ARQUITECTURA DE REDES TCP/IP, INTERFACES Y DIAGNÓSTICO DE ENRUTAMIENTO', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 3: ARQUITECTURA DE REDES TCP/IP, INTERFACES Y DIAGNÓSTICO DE ENRUTAMIENTO', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ],
       exercises: [
         {
@@ -326,18 +467,22 @@ traceroute -n -T -p 443 1.1.1.1`,
         }
       ]
     },
-    {
+        {
       id: 4,
       title: "MÓDULO 4: NMAP BÁSICO: DESCUBRIMIENTO DE HOSTS Y SONDEO DE RED LOCAL",
       description: "Técnicas de Ping Sweep, diferencias críticas entre sondas ARP e ICMP, resolución DNS inversa y optimización de latencia en auditorías.",
       items: [
+        
         "Fundamentos de Nmap y fases de una auditoría de red.",
         "Descubrimiento de hosts activos mediante Ping Sweep (nmap -sn).",
         "Comportamiento de Nmap en red local (ARP Ping automático) vs redes remotas (ICMP + TCP).",
         "Control de resolución DNS: sondas rápidas con deshabilitación de DNS (-n) vs forzado (-R).",
-        "Exportación de resultados a múltiples formatos: normal (-oN), grepable (-oG) y XML (-oX)."
+        "Exportación de resultados a múltiples formatos: normal (-oN), grepable (-oG) y XML (-oX).",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Nmap (Network Mapper) es el estándar internacional para el mapeo y auditoría de redes. La primera fase de cualquier evaluación de infraestructura consiste en el descubrimiento de hosts vivos (Host Discovery). Al ejecutar un barrido \`nmap -sn\` en un segmento Ethernet local como usuario con privilegios de root, Nmap ignora los paquetes ICMP tradicionales y envía directamente solicitudes ARP Request: esto se debe a que ningún firewall basado en host en una red local puede bloquear una petición ARP sin perder conectividad física. Por el contrario, en redes enrutadas (remotas), Nmap combina ICMP Echo Request, ICMP Timestamp, TCP SYN al puerto 443 y TCP ACK al puerto 80. Para maximizar la velocidad, la bandera \`-n\` desactiva las consultas DNS inversas.",
+      content: "Nmap (Network Mapper) es el estándar internacional para el mapeo y auditoría de redes. La primera fase de cualquier evaluación de infraestructura consiste en el descubrimiento de hosts vivos (Host Discovery). Al ejecutar un barrido \\`nmap -sn\\` en un segmento Ethernet local como usuario con privilegios de root, Nmap ignora los paquetes ICMP tradicionales y envía directamente solicitudes ARP Request: esto se debe a que ningún firewall basado en host en una red local puede bloquear una petición ARP sin perder conectividad física. Por el contrario, en redes enrutadas (remotas), Nmap combina ICMP Echo Request, ICMP Timestamp, TCP SYN al puerto 443 y TCP ACK al puerto 80. Para maximizar la velocidad, la bandera \\`-n\\` desactiva las consultas DNS inversas. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# 1. Barrido de hosts activos en una subred local sin escaneo de puertos (Ping Sweep)
 sudo nmap -sn 192.168.1.0/24 -oN hosts_activos.txt
 
@@ -399,6 +544,49 @@ awk '/Up$/{print $2}' ping_sweep.gnmap`,
           answerIndex: 0,
           explanation: "\`-Pn\` (No Ping) desactiva el descubrimiento inicial y fuerza a Nmap a intentar el escaneo de puertos directamente en cada IP objetivo, útil cuando los firewalls bloquean las sondas de ping."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 4: NMAP BÁSICO: DESCUBRIMIENTO DE HOSTS Y SONDEO DE RED LOCAL', ¿cuál afirmación es correcta sobre: Fundamentos de Nmap y fases de una auditoría de red?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Fundamentos de Nmap y fases de una auditoría de red", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Fundamentos de Nmap y fases de una auditoría de red. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 4: NMAP BÁSICO: DESCUBRIMIENTO DE HOSTS Y SONDEO DE RED LOCAL', ¿cuál afirmación es correcta sobre: Descubrimiento de hosts activos mediante Ping Sweep (nmap -sn)?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Descubrimiento de hosts activos mediante Ping Sweep (nmap -sn)", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Descubrimiento de hosts activos mediante Ping Sweep (nmap -sn). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 4: NMAP BÁSICO: DESCUBRIMIENTO DE HOSTS Y SONDEO DE RED LOCAL', ¿cuál afirmación es correcta sobre: Comportamiento de Nmap en red local (ARP Ping automático) vs redes remotas (I...?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Comportamiento de Nmap en red local (ARP Ping automático) vs redes ...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Comportamiento de Nmap en red local (ARP Ping automático) vs redes remotas (ICMP + TCP). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 4: NMAP BÁSICO: DESCUBRIMIENTO DE HOSTS Y SONDEO DE RED LOCAL', ¿cuál afirmación es correcta sobre: Control de resolución DNS: sondas rápidas con deshabilitación de DNS (-n) vs ...?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Control de resolución DNS: sondas rápidas con deshabilitación de DN...", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Control de resolución DNS: sondas rápidas con deshabilitación de DNS (-n) vs forzado (-R). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 4: NMAP BÁSICO: DESCUBRIMIENTO DE HOSTS Y SONDEO DE RED LOCAL', ¿cuál afirmación es correcta sobre: Exportación de resultados a múltiples formatos: normal (-oN), grepable (-oG) ...?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Exportación de resultados a múltiples formatos: normal (-oN), grepa...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Exportación de resultados a múltiples formatos: normal (-oN), grepable (-oG) y XML (-oX). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 4: NMAP BÁSICO: DESCUBRIMIENTO DE HOSTS Y SONDEO DE RED LOCAL', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 4: NMAP BÁSICO: DESCUBRIMIENTO DE HOSTS Y SONDEO DE RED LOCAL', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ],
       exercises: [
         {
@@ -419,18 +607,22 @@ awk '/Up$/{print $2}' ping_sweep.gnmap`,
         }
       ]
     },
-    {
+        {
       id: 5,
       title: "MÓDULO 5: NMAP AVANZADO I: TÉCNICAS DE ESCANEO DE PUERTOS Y ANÁLISIS DE PAQUETES TCP",
       description: "Estudio detallado del 3-Way Handshake, TCP SYN Stealth Scan (-sS), TCP Connect Scan (-sT), UDP Scan (-sU) y escaneos de banderas RFC 793 (FIN, Xmas, NULL).",
       items: [
+        
         "El saludo de tres vías (SYN, SYN-ACK, ACK) y la respuesta RST (Reset).",
         "Mecanismo interno del TCP SYN Stealth Scan (-sS) y por qué requiere permisos de superusuario.",
         "TCP Connect Scan (-sT): funcionamiento en espacio de usuario y huella en logs de aplicación.",
         "Dificultades y comportamiento de los escaneos UDP (-sU): ICMP Port Unreachable tipo 3 código 3.",
-        "Escaneos de banderas avanzadas RFC 793: NULL (-sN), FIN (-sF) y Xmas (-sX)."
+        "Escaneos de banderas avanzadas RFC 793: NULL (-sN), FIN (-sF) y Xmas (-sX).",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Para entender la diferencia entre las modalidades de escaneo de puertos de Nmap, se debe analizar el intercambio de paquetes a nivel de socket. El escaneo por defecto de Nmap (cuando se ejecuta con privilegios de root) es el **TCP SYN Scan (\`-sS\`)**, denominado también escaneo 'semiabierto' o 'sigiloso': Nmap envía un paquete con la bandera SYN. Si el puerto está **abierto**, el objetivo responde con SYN-ACK; en ese instante, Nmap responde con un paquete RST (Reset) para derribar la conexión inmediatamente antes de que se complete el handshake de tres vías. Esto evita que la aplicación de nivel superior (como Apache o Nginx) registre una conexión establecida. Por el contrario, el **TCP Connect Scan (\`-sT\`)** invoca la llamada al sistema estándar \`connect()\`, completando el handshake entero y dejando un rastro evidente en los logs del servidor.",
+      content: "Para entender la diferencia entre las modalidades de escaneo de puertos de Nmap, se debe analizar el intercambio de paquetes a nivel de socket. El escaneo por defecto de Nmap (cuando se ejecuta con privilegios de root) es el **TCP SYN Scan (\\`-sS\\`)**, denominado también escaneo 'semiabierto' o 'sigiloso': Nmap envía un paquete con la bandera SYN. Si el puerto está **abierto**, el objetivo responde con SYN-ACK; en ese instante, Nmap responde con un paquete RST (Reset) para derribar la conexión inmediatamente antes de que se complete el handshake de tres vías. Esto evita que la aplicación de nivel superior (como Apache o Nginx) registre una conexión establecida. Por el contrario, el **TCP Connect Scan (\\`-sT\\`)** invoca la llamada al sistema estándar \\`connect()\\`, completando el handshake entero y dejando un rastro evidente en los logs del servidor. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# 1. Escaneo TCP SYN Stealth a los 100 puertos más frecuentes
 sudo nmap -sS -F 192.168.1.50
 
@@ -491,6 +683,49 @@ sudo nmap -sX -p 80,445 192.168.1.50`,
           answerIndex: 1,
           explanation: "El campo de número de puerto en las cabeceras TCP y UDP tiene una longitud de 16 bits, lo que permite un total de 65,536 valores (del puerto 0 al 65535)."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 5: NMAP AVANZADO I: TÉCNICAS DE ESCANEO DE PUERTOS Y ANÁLISIS DE PAQUETES TCP', ¿cuál afirmación es correcta sobre: El saludo de tres vías (SYN, SYN-ACK, ACK) y la respuesta RST (Reset)?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: El saludo de tres vías (SYN, SYN-ACK, ACK) y la respuesta RST (Reset)", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que El saludo de tres vías (SYN, SYN-ACK, ACK) y la respuesta RST (Reset). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 5: NMAP AVANZADO I: TÉCNICAS DE ESCANEO DE PUERTOS Y ANÁLISIS DE PAQUETES TCP', ¿cuál afirmación es correcta sobre: Mecanismo interno del TCP SYN Stealth Scan (-sS) y por qué requiere permisos ...?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Mecanismo interno del TCP SYN Stealth Scan (-sS) y por qué requiere...", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Mecanismo interno del TCP SYN Stealth Scan (-sS) y por qué requiere permisos de superusuario. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 5: NMAP AVANZADO I: TÉCNICAS DE ESCANEO DE PUERTOS Y ANÁLISIS DE PAQUETES TCP', ¿cuál afirmación es correcta sobre: TCP Connect Scan (-sT): funcionamiento en espacio de usuario y huella en logs...?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: TCP Connect Scan (-sT): funcionamiento en espacio de usuario y huel...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que TCP Connect Scan (-sT): funcionamiento en espacio de usuario y huella en logs de aplicación. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 5: NMAP AVANZADO I: TÉCNICAS DE ESCANEO DE PUERTOS Y ANÁLISIS DE PAQUETES TCP', ¿cuál afirmación es correcta sobre: Dificultades y comportamiento de los escaneos UDP (-sU): ICMP Port Unreachabl...?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Dificultades y comportamiento de los escaneos UDP (-sU): ICMP Port ...", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Dificultades y comportamiento de los escaneos UDP (-sU): ICMP Port Unreachable tipo 3 código 3. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 5: NMAP AVANZADO I: TÉCNICAS DE ESCANEO DE PUERTOS Y ANÁLISIS DE PAQUETES TCP', ¿cuál afirmación es correcta sobre: Escaneos de banderas avanzadas RFC 793: NULL (-sN), FIN (-sF) y Xmas (-sX)?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Escaneos de banderas avanzadas RFC 793: NULL (-sN), FIN (-sF) y Xma...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Escaneos de banderas avanzadas RFC 793: NULL (-sN), FIN (-sF) y Xmas (-sX). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 5: NMAP AVANZADO I: TÉCNICAS DE ESCANEO DE PUERTOS Y ANÁLISIS DE PAQUETES TCP', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 5: NMAP AVANZADO I: TÉCNICAS DE ESCANEO DE PUERTOS Y ANÁLISIS DE PAQUETES TCP', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ],
       exercises: [
         {
@@ -511,18 +746,22 @@ sudo nmap -sX -p 80,445 192.168.1.50`,
         }
       ]
     },
-    {
+        {
       id: 6,
       title: "MÓDULO 6: NMAP AVANZADO II: EVASIÓN DE IDS/FIREWALLS, TEMPORIZACIÓN Y SEÑUELOS",
       description: "Plantillas de temporización (-T0 a -T5), fragmentación de paquetes MTU (-f), señuelos aleatorios (-D), falsificación de origen y evasión de firmas.",
       items: [
+        
         "Las 6 plantillas de temporización de Nmap (-T0 Paranoid, -T1 Sneaky, -T2 Polite, -T3 Normal, -T4 Aggressive, -T5 Insane).",
         "Fragmentación de paquetes TCP/IP mediante -f y --mtu para evadir inspección de paquetes simples.",
         "Uso de señuelos (Decoys -D) con IPs falsas y aleatorias (RND) para ofuscar el origen real.",
         "Falsificación de puerto de origen (--source-port / -g 53) para burlar reglas de firewall mal configuradas.",
-        "Modificación del tamaño de datos arbitrarios (--data-length) y MAC spoofing (--spoof-mac)."
+        "Modificación del tamaño de datos arbitrarios (--data-length) y MAC spoofing (--spoof-mac).",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Los Sistemas de Detección de Intrusos (IDS) y Firewalls modernos analizan patrones de tráfico para detectar y bloquear escaneos de red. Nmap proporciona mecanismos avanzados de temporización y evasión. Las plantillas de tiempo controlan el paralelismo y los tiempos de espera: **-T0 (Paranoid)** introduce pausas de hasta 5 minutos entre sondas para evadir umbrales de detección basados en frecuencia; mientras que **-T4 (Aggressive)** acelera el proceso para redes modernas y estables. Para ofuscar el origen, la opción de señuelos **\`-D\` (Decoys)** mezcla la dirección IP real del auditor con direcciones IP falsas, provocando que los logs del IDS del objetivo registren múltiples orígenes simultáneos y dificulten identificar al atacante real.",
+      content: "Los Sistemas de Detección de Intrusos (IDS) y Firewalls modernos analizan patrones de tráfico para detectar y bloquear escaneos de red. Nmap proporciona mecanismos avanzados de temporización y evasión. Las plantillas de tiempo controlan el paralelismo y los tiempos de espera: **-T0 (Paranoid)** introduce pausas de hasta 5 minutos entre sondas para evadir umbrales de detección basados en frecuencia; mientras que **-T4 (Aggressive)** acelera el proceso para redes modernas y estables. Para ofuscar el origen, la opción de señuelos **\\`-D\\` (Decoys)** mezcla la dirección IP real del auditor con direcciones IP falsas, provocando que los logs del IDS del objetivo registren múltiples orígenes simultáneos y dificulten identificar al atacante real. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# 1. Escaneo sigiloso con temporización Sneaky (-T1) y deshabilitación de ping
 sudo nmap -sS -T1 -Pn -p 22,80,443 192.168.1.50
 
@@ -583,6 +822,49 @@ sudo nmap -sS --data-length 25 -p 80,443 192.168.1.50`,
           answerIndex: 0,
           explanation: "Por defecto, las sondas de Nmap tienen tamaños fijos y característicos; \`--data-length\` agrega bytes aleatorios de relleno al payload para alterar la firma del paquete."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 6: NMAP AVANZADO II: EVASIÓN DE IDS/FIREWALLS, TEMPORIZACIÓN Y SEÑUELOS', ¿cuál afirmación es correcta sobre: Las 6 plantillas de temporización de Nmap (-T0 Paranoid, -T1 Sneaky, -T2 Poli...?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Las 6 plantillas de temporización de Nmap (-T0 Paranoid, -T1 Sneaky...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Las 6 plantillas de temporización de Nmap (-T0 Paranoid, -T1 Sneaky, -T2 Polite, -T3 Normal, -T4 Aggressive, -T5 Insane). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 6: NMAP AVANZADO II: EVASIÓN DE IDS/FIREWALLS, TEMPORIZACIÓN Y SEÑUELOS', ¿cuál afirmación es correcta sobre: Fragmentación de paquetes TCP/IP mediante -f y --mtu para evadir inspección d...?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Fragmentación de paquetes TCP/IP mediante -f y --mtu para evadir in...", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Fragmentación de paquetes TCP/IP mediante -f y --mtu para evadir inspección de paquetes simples. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 6: NMAP AVANZADO II: EVASIÓN DE IDS/FIREWALLS, TEMPORIZACIÓN Y SEÑUELOS', ¿cuál afirmación es correcta sobre: Uso de señuelos (Decoys -D) con IPs falsas y aleatorias (RND) para ofuscar el...?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Uso de señuelos (Decoys -D) con IPs falsas y aleatorias (RND) para ...", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Uso de señuelos (Decoys -D) con IPs falsas y aleatorias (RND) para ofuscar el origen real. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 6: NMAP AVANZADO II: EVASIÓN DE IDS/FIREWALLS, TEMPORIZACIÓN Y SEÑUELOS', ¿cuál afirmación es correcta sobre: Falsificación de puerto de origen (--source-port / -g 53) para burlar reglas ...?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Falsificación de puerto de origen (--source-port / -g 53) para burl...", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Falsificación de puerto de origen (--source-port / -g 53) para burlar reglas de firewall mal configuradas. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 6: NMAP AVANZADO II: EVASIÓN DE IDS/FIREWALLS, TEMPORIZACIÓN Y SEÑUELOS', ¿cuál afirmación es correcta sobre: Modificación del tamaño de datos arbitrarios (--data-length) y MAC spoofing (...?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Modificación del tamaño de datos arbitrarios (--data-length) y MAC ...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Modificación del tamaño de datos arbitrarios (--data-length) y MAC spoofing (--spoof-mac). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 6: NMAP AVANZADO II: EVASIÓN DE IDS/FIREWALLS, TEMPORIZACIÓN Y SEÑUELOS', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 6: NMAP AVANZADO II: EVASIÓN DE IDS/FIREWALLS, TEMPORIZACIÓN Y SEÑUELOS', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ],
       exercises: [
         {
@@ -603,18 +885,22 @@ sudo nmap -sS --data-length 25 -p 80,443 192.168.1.50`,
         }
       ]
     },
-    {
+        {
       id: 7,
       title: "MÓDULO 7: NMAP SCRIPTING ENGINE (NSE): AUTOMATIZACIÓN Y DETECCIÓN DE VULNERABILIDADES",
       description: "Estructura del motor NSE escrito en Lua, categorías de scripts (safe, vuln, auth, discovery, default), paso de argumentos y detección de CVEs.",
       items: [
+        
         "Arquitectura del Nmap Scripting Engine (NSE) ubicado en /usr/share/nmap/scripts/.",
         "Categorías de scripts de Nmap: default, safe, intrusive, vuln, auth, discovery, malware.",
         "Ejecución selectiva de scripts con expresiones lógicas (--script 'vuln and safe').",
         "Paso de credenciales y parámetros de configuración mediante --script-args.",
-        "Actualización de la base de datos de scripts con 'nmap --script-updatedb'."
+        "Actualización de la base de datos de scripts con 'nmap --script-updatedb'.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "El **Nmap Scripting Engine (NSE)** es una de las características más potentes de Nmap, permitiendo automatizar una amplia variedad de tareas de red mediante scripts escritos en el lenguaje Lua. Los scripts están organizados por categorías según su nivel de intrusión: **\`safe\`** (scripts que no alteran el servicio ni causan caídas), **\`vuln\`** (scripts que verifican la presencia de vulnerabilidades conocidas y CVEs), **\`auth\`** (evaluación de mecanismos de autenticación) y **\`default\`** (ejecutados automáticamente al usar \`-sC\`). Utilizar el motor NSE de forma controlada permite auditar configuraciones débiles de TLS/SSL, recursos SMB compartidos sin autenticación o versiones vulnerables de servidores web sin recurrir a exploits destructivos.",
+      content: "El **Nmap Scripting Engine (NSE)** es una de las características más potentes de Nmap, permitiendo automatizar una amplia variedad de tareas de red mediante scripts escritos en el lenguaje Lua. Los scripts están organizados por categorías según su nivel de intrusión: **\\`safe\\`** (scripts que no alteran el servicio ni causan caídas), **\\`vuln\\`** (scripts que verifican la presencia de vulnerabilidades conocidas y CVEs), **\\`auth\\`** (evaluación de mecanismos de autenticación) y **\\`default\\`** (ejecutados automáticamente al usar \\`-sC\\`). Utilizar el motor NSE de forma controlada permite auditar configuraciones débiles de TLS/SSL, recursos SMB compartidos sin autenticación o versiones vulnerables de servidores web sin recurrir a exploits destructivos. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# 1. Escaneo de versiones con scripts por defecto (-sC es equivalente a --script=default)
 sudo nmap -sV -sC -p 21,22,80,443 192.168.1.50
 
@@ -665,6 +951,49 @@ sudo nmap --script smb-enum-shares,smb-enum-users -p 445 192.168.1.50`,
           answerIndex: 1,
           explanation: "\`--script-args\` permite proporcionar pares clave=valor a los scripts en ejecución, como \`--script-args user=admin,pass=1234\`."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 7: NMAP SCRIPTING ENGINE (NSE): AUTOMATIZACIÓN Y DETECCIÓN DE VULNERABILIDADES', ¿cuál afirmación es correcta sobre: Arquitectura del Nmap Scripting Engine (NSE) ubicado en /usr/share/nmap/scripts/?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Arquitectura del Nmap Scripting Engine (NSE) ubicado en /usr/share/...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Arquitectura del Nmap Scripting Engine (NSE) ubicado en /usr/share/nmap/scripts/. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 7: NMAP SCRIPTING ENGINE (NSE): AUTOMATIZACIÓN Y DETECCIÓN DE VULNERABILIDADES', ¿cuál afirmación es correcta sobre: Categorías de scripts de Nmap: default, safe, intrusive, vuln, auth, discover...?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Categorías de scripts de Nmap: default, safe, intrusive, vuln, auth...", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Categorías de scripts de Nmap: default, safe, intrusive, vuln, auth, discovery, malware. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 7: NMAP SCRIPTING ENGINE (NSE): AUTOMATIZACIÓN Y DETECCIÓN DE VULNERABILIDADES', ¿cuál afirmación es correcta sobre: Ejecución selectiva de scripts con expresiones lógicas (--script 'vuln and sa...?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Ejecución selectiva de scripts con expresiones lógicas (--script 'v...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Ejecución selectiva de scripts con expresiones lógicas (--script 'vuln and safe'). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 7: NMAP SCRIPTING ENGINE (NSE): AUTOMATIZACIÓN Y DETECCIÓN DE VULNERABILIDADES', ¿cuál afirmación es correcta sobre: Paso de credenciales y parámetros de configuración mediante --script-args?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Paso de credenciales y parámetros de configuración mediante --scrip...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Paso de credenciales y parámetros de configuración mediante --script-args. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 7: NMAP SCRIPTING ENGINE (NSE): AUTOMATIZACIÓN Y DETECCIÓN DE VULNERABILIDADES', ¿cuál afirmación es correcta sobre: Actualización de la base de datos de scripts con 'nmap --script-updatedb'?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Actualización de la base de datos de scripts con 'nmap --script-upd...", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Actualización de la base de datos de scripts con 'nmap --script-updatedb'. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 7: NMAP SCRIPTING ENGINE (NSE): AUTOMATIZACIÓN Y DETECCIÓN DE VULNERABILIDADES', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 7: NMAP SCRIPTING ENGINE (NSE): AUTOMATIZACIÓN Y DETECCIÓN DE VULNERABILIDADES', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ],
       exercises: [
         {
@@ -685,18 +1014,22 @@ sudo nmap --script smb-enum-shares,smb-enum-users -p 445 192.168.1.50`,
         }
       ]
     },
-    {
+        {
       id: 8,
       title: "MÓDULO 8: RECONOCIMIENTO PASIVO Y OSINT (DNS, WHOIS, THEHARVESTER Y METADATOS)",
       description: "Recolección de información sin interacción directa con el objetivo: registros DNS (A, MX, TXT, NS), transferencia de zona AXFR, WHOIS y análisis de metadatos con ExifTool.",
       items: [
+        
         "Diferencia operativa entre reconocimiento pasivo (sin tocar el objetivo) y activo.",
         "Consultas DNS avanzadas con dig y host: registros SOA, MX, TXT (SPF/DMARC) y NS.",
         "Transferencia de zona DNS completa (AXFR con dig axfr @nameserver) y sus riesgos.",
         "Recolección automatizada de correos y subdominios con theHarvester.",
-        "Extracción y eliminación forense de metadatos en documentos mediante exiftool."
+        "Extracción y eliminación forense de metadatos en documentos mediante exiftool.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "El reconocimiento pasivo (Open Source Intelligence - OSINT) consiste en recolectar información pública sobre una organización sin enviar paquetes directos a sus servidores perimetrales, minimizando el riesgo de ser detectado o alertar a los equipos de defensa. Las consultas al Sistema de Nombres de Dominio (DNS) son fundamentales: herramientas como \`dig\` permiten interrogar registros MX (servidores de correo), registros TXT (donde residen políticas SPF y registros de verificación) y servidores de nombres (NS). Una falla crítica de configuración en servidores DNS es la **Transferencia de Zona DNS (AXFR)** no restringida: si un servidor DNS autoritativo permite AXFR a cualquier IP pública, un atacante o auditor puede descargar en segundos el mapa completo de todos los subdominios y registros internos de la organización.",
+      content: "El reconocimiento pasivo (Open Source Intelligence - OSINT) consiste en recolectar información pública sobre una organización sin enviar paquetes directos a sus servidores perimetrales, minimizando el riesgo de ser detectado o alertar a los equipos de defensa. Las consultas al Sistema de Nombres de Dominio (DNS) son fundamentales: herramientas como \\`dig\\` permiten interrogar registros MX (servidores de correo), registros TXT (donde residen políticas SPF y registros de verificación) y servidores de nombres (NS). Una falla crítica de configuración en servidores DNS es la **Transferencia de Zona DNS (AXFR)** no restringida: si un servidor DNS autoritativo permite AXFR a cualquier IP pública, un atacante o auditor puede descargar en segundos el mapa completo de todos los subdominios y registros internos de la organización. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# 1. Consulta de todos los registros DNS principales (ANY / MX / TXT) de un dominio
 dig target.com ANY +noall +answer
 
@@ -757,6 +1090,49 @@ exiftool documento_confidencial.pdf`,
           answerIndex: 1,
           explanation: "Al consultar bases de datos públicas (WHOIS, crt.sh, motores de búsqueda, DNS públicos), el objetivo nunca recibe paquetes desde la IP del auditor."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 8: RECONOCIMIENTO PASIVO Y OSINT (DNS, WHOIS, THEHARVESTER Y METADATOS)', ¿cuál afirmación es correcta sobre: Diferencia operativa entre reconocimiento pasivo (sin tocar el objetivo) y ac...?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Diferencia operativa entre reconocimiento pasivo (sin tocar el obje...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Diferencia operativa entre reconocimiento pasivo (sin tocar el objetivo) y activo. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 8: RECONOCIMIENTO PASIVO Y OSINT (DNS, WHOIS, THEHARVESTER Y METADATOS)', ¿cuál afirmación es correcta sobre: Consultas DNS avanzadas con dig y host: registros SOA, MX, TXT (SPF/DMARC) y NS?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Consultas DNS avanzadas con dig y host: registros SOA, MX, TXT (SPF...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Consultas DNS avanzadas con dig y host: registros SOA, MX, TXT (SPF/DMARC) y NS. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 8: RECONOCIMIENTO PASIVO Y OSINT (DNS, WHOIS, THEHARVESTER Y METADATOS)', ¿cuál afirmación es correcta sobre: Transferencia de zona DNS completa (AXFR con dig axfr @nameserver) y sus riesgos?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Transferencia de zona DNS completa (AXFR con dig axfr @nameserver) ...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Transferencia de zona DNS completa (AXFR con dig axfr @nameserver) y sus riesgos. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 8: RECONOCIMIENTO PASIVO Y OSINT (DNS, WHOIS, THEHARVESTER Y METADATOS)', ¿cuál afirmación es correcta sobre: Recolección automatizada de correos y subdominios con theHarvester?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Recolección automatizada de correos y subdominios con theHarvester", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Recolección automatizada de correos y subdominios con theHarvester. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 8: RECONOCIMIENTO PASIVO Y OSINT (DNS, WHOIS, THEHARVESTER Y METADATOS)', ¿cuál afirmación es correcta sobre: Extracción y eliminación forense de metadatos en documentos mediante exiftool?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Extracción y eliminación forense de metadatos en documentos mediant...", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Extracción y eliminación forense de metadatos en documentos mediante exiftool. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 8: RECONOCIMIENTO PASIVO Y OSINT (DNS, WHOIS, THEHARVESTER Y METADATOS)', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 8: RECONOCIMIENTO PASIVO Y OSINT (DNS, WHOIS, THEHARVESTER Y METADATOS)', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ],
       exercises: [
         {
@@ -777,18 +1153,22 @@ exiftool documento_confidencial.pdf`,
         }
       ]
     },
-    {
+        {
       id: 9,
       title: "MÓDULO 9: ANÁLISIS E INSPECCIÓN DE TRÁFICO (WIRESHARK, TSHARK Y TCPDUMP CON FILTROS BPF)",
       description: "Captura de paquetes en terminal con Tcpdump, sintaxis de filtros Berkeley Packet Filters (BPF), análisis automatizado con Tshark y disección de archivos PCAP.",
       items: [
+        
         "Fundamentos de la captura de tramas y modo promiscuo en interfaces de red.",
         "Uso de tcpdump: captura en vivo, escritura (-w) y lectura (-r) de archivos PCAP.",
         "Sintaxis de filtros BPF (Berkeley Packet Filters): hosts, puertos, protocolos y operadores lógicos.",
         "Análisis no interactivo y extracción de campos de protocolo con tshark (-T fields -e).",
-        "Inspección de anomalías en flujos HTTP y solicitudes DNS sin cifrar."
+        "Inspección de anomalías en flujos HTTP y solicitudes DNS sin cifrar.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "La inspección de tráfico de red a bajo nivel es una habilidad indispensable tanto para analistas de seguridad defensiva (SOC/Blue Team) como para evaluadores de seguridad. Mientras que Wireshark ofrece una interfaz gráfica, en servidores o entornos remotos Kali Linux se apoya en **\`tcpdump\`** y **\`tshark\`**. Tcpdump utiliza **filtros BPF (Berkeley Packet Filters)** aplicados en el kernel para descartar el tráfico irrelevante antes de que llegue al espacio de usuario, optimizando el rendimiento. Un filtro BPF como \`'tcp and port 80 and (tcp[tcpflags] & tcp-syn != 0)'\` permite capturar con precisión quirúrgica únicamente los paquetes de inicio de conexión HTTP.",
+      content: "La inspección de tráfico de red a bajo nivel es una habilidad indispensable tanto para analistas de seguridad defensiva (SOC/Blue Team) como para evaluadores de seguridad. Mientras que Wireshark ofrece una interfaz gráfica, en servidores o entornos remotos Kali Linux se apoya en **\\`tcpdump\\`** y **\\`tshark\\`**. Tcpdump utiliza **filtros BPF (Berkeley Packet Filters)** aplicados en el kernel para descartar el tráfico irrelevante antes de que llegue al espacio de usuario, optimizando el rendimiento. Un filtro BPF como \\`'tcp and port 80 and (tcp[tcpflags] & tcp-syn != 0)'\\` permite capturar con precisión quirúrgica únicamente los paquetes de inicio de conexión HTTP. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# 1. Captura de tráfico en la interfaz eth0 guardando en archivo capture.pcap
 sudo tcpdump -i eth0 -nn -s0 -w /tmp/capture.pcap
 
@@ -844,6 +1224,49 @@ tshark -r /tmp/capture.pcap -Y "dns.flags.response == 0" -T fields -e ip.src -e 
           answerIndex: 0,
           explanation: "La sintaxis BPF estándar de tcpdump utiliza primitivas como \`host <ip> and port <puerto>\`."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 9: ANÁLISIS E INSPECCIÓN DE TRÁFICO (WIRESHARK, TSHARK Y TCPDUMP CON FILTROS BPF)', ¿cuál afirmación es correcta sobre: Fundamentos de la captura de tramas y modo promiscuo en interfaces de red?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Fundamentos de la captura de tramas y modo promiscuo en interfaces ...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Fundamentos de la captura de tramas y modo promiscuo en interfaces de red. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 9: ANÁLISIS E INSPECCIÓN DE TRÁFICO (WIRESHARK, TSHARK Y TCPDUMP CON FILTROS BPF)', ¿cuál afirmación es correcta sobre: Uso de tcpdump: captura en vivo, escritura (-w) y lectura (-r) de archivos PCAP?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Uso de tcpdump: captura en vivo, escritura (-w) y lectura (-r) de a...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Uso de tcpdump: captura en vivo, escritura (-w) y lectura (-r) de archivos PCAP. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 9: ANÁLISIS E INSPECCIÓN DE TRÁFICO (WIRESHARK, TSHARK Y TCPDUMP CON FILTROS BPF)', ¿cuál afirmación es correcta sobre: Sintaxis de filtros BPF (Berkeley Packet Filters): hosts, puertos, protocolos...?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Sintaxis de filtros BPF (Berkeley Packet Filters): hosts, puertos, ...", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Sintaxis de filtros BPF (Berkeley Packet Filters): hosts, puertos, protocolos y operadores lógicos. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 9: ANÁLISIS E INSPECCIÓN DE TRÁFICO (WIRESHARK, TSHARK Y TCPDUMP CON FILTROS BPF)', ¿cuál afirmación es correcta sobre: Análisis no interactivo y extracción de campos de protocolo con tshark (-T fi...?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Análisis no interactivo y extracción de campos de protocolo con tsh...", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Análisis no interactivo y extracción de campos de protocolo con tshark (-T fields -e). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 9: ANÁLISIS E INSPECCIÓN DE TRÁFICO (WIRESHARK, TSHARK Y TCPDUMP CON FILTROS BPF)', ¿cuál afirmación es correcta sobre: Inspección de anomalías en flujos HTTP y solicitudes DNS sin cifrar?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Inspección de anomalías en flujos HTTP y solicitudes DNS sin cifrar", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Inspección de anomalías en flujos HTTP y solicitudes DNS sin cifrar. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 9: ANÁLISIS E INSPECCIÓN DE TRÁFICO (WIRESHARK, TSHARK Y TCPDUMP CON FILTROS BPF)', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 9: ANÁLISIS E INSPECCIÓN DE TRÁFICO (WIRESHARK, TSHARK Y TCPDUMP CON FILTROS BPF)', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ],
       exercises: [
         {
@@ -864,18 +1287,22 @@ tshark -r /tmp/capture.pcap -Y "dns.flags.response == 0" -T fields -e ip.src -e 
         }
       ]
     },
-    {
+        {
       id: 10,
       title: "MÓDULO 10: AUDITORÍA WEB I: ENUMERACIÓN DE DIRECTORIOS, SUBDOMINIOS Y FUZZING",
       description: "Descubrimiento de endpoints ocultos y recursos no indexados mediante Gobuster, FFuF, análisis de códigos de respuesta HTTP y wordlists especializadas.",
       items: [
+        
         "El principio de fuzzing web y fuerza bruta sobre rutas y endpoints HTTP.",
         "Uso de Gobuster (gobuster dir) para enumeración recursiva y concurrente.",
         "Fuzzing avanzado de parámetros, cabeceras y rutas con FFuF (Fast Web Fuzzer).",
         "Estructura de códigos de estado HTTP (200 OK, 301/302 Redirect, 401/403 Forbidden, 500 Error).",
-        "Ubicación y selección de wordlists en Kali Linux (/usr/share/wordlists/dirb, SecLists)."
+        "Ubicación y selección de wordlists en Kali Linux (/usr/share/wordlists/dirb, SecLists).",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Las aplicaciones web a menudo contienen rutas, paneles de administración, respaldos o archivos de configuración que no están enlazados en el menú principal ni indexados por motores de búsqueda. La enumeración de contenido web o **fuzzing de directorios** consiste en enviar miles de peticiones HTTP probando nombres comunes a partir de diccionarios (**wordlists**). Herramientas como **Gobuster** (escrita en Go para alta concurrencia) y **FFuF** envían peticiones paralelas y analizan el código de respuesta HTTP devuelto por el servidor: un código \`200\` confirma la existencia del recurso, \`301/302\` indica redirección, \`403\` revela que el recurso existe pero tiene acceso restringido, y \`404\` señala que no fue encontrado.",
+      content: "Las aplicaciones web a menudo contienen rutas, paneles de administración, respaldos o archivos de configuración que no están enlazados en el menú principal ni indexados por motores de búsqueda. La enumeración de contenido web o **fuzzing de directorios** consiste en enviar miles de peticiones HTTP probando nombres comunes a partir de diccionarios (**wordlists**). Herramientas como **Gobuster** (escrita en Go para alta concurrencia) y **FFuF** envían peticiones paralelas y analizan el código de respuesta HTTP devuelto por el servidor: un código \\`200\\` confirma la existencia del recurso, \\`301/302\\` indica redirección, \\`403\\` revela que el recurso existe pero tiene acceso restringido, y \\`404\\` señala que no fue encontrado. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# 1. Enumeración básica de directorios con Gobuster
 gobuster dir -u http://192.168.1.50 -w /usr/share/wordlists/dirb/common.txt
 
@@ -926,6 +1353,49 @@ gobuster vhost -u http://target.com -w /usr/share/wordlists/SecLists/Discovery/D
           answerIndex: 0,
           explanation: "La enumeración de VHosts manipula la cabecera HTTP \`Host\` enviada al servidor web para descubrir sitios que comparten la misma IP y no están publicados en DNS públicos."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 10: AUDITORÍA WEB I: ENUMERACIÓN DE DIRECTORIOS, SUBDOMINIOS Y FUZZING', ¿cuál afirmación es correcta sobre: El principio de fuzzing web y fuerza bruta sobre rutas y endpoints HTTP?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: El principio de fuzzing web y fuerza bruta sobre rutas y endpoints ...", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que El principio de fuzzing web y fuerza bruta sobre rutas y endpoints HTTP. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 10: AUDITORÍA WEB I: ENUMERACIÓN DE DIRECTORIOS, SUBDOMINIOS Y FUZZING', ¿cuál afirmación es correcta sobre: Uso de Gobuster (gobuster dir) para enumeración recursiva y concurrente?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Uso de Gobuster (gobuster dir) para enumeración recursiva y concurr...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Uso de Gobuster (gobuster dir) para enumeración recursiva y concurrente. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 10: AUDITORÍA WEB I: ENUMERACIÓN DE DIRECTORIOS, SUBDOMINIOS Y FUZZING', ¿cuál afirmación es correcta sobre: Fuzzing avanzado de parámetros, cabeceras y rutas con FFuF (Fast Web Fuzzer)?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Fuzzing avanzado de parámetros, cabeceras y rutas con FFuF (Fast We...", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Fuzzing avanzado de parámetros, cabeceras y rutas con FFuF (Fast Web Fuzzer). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 10: AUDITORÍA WEB I: ENUMERACIÓN DE DIRECTORIOS, SUBDOMINIOS Y FUZZING', ¿cuál afirmación es correcta sobre: Estructura de códigos de estado HTTP (200 OK, 301/302 Redirect, 401/403 Forbi...?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Estructura de códigos de estado HTTP (200 OK, 301/302 Redirect, 401...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Estructura de códigos de estado HTTP (200 OK, 301/302 Redirect, 401/403 Forbidden, 500 Error). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 10: AUDITORÍA WEB I: ENUMERACIÓN DE DIRECTORIOS, SUBDOMINIOS Y FUZZING', ¿cuál afirmación es correcta sobre: Ubicación y selección de wordlists en Kali Linux (/usr/share/wordlists/dirb, ...?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Ubicación y selección de wordlists en Kali Linux (/usr/share/wordli...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Ubicación y selección de wordlists en Kali Linux (/usr/share/wordlists/dirb, SecLists). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 10: AUDITORÍA WEB I: ENUMERACIÓN DE DIRECTORIOS, SUBDOMINIOS Y FUZZING', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 10: AUDITORÍA WEB I: ENUMERACIÓN DE DIRECTORIOS, SUBDOMINIOS Y FUZZING', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ],
       exercises: [
         {
@@ -946,18 +1416,22 @@ gobuster vhost -u http://target.com -w /usr/share/wordlists/SecLists/Discovery/D
         }
       ]
     },
-    {
+        {
       id: 11,
       title: "MÓDULO 11: AUDITORÍA WEB II: ANÁLISIS DE VULNERABILIDADES (NIKTO, OWASP TOP 10 Y CABECERAS)",
       description: "Escaneo automatizado de vulnerabilidades con Nikto, identificación de archivos peligrosos, diagnóstico de cabeceras de seguridad y principios del OWASP Top 10.",
       items: [
+        
         "Escaneo de servidores web con Nikto: detección de software obsoleto y archivos sensibles.",
         "Diagnóstico de cabeceras HTTP de seguridad (Content-Security-Policy, HSTS, X-Frame-Options).",
         "Fundamentos del OWASP Top 10 (SQL Injection, XSS, Broken Access Control, Security Misconfiguration).",
         "Identificación de atributos seguros en cookies de sesión (HttpOnly, Secure, SameSite).",
-        "Generación y exportación de reportes de auditoría web en formatos HTML/XML."
+        "Generación y exportación de reportes de auditoría web en formatos HTML/XML.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "La evaluación de la postura de seguridad de un servidor web requiere verificar no solo los puertos abiertos, sino las configuraciones de la aplicación y la presencia de vulnerabilidades conocidas. **Nikto** es un escáner Open Source especializado en servidores web que realiza pruebas contra más de 6,700 archivos potencialmente peligrosos, programas desactualizados y problemas de configuración específicos del servidor (como Apache, Nginx o IIS). Al mismo tiempo, una auditoría rigurosa evalúa las **cabeceras de seguridad HTTP**: la ausencia de \`Strict-Transport-Security\` (HSTS) permite ataques de degradación a HTTP sin cifrar; la falta de \`X-Frame-Options\` expone a la aplicación a Clickjacking; y las cookies sin la bandera \`HttpOnly\` son vulnerables a robo mediante Cross-Site Scripting (XSS).",
+      content: "La evaluación de la postura de seguridad de un servidor web requiere verificar no solo los puertos abiertos, sino las configuraciones de la aplicación y la presencia de vulnerabilidades conocidas. **Nikto** es un escáner Open Source especializado en servidores web que realiza pruebas contra más de 6,700 archivos potencialmente peligrosos, programas desactualizados y problemas de configuración específicos del servidor (como Apache, Nginx o IIS). Al mismo tiempo, una auditoría rigurosa evalúa las **cabeceras de seguridad HTTP**: la ausencia de \\`Strict-Transport-Security\\` (HSTS) permite ataques de degradación a HTTP sin cifrar; la falta de \\`X-Frame-Options\\` expone a la aplicación a Clickjacking; y las cookies sin la bandera \\`HttpOnly\\` son vulnerables a robo mediante Cross-Site Scripting (XSS). En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# 1. Escaneo web completo con Nikto sobre un objetivo HTTP
 nikto -h http://192.168.1.50
 
@@ -1013,6 +1487,49 @@ nikto -h http://192.168.1.50 -Tuning 1,2,b`,
           answerIndex: 0,
           explanation: "El parámetro \`-I\` (o \`--head\`) envía una petición HTTP HEAD al servidor, solicitando únicamente las cabeceras de respuesta sin descargar el cuerpo HTML."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 11: AUDITORÍA WEB II: ANÁLISIS DE VULNERABILIDADES (NIKTO, OWASP TOP 10 Y CABECERAS)', ¿cuál afirmación es correcta sobre: Escaneo de servidores web con Nikto: detección de software obsoleto y archivo...?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Escaneo de servidores web con Nikto: detección de software obsoleto...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Escaneo de servidores web con Nikto: detección de software obsoleto y archivos sensibles. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 11: AUDITORÍA WEB II: ANÁLISIS DE VULNERABILIDADES (NIKTO, OWASP TOP 10 Y CABECERAS)', ¿cuál afirmación es correcta sobre: Diagnóstico de cabeceras HTTP de seguridad (Content-Security-Policy, HSTS, X-...?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Diagnóstico de cabeceras HTTP de seguridad (Content-Security-Policy...", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Diagnóstico de cabeceras HTTP de seguridad (Content-Security-Policy, HSTS, X-Frame-Options). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 11: AUDITORÍA WEB II: ANÁLISIS DE VULNERABILIDADES (NIKTO, OWASP TOP 10 Y CABECERAS)', ¿cuál afirmación es correcta sobre: Fundamentos del OWASP Top 10 (SQL Injection, XSS, Broken Access Control, Secu...?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Fundamentos del OWASP Top 10 (SQL Injection, XSS, Broken Access Con...", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Fundamentos del OWASP Top 10 (SQL Injection, XSS, Broken Access Control, Security Misconfiguration). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 11: AUDITORÍA WEB II: ANÁLISIS DE VULNERABILIDADES (NIKTO, OWASP TOP 10 Y CABECERAS)', ¿cuál afirmación es correcta sobre: Identificación de atributos seguros en cookies de sesión (HttpOnly, Secure, S...?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Identificación de atributos seguros en cookies de sesión (HttpOnly,...", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Identificación de atributos seguros en cookies de sesión (HttpOnly, Secure, SameSite). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 11: AUDITORÍA WEB II: ANÁLISIS DE VULNERABILIDADES (NIKTO, OWASP TOP 10 Y CABECERAS)', ¿cuál afirmación es correcta sobre: Generación y exportación de reportes de auditoría web en formatos HTML/XML?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Generación y exportación de reportes de auditoría web en formatos H...", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Generación y exportación de reportes de auditoría web en formatos HTML/XML. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 11: AUDITORÍA WEB II: ANÁLISIS DE VULNERABILIDADES (NIKTO, OWASP TOP 10 Y CABECERAS)', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 11: AUDITORÍA WEB II: ANÁLISIS DE VULNERABILIDADES (NIKTO, OWASP TOP 10 Y CABECERAS)', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ],
       exercises: [
         {
@@ -1033,18 +1550,22 @@ nikto -h http://192.168.1.50 -Tuning 1,2,b`,
         }
       ]
     },
-    {
+        {
       id: 12,
       title: "MÓDULO 12: DIAGNÓSTICO Y AUDITORÍA DE REDES INALÁMBRICAS 802.11 (AIRCRACK-NG SUITE)",
       description: "Modos de interfaz WiFi (Managed vs Monitor), captura de tramas de gestión con Airodump-ng, análisis del 4-Way Handshake WPA2/WPA3 y fundamentos EAPOL.",
       items: [
+        
         "Arquitectura del estándar IEEE 802.11: canales de 2.4 GHz vs 5 GHz, SSIDs y BSSIDs.",
         "Habilitación y gestión del modo Monitor mediante 'airmon-ng' y eliminación de procesos conflictivos.",
         "Captura y filtrado de tramas inalámbricas (Beacon, Probe, Data) con airodump-ng.",
         "El intercambio de 4 vías (4-Way Handshake EAPOL) en WPA2-PSK: ANonce, SNonce, MIC.",
-        "Diferencias de seguridad entre WPA2 (PSK) y WPA3 (SAE - Simultaneous Authentication of Equals)."
+        "Diferencias de seguridad entre WPA2 (PSK) y WPA3 (SAE - Simultaneous Authentication of Equals).",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Las redes inalámbricas transmiten tramas de radiofrecuencia a través del medio abierto. Para auditar una red 802.11, la tarjeta de red debe colocarse en **Modo Monitor (RFMON)**: a diferencia del modo cliente tradicional ('Managed'), el modo monitor permite a la tarjeta capturar todas las tramas que circulan por el canal de radio sin necesidad de estar asociada a un punto de acceso. La suite **Aircrack-ng** es el conjunto estándar de herramientas en Kali Linux. El proceso de auditoría de WPA2-PSK se basa en capturar el **4-Way Handshake EAPOL**: un intercambio de cuatro mensajes criptográficos que derivan la clave temporal de sesión (PTK) sin transmitir jamás la contraseña en texto claro. En WPA3, este protocolo fue reemplazado por SAE (Dragonfly handshake) para prevenir ataques de diccionario fuera de línea.",
+      content: "Las redes inalámbricas transmiten tramas de radiofrecuencia a través del medio abierto. Para auditar una red 802.11, la tarjeta de red debe colocarse en **Modo Monitor (RFMON)**: a diferencia del modo cliente tradicional ('Managed'), el modo monitor permite a la tarjeta capturar todas las tramas que circulan por el canal de radio sin necesidad de estar asociada a un punto de acceso. La suite **Aircrack-ng** es el conjunto estándar de herramientas en Kali Linux. El proceso de auditoría de WPA2-PSK se basa en capturar el **4-Way Handshake EAPOL**: un intercambio de cuatro mensajes criptográficos que derivan la clave temporal de sesión (PTK) sin transmitir jamás la contraseña en texto claro. En WPA3, este protocolo fue reemplazado por SAE (Dragonfly handshake) para prevenir ataques de diccionario fuera de línea. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# 1. Detección y terminación de procesos que interfieren con el modo monitor
 sudo airmon-ng check kill
 
@@ -1100,6 +1621,49 @@ aircrack-ng /tmp/wpa_capture-01.cap`,
           answerIndex: 1,
           explanation: "El BSSID (Basic Service Set Identifier) corresponde a la dirección MAC física del transmisor de radio del Punto de Acceso."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 12: DIAGNÓSTICO Y AUDITORÍA DE REDES INALÁMBRICAS 802.11 (AIRCRACK-NG SUITE)', ¿cuál afirmación es correcta sobre: Arquitectura del estándar IEEE 802.11: canales de 2.4 GHz vs 5 GHz, SSIDs y B...?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Arquitectura del estándar IEEE 802.11: canales de 2.4 GHz vs 5 GHz,...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Arquitectura del estándar IEEE 802.11: canales de 2.4 GHz vs 5 GHz, SSIDs y BSSIDs. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 12: DIAGNÓSTICO Y AUDITORÍA DE REDES INALÁMBRICAS 802.11 (AIRCRACK-NG SUITE)', ¿cuál afirmación es correcta sobre: Habilitación y gestión del modo Monitor mediante 'airmon-ng' y eliminación de...?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Habilitación y gestión del modo Monitor mediante 'airmon-ng' y elim...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Habilitación y gestión del modo Monitor mediante 'airmon-ng' y eliminación de procesos conflictivos. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 12: DIAGNÓSTICO Y AUDITORÍA DE REDES INALÁMBRICAS 802.11 (AIRCRACK-NG SUITE)', ¿cuál afirmación es correcta sobre: Captura y filtrado de tramas inalámbricas (Beacon, Probe, Data) con airodump-ng?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Captura y filtrado de tramas inalámbricas (Beacon, Probe, Data) con...", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Captura y filtrado de tramas inalámbricas (Beacon, Probe, Data) con airodump-ng. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 12: DIAGNÓSTICO Y AUDITORÍA DE REDES INALÁMBRICAS 802.11 (AIRCRACK-NG SUITE)', ¿cuál afirmación es correcta sobre: El intercambio de 4 vías (4-Way Handshake EAPOL) en WPA2-PSK: ANonce, SNonce,...?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: El intercambio de 4 vías (4-Way Handshake EAPOL) en WPA2-PSK: ANonc...", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que El intercambio de 4 vías (4-Way Handshake EAPOL) en WPA2-PSK: ANonce, SNonce, MIC. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 12: DIAGNÓSTICO Y AUDITORÍA DE REDES INALÁMBRICAS 802.11 (AIRCRACK-NG SUITE)', ¿cuál afirmación es correcta sobre: Diferencias de seguridad entre WPA2 (PSK) y WPA3 (SAE - Simultaneous Authenti...?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Diferencias de seguridad entre WPA2 (PSK) y WPA3 (SAE - Simultaneou...", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Diferencias de seguridad entre WPA2 (PSK) y WPA3 (SAE - Simultaneous Authentication of Equals). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 12: DIAGNÓSTICO Y AUDITORÍA DE REDES INALÁMBRICAS 802.11 (AIRCRACK-NG SUITE)', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 12: DIAGNÓSTICO Y AUDITORÍA DE REDES INALÁMBRICAS 802.11 (AIRCRACK-NG SUITE)', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ],
       exercises: [
         {
@@ -1120,18 +1684,22 @@ aircrack-ng /tmp/wpa_capture-01.cap`,
         }
       ]
     },
-    {
+        {
       id: 13,
       title: "MÓDULO 13: CRIPTOGRAFÍA PRÁCTICA, HASHING Y ANÁLISIS DE CREDENCIALES (HASHCAT & JOHN)",
       description: "Funciones hash unidireccionales (MD5, SHA-256, NTLM, bcrypt), identificación de algoritmos, ataques basados en diccionarios y reglas de mutación.",
       items: [
+        
         "Propiedades de las funciones hash criptográficas: unidireccionalidad y resistencia a colisiones.",
         "Identificación de tipos de hash con hash-identifier y hashID.",
         "Estructura del archivo de contraseñas de Linux (/etc/shadow) y algoritmos ($6$ SHA-512, $y$ yescrypt).",
         "Auditoría de contraseñas con John the Ripper (john) y reglas de permutación (--rules).",
-        "Aceleración por GPU y modos de ataque con Hashcat (-m mode, -a attack_mode)."
+        "Aceleración por GPU y modos de ataque con Hashcat (-m mode, -a attack_mode).",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Las funciones hash criptográficas son algoritmos matemáticos deterministas y unidireccionales: transforman una entrada de longitud arbitraria en un resumen de longitud fija (digest), siendo computacionalmente inviable revertir el proceso para obtener el texto original. En auditorías de seguridad, los analistas evalúan la fortaleza de las políticas de contraseñas mediante pruebas de recuperación de hashes. **John the Ripper** y **Hashcat** son las herramientas insignia para este propósito. Mientras que John destaca por su facilidad en entornos CPU y el parseo automático de formatos como \`/etc/shadow\`, Hashcat aprovecha el procesamiento masivamente paralelo de tarjetas gráficas (GPUs con OpenCL/CUDA), permitiendo evaluar millones de combinaciones por segundo contra hashes NTLM, SHA-256 o Kerberos.",
+      content: "Las funciones hash criptográficas son algoritmos matemáticos deterministas y unidireccionales: transforman una entrada de longitud arbitraria en un resumen de longitud fija (digest), siendo computacionalmente inviable revertir el proceso para obtener el texto original. En auditorías de seguridad, los analistas evalúan la fortaleza de las políticas de contraseñas mediante pruebas de recuperación de hashes. **John the Ripper** y **Hashcat** son las herramientas insignia para este propósito. Mientras que John destaca por su facilidad en entornos CPU y el parseo automático de formatos como \\`/etc/shadow\\`, Hashcat aprovecha el procesamiento masivamente paralelo de tarjetas gráficas (GPUs con OpenCL/CUDA), permitiendo evaluar millones de combinaciones por segundo contra hashes NTLM, SHA-256 o Kerberos. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# 1. Identificación automática del algoritmo de un hash desconocido
 hashid "5d41402abc4b2a76b9719d911017c592"
 
@@ -1187,6 +1755,49 @@ hashcat -m 1000 -a 0 ntlm_hashes.txt /usr/share/wordlists/rockyou.txt -O`,
           answerIndex: 0,
           explanation: "\`hashid\` y \`hash-identifier\` analizan la longitud de caracteres, codificación (hexadecimal, base64) y prefijos para listar los algoritmos compatibles."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 13: CRIPTOGRAFÍA PRÁCTICA, HASHING Y ANÁLISIS DE CREDENCIALES (HASHCAT & JOHN)', ¿cuál afirmación es correcta sobre: Propiedades de las funciones hash criptográficas: unidireccionalidad y resist...?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Propiedades de las funciones hash criptográficas: unidireccionalida...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Propiedades de las funciones hash criptográficas: unidireccionalidad y resistencia a colisiones. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 13: CRIPTOGRAFÍA PRÁCTICA, HASHING Y ANÁLISIS DE CREDENCIALES (HASHCAT & JOHN)', ¿cuál afirmación es correcta sobre: Identificación de tipos de hash con hash-identifier y hashID?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Identificación de tipos de hash con hash-identifier y hashID", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Identificación de tipos de hash con hash-identifier y hashID. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 13: CRIPTOGRAFÍA PRÁCTICA, HASHING Y ANÁLISIS DE CREDENCIALES (HASHCAT & JOHN)', ¿cuál afirmación es correcta sobre: Estructura del archivo de contraseñas de Linux (/etc/shadow) y algoritmos ($6...?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Estructura del archivo de contraseñas de Linux (/etc/shadow) y algo...", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Estructura del archivo de contraseñas de Linux (/etc/shadow) y algoritmos ($6$ SHA-512, $y$ yescrypt). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 13: CRIPTOGRAFÍA PRÁCTICA, HASHING Y ANÁLISIS DE CREDENCIALES (HASHCAT & JOHN)', ¿cuál afirmación es correcta sobre: Auditoría de contraseñas con John the Ripper (john) y reglas de permutación (...?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Auditoría de contraseñas con John the Ripper (john) y reglas de per...", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Auditoría de contraseñas con John the Ripper (john) y reglas de permutación (--rules). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 13: CRIPTOGRAFÍA PRÁCTICA, HASHING Y ANÁLISIS DE CREDENCIALES (HASHCAT & JOHN)', ¿cuál afirmación es correcta sobre: Aceleración por GPU y modos de ataque con Hashcat (-m mode, -a attack_mode)?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Aceleración por GPU y modos de ataque con Hashcat (-m mode, -a atta...", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aceleración por GPU y modos de ataque con Hashcat (-m mode, -a attack_mode). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 13: CRIPTOGRAFÍA PRÁCTICA, HASHING Y ANÁLISIS DE CREDENCIALES (HASHCAT & JOHN)', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 13: CRIPTOGRAFÍA PRÁCTICA, HASHING Y ANÁLISIS DE CREDENCIALES (HASHCAT & JOHN)', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ],
       exercises: [
         {
@@ -1207,18 +1818,22 @@ hashcat -m 1000 -a 0 ntlm_hashes.txt /usr/share/wordlists/rockyou.txt -O`,
         }
       ]
     },
-    {
+        {
       id: 14,
       title: "MÓDULO 14: TRANSFERENCIA DE ARCHIVOS, SERVIDORES EFÍMEROS Y MANIPULACIÓN DE SOCKETS (NETCAT & SOCAT)",
       description: "La 'navaja suiza' de redes Netcat (nc), banner grabbing manual, transferencia de datos TCP/UDP, servidores web efímeros en Python y retransmisión con Socat.",
       items: [
+        
         "Fundamentos de Netcat (nc): modo cliente, modo escucha (-l), verbosidad (-v) y puertos numéricos (-n).",
         "Banner Grabbing manual sobre servicios HTTP, FTP y SMTP para identificar versiones.",
         "Transferencia de archivos y respaldos directos a través de tuberías y sockets de red.",
         "Creación de servidores HTTP efímeros en Kali para entrega de herramientas (python3 -m http.server).",
-        "Retransmisión bidireccional y proxy de sockets con Socat (Socket Cat)."
+        "Retransmisión bidireccional y proxy de sockets con Socat (Socket Cat).",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Conocida como la 'navaja suiza de TCP/IP', **Netcat (\`nc\`)** es una de las utilidades más versátiles en Linux para leer y escribir datos a través de conexiones de red utilizando los protocolos TCP o UDP. En auditorías de infraestructura, Netcat se emplea para **Banner Grabbing**: conectarse directamente al puerto de un servicio (como el puerto 21 de FTP o 25 de SMTP) e interactuar con él mediante comandos en texto claro para capturar el encabezado que revela el software y la versión exacta en ejecución. Asimismo, Netcat permite transferir archivos entre máquinas conectando la salida estándar (\`stdout\`) a un socket, y su sucesor avanzado, **Socat**, amplía estas capacidades permitiendo reenvío de puertos y encapsulación SSL/TLS bidireccional.",
+      content: "Conocida como la 'navaja suiza de TCP/IP', **Netcat (\\`nc\\`)** es una de las utilidades más versátiles en Linux para leer y escribir datos a través de conexiones de red utilizando los protocolos TCP o UDP. En auditorías de infraestructura, Netcat se emplea para **Banner Grabbing**: conectarse directamente al puerto de un servicio (como el puerto 21 de FTP o 25 de SMTP) e interactuar con él mediante comandos en texto claro para capturar el encabezado que revela el software y la versión exacta en ejecución. Asimismo, Netcat permite transferir archivos entre máquinas conectando la salida estándar (\\`stdout\\`) a un socket, y su sucesor avanzado, **Socat**, amplía estas capacidades permitiendo reenvío de puertos y encapsulación SSL/TLS bidireccional. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# 1. Banner grabbing manual en un servidor web HTTP
 nc -vn 192.168.1.50 80
 # (Escribir manualmente: HEAD / HTTP/1.0 y presionar Enter dos veces)
@@ -1285,6 +1900,49 @@ socat TCP-LISTEN:8080,fork,reuseaddr TCP:192.168.1.100:80`,
           answerIndex: 0,
           explanation: "Al usar el operador de redirección de entrada \`< archivo\`, la shell envía los bytes del archivo directamente al flujo de red establecido por Netcat."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 14: TRANSFERENCIA DE ARCHIVOS, SERVIDORES EFÍMEROS Y MANIPULACIÓN DE SOCKETS (NETCAT & SOCAT)', ¿cuál afirmación es correcta sobre: Fundamentos de Netcat (nc): modo cliente, modo escucha (-l), verbosidad (-v) ...?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Fundamentos de Netcat (nc): modo cliente, modo escucha (-l), verbos...", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Fundamentos de Netcat (nc): modo cliente, modo escucha (-l), verbosidad (-v) y puertos numéricos (-n). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 14: TRANSFERENCIA DE ARCHIVOS, SERVIDORES EFÍMEROS Y MANIPULACIÓN DE SOCKETS (NETCAT & SOCAT)', ¿cuál afirmación es correcta sobre: Banner Grabbing manual sobre servicios HTTP, FTP y SMTP para identificar vers...?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Banner Grabbing manual sobre servicios HTTP, FTP y SMTP para identi...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Banner Grabbing manual sobre servicios HTTP, FTP y SMTP para identificar versiones. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 14: TRANSFERENCIA DE ARCHIVOS, SERVIDORES EFÍMEROS Y MANIPULACIÓN DE SOCKETS (NETCAT & SOCAT)', ¿cuál afirmación es correcta sobre: Transferencia de archivos y respaldos directos a través de tuberías y sockets...?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Transferencia de archivos y respaldos directos a través de tuberías...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Transferencia de archivos y respaldos directos a través de tuberías y sockets de red. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 14: TRANSFERENCIA DE ARCHIVOS, SERVIDORES EFÍMEROS Y MANIPULACIÓN DE SOCKETS (NETCAT & SOCAT)', ¿cuál afirmación es correcta sobre: Creación de servidores HTTP efímeros en Kali para entrega de herramientas (py...?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Creación de servidores HTTP efímeros en Kali para entrega de herram...", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Creación de servidores HTTP efímeros en Kali para entrega de herramientas (python3 -m http.server). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 14: TRANSFERENCIA DE ARCHIVOS, SERVIDORES EFÍMEROS Y MANIPULACIÓN DE SOCKETS (NETCAT & SOCAT)', ¿cuál afirmación es correcta sobre: Retransmisión bidireccional y proxy de sockets con Socat (Socket Cat)?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Retransmisión bidireccional y proxy de sockets con Socat (Socket Cat)", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Retransmisión bidireccional y proxy de sockets con Socat (Socket Cat). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 14: TRANSFERENCIA DE ARCHIVOS, SERVIDORES EFÍMEROS Y MANIPULACIÓN DE SOCKETS (NETCAT & SOCAT)', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 14: TRANSFERENCIA DE ARCHIVOS, SERVIDORES EFÍMEROS Y MANIPULACIÓN DE SOCKETS (NETCAT & SOCAT)', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ],
       exercises: [
         {
@@ -1305,18 +1963,22 @@ socat TCP-LISTEN:8080,fork,reuseaddr TCP:192.168.1.100:80`,
         }
       ]
     },
-    {
+        {
       id: 15,
       title: "MÓDULO 15: PIVOTING DE REDES, PORT FORWARDING Y TÚNELES SSH",
       description: "Técnicas de salto de red (Pivoting), reenvío de puertos local (ssh -L), reenvío remoto (ssh -R), túneles dinámicos SOCKS5 (ssh -D) y enrutamiento con Proxychains.",
       items: [
+        
         "Concepto de salto lateral (Pivoting) para alcanzar redes internas no enrutables.",
         "Reenvío de puertos local con SSH (Local Port Forwarding: ssh -L local_port:target_ip:target_port).",
         "Reenvío de puertos remoto (Remote Port Forwarding: ssh -R remote_port:local_ip:local_port).",
         "Creación de túneles dinámicos SOCKS5 con SSH (Dynamic Port Forwarding: ssh -D socks_port).",
-        "Configuración y uso de Proxychains (/etc/proxychains4.conf) para canalizar herramientas como Nmap a través de proxies."
+        "Configuración y uso de Proxychains (/etc/proxychains4.conf) para canalizar herramientas como Nmap a través de proxies.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "En infraestructuras corporativas, los servidores más críticos (bases de datos, controladores de dominio) residen en subredes internas aisladas sin acceso directo desde Internet. El **Pivoting** es la técnica que permite utilizar una máquina perimetral previamente auditada (como un servidor web o bastion host) como puente para alcanzar la red interna. El protocolo **SSH** incluye capacidades nativas extraordinarias para crear túneles cifrados. Con **Dynamic Port Forwarding (\`ssh -D 1080\`)**, SSH convierte el equipo local en un servidor proxy SOCKS5: combinando esto con **\`proxychains4\`**, cualquier herramienta de Kali Linux (como \`nmap\` o \`curl\`) puede enrutar su tráfico a través del túnel SSH como si se ejecutara físicamente dentro de la red privada.",
+      content: "En infraestructuras corporativas, los servidores más críticos (bases de datos, controladores de dominio) residen en subredes internas aisladas sin acceso directo desde Internet. El **Pivoting** es la técnica que permite utilizar una máquina perimetral previamente auditada (como un servidor web o bastion host) como puente para alcanzar la red interna. El protocolo **SSH** incluye capacidades nativas extraordinarias para crear túneles cifrados. Con **Dynamic Port Forwarding (\\`ssh -D 1080\\`)**, SSH convierte el equipo local en un servidor proxy SOCKS5: combinando esto con **\\`proxychains4\\`**, cualquier herramienta de Kali Linux (como \\`nmap\\` o \\`curl\\`) puede enrutar su tráfico a través del túnel SSH como si se ejecutara físicamente dentro de la red privada. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# 1. Reenvío de puerto local (-L): mapea el puerto 3306 remoto de una BD interna al puerto 3307 local
 ssh -L 3307:10.0.0.50:3306 usuario@bastion_publico.com -N
 
@@ -1378,6 +2040,49 @@ ssh -R 8080:127.0.0.1:80 usuario@servidor_externo.com -N`,
           answerIndex: 1,
           explanation: "\`/etc/proxychains4.conf\` (o \`/etc/proxychains.conf\`) es el archivo principal donde se configuran las cadenas de proxies (dinámica, estricta o aleatoria) y las IPs/puertos SOCKS/HTTP."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 15: PIVOTING DE REDES, PORT FORWARDING Y TÚNELES SSH', ¿cuál afirmación es correcta sobre: Concepto de salto lateral (Pivoting) para alcanzar redes internas no enrutables?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Concepto de salto lateral (Pivoting) para alcanzar redes internas n...", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Concepto de salto lateral (Pivoting) para alcanzar redes internas no enrutables. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 15: PIVOTING DE REDES, PORT FORWARDING Y TÚNELES SSH', ¿cuál afirmación es correcta sobre: Reenvío de puertos local con SSH (Local Port Forwarding: ssh -L local_port:ta...?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Reenvío de puertos local con SSH (Local Port Forwarding: ssh -L loc...", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Reenvío de puertos local con SSH (Local Port Forwarding: ssh -L local_port:target_ip:target_port). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 15: PIVOTING DE REDES, PORT FORWARDING Y TÚNELES SSH', ¿cuál afirmación es correcta sobre: Reenvío de puertos remoto (Remote Port Forwarding: ssh -R remote_port:local_i...?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Reenvío de puertos remoto (Remote Port Forwarding: ssh -R remote_po...", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Reenvío de puertos remoto (Remote Port Forwarding: ssh -R remote_port:local_ip:local_port). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 15: PIVOTING DE REDES, PORT FORWARDING Y TÚNELES SSH', ¿cuál afirmación es correcta sobre: Creación de túneles dinámicos SOCKS5 con SSH (Dynamic Port Forwarding: ssh -D...?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Creación de túneles dinámicos SOCKS5 con SSH (Dynamic Port Forwardi...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Creación de túneles dinámicos SOCKS5 con SSH (Dynamic Port Forwarding: ssh -D socks_port). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 15: PIVOTING DE REDES, PORT FORWARDING Y TÚNELES SSH', ¿cuál afirmación es correcta sobre: Configuración y uso de Proxychains (/etc/proxychains4.conf) para canalizar he...?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Configuración y uso de Proxychains (/etc/proxychains4.conf) para ca...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Configuración y uso de Proxychains (/etc/proxychains4.conf) para canalizar herramientas como Nmap a través de proxies. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 15: PIVOTING DE REDES, PORT FORWARDING Y TÚNELES SSH', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 15: PIVOTING DE REDES, PORT FORWARDING Y TÚNELES SSH', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ],
       exercises: [
         {
@@ -1398,18 +2103,22 @@ ssh -R 8080:127.0.0.1:80 usuario@servidor_externo.com -N`,
         }
       ]
     },
-    {
+        {
       id: 16,
       title: "MÓDULO 16: AUDITORÍA DE PERMISOS, SUID/SGID Y ELEVACIÓN DE PRIVILEGIOS EN LINUX",
       description: "Identificación de configuraciones erróneas en permisos, binarios SUID/SGID, tareas cron vulnerables, capacidades del kernel (Capabilities) y GTFOBins.",
       items: [
+        
         "Vectores comunes de mala configuración en sistemas operativos Linux.",
         "Auditoría exhaustiva de binarios SUID (SetUID: 4000) y SGID (SetGID: 2000).",
         "Inspección de privilegios sudo mal restringidos mediante 'sudo -l'.",
         "Capacidades avanzadas del Kernel Linux con getcap / setcap (ej. cap_setuid).",
-        "El proyecto GTFOBins como referencia defensiva para auditar binarios con escape de shell."
+        "El proyecto GTFOBins como referencia defensiva para auditar binarios con escape de shell.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "La elevación de privilegios (Privilege Escalation) ocurre cuando un usuario con permisos restringidos aprovecha una falla de configuración para obtener acceso como superusuario (\`root\`). En Linux, los vectores más frecuentes son los permisos especiales **SUID (Set User ID)** y **sudo mal configurado**. Cuando un binario tiene el bit SUID activo (\`-rwsr-xr-x\`), se ejecuta con los privilegios del propietario del archivo (frecuentemente root) en lugar de los privilegios del usuario que lo invoca. El proyecto de investigación **GTFOBins** cataloga binarios estándar de Unix que, si se configuran con SUID o se permiten en \`sudoers\` sin restricciones, permiten ejecutar comandos arbitrarios o invocar shells con privilegios elevados.",
+      content: "La elevación de privilegios (Privilege Escalation) ocurre cuando un usuario con permisos restringidos aprovecha una falla de configuración para obtener acceso como superusuario (\\`root\\`). En Linux, los vectores más frecuentes son los permisos especiales **SUID (Set User ID)** y **sudo mal configurado**. Cuando un binario tiene el bit SUID activo (\\`-rwsr-xr-x\\`), se ejecuta con los privilegios del propietario del archivo (frecuentemente root) en lugar de los privilegios del usuario que lo invoca. El proyecto de investigación **GTFOBins** cataloga binarios estándar de Unix que, si se configuran con SUID o se permiten en \\`sudoers\\` sin restricciones, permiten ejecutar comandos arbitrarios o invocar shells con privilegios elevados. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# 1. Búsqueda exhaustiva de todos los binarios SUID en el sistema silenciando errores
 find / -perm -4000 -type f -exec ls -la {} 2>/dev/null \;
 
@@ -1470,6 +2179,49 @@ cat /etc/crontab /etc/cron.*/* 2>/dev/null | grep -v "^#"`,
           answerIndex: 0,
           explanation: "Si el archivo es ejecutable por cron con privilegios de root, cualquier modificación introducida por un usuario no privilegiado se ejecutará con permisos de root en el siguiente ciclo."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 16: AUDITORÍA DE PERMISOS, SUID/SGID Y ELEVACIÓN DE PRIVILEGIOS EN LINUX', ¿cuál afirmación es correcta sobre: Vectores comunes de mala configuración en sistemas operativos Linux?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Vectores comunes de mala configuración en sistemas operativos Linux", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Vectores comunes de mala configuración en sistemas operativos Linux. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 16: AUDITORÍA DE PERMISOS, SUID/SGID Y ELEVACIÓN DE PRIVILEGIOS EN LINUX', ¿cuál afirmación es correcta sobre: Auditoría exhaustiva de binarios SUID (SetUID: 4000) y SGID (SetGID: 2000)?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Auditoría exhaustiva de binarios SUID (SetUID: 4000) y SGID (SetGID...", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Auditoría exhaustiva de binarios SUID (SetUID: 4000) y SGID (SetGID: 2000). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 16: AUDITORÍA DE PERMISOS, SUID/SGID Y ELEVACIÓN DE PRIVILEGIOS EN LINUX', ¿cuál afirmación es correcta sobre: Inspección de privilegios sudo mal restringidos mediante 'sudo -l'?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Inspección de privilegios sudo mal restringidos mediante 'sudo -l'", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Inspección de privilegios sudo mal restringidos mediante 'sudo -l'. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 16: AUDITORÍA DE PERMISOS, SUID/SGID Y ELEVACIÓN DE PRIVILEGIOS EN LINUX', ¿cuál afirmación es correcta sobre: Capacidades avanzadas del Kernel Linux con getcap / setcap (ej. cap_setuid)?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Capacidades avanzadas del Kernel Linux con getcap / setcap (ej. cap...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Capacidades avanzadas del Kernel Linux con getcap / setcap (ej. cap_setuid). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 16: AUDITORÍA DE PERMISOS, SUID/SGID Y ELEVACIÓN DE PRIVILEGIOS EN LINUX', ¿cuál afirmación es correcta sobre: El proyecto GTFOBins como referencia defensiva para auditar binarios con esca...?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: El proyecto GTFOBins como referencia defensiva para auditar binario...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que El proyecto GTFOBins como referencia defensiva para auditar binarios con escape de shell. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 16: AUDITORÍA DE PERMISOS, SUID/SGID Y ELEVACIÓN DE PRIVILEGIOS EN LINUX', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 16: AUDITORÍA DE PERMISOS, SUID/SGID Y ELEVACIÓN DE PRIVILEGIOS EN LINUX', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ],
       exercises: [
         {
@@ -1490,18 +2242,22 @@ cat /etc/crontab /etc/cron.*/* 2>/dev/null | grep -v "^#"`,
         }
       ]
     },
-    {
+        {
       id: 17,
       title: "MÓDULO 17: ANÁLISIS FORENSE DIGITAL BÁSICO Y ADQUISICIÓN DE EVIDENCIA",
       description: "Cadena de custodia, cálculo de hashes de integridad (sha256sum), adquisición forense bit a bit con dd/dc3dd y análisis de artefactos con Sleuthkit y Binwalk.",
       items: [
+        
         "Principios de la evidencia digital: orden de volatilidad y preservación de la cadena de custodia.",
         "Cálculo y verificación de hashes de integridad criptográfica (sha256sum, md5sum).",
         "Adquisición forense de discos y particiones mediante dd y dc3dd con control de errores.",
         "Extracción de archivos incrustados y firmas binarias mediante binwalk y foremost.",
-        "Inspección de estructuras de sistemas de archivos y recuperación con The Sleuth Kit (fls, icat)."
+        "Inspección de estructuras de sistemas de archivos y recuperación con The Sleuth Kit (fls, icat).",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "El análisis forense digital (Digital Forensics and Incident Response - DFIR) tiene como objetivo identificar, preservar, analizar y presentar evidencia digital garantizando su validez jurídica y técnica. El primer principio rector es el **Orden de Volatilidad**: la información en memoria RAM, registros de CPU y sockets activos debe capturarse antes que el almacenamiento secundario en disco duro. Al realizar una copia de un disco sospechoso, nunca se interactúa con la evidencia original; en su lugar, se genera una **imagen forense bit a bit** utilizando herramientas como \`dd\` o \`dc3dd\` y se calcula de inmediato su resumen criptográfico (**SHA-256**) para certificar que la copia es idéntica y no ha sufrido alteraciones.",
+      content: "El análisis forense digital (Digital Forensics and Incident Response - DFIR) tiene como objetivo identificar, preservar, analizar y presentar evidencia digital garantizando su validez jurídica y técnica. El primer principio rector es el **Orden de Volatilidad**: la información en memoria RAM, registros de CPU y sockets activos debe capturarse antes que el almacenamiento secundario en disco duro. Al realizar una copia de un disco sospechoso, nunca se interactúa con la evidencia original; en su lugar, se genera una **imagen forense bit a bit** utilizando herramientas como \\`dd\\` o \\`dc3dd\\` y se calcula de inmediato su resumen criptográfico (**SHA-256**) para certificar que la copia es idéntica y no ha sufrido alteraciones. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# 1. Creación de una imagen forense bit a bit de una memoria USB (/dev/sdb) con control de errores
 sudo dd if=/dev/sdb of=/tmp/evidencia_disco.raw bs=64K status=progress conv=noerror,sync
 
@@ -1563,6 +2319,49 @@ fls -r -p /tmp/evidencia_disco.raw`,
           answerIndex: 0,
           explanation: "\`fls\` recorre las tablas de inodos y directorios del sistema de archivos en una imagen forense, marcando con un asterisco (*) los ficheros eliminados pero aún recuperables."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 17: ANÁLISIS FORENSE DIGITAL BÁSICO Y ADQUISICIÓN DE EVIDENCIA', ¿cuál afirmación es correcta sobre: Principios de la evidencia digital: orden de volatilidad y preservación de la...?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Principios de la evidencia digital: orden de volatilidad y preserva...", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Principios de la evidencia digital: orden de volatilidad y preservación de la cadena de custodia. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 17: ANÁLISIS FORENSE DIGITAL BÁSICO Y ADQUISICIÓN DE EVIDENCIA', ¿cuál afirmación es correcta sobre: Cálculo y verificación de hashes de integridad criptográfica (sha256sum, md5sum)?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Cálculo y verificación de hashes de integridad criptográfica (sha25...", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Cálculo y verificación de hashes de integridad criptográfica (sha256sum, md5sum). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 17: ANÁLISIS FORENSE DIGITAL BÁSICO Y ADQUISICIÓN DE EVIDENCIA', ¿cuál afirmación es correcta sobre: Adquisición forense de discos y particiones mediante dd y dc3dd con control d...?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Adquisición forense de discos y particiones mediante dd y dc3dd con...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Adquisición forense de discos y particiones mediante dd y dc3dd con control de errores. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 17: ANÁLISIS FORENSE DIGITAL BÁSICO Y ADQUISICIÓN DE EVIDENCIA', ¿cuál afirmación es correcta sobre: Extracción de archivos incrustados y firmas binarias mediante binwalk y foremost?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Extracción de archivos incrustados y firmas binarias mediante binwa...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Extracción de archivos incrustados y firmas binarias mediante binwalk y foremost. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 17: ANÁLISIS FORENSE DIGITAL BÁSICO Y ADQUISICIÓN DE EVIDENCIA', ¿cuál afirmación es correcta sobre: Inspección de estructuras de sistemas de archivos y recuperación con The Sleu...?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Inspección de estructuras de sistemas de archivos y recuperación co...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Inspección de estructuras de sistemas de archivos y recuperación con The Sleuth Kit (fls, icat). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 17: ANÁLISIS FORENSE DIGITAL BÁSICO Y ADQUISICIÓN DE EVIDENCIA', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 17: ANÁLISIS FORENSE DIGITAL BÁSICO Y ADQUISICIÓN DE EVIDENCIA', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ],
       exercises: [
         {
@@ -1583,18 +2382,22 @@ fls -r -p /tmp/evidencia_disco.raw`,
         }
       ]
     },
-    {
+        {
       id: 18,
       title: "MÓDULO 18: ANÁLISIS DE LOGS DEL SISTEMA Y DETECCIÓN DE INTRUSIONES",
       description: "Estructura de bitácoras en /var/log/, filtrado y correlación de eventos con grep/awk, detección de ataques de fuerza bruta y análisis de registros de servidores web.",
       items: [
+        
         "Mapa de bitácoras del sistema (/var/log/auth.log, syslog, /var/log/apache2/access.log).",
         "Filtrado y conteo de intentos fallidos de autenticación SSH (Failed password).",
         "Procesamiento y agregación de logs de acceso web con awk, sort y uniq -c.",
         "Detección de patrones de inyección SQL, escaneos de rutas y User-Agents anómalos.",
-        "Principios de correlación de eventos y reenvío centralizado a sistemas SIEM."
+        "Principios de correlación de eventos y reenvío centralizado a sistemas SIEM.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "Los registros de eventos (logs) constituyen la fuente primordial de verdad para la detección de anomalías y la investigación post-incidente. En distribuciones basadas en Debian como Kali Linux, los intentos de autenticación (tanto exitosos como fallidos) se almacenan en \`/var/log/auth.log\`. El análisis manual o automatizado de logs mediante herramientas de procesamiento de texto (\`grep\`, \`awk\`, \`cut\`, \`sort\`, \`uniq\`) permite a un analista reconstruir la línea de tiempo de un ataque: identificar direcciones IP de origen que ejecutan ataques de fuerza bruta contra el servicio SSH, detectar picos de errores 404 causados por herramientas automatizadas de fuzzing web o aislar intentos de inyección SQL en las URLs solicitadas.",
+      content: "Los registros de eventos (logs) constituyen la fuente primordial de verdad para la detección de anomalías y la investigación post-incidente. En distribuciones basadas en Debian como Kali Linux, los intentos de autenticación (tanto exitosos como fallidos) se almacenan en \\`/var/log/auth.log\\`. El análisis manual o automatizado de logs mediante herramientas de procesamiento de texto (\\`grep\\`, \\`awk\\`, \\`cut\\`, \\`sort\\`, \\`uniq\\`) permite a un analista reconstruir la línea de tiempo de un ataque: identificar direcciones IP de origen que ejecutan ataques de fuerza bruta contra el servicio SSH, detectar picos de errores 404 causados por herramientas automatizadas de fuzzing web o aislar intentos de inyección SQL en las URLs solicitadas. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# 1. Detección y conteo de intentos fallidos de login SSH agrupados por IP de origen
 grep "Failed password" /var/log/auth.log | awk '{for(i=1;i<=NF;i++) if($i=="from") print $(i+1)}' | sort | uniq -c | sort -nr | head -n 10
 
@@ -1650,6 +2453,49 @@ awk '$9 == 404 {print $1, $7}' /var/log/apache2/access.log | sort | uniq -c | so
           answerIndex: 1,
           explanation: "Un SIEM recopila logs de servidores, firewalls, routers y endpoints para correlacionar eventos dispersos e identificar patrones de compromiso complejos."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 18: ANÁLISIS DE LOGS DEL SISTEMA Y DETECCIÓN DE INTRUSIONES', ¿cuál afirmación es correcta sobre: Mapa de bitácoras del sistema (/var/log/auth.log, syslog, /var/log/apache2/ac...?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Mapa de bitácoras del sistema (/var/log/auth.log, syslog, /var/log/...", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Mapa de bitácoras del sistema (/var/log/auth.log, syslog, /var/log/apache2/access.log). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 18: ANÁLISIS DE LOGS DEL SISTEMA Y DETECCIÓN DE INTRUSIONES', ¿cuál afirmación es correcta sobre: Filtrado y conteo de intentos fallidos de autenticación SSH (Failed password)?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Filtrado y conteo de intentos fallidos de autenticación SSH (Failed...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Filtrado y conteo de intentos fallidos de autenticación SSH (Failed password). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 18: ANÁLISIS DE LOGS DEL SISTEMA Y DETECCIÓN DE INTRUSIONES', ¿cuál afirmación es correcta sobre: Procesamiento y agregación de logs de acceso web con awk, sort y uniq -c?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Procesamiento y agregación de logs de acceso web con awk, sort y un...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Procesamiento y agregación de logs de acceso web con awk, sort y uniq -c. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 18: ANÁLISIS DE LOGS DEL SISTEMA Y DETECCIÓN DE INTRUSIONES', ¿cuál afirmación es correcta sobre: Detección de patrones de inyección SQL, escaneos de rutas y User-Agents anómalos?",
+          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Detección de patrones de inyección SQL, escaneos de rutas y User-Ag...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Detección de patrones de inyección SQL, escaneos de rutas y User-Agents anómalos. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 18: ANÁLISIS DE LOGS DEL SISTEMA Y DETECCIÓN DE INTRUSIONES', ¿cuál afirmación es correcta sobre: Principios de correlación de eventos y reenvío centralizado a sistemas SIEM?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Principios de correlación de eventos y reenvío centralizado a siste...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Principios de correlación de eventos y reenvío centralizado a sistemas SIEM. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 18: ANÁLISIS DE LOGS DEL SISTEMA Y DETECCIÓN DE INTRUSIONES', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 18: ANÁLISIS DE LOGS DEL SISTEMA Y DETECCIÓN DE INTRUSIONES', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ],
       exercises: [
         {
@@ -1670,18 +2516,22 @@ awk '$9 == 404 {print $1, $7}' /var/log/apache2/access.log | sort | uniq -c | so
         }
       ]
     },
-    {
+        {
       id: 19,
       title: "MÓDULO 19: BASTIONADO DE SISTEMAS (HARDENING), CORTAFUEGOS IPTABLES/NFTABLES Y UFW",
       description: "Políticas de filtrado por defecto (DROP/ACCEPT), cadenas INPUT/OUTPUT/FORWARD, inspección de estado (conntrack) con IPTables, migración a NFTables y configuración con UFW.",
       items: [
+        
         "Principios de Hardening y defensa en profundidad en servidores Linux.",
         "Estructura de tablas y cadenas en IPTables: filter, nat, mangle y cadenas INPUT/OUTPUT/FORWARD.",
         "Filtrado con seguimiento de estado de conexiones (Stateful Firewall con conntrack: ESTABLISHED, RELATED).",
         "Configuración simplificada de cortafuegos perimetral mediante UFW (Uncomplicated Firewall).",
-        "Arquitectura moderna de filtrado del Kernel Linux con NFTables (nft)."
+        "Arquitectura moderna de filtrado del Kernel Linux con NFTables (nft).",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "El bastionado (Hardening) de sistemas consiste en reducir la superficie de ataque de un servidor eliminando servicios innecesarios, aplicando el principio de mínimo privilegio y configurando cortafuegos con estado. En el kernel de Linux, el filtrado de paquetes ha sido gestionado históricamente por **IPTables** y actualmente por **NFTables**. Un firewall robusto aplica una **política por defecto DROP** (descartar todo el tráfico entrante salvo lo explícitamente permitido). Mediante el módulo de seguimiento de conexiones **conntrack**, el firewall permite automáticamente los paquetes de respuestas legítimas (\`ESTABLISHED,RELATED\`) para conexiones que el propio servidor inició, bloqueando cualquier intento de conexión entrante no autorizado a puertos cerrados.",
+      content: "El bastionado (Hardening) de sistemas consiste en reducir la superficie de ataque de un servidor eliminando servicios innecesarios, aplicando el principio de mínimo privilegio y configurando cortafuegos con estado. En el kernel de Linux, el filtrado de paquetes ha sido gestionado históricamente por **IPTables** y actualmente por **NFTables**. Un firewall robusto aplica una **política por defecto DROP** (descartar todo el tráfico entrante salvo lo explícitamente permitido). Mediante el módulo de seguimiento de conexiones **conntrack**, el firewall permite automáticamente los paquetes de respuestas legítimas (\\`ESTABLISHED,RELATED\\`) para conexiones que el propio servidor inició, bloqueando cualquier intento de conexión entrante no autorizado a puertos cerrados. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# 1. Configuración de un firewall básico robusto con IPTables (Política DROP por defecto)
 # Permitir tráfico local en loopback (lo)
 sudo iptables -A INPUT -i lo -j ACCEPT
@@ -1743,6 +2593,49 @@ sudo nft list ruleset`,
           answerIndex: 1,
           explanation: "\`ufw enable\` activa las reglas de filtrado y configura el servicio para arrancar automáticamente en cada inicio del sistema."
         }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 19: BASTIONADO DE SISTEMAS (HARDENING), CORTAFUEGOS IPTABLES/NFTABLES Y UFW', ¿cuál afirmación es correcta sobre: Principios de Hardening y defensa en profundidad en servidores Linux?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Principios de Hardening y defensa en profundidad en servidores Linux", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Principios de Hardening y defensa en profundidad en servidores Linux. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 19: BASTIONADO DE SISTEMAS (HARDENING), CORTAFUEGOS IPTABLES/NFTABLES Y UFW', ¿cuál afirmación es correcta sobre: Estructura de tablas y cadenas en IPTables: filter, nat, mangle y cadenas INP...?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Estructura de tablas y cadenas en IPTables: filter, nat, mangle y c...", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Estructura de tablas y cadenas en IPTables: filter, nat, mangle y cadenas INPUT/OUTPUT/FORWARD. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 19: BASTIONADO DE SISTEMAS (HARDENING), CORTAFUEGOS IPTABLES/NFTABLES Y UFW', ¿cuál afirmación es correcta sobre: Filtrado con seguimiento de estado de conexiones (Stateful Firewall con connt...?",
+          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Filtrado con seguimiento de estado de conexiones (Stateful Firewall...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Filtrado con seguimiento de estado de conexiones (Stateful Firewall con conntrack: ESTABLISHED, RELATED). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 19: BASTIONADO DE SISTEMAS (HARDENING), CORTAFUEGOS IPTABLES/NFTABLES Y UFW', ¿cuál afirmación es correcta sobre: Configuración simplificada de cortafuegos perimetral mediante UFW (Uncomplica...?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Configuración simplificada de cortafuegos perimetral mediante UFW (...", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Configuración simplificada de cortafuegos perimetral mediante UFW (Uncomplicated Firewall). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 19: BASTIONADO DE SISTEMAS (HARDENING), CORTAFUEGOS IPTABLES/NFTABLES Y UFW', ¿cuál afirmación es correcta sobre: Arquitectura moderna de filtrado del Kernel Linux con NFTables (nft)?",
+          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Arquitectura moderna de filtrado del Kernel Linux con NFTables (nft)", "Confundir el concepto con una técnica ortogonal no relacionada."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Arquitectura moderna de filtrado del Kernel Linux con NFTables (nft). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 19: BASTIONADO DE SISTEMAS (HARDENING), CORTAFUEGOS IPTABLES/NFTABLES Y UFW', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 19: BASTIONADO DE SISTEMAS (HARDENING), CORTAFUEGOS IPTABLES/NFTABLES Y UFW', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Aplicar la regla solo en el best case ignorando el peor escenario."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
+        }
       ],
       exercises: [
         {
@@ -1763,18 +2656,22 @@ sudo nft list ruleset`,
         }
       ]
     },
-    {
+        {
       id: 20,
       title: "MÓDULO 20: METODOLOGÍA DE PENTESTING, ESTÁNDARES (PTES/NIST) Y REPORTE CVSS",
       description: "Fases formales de una auditoría de seguridad, delimitación de alcance (Scope), acuerdos de nivel de servicio (SLA/NDA), matriz de severidad CVSS v3.1 y redacción de informes ejecutivos y técnicos.",
       items: [
+        
         "Fases metodológicas del estándar PTES (Penetration Testing Execution Standard).",
         "Marco de evaluación de seguridad NIST SP 800-115 y directrices éticas.",
         "Definición de alcance (Rules of Engagement - RoE, Scope y acuerdos de confidencialidad NDA).",
         "Cálculo de severidad de vulnerabilidades mediante el estándar Common Vulnerability Scoring System (CVSS v3.1).",
-        "Estructura formal de un reporte de auditoría: Resumen Ejecutivo vs Detalle Técnico con pasos de reproducción (PoC) y remediación."
+        "Estructura formal de un reporte de auditoría: Resumen Ejecutivo vs Detalle Técnico con pasos de reproducción (PoC) y remediación.",
+        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
+        "Errores frecuentes de principiantes y cómo evitarlos en producción.",
+        "Checklist de repaso previo a evaluación o grabación de clase."
       ],
-      content: "La ejecución de pruebas de penetración profesionales no se define por el uso aislado de herramientas, sino por la rigurosa aplicación de una **metodología formal** y un marco de **responsabilidad ética y legal**. Estándares como el **PTES (Penetration Testing Execution Standard)** estructuran la evaluación en siete fases secuenciales: Pre-engagement (acuerdos y alcance), Recolección de Inteligencia, Modelado de Amenazas, Análisis de Vulnerabilidades, Explotación, Post-explotación y Reporte. El entregable más valioso para la organización cliente es el **Informe Final**: este debe contener un Resumen Ejecutivo orientado a la dirección de la empresa (sin tecnicismos excesivos, destacando el impacto en el negocio) y una Sección Técnica exhaustiva donde cada vulnerabilidad se clasifica según el estándar **CVSS v3.1** (Base Score de 0.0 a 10.0), acompañada de pruebas de concepto reproducibles y recomendaciones de mitigación claras y verificables.",
+      content: "La ejecución de pruebas de penetración profesionales no se define por el uso aislado de herramientas, sino por la rigurosa aplicación de una **metodología formal** y un marco de **responsabilidad ética y legal**. Estándares como el **PTES (Penetration Testing Execution Standard)** estructuran la evaluación en siete fases secuenciales: Pre-engagement (acuerdos y alcance), Recolección de Inteligencia, Modelado de Amenazas, Análisis de Vulnerabilidades, Explotación, Post-explotación y Reporte. El entregable más valioso para la organización cliente es el **Informe Final**: este debe contener un Resumen Ejecutivo orientado a la dirección de la empresa (sin tecnicismos excesivos, destacando el impacto en el negocio) y una Sección Técnica exhaustiva donde cada vulnerabilidad se clasifica según el estándar **CVSS v3.1** (Base Score de 0.0 a 10.0), acompañada de pruebas de concepto reproducibles y recomendaciones de mitigación claras y verificables. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación extendida antes de grabar tu clase o avanzar al siguiente módulo.",
       codeSnippet: `# Ejemplo de Estructura de Clasificación de Vulnerabilidad en un Reporte Técnico
 
 ================================================================================
@@ -1845,6 +2742,49 @@ credenciales y obtener control sobre la gestión de usuarios del sistema.
           ],
           answerIndex: 1,
           explanation: "El objetivo de la seguridad ética y defensiva es siempre ayudar a la organización a subsanar sus fallas, proteger los datos de los usuarios y fortalecer sus controles preventivos."
+        }
+      ,
+        {
+          question: "Según el temario de 'MÓDULO 20: METODOLOGÍA DE PENTESTING, ESTÁNDARES (PTES/NIST) Y REPORTE CVSS', ¿cuál afirmación es correcta sobre: Fases metodológicas del estándar PTES (Penetration Testing Execution Standard)?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Fases metodológicas del estándar PTES (Penetration Testing Executio...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Fases metodológicas del estándar PTES (Penetration Testing Execution Standard). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 20: METODOLOGÍA DE PENTESTING, ESTÁNDARES (PTES/NIST) Y REPORTE CVSS', ¿cuál afirmación es correcta sobre: Marco de evaluación de seguridad NIST SP 800-115 y directrices éticas?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Marco de evaluación de seguridad NIST SP 800-115 y directrices éticas", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Marco de evaluación de seguridad NIST SP 800-115 y directrices éticas. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 20: METODOLOGÍA DE PENTESTING, ESTÁNDARES (PTES/NIST) Y REPORTE CVSS', ¿cuál afirmación es correcta sobre: Definición de alcance (Rules of Engagement - RoE, Scope y acuerdos de confide...?",
+          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Definición de alcance (Rules of Engagement - RoE, Scope y acuerdos ...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Definición de alcance (Rules of Engagement - RoE, Scope y acuerdos de confidencialidad NDA). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 20: METODOLOGÍA DE PENTESTING, ESTÁNDARES (PTES/NIST) Y REPORTE CVSS', ¿cuál afirmación es correcta sobre: Cálculo de severidad de vulnerabilidades mediante el estándar Common Vulnerab...?",
+          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Cálculo de severidad de vulnerabilidades mediante el estándar Commo...", "Descartar el análisis asintótico por constantes de hardware."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Cálculo de severidad de vulnerabilidades mediante el estándar Common Vulnerability Scoring System (CVSS v3.1). Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 20: METODOLOGÍA DE PENTESTING, ESTÁNDARES (PTES/NIST) Y REPORTE CVSS', ¿cuál afirmación es correcta sobre: Estructura formal de un reporte de auditoría: Resumen Ejecutivo vs Detalle Té...?",
+          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Estructura formal de un reporte de auditoría: Resumen Ejecutivo vs ...", "Ignorar casos borde y entradas vacías en el diseño."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Estructura formal de un reporte de auditoría: Resumen Ejecutivo vs Detalle Técnico con pasos de reproducción (PoC) y .... Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 20: METODOLOGÍA DE PENTESTING, ESTÁNDARES (PTES/NIST) Y REPORTE CVSS', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
+        },
+        {
+          question: "Según el temario de 'MÓDULO 20: METODOLOGÍA DE PENTESTING, ESTÁNDARES (PTES/NIST) Y REPORTE CVSS', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
+          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Asumir que más líneas de código siempre implican mayor eficiencia."],
+          answerIndex: 1,
+          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
         }
       ],
       exercises: [

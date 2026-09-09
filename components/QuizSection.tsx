@@ -41,7 +41,7 @@ const QuizSection: React.FC<QuizSectionProps> = ({ questions, moduleId }) => {
           <div>
             <h4 className="font-extrabold text-slate-900 text-lg">Desafío de Autoevaluación</h4>
             <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block">
-              Comprueba tu conocimiento del Módulo {moduleId}
+              {questions.length} preguntas de autoevaluación · Módulo {moduleId}
             </span>
           </div>
         </div>
