@@ -183,8 +183,8 @@ const App: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             <div className="lg:col-span-2 space-y-12">
               
-              {/* Big O Specific Content for Algoritmos Module 1 */}
-              {activeCourseId === 'algoritmos' && activeModule.id === 1 && (
+              {/* Big O Specific Content for Algoritmos / Complejidad Module 1 */}
+              {(activeCourseId === 'algoritmos' || activeCourseId === 'complejidad_algoritmica') && activeModule.id === 1 && (
                 <div className="space-y-8 animate-in fade-in slide-in-from-bottom-6 duration-700">
                   <BigOChart />
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
@@ -390,6 +390,8 @@ const App: React.FC = () => {
                       "Dominar autómatas y compiladores te permite entender lo que ocurre en las entrañas de los lenguajes de programación y optimizadores."
                     ) : activeCourseId === 'matematica' ? (
                       "La matemática es la herramienta analítica para formular modelos, optimizar funciones y garantizar el correcto funcionamiento del software."
+                    ) : activeCourseId === 'complejidad_algoritmica' ? (
+                      "Big-O es el idioma universal de escalabilidad: desde un bucle en Python hasta los FLOPs de un Transformer en GPU, quien domina la complejidad diseña sistemas que no colapsan."
                     ) : (
                       "En las Big Tech como Google o Microsoft, no solo evalúan si tu código funciona, sino su eficiencia asintótica."
                     )}
