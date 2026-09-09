@@ -74,12 +74,12 @@ const AIChatDrawer: React.FC<AIChatDrawerProps> = ({ moduleTitle, moduleId, modu
   const currentExercise = exercises[activeExIdx];
 
   return (
-    <div className="bg-white border border-slate-200 rounded-[2rem] flex flex-col h-[780px] shadow-xl overflow-hidden ring-1 ring-slate-100 animate-in fade-in duration-500">
+    <div className="bg-white border border-slate-200 rounded-2xl sm:rounded-[2rem] flex flex-col min-h-[420px] max-h-[75dvh] lg:h-[780px] lg:max-h-none shadow-xl overflow-hidden ring-1 ring-slate-100 animate-in fade-in duration-500">
       
       {/* Cabecera del Panel */}
-      <div className="p-6 border-b border-slate-100 bg-slate-50 flex flex-col gap-1.5 shrink-0">
-        <div className="flex justify-between items-center">
-          <h3 className="font-extrabold text-slate-900 flex items-center gap-2">
+      <div className="p-4 sm:p-6 border-b border-slate-100 bg-slate-50 flex flex-col gap-1.5 shrink-0">
+        <div className="flex justify-between items-start gap-2">
+          <h3 className="font-extrabold text-slate-900 flex items-center gap-2 text-sm sm:text-base">
             <span className="w-2.5 h-2.5 bg-indigo-600 rounded-full animate-pulse"></span>
             Tutor de Ejercicios
           </h3>
@@ -93,7 +93,7 @@ const AIChatDrawer: React.FC<AIChatDrawerProps> = ({ moduleTitle, moduleId, modu
       </div>
 
       {/* Contenedor de Ejercicios */}
-      <div className="flex-1 overflow-y-auto bg-white flex flex-col p-6 gap-5">
+      <div className="flex-1 overflow-y-auto overscroll-contain scroll-touch bg-white flex flex-col p-4 sm:p-6 gap-5 min-h-0">
         {currentExercise ? (
           <div className="space-y-4 flex-1 flex flex-col justify-between">
             <div>

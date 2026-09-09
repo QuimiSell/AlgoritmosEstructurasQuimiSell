@@ -14,10 +14,10 @@ import { BIG_O_DATA } from '../constants';
 
 const BigOChart: React.FC = () => {
   return (
-    <div className="w-full h-[400px] bg-white p-4 rounded-xl shadow-sm border border-slate-200">
-      <h3 className="text-lg font-bold mb-4">Visualización de Complejidad Big-O</h3>
-      <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={BIG_O_DATA}>
+    <div className="w-full h-[260px] sm:h-[340px] md:h-[400px] bg-white p-3 sm:p-4 rounded-xl shadow-sm border border-slate-200 min-w-0">
+      <h3 className="text-base sm:text-lg font-bold mb-2 sm:mb-4">Visualización de Complejidad Big-O</h3>
+      <ResponsiveContainer width="100%" height="85%">
+        <LineChart data={BIG_O_DATA} margin={{ top: 5, right: 8, left: -10, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" vertical={false} />
           <XAxis dataKey="n" label={{ value: 'Tamaño Entrada (n)', position: 'insideBottomRight', offset: -5 }} />
           <YAxis label={{ value: 'Operaciones', angle: -90, position: 'insideLeft' }} />
