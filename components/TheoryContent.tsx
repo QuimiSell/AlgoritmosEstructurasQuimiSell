@@ -59,17 +59,8 @@ function groupTheoryBlocks(content: string): TheoryGroup[] {
   return groups;
 }
 
-function isFullWidthSection(heading: string | null, index: number): boolean {
-  if (index === 0) return true;
-  if (!heading) return true;
-  const lower = heading.toLowerCase();
-  return (
-    lower.includes('panorama') ||
-    lower.includes('qué aprenderás') ||
-    lower.includes('que aprenderas') ||
-    lower.includes('síntesis') ||
-    lower.includes('sintesis')
-  );
+function isNumberedHeading(heading: string | null): boolean {
+  return Boolean(heading && /^\d+\.\s/.test(heading));
 }
 
 function renderBlock(block: string, key: string | number): React.ReactNode {
@@ -107,7 +98,7 @@ function renderBlock(block: string, key: string | number): React.ReactNode {
     return (
       <div
         key={key}
-        className="rounded-xl border border-slate-100 dark:border-slate-700/60 bg-white/60 dark:bg-slate-800/30 p-4 sm:p-5 space-y-2"
+        className="rounded-xl border border-slate-100 dark:border-slate-700/60 bg-white/60 dark:bg-slate-800/30 p-4 sm:p-5 space-y-2 h-full"
       >
         <p className="text-sm font-bold text-indigo-700 dark:text-indigo-300 uppercase tracking-wide">
           {label.replace(/\*\*/g, '')}
@@ -129,53 +120,90 @@ function renderBlock(block: string, key: string | number): React.ReactNode {
   );
 }
 
-const TheoryContent: React.FC<TheoryContentProps> = ({ content }) => {
-  const groups = groupTheoryBlocks(content);
+function renderGroupBody(blocks: string[]): React.ReactNode {
+  const detailBlocks = blocks.filter(b => b.trim().startsWith('**') && b.includes(':**'));
+  const otherBlocks = blocks.filter(b => !(b.trim().startsWith('**') && b.includes(':**')));
 
   return (
-    <div className="theory-content w-full">
-      {groups.map((group, i) => {
-        const heading = group.heading;
-        const fullWidth = isFullWidthSection(heading, i);
-        const gradient = heading ? sectionAccent(heading) : 'from-indigo-500 to-purple-500';
-        const isNumbered = heading ? /^\d+\.\s/.test(heading) : false;
-
-        return (
-          <section
-            key={i}
-            className={`theory-section min-w-0 ${
-              fullWidth ? 'theory-section-full' : 'theory-section-card'
-            }`}
-          >
-            {heading && (
-              <div
-                className={`relative pl-4 sm:pl-5 ${
-                  fullWidth
-                    ? isNumbered
-                      ? 'py-4 px-4 sm:px-5 mb-4 rounded-2xl bg-slate-50/80 dark:bg-slate-800/40 border border-slate-100 dark:border-slate-700/60'
-                      : 'pt-1 mb-4'
-                    : 'mb-3'
-                }`}
-              >
-                <div className={`absolute left-0 top-2 bottom-2 w-1 rounded-full bg-gradient-to-b ${gradient}`} />
-                <h4
-                  className={`font-bold text-slate-900 dark:text-slate-50 ${
-                    fullWidth && isNumbered ? 'text-base sm:text-lg' : 'text-base sm:text-lg'
-                  }`}
-                >
-                  {heading}
-                </h4>
-              </div>
-            )}
-
-            <div className="space-y-4 text-slate-600 dark:text-slate-300 leading-relaxed text-base sm:text-[1.05rem] font-light break-words">
-              {group.blocks.map((block, j) => renderBlock(block, `${i}-${j}`))}
-            </div>
-          </section>
-        );
-      })}
-    </div>
+    <>
+      {otherBlocks.map((block, j) => renderBlock(block, `other-${j}`))}
+      {detailBlocks.length > 0 && (
+        <div className="theory-detail-grid">
+          {detailBlocks.map((block, j) => renderBlock(block, `detail-${j}`))}
+        </div>
+      )}
+    </>
   );
+}
+
+function TheorySection({
+  group,
+  variant = 'full',
+}: {
+  group: TheoryGroup;
+  variant?: 'full' | 'card';
+}) {
+  const heading = group.heading;
+  const gradient = heading ? sectionAccent(heading) : 'from-indigo-500 to-purple-500';
+  const numbered = isNumberedHeading(heading);
+
+  return (
+    <section
+      className={`theory-section min-w-0 w-full ${
+        variant === 'card' ? 'theory-section-card' : 'theory-section-full'
+      }`}
+    >
+      {heading && (
+        <div
+          className={`relative pl-4 sm:pl-5 ${
+            variant === 'full' && !numbered
+              ? 'pt-1 mb-4'
+              : 'py-3 px-4 sm:px-5 mb-4 rounded-2xl bg-slate-50/80 dark:bg-slate-800/40 border border-slate-100 dark:border-slate-700/60'
+          }`}
+        >
+          <div className={`absolute left-0 top-2 bottom-2 w-1 rounded-full bg-gradient-to-b ${gradient}`} />
+          <h4 className="font-bold text-slate-900 dark:text-slate-50 text-base sm:text-lg">{heading}</h4>
+        </div>
+      )}
+
+      {group.blocks.length > 0 && (
+        <div className="space-y-4 text-slate-600 dark:text-slate-300 leading-relaxed text-base sm:text-[1.05rem] font-light break-words w-full">
+          {renderGroupBody(group.blocks)}
+        </div>
+      )}
+    </section>
+  );
+}
+
+const TheoryContent: React.FC<TheoryContentProps> = ({ content }) => {
+  const groups = groupTheoryBlocks(content);
+  const nodes: React.ReactNode[] = [];
+  let i = 0;
+
+  while (i < groups.length) {
+    const group = groups[i];
+
+    if (isNumberedHeading(group.heading)) {
+      const numbered: TheoryGroup[] = [];
+      while (i < groups.length && isNumberedHeading(groups[i].heading)) {
+        numbered.push(groups[i]);
+        i++;
+      }
+      nodes.push(
+        <div key={`numbered-${i}`} className="theory-subsections-grid w-full">
+          {numbered.map((g, idx) => (
+            <TheorySection key={`${g.heading}-${idx}`} group={g} variant="card" />
+          ))}
+        </div>
+      );
+      continue;
+    }
+
+    nodes.push(<TheorySection key={`${group.heading ?? 'intro'}-${i}`} group={group} variant="full" />);
+    i++;
+  }
+
+  return <div className="theory-content w-full">{nodes}</div>;
 };
 
 export default TheoryContent;
