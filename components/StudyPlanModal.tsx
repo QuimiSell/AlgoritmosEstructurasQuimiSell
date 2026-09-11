@@ -9,16 +9,16 @@ interface StudyPlanModalProps {
 const StudyPlanModal: React.FC<StudyPlanModalProps> = ({ course, onClose }) => {
   return (
     <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-md z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 overflow-y-auto overscroll-contain">
-      <div className="bg-white rounded-t-[2rem] sm:rounded-[2rem] w-full max-w-4xl shadow-2xl flex flex-col max-h-[92dvh] sm:max-h-[90dvh] overflow-hidden border border-slate-100 animate-in slide-in-from-bottom-4 sm:zoom-in-95 duration-200 pb-[env(safe-area-inset-bottom)]">
+      <div className="bg-white dark:bg-slate-900 rounded-t-[2rem] sm:rounded-[2rem] w-full max-w-4xl shadow-2xl flex flex-col max-h-[92dvh] sm:max-h-[90dvh] overflow-hidden border border-slate-100 dark:border-slate-800 animate-in slide-in-from-bottom-4 sm:zoom-in-95 duration-200 pb-[env(safe-area-inset-bottom)]">
         
         {/* Cabecera */}
-        <header className="p-4 sm:p-6 border-b border-slate-150 bg-slate-50 flex items-start sm:items-center justify-between gap-3 shrink-0">
+        <header className="p-4 sm:p-6 border-b border-slate-150 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 flex items-start sm:items-center justify-between gap-3 shrink-0">
           <div className="flex items-start sm:items-center gap-3 min-w-0 flex-1">
             <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white text-lg font-bold shadow-lg shadow-indigo-100 shrink-0">
               {course.icon || '📚'}
             </div>
             <div className="min-w-0">
-              <h2 className="text-base sm:text-xl font-extrabold text-slate-900 leading-snug break-words">Plan de Estudios: {course.title}</h2>
+              <h2 className="text-base sm:text-xl font-extrabold text-slate-900 dark:text-slate-50 leading-snug break-words">Plan de Estudios: {course.title}</h2>
               <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block mt-1.5">
                 Fundamentación académica y ventajas profesionales
               </span>
