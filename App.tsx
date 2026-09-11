@@ -139,6 +139,7 @@ const App: React.FC = () => {
   const isAIEngineerCourse = activeCourseId === 'ingeniero_ia';
   const isPolishedCourse = true;
   const activeModule = activeCourse.modules.find(m => m.id === activeModuleId) || activeCourse.modules[0];
+  const hasPracticeContent = Boolean(activeModule.codeSnippet || activeModule.quiz);
 
   const handleSelectCourse = (courseId: string) => {
     setActiveCourseId(courseId);
@@ -453,91 +454,95 @@ const App: React.FC = () => {
           </section>
           )}
 
-          {/* Module Content */}
-          <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(280px,22rem)] xl:grid-cols-[minmax(0,1.75fr)_minmax(300px,24rem)] 2xl:grid-cols-[minmax(0,2fr)_minmax(340px,26rem)] gap-6 sm:gap-8 lg:gap-8 xl:gap-10 2xl:gap-12">
-            <div className="space-y-8 sm:space-y-12 min-w-0">
-              
-              {/* Big O Specific Content for Algoritmos / Complejidad Module 1 */}
-              {activeCourseId === 'algoritmos' && activeModule.id === 1 && (
-                <AlgorithmsBigOSection />
-              )}
-              {isComplexityCourse && (
-                <ComplexityModuleExtras moduleId={activeModule.id} />
-              )}
+          {/* Module extras — ancho completo */}
+          <div className="space-y-8 sm:space-y-10 w-full min-w-0">
+            {activeCourseId === 'algoritmos' && activeModule.id === 1 && (
+              <AlgorithmsBigOSection />
+            )}
+            {isComplexityCourse && (
+              <ComplexityModuleExtras moduleId={activeModule.id} />
+            )}
+            {isMathCourse && (
+              <MathModuleExtras moduleId={activeModule.id} />
+            )}
+            {isAutomataCourse && (
+              <AutomataModuleExtras moduleId={activeModule.id} />
+            )}
+            {isCleanCodeCourse && (
+              <CleanCodeModuleExtras moduleId={activeModule.id} />
+            )}
+            {isAIEngineerCourse && (
+              <AIEngineerModuleExtras moduleId={activeModule.id} />
+            )}
+            {isKaliCourse && (
+              <KaliModuleExtras moduleId={activeModule.id} />
+            )}
+          </div>
 
-              {isMathCourse && (
-                <MathModuleExtras moduleId={activeModule.id} />
-              )}
+          {/* Teoría — ancho completo del área principal (no comparte columna con el tutor IA) */}
+          <article className="w-full min-w-0 space-y-6 reading-card rounded-2xl sm:rounded-[2rem] border border-slate-100 dark:border-slate-800 p-5 sm:p-8 lg:p-10 xl:p-12 shadow-sm">
+            <div className="flex items-center gap-3">
+              <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-50 shrink-0">
+                {isAlgorithmsCourse
+                  ? '📖 Profundización Teórica'
+                  : isComplexityCourse
+                    ? '📊 Profundización Teórica'
+                    : isKaliCourse
+                      ? '🐉 Profundización Teórica'
+                      : isMathCourse
+                        ? '📐 Profundización Teórica'
+                        : isAutomataCourse
+                          ? '⚙️ Profundización Teórica'
+                          : isCleanCodeCourse
+                            ? '🧼 Profundización Teórica'
+                            : isAIEngineerCourse
+                              ? '🤖 Profundización Teórica'
+                              : 'Profundización Teórica'}
+              </h3>
+              <div className="h-px flex-1 bg-slate-100 dark:bg-slate-800 min-w-0"></div>
+            </div>
+            <TheoryContent content={activeModule.content} />
 
-              {isAutomataCourse && (
-                <AutomataModuleExtras moduleId={activeModule.id} />
-              )}
-
-              {isCleanCodeCourse && (
-                <CleanCodeModuleExtras moduleId={activeModule.id} />
-              )}
-
-              {isAIEngineerCourse && (
-                <AIEngineerModuleExtras moduleId={activeModule.id} />
-              )}
-
-              {isKaliCourse && (
-                <KaliModuleExtras moduleId={activeModule.id} />
-              )}
-
-              <article className="space-y-6 min-w-0 reading-card rounded-2xl sm:rounded-[2rem] border border-slate-100 dark:border-slate-800 p-5 sm:p-8 lg:p-10 shadow-sm">
-                <div className="flex items-center gap-3">
-                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-50 shrink-0">
-                    {isAlgorithmsCourse
-                      ? '📖 Profundización Teórica'
-                      : isComplexityCourse
-                        ? '📊 Profundización Teórica'
-                        : isKaliCourse
-                          ? '🐉 Profundización Teórica'
-                          : isMathCourse
-                            ? '📐 Profundización Teórica'
-                            : isAutomataCourse
-                              ? '⚙️ Profundización Teórica'
-                              : isCleanCodeCourse
-                                ? '🧼 Profundización Teórica'
-                                : isAIEngineerCourse
-                                  ? '🤖 Profundización Teórica'
-                                  : 'Profundización Teórica'}
-                  </h3>
-                  <div className="h-px flex-1 bg-slate-100 dark:bg-slate-800 min-w-0"></div>
-                </div>
-                <TheoryContent content={activeModule.content} />
-                
-                <div className="bg-slate-50 dark:bg-slate-800/40 p-4 sm:p-8 rounded-2xl sm:rounded-[2rem] border border-slate-100 dark:border-slate-700/60">
-                  <h4 className="font-bold text-slate-900 dark:text-slate-50 mb-4 sm:mb-6 flex items-center gap-3 text-base sm:text-lg">
-                    <span className="w-2 h-6 sm:h-8 bg-gradient-to-b from-indigo-500 to-violet-500 rounded-full shrink-0"></span>
-                    Conceptos Clave de Ingeniería & Arquitectura
-                  </h4>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
-                    {activeModule.items.map((item, i) => (
-                      <div key={i} className="flex items-start gap-3 bg-white dark:bg-slate-900/60 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700/60 hover:border-indigo-200 dark:hover:border-indigo-700 transition group">
-                        <div className="mt-1 w-5 h-5 rounded-full bg-indigo-50 dark:bg-indigo-950 flex items-center justify-center text-indigo-600 dark:text-indigo-400 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
-                          <span className="text-[10px]">●</span>
-                        </div>
-                        <span className="text-slate-700 dark:text-slate-200 font-semibold text-sm leading-tight">{item}</span>
-                      </div>
-                    ))}
+            <div className="bg-slate-50 dark:bg-slate-800/40 p-4 sm:p-8 rounded-2xl sm:rounded-[2rem] border border-slate-100 dark:border-slate-700/60">
+              <h4 className="font-bold text-slate-900 dark:text-slate-50 mb-4 sm:mb-6 flex items-center gap-3 text-base sm:text-lg">
+                <span className="w-2 h-6 sm:h-8 bg-gradient-to-b from-indigo-500 to-violet-500 rounded-full shrink-0"></span>
+                Conceptos Clave de Ingeniería & Arquitectura
+              </h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4">
+                {activeModule.items.map((item, i) => (
+                  <div key={i} className="flex items-start gap-3 bg-white dark:bg-slate-900/60 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700/60 hover:border-indigo-200 dark:hover:border-indigo-700 transition group">
+                    <div className="mt-1 w-5 h-5 rounded-full bg-indigo-50 dark:bg-indigo-950 flex items-center justify-center text-indigo-600 dark:text-indigo-400 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                      <span className="text-[10px]">●</span>
+                    </div>
+                    <span className="text-slate-700 dark:text-slate-200 font-semibold text-sm leading-tight">{item}</span>
                   </div>
-                </div>
+                ))}
+              </div>
+            </div>
 
-                {isPolishedCourse && (
-                  <ModuleNavigation
-                    currentId={activeModule.id}
-                    totalModules={activeCourse.modules.length}
-                    onNavigate={handleSelectModule}
-                    getTitle={(id) => {
-                      const mod = activeCourse.modules.find(m => m.id === id);
-                      return mod?.title.split(': ')[1] || mod?.title || '';
-                    }}
-                  />
-                )}
-              </article>
+            {isPolishedCourse && (
+              <ModuleNavigation
+                currentId={activeModule.id}
+                totalModules={activeCourse.modules.length}
+                onNavigate={handleSelectModule}
+                getTitle={(id) => {
+                  const mod = activeCourse.modules.find(m => m.id === id);
+                  return mod?.title.split(': ')[1] || mod?.title || '';
+                }}
+              />
+            )}
+          </article>
 
+          {/* Práctica + tutor IA — grid solo para código, quiz y panel lateral */}
+          <div
+            className={`grid w-full min-w-0 gap-6 sm:gap-8 lg:gap-8 xl:gap-10 2xl:gap-12 ${
+              hasPracticeContent
+                ? 'grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(280px,22rem)] xl:grid-cols-[minmax(0,1.75fr)_minmax(300px,24rem)] 2xl:grid-cols-[minmax(0,2fr)_minmax(340px,26rem)]'
+                : 'grid-cols-1 xl:grid-cols-2'
+            }`}
+          >
+            {hasPracticeContent && (
+            <div className="space-y-8 sm:space-y-12 min-w-0">
               {activeModule.codeSnippet && (
                 <div className="space-y-4 sm:space-y-6 min-w-0">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
@@ -554,8 +559,9 @@ const App: React.FC = () => {
                 <QuizSection questions={activeModule.quiz} moduleId={activeModule.id} />
               )}
             </div>
+            )}
 
-            {/* Right Sidebar — sticky en desktop para aprovechar altura en pantallas grandes */}
+            {/* Right Sidebar — sticky en desktop */}
             <div className="space-y-6 sm:space-y-8 min-w-0 lg:sticky lg:top-20 lg:self-start lg:max-h-[calc(100dvh-5.5rem)] lg:overflow-y-auto lg:overscroll-contain lg:scroll-touch">
               {/* IA Assistant Component */}
               <AIChatDrawer 
