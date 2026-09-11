@@ -452,9 +452,42 @@ const App: React.FC = () => {
                   <h3 className="text-xl sm:text-2xl font-bold text-slate-900 shrink-0">Profundización Teórica</h3>
                   <div className="h-px flex-1 bg-slate-100 min-w-0"></div>
                 </div>
-                <p className="text-slate-600 leading-relaxed text-base sm:text-lg md:text-xl font-light break-words">
-                  {activeModule.content}
-                </p>
+                <div className="space-y-4 text-slate-600 leading-relaxed text-base sm:text-lg font-light break-words">
+                  {activeModule.content.split('\n\n').map((block, i) => {
+                    const trimmed = block.trim();
+                    if (!trimmed) return null;
+                    if (trimmed.startsWith('## ')) {
+                      return (
+                        <h4 key={i} className="text-slate-900 font-bold text-lg sm:text-xl mt-6 first:mt-0 pt-2 border-t border-slate-100 first:border-t-0 first:pt-0">
+                          {trimmed.replace(/^##\s+/, '')}
+                        </h4>
+                      );
+                    }
+                    if (trimmed.startsWith('· ') || trimmed.startsWith('- ')) {
+                      const lines = trimmed.split('\n').filter(Boolean);
+                      return (
+                        <ul key={i} className="list-none space-y-2 pl-1">
+                          {lines.map((line, j) => (
+                            <li key={j} className="flex gap-2">
+                              <span className="text-indigo-500 shrink-0">▸</span>
+                              <span>{line.replace(/^[·-]\s*/, '')}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      );
+                    }
+                    return (
+                      <p key={i} className="text-slate-600 leading-relaxed">
+                        {trimmed.split('\n').map((line, j, arr) => (
+                          <span key={j}>
+                            {line}
+                            {j < arr.length - 1 ? <br /> : null}
+                          </span>
+                        ))}
+                      </p>
+                    );
+                  })}
+                </div>
                 
                 <div className="bg-slate-50 p-4 sm:p-8 rounded-2xl sm:rounded-[2rem] border border-slate-100">
                   <h4 className="font-bold text-slate-900 mb-4 sm:mb-6 flex items-center gap-3 text-base sm:text-lg">
