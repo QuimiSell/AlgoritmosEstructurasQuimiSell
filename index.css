@@ -9,6 +9,7 @@
 html {
   -webkit-text-size-adjust: 100%;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -31,7 +32,6 @@ body {
   font-family: 'JetBrains Mono', monospace;
 }
 
-/* Efecto de Texto en Degradado Premium */
 .gradient-text {
   background: linear-gradient(90deg, #4f46e5, #9333ea);
   -webkit-background-clip: text;
@@ -39,7 +39,31 @@ body {
   background-clip: text;
 }
 
-/* Ocultar barra de desplazamiento manteniendo funcionalidad */
+.dark .gradient-text {
+  background: linear-gradient(90deg, #818cf8, #c084fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dark ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
@@ -48,27 +72,37 @@ body {
   scrollbar-width: none;
 }
 
-/* Scroll horizontal suave en iOS (lista de módulos móvil) */
 .scroll-touch {
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-x: contain;
 }
 
-/* Evitar que modales propaguen scroll al body en iOS */
 .overscroll-contain {
   overscroll-behavior: contain;
 }
 
-/* Micro-animaciones para mejorar la interactividad */
 .animate-pulse-slow {
   animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 @keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: .5;
-  }
+  0%, 100% { opacity: 1; }
+  50% { opacity: .5; }
+}
+
+.reading-card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(248,250,252,0.95) 100%);
+}
+
+.dark .reading-card {
+  background: linear-gradient(135deg, rgba(15,23,42,0.6) 0%, rgba(30,41,59,0.4) 100%);
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.5s ease-out forwards;
 }

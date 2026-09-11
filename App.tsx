@@ -8,6 +8,12 @@ import FinalExamModal from './components/FinalExamModal';
 import StudyPlanModal from './components/StudyPlanModal';
 import LabChallengeModal from './components/LabChallengeModal';
 import KaliTerminalSimulator from './components/KaliTerminalSimulator';
+import ThemeToggle from './components/ThemeToggle';
+import TheoryContent from './components/TheoryContent';
+import AlgorithmsHero from './components/AlgorithmsHero';
+import AlgorithmsBigOSection from './components/AlgorithmsBigOSection';
+import ModuleNavigation from './components/ModuleNavigation';
+import { useTheme } from './hooks/useTheme';
 
 const App: React.FC = () => {
   const [activeCourseId, setActiveCourseId] = useState<string>('algoritmos');
@@ -17,8 +23,10 @@ const App: React.FC = () => {
   const [showFinalExam, setShowFinalExam] = useState<boolean>(false);
   const [showStudyPlan, setShowStudyPlan] = useState<boolean>(false);
   const [showLabChallenge, setShowLabChallenge] = useState<boolean>(false);
+  const { theme, toggleTheme } = useTheme();
 
   const activeCourse = COURSES_MAP[activeCourseId] || COURSES[0];
+  const isAlgorithmsCourse = activeCourseId === 'algoritmos';
   const activeModule = activeCourse.modules.find(m => m.id === activeModuleId) || activeCourse.modules[0];
 
   const handleSelectCourse = (courseId: string) => {
@@ -43,19 +51,19 @@ const App: React.FC = () => {
   }, [mobileMenuOpen, courseMenuOpen]);
 
   return (
-    <div className="min-h-screen flex flex-col selection:bg-indigo-100 selection:text-indigo-900">
+    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 transition-colors duration-300 selection:bg-indigo-100 dark:selection:bg-indigo-900 selection:text-indigo-900 dark:selection:text-indigo-100">
       {/* Header */}
-      <header className="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 supports-[padding:max(0px)]:pt-[env(safe-area-inset-top)]">
+      <header className="bg-white/80 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-50 supports-[padding:max(0px)]:pt-[env(safe-area-inset-top)] transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 h-14 sm:h-16 flex items-center justify-between gap-2">
           <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
             <div className="w-9 h-9 sm:w-10 sm:h-10 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold shadow-lg shadow-indigo-200 shrink-0">
               {activeCourse.icon}
             </div>
             <div className="flex flex-col min-w-0">
-               <h1 className="text-sm sm:text-lg font-bold tracking-tight text-slate-900 leading-none flex items-center gap-1.5 sm:gap-2 truncate">
+               <h1 className="text-sm sm:text-lg font-bold tracking-tight text-slate-900 dark:text-slate-50 leading-none flex items-center gap-1.5 sm:gap-2 truncate">
                 Master Class <span className="gradient-text shrink-0">QuimiSell</span>
               </h1>
-              <span className="text-[9px] sm:text-[10px] text-indigo-600 font-bold uppercase tracking-widest mt-0.5 truncate">
+              <span className="text-[9px] sm:text-[10px] text-indigo-600 dark:text-indigo-400 font-bold uppercase tracking-widest mt-0.5 truncate">
                 {activeCourse.shortTitle}
               </span>
             </div>
@@ -67,21 +75,24 @@ const App: React.FC = () => {
             aria-label={mobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
             aria-expanded={mobileMenuOpen}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden shrink-0 w-10 h-10 rounded-xl border border-slate-200 bg-white text-slate-700 flex items-center justify-center text-lg font-bold shadow-sm active:scale-95 transition cursor-pointer"
+            className="lg:hidden shrink-0 w-10 h-10 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 flex items-center justify-center text-lg font-bold shadow-sm active:scale-95 transition cursor-pointer"
           >
             {mobileMenuOpen ? '✕' : '☰'}
           </button>
 
+          <div className="flex items-center gap-2 shrink-0">
+            <ThemeToggle theme={theme} onToggle={toggleTheme} compact />
+
           <nav className="hidden lg:flex gap-4 xl:gap-6 items-center shrink-0">
              <button 
                onClick={() => setShowStudyPlan(true)}
-               className="text-sm font-semibold text-slate-600 hover:text-indigo-600 transition cursor-pointer bg-transparent border-none p-0"
+               className="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition cursor-pointer bg-transparent border-none p-0"
              >
                Plan de Estudios
              </button>
              <button 
                onClick={() => setShowLabChallenge(true)}
-               className="text-sm font-semibold text-slate-600 hover:text-indigo-600 transition cursor-pointer bg-transparent border-none p-0"
+               className="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition cursor-pointer bg-transparent border-none p-0"
              >
                Laboratorio
              </button>
@@ -90,7 +101,7 @@ const App: React.FC = () => {
              <div className="relative">
                <button
                  onClick={() => setCourseMenuOpen(!courseMenuOpen)}
-                 className="flex items-center gap-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-950 border border-indigo-200 px-4 py-2 rounded-full text-xs font-extrabold transition shadow-sm cursor-pointer"
+                 className="flex items-center gap-2 bg-indigo-50 dark:bg-indigo-950/50 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 text-indigo-950 dark:text-indigo-100 border border-indigo-200 dark:border-indigo-800 px-4 py-2 rounded-full text-xs font-extrabold transition shadow-sm cursor-pointer"
                >
                  <span>{activeCourse.icon}</span>
                  <span>{activeCourse.shortTitle}</span>
@@ -98,8 +109,8 @@ const App: React.FC = () => {
                </button>
                
                {courseMenuOpen && (
-                 <div className="absolute right-0 mt-2 w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 p-2 z-50 animate-in fade-in slide-in-from-top-3 duration-200">
-                   <span className="block px-3 py-1.5 text-[8px] font-black text-slate-400 uppercase tracking-widest border-b border-slate-100 mb-1">
+                 <div className="absolute right-0 mt-2 w-80 bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 p-2 z-50 animate-in fade-in slide-in-from-top-3 duration-200">
+                   <span className="block px-3 py-1.5 text-[8px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest border-b border-slate-100 dark:border-slate-800 mb-1">
                      Selector de Materias Habilitadas ({COURSES.length} Cursos)
                    </span>
 
@@ -110,7 +121,7 @@ const App: React.FC = () => {
                          key={course.id}
                          onClick={() => handleSelectCourse(course.id)}
                          className={`w-full text-left px-3 py-2.5 rounded-xl flex items-center justify-between group transition cursor-pointer ${
-                           isSelected ? 'bg-indigo-50/90 text-indigo-950 font-bold' : 'hover:bg-slate-50 text-slate-700'
+                           isSelected ? 'bg-indigo-50/90 dark:bg-indigo-950/60 text-indigo-950 dark:text-indigo-100 font-bold' : 'hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300'
                          }`}
                        >
                          <div className="flex items-center gap-2.5">
@@ -134,11 +145,12 @@ const App: React.FC = () => {
 
               <button 
                 onClick={() => setShowFinalExam(true)}
-                className="bg-slate-900 text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-slate-800 transition shadow-md active:scale-95 cursor-pointer"
+                className="bg-slate-900 dark:bg-indigo-600 text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-slate-800 dark:hover:bg-indigo-500 transition shadow-md active:scale-95 cursor-pointer"
               >
                 Práctica Final
               </button>
           </nav>
+          </div>
         </div>
 
         {/* Mobile navigation panel */}
@@ -150,19 +162,22 @@ const App: React.FC = () => {
               className="lg:hidden fixed inset-0 top-14 sm:top-16 bg-slate-900/40 z-40 cursor-pointer"
               onClick={() => setMobileMenuOpen(false)}
             />
-            <div className="lg:hidden absolute left-0 right-0 top-full z-50 bg-white border-b border-slate-200 shadow-2xl max-h-[calc(100dvh-3.5rem)] sm:max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain scroll-touch pb-[env(safe-area-inset-bottom)]">
-              <div className="p-4 space-y-2 border-b border-slate-100">
+            <div className="lg:hidden absolute left-0 right-0 top-full z-50 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-2xl max-h-[calc(100dvh-3.5rem)] sm:max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain scroll-touch pb-[env(safe-area-inset-bottom)]">
+              <div className="p-4 space-y-2 border-b border-slate-100 dark:border-slate-800">
+                <div className="flex justify-end pb-2">
+                  <ThemeToggle theme={theme} onToggle={toggleTheme} />
+                </div>
                 <button
                   type="button"
                   onClick={() => { setShowStudyPlan(true); setMobileMenuOpen(false); }}
-                  className="w-full text-left px-4 py-3 rounded-xl bg-slate-50 hover:bg-indigo-50 text-sm font-bold text-slate-800 transition cursor-pointer"
+                  className="w-full text-left px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-indigo-950/50 text-sm font-bold text-slate-800 dark:text-slate-200 transition cursor-pointer"
                 >
                   📚 Plan de Estudios
                 </button>
                 <button
                   type="button"
                   onClick={() => { setShowLabChallenge(true); setMobileMenuOpen(false); }}
-                  className="w-full text-left px-4 py-3 rounded-xl bg-slate-50 hover:bg-indigo-50 text-sm font-bold text-slate-800 transition cursor-pointer"
+                  className="w-full text-left px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-indigo-950/50 text-sm font-bold text-slate-800 dark:text-slate-200 transition cursor-pointer"
                 >
                   🧪 Laboratorio
                 </button>
@@ -187,7 +202,7 @@ const App: React.FC = () => {
                         type="button"
                         onClick={() => handleSelectCourse(course.id)}
                         className={`w-full text-left px-3 py-3 rounded-xl flex items-center gap-3 transition cursor-pointer ${
-                          isSelected ? 'bg-indigo-50 text-indigo-950 font-bold ring-1 ring-indigo-200' : 'hover:bg-slate-50 text-slate-700'
+                          isSelected ? 'bg-indigo-50 dark:bg-indigo-950/50 text-indigo-950 dark:text-indigo-100 font-bold ring-1 ring-indigo-200 dark:ring-indigo-800' : 'hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300'
                         }`}
                       >
                         <span className="text-xl shrink-0">{course.icon}</span>
@@ -210,13 +225,13 @@ const App: React.FC = () => {
 
       <div className="flex-1 flex flex-col lg:flex-row max-w-7xl mx-auto w-full min-w-0">
         {/* Desktop Sidebar Navigation */}
-        <aside className="hidden lg:block lg:w-80 p-4 border-r border-slate-200 overflow-y-auto lg:max-h-[calc(100dvh-4rem)] overscroll-contain scroll-touch bg-slate-50/50 shrink-0">
+        <aside className="hidden lg:block lg:w-80 p-4 border-r border-slate-200 dark:border-slate-800 overflow-y-auto lg:max-h-[calc(100dvh-4rem)] overscroll-contain scroll-touch bg-slate-50/50 dark:bg-slate-900/50 shrink-0 transition-colors duration-300">
           <div className="space-y-2">
             <div className="px-3 mb-4">
-              <span className="text-[9px] font-extrabold text-indigo-600 bg-indigo-50 px-2 py-1 rounded-md uppercase tracking-wider block w-max mb-1">
+              <span className="text-[9px] font-extrabold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/60 px-2 py-1 rounded-md uppercase tracking-wider block w-max mb-1">
                 {activeCourse.badge} ({activeCourse.modules.length} Módulos)
               </span>
-              <h2 className="text-xs font-bold text-slate-400 uppercase tracking-widest">
+              <h2 className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest">
                 Progreso del Plan de Estudios
               </h2>
             </div>
@@ -228,8 +243,10 @@ const App: React.FC = () => {
                 onClick={() => handleSelectModule(mod.id)}
                 className={`w-full text-left px-3 py-3 rounded-xl transition-all duration-200 flex items-center gap-3 group relative cursor-pointer ${
                   activeModuleId === mod.id 
-                    ? 'bg-white text-indigo-700 shadow-md ring-1 ring-slate-200' 
-                    : 'text-slate-600 hover:bg-white hover:shadow-sm'
+                    ? isAlgorithmsCourse
+                      ? 'bg-gradient-to-r from-indigo-50 to-violet-50 dark:from-indigo-950/60 dark:to-violet-950/40 text-indigo-700 dark:text-indigo-300 shadow-md ring-1 ring-indigo-200 dark:ring-indigo-800'
+                      : 'bg-white dark:bg-slate-800 text-indigo-700 dark:text-indigo-300 shadow-md ring-1 ring-slate-200 dark:ring-slate-700' 
+                    : 'text-slate-600 dark:text-slate-400 hover:bg-white dark:hover:bg-slate-800 hover:shadow-sm'
                 }`}
               >
                 <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold transition-all duration-300 shrink-0 ${
@@ -238,7 +255,7 @@ const App: React.FC = () => {
                   {mod.id}
                 </div>
                 <div className="flex flex-col overflow-hidden min-w-0">
-                  <span className={`text-sm font-bold truncate ${activeModuleId === mod.id ? 'text-slate-900' : 'text-slate-600'}`}>
+                  <span className={`text-sm font-bold truncate ${activeModuleId === mod.id ? 'text-slate-900 dark:text-slate-100' : 'text-slate-600 dark:text-slate-400'}`}>
                     {mod.title.split(': ')[1] || mod.title}
                   </span>
                   <span className="text-[10px] opacity-60 font-medium">Contenido Universitario</span>
@@ -252,7 +269,7 @@ const App: React.FC = () => {
         </aside>
 
         {/* Mobile / Tablet horizontal module strip */}
-        <div className="lg:hidden sticky top-14 sm:top-16 z-30 bg-slate-50/95 backdrop-blur-sm border-b border-slate-200">
+        <div className="lg:hidden sticky top-14 sm:top-16 z-30 bg-slate-50/95 dark:bg-slate-900/95 backdrop-blur-sm border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
           <div className="px-3 py-2">
             <span className="text-[9px] font-extrabold text-indigo-600 uppercase tracking-wider block mb-2 px-1">
               Módulo {activeModuleId} / {activeCourse.modules.length} · {activeCourse.shortTitle}
@@ -266,7 +283,7 @@ const App: React.FC = () => {
                   className={`shrink-0 flex items-center gap-2 px-3 py-2 rounded-xl text-left transition cursor-pointer ${
                     activeModuleId === mod.id
                       ? 'bg-indigo-600 text-white shadow-md'
-                      : 'bg-white text-slate-600 border border-slate-200'
+                      : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700'
                   }`}
                 >
                   <span className={`w-6 h-6 rounded-md flex items-center justify-center text-[10px] font-black shrink-0 ${
@@ -284,9 +301,12 @@ const App: React.FC = () => {
         </div>
 
         {/* Main Content Area */}
-        <main className="flex-1 p-4 sm:p-6 lg:p-10 space-y-8 sm:space-y-10 pb-20 sm:pb-24 bg-white min-w-0">
+        <main className="flex-1 p-4 sm:p-6 lg:p-10 space-y-8 sm:space-y-10 pb-20 sm:pb-24 bg-white dark:bg-slate-950 min-w-0 transition-colors duration-300">
           {/* Welcome Banner */}
-          <section className="bg-slate-900 rounded-2xl sm:rounded-[2rem] p-5 sm:p-8 md:p-12 text-white relative overflow-hidden shadow-2xl shadow-slate-200 group">
+          {isAlgorithmsCourse ? (
+            <AlgorithmsHero module={activeModule} totalModules={activeCourse.modules.length} />
+          ) : (
+          <section className="bg-slate-900 rounded-2xl sm:rounded-[2rem] p-5 sm:p-8 md:p-12 text-white relative overflow-hidden shadow-2xl shadow-slate-200 dark:shadow-black/40 group">
             <div className="relative z-10 max-w-2xl">
               <span className="inline-block px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 text-[10px] font-bold uppercase tracking-widest mb-3 sm:mb-4 border border-indigo-500/30">
                 {activeCourse.shortTitle} • Unidad {activeModule.id} de {activeCourse.modules.length}
@@ -304,13 +324,17 @@ const App: React.FC = () => {
                <span className="text-7xl sm:text-9xl font-black">{activeModule.id}</span>
             </div>
           </section>
+          )}
 
           {/* Module Content */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-10">
             <div className="lg:col-span-2 space-y-8 sm:space-y-12 min-w-0">
               
               {/* Big O Specific Content for Algoritmos / Complejidad Module 1 */}
-              {(activeCourseId === 'algoritmos' || activeCourseId === 'complejidad_algoritmica') && activeModule.id === 1 && (
+              {activeCourseId === 'algoritmos' && activeModule.id === 1 && (
+                <AlgorithmsBigOSection />
+              )}
+              {activeCourseId === 'complejidad_algoritmica' && activeModule.id === 1 && (
                 <div className="space-y-8 animate-in fade-in slide-in-from-bottom-6 duration-700">
                   <BigOChart />
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
@@ -322,10 +346,10 @@ const App: React.FC = () => {
                       { l: 'O(n²)', t: 'Cuadrática', c: 'Bucles anidados' },
                       { l: 'O(2ⁿ)', t: 'Exponencial', c: 'Fibonacci recursivo' },
                     ].map(card => (
-                      <div key={card.l} className="group bg-slate-50 p-3 sm:p-5 rounded-2xl border border-slate-100 transition-all hover:bg-white hover:shadow-xl hover:-translate-y-1 min-w-0">
-                        <span className="text-indigo-600 font-black block text-lg sm:text-2xl mb-1 break-words">{card.l}</span>
-                        <span className="text-slate-900 text-sm font-bold block">{card.t}</span>
-                        <span className="text-slate-400 text-[11px] mt-2 block font-mono italic">{card.c}</span>
+                      <div key={card.l} className="group bg-slate-50 dark:bg-slate-800/50 p-3 sm:p-5 rounded-2xl border border-slate-100 dark:border-slate-700 transition-all hover:bg-white dark:hover:bg-slate-800 hover:shadow-xl hover:-translate-y-1 min-w-0">
+                        <span className="text-indigo-600 dark:text-indigo-400 font-black block text-lg sm:text-2xl mb-1 break-words">{card.l}</span>
+                        <span className="text-slate-900 dark:text-slate-100 text-sm font-bold block">{card.t}</span>
+                        <span className="text-slate-400 dark:text-slate-500 text-[11px] mt-2 block font-mono italic">{card.c}</span>
                       </div>
                     ))}
                   </div>
@@ -343,10 +367,10 @@ const App: React.FC = () => {
                     { l: 'P ⊕ Q', t: 'XOR (Disyunción)', c: 'Verdadera si difieren' },
                     { l: 'P ↔ Q', t: 'Bicondicional', c: 'Verdadera si son iguales' },
                   ].map(card => (
-                    <div key={card.l} className="group bg-slate-50 p-5 rounded-2xl border border-slate-100 transition-all hover:bg-white hover:shadow-xl hover:-translate-y-1">
-                      <span className="text-indigo-600 font-black block text-xl mb-1 font-mono">{card.l}</span>
-                      <span className="text-slate-900 text-sm font-bold block">{card.t}</span>
-                      <span className="text-slate-400 text-[11px] mt-2 block font-mono italic">{card.c}</span>
+                    <div key={card.l} className="group bg-slate-50 dark:bg-slate-800/50 p-5 rounded-2xl border border-slate-100 dark:border-slate-700 transition-all hover:bg-white dark:hover:bg-slate-800 hover:shadow-xl hover:-translate-y-1">
+                      <span className="text-indigo-600 dark:text-indigo-400 font-black block text-xl mb-1 font-mono">{card.l}</span>
+                      <span className="text-slate-900 dark:text-slate-100 text-sm font-bold block">{card.t}</span>
+                      <span className="text-slate-400 dark:text-slate-500 text-[11px] mt-2 block font-mono italic">{card.c}</span>
                     </div>
                   ))}
                 </div>
@@ -363,10 +387,10 @@ const App: React.FC = () => {
                     { l: 'Σ+', t: 'Clausura Positiva', c: 'Cadenas de longitud ≥ 1 (excluye ε)' },
                     { l: 'L ⊆ Σ*', t: 'Lenguaje Formal', c: 'Cualquier subconjunto de cadenas de Σ*' },
                   ].map(card => (
-                    <div key={card.l} className="group bg-slate-50 p-5 rounded-2xl border border-slate-100 transition-all hover:bg-white hover:shadow-xl hover:-translate-y-1">
-                      <span className="text-indigo-600 font-black block text-xl mb-1 font-mono">{card.l}</span>
-                      <span className="text-slate-900 text-sm font-bold block">{card.t}</span>
-                      <span className="text-slate-400 text-[11px] mt-2 block font-mono italic">{card.c}</span>
+                    <div key={card.l} className="group bg-slate-50 dark:bg-slate-800/50 p-5 rounded-2xl border border-slate-100 dark:border-slate-700 transition-all hover:bg-white dark:hover:bg-slate-800 hover:shadow-xl hover:-translate-y-1">
+                      <span className="text-indigo-600 dark:text-indigo-400 font-black block text-xl mb-1 font-mono">{card.l}</span>
+                      <span className="text-slate-900 dark:text-slate-100 text-sm font-bold block">{card.t}</span>
+                      <span className="text-slate-400 dark:text-slate-500 text-[11px] mt-2 block font-mono italic">{card.c}</span>
                     </div>
                   ))}
                 </div>
@@ -383,10 +407,10 @@ const App: React.FC = () => {
                     { l: 'Deuda', t: 'Deuda Técnica', c: 'Costo futuro por tomar atajos hoy' },
                     { l: 'Pequeñas', t: 'Funciones de 10 líneas', c: 'Funciones que hacen una sola cosa bien' },
                   ].map(card => (
-                    <div key={card.l} className="group bg-slate-50 p-5 rounded-2xl border border-slate-100 transition-all hover:bg-white hover:shadow-xl hover:-translate-y-1">
-                      <span className="text-indigo-600 font-black block text-xl mb-1 font-mono">{card.l}</span>
-                      <span className="text-slate-900 text-sm font-bold block">{card.t}</span>
-                      <span className="text-slate-400 text-[11px] mt-2 block font-mono italic">{card.c}</span>
+                    <div key={card.l} className="group bg-slate-50 dark:bg-slate-800/50 p-5 rounded-2xl border border-slate-100 dark:border-slate-700 transition-all hover:bg-white dark:hover:bg-slate-800 hover:shadow-xl hover:-translate-y-1">
+                      <span className="text-indigo-600 dark:text-indigo-400 font-black block text-xl mb-1 font-mono">{card.l}</span>
+                      <span className="text-slate-900 dark:text-slate-100 text-sm font-bold block">{card.t}</span>
+                      <span className="text-slate-400 dark:text-slate-500 text-[11px] mt-2 block font-mono italic">{card.c}</span>
                     </div>
                   ))}
                 </div>
@@ -403,10 +427,10 @@ const App: React.FC = () => {
                     { l: 'Agentes', t: 'Bucle ReAct & Tools', c: 'Dirigir equipos de subagentes con contexto' },
                     { l: 'Sistemas', t: 'System Design & CAP', c: 'Diseño para millones de usuarios simultáneos' },
                   ].map(card => (
-                    <div key={card.l} className="group bg-slate-50 p-5 rounded-2xl border border-slate-100 transition-all hover:bg-white hover:shadow-xl hover:-translate-y-1">
-                      <span className="text-indigo-600 font-black block text-xl mb-1 font-mono">{card.l}</span>
-                      <span className="text-slate-900 text-sm font-bold block">{card.t}</span>
-                      <span className="text-slate-400 text-[11px] mt-2 block font-mono italic">{card.c}</span>
+                    <div key={card.l} className="group bg-slate-50 dark:bg-slate-800/50 p-5 rounded-2xl border border-slate-100 dark:border-slate-700 transition-all hover:bg-white dark:hover:bg-slate-800 hover:shadow-xl hover:-translate-y-1">
+                      <span className="text-indigo-600 dark:text-indigo-400 font-black block text-xl mb-1 font-mono">{card.l}</span>
+                      <span className="text-slate-900 dark:text-slate-100 text-sm font-bold block">{card.t}</span>
+                      <span className="text-slate-400 dark:text-slate-500 text-[11px] mt-2 block font-mono italic">{card.c}</span>
                     </div>
                   ))}
                 </div>
@@ -423,10 +447,10 @@ const App: React.FC = () => {
                     { l: 'Decoys -D', t: 'Señuelos de Red', c: 'Ofuscación de IP real mediante tráfico señuelo' },
                     { l: 'CVSS v3.1', t: 'Reporte Técnico', c: 'Métricas estándar de severidad 0.0 a 10.0' },
                   ].map(card => (
-                    <div key={card.l} className="group bg-slate-50 p-5 rounded-2xl border border-slate-100 transition-all hover:bg-white hover:shadow-xl hover:-translate-y-1">
-                      <span className="text-indigo-600 font-black block text-xl mb-1 font-mono">{card.l}</span>
-                      <span className="text-slate-900 text-sm font-bold block">{card.t}</span>
-                      <span className="text-slate-400 text-[11px] mt-2 block font-mono italic">{card.c}</span>
+                    <div key={card.l} className="group bg-slate-50 dark:bg-slate-800/50 p-5 rounded-2xl border border-slate-100 dark:border-slate-700 transition-all hover:bg-white dark:hover:bg-slate-800 hover:shadow-xl hover:-translate-y-1">
+                      <span className="text-indigo-600 dark:text-indigo-400 font-black block text-xl mb-1 font-mono">{card.l}</span>
+                      <span className="text-slate-900 dark:text-slate-100 text-sm font-bold block">{card.t}</span>
+                      <span className="text-slate-400 dark:text-slate-500 text-[11px] mt-2 block font-mono italic">{card.c}</span>
                     </div>
                   ))}
                 </div>
@@ -447,71 +471,50 @@ const App: React.FC = () => {
                 </div>
               )}
 
-              <article className="space-y-6 min-w-0">
+              <article className="space-y-6 min-w-0 reading-card rounded-2xl sm:rounded-[2rem] border border-slate-100 dark:border-slate-800 p-5 sm:p-8 lg:p-10 shadow-sm">
                 <div className="flex items-center gap-3">
-                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 shrink-0">Profundización Teórica</h3>
-                  <div className="h-px flex-1 bg-slate-100 min-w-0"></div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-50 shrink-0">
+                    {isAlgorithmsCourse ? '📖 Profundización Teórica' : 'Profundización Teórica'}
+                  </h3>
+                  <div className="h-px flex-1 bg-slate-100 dark:bg-slate-800 min-w-0"></div>
                 </div>
-                <div className="space-y-4 text-slate-600 leading-relaxed text-base sm:text-lg font-light break-words">
-                  {activeModule.content.split('\n\n').map((block, i) => {
-                    const trimmed = block.trim();
-                    if (!trimmed) return null;
-                    if (trimmed.startsWith('## ')) {
-                      return (
-                        <h4 key={i} className="text-slate-900 font-bold text-lg sm:text-xl mt-6 first:mt-0 pt-2 border-t border-slate-100 first:border-t-0 first:pt-0">
-                          {trimmed.replace(/^##\s+/, '')}
-                        </h4>
-                      );
-                    }
-                    if (trimmed.startsWith('· ') || trimmed.startsWith('- ')) {
-                      const lines = trimmed.split('\n').filter(Boolean);
-                      return (
-                        <ul key={i} className="list-none space-y-2 pl-1">
-                          {lines.map((line, j) => (
-                            <li key={j} className="flex gap-2">
-                              <span className="text-indigo-500 shrink-0">▸</span>
-                              <span>{line.replace(/^[·-]\s*/, '')}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      );
-                    }
-                    return (
-                      <p key={i} className="text-slate-600 leading-relaxed">
-                        {trimmed.split('\n').map((line, j, arr) => (
-                          <span key={j}>
-                            {line}
-                            {j < arr.length - 1 ? <br /> : null}
-                          </span>
-                        ))}
-                      </p>
-                    );
-                  })}
-                </div>
+                <TheoryContent content={activeModule.content} />
                 
-                <div className="bg-slate-50 p-4 sm:p-8 rounded-2xl sm:rounded-[2rem] border border-slate-100">
-                  <h4 className="font-bold text-slate-900 mb-4 sm:mb-6 flex items-center gap-3 text-base sm:text-lg">
-                    <span className="w-2 h-6 sm:h-8 bg-indigo-600 rounded-full shrink-0"></span>
+                <div className="bg-slate-50 dark:bg-slate-800/40 p-4 sm:p-8 rounded-2xl sm:rounded-[2rem] border border-slate-100 dark:border-slate-700/60">
+                  <h4 className="font-bold text-slate-900 dark:text-slate-50 mb-4 sm:mb-6 flex items-center gap-3 text-base sm:text-lg">
+                    <span className="w-2 h-6 sm:h-8 bg-gradient-to-b from-indigo-500 to-violet-500 rounded-full shrink-0"></span>
                     Conceptos Clave de Ingeniería & Arquitectura
                   </h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {activeModule.items.map((item, i) => (
-                      <div key={i} className="flex items-start gap-3 bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-indigo-200 transition group">
-                        <div className="mt-1 w-5 h-5 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                      <div key={i} className="flex items-start gap-3 bg-white dark:bg-slate-900/60 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700/60 hover:border-indigo-200 dark:hover:border-indigo-700 transition group">
+                        <div className="mt-1 w-5 h-5 rounded-full bg-indigo-50 dark:bg-indigo-950 flex items-center justify-center text-indigo-600 dark:text-indigo-400 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
                           <span className="text-[10px]">●</span>
                         </div>
-                        <span className="text-slate-700 font-semibold text-sm leading-tight">{item}</span>
+                        <span className="text-slate-700 dark:text-slate-200 font-semibold text-sm leading-tight">{item}</span>
                       </div>
                     ))}
                   </div>
                 </div>
+
+                {isAlgorithmsCourse && (
+                  <ModuleNavigation
+                    currentId={activeModule.id}
+                    totalModules={activeCourse.modules.length}
+                    onNavigate={handleSelectModule}
+                    getTitle={(id) => {
+                      const mod = activeCourse.modules.find(m => m.id === id);
+                      return mod?.title.split(': ')[1] || mod?.title || '';
+                    }}
+                  />
+                )}
               </article>
 
               {activeModule.codeSnippet && (
                 <div className="space-y-4 sm:space-y-6 min-w-0">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                     <h3 className="text-xl sm:text-2xl font-bold text-slate-900">Implementación / Demostración</h3>
-                     <span className="text-xs font-bold text-slate-400 font-mono shrink-0">
+                     <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-50">Implementación / Demostración</h3>
+                     <span className="text-xs font-bold text-slate-400 dark:text-slate-500 font-mono shrink-0">
                        {activeCourseId === 'kali_linux' ? 'Bash / Kali Linux CLI' : 'Python'}
                      </span>
                   </div>
@@ -533,12 +536,12 @@ const App: React.FC = () => {
                 moduleExercises={activeModule.exercises}
               />
               
-              <div className="bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-100 p-5 sm:p-8 rounded-2xl sm:rounded-[2rem] space-y-4 shadow-sm relative overflow-hidden">
+              <div className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/40 dark:to-orange-950/30 border border-amber-100 dark:border-amber-900/50 p-5 sm:p-8 rounded-2xl sm:rounded-[2rem] space-y-4 shadow-sm relative overflow-hidden">
                 <div className="relative z-10">
-                  <h4 className="font-bold text-amber-900 flex items-center gap-2 text-lg">
+                  <h4 className="font-bold text-amber-900 dark:text-amber-200 flex items-center gap-2 text-lg">
                     <span>💡</span> Perspectiva Profesional
                   </h4>
-                  <p className="text-amber-800/80 leading-relaxed font-medium">
+                  <p className="text-amber-800/80 dark:text-amber-200/80 leading-relaxed font-medium">
                     {activeCourseId === 'kali_linux' ? (
                       "En ciberseguridad, un escáner automático sin comprensión del paquete TCP subyacente es ruido inútil. Dominar cada flag (-sS, -T, NSE) y el estándar PTES te convierte en un auditor ético de precisión quirúrgica."
                     ) : activeCourseId === 'clean_code_solid' ? (
@@ -554,7 +557,7 @@ const App: React.FC = () => {
                     ) : (
                       "En las Big Tech como Google o Microsoft, no solo evalúan si tu código funciona, sino su eficiencia asintótica."
                     )}
-                    <span className="block mt-4 text-xs font-bold uppercase tracking-wider text-amber-900/50">Técnica Feynman:</span>
+                    <span className="block mt-4 text-xs font-bold uppercase tracking-wider text-amber-900/50 dark:text-amber-400/50">Técnica Feynman:</span>
                     Explicar cada concepto con tus propias palabras y código simple es el camino más efectivo para el aprendizaje profundo.
                   </p>
                 </div>
