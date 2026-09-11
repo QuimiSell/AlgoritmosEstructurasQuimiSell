@@ -17,6 +17,12 @@ import KaliHero, { getKaliPhase } from './components/KaliHero';
 import KaliModuleExtras from './components/KaliModuleExtras';
 import MathHero, { getMathPhase } from './components/MathHero';
 import MathModuleExtras from './components/MathModuleExtras';
+import AutomataHero, { getAutomataPhase } from './components/AutomataHero';
+import AutomataModuleExtras from './components/AutomataModuleExtras';
+import CleanCodeHero, { getCleanCodePhase } from './components/CleanCodeHero';
+import CleanCodeModuleExtras from './components/CleanCodeModuleExtras';
+import AIEngineerHero, { getAIEngineerPhase } from './components/AIEngineerHero';
+import AIEngineerModuleExtras from './components/AIEngineerModuleExtras';
 import ModuleNavigation from './components/ModuleNavigation';
 import { useTheme } from './hooks/useTheme';
 
@@ -36,6 +42,25 @@ function polishedSidebarActiveClass(courseId: string, modId: number): string {
     if (phase === 1) return 'bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-indigo-950/50 dark:to-blue-950/40 text-indigo-800 dark:text-indigo-200 shadow-md ring-1 ring-indigo-200 dark:ring-indigo-800';
     return 'bg-gradient-to-r from-violet-50 to-purple-50 dark:from-violet-950/50 dark:to-purple-950/40 text-violet-800 dark:text-violet-200 shadow-md ring-1 ring-violet-200 dark:ring-violet-800';
   }
+  if (courseId === 'automatas_compiladores') {
+    const phase = getAutomataPhase(modId);
+    if (phase === 1) return 'bg-gradient-to-r from-cyan-50 to-teal-50 dark:from-cyan-950/50 dark:to-teal-950/40 text-cyan-800 dark:text-cyan-200 shadow-md ring-1 ring-cyan-200 dark:ring-cyan-800';
+    if (phase === 2) return 'bg-gradient-to-r from-violet-50 to-purple-50 dark:from-violet-950/50 dark:to-purple-950/40 text-violet-800 dark:text-violet-200 shadow-md ring-1 ring-violet-200 dark:ring-violet-800';
+    return 'bg-gradient-to-r from-orange-50 to-amber-50 dark:from-orange-950/50 dark:to-amber-950/40 text-orange-900 dark:text-orange-200 shadow-md ring-1 ring-orange-200 dark:ring-orange-800';
+  }
+  if (courseId === 'clean_code_solid') {
+    return getCleanCodePhase(modId) === 1
+      ? 'bg-gradient-to-r from-sky-50 to-blue-50 dark:from-sky-950/50 dark:to-blue-950/40 text-sky-800 dark:text-sky-200 shadow-md ring-1 ring-sky-200 dark:ring-sky-800'
+      : 'bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-950/50 dark:to-teal-950/40 text-emerald-800 dark:text-emerald-200 shadow-md ring-1 ring-emerald-200 dark:ring-emerald-800';
+  }
+  if (courseId === 'ingeniero_ia') {
+    const phase = getAIEngineerPhase(modId);
+    if (phase === 1) return 'bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/50 dark:to-indigo-950/40 text-blue-800 dark:text-blue-200 shadow-md ring-1 ring-blue-200 dark:ring-blue-800';
+    if (phase === 2) return 'bg-gradient-to-r from-indigo-50 to-violet-50 dark:from-indigo-950/50 dark:to-violet-950/40 text-indigo-800 dark:text-indigo-200 shadow-md ring-1 ring-indigo-200 dark:ring-indigo-800';
+    if (phase === 3) return 'bg-gradient-to-r from-violet-50 to-purple-50 dark:from-violet-950/50 dark:to-purple-950/40 text-violet-800 dark:text-violet-200 shadow-md ring-1 ring-violet-200 dark:ring-violet-800';
+    if (phase === 4) return 'bg-gradient-to-r from-fuchsia-50 to-pink-50 dark:from-fuchsia-950/50 dark:to-pink-950/40 text-fuchsia-800 dark:text-fuchsia-200 shadow-md ring-1 ring-fuchsia-200 dark:ring-fuchsia-800';
+    return 'bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-950/50 dark:to-orange-950/40 text-amber-900 dark:text-amber-200 shadow-md ring-1 ring-amber-200 dark:ring-amber-800';
+  }
   return 'bg-gradient-to-r from-indigo-50 to-violet-50 dark:from-indigo-950/60 dark:to-violet-950/40 text-indigo-700 dark:text-indigo-300 shadow-md ring-1 ring-indigo-200 dark:ring-indigo-800';
 }
 
@@ -51,6 +76,23 @@ function polishedMobileActiveClass(courseId: string, modId: number): string {
   if (courseId === 'matematica') {
     return getMathPhase(modId) === 1 ? 'bg-indigo-600 text-white shadow-md' : 'bg-violet-600 text-white shadow-md';
   }
+  if (courseId === 'automatas_compiladores') {
+    const phase = getAutomataPhase(modId);
+    if (phase === 1) return 'bg-cyan-600 text-white shadow-md';
+    if (phase === 2) return 'bg-violet-600 text-white shadow-md';
+    return 'bg-orange-600 text-white shadow-md';
+  }
+  if (courseId === 'clean_code_solid') {
+    return getCleanCodePhase(modId) === 1 ? 'bg-sky-600 text-white shadow-md' : 'bg-emerald-600 text-white shadow-md';
+  }
+  if (courseId === 'ingeniero_ia') {
+    const phase = getAIEngineerPhase(modId);
+    if (phase === 1) return 'bg-blue-600 text-white shadow-md';
+    if (phase === 2) return 'bg-indigo-600 text-white shadow-md';
+    if (phase === 3) return 'bg-violet-600 text-white shadow-md';
+    if (phase === 4) return 'bg-fuchsia-600 text-white shadow-md';
+    return 'bg-amber-600 text-white shadow-md';
+  }
   return 'bg-indigo-600 text-white shadow-md';
 }
 
@@ -62,6 +104,17 @@ function moduleTrackLabel(courseId: string, modId: number): string {
   }
   if (courseId === 'matematica') {
     return getMathPhase(modId) === 1 ? 'Lógica & Discreta' : 'Álgebra & Cálculo';
+  }
+  if (courseId === 'automatas_compiladores') {
+    const labels = ['Autómatas Finitos', 'Gramáticas & Turing', 'Compiladores'];
+    return labels[getAutomataPhase(modId) - 1];
+  }
+  if (courseId === 'clean_code_solid') {
+    return getCleanCodePhase(modId) === 1 ? 'Clean Code & SOLID' : 'Patrones GoF';
+  }
+  if (courseId === 'ingeniero_ia') {
+    const labels = ['Arquitecto IA', 'Ingeniería Rigurosa', 'Sistemas a Escala', 'IA en Producción', 'Liderazgo Senior'];
+    return labels[getAIEngineerPhase(modId) - 1];
   }
   return 'Contenido Universitario';
 }
@@ -81,8 +134,12 @@ const App: React.FC = () => {
   const isComplexityCourse = activeCourseId === 'complejidad_algoritmica';
   const isKaliCourse = activeCourseId === 'kali_linux';
   const isMathCourse = activeCourseId === 'matematica';
-  const isPolishedCourse = isAlgorithmsCourse || isComplexityCourse || isKaliCourse || isMathCourse;
+  const isAutomataCourse = activeCourseId === 'automatas_compiladores';
+  const isCleanCodeCourse = activeCourseId === 'clean_code_solid';
+  const isAIEngineerCourse = activeCourseId === 'ingeniero_ia';
+  const isPolishedCourse = true;
   const activeModule = activeCourse.modules.find(m => m.id === activeModuleId) || activeCourse.modules[0];
+  const hasPracticeContent = Boolean(activeModule.codeSnippet || activeModule.quiz);
 
   const handleSelectCourse = (courseId: string) => {
     setActiveCourseId(courseId);
@@ -109,7 +166,7 @@ const App: React.FC = () => {
     <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 transition-colors duration-300 selection:bg-indigo-100 dark:selection:bg-indigo-900 selection:text-indigo-900 dark:selection:text-indigo-100">
       {/* Header */}
       <header className="bg-white/80 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-50 supports-[padding:max(0px)]:pt-[env(safe-area-inset-top)] transition-colors duration-300">
-        <div className="max-w-7xl mx-auto px-3 sm:px-4 h-14 sm:h-16 flex items-center justify-between gap-2">
+        <div className="w-full px-3 sm:px-4 md:px-6 lg:px-8 xl:px-10 2xl:px-12 h-14 sm:h-16 flex items-center justify-between gap-2">
           <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
             <div className="w-9 h-9 sm:w-10 sm:h-10 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold shadow-lg shadow-indigo-200 shrink-0">
               {activeCourse.icon}
@@ -278,9 +335,9 @@ const App: React.FC = () => {
         )}
       </header>
 
-      <div className="flex-1 flex flex-col lg:flex-row max-w-7xl mx-auto w-full min-w-0">
+      <div className="flex-1 w-full grid grid-cols-1 lg:grid-cols-[minmax(260px,18rem)_minmax(0,1fr)] xl:grid-cols-[minmax(280px,20rem)_minmax(0,1fr)] 2xl:grid-cols-[minmax(300px,22rem)_minmax(0,1fr)]">
         {/* Desktop Sidebar Navigation */}
-        <aside className="hidden lg:block lg:w-80 p-4 border-r border-slate-200 dark:border-slate-800 overflow-y-auto lg:max-h-[calc(100dvh-4rem)] overscroll-contain scroll-touch bg-slate-50/50 dark:bg-slate-900/50 shrink-0 transition-colors duration-300">
+        <aside className="hidden lg:block p-4 xl:p-5 border-r border-slate-200 dark:border-slate-800 overflow-y-auto lg:max-h-[calc(100dvh-4rem)] overscroll-contain scroll-touch bg-slate-50/50 dark:bg-slate-900/50 min-w-0 transition-colors duration-300">
           <div className="space-y-2">
             <div className="px-3 mb-4">
               <span className="text-[9px] font-extrabold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/60 px-2 py-1 rounded-md uppercase tracking-wider block w-max mb-1">
@@ -327,7 +384,7 @@ const App: React.FC = () => {
 
         {/* Mobile / Tablet horizontal module strip */}
         <div className="lg:hidden sticky top-14 sm:top-16 z-30 bg-slate-50/95 dark:bg-slate-900/95 backdrop-blur-sm border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
-          <div className="px-3 py-2">
+          <div className="px-3 sm:px-4 md:px-6 py-2">
             <span className="text-[9px] font-extrabold text-indigo-600 uppercase tracking-wider block mb-2 px-1">
               Módulo {activeModuleId} / {activeCourse.modules.length} · {activeCourse.shortTitle}
             </span>
@@ -350,7 +407,7 @@ const App: React.FC = () => {
                   }`}>
                     {mod.id}
                   </span>
-                  <span className="text-xs font-bold max-w-[9rem] sm:max-w-[12rem] truncate">
+                  <span className="text-xs font-bold max-w-[9rem] sm:max-w-[12rem] md:max-w-[14rem] truncate">
                     {mod.title.split(': ')[1] || mod.title}
                   </span>
                 </button>
@@ -360,7 +417,7 @@ const App: React.FC = () => {
         </div>
 
         {/* Main Content Area */}
-        <main className="flex-1 p-4 sm:p-6 lg:p-10 space-y-8 sm:space-y-10 pb-20 sm:pb-24 bg-white dark:bg-slate-950 min-w-0 transition-colors duration-300">
+        <main className="min-w-0 p-4 sm:p-6 md:p-8 lg:p-8 xl:p-10 2xl:p-12 space-y-8 sm:space-y-10 pb-20 sm:pb-24 bg-white dark:bg-slate-950 transition-colors duration-300">
           {/* Welcome Banner */}
           {isAlgorithmsCourse ? (
             <AlgorithmsHero module={activeModule} totalModules={activeCourse.modules.length} />
@@ -370,6 +427,12 @@ const App: React.FC = () => {
             <KaliHero module={activeModule} totalModules={activeCourse.modules.length} />
           ) : isMathCourse ? (
             <MathHero module={activeModule} totalModules={activeCourse.modules.length} />
+          ) : isAutomataCourse ? (
+            <AutomataHero module={activeModule} totalModules={activeCourse.modules.length} />
+          ) : isCleanCodeCourse ? (
+            <CleanCodeHero module={activeModule} totalModules={activeCourse.modules.length} />
+          ) : isAIEngineerCourse ? (
+            <AIEngineerHero module={activeModule} totalModules={activeCourse.modules.length} />
           ) : (
           <section className="bg-slate-900 rounded-2xl sm:rounded-[2rem] p-5 sm:p-8 md:p-12 text-white relative overflow-hidden shadow-2xl shadow-slate-200 dark:shadow-black/40 group">
             <div className="relative z-10 max-w-2xl">
@@ -391,133 +454,95 @@ const App: React.FC = () => {
           </section>
           )}
 
-          {/* Module Content */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-10">
-            <div className="lg:col-span-2 space-y-8 sm:space-y-12 min-w-0">
-              
-              {/* Big O Specific Content for Algoritmos / Complejidad Module 1 */}
-              {activeCourseId === 'algoritmos' && activeModule.id === 1 && (
-                <AlgorithmsBigOSection />
-              )}
-              {isComplexityCourse && (
-                <ComplexityModuleExtras moduleId={activeModule.id} />
-              )}
+          {/* Module extras — ancho completo */}
+          <div className="space-y-8 sm:space-y-10 w-full min-w-0">
+            {activeCourseId === 'algoritmos' && activeModule.id === 1 && (
+              <AlgorithmsBigOSection />
+            )}
+            {isComplexityCourse && (
+              <ComplexityModuleExtras moduleId={activeModule.id} />
+            )}
+            {isMathCourse && (
+              <MathModuleExtras moduleId={activeModule.id} />
+            )}
+            {isAutomataCourse && (
+              <AutomataModuleExtras moduleId={activeModule.id} />
+            )}
+            {isCleanCodeCourse && (
+              <CleanCodeModuleExtras moduleId={activeModule.id} />
+            )}
+            {isAIEngineerCourse && (
+              <AIEngineerModuleExtras moduleId={activeModule.id} />
+            )}
+            {isKaliCourse && (
+              <KaliModuleExtras moduleId={activeModule.id} />
+            )}
+          </div>
 
-              {isMathCourse && (
-                <MathModuleExtras moduleId={activeModule.id} />
-              )}
+          {/* Teoría — ancho completo del área principal (no comparte columna con el tutor IA) */}
+          <article className="w-full min-w-0 space-y-6 reading-card rounded-2xl sm:rounded-[2rem] border border-slate-100 dark:border-slate-800 p-5 sm:p-8 lg:p-10 xl:p-12 shadow-sm">
+            <div className="flex items-center gap-3">
+              <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-50 shrink-0">
+                {isAlgorithmsCourse
+                  ? '📖 Profundización Teórica'
+                  : isComplexityCourse
+                    ? '📊 Profundización Teórica'
+                    : isKaliCourse
+                      ? '🐉 Profundización Teórica'
+                      : isMathCourse
+                        ? '📐 Profundización Teórica'
+                        : isAutomataCourse
+                          ? '⚙️ Profundización Teórica'
+                          : isCleanCodeCourse
+                            ? '🧼 Profundización Teórica'
+                            : isAIEngineerCourse
+                              ? '🤖 Profundización Teórica'
+                              : 'Profundización Teórica'}
+              </h3>
+              <div className="h-px flex-1 bg-slate-100 dark:bg-slate-800 min-w-0"></div>
+            </div>
+            <TheoryContent content={activeModule.content} />
 
-              {/* Automata Highlights for Module 1 */}
-              {activeCourseId === 'automatas_compiladores' && activeModule.id === 1 && (
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 animate-in fade-in slide-in-from-bottom-6 duration-700">
-                  {[
-                    { l: 'Σ', t: 'Alfabeto', c: 'Conjunto finito de símbolos (ej: {0,1})' },
-                    { l: 'w', t: 'Cadena', c: 'Secuencia finita de símbolos de Σ' },
-                    { l: 'ε', t: 'Cadena Vacía', c: 'Cadena de longitud |ε| = 0' },
-                    { l: 'Σ*', t: 'Estrella de Kleene', c: 'Todas las cadenas posibles (incluye ε)' },
-                    { l: 'Σ+', t: 'Clausura Positiva', c: 'Cadenas de longitud ≥ 1 (excluye ε)' },
-                    { l: 'L ⊆ Σ*', t: 'Lenguaje Formal', c: 'Cualquier subconjunto de cadenas de Σ*' },
-                  ].map(card => (
-                    <div key={card.l} className="group bg-slate-50 dark:bg-slate-800/50 p-5 rounded-2xl border border-slate-100 dark:border-slate-700 transition-all hover:bg-white dark:hover:bg-slate-800 hover:shadow-xl hover:-translate-y-1">
-                      <span className="text-indigo-600 dark:text-indigo-400 font-black block text-xl mb-1 font-mono">{card.l}</span>
-                      <span className="text-slate-900 dark:text-slate-100 text-sm font-bold block">{card.t}</span>
-                      <span className="text-slate-400 dark:text-slate-500 text-[11px] mt-2 block font-mono italic">{card.c}</span>
+            <div className="bg-slate-50 dark:bg-slate-800/40 p-4 sm:p-8 rounded-2xl sm:rounded-[2rem] border border-slate-100 dark:border-slate-700/60">
+              <h4 className="font-bold text-slate-900 dark:text-slate-50 mb-4 sm:mb-6 flex items-center gap-3 text-base sm:text-lg">
+                <span className="w-2 h-6 sm:h-8 bg-gradient-to-b from-indigo-500 to-violet-500 rounded-full shrink-0"></span>
+                Conceptos Clave de Ingeniería & Arquitectura
+              </h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4">
+                {activeModule.items.map((item, i) => (
+                  <div key={i} className="flex items-start gap-3 bg-white dark:bg-slate-900/60 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700/60 hover:border-indigo-200 dark:hover:border-indigo-700 transition group">
+                    <div className="mt-1 w-5 h-5 rounded-full bg-indigo-50 dark:bg-indigo-950 flex items-center justify-center text-indigo-600 dark:text-indigo-400 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                      <span className="text-[10px]">●</span>
                     </div>
-                  ))}
-                </div>
-              )}
-
-              {/* Clean Code Highlights for Module 1 */}
-              {activeCourseId === 'clean_code_solid' && activeModule.id === 1 && (
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 animate-in fade-in slide-in-from-bottom-6 duration-700">
-                  {[
-                    { l: 'Tío Bob', t: 'Robert C. Martin', c: 'Autor de "Clean Code" & SOLID' },
-                    { l: 'Boy Scout', t: 'Regla de Oro', c: 'Deja el código más limpio que como estaba' },
-                    { l: 'Nombres', t: 'Intención Reveladora', c: 'Expresa el propósito sin comentarios' },
-                    { l: '10 a 1', t: 'Ratio Lectura/Escritura', c: 'Pasamos más tiempo leyendo código' },
-                    { l: 'Deuda', t: 'Deuda Técnica', c: 'Costo futuro por tomar atajos hoy' },
-                    { l: 'Pequeñas', t: 'Funciones de 10 líneas', c: 'Funciones que hacen una sola cosa bien' },
-                  ].map(card => (
-                    <div key={card.l} className="group bg-slate-50 dark:bg-slate-800/50 p-5 rounded-2xl border border-slate-100 dark:border-slate-700 transition-all hover:bg-white dark:hover:bg-slate-800 hover:shadow-xl hover:-translate-y-1">
-                      <span className="text-indigo-600 dark:text-indigo-400 font-black block text-xl mb-1 font-mono">{card.l}</span>
-                      <span className="text-slate-900 dark:text-slate-100 text-sm font-bold block">{card.t}</span>
-                      <span className="text-slate-400 dark:text-slate-500 text-[11px] mt-2 block font-mono italic">{card.c}</span>
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              {/* AI Engineer Highlights for Module 1 */}
-              {activeCourseId === 'ingeniero_ia' && activeModule.id === 1 && (
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 animate-in fade-in slide-in-from-bottom-6 duration-700">
-                  {[
-                    { l: 'Arquitecto', t: 'De Vibe Coder a Arquitecto', c: 'La sintaxis la genera la IA; el diseño es tuyo' },
-                    { l: 'Hardware', t: 'RAM & CPU Cache', c: 'La IA no siente la latencia física de la CPU' },
-                    { l: 'TDD', t: 'Test Automated Harness', c: 'Barrera de contención contra alucinaciones' },
-                    { l: 'Seguridad', t: 'DevSecOps & OWASP', c: 'Auditoría estricta de vulnerabilidades' },
-                    { l: 'Agentes', t: 'Bucle ReAct & Tools', c: 'Dirigir equipos de subagentes con contexto' },
-                    { l: 'Sistemas', t: 'System Design & CAP', c: 'Diseño para millones de usuarios simultáneos' },
-                  ].map(card => (
-                    <div key={card.l} className="group bg-slate-50 dark:bg-slate-800/50 p-5 rounded-2xl border border-slate-100 dark:border-slate-700 transition-all hover:bg-white dark:hover:bg-slate-800 hover:shadow-xl hover:-translate-y-1">
-                      <span className="text-indigo-600 dark:text-indigo-400 font-black block text-xl mb-1 font-mono">{card.l}</span>
-                      <span className="text-slate-900 dark:text-slate-100 text-sm font-bold block">{card.t}</span>
-                      <span className="text-slate-400 dark:text-slate-500 text-[11px] mt-2 block font-mono italic">{card.c}</span>
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              {isKaliCourse && (
-                <KaliModuleExtras moduleId={activeModule.id} />
-              )}
-
-              <article className="space-y-6 min-w-0 reading-card rounded-2xl sm:rounded-[2rem] border border-slate-100 dark:border-slate-800 p-5 sm:p-8 lg:p-10 shadow-sm">
-                <div className="flex items-center gap-3">
-                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-50 shrink-0">
-                    {isAlgorithmsCourse
-                      ? '📖 Profundización Teórica'
-                      : isComplexityCourse
-                        ? '📊 Profundización Teórica'
-                        : isKaliCourse
-                          ? '🐉 Profundización Teórica'
-                          : isMathCourse
-                            ? '📐 Profundización Teórica'
-                            : 'Profundización Teórica'}
-                  </h3>
-                  <div className="h-px flex-1 bg-slate-100 dark:bg-slate-800 min-w-0"></div>
-                </div>
-                <TheoryContent content={activeModule.content} />
-                
-                <div className="bg-slate-50 dark:bg-slate-800/40 p-4 sm:p-8 rounded-2xl sm:rounded-[2rem] border border-slate-100 dark:border-slate-700/60">
-                  <h4 className="font-bold text-slate-900 dark:text-slate-50 mb-4 sm:mb-6 flex items-center gap-3 text-base sm:text-lg">
-                    <span className="w-2 h-6 sm:h-8 bg-gradient-to-b from-indigo-500 to-violet-500 rounded-full shrink-0"></span>
-                    Conceptos Clave de Ingeniería & Arquitectura
-                  </h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {activeModule.items.map((item, i) => (
-                      <div key={i} className="flex items-start gap-3 bg-white dark:bg-slate-900/60 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700/60 hover:border-indigo-200 dark:hover:border-indigo-700 transition group">
-                        <div className="mt-1 w-5 h-5 rounded-full bg-indigo-50 dark:bg-indigo-950 flex items-center justify-center text-indigo-600 dark:text-indigo-400 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
-                          <span className="text-[10px]">●</span>
-                        </div>
-                        <span className="text-slate-700 dark:text-slate-200 font-semibold text-sm leading-tight">{item}</span>
-                      </div>
-                    ))}
+                    <span className="text-slate-700 dark:text-slate-200 font-semibold text-sm leading-tight">{item}</span>
                   </div>
-                </div>
+                ))}
+              </div>
+            </div>
 
-                {isPolishedCourse && (
-                  <ModuleNavigation
-                    currentId={activeModule.id}
-                    totalModules={activeCourse.modules.length}
-                    onNavigate={handleSelectModule}
-                    getTitle={(id) => {
-                      const mod = activeCourse.modules.find(m => m.id === id);
-                      return mod?.title.split(': ')[1] || mod?.title || '';
-                    }}
-                  />
-                )}
-              </article>
+            {isPolishedCourse && (
+              <ModuleNavigation
+                currentId={activeModule.id}
+                totalModules={activeCourse.modules.length}
+                onNavigate={handleSelectModule}
+                getTitle={(id) => {
+                  const mod = activeCourse.modules.find(m => m.id === id);
+                  return mod?.title.split(': ')[1] || mod?.title || '';
+                }}
+              />
+            )}
+          </article>
 
+          {/* Práctica + tutor IA — grid solo para código, quiz y panel lateral */}
+          <div
+            className={`grid w-full min-w-0 gap-6 sm:gap-8 lg:gap-8 xl:gap-10 2xl:gap-12 ${
+              hasPracticeContent
+                ? 'grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(280px,22rem)] xl:grid-cols-[minmax(0,1.75fr)_minmax(300px,24rem)] 2xl:grid-cols-[minmax(0,2fr)_minmax(340px,26rem)]'
+                : 'grid-cols-1 xl:grid-cols-2'
+            }`}
+          >
+            {hasPracticeContent && (
+            <div className="space-y-8 sm:space-y-12 min-w-0">
               {activeModule.codeSnippet && (
                 <div className="space-y-4 sm:space-y-6 min-w-0">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
@@ -534,9 +559,10 @@ const App: React.FC = () => {
                 <QuizSection questions={activeModule.quiz} moduleId={activeModule.id} />
               )}
             </div>
+            )}
 
-            {/* Right Sidebar */}
-            <div className="space-y-6 sm:space-y-8 min-w-0">
+            {/* Right Sidebar — sticky en desktop */}
+            <div className="space-y-6 sm:space-y-8 min-w-0 lg:sticky lg:top-20 lg:self-start lg:max-h-[calc(100dvh-5.5rem)] lg:overflow-y-auto lg:overscroll-contain lg:scroll-touch">
               {/* IA Assistant Component */}
               <AIChatDrawer 
                 moduleTitle={activeModule.title} 
