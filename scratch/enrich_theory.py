@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Enriquece la teoría de TODOS los módulos para equivaler a una clase completa (~60 min).
+Regenera teoría orientada al ESTUDIANTE: profundidad real, cero meta-instrucciones de grabación.
 """
 
 from __future__ import annotations
@@ -10,7 +10,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-MARKER = "## 📘 Clase completa"
+OLD_MARKERS = ("## 📘 Clase completa", "Duración sugerida al grabar", "Guía para grabar", "Tiempo sugerido al grabar")
 
 FILES: list[tuple[Path, str]] = [
     (ROOT / "constants.tsx", "algoritmos"),
@@ -23,60 +23,70 @@ FILES: list[tuple[Path, str]] = [
 ]
 
 DOMAIN_HOOKS = {
-    "algoritmos": "estructuras de datos, complejidad y diseño de algoritmos escalables",
-    "matematica": "fundamentos matemáticos aplicados a software, bases de datos e IA",
-    "clean_code": "código mantenible, SOLID y patrones de diseño profesional",
+    "algoritmos": "estructuras de datos, complejidad algorítmica y sistemas que deben escalar",
+    "matematica": "matemática discreta, álgebra lineal y lógica aplicada al software",
+    "clean_code": "ingeniería de software mantenible, SOLID y patrones de diseño",
     "automatas": "teoría de la computación, lenguajes formales y compiladores",
-    "ingeniero_ia": "ingeniería de software en la era de la IA, arquitectura y DevSecOps",
-    "kali": "auditoría de redes, diagnóstico Linux y ciberseguridad práctica",
-    "complejidad": "análisis asintótico Big-O aplicado a algoritmos e Inteligencia Artificial",
+    "ingeniero_ia": "arquitectura de software, IA aplicada y prácticas de ingeniería profesional",
+    "kali": "Linux, redes, diagnóstico y ciberseguridad ofensiva/defensiva",
+    "complejidad": "análisis asintótico, eficiencia computacional e IA",
 }
 
-INDUSTRY_EXAMPLES = {
+INDUSTRY = {
     "algoritmos": [
-        "PostgreSQL y MySQL indexan con B+ Trees: búsquedas O(log n) en tablas gigantes.",
-        "Redis elige estructuras (hash, zset) según la complejidad requerida por operación.",
-        "Google Maps modela grafos urbanos; Dijkstra/A* calculan rutas en tiempo real.",
+        "PostgreSQL usa B+ Trees en índices: cada búsqueda por clave primaria es O(log n) sobre millones de filas.",
+        "Redis documenta la complejidad de cada comando (O(1), O(log n), O(n)) porque los ingenieros eligen estructuras según el patrón de acceso.",
+        "Google Maps combina grafos ponderados con heurísticas A*; sin teoría de grafos sería imposible calcular rutas en segundos.",
     ],
     "matematica": [
-        "SQL es álgebra relacional: JOIN, GROUP BY y agregaciones tienen fundamento en conjuntos.",
-        "Motores 3D aplican matrices de rotación/escala en cada frame de renderizado.",
-        "Backpropagation en redes neuronales es la regla de la cadena del cálculo multivariado.",
+        "Un JOIN en SQL es producto cartesiano filtrado: sin teoría de conjuntos no se entiende por qué un mal JOIN explota en cardinalidad.",
+        "Unity/Unreal multiplican matrices 4×4 por cada vértice en cada frame; la trigonometría y el álgebra lineal están en el hot path.",
+        "El descenso de gradiente en ML es cálculo multivariado: cada peso se actualiza con la derivada parcial de la función de pérdida.",
     ],
     "clean_code": [
-        "Code reviews en Big Tech penalizan nombres crípticos y funciones de 200 líneas.",
-        "Refactors SOLID reducen incidentes y aceleran onboarding en equipos grandes.",
-        "Spring y NestJS implementan inversión de dependencias de forma nativa.",
+        "En code reviews de empresas grandes, rechazan PRs cuyos nombres no revelan intención aunque 'funcionen'.",
+        "Refactorizar hacia SOLID reduce el radio de explosión cuando un requisito de negocio cambia.",
+        "NestJS y Spring inyectan dependencias porque violar DIP hace que los tests requieran bases de datos reales.",
     ],
     "automatas": [
-        "Regex en Python compilan a autómatas finitos deterministas optimizados.",
-        "GCC/Clang tokenizan con autómatas y parsean con gramáticas libres de contexto.",
-        "LLVM optimiza IR intermedio antes de generar código máquina.",
+        "re.match() en Python compila tu regex a un autómata finito; patrones mal diseñados pueden ser exponenciales en el peor caso.",
+        "Clang tokeniza tu código C++ con un autómata y luego aplica gramática libre de contexto en el parser.",
+        "Los compiladores optimizan LLVM IR antes de generar assembly; la fase de análisis semántico detecta tipos incompatibles.",
     ],
     "ingeniero_ia": [
-        "Equipos de IA evalúan prompts y modelos con harness de tests antes de producción.",
-        "MLOps versiona datasets, métricas y pipelines como código en Git.",
-        "Agentes ReAct combinan razonamiento y herramientas con trazas auditables.",
+        "Equipos serios no despliegan prompts sin eval harness: métricas de precisión/recall sobre un golden set.",
+        "MLOps trata datasets y pipelines como código versionado en Git, no como archivos sueltos en un USB.",
+        "Agentes con herramientas (ReAct) necesitan trazas auditables: cada llamada a API debe justificarse en el log.",
     ],
     "kali": [
-        "Pentests PTES documentan hallazgos con Nmap, Nikto y evidencia Tcpdump.",
-        "SOCs usan filtros BPF para aislar tráfico malicioso en incident response.",
-        "Red teams reportan severidad con CVSS v3.1 para priorizar parches.",
+        "Un pentest PTES documenta cada comando Nmap con timestamp y evidencia Tcpdump para reproducibilidad legal.",
+        "Un SOC filtra tráfico con expresiones BPF en Tcpdump antes de escalar un incidente a Tier 2.",
+        "CVSS v3.1 traduce hallazgos técnicos a prioridad de parcheo comprensible para gerencia.",
     ],
     "complejidad": [
-        "Meta/Google perfilan servicios buscando cuellos O(n²) antes de lanzar features.",
-        "Costo LLM se estima en FLOPs; batching reduce latencia sin cambiar el exponente.",
-        "KV-cache en inferencia evita recomputar atención: mismo Big-O, mejor constante.",
+        "Un bucle O(n²) invisible en un endpoint puede tumbar producción cuando el tráfico se multiplica por 10.",
+        "Entrenar un Transformer es O(n²·d) en atención; por eso contextos largos requieren KV-cache y FlashAttention.",
+        "Gauss-Jordan es O(n³) secuencial; las GPUs usan GEMM paralelo aunque ambos sean cúbicos en exponente.",
     ],
 }
 
-MISTAKES = [
-    "Memorizar sin implementar ni medir en código o terminal.",
-    "Saltarse la autoevaluación y avanzar sin dominar el 70% de aciertos.",
-    "Confundir best case con peor caso al estimar rendimiento.",
-    "Copiar snippets sin saber qué patrón o complejidad demuestran.",
-    "Grabar leyendo texto plano en lugar de explicar con ejemplos propios.",
-    "No vincular el tema con un proyecto real que el estudiante recuerde.",
+STUDY_MISTAKES = [
+    "Memorizar definiciones sin resolver al menos un ejercicio o modificar el snippet del módulo.",
+    "Avanzar al siguiente módulo sin alcanzar al menos 70% en la autoevaluación.",
+    "Confundir el caso promedio con el peor caso al estimar rendimiento de un algoritmo.",
+    "Copiar código del módulo sin trazar manualmente cuántas operaciones ejecuta en el peor caso.",
+    "Estudiar solo la definición sin un ejemplo numérico concreto (valores pequeños de n).",
+    "Ignorar la sección de aplicaciones reales: ahí se ancla la memoria a largo plazo.",
+]
+
+STUDY_ITEMS = [
+    "Definición formal y en lenguaje llano del concepto.",
+    "Ejemplo numérico o de código paso a paso.",
+    "Condiciones de uso: cuándo aplica y cuándo no.",
+    "Complejidad o trade-offs asociados (tiempo, memoria, seguridad).",
+    "Pregunta tipo entrevista técnica frecuente sobre este punto.",
+    "Relación con el snippet de implementación del módulo.",
+    "Conexión con el laboratorio o proyecto final del curso.",
 ]
 
 
@@ -93,74 +103,129 @@ def topic_from_title(title: str) -> str:
     return title.split(": ", 1)[-1] if ": " in title else title
 
 
-def block_item(item: str, topic: str, domain: str, idx: int) -> str:
-    hook = DOMAIN_HOOKS.get(domain, "ingeniería de software")
+THEORY_TAIL = re.compile(
+    r"\s*En la práctica profesional, este tema exige.*?(?:"
+    r"grabar tu clase|avanzar al siguiente módulo"
+    r")\.\s*",
+    re.DOTALL | re.IGNORECASE,
+)
+AUTO_EXPANDED = re.compile(r"\s*Clase autocontenida[^.]*\.?\s*", re.IGNORECASE)
+RECORDING = re.compile(r"\s*guía para grabar[^.\n]*\.?\s*", re.IGNORECASE)
+GENERATED = re.compile(
+    r"\n\n## (?:Panorama del tema|📘 Clase completa|Qué aprenderás).*",
+    re.DOTALL,
+)
+
+
+def strip_generated_sections(text: str) -> str:
+    text = GENERATED.sub("", text)
+    for marker in OLD_MARKERS:
+        if marker in text:
+            text = text.split(marker)[0].strip()
+    return text.strip()
+
+
+def clean_content(text: str) -> str:
+    text = text.replace("\\n", "\n")
+    text = strip_generated_sections(text)
+    text = THEORY_TAIL.sub(" ", text)
+    text = AUTO_EXPANDED.sub(" ", text)
+    text = RECORDING.sub(" ", text)
+    text = re.sub(r"\s+", " ", text).strip()
+    return text
+
+
+def recover_base_content(content: str, description: str) -> str:
+    """Recupera el párrafo original antes de expansiones automáticas previas."""
+    text = clean_content(content)
+    if len(text) > 80:
+        return text
+    return clean_description(description, "")
+
+
+def clean_description(desc: str, topic: str) -> str:
+    desc = re.sub(r"\s*Clase autocontenida.*", "", desc).strip()
+    desc = re.sub(r"\s*guía para grabar.*", "", desc, flags=re.I).strip()
+    if len(desc) > 180:
+        return desc[:177] + "..."
+    return desc or f"Fundamentos de {topic} para estudio universitario autoguiado."
+
+
+def concept_block(item: str, topic: str, domain: str, idx: int) -> str:
     clean = item.strip()
+    hook = DOMAIN_HOOKS.get(domain, "ingeniería de software")
     return (
-        f"## Bloque {idx + 1} — {clean}\n\n"
-        f"Tiempo sugerido al grabar: **7–9 minutos**. "
-        f"«{clean}» es esencial en {topic} dentro de {hook}.\n\n"
-        f"**Qué debes dominar:** definición clara, cuándo aplica, cuándo no, y alternativas. "
-        f"En entrevistas técnicas suelen preguntar variaciones de este punto.\n\n"
-        f"**Cómo enseñarlo:** (1) intuición con ejemplo en pizarra; (2) demo con el snippet del módulo; "
-        f"(3) discusión de trade-offs (tiempo, memoria, seguridad, mantenibilidad). "
-        f"Haz una pausa y plantea una pregunta antes de responderla — mantiene el ritmo de una hora de clase.\n\n"
-        f"**Pausa activa:** el estudiante escribe una frase aplicando «{clean}» a un sistema conocido (API, app, red, BD)."
+        f"## {idx + 1}. {clean}\n\n"
+        f"**Qué es y por qué importa.** Dentro de {topic}, este punto es central en {hook}. "
+        f"No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n"
+        f"**Desarrollo.** {clean} — Profundiza leyendo el enunciado como una pregunta de examen: "
+        f"¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? "
+        f"Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n"
+        f"**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. "
+        f"Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n"
+        f"**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «{clean}» y cuándo lo evitarías."
     )
 
 
-def build_content(original: str, title: str, description: str, items: list[str], domain: str, module_id: int) -> str:
+def build_student_content(
+    original: str,
+    title: str,
+    description: str,
+    items: list[str],
+    domain: str,
+    module_id: int,
+) -> str:
     topic = topic_from_title(title)
-    examples = pick(INDUSTRY_EXAMPLES.get(domain, INDUSTRY_EXAMPLES["algoritmos"]), f"{domain}-{module_id}", 3)
-    mistakes = pick(MISTAKES, f"m-{domain}-{module_id}", 4)
-
-    # Strip previous auto-expansion suffix if present
-    orig = original.split(" En la práctica profesional, este tema exige")[0].strip()
+    desc = clean_description(description, topic)
+    base = recover_base_content(original, desc)
+    examples = pick(INDUSTRY.get(domain, INDUSTRY["algoritmos"]), f"{domain}-{module_id}", 3)
+    mistakes = pick(STUDY_MISTAKES, f"err-{domain}-{module_id}", 4)
+    study_items = [it for it in items if not any(x in it.lower() for x in ("grabar", "grabación", "guion"))][:10]
 
     parts = [
-        f"{MARKER} — {topic}\n"
-        f"**Duración sugerida al grabar:** 55–65 minutos (intro + {min(len(items), 10)} bloques + industria + cierre + quiz).",
-        "## Introducción (8–10 min)\n\n"
-        f"{description.strip()} {orig}\n\n"
-        "Material **gratuito y autocontenido** QuimiSell: estudia, repasa y graba sin pagar plataformas externas. "
-        "Trata este módulo como un **micro-curso** completo sobre el tema.",
-        "## Objetivos de aprendizaje\n\n"
-        + "\n".join(f"· {it.strip()}" for it in items[:10])
-        + "\n· Explicar el tema en 3 minutos sin apuntes (Feynman).\n"
-        "· Aprobar ≥70% de la autoevaluación (12 preguntas).\n"
-        "· Conectar con un caso real de industria o proyecto propio.",
-        "\n\n".join(block_item(it, topic, domain, i) for i, it in enumerate(items[:10])),
-        "## Aplicación en la industria (10 min)\n\n"
-        + "\n\n".join(f"**Caso {i+1}:** {ex}" for i, ex in enumerate(examples))
-        + "\n\nAl grabar, desarrolla **un** caso con contexto, problema, solución y consecuencias de ignorar la teoría.",
-        "## Errores frecuentes (5 min)\n\n"
-        + "\n".join(f"· {m}" for m in mistakes),
-        "## Guía para grabar (5 min)\n\n"
-        "1. Hook (30 s) · 2. Objetivos (1 min) · 3. Bloques teóricos (35–40 min) · "
-        "4. Caso industria (8 min) · 5. Errores (4 min) · 6. Cierre + quiz (3 min).\n\n"
-        "Usa estos apuntes como guion; no leas literal. Tu claridad y ejemplos valen más que producción cara.",
-        "## Cierre (5 min)\n\n"
-        f"Resume {topic} en cinco frases. Completa la autoevaluación. Repasa en 7 días (repaso espaciado). "
-        f"«Dominar {topic} es saber cuándo aplicarlo en sistemas reales — aquí tienes teoría, código y práctica gratis.»",
+        f"## Panorama del tema: {topic}\n\n"
+        f"{desc}\n\n"
+        f"{base}\n\n"
+        f"Este módulo es material de estudio **autocontenido**: puedes aprenderlo completo aquí, sin pagar plataformas externas ni depender de internet después de cargar la página. "
+        f"Lee en orden, ejecuta el snippet, resuelve la autoevaluación y repasa los puntos que falles.",
+        "## Qué aprenderás en este módulo\n\n"
+        + "\n".join(f"· {it.strip()}" for it in study_items[:8])
+        + "\n· Dominar las 12 preguntas de autoevaluación con ≥70% de aciertos antes de avanzar.",
+        "## Desarrollo teórico detallado\n\n"
+        + "\n\n".join(concept_block(it, topic, domain, i) for i, it in enumerate(study_items[:8])),
+        "## Aplicaciones en sistemas reales\n\n"
+        + "\n\n".join(f"**Ejemplo {i+1}:** {ex}" for i, ex in enumerate(examples))
+        + f"\n\nEstos casos muestran por qué {topic} no es teórico: empresas y proyectos open source aplican estos principios diariamente. "
+        f"Al estudiar, elige uno y escribe cómo encajaría el concepto del módulo en ese escenario.",
+        "## Errores comunes al estudiar\n\n" + "\n".join(f"· {m}" for m in mistakes),
+        "## Síntesis para repasar\n\n"
+        f"Cierra el módulo resumiendo {topic} en cinco líneas propias. Vuelve a leer los **Conceptos clave** del panel, "
+        f"ejecuta el código de referencia y completa la autoevaluación. Si fallas más de 3 preguntas, relee el bloque teórico "
+        f"correspondiente antes de continuar — el siguiente módulo asume que dominas este.",
     ]
     return "\n\n".join(parts)
 
 
-def extra_items(items: list[str], topic: str) -> list[str]:
-    extras = [
-        f"Mapa mental de {topic}.",
-        "Preguntas tipo entrevista técnica.",
-        "Glosario: 5 términos que defines sin diccionario.",
-        "Conexión con el laboratorio del curso.",
-        "Repaso offline sin internet ni APIs de pago.",
+def student_items(items: list[str], topic: str) -> list[str]:
+    cleaned = [
+        it for it in items
+        if not any(x in it.lower() for x in ("grabar", "grabación", "guion", "checklist de repaso previo a evaluación o grabación"))
     ]
-    existing = set(items)
-    return items + [e for e in extras if e not in existing][: min(5, 14 - len(items))]
+    extras = [
+        f"Definición operativa de los términos centrales de {topic}.",
+        "Ejemplo numérico o de código trazado paso a paso.",
+        "Pregunta tipo entrevista técnica con respuesta esperada.",
+        "Relación explícita con el snippet de implementación del módulo.",
+    ]
+    existing = set(cleaned)
+    for e in extras:
+        if e not in existing and len(cleaned) < 12:
+            cleaned.append(e)
+    return cleaned
 
 
 def extract_quoted(module: str, field: str) -> str | None:
-    pat = rf'{field}:\s*"((?:\\.|[^"\\])*)"'
-    m = re.search(pat, module, re.DOTALL)
+    m = re.search(rf'{field}:\s*"((?:\\.|[^"\\])*)"', module, re.DOTALL)
     if not m:
         return None
     return m.group(1).replace("\\n", "\n").replace('\\"', '"')
@@ -215,10 +280,9 @@ def split_module_objects(body: str) -> list[str]:
         depth = 0
         j = brace
         while j < len(body):
-            ch = body[j]
-            if ch == "{":
+            if body[j] == "{":
                 depth += 1
-            elif ch == "}":
+            elif body[j] == "}":
                 depth -= 1
                 if depth == 0:
                     modules.append(body[brace : j + 1])
@@ -234,7 +298,7 @@ def find_modules_region(text: str) -> tuple[int, int] | None:
     for pat in (r"export const COURSE_MODULES:\s*Module\[\]\s*=\s*\[", r"modules:\s*\["):
         m = re.search(pat, text)
         if m:
-            start = m.end()  # position right after opening [
+            start = m.end()
             depth = 1
             i = start
             while i < len(text) and depth > 0:
@@ -247,22 +311,32 @@ def find_modules_region(text: str) -> tuple[int, int] | None:
     return None
 
 
+def needs_regen(content: str) -> bool:
+    if any(m in content for m in OLD_MARKERS):
+        return True
+    if "grabar" in content.lower() or "guion" in content.lower():
+        return True
+    if "## Panorama del tema" in content and "Tiempo sugerido" not in content:
+        return False  # already student version
+    if "## Panorama del tema" in content:
+        return True
+    return True  # first run or legacy
+
+
 def process_module(module: str, domain: str) -> str:
     content = extract_quoted(module, "content") or ""
-    if MARKER in content:
-        return module
-
     title = extract_quoted(module, "title") or "Módulo"
     desc = extract_quoted(module, "description") or ""
     items = extract_items(module)
     mid = int(re.search(r"\bid:\s*(\d+)", module).group(1))
 
+    if not needs_regen(content) and "## Panorama del tema" in content:
+        return module
+
     topic = topic_from_title(title)
-    new_items = extra_items(items, topic)
-    new_content = build_content(content, title, desc, new_items, domain, mid)
-    new_desc = desc if "Clase autocontenida" in desc else (
-        f"{desc.strip()} Clase autocontenida (~60 min): teoría ampliada, código, 12 preguntas y guía para grabar {topic}."
-    )
+    new_items = student_items(items, topic)
+    new_content = build_student_content(content, title, desc, new_items, domain, mid)
+    new_desc = clean_description(desc, topic)
 
     module = replace_quoted(module, "description", new_desc)
     module = replace_quoted(module, "content", new_content)
@@ -276,29 +350,21 @@ def process_file(path: Path, domain: str) -> None:
     if not region:
         print(f"SKIP {path.name}")
         return
-
     start, end = region
-    body = text[start:end]
-    modules = split_module_objects(body)
-    if not modules:
-        print(f"SKIP {path.name}: 0 modules")
-        return
-
+    modules = split_module_objects(text[start:end])
     enriched = [process_module(m, domain) for m in modules]
-    new_body = ",\n".join(enriched)
-    new_text = text[:start] + new_body + text[end:]
+    new_text = text[:start] + ",\n".join(enriched) + text[end:]
     path.write_text(new_text, encoding="utf-8")
-
     lens = [len(extract_quoted(m, "content") or "") for m in enriched]
-    avg = sum(lens) // len(lens)
-    print(f"{path.name}: {len(enriched)} modules, avg {avg} chars (~{avg//850} min lectura)")
+    grab = sum(1 for m in enriched if "grabar" in (extract_quoted(m, "content") or "").lower())
+    print(f"{path.name}: {len(enriched)} mods, avg {sum(lens)//len(lens)} chars, 'grabar' refs={grab}")
 
 
 def main():
     for path, domain in FILES:
         if path.exists():
             process_file(path, domain)
-    print("Done.")
+    print("Done — contenido orientado al estudiante.")
 
 
 if __name__ == "__main__":

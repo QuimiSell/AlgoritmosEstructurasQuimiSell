@@ -18,13 +18,13 @@ THEORY_SUFFIX = (
     " En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: "
     "qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. "
     "Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación "
-    "extendida antes de grabar tu clase o avanzar al siguiente módulo."
+    "antes de avanzar al siguiente módulo."
 )
 
 EXTRA_ITEMS = [
     "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
     "Errores frecuentes de principiantes y cómo evitarlos en producción.",
-    "Checklist de repaso previo a evaluación o grabación de clase.",
+    "Checklist de repaso previo a la autoevaluación del módulo.",
     "Conexión con otros módulos del plan de estudios QuimiSell.",
     "Ejercicio recomendado: explicar el concepto en voz alta en menos de 2 minutos (técnica Feynman).",
 ]
