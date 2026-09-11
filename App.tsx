@@ -480,7 +480,7 @@ const App: React.FC = () => {
           </div>
 
           {/* Teoría — ancho completo del área principal (no comparte columna con el tutor IA) */}
-          <article className="w-full min-w-0 space-y-6 reading-card rounded-2xl sm:rounded-[2rem] border border-slate-100 dark:border-slate-800 p-5 sm:p-8 lg:p-10 xl:p-12 shadow-sm">
+          <article className="w-full max-w-none min-w-0 space-y-6 reading-card rounded-2xl sm:rounded-[2rem] border border-slate-100 dark:border-slate-800 p-5 sm:p-8 lg:p-10 xl:p-12 shadow-sm">
             <div className="flex items-center gap-3">
               <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-50 shrink-0">
                 {isAlgorithmsCourse

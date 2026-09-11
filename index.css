@@ -92,6 +92,8 @@ body {
 
 .reading-card {
   background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(248,250,252,0.95) 100%);
+  width: 100%;
+  max-width: none;
 }
 
 .dark .reading-card {
@@ -208,16 +210,28 @@ body {
   width: 100%;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
   .theory-subsections-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.25rem;
   }
 }
 
-@media (min-width: 1536px) {
+@media (min-width: 1024px) {
   .theory-subsections-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1280px) {
+  .theory-subsections-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1536px) {
+  .theory-subsections-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 1.5rem;
   }
 }
