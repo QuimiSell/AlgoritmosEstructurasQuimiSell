@@ -7,15 +7,51 @@ import QuizSection from './components/QuizSection';
 import FinalExamModal from './components/FinalExamModal';
 import StudyPlanModal from './components/StudyPlanModal';
 import LabChallengeModal from './components/LabChallengeModal';
-import KaliTerminalSimulator from './components/KaliTerminalSimulator';
 import ThemeToggle from './components/ThemeToggle';
 import TheoryContent from './components/TheoryContent';
 import AlgorithmsHero from './components/AlgorithmsHero';
 import AlgorithmsBigOSection from './components/AlgorithmsBigOSection';
 import ComplexityHero from './components/ComplexityHero';
 import ComplexityModuleExtras from './components/ComplexityModuleExtras';
+import KaliHero, { getKaliPhase } from './components/KaliHero';
+import KaliModuleExtras from './components/KaliModuleExtras';
 import ModuleNavigation from './components/ModuleNavigation';
 import { useTheme } from './hooks/useTheme';
+
+function polishedSidebarActiveClass(courseId: string, modId: number): string {
+  if (courseId === 'complejidad_algoritmica' && modId >= 16) {
+    return 'bg-gradient-to-r from-fuchsia-50 to-violet-50 dark:from-fuchsia-950/50 dark:to-violet-950/40 text-fuchsia-800 dark:text-fuchsia-200 shadow-md ring-1 ring-fuchsia-200 dark:ring-fuchsia-800';
+  }
+  if (courseId === 'kali_linux') {
+    const phase = getKaliPhase(modId);
+    if (phase === 1) return 'bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-950/50 dark:to-teal-950/40 text-emerald-800 dark:text-emerald-200 shadow-md ring-1 ring-emerald-200 dark:ring-emerald-800';
+    if (phase === 2) return 'bg-gradient-to-r from-red-50 to-rose-50 dark:from-red-950/50 dark:to-rose-950/40 text-red-800 dark:text-red-200 shadow-md ring-1 ring-red-200 dark:ring-red-800';
+    if (phase === 3) return 'bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-950/50 dark:to-orange-950/40 text-amber-900 dark:text-amber-200 shadow-md ring-1 ring-amber-200 dark:ring-amber-800';
+    return 'bg-gradient-to-r from-slate-100 to-zinc-100 dark:from-slate-800/60 dark:to-zinc-900/40 text-slate-800 dark:text-slate-200 shadow-md ring-1 ring-slate-300 dark:ring-slate-700';
+  }
+  return 'bg-gradient-to-r from-indigo-50 to-violet-50 dark:from-indigo-950/60 dark:to-violet-950/40 text-indigo-700 dark:text-indigo-300 shadow-md ring-1 ring-indigo-200 dark:ring-indigo-800';
+}
+
+function polishedMobileActiveClass(courseId: string, modId: number): string {
+  if (courseId === 'complejidad_algoritmica' && modId >= 16) return 'bg-fuchsia-600 text-white shadow-md';
+  if (courseId === 'kali_linux') {
+    const phase = getKaliPhase(modId);
+    if (phase === 1) return 'bg-emerald-600 text-white shadow-md';
+    if (phase === 2) return 'bg-red-600 text-white shadow-md';
+    if (phase === 3) return 'bg-amber-600 text-white shadow-md';
+    return 'bg-slate-700 text-white shadow-md';
+  }
+  return 'bg-indigo-600 text-white shadow-md';
+}
+
+function moduleTrackLabel(courseId: string, modId: number): string {
+  if (courseId === 'complejidad_algoritmica' && modId >= 16) return 'Big-O en IA';
+  if (courseId === 'kali_linux') {
+    const labels = ['Fundamentos Linux', 'Nmap & Recon', 'Auditoría Ofensiva', 'Post-Explotación'];
+    return labels[getKaliPhase(modId) - 1];
+  }
+  return 'Contenido Universitario';
+}
 
 const App: React.FC = () => {
   const [activeCourseId, setActiveCourseId] = useState<string>('algoritmos');
@@ -30,7 +66,8 @@ const App: React.FC = () => {
   const activeCourse = COURSES_MAP[activeCourseId] || COURSES[0];
   const isAlgorithmsCourse = activeCourseId === 'algoritmos';
   const isComplexityCourse = activeCourseId === 'complejidad_algoritmica';
-  const isPolishedCourse = isAlgorithmsCourse || isComplexityCourse;
+  const isKaliCourse = activeCourseId === 'kali_linux';
+  const isPolishedCourse = isAlgorithmsCourse || isComplexityCourse || isKaliCourse;
   const activeModule = activeCourse.modules.find(m => m.id === activeModuleId) || activeCourse.modules[0];
 
   const handleSelectCourse = (courseId: string) => {
@@ -248,9 +285,7 @@ const App: React.FC = () => {
                 className={`w-full text-left px-3 py-3 rounded-xl transition-all duration-200 flex items-center gap-3 group relative cursor-pointer ${
                   activeModuleId === mod.id 
                     ? isPolishedCourse
-                      ? isComplexityCourse && mod.id >= 16
-                        ? 'bg-gradient-to-r from-fuchsia-50 to-violet-50 dark:from-fuchsia-950/50 dark:to-violet-950/40 text-fuchsia-800 dark:text-fuchsia-200 shadow-md ring-1 ring-fuchsia-200 dark:ring-fuchsia-800'
-                        : 'bg-gradient-to-r from-indigo-50 to-violet-50 dark:from-indigo-950/60 dark:to-violet-950/40 text-indigo-700 dark:text-indigo-300 shadow-md ring-1 ring-indigo-200 dark:ring-indigo-800'
+                      ? polishedSidebarActiveClass(activeCourseId, mod.id)
                       : 'bg-white dark:bg-slate-800 text-indigo-700 dark:text-indigo-300 shadow-md ring-1 ring-slate-200 dark:ring-slate-700' 
                     : 'text-slate-600 dark:text-slate-400 hover:bg-white dark:hover:bg-slate-800 hover:shadow-sm'
                 }`}
@@ -265,7 +300,7 @@ const App: React.FC = () => {
                     {mod.title.split(': ')[1] || mod.title}
                   </span>
                   <span className="text-[10px] opacity-60 font-medium">
-                    {isComplexityCourse && mod.id >= 16 ? 'Big-O en IA' : 'Contenido Universitario'}
+                    {moduleTrackLabel(activeCourseId, mod.id)}
                   </span>
                 </div>
                 {activeModuleId === mod.id && (
@@ -290,8 +325,8 @@ const App: React.FC = () => {
                   onClick={() => handleSelectModule(mod.id)}
                   className={`shrink-0 flex items-center gap-2 px-3 py-2 rounded-xl text-left transition cursor-pointer ${
                     activeModuleId === mod.id
-                      ? isComplexityCourse && mod.id >= 16
-                        ? 'bg-fuchsia-600 text-white shadow-md'
+                      ? isPolishedCourse
+                        ? polishedMobileActiveClass(activeCourseId, mod.id)
                         : 'bg-indigo-600 text-white shadow-md'
                       : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700'
                   }`}
@@ -317,6 +352,8 @@ const App: React.FC = () => {
             <AlgorithmsHero module={activeModule} totalModules={activeCourse.modules.length} />
           ) : isComplexityCourse ? (
             <ComplexityHero module={activeModule} totalModules={activeCourse.modules.length} />
+          ) : isKaliCourse ? (
+            <KaliHero module={activeModule} totalModules={activeCourse.modules.length} />
           ) : (
           <section className="bg-slate-900 rounded-2xl sm:rounded-[2rem] p-5 sm:p-8 md:p-12 text-white relative overflow-hidden shadow-2xl shadow-slate-200 dark:shadow-black/40 group">
             <div className="relative z-10 max-w-2xl">
@@ -430,39 +467,8 @@ const App: React.FC = () => {
                 </div>
               )}
 
-              {/* Kali Linux Highlights for Module 1 */}
-              {activeCourseId === 'kali_linux' && activeModule.id === 1 && (
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 animate-in fade-in slide-in-from-bottom-6 duration-700">
-                  {[
-                    { l: '-sS', t: 'TCP SYN Stealth', c: 'Escaneo semiabierto que no completa el handshake' },
-                    { l: 'FHS & /proc', t: 'Kernel en Memoria', c: 'Árbol de directorios estándar y pseudo-FS' },
-                    { l: 'NSE (Lua)', t: 'Scripting Engine', c: 'Automatización de auditorías y detección de CVEs' },
-                    { l: '-T0 a -T5', t: 'Timing Templates', c: 'Control de temporización y evasión de IDS' },
-                    { l: 'Decoys -D', t: 'Señuelos de Red', c: 'Ofuscación de IP real mediante tráfico señuelo' },
-                    { l: 'CVSS v3.1', t: 'Reporte Técnico', c: 'Métricas estándar de severidad 0.0 a 10.0' },
-                  ].map(card => (
-                    <div key={card.l} className="group bg-slate-50 dark:bg-slate-800/50 p-5 rounded-2xl border border-slate-100 dark:border-slate-700 transition-all hover:bg-white dark:hover:bg-slate-800 hover:shadow-xl hover:-translate-y-1">
-                      <span className="text-indigo-600 dark:text-indigo-400 font-black block text-xl mb-1 font-mono">{card.l}</span>
-                      <span className="text-slate-900 dark:text-slate-100 text-sm font-bold block">{card.t}</span>
-                      <span className="text-slate-400 dark:text-slate-500 text-[11px] mt-2 block font-mono italic">{card.c}</span>
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              {/* Kali Linux Interactive Terminal Sandbox */}
-              {activeCourseId === 'kali_linux' && (
-                <div className="space-y-4 animate-in fade-in duration-500 min-w-0">
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                    <h3 className="text-xl sm:text-2xl font-bold text-slate-900 flex items-center gap-2.5">
-                      <span>🐉</span> Consola Kali Linux en Vivo
-                    </h3>
-                    <span className="text-xs font-bold text-emerald-600 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full w-max">
-                      ● Terminal Activa
-                    </span>
-                  </div>
-                  <KaliTerminalSimulator />
-                </div>
+              {isKaliCourse && (
+                <KaliModuleExtras moduleId={activeModule.id} />
               )}
 
               <article className="space-y-6 min-w-0 reading-card rounded-2xl sm:rounded-[2rem] border border-slate-100 dark:border-slate-800 p-5 sm:p-8 lg:p-10 shadow-sm">
@@ -472,7 +478,9 @@ const App: React.FC = () => {
                       ? '📖 Profundización Teórica'
                       : isComplexityCourse
                         ? '📊 Profundización Teórica'
-                        : 'Profundización Teórica'}
+                        : isKaliCourse
+                          ? '🐉 Profundización Teórica'
+                          : 'Profundización Teórica'}
                   </h3>
                   <div className="h-px flex-1 bg-slate-100 dark:bg-slate-800 min-w-0"></div>
                 </div>
