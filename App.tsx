@@ -15,6 +15,8 @@ import ComplexityHero from './components/ComplexityHero';
 import ComplexityModuleExtras from './components/ComplexityModuleExtras';
 import KaliHero, { getKaliPhase } from './components/KaliHero';
 import KaliModuleExtras from './components/KaliModuleExtras';
+import MathHero, { getMathPhase } from './components/MathHero';
+import MathModuleExtras from './components/MathModuleExtras';
 import ModuleNavigation from './components/ModuleNavigation';
 import { useTheme } from './hooks/useTheme';
 
@@ -29,6 +31,11 @@ function polishedSidebarActiveClass(courseId: string, modId: number): string {
     if (phase === 3) return 'bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-950/50 dark:to-orange-950/40 text-amber-900 dark:text-amber-200 shadow-md ring-1 ring-amber-200 dark:ring-amber-800';
     return 'bg-gradient-to-r from-slate-100 to-zinc-100 dark:from-slate-800/60 dark:to-zinc-900/40 text-slate-800 dark:text-slate-200 shadow-md ring-1 ring-slate-300 dark:ring-slate-700';
   }
+  if (courseId === 'matematica') {
+    const phase = getMathPhase(modId);
+    if (phase === 1) return 'bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-indigo-950/50 dark:to-blue-950/40 text-indigo-800 dark:text-indigo-200 shadow-md ring-1 ring-indigo-200 dark:ring-indigo-800';
+    return 'bg-gradient-to-r from-violet-50 to-purple-50 dark:from-violet-950/50 dark:to-purple-950/40 text-violet-800 dark:text-violet-200 shadow-md ring-1 ring-violet-200 dark:ring-violet-800';
+  }
   return 'bg-gradient-to-r from-indigo-50 to-violet-50 dark:from-indigo-950/60 dark:to-violet-950/40 text-indigo-700 dark:text-indigo-300 shadow-md ring-1 ring-indigo-200 dark:ring-indigo-800';
 }
 
@@ -41,6 +48,9 @@ function polishedMobileActiveClass(courseId: string, modId: number): string {
     if (phase === 3) return 'bg-amber-600 text-white shadow-md';
     return 'bg-slate-700 text-white shadow-md';
   }
+  if (courseId === 'matematica') {
+    return getMathPhase(modId) === 1 ? 'bg-indigo-600 text-white shadow-md' : 'bg-violet-600 text-white shadow-md';
+  }
   return 'bg-indigo-600 text-white shadow-md';
 }
 
@@ -49,6 +59,9 @@ function moduleTrackLabel(courseId: string, modId: number): string {
   if (courseId === 'kali_linux') {
     const labels = ['Fundamentos Linux', 'Nmap & Recon', 'Auditoría Ofensiva', 'Post-Explotación'];
     return labels[getKaliPhase(modId) - 1];
+  }
+  if (courseId === 'matematica') {
+    return getMathPhase(modId) === 1 ? 'Lógica & Discreta' : 'Álgebra & Cálculo';
   }
   return 'Contenido Universitario';
 }
@@ -67,7 +80,8 @@ const App: React.FC = () => {
   const isAlgorithmsCourse = activeCourseId === 'algoritmos';
   const isComplexityCourse = activeCourseId === 'complejidad_algoritmica';
   const isKaliCourse = activeCourseId === 'kali_linux';
-  const isPolishedCourse = isAlgorithmsCourse || isComplexityCourse || isKaliCourse;
+  const isMathCourse = activeCourseId === 'matematica';
+  const isPolishedCourse = isAlgorithmsCourse || isComplexityCourse || isKaliCourse || isMathCourse;
   const activeModule = activeCourse.modules.find(m => m.id === activeModuleId) || activeCourse.modules[0];
 
   const handleSelectCourse = (courseId: string) => {
@@ -354,6 +368,8 @@ const App: React.FC = () => {
             <ComplexityHero module={activeModule} totalModules={activeCourse.modules.length} />
           ) : isKaliCourse ? (
             <KaliHero module={activeModule} totalModules={activeCourse.modules.length} />
+          ) : isMathCourse ? (
+            <MathHero module={activeModule} totalModules={activeCourse.modules.length} />
           ) : (
           <section className="bg-slate-900 rounded-2xl sm:rounded-[2rem] p-5 sm:p-8 md:p-12 text-white relative overflow-hidden shadow-2xl shadow-slate-200 dark:shadow-black/40 group">
             <div className="relative z-10 max-w-2xl">
@@ -387,24 +403,8 @@ const App: React.FC = () => {
                 <ComplexityModuleExtras moduleId={activeModule.id} />
               )}
 
-              {/* Math Highlights for Matematica Module 1 */}
-              {activeCourseId === 'matematica' && activeModule.id === 1 && (
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 animate-in fade-in slide-in-from-bottom-6 duration-700">
-                  {[
-                    { l: 'P → Q', t: 'Implicación Lógica', c: 'Falsa solo si P=V y Q=F' },
-                    { l: '¬(P ∧ Q)', t: 'De Morgan I', c: 'Equivalente a ¬P ∨ ¬Q' },
-                    { l: 'P ∨ ¬P', t: 'Tautología', c: 'Verdadera para todo valor' },
-                    { l: 'P ∧ ¬P', t: 'Contradicción', c: 'Falsa para todo valor' },
-                    { l: 'P ⊕ Q', t: 'XOR (Disyunción)', c: 'Verdadera si difieren' },
-                    { l: 'P ↔ Q', t: 'Bicondicional', c: 'Verdadera si son iguales' },
-                  ].map(card => (
-                    <div key={card.l} className="group bg-slate-50 dark:bg-slate-800/50 p-5 rounded-2xl border border-slate-100 dark:border-slate-700 transition-all hover:bg-white dark:hover:bg-slate-800 hover:shadow-xl hover:-translate-y-1">
-                      <span className="text-indigo-600 dark:text-indigo-400 font-black block text-xl mb-1 font-mono">{card.l}</span>
-                      <span className="text-slate-900 dark:text-slate-100 text-sm font-bold block">{card.t}</span>
-                      <span className="text-slate-400 dark:text-slate-500 text-[11px] mt-2 block font-mono italic">{card.c}</span>
-                    </div>
-                  ))}
-                </div>
+              {isMathCourse && (
+                <MathModuleExtras moduleId={activeModule.id} />
               )}
 
               {/* Automata Highlights for Module 1 */}
@@ -480,7 +480,9 @@ const App: React.FC = () => {
                         ? '📊 Profundización Teórica'
                         : isKaliCourse
                           ? '🐉 Profundización Teórica'
-                          : 'Profundización Teórica'}
+                          : isMathCourse
+                            ? '📐 Profundización Teórica'
+                            : 'Profundización Teórica'}
                   </h3>
                   <div className="h-px flex-1 bg-slate-100 dark:bg-slate-800 min-w-0"></div>
                 </div>
