@@ -12,6 +12,8 @@ import ThemeToggle from './components/ThemeToggle';
 import TheoryContent from './components/TheoryContent';
 import AlgorithmsHero from './components/AlgorithmsHero';
 import AlgorithmsBigOSection from './components/AlgorithmsBigOSection';
+import ComplexityHero from './components/ComplexityHero';
+import ComplexityModuleExtras from './components/ComplexityModuleExtras';
 import ModuleNavigation from './components/ModuleNavigation';
 import { useTheme } from './hooks/useTheme';
 
@@ -27,6 +29,8 @@ const App: React.FC = () => {
 
   const activeCourse = COURSES_MAP[activeCourseId] || COURSES[0];
   const isAlgorithmsCourse = activeCourseId === 'algoritmos';
+  const isComplexityCourse = activeCourseId === 'complejidad_algoritmica';
+  const isPolishedCourse = isAlgorithmsCourse || isComplexityCourse;
   const activeModule = activeCourse.modules.find(m => m.id === activeModuleId) || activeCourse.modules[0];
 
   const handleSelectCourse = (courseId: string) => {
@@ -243,8 +247,10 @@ const App: React.FC = () => {
                 onClick={() => handleSelectModule(mod.id)}
                 className={`w-full text-left px-3 py-3 rounded-xl transition-all duration-200 flex items-center gap-3 group relative cursor-pointer ${
                   activeModuleId === mod.id 
-                    ? isAlgorithmsCourse
-                      ? 'bg-gradient-to-r from-indigo-50 to-violet-50 dark:from-indigo-950/60 dark:to-violet-950/40 text-indigo-700 dark:text-indigo-300 shadow-md ring-1 ring-indigo-200 dark:ring-indigo-800'
+                    ? isPolishedCourse
+                      ? isComplexityCourse && mod.id >= 16
+                        ? 'bg-gradient-to-r from-fuchsia-50 to-violet-50 dark:from-fuchsia-950/50 dark:to-violet-950/40 text-fuchsia-800 dark:text-fuchsia-200 shadow-md ring-1 ring-fuchsia-200 dark:ring-fuchsia-800'
+                        : 'bg-gradient-to-r from-indigo-50 to-violet-50 dark:from-indigo-950/60 dark:to-violet-950/40 text-indigo-700 dark:text-indigo-300 shadow-md ring-1 ring-indigo-200 dark:ring-indigo-800'
                       : 'bg-white dark:bg-slate-800 text-indigo-700 dark:text-indigo-300 shadow-md ring-1 ring-slate-200 dark:ring-slate-700' 
                     : 'text-slate-600 dark:text-slate-400 hover:bg-white dark:hover:bg-slate-800 hover:shadow-sm'
                 }`}
@@ -258,7 +264,9 @@ const App: React.FC = () => {
                   <span className={`text-sm font-bold truncate ${activeModuleId === mod.id ? 'text-slate-900 dark:text-slate-100' : 'text-slate-600 dark:text-slate-400'}`}>
                     {mod.title.split(': ')[1] || mod.title}
                   </span>
-                  <span className="text-[10px] opacity-60 font-medium">Contenido Universitario</span>
+                  <span className="text-[10px] opacity-60 font-medium">
+                    {isComplexityCourse && mod.id >= 16 ? 'Big-O en IA' : 'Contenido Universitario'}
+                  </span>
                 </div>
                 {activeModuleId === mod.id && (
                   <div className="absolute left-0 w-1 h-6 bg-indigo-600 rounded-r-full"></div>
@@ -282,7 +290,9 @@ const App: React.FC = () => {
                   onClick={() => handleSelectModule(mod.id)}
                   className={`shrink-0 flex items-center gap-2 px-3 py-2 rounded-xl text-left transition cursor-pointer ${
                     activeModuleId === mod.id
-                      ? 'bg-indigo-600 text-white shadow-md'
+                      ? isComplexityCourse && mod.id >= 16
+                        ? 'bg-fuchsia-600 text-white shadow-md'
+                        : 'bg-indigo-600 text-white shadow-md'
                       : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700'
                   }`}
                 >
@@ -305,6 +315,8 @@ const App: React.FC = () => {
           {/* Welcome Banner */}
           {isAlgorithmsCourse ? (
             <AlgorithmsHero module={activeModule} totalModules={activeCourse.modules.length} />
+          ) : isComplexityCourse ? (
+            <ComplexityHero module={activeModule} totalModules={activeCourse.modules.length} />
           ) : (
           <section className="bg-slate-900 rounded-2xl sm:rounded-[2rem] p-5 sm:p-8 md:p-12 text-white relative overflow-hidden shadow-2xl shadow-slate-200 dark:shadow-black/40 group">
             <div className="relative z-10 max-w-2xl">
@@ -334,26 +346,8 @@ const App: React.FC = () => {
               {activeCourseId === 'algoritmos' && activeModule.id === 1 && (
                 <AlgorithmsBigOSection />
               )}
-              {activeCourseId === 'complejidad_algoritmica' && activeModule.id === 1 && (
-                <div className="space-y-8 animate-in fade-in slide-in-from-bottom-6 duration-700">
-                  <BigOChart />
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                    {[
-                      { l: 'O(1)', t: 'Constante', c: 'Acceso por índice en un arreglo' },
-                      { l: 'O(log n)', t: 'Logarítmica', c: 'Búsqueda Binaria' },
-                      { l: 'O(n)', t: 'Lineal', c: 'Bucle simple (búsqueda lineal)' },
-                      { l: 'O(n log n)', t: 'Cuasilineal', c: 'Ordenamiento por mezcla (Merge Sort)' },
-                      { l: 'O(n²)', t: 'Cuadrática', c: 'Bucles anidados' },
-                      { l: 'O(2ⁿ)', t: 'Exponencial', c: 'Fibonacci recursivo' },
-                    ].map(card => (
-                      <div key={card.l} className="group bg-slate-50 dark:bg-slate-800/50 p-3 sm:p-5 rounded-2xl border border-slate-100 dark:border-slate-700 transition-all hover:bg-white dark:hover:bg-slate-800 hover:shadow-xl hover:-translate-y-1 min-w-0">
-                        <span className="text-indigo-600 dark:text-indigo-400 font-black block text-lg sm:text-2xl mb-1 break-words">{card.l}</span>
-                        <span className="text-slate-900 dark:text-slate-100 text-sm font-bold block">{card.t}</span>
-                        <span className="text-slate-400 dark:text-slate-500 text-[11px] mt-2 block font-mono italic">{card.c}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+              {isComplexityCourse && (
+                <ComplexityModuleExtras moduleId={activeModule.id} />
               )}
 
               {/* Math Highlights for Matematica Module 1 */}
@@ -474,7 +468,11 @@ const App: React.FC = () => {
               <article className="space-y-6 min-w-0 reading-card rounded-2xl sm:rounded-[2rem] border border-slate-100 dark:border-slate-800 p-5 sm:p-8 lg:p-10 shadow-sm">
                 <div className="flex items-center gap-3">
                   <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-50 shrink-0">
-                    {isAlgorithmsCourse ? '📖 Profundización Teórica' : 'Profundización Teórica'}
+                    {isAlgorithmsCourse
+                      ? '📖 Profundización Teórica'
+                      : isComplexityCourse
+                        ? '📊 Profundización Teórica'
+                        : 'Profundización Teórica'}
                   </h3>
                   <div className="h-px flex-1 bg-slate-100 dark:bg-slate-800 min-w-0"></div>
                 </div>
@@ -497,7 +495,7 @@ const App: React.FC = () => {
                   </div>
                 </div>
 
-                {isAlgorithmsCourse && (
+                {isPolishedCourse && (
                   <ModuleNavigation
                     currentId={activeModule.id}
                     totalModules={activeCourse.modules.length}
