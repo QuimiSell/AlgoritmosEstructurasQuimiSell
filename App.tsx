@@ -17,6 +17,12 @@ import KaliHero, { getKaliPhase } from './components/KaliHero';
 import KaliModuleExtras from './components/KaliModuleExtras';
 import MathHero, { getMathPhase } from './components/MathHero';
 import MathModuleExtras from './components/MathModuleExtras';
+import AutomataHero, { getAutomataPhase } from './components/AutomataHero';
+import AutomataModuleExtras from './components/AutomataModuleExtras';
+import CleanCodeHero, { getCleanCodePhase } from './components/CleanCodeHero';
+import CleanCodeModuleExtras from './components/CleanCodeModuleExtras';
+import AIEngineerHero, { getAIEngineerPhase } from './components/AIEngineerHero';
+import AIEngineerModuleExtras from './components/AIEngineerModuleExtras';
 import ModuleNavigation from './components/ModuleNavigation';
 import { useTheme } from './hooks/useTheme';
 
@@ -36,6 +42,25 @@ function polishedSidebarActiveClass(courseId: string, modId: number): string {
     if (phase === 1) return 'bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-indigo-950/50 dark:to-blue-950/40 text-indigo-800 dark:text-indigo-200 shadow-md ring-1 ring-indigo-200 dark:ring-indigo-800';
     return 'bg-gradient-to-r from-violet-50 to-purple-50 dark:from-violet-950/50 dark:to-purple-950/40 text-violet-800 dark:text-violet-200 shadow-md ring-1 ring-violet-200 dark:ring-violet-800';
   }
+  if (courseId === 'automatas_compiladores') {
+    const phase = getAutomataPhase(modId);
+    if (phase === 1) return 'bg-gradient-to-r from-cyan-50 to-teal-50 dark:from-cyan-950/50 dark:to-teal-950/40 text-cyan-800 dark:text-cyan-200 shadow-md ring-1 ring-cyan-200 dark:ring-cyan-800';
+    if (phase === 2) return 'bg-gradient-to-r from-violet-50 to-purple-50 dark:from-violet-950/50 dark:to-purple-950/40 text-violet-800 dark:text-violet-200 shadow-md ring-1 ring-violet-200 dark:ring-violet-800';
+    return 'bg-gradient-to-r from-orange-50 to-amber-50 dark:from-orange-950/50 dark:to-amber-950/40 text-orange-900 dark:text-orange-200 shadow-md ring-1 ring-orange-200 dark:ring-orange-800';
+  }
+  if (courseId === 'clean_code_solid') {
+    return getCleanCodePhase(modId) === 1
+      ? 'bg-gradient-to-r from-sky-50 to-blue-50 dark:from-sky-950/50 dark:to-blue-950/40 text-sky-800 dark:text-sky-200 shadow-md ring-1 ring-sky-200 dark:ring-sky-800'
+      : 'bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-950/50 dark:to-teal-950/40 text-emerald-800 dark:text-emerald-200 shadow-md ring-1 ring-emerald-200 dark:ring-emerald-800';
+  }
+  if (courseId === 'ingeniero_ia') {
+    const phase = getAIEngineerPhase(modId);
+    if (phase === 1) return 'bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/50 dark:to-indigo-950/40 text-blue-800 dark:text-blue-200 shadow-md ring-1 ring-blue-200 dark:ring-blue-800';
+    if (phase === 2) return 'bg-gradient-to-r from-indigo-50 to-violet-50 dark:from-indigo-950/50 dark:to-violet-950/40 text-indigo-800 dark:text-indigo-200 shadow-md ring-1 ring-indigo-200 dark:ring-indigo-800';
+    if (phase === 3) return 'bg-gradient-to-r from-violet-50 to-purple-50 dark:from-violet-950/50 dark:to-purple-950/40 text-violet-800 dark:text-violet-200 shadow-md ring-1 ring-violet-200 dark:ring-violet-800';
+    if (phase === 4) return 'bg-gradient-to-r from-fuchsia-50 to-pink-50 dark:from-fuchsia-950/50 dark:to-pink-950/40 text-fuchsia-800 dark:text-fuchsia-200 shadow-md ring-1 ring-fuchsia-200 dark:ring-fuchsia-800';
+    return 'bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-950/50 dark:to-orange-950/40 text-amber-900 dark:text-amber-200 shadow-md ring-1 ring-amber-200 dark:ring-amber-800';
+  }
   return 'bg-gradient-to-r from-indigo-50 to-violet-50 dark:from-indigo-950/60 dark:to-violet-950/40 text-indigo-700 dark:text-indigo-300 shadow-md ring-1 ring-indigo-200 dark:ring-indigo-800';
 }
 
@@ -51,6 +76,23 @@ function polishedMobileActiveClass(courseId: string, modId: number): string {
   if (courseId === 'matematica') {
     return getMathPhase(modId) === 1 ? 'bg-indigo-600 text-white shadow-md' : 'bg-violet-600 text-white shadow-md';
   }
+  if (courseId === 'automatas_compiladores') {
+    const phase = getAutomataPhase(modId);
+    if (phase === 1) return 'bg-cyan-600 text-white shadow-md';
+    if (phase === 2) return 'bg-violet-600 text-white shadow-md';
+    return 'bg-orange-600 text-white shadow-md';
+  }
+  if (courseId === 'clean_code_solid') {
+    return getCleanCodePhase(modId) === 1 ? 'bg-sky-600 text-white shadow-md' : 'bg-emerald-600 text-white shadow-md';
+  }
+  if (courseId === 'ingeniero_ia') {
+    const phase = getAIEngineerPhase(modId);
+    if (phase === 1) return 'bg-blue-600 text-white shadow-md';
+    if (phase === 2) return 'bg-indigo-600 text-white shadow-md';
+    if (phase === 3) return 'bg-violet-600 text-white shadow-md';
+    if (phase === 4) return 'bg-fuchsia-600 text-white shadow-md';
+    return 'bg-amber-600 text-white shadow-md';
+  }
   return 'bg-indigo-600 text-white shadow-md';
 }
 
@@ -62,6 +104,17 @@ function moduleTrackLabel(courseId: string, modId: number): string {
   }
   if (courseId === 'matematica') {
     return getMathPhase(modId) === 1 ? 'Lógica & Discreta' : 'Álgebra & Cálculo';
+  }
+  if (courseId === 'automatas_compiladores') {
+    const labels = ['Autómatas Finitos', 'Gramáticas & Turing', 'Compiladores'];
+    return labels[getAutomataPhase(modId) - 1];
+  }
+  if (courseId === 'clean_code_solid') {
+    return getCleanCodePhase(modId) === 1 ? 'Clean Code & SOLID' : 'Patrones GoF';
+  }
+  if (courseId === 'ingeniero_ia') {
+    const labels = ['Arquitecto IA', 'Ingeniería Rigurosa', 'Sistemas a Escala', 'IA en Producción', 'Liderazgo Senior'];
+    return labels[getAIEngineerPhase(modId) - 1];
   }
   return 'Contenido Universitario';
 }
@@ -81,7 +134,10 @@ const App: React.FC = () => {
   const isComplexityCourse = activeCourseId === 'complejidad_algoritmica';
   const isKaliCourse = activeCourseId === 'kali_linux';
   const isMathCourse = activeCourseId === 'matematica';
-  const isPolishedCourse = isAlgorithmsCourse || isComplexityCourse || isKaliCourse || isMathCourse;
+  const isAutomataCourse = activeCourseId === 'automatas_compiladores';
+  const isCleanCodeCourse = activeCourseId === 'clean_code_solid';
+  const isAIEngineerCourse = activeCourseId === 'ingeniero_ia';
+  const isPolishedCourse = true;
   const activeModule = activeCourse.modules.find(m => m.id === activeModuleId) || activeCourse.modules[0];
 
   const handleSelectCourse = (courseId: string) => {
@@ -370,6 +426,12 @@ const App: React.FC = () => {
             <KaliHero module={activeModule} totalModules={activeCourse.modules.length} />
           ) : isMathCourse ? (
             <MathHero module={activeModule} totalModules={activeCourse.modules.length} />
+          ) : isAutomataCourse ? (
+            <AutomataHero module={activeModule} totalModules={activeCourse.modules.length} />
+          ) : isCleanCodeCourse ? (
+            <CleanCodeHero module={activeModule} totalModules={activeCourse.modules.length} />
+          ) : isAIEngineerCourse ? (
+            <AIEngineerHero module={activeModule} totalModules={activeCourse.modules.length} />
           ) : (
           <section className="bg-slate-900 rounded-2xl sm:rounded-[2rem] p-5 sm:p-8 md:p-12 text-white relative overflow-hidden shadow-2xl shadow-slate-200 dark:shadow-black/40 group">
             <div className="relative z-10 max-w-2xl">
@@ -407,64 +469,16 @@ const App: React.FC = () => {
                 <MathModuleExtras moduleId={activeModule.id} />
               )}
 
-              {/* Automata Highlights for Module 1 */}
-              {activeCourseId === 'automatas_compiladores' && activeModule.id === 1 && (
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 animate-in fade-in slide-in-from-bottom-6 duration-700">
-                  {[
-                    { l: 'Σ', t: 'Alfabeto', c: 'Conjunto finito de símbolos (ej: {0,1})' },
-                    { l: 'w', t: 'Cadena', c: 'Secuencia finita de símbolos de Σ' },
-                    { l: 'ε', t: 'Cadena Vacía', c: 'Cadena de longitud |ε| = 0' },
-                    { l: 'Σ*', t: 'Estrella de Kleene', c: 'Todas las cadenas posibles (incluye ε)' },
-                    { l: 'Σ+', t: 'Clausura Positiva', c: 'Cadenas de longitud ≥ 1 (excluye ε)' },
-                    { l: 'L ⊆ Σ*', t: 'Lenguaje Formal', c: 'Cualquier subconjunto de cadenas de Σ*' },
-                  ].map(card => (
-                    <div key={card.l} className="group bg-slate-50 dark:bg-slate-800/50 p-5 rounded-2xl border border-slate-100 dark:border-slate-700 transition-all hover:bg-white dark:hover:bg-slate-800 hover:shadow-xl hover:-translate-y-1">
-                      <span className="text-indigo-600 dark:text-indigo-400 font-black block text-xl mb-1 font-mono">{card.l}</span>
-                      <span className="text-slate-900 dark:text-slate-100 text-sm font-bold block">{card.t}</span>
-                      <span className="text-slate-400 dark:text-slate-500 text-[11px] mt-2 block font-mono italic">{card.c}</span>
-                    </div>
-                  ))}
-                </div>
+              {isAutomataCourse && (
+                <AutomataModuleExtras moduleId={activeModule.id} />
               )}
 
-              {/* Clean Code Highlights for Module 1 */}
-              {activeCourseId === 'clean_code_solid' && activeModule.id === 1 && (
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 animate-in fade-in slide-in-from-bottom-6 duration-700">
-                  {[
-                    { l: 'Tío Bob', t: 'Robert C. Martin', c: 'Autor de "Clean Code" & SOLID' },
-                    { l: 'Boy Scout', t: 'Regla de Oro', c: 'Deja el código más limpio que como estaba' },
-                    { l: 'Nombres', t: 'Intención Reveladora', c: 'Expresa el propósito sin comentarios' },
-                    { l: '10 a 1', t: 'Ratio Lectura/Escritura', c: 'Pasamos más tiempo leyendo código' },
-                    { l: 'Deuda', t: 'Deuda Técnica', c: 'Costo futuro por tomar atajos hoy' },
-                    { l: 'Pequeñas', t: 'Funciones de 10 líneas', c: 'Funciones que hacen una sola cosa bien' },
-                  ].map(card => (
-                    <div key={card.l} className="group bg-slate-50 dark:bg-slate-800/50 p-5 rounded-2xl border border-slate-100 dark:border-slate-700 transition-all hover:bg-white dark:hover:bg-slate-800 hover:shadow-xl hover:-translate-y-1">
-                      <span className="text-indigo-600 dark:text-indigo-400 font-black block text-xl mb-1 font-mono">{card.l}</span>
-                      <span className="text-slate-900 dark:text-slate-100 text-sm font-bold block">{card.t}</span>
-                      <span className="text-slate-400 dark:text-slate-500 text-[11px] mt-2 block font-mono italic">{card.c}</span>
-                    </div>
-                  ))}
-                </div>
+              {isCleanCodeCourse && (
+                <CleanCodeModuleExtras moduleId={activeModule.id} />
               )}
 
-              {/* AI Engineer Highlights for Module 1 */}
-              {activeCourseId === 'ingeniero_ia' && activeModule.id === 1 && (
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 animate-in fade-in slide-in-from-bottom-6 duration-700">
-                  {[
-                    { l: 'Arquitecto', t: 'De Vibe Coder a Arquitecto', c: 'La sintaxis la genera la IA; el diseño es tuyo' },
-                    { l: 'Hardware', t: 'RAM & CPU Cache', c: 'La IA no siente la latencia física de la CPU' },
-                    { l: 'TDD', t: 'Test Automated Harness', c: 'Barrera de contención contra alucinaciones' },
-                    { l: 'Seguridad', t: 'DevSecOps & OWASP', c: 'Auditoría estricta de vulnerabilidades' },
-                    { l: 'Agentes', t: 'Bucle ReAct & Tools', c: 'Dirigir equipos de subagentes con contexto' },
-                    { l: 'Sistemas', t: 'System Design & CAP', c: 'Diseño para millones de usuarios simultáneos' },
-                  ].map(card => (
-                    <div key={card.l} className="group bg-slate-50 dark:bg-slate-800/50 p-5 rounded-2xl border border-slate-100 dark:border-slate-700 transition-all hover:bg-white dark:hover:bg-slate-800 hover:shadow-xl hover:-translate-y-1">
-                      <span className="text-indigo-600 dark:text-indigo-400 font-black block text-xl mb-1 font-mono">{card.l}</span>
-                      <span className="text-slate-900 dark:text-slate-100 text-sm font-bold block">{card.t}</span>
-                      <span className="text-slate-400 dark:text-slate-500 text-[11px] mt-2 block font-mono italic">{card.c}</span>
-                    </div>
-                  ))}
-                </div>
+              {isAIEngineerCourse && (
+                <AIEngineerModuleExtras moduleId={activeModule.id} />
               )}
 
               {isKaliCourse && (
@@ -482,7 +496,13 @@ const App: React.FC = () => {
                           ? '🐉 Profundización Teórica'
                           : isMathCourse
                             ? '📐 Profundización Teórica'
-                            : 'Profundización Teórica'}
+                            : isAutomataCourse
+                              ? '⚙️ Profundización Teórica'
+                              : isCleanCodeCourse
+                                ? '🧼 Profundización Teórica'
+                                : isAIEngineerCourse
+                                  ? '🤖 Profundización Teórica'
+                                  : 'Profundización Teórica'}
                   </h3>
                   <div className="h-px flex-1 bg-slate-100 dark:bg-slate-800 min-w-0"></div>
                 </div>
