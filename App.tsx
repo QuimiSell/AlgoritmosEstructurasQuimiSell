@@ -165,7 +165,7 @@ const App: React.FC = () => {
     <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 transition-colors duration-300 selection:bg-indigo-100 dark:selection:bg-indigo-900 selection:text-indigo-900 dark:selection:text-indigo-100">
       {/* Header */}
       <header className="bg-white/80 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-50 supports-[padding:max(0px)]:pt-[env(safe-area-inset-top)] transition-colors duration-300">
-        <div className="max-w-7xl mx-auto px-3 sm:px-4 h-14 sm:h-16 flex items-center justify-between gap-2">
+        <div className="w-full px-3 sm:px-4 md:px-6 lg:px-8 xl:px-10 2xl:px-12 h-14 sm:h-16 flex items-center justify-between gap-2">
           <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
             <div className="w-9 h-9 sm:w-10 sm:h-10 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold shadow-lg shadow-indigo-200 shrink-0">
               {activeCourse.icon}
@@ -334,9 +334,9 @@ const App: React.FC = () => {
         )}
       </header>
 
-      <div className="flex-1 flex flex-col lg:flex-row max-w-7xl mx-auto w-full min-w-0">
+      <div className="flex-1 w-full grid grid-cols-1 lg:grid-cols-[minmax(260px,18rem)_minmax(0,1fr)] xl:grid-cols-[minmax(280px,20rem)_minmax(0,1fr)] 2xl:grid-cols-[minmax(300px,22rem)_minmax(0,1fr)]">
         {/* Desktop Sidebar Navigation */}
-        <aside className="hidden lg:block lg:w-80 p-4 border-r border-slate-200 dark:border-slate-800 overflow-y-auto lg:max-h-[calc(100dvh-4rem)] overscroll-contain scroll-touch bg-slate-50/50 dark:bg-slate-900/50 shrink-0 transition-colors duration-300">
+        <aside className="hidden lg:block p-4 xl:p-5 border-r border-slate-200 dark:border-slate-800 overflow-y-auto lg:max-h-[calc(100dvh-4rem)] overscroll-contain scroll-touch bg-slate-50/50 dark:bg-slate-900/50 min-w-0 transition-colors duration-300">
           <div className="space-y-2">
             <div className="px-3 mb-4">
               <span className="text-[9px] font-extrabold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/60 px-2 py-1 rounded-md uppercase tracking-wider block w-max mb-1">
@@ -383,7 +383,7 @@ const App: React.FC = () => {
 
         {/* Mobile / Tablet horizontal module strip */}
         <div className="lg:hidden sticky top-14 sm:top-16 z-30 bg-slate-50/95 dark:bg-slate-900/95 backdrop-blur-sm border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
-          <div className="px-3 py-2">
+          <div className="px-3 sm:px-4 md:px-6 py-2">
             <span className="text-[9px] font-extrabold text-indigo-600 uppercase tracking-wider block mb-2 px-1">
               Módulo {activeModuleId} / {activeCourse.modules.length} · {activeCourse.shortTitle}
             </span>
@@ -406,7 +406,7 @@ const App: React.FC = () => {
                   }`}>
                     {mod.id}
                   </span>
-                  <span className="text-xs font-bold max-w-[9rem] sm:max-w-[12rem] truncate">
+                  <span className="text-xs font-bold max-w-[9rem] sm:max-w-[12rem] md:max-w-[14rem] truncate">
                     {mod.title.split(': ')[1] || mod.title}
                   </span>
                 </button>
@@ -416,7 +416,7 @@ const App: React.FC = () => {
         </div>
 
         {/* Main Content Area */}
-        <main className="flex-1 p-4 sm:p-6 lg:p-10 space-y-8 sm:space-y-10 pb-20 sm:pb-24 bg-white dark:bg-slate-950 min-w-0 transition-colors duration-300">
+        <main className="min-w-0 p-4 sm:p-6 md:p-8 lg:p-8 xl:p-10 2xl:p-12 space-y-8 sm:space-y-10 pb-20 sm:pb-24 bg-white dark:bg-slate-950 transition-colors duration-300">
           {/* Welcome Banner */}
           {isAlgorithmsCourse ? (
             <AlgorithmsHero module={activeModule} totalModules={activeCourse.modules.length} />
@@ -454,8 +454,8 @@ const App: React.FC = () => {
           )}
 
           {/* Module Content */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-10">
-            <div className="lg:col-span-2 space-y-8 sm:space-y-12 min-w-0">
+          <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(280px,22rem)] xl:grid-cols-[minmax(0,1.75fr)_minmax(300px,24rem)] 2xl:grid-cols-[minmax(0,2fr)_minmax(340px,26rem)] gap-6 sm:gap-8 lg:gap-8 xl:gap-10 2xl:gap-12">
+            <div className="space-y-8 sm:space-y-12 min-w-0">
               
               {/* Big O Specific Content for Algoritmos / Complejidad Module 1 */}
               {activeCourseId === 'algoritmos' && activeModule.id === 1 && (
@@ -513,7 +513,7 @@ const App: React.FC = () => {
                     <span className="w-2 h-6 sm:h-8 bg-gradient-to-b from-indigo-500 to-violet-500 rounded-full shrink-0"></span>
                     Conceptos Clave de Ingeniería & Arquitectura
                   </h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
                     {activeModule.items.map((item, i) => (
                       <div key={i} className="flex items-start gap-3 bg-white dark:bg-slate-900/60 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700/60 hover:border-indigo-200 dark:hover:border-indigo-700 transition group">
                         <div className="mt-1 w-5 h-5 rounded-full bg-indigo-50 dark:bg-indigo-950 flex items-center justify-center text-indigo-600 dark:text-indigo-400 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
@@ -555,8 +555,8 @@ const App: React.FC = () => {
               )}
             </div>
 
-            {/* Right Sidebar */}
-            <div className="space-y-6 sm:space-y-8 min-w-0">
+            {/* Right Sidebar — sticky en desktop para aprovechar altura en pantallas grandes */}
+            <div className="space-y-6 sm:space-y-8 min-w-0 lg:sticky lg:top-20 lg:self-start lg:max-h-[calc(100dvh-5.5rem)] lg:overflow-y-auto lg:overscroll-contain lg:scroll-touch">
               {/* IA Assistant Component */}
               <AIChatDrawer 
                 moduleTitle={activeModule.title} 

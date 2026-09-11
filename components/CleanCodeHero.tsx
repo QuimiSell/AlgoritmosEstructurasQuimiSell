@@ -52,8 +52,8 @@ const CleanCodeHero: React.FC<CleanCodeHeroProps> = ({ module, totalModules }) =
         </div>
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-extrabold mb-2 tracking-tight leading-[1.15] break-words">{moduleName}</h2>
         <p className="text-white/50 text-[11px] font-bold uppercase tracking-wider mb-3">Módulo {trackProgress} de {meta.trackSize} · {meta.detail}</p>
-        <p className="text-white/80 text-base sm:text-lg md:text-xl font-medium leading-relaxed max-w-2xl">{module.description}</p>
-        <div className="mt-6 sm:mt-8 flex flex-wrap gap-3 sm:gap-4">
+        <p className="text-white/80 text-base sm:text-lg md:text-xl font-medium leading-relaxed max-w-3xl xl:max-w-4xl 2xl:max-w-5xl">{module.description}</p>
+        <div className="mt-6 sm:mt-8 hero-stats-grid">
           {[{ label: 'Módulos', value: String(totalModules) }, { label: 'Autoevaluación', value: '12 preguntas' }, { label: 'Referencia', value: 'Tío Bob' }].map(s => (
             <div key={s.label} className="px-4 py-2.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/15 min-w-[5.5rem]">
               <span className="block text-lg sm:text-xl font-black">{s.value}</span>
@@ -61,7 +61,7 @@ const CleanCodeHero: React.FC<CleanCodeHeroProps> = ({ module, totalModules }) =
             </div>
           ))}
         </div>
-        <div className="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl">
+        <div className="mt-6 sm:mt-8 hero-progress-grid">
           <div>
             <div className="flex justify-between text-[10px] font-bold uppercase tracking-wider text-white/60 mb-2"><span>Progreso total</span><span>{progress}%</span></div>
             <div className="h-2 rounded-full bg-black/20 overflow-hidden"><div className="h-full rounded-full bg-white/90 transition-all duration-700" style={{ width: `${progress}%` }} /></div>

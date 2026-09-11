@@ -26,7 +26,7 @@ const AlgorithmsBigOSection: React.FC = () => (
       </div>
     </div>
     <BigOChart />
-    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+    <div className="card-grid-responsive">
       {BIG_O_CARDS.map(card => (
         <div
           key={card.l}

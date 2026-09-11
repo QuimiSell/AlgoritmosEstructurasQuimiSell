@@ -65,7 +65,7 @@ function CardGrid({ title, subtitle, icon, cards, borderClass }: {
           <p className="text-sm text-slate-500 dark:text-slate-400">{subtitle}</p>
         </div>
       </div>
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+      <div className="card-grid-responsive">
         {cards.map(card => (
           <div
             key={card.l}

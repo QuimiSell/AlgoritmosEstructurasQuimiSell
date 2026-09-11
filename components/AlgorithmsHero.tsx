@@ -51,11 +51,11 @@ const AlgorithmsHero: React.FC<AlgorithmsHeroProps> = ({ module, totalModules })
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-extrabold mb-3 tracking-tight leading-[1.15] break-words">
           {moduleName}
         </h2>
-        <p className="text-white/80 text-base sm:text-lg md:text-xl font-medium leading-relaxed max-w-2xl">
+        <p className="text-white/80 text-base sm:text-lg md:text-xl font-medium leading-relaxed max-w-3xl xl:max-w-4xl 2xl:max-w-5xl">
           {module.description}
         </p>
 
-        <div className="mt-6 sm:mt-8 flex flex-wrap gap-3 sm:gap-4">
+        <div className="mt-6 sm:mt-8 hero-stats-grid">
           {[
             { label: 'Módulos', value: String(totalModules) },
             { label: 'Autoevaluación', value: '12 preguntas' },
@@ -71,7 +71,7 @@ const AlgorithmsHero: React.FC<AlgorithmsHeroProps> = ({ module, totalModules })
           ))}
         </div>
 
-        <div className="mt-6 sm:mt-8 max-w-md">
+        <div className="mt-6 sm:mt-8 w-full sm:max-w-md xl:max-w-lg 2xl:max-w-xl">
           <div className="flex justify-between text-[10px] font-bold uppercase tracking-wider text-white/60 mb-2">
             <span>Tu progreso en el curso</span>
             <span>{progress}%</span>
