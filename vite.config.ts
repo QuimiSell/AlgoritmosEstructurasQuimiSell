@@ -60,6 +60,9 @@ export default defineConfig({
           if (id.includes('/courses/cleanCodeCourse')) return 'course-clean-code';
           if (id.includes('/courses/gitDevOpsCourse')) return 'course-git';
           if (id.includes('/courses/edgeMobileAiCourse')) return 'course-edge-ai';
+          if (id.includes('/courses/redesDevCourse')) return 'course-redes';
+          if (id.includes('/courses/sqlDatosIaCourse')) return 'course-sql';
+          if (id.includes('/courses/evaluacionIaCourse')) return 'course-eval-ia';
           if (id.includes('/courses/algorithmsCourse') || id.includes('/constants')) {
             return 'course-algorithms';
           }

@@ -8,12 +8,15 @@ Plataforma educativa **offline-first** (PWA), desplegada gratis en **Vercel**. P
 
 ---
 
-## Cursos (9)
+## Cursos (12)
 
 | Curso | Módulos | Enfoque |
 |-------|---------|---------|
 | 🔀 **Git, GitHub, CI/CD y Vercel ($0)** | 10 | DevOps esencial — este repo usa este pipeline |
+| 🌐 **Redes para Desarrolladores** | 10 | TCP/IP, DNS, HTTP, TLS — puente hacia Kali |
+| 🗄️ **SQL, Datos y RAG para IA** | 10 | SQL, embeddings, chunking, pipeline RAG $0 |
 | 📱 **IA Móvil On-Device (Edge)** | 8 | Cuantización, ONNX, privacidad, Play Store |
+| ✅ **Evaluación y Confiabilidad IA** | 10 | Métricas, guardrails, red team, SLOs |
 | 🐉 **Kali Linux & Nmap** | 20 | Ciberseguridad práctica + consola simulada |
 | 📊 **Complejidad Big-O + IA** | 20 | Big-O puro + FLOPs, Transformers |
 | ⚡ **Algoritmos y Estructuras** | 10 | Fundamentos CS |

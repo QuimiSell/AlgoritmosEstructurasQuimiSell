@@ -59,7 +59,10 @@ function polishedMobileActiveClass(courseId: string, modId: number): string {
 
 function moduleTrackLabel(courseId: string, modId: number): string {
   if (courseId === 'git_devops_vercel') return 'Git · CI · Vercel';
+  if (courseId === 'redes_desarrolladores') return 'TCP/IP · DNS · HTTP';
+  if (courseId === 'sql_datos_ia') return 'SQL · RAG · Datos';
   if (courseId === 'edge_ia_movil') return 'Edge · IA local';
+  if (courseId === 'evaluacion_ia') return 'Eval · Guardrails · SLO';
   if (courseId === 'ingeniero_ia') return 'Arquitectura IA';
   if (courseId === 'clean_code_solid') return 'Clean Code · SOLID';
   if (courseId === 'automatas_compiladores') return 'Teoría formal';
@@ -606,6 +609,12 @@ const App: React.FC = () => {
                       "En ciberseguridad, un escáner automático sin comprensión del paquete TCP subyacente es ruido inútil. Dominar cada flag (-sS, -T, NSE) y el estándar PTES te convierte en un auditor ético de precisión quirúrgica."
                     ) : activeCourseId === 'git_devops_vercel' ? (
                       "Git + CI + Vercel es el pipeline $0 que usa QuimiSell: rama → PR → Actions verde → preview → merge → producción. Sin base de datos, sin factura."
+                    ) : activeCourseId === 'redes_desarrolladores' ? (
+                      "Antes de Nmap y Kali, entiende DNS, TLS y HTTP: un escaneo sin contexto de capas es ruido. Esta base te convierte en dev full-stack y auditor con criterio."
+                    ) : activeCourseId === 'sql_datos_ia' ? (
+                      "RAG sin SQL y metadata limpia es alucinación estructurada. JOINs, índices O(log n) y chunking son el cimiento de IA confiable — incluso en stack $0 con SQLite y localStorage."
+                    ) : activeCourseId === 'evaluacion_ia' ? (
+                      "Un LLM no pasa assert. Métricas, guardrails, red team y SLOs convierten demos en productos QuimiSell confiables — sin sorpresas en producción."
                     ) : activeCourseId === 'edge_ia_movil' ? (
                       "Tu manifiesto exige IA en el silicio del teléfono: cuantiza, infiere local y protege datos. La nube complementa; el edge manda en Linux Lingo y tus APKs."
                     ) : activeCourseId === 'clean_code_solid' ? (
