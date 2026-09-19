@@ -18,7 +18,9 @@ import KaliModuleExtras from './components/KaliModuleExtras';
 import MathHero, { getMathPhase } from './components/MathHero';
 import MathModuleExtras from './components/MathModuleExtras';
 import ModuleNavigation from './components/ModuleNavigation';
+import SiteFooter from './components/SiteFooter';
 import { useTheme } from './hooks/useTheme';
+import { isModuleComplete } from './hooks/useModuleProgress';
 
 function polishedSidebarActiveClass(courseId: string, modId: number): string {
   if (courseId === 'complejidad_algoritmica' && modId >= 16) {
@@ -67,13 +69,14 @@ function moduleTrackLabel(courseId: string, modId: number): string {
 }
 
 const App: React.FC = () => {
-  const [activeCourseId, setActiveCourseId] = useState<string>('algoritmos');
+  const [activeCourseId, setActiveCourseId] = useState<string>('git_devops_vercel');
   const [activeModuleId, setActiveModuleId] = useState<number>(1);
   const [courseMenuOpen, setCourseMenuOpen] = useState<boolean>(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const [showFinalExam, setShowFinalExam] = useState<boolean>(false);
   const [showStudyPlan, setShowStudyPlan] = useState<boolean>(false);
   const [showLabChallenge, setShowLabChallenge] = useState<boolean>(false);
+  const [progressVersion, setProgressVersion] = useState(0);
   const { theme, toggleTheme } = useTheme();
 
   const activeCourse = COURSES_MAP[activeCourseId] || COURSES[0];
@@ -83,6 +86,10 @@ const App: React.FC = () => {
   const isMathCourse = activeCourseId === 'matematica';
   const isPolishedCourse = isAlgorithmsCourse || isComplexityCourse || isKaliCourse || isMathCourse;
   const activeModule = activeCourse.modules.find(m => m.id === activeModuleId) || activeCourse.modules[0];
+
+  const bumpProgress = () => setProgressVersion((v) => v + 1);
+  const moduleDone = (modId: number) =>
+    progressVersion >= 0 && isModuleComplete(activeCourseId, modId);
 
   const handleSelectCourse = (courseId: string) => {
     setActiveCourseId(courseId);
@@ -307,7 +314,7 @@ const App: React.FC = () => {
                 <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold transition-all duration-300 shrink-0 ${
                   activeModuleId === mod.id ? 'bg-indigo-600 text-white rotate-0' : 'bg-slate-200 text-slate-500 rotate-[-10deg] group-hover:rotate-0'
                 }`}>
-                  {mod.id}
+                  {moduleDone(mod.id) ? '✓' : mod.id}
                 </div>
                 <div className="flex flex-col overflow-hidden min-w-0">
                   <span className={`text-sm font-bold truncate ${activeModuleId === mod.id ? 'text-slate-900 dark:text-slate-100' : 'text-slate-600 dark:text-slate-400'}`}>
@@ -531,7 +538,12 @@ const App: React.FC = () => {
               )}
 
               {activeModule.quiz && (
-                <QuizSection questions={activeModule.quiz} moduleId={activeModule.id} />
+                <QuizSection
+                  questions={activeModule.quiz}
+                  moduleId={activeModule.id}
+                  courseId={activeCourseId}
+                  onProgressUpdate={bumpProgress}
+                />
               )}
             </div>
 
@@ -552,6 +564,10 @@ const App: React.FC = () => {
                   <p className="text-amber-800/80 dark:text-amber-200/80 leading-relaxed font-medium">
                     {activeCourseId === 'kali_linux' ? (
                       "En ciberseguridad, un escáner automático sin comprensión del paquete TCP subyacente es ruido inútil. Dominar cada flag (-sS, -T, NSE) y el estándar PTES te convierte en un auditor ético de precisión quirúrgica."
+                    ) : activeCourseId === 'git_devops_vercel' ? (
+                      "Git + CI + Vercel es el pipeline $0 que usa QuimiSell: rama → PR → Actions verde → preview → merge → producción. Sin base de datos, sin factura."
+                    ) : activeCourseId === 'edge_ia_movil' ? (
+                      "Tu manifiesto exige IA en el silicio del teléfono: cuantiza, infiere local y protege datos. La nube complementa; el edge manda en Linux Lingo y tus APKs."
                     ) : activeCourseId === 'clean_code_solid' ? (
                       "Cualquier programador puede escribir código que una computadora entienda; los ingenieros de elite escriben código que los humanos pueden entender (Tío Bob)."
                     ) : activeCourseId === 'ingeniero_ia' ? (
@@ -578,6 +594,8 @@ const App: React.FC = () => {
           </div>
         </main>
       </div>
+
+      <SiteFooter />
 
       {/* Modals */}
       {showStudyPlan && (
