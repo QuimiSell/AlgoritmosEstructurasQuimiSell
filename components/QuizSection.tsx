@@ -1,17 +1,43 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { QuizQuestion } from '../domain/models';
+import { markQuizPassed } from '../hooks/useModuleProgress';
 
 interface QuizSectionProps {
   questions: QuizQuestion[];
   moduleId: number;
+  courseId: string;
+  onProgressUpdate?: () => void;
 }
 
-const QuizSection: React.FC<QuizSectionProps> = ({ questions, moduleId }) => {
+const QuizSection: React.FC<QuizSectionProps> = ({
+  questions,
+  moduleId,
+  courseId,
+  onProgressUpdate,
+}) => {
   const [selectedAnswers, setSelectedAnswers] = useState<{ [key: number]: number }>({});
+  const progressReportedRef = useRef<string | null>(null);
 
   useEffect(() => {
     setSelectedAnswers({});
-  }, [moduleId]);
+    progressReportedRef.current = null;
+  }, [moduleId, courseId]);
+
+  const totalAnswered = Object.keys(selectedAnswers).length;
+  const correctCount = Object.entries(selectedAnswers).filter(
+    ([qIdx, oIdx]) => questions[Number(qIdx)].answerIndex === oIdx
+  ).length;
+  const isFinished = totalAnswered === questions.length;
+  const scorePct = isFinished ? Math.round((correctCount / questions.length) * 100) : 0;
+
+  useEffect(() => {
+    if (!isFinished || questions.length === 0) return;
+    const reportKey = `${courseId}:${moduleId}:${scorePct}`;
+    if (progressReportedRef.current === reportKey) return;
+    progressReportedRef.current = reportKey;
+    markQuizPassed(courseId, moduleId, scorePct);
+    onProgressUpdate?.();
+  }, [isFinished, scorePct, courseId, moduleId, onProgressUpdate, questions.length]);
 
   if (!questions || questions.length === 0) {
     return null;
@@ -24,14 +50,8 @@ const QuizSection: React.FC<QuizSectionProps> = ({ questions, moduleId }) => {
 
   const handleReset = () => {
     setSelectedAnswers({});
+    progressReportedRef.current = null;
   };
-
-  const totalAnswered = Object.keys(selectedAnswers).length;
-  const correctCount = Object.entries(selectedAnswers).filter(
-    ([qIdx, oIdx]) => questions[Number(qIdx)].answerIndex === oIdx
-  ).length;
-  const isFinished = totalAnswered === questions.length;
-  const scorePct = isFinished ? Math.round((correctCount / questions.length) * 100) : 0;
 
   return (
     <div className="bg-white dark:bg-slate-900/60 p-4 sm:p-8 rounded-2xl sm:rounded-[2rem] border border-slate-200 dark:border-slate-700/60 shadow-xl space-y-6 sm:space-y-8 animate-in fade-in duration-500 min-w-0">

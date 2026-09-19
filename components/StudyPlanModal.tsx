@@ -81,7 +81,7 @@ const StudyPlanModal: React.FC<StudyPlanModalProps> = ({ course, onClose }) => {
           {/* Sección 3: Resumen de los 10 Módulos */}
           <section className="space-y-4">
             <div className="flex items-center gap-3">
-              <h3 className="text-lg font-extrabold text-slate-900">Mapa Curricular: Resumen de los 10 Temas</h3>
+              <h3 className="text-lg font-extrabold text-slate-900 dark:text-slate-50">Mapa Curricular: {course.studyPlanReasons.length} Temas</h3>
               <div className="h-px flex-1 bg-slate-150"></div>
             </div>
             

@@ -1,35 +1,73 @@
 import path from 'path';
-import { defineConfig, loadEnv } from 'vite';
+import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { VitePWA } from 'vite-plugin-pwa';
 
-export default defineConfig(({ mode }) => {
-    const env = loadEnv(mode, '.', '');
-    return {
-      server: {
-        port: 3000,
-        host: '0.0.0.0',
+export default defineConfig({
+  server: {
+    port: 3000,
+    host: '0.0.0.0',
+  },
+  plugins: [
+    react(),
+    VitePWA({
+      registerType: 'autoUpdate',
+      includeAssets: ['favicon.svg'],
+      manifest: {
+        name: 'Master Class QuimiSell',
+        short_name: 'QuimiSell',
+        description:
+          'Plataforma educativa offline-first: algoritmos, ciberseguridad, IA móvil y más. Sin base de datos.',
+        theme_color: '#4f46e5',
+        background_color: '#f8fafc',
+        display: 'standalone',
+        lang: 'es',
+        start_url: '/',
+        icons: [
+          {
+            src: '/favicon.svg',
+            sizes: 'any',
+            type: 'image/svg+xml',
+            purpose: 'any maskable',
+          },
+        ],
       },
-      plugins: [react()],
-      define: {
-        'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
-        'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY)
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,ico,svg,woff2}'],
+        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
       },
-      resolve: {
-        alias: {
-          '@': path.resolve(__dirname, '.'),
-        }
-      },
-      build: {
-        chunkSizeWarningLimit: 1000,
-        rollupOptions: {
-          output: {
-            manualChunks(id) {
-              if (id.includes('node_modules')) {
-                return 'vendor';
-              }
-            }
+    }),
+  ],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, '.'),
+    },
+  },
+  build: {
+    chunkSizeWarningLimit: 1200,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('recharts')) return 'vendor-charts';
+            return 'vendor';
           }
-        }
-      }
-    };
+          if (id.includes('/courses/kaliLinuxCourse')) return 'course-kali';
+          if (id.includes('/courses/aiEngineerCourse')) return 'course-ai-engineer';
+          if (id.includes('/courses/algorithmicComplexityCourse')) return 'course-complexity';
+          if (id.includes('/courses/mathCourse')) return 'course-math';
+          if (id.includes('/courses/automataCompilerCourse')) return 'course-automata';
+          if (id.includes('/courses/cleanCodeCourse')) return 'course-clean-code';
+          if (id.includes('/courses/gitDevOpsCourse')) return 'course-git';
+          if (id.includes('/courses/edgeMobileAiCourse')) return 'course-edge-ai';
+          if (id.includes('/courses/redesDevCourse')) return 'course-redes';
+          if (id.includes('/courses/sqlDatosIaCourse')) return 'course-sql';
+          if (id.includes('/courses/evaluacionIaCourse')) return 'course-eval-ia';
+          if (id.includes('/courses/algorithmsCourse') || id.includes('/constants')) {
+            return 'course-algorithms';
+          }
+        },
+      },
+    },
+  },
 });
