@@ -20,6 +20,11 @@ FILES: list[tuple[Path, str]] = [
     (ROOT / "courses" / "aiEngineerCourse.ts", "ingeniero_ia"),
     (ROOT / "courses" / "kaliLinuxCourse.ts", "kali"),
     (ROOT / "courses" / "algorithmicComplexityCourse.ts", "complejidad"),
+    (ROOT / "courses" / "gitDevOpsCourse.ts", "git_devops"),
+    (ROOT / "courses" / "edgeMobileAiCourse.ts", "edge_ia"),
+    (ROOT / "courses" / "sqlDatosIaCourse.ts", "sql_datos"),
+    (ROOT / "courses" / "evaluacionIaCourse.ts", "evaluacion_ia"),
+    (ROOT / "courses" / "redesDevCourse.ts", "redes_dev"),
 ]
 
 DOMAIN_HOOKS = {
@@ -30,6 +35,11 @@ DOMAIN_HOOKS = {
     "ingeniero_ia": "arquitectura de software, IA aplicada y prácticas de ingeniería profesional",
     "kali": "Linux, redes, diagnóstico y ciberseguridad ofensiva/defensiva",
     "complejidad": "análisis asintótico, eficiencia computacional e IA",
+    "git_devops": "control de versiones, colaboración en equipo y pipelines CI/CD",
+    "edge_ia": "IA on-device, cuantización, privacidad y despliegue móvil",
+    "sql_datos": "datos relacionales, pipelines RAG y retrieval semántico",
+    "evaluacion_ia": "confiabilidad de sistemas con IA, métricas y guardrails",
+    "redes_dev": "redes TCP/IP, protocolos web y diagnóstico de conectividad",
 }
 
 INDUSTRY = {
@@ -67,6 +77,31 @@ INDUSTRY = {
         "Un bucle O(n²) invisible en un endpoint puede tumbar producción cuando el tráfico se multiplica por 10.",
         "Entrenar un Transformer es O(n²·d) en atención; por eso contextos largos requieren KV-cache y FlashAttention.",
         "Gauss-Jordan es O(n³) secuencial; las GPUs usan GEMM paralelo aunque ambos sean cúbicos en exponente.",
+    ],
+    "git_devops": [
+        "Linux kernel usa Git desde 2002; miles de contribuidores coordinan ramas sin bloquear el trunk.",
+        "Este repo QuimiSell despliega a Vercel solo cuando GitHub Actions pasa typecheck + build en el PR.",
+        "Conventional Commits permiten changelogs automáticos y semver en proyectos open source maduros.",
+    ],
+    "edge_ia": [
+        "Google ML Kit ejecuta detección de texto offline en el teléfono sin enviar fotos a servidores.",
+        "Linux Lingo (QuimiSell) apunta a inferencia local cuantizada INT8 para vocabulario sin costo de API.",
+        "ONNX Runtime Mobile compila modelos a kernels ARM NEON para latencia sub-100ms en gama media.",
+    ],
+    "sql_datos": [
+        "PostgreSQL con pgvector indexa millones de embeddings; k-NN naive O(n) colapsa sin índice HNSW.",
+        "RAG en producción chunk documentos con metadata page/source para citas verificables al usuario.",
+        "SQLite en Android (Room) persiste progreso offline — mismo patrón que localStorage en esta plataforma.",
+    ],
+    "evaluacion_ia": [
+        "OpenAI evals y LangSmith rastrean regresiones cuando cambias prompt o modelo en producción.",
+        "Guardrails de PII evitan que un LLM filtre emails en respuestas de soporte al cliente.",
+        "SLO de factualidad ≥90% en 7 días es contrato medible entre equipo de producto e ingeniería.",
+    ],
+    "redes_dev": [
+        "Un fetch() lento suele ser DNS+TLS, no JavaScript: devtools Network muestra waterfall completo.",
+        "Vercel Edge CDN cachea dist/ globalmente; Cache-Control immutable en assets hashed acelera repeat visits.",
+        "CORS bloquea APIs cross-origin hasta que el servidor envía Access-Control-Allow-Origin explícito.",
     ],
 }
 

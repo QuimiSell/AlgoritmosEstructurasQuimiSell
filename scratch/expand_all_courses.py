@@ -49,6 +49,11 @@ FILES = [
     ROOT / "courses" / "aiEngineerCourse.ts",
     ROOT / "courses" / "kaliLinuxCourse.ts",
     ROOT / "courses" / "algorithmicComplexityCourse.ts",
+    ROOT / "courses" / "gitDevOpsCourse.ts",
+    ROOT / "courses" / "edgeMobileAiCourse.ts",
+    ROOT / "courses" / "sqlDatosIaCourse.ts",
+    ROOT / "courses" / "evaluacionIaCourse.ts",
+    ROOT / "courses" / "redesDevCourse.ts",
 ]
 
 
@@ -311,42 +316,77 @@ def process_constants(text: str) -> str:
     return prefix + joined + suffix
 
 
+def find_modules_region(text: str) -> tuple[int, int] | None:
+    for pat in (r"export const COURSE_MODULES:\s*Module\[\]\s*=\s*\[", r"modules:\s*\["):
+        m = re.search(pat, text)
+        if m:
+            start = m.end()
+            depth = 1
+            i = start
+            while i < len(text) and depth > 0:
+                if text[i] == "[":
+                    depth += 1
+                elif text[i] == "]":
+                    depth -= 1
+                i += 1
+            return start, i - 1
+    return None
+
+
+def split_module_objects(body: str) -> list[str]:
+    modules: list[str] = []
+    pos = 0
+    while pos < len(body):
+        m = re.search(r"\bid:\s*\d+\s*,", body[pos:])
+        if not m:
+            break
+        id_pos = pos + m.start()
+        brace = body.rfind("{", pos, id_pos)
+        if brace == -1:
+            pos = id_pos + 1
+            continue
+        depth = 0
+        j = brace
+        while j < len(body):
+            if body[j] == "{":
+                depth += 1
+            elif body[j] == "}":
+                depth -= 1
+                if depth == 0:
+                    modules.append(body[brace : j + 1])
+                    pos = j + 1
+                    break
+            j += 1
+        else:
+            break
+    return modules
+
+
 def process_course_file(text: str) -> str:
     if "export const COURSE_MODULES" in text:
         return process_constants(text)
 
-    m = re.search(r"(modules:\s*\[)", text)
-    if not m:
+    region = find_modules_region(text)
+    if not region:
         return text
 
-    start = m.end()
-    depth = 1
-    i = start
-    while i < len(text) and depth > 0:
-        if text[i] == "[":
-            depth += 1
-        elif text[i] == "]":
-            depth -= 1
-        i += 1
-    body = text[start : i - 1]
-    prefix = text[:start]
-    suffix = text[i - 1 :]
+    start, end = region
+    modules = split_module_objects(text[start:end])
+    if not modules:
+        return text
 
-    parts = re.split(r"\n    \},\n    \{", body)
+    already_rich = "## Panorama del tema" in text
     processed = []
-    for mod in parts:
+    for mod in modules:
         chunk = mod
-        if not chunk.strip().startswith("{"):
-            chunk = "    {" + chunk
-        if not chunk.strip().endswith("}"):
-            chunk = chunk + "\n    }"
-        chunk = enrich_items(chunk)
-        chunk = enrich_content(chunk)
+        if not already_rich:
+            chunk = enrich_items(chunk)
+            chunk = enrich_content(chunk)
         chunk = expand_quiz(chunk)
         processed.append(chunk)
 
-    joined = ",\n    ".join(processed)
-    return prefix + joined + suffix
+    joined = ",\n".join(processed)
+    return text[:start] + joined + text[end:]
 
 
 def main():
