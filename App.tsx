@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { COURSES, COURSES_MAP } from './courses';
+import { coursePriorityRank } from './constants/site';
 import BigOChart from './components/BigOChart';
 import CodeBlock from './components/CodeBlock';
 import AIChatDrawer from './components/AIChatDrawer';
@@ -78,7 +79,7 @@ function moduleTrackLabel(courseId: string, modId: number): string {
 }
 
 const App: React.FC = () => {
-  const [activeCourseId, setActiveCourseId] = useState<string>('git_devops_vercel');
+  const [activeCourseId, setActiveCourseId] = useState<string>('matematica');
   const [activeModuleId, setActiveModuleId] = useState<number>(1);
   const [courseMenuOpen, setCourseMenuOpen] = useState<boolean>(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
@@ -212,11 +213,12 @@ const App: React.FC = () => {
                    className="absolute right-0 mt-2 w-[min(20rem,calc(100vw-1.5rem))] bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 p-2 z-50 animate-in fade-in slide-in-from-top-3 duration-200 max-h-[min(70dvh,28rem)] overflow-y-auto overscroll-contain scroll-touch"
                  >
                    <span className="sticky top-0 z-10 block px-3 py-1.5 text-[8px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest border-b border-slate-100 dark:border-slate-800 mb-1 bg-white dark:bg-slate-900">
-                     Materias ({COURSES.length})
+                     Plan de estudios · {COURSES.length} materias (orden recomendado)
                    </span>
 
                    {COURSES.map(course => {
                      const isSelected = activeCourseId === course.id;
+                     const rank = coursePriorityRank(course.id);
                      return (
                        <button
                          key={course.id}
@@ -227,11 +229,14 @@ const App: React.FC = () => {
                            isSelected ? 'bg-indigo-50/90 dark:bg-indigo-950/60 text-indigo-950 dark:text-indigo-100 font-bold' : 'hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300'
                          }`}
                        >
-                         <div className="flex items-center gap-2.5">
-                           <span className="text-lg">{course.icon}</span>
-                           <div className="flex flex-col overflow-hidden">
+                         <div className="flex items-center gap-2.5 min-w-0">
+                           <span className="shrink-0 w-6 h-6 rounded-lg bg-slate-100 dark:bg-slate-800 text-[10px] font-black text-slate-500 dark:text-slate-400 flex items-center justify-center">
+                             {rank}
+                           </span>
+                           <span className="text-lg shrink-0">{course.icon}</span>
+                           <div className="flex flex-col overflow-hidden min-w-0">
                              <span className="text-xs font-bold leading-snug truncate">{course.title}</span>
-                             <span className="text-[9px] text-slate-400 font-bold uppercase">{course.modules.length} Módulos</span>
+                             <span className="text-[9px] text-slate-400 font-bold uppercase">{course.modules.length} módulos</span>
                            </div>
                          </div>
                          {isSelected ? (
@@ -296,11 +301,12 @@ const App: React.FC = () => {
               </div>
               <div className="p-4">
                 <span className="block px-2 py-1 text-[9px] font-black text-slate-400 uppercase tracking-widest mb-2">
-                  Cambiar materia ({COURSES.length} cursos)
+                  Plan de estudios · orden recomendado
                 </span>
                 <div className="space-y-1">
                   {COURSES.map(course => {
                     const isSelected = activeCourseId === course.id;
+                    const rank = coursePriorityRank(course.id);
                     return (
                       <button
                         key={course.id}
@@ -310,6 +316,9 @@ const App: React.FC = () => {
                           isSelected ? 'bg-indigo-50 dark:bg-indigo-950/50 text-indigo-950 dark:text-indigo-100 font-bold ring-1 ring-indigo-200 dark:ring-indigo-800' : 'hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300'
                         }`}
                       >
+                        <span className="shrink-0 w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-800 text-[11px] font-black text-slate-500 dark:text-slate-400 flex items-center justify-center">
+                          {rank}
+                        </span>
                         <span className="text-xl shrink-0">{course.icon}</span>
                         <div className="min-w-0 flex-1">
                           <span className="text-sm font-bold block leading-snug line-clamp-2">{course.title}</span>
@@ -608,15 +617,15 @@ const App: React.FC = () => {
                     {activeCourseId === 'kali_linux' ? (
                       "En ciberseguridad, un escáner automático sin comprensión del paquete TCP subyacente es ruido inútil. Dominar cada flag (-sS, -T, NSE) y el estándar PTES te convierte en un auditor ético de precisión quirúrgica."
                     ) : activeCourseId === 'git_devops_vercel' ? (
-                      "Git + CI + Vercel es el pipeline $0 que usa QuimiSell: rama → PR → Actions verde → preview → merge → producción. Sin base de datos, sin factura."
+                      "Rama → pull request → CI verde → revisión → merge es el ritmo de cualquier equipo serio. Automatizar build y deploy te libera para pensar en el producto, no en copiar archivos a mano."
                     ) : activeCourseId === 'redes_desarrolladores' ? (
-                      "Antes de Nmap y Kali, entiende DNS, TLS y HTTP: un escaneo sin contexto de capas es ruido. Esta base te convierte en dev full-stack y auditor con criterio."
+                      "Antes de herramientas ofensivas, entiende DNS, TLS y HTTP. Saber leer un waterfall de red te ahorra horas culpando al framework cuando el problema es latencia o CORS."
                     ) : activeCourseId === 'sql_datos_ia' ? (
-                      "RAG sin SQL y metadata limpia es alucinación estructurada. JOINs, índices O(log n) y chunking son el cimiento de IA confiable — incluso en stack $0 con SQLite y localStorage."
+                      "Los sistemas con IA necesitan datos ordenados: JOINs correctos, índices y metadata de documentos. Sin eso, cualquier modelo — por bueno que sea — trabaja sobre arena movediza."
                     ) : activeCourseId === 'evaluacion_ia' ? (
-                      "Un LLM no pasa assert. Métricas, guardrails, red team y SLOs convierten demos en productos QuimiSell confiables — sin sorpresas en producción."
+                      "Un LLM no pasa assert. Métricas, guardrails y pruebas adversariales separan un demo de algo que puedes mantener en producción sin sorpresas."
                     ) : activeCourseId === 'edge_ia_movil' ? (
-                      "Tu manifiesto exige IA en el silicio del teléfono: cuantiza, infiere local y protege datos. La nube complementa; el edge manda en Linux Lingo y tus APKs."
+                      "Ejecutar modelos en el dispositivo reduce latencia y protege datos del usuario. Cuantización, TFLite y buen diseño de app son habilidades concretas de ingeniería móvil."
                     ) : activeCourseId === 'clean_code_solid' ? (
                       "Cualquier programador puede escribir código que una computadora entienda; los ingenieros de elite escriben código que los humanos pueden entender (Tío Bob)."
                     ) : activeCourseId === 'ingeniero_ia' ? (
