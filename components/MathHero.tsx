@@ -91,11 +91,11 @@ const MathHero: React.FC<MathHeroProps> = ({ module, totalModules }) => {
           </div>
         </div>
 
-        <p className="text-white/80 text-base sm:text-lg md:text-xl font-medium leading-relaxed max-w-2xl">
+        <p className="text-white/80 text-base sm:text-lg md:text-xl font-medium leading-relaxed max-w-3xl xl:max-w-4xl 2xl:max-w-5xl">
           {module.description}
         </p>
 
-        <div className="mt-6 sm:mt-8 flex flex-wrap gap-3 sm:gap-4">
+        <div className="mt-6 sm:mt-8 hero-stats-grid">
           {[
             { label: 'Módulos', value: String(totalModules) },
             { label: 'Autoevaluación', value: '12 preguntas' },
@@ -111,7 +111,7 @@ const MathHero: React.FC<MathHeroProps> = ({ module, totalModules }) => {
           ))}
         </div>
 
-        <div className="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl">
+        <div className="mt-6 sm:mt-8 hero-progress-grid">
           <div>
             <div className="flex justify-between text-[10px] font-bold uppercase tracking-wider text-white/60 mb-2">
               <span>Progreso total</span>

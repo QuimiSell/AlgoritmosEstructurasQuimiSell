@@ -42,7 +42,7 @@ const ComplexityModuleExtras: React.FC<ComplexityModuleExtrasProps> = ({ moduleI
             </p>
           </div>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
           {NOTATION_CARDS.map(card => (
             <div
               key={card.l}
@@ -80,7 +80,7 @@ const ComplexityModuleExtras: React.FC<ComplexityModuleExtrasProps> = ({ moduleI
             y pasa a medir FLOPs en capas densas, atención cuadrática en Transformers y trade-offs entre entrenamiento e inferencia.
           </p>
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+        <div className="card-grid-responsive">
           {AI_FLOPS_CARDS.map(card => (
             <div
               key={card.l}
