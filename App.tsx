@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { COURSES, COURSES_MAP } from './courses';
 import BigOChart from './components/BigOChart';
 import CodeBlock from './components/CodeBlock';
@@ -20,7 +20,8 @@ import MathModuleExtras from './components/MathModuleExtras';
 import ModuleNavigation from './components/ModuleNavigation';
 import SiteFooter from './components/SiteFooter';
 import { useTheme } from './hooks/useTheme';
-import { isModuleComplete } from './hooks/useModuleProgress';
+import { getCompletedModuleIds } from './hooks/useModuleProgress';
+import { useMenuDismiss } from './hooks/useMenuDismiss';
 
 function polishedSidebarActiveClass(courseId: string, modId: number): string {
   if (courseId === 'complejidad_algoritmica' && modId >= 16) {
@@ -57,6 +58,11 @@ function polishedMobileActiveClass(courseId: string, modId: number): string {
 }
 
 function moduleTrackLabel(courseId: string, modId: number): string {
+  if (courseId === 'git_devops_vercel') return 'Git · CI · Vercel';
+  if (courseId === 'edge_ia_movil') return 'Edge · IA local';
+  if (courseId === 'ingeniero_ia') return 'Arquitectura IA';
+  if (courseId === 'clean_code_solid') return 'Clean Code · SOLID';
+  if (courseId === 'automatas_compiladores') return 'Teoría formal';
   if (courseId === 'complejidad_algoritmica' && modId >= 16) return 'Big-O en IA';
   if (courseId === 'kali_linux') {
     const labels = ['Fundamentos Linux', 'Nmap & Recon', 'Auditoría Ofensiva', 'Post-Explotación'];
@@ -78,6 +84,13 @@ const App: React.FC = () => {
   const [showLabChallenge, setShowLabChallenge] = useState<boolean>(false);
   const [progressVersion, setProgressVersion] = useState(0);
   const { theme, toggleTheme } = useTheme();
+  const courseMenuRef = useRef<HTMLDivElement>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+
+  const closeCourseMenu = useCallback(() => setCourseMenuOpen(false), []);
+  const closeMobileMenu = useCallback(() => setMobileMenuOpen(false), []);
+  useMenuDismiss(courseMenuOpen, closeCourseMenu, courseMenuRef);
+  useMenuDismiss(mobileMenuOpen, closeMobileMenu, mobileMenuRef);
 
   const activeCourse = COURSES_MAP[activeCourseId] || COURSES[0];
   const isAlgorithmsCourse = activeCourseId === 'algoritmos';
@@ -87,9 +100,15 @@ const App: React.FC = () => {
   const isPolishedCourse = isAlgorithmsCourse || isComplexityCourse || isKaliCourse || isMathCourse;
   const activeModule = activeCourse.modules.find(m => m.id === activeModuleId) || activeCourse.modules[0];
 
-  const bumpProgress = () => setProgressVersion((v) => v + 1);
-  const moduleDone = (modId: number) =>
-    progressVersion >= 0 && isModuleComplete(activeCourseId, modId);
+  const bumpProgress = useCallback(() => setProgressVersion((v) => v + 1), []);
+  const completedModuleIds = useMemo(
+    () => getCompletedModuleIds(activeCourseId),
+    [activeCourseId, progressVersion]
+  );
+  const moduleDone = useCallback(
+    (modId: number) => completedModuleIds.has(modId),
+    [completedModuleIds]
+  );
 
   const handleSelectCourse = (courseId: string) => {
     setActiveCourseId(courseId);
@@ -112,13 +131,19 @@ const App: React.FC = () => {
     };
   }, [mobileMenuOpen, courseMenuOpen]);
 
+  useEffect(() => {
+    if (activeModuleId > activeCourse.modules.length) {
+      setActiveModuleId(1);
+    }
+  }, [activeCourseId, activeCourse.modules.length, activeModuleId]);
+
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 transition-colors duration-300 selection:bg-indigo-100 dark:selection:bg-indigo-900 selection:text-indigo-900 dark:selection:text-indigo-100">
       {/* Header */}
       <header className="bg-white/80 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-50 supports-[padding:max(0px)]:pt-[env(safe-area-inset-top)] transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 h-14 sm:h-16 flex items-center justify-between gap-2">
           <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
-            <div className="w-9 h-9 sm:w-10 sm:h-10 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold shadow-lg shadow-indigo-200 shrink-0">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold shadow-lg shadow-indigo-200/80 dark:shadow-indigo-900/40 shrink-0">
               {activeCourse.icon}
             </div>
             <div className="flex flex-col min-w-0">
@@ -137,7 +162,7 @@ const App: React.FC = () => {
             aria-label={mobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
             aria-expanded={mobileMenuOpen}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden shrink-0 w-10 h-10 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 flex items-center justify-center text-lg font-bold shadow-sm active:scale-95 transition cursor-pointer"
+            className="md:hidden shrink-0 w-10 h-10 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 flex items-center justify-center text-lg font-bold shadow-sm active:scale-95 transition cursor-pointer"
           >
             {mobileMenuOpen ? '✕' : '☰'}
           </button>
@@ -145,35 +170,46 @@ const App: React.FC = () => {
           <div className="flex items-center gap-2 shrink-0">
             <ThemeToggle theme={theme} onToggle={toggleTheme} compact />
 
-          <nav className="hidden lg:flex gap-4 xl:gap-6 items-center shrink-0">
-             <button 
+          <nav className="hidden md:flex gap-3 lg:gap-4 xl:gap-6 items-center shrink-0 min-w-0">
+             <button
+               type="button"
                onClick={() => setShowStudyPlan(true)}
-               className="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition cursor-pointer bg-transparent border-none p-0"
+               className="hidden lg:inline text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition cursor-pointer bg-transparent border-none p-0 whitespace-nowrap"
              >
                Plan de Estudios
              </button>
-             <button 
+             <button
+               type="button"
                onClick={() => setShowLabChallenge(true)}
-               className="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition cursor-pointer bg-transparent border-none p-0"
+               className="hidden lg:inline text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition cursor-pointer bg-transparent border-none p-0 whitespace-nowrap"
              >
                Laboratorio
              </button>
              
              {/* Selector Desplegable de Cursos */}
-             <div className="relative">
+             <div className="relative" ref={courseMenuRef}>
                <button
-                 onClick={() => setCourseMenuOpen(!courseMenuOpen)}
-                 className="flex items-center gap-2 bg-indigo-50 dark:bg-indigo-950/50 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 text-indigo-950 dark:text-indigo-100 border border-indigo-200 dark:border-indigo-800 px-4 py-2 rounded-full text-xs font-extrabold transition shadow-sm cursor-pointer"
+                 type="button"
+                 aria-haspopup="menu"
+                 aria-expanded={courseMenuOpen}
+                 aria-controls="course-menu-panel"
+                 onClick={() => setCourseMenuOpen((open) => !open)}
+                 className="flex items-center gap-1.5 sm:gap-2 bg-indigo-50 dark:bg-indigo-950/50 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 text-indigo-950 dark:text-indigo-100 border border-indigo-200 dark:border-indigo-800 px-3 sm:px-4 py-2 rounded-full text-[10px] sm:text-xs font-extrabold transition shadow-sm cursor-pointer max-w-[9rem] sm:max-w-none"
                >
-                 <span>{activeCourse.icon}</span>
-                 <span>{activeCourse.shortTitle}</span>
-                 <span className="text-[8px] opacity-60 ml-1">▼</span>
+                 <span className="shrink-0">{activeCourse.icon}</span>
+                 <span className="truncate">{activeCourse.shortTitle}</span>
+                 <span className="text-[8px] opacity-60 shrink-0" aria-hidden="true">{courseMenuOpen ? '▲' : '▼'}</span>
                </button>
                
                {courseMenuOpen && (
-                 <div className="absolute right-0 mt-2 w-80 bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 p-2 z-50 animate-in fade-in slide-in-from-top-3 duration-200">
-                   <span className="block px-3 py-1.5 text-[8px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest border-b border-slate-100 dark:border-slate-800 mb-1">
-                     Selector de Materias Habilitadas ({COURSES.length} Cursos)
+                 <div
+                   id="course-menu-panel"
+                   role="menu"
+                   aria-label="Seleccionar curso"
+                   className="absolute right-0 mt-2 w-[min(20rem,calc(100vw-1.5rem))] bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 p-2 z-50 animate-in fade-in slide-in-from-top-3 duration-200 max-h-[min(70dvh,28rem)] overflow-y-auto overscroll-contain scroll-touch"
+                 >
+                   <span className="sticky top-0 z-10 block px-3 py-1.5 text-[8px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest border-b border-slate-100 dark:border-slate-800 mb-1 bg-white dark:bg-slate-900">
+                     Materias ({COURSES.length})
                    </span>
 
                    {COURSES.map(course => {
@@ -181,6 +217,8 @@ const App: React.FC = () => {
                      return (
                        <button
                          key={course.id}
+                         type="button"
+                         role="menuitem"
                          onClick={() => handleSelectCourse(course.id)}
                          className={`w-full text-left px-3 py-2.5 rounded-xl flex items-center justify-between group transition cursor-pointer ${
                            isSelected ? 'bg-indigo-50/90 dark:bg-indigo-950/60 text-indigo-950 dark:text-indigo-100 font-bold' : 'hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300'
@@ -205,9 +243,10 @@ const App: React.FC = () => {
                )}
              </div>
 
-              <button 
+              <button
+                type="button"
                 onClick={() => setShowFinalExam(true)}
-                className="bg-slate-900 dark:bg-indigo-600 text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-slate-800 dark:hover:bg-indigo-500 transition shadow-md active:scale-95 cursor-pointer"
+                className="hidden lg:inline bg-slate-900 dark:bg-indigo-600 text-white px-4 xl:px-5 py-2 rounded-full text-xs xl:text-sm font-bold hover:bg-slate-800 dark:hover:bg-indigo-500 transition shadow-md active:scale-95 cursor-pointer whitespace-nowrap"
               >
                 Práctica Final
               </button>
@@ -221,14 +260,15 @@ const App: React.FC = () => {
             <button
               type="button"
               aria-label="Cerrar menú"
-              className="lg:hidden fixed inset-0 top-14 sm:top-16 bg-slate-900/40 z-40 cursor-pointer"
-              onClick={() => setMobileMenuOpen(false)}
+              className="md:hidden fixed inset-0 top-14 sm:top-16 bg-slate-900/40 dark:bg-black/50 z-40 cursor-pointer"
+              onClick={closeMobileMenu}
             />
-            <div className="lg:hidden absolute left-0 right-0 top-full z-50 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-2xl max-h-[calc(100dvh-3.5rem)] sm:max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain scroll-touch pb-[env(safe-area-inset-bottom)]">
+            <div
+              ref={mobileMenuRef}
+              className="md:hidden absolute left-0 right-0 top-full z-50 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-2xl max-h-[calc(100dvh-3.5rem)] sm:max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain scroll-touch pb-[env(safe-area-inset-bottom)]"
+            >
               <div className="p-4 space-y-2 border-b border-slate-100 dark:border-slate-800">
-                <div className="flex justify-end pb-2">
-                  <ThemeToggle theme={theme} onToggle={toggleTheme} />
-                </div>
+                <span className="block text-[10px] font-black text-slate-400 uppercase tracking-widest pb-1">Menú</span>
                 <button
                   type="button"
                   onClick={() => { setShowStudyPlan(true); setMobileMenuOpen(false); }}
@@ -269,7 +309,7 @@ const App: React.FC = () => {
                       >
                         <span className="text-xl shrink-0">{course.icon}</span>
                         <div className="min-w-0 flex-1">
-                          <span className="text-sm font-bold block leading-snug">{course.title}</span>
+                          <span className="text-sm font-bold block leading-snug line-clamp-2">{course.title}</span>
                           <span className="text-[10px] text-slate-400 font-bold uppercase">{course.modules.length} módulos</span>
                         </div>
                         {isSelected && (
@@ -353,9 +393,9 @@ const App: React.FC = () => {
                   }`}
                 >
                   <span className={`w-6 h-6 rounded-md flex items-center justify-center text-[10px] font-black shrink-0 ${
-                    activeModuleId === mod.id ? 'bg-white/20' : 'bg-slate-100 text-slate-500'
+                    activeModuleId === mod.id ? 'bg-white/20' : moduleDone(mod.id) ? 'bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300' : 'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-300'
                   }`}>
-                    {mod.id}
+                    {moduleDone(mod.id) ? '✓' : mod.id}
                   </span>
                   <span className="text-xs font-bold max-w-[9rem] sm:max-w-[12rem] truncate">
                     {mod.title.split(': ')[1] || mod.title}
@@ -378,7 +418,7 @@ const App: React.FC = () => {
           ) : isMathCourse ? (
             <MathHero module={activeModule} totalModules={activeCourse.modules.length} />
           ) : (
-          <section className="bg-slate-900 rounded-2xl sm:rounded-[2rem] p-5 sm:p-8 md:p-12 text-white relative overflow-hidden shadow-2xl shadow-slate-200 dark:shadow-black/40 group">
+          <section className="bg-slate-900 dark:bg-slate-900/95 rounded-2xl sm:rounded-[2rem] p-5 sm:p-8 md:p-12 text-white relative overflow-hidden shadow-2xl shadow-slate-200 dark:shadow-black/40 ring-1 ring-slate-800/50 group">
             <div className="relative z-10 max-w-2xl">
               <span className="inline-block px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 text-[10px] font-bold uppercase tracking-widest mb-3 sm:mb-4 border border-indigo-500/30">
                 {activeCourse.shortTitle} • Unidad {activeModule.id} de {activeCourse.modules.length}

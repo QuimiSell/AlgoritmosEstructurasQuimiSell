@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { QuizQuestion } from '../domain/models';
 import { markQuizPassed } from '../hooks/useModuleProgress';
 
@@ -16,10 +16,12 @@ const QuizSection: React.FC<QuizSectionProps> = ({
   onProgressUpdate,
 }) => {
   const [selectedAnswers, setSelectedAnswers] = useState<{ [key: number]: number }>({});
+  const progressReportedRef = useRef<string | null>(null);
 
   useEffect(() => {
     setSelectedAnswers({});
-  }, [moduleId]);
+    progressReportedRef.current = null;
+  }, [moduleId, courseId]);
 
   const totalAnswered = Object.keys(selectedAnswers).length;
   const correctCount = Object.entries(selectedAnswers).filter(
@@ -30,6 +32,9 @@ const QuizSection: React.FC<QuizSectionProps> = ({
 
   useEffect(() => {
     if (!isFinished || questions.length === 0) return;
+    const reportKey = `${courseId}:${moduleId}:${scorePct}`;
+    if (progressReportedRef.current === reportKey) return;
+    progressReportedRef.current = reportKey;
     markQuizPassed(courseId, moduleId, scorePct);
     onProgressUpdate?.();
   }, [isFinished, scorePct, courseId, moduleId, onProgressUpdate, questions.length]);
@@ -45,6 +50,7 @@ const QuizSection: React.FC<QuizSectionProps> = ({
 
   const handleReset = () => {
     setSelectedAnswers({});
+    progressReportedRef.current = null;
   };
 
   return (

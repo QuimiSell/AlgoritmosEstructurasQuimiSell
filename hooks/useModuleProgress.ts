@@ -34,9 +34,21 @@ export function markModuleComplete(courseId: string, moduleId: number): void {
   writeJson(MODULE_KEY, map);
 }
 
-export function isModuleComplete(courseId: string, moduleId: number): boolean {
+export function getCompletedModuleIds(courseId: string): Set<number> {
   const map = readJson<ModuleProgressMap>(MODULE_KEY, {});
-  return map[courseModuleKey(courseId, moduleId)] === true;
+  const prefix = `${courseId}:`;
+  const ids = new Set<number>();
+  for (const key of Object.keys(map)) {
+    if (map[key] && key.startsWith(prefix)) {
+      const id = Number(key.slice(prefix.length));
+      if (!Number.isNaN(id)) ids.add(id);
+    }
+  }
+  return ids;
+}
+
+export function isModuleComplete(courseId: string, moduleId: number): boolean {
+  return getCompletedModuleIds(courseId).has(moduleId);
 }
 
 export function markQuizPassed(courseId: string, moduleId: number, scorePct: number): void {

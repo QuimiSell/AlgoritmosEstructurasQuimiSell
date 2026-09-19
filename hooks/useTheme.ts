@@ -14,6 +14,10 @@ function getInitialTheme(): Theme {
 function applyTheme(theme: Theme) {
   document.documentElement.classList.toggle('dark', theme === 'dark');
   localStorage.setItem(STORAGE_KEY, theme);
+  const meta = document.querySelector('meta[name="theme-color"]');
+  if (meta) {
+    meta.setAttribute('content', theme === 'dark' ? '#020617' : '#f8fafc');
+  }
 }
 
 export function useTheme() {
