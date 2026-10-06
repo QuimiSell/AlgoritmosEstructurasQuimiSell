@@ -74,7 +74,7 @@ const AIChatDrawer: React.FC<AIChatDrawerProps> = ({ moduleTitle, moduleId, modu
   const currentExercise = exercises[activeExIdx];
 
   return (
-    <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl sm:rounded-[2rem] flex flex-col min-h-[420px] max-h-[75dvh] lg:h-[780px] lg:max-h-none shadow-xl overflow-hidden ring-1 ring-slate-100 dark:ring-slate-800 animate-in fade-in duration-500">
+    <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl sm:rounded-[2rem] flex flex-col min-h-[420px] max-h-[75dvh] lg:min-h-[480px] lg:max-h-[calc(100dvh-7rem)] shadow-xl overflow-hidden ring-1 ring-slate-100 dark:ring-slate-800 animate-in fade-in duration-500">
       
       {/* Cabecera del Panel */}
       <div className="p-4 sm:p-6 border-b border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 flex flex-col gap-1.5 shrink-0">
