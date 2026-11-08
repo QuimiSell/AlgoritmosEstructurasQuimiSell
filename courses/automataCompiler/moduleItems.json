@@ -1,0 +1,167 @@
+{
+  "1": [
+    "Alfabeto Σ: conjunto finito no vacío de símbolos; distinguir símbolo de cadena w ∈ Σ*.",
+    "Longitud |w|, cadena vacía ε como neutro de concatenación: wε = εw = w.",
+    "Σ* versus Σ+: clausura de Kleene incluye ε; Σ+ = Σ* \\ {ε} si Σ ≠ ∅.",
+    "Lenguaje formal L ⊆ Σ*: conjunto (finito o infinito); ∅ ≠ {ε}.",
+    "Operaciones algebraicas: unión, concatenación de lenguajes L₁L₂ y estrella L*.",
+    "Conteo: |Σ|^k cadenas de longitud exacta k; Σ* es infinito pero enumerable.",
+    "Prefijos, sufijos y factores: vocabulario para bombeo y análisis de protocolos.",
+    "Modelar texto fuente como cadena sobre bytes/ASCII antes de tokenizar.",
+    "Validar pertenencia char a Σ en lexers para rechazar símbolos fuera del alfabeto."
+  ],
+  "2": [
+    "DFA como 5-tupla M = (Q, Σ, δ, q₀, F): función total δ : Q × Σ → Q.",
+    "Interpretación extendida δ* sobre cadenas; aceptación cuando δ*(q₀, w) ∈ F.",
+    "Tabla de transiciones: implementación como dict anidado o matriz indexada.",
+    "Lenguaje L(M) = {w | δ*(q₀, w) ∈ F}; equivalencia entre definición y simulación.",
+    "Estados trampa y minimización conceptual: reducir filas redundantes en la tabla.",
+    "Diseño por casos: acumular paridad, sufijos o contadores módulo n en Q.",
+    "DFA y reconocimiento en O(n) tiempo y O(1) espacio extra (solo estado actual).",
+    "Producto cartesiano de autómatas para intersección de lenguajes regulares.",
+    "Diferencia DFA vs NFA: δ debe ser determinista y total en toda entrada válida."
+  ],
+  "3": [
+    "NFA: δ : Q × (Σ ∪ {ε}) → P(Q); varios estados activos en paralelo.",
+    "ε-transiciones consumen entrada vacía; cierre ε-clausura antes de leer símbolos.",
+    "Algoritmo ε-clausura con pila/DFS sobre aristas ε en el grafo de estados.",
+    "Construcción de subconjuntos: estados del DFA son subconjuntos de Q del NFA.",
+    "Blow-up exponencial |2^Q| en el peor caso al convertir NFA → DFA.",
+    "NFA adecuado para unión e intersección «naturales» vía ε y nuevos estados.",
+    "Simulación on-the-fly del NFA sin materializar el DFA completo.",
+    "Determinización preserva el lenguaje aceptado: L(NFA) = L(DFA equivalente).",
+    "Tablas δ con conjuntos en Python (frozenset) como claves de estados compuestos."
+  ],
+  "4": [
+    "Sintaxis regex: literales, concatenación implícita, |, *, +, ?, paréntesis.",
+    "Semántica como lenguaje sobre Σ; precedencia: estrella > concatenación > unión.",
+    "Teorema de Kleene: equivalencia regex, DFA y NFA sobre lenguajes regulares.",
+    "Construcción de Thompson: fragmentos NFA-ε por operador con conteos de estados.",
+    "Equivalencia regex → NFA (Thompson) y DFA → regex (eliminación de estados).",
+    "Operadores POSIX vs teóricos: greedy backtracking versus autómata en motores.",
+    "Identificadores y literales numéricos como patrones regulares en especificación léxica.",
+    "Límites: no expresar balanceo de paréntesis anidados arbitrario solo con regex.",
+    "Optimización de NFA ε-reducción antes de determinizar en compiladores de patrones."
+  ],
+  "5": [
+    "Pumping lemma para regulares: ∃p tal que |w| ≥ p ⇒ w = xyz con |xy| ≤ p, |y| ≥ 1.",
+    "Condición de bombeo: ∀i ≥ 0, xyⁱz ∈ L; contradicción al bombar fuera del lenguaje.",
+    "Elección de w adverso (pumping length p) y descomposición forzada en la porción xyc.",
+    "Casos i = 0 o i = 2 para colapsar o duplicar símbolos estratégicos.",
+    "Demostrar L = {aⁿbⁿ} no regular: y solo puede contener a's rompiendo balance.",
+    "Palíndromos sobre {a,b} y lenguajes con dependencias entre posiciones distantes.",
+    "Diferencia necesidad vs suficiencia: bombeo caracteriza regulares (conversión completa).",
+    "Errores: asumir |y| ≤ p global o olvidar verificar i arbitrario en la contradicción.",
+    "Uso en diseño: si bombeo falla, buscar CFG/PDA en lugar de más estados DFA."
+  ],
+  "6": [
+    "CFG G = (V, Σ, P, S): producciones A → α con A ∈ V y α ∈ (V ∪ Σ)*.",
+    "Derivación leftmost/rightmost; árbol de derivación como estructura de análisis.",
+    "Lenguaje generado L(G) por cadenas de terminales derivables desde S.",
+    "Ambigüedad: múltiples árboles para la misma cadena; impacto en parseo declarativo.",
+    "Eliminación de ambigüedad en expresiones (precedencia y asociatividad).",
+    "Formas normales (FNC paso adelante): facilitan CYK y demostraciones.",
+    "Lexer entrega tokens; CFG define sintaxis sobre alfabeto de tokens, no caracteres sueltos.",
+    "Verificación de pertenencia por búsqueda guiada versus enumeración de Σ^n.",
+    "Gramáticas recursivas izquierda/derecha y su relación con parsers LL/LR."
+  ],
+  "7": [
+    "PDA como 7-tupla con pila Γ; transición depende de tope y símbolo de entrada (o ε).",
+    "Aceptación por pila vacía o estado final; L libre de contexto = L aceptado por PDA.",
+    "Correspondencia CFG ↔ PDA: simular derivaciones con símbolos en la pila.",
+    "Forma normal de Chomsky (CNF): A → BC o A → a; longitud derivación acotada.",
+    "Algoritmo CYK en O(n³|G|): tabla booleana por subcadenas w[i..j].",
+    "L = {aⁿbⁿcⁿ} no CF; separación de capacidades respecto a regulares.",
+    "PDA determinista vs no determinista: subfamilia estricta en algunos lenguajes.",
+    "Uso de pila en parsers shift-reduce para emparejar delimitadores anidados.",
+    "Limitaciones CYK: útil teórico; LL/LR dominan en compiladores por eficiencia lineal."
+  ],
+  "8": [
+    "Máquina de Turing: cinta infinita, cabezal, transiciones δ(q, a) → (q', b, M).",
+    "Problema de la parada (halting): no existe MT que decida parada para toda MT-M.",
+    "Diagonal de Cantor y reducción para pruebas de indecidibilidad.",
+    "Jerarquía de Chomsky: tipo 3 (regular), 2 (CF), 1 (CS), 0 (RE) y contenciones.",
+    "Lenguajes recursivamente enumerables vs recursivos (decidibles).",
+    "MT multi-cinta y simuladores: constantes en tiempo, mismo poder expresivo.",
+    "Límites de optimización estática: análisis exacto de flujo puede ser indecidible.",
+    "Universalidad: MT U que interpreta codificaciones ⟨M⟩, w de otras máquinas.",
+    "Conexión práctica: reconocer cuándo un analizador no puede ser siempre correcto y total."
+  ],
+  "9": [
+    "Fases: análisis (front), optimización intermedia (middle), generación (back).",
+    "Interfaz entre fases: árbol, tabla de símbolos, IR, mapas de constantes.",
+    "Manejo de errores recovery por fase sin abortar compilación prematuramente.",
+    "Passes múltiples: semántica después de parser; codegen después de optimizar IR.",
+    "Driver del compilador: orquestación, flags, archivos objeto y enlazado posterior.",
+    "Formatos intermedios portables (LLVM bitcode, stack machine) versus TAC ad hoc.",
+    "Separación de concerns: lexer no conoce tipos; parser no emite asm directamente.",
+    "Tablas y diagnósticos: filas/columnas de error ligadas al AST o tokens.",
+    "Pipeline incremental y compilación por unidades (módulos) en toolchains reales."
+  ],
+  "10": [
+    "Lexema vs token: patrón en fuente versus clase + atributos en flujo interno.",
+    "Autómatas y regex en especificación declarativa de tokens (Flex, lexer hand-written).",
+    "Prioridad y regla longest-match para resolver conflictos entre patrones solapados.",
+    "Manejo de espacios, comentarios y directivas como tokens o skip handlers.",
+    "Atributos sintácticos en token: valor literal, posición (línea/columna) para errores.",
+    "Buffer de entrada y punteros sentinela; no retroceder más allá del lexema actual.",
+    "Keywords: tabla reservadas versus reconocer ID y filtrar por hash.",
+    "Errores léxicos: carácter ilegal, literal mal cerrado, overflow de entero en scan.",
+    "Complejidad lineal O(n) en longitud del archivo con DFA de token combinado."
+  ],
+  "11": [
+    "Parser predictive vs shift-reduce; token lookahead k en LL(k) y LR(k).",
+    "FIRST/FOLLOW y tabla LL(1); conflictos indican gramática no LL(1).",
+    "Construcción de tabla LR con estados de item sets y acciones shift/reduce/accept.",
+    "LALR: fusión de estados LR(1) para tablas compactas en yacc/Bison.",
+    "AST versus árbol de derivación concreto: nódalos abstractos sin símbolos ε.",
+    "Precedencia de operadores vía niveles de producción o precedencia declarada.",
+    "Errores syntax: panic mode, phrase recovery, y reporting con expectativas.",
+    "Descenso recursivo: una función por no terminal; claro en laboratorios educativos.",
+    "Validar que el flujo de tokens satisface la gramática antes de semántica."
+  ],
+  "12": [
+    "Ámbitos anidados: stack de tablas de símbolos o árbol de scopes.",
+    "Entradas: nombre, tipo, categoría (var/func), offset, dirección para codegen.",
+    "Verificación de tipos: compatibilidad en asignaciones, llamadas y conversiones.",
+    "Reglas semánticas en atributos sintetizados/heredados o visitas al AST.",
+    "Binding: resolver identificadores a declaraciones únicas en cadena de scopes.",
+    "Comprobación de aridad y tipos en llamadas; firma de funciones sobrecargadas.",
+    "Análisis de flujo de control elemental: return en funciones, break/continue en bucles.",
+    "Errores semánticos no capturados en parse: tipos, variables no declaradas, shadowing.",
+    "Decorar AST con tipos y direcciones para fases de IR y codegen."
+  ],
+  "13": [
+    "IR como representación independiente de CPU y sintaxis superficial.",
+    "TAC: cuádruplas (op, arg1, arg2, result) o tríadas con punteros compartidos.",
+    "Temporales generados por traducción de expresiones en orden de evaluación.",
+    "SSA: cada asignación define un nombre único; φ-nodos en uniones de control.",
+    "Formas de procedimientos: activation records, parámetros en IR de llamadas.",
+    "Traducción de if/while: etiquetas, saltos condicionales y bloques básicos.",
+    "Literales y direcciones de variables globales/locales en operandos del IR.",
+    "Verificar IR antes de optimizar: SSA inconsistente o temporales no definidos.",
+    "Puente a LLVM: mismo rol conceptual que TAC del laboratorio del curso."
+  ],
+  "14": [
+    "Optimización local en bloque básico: DAG, plegado de constantes, algebra.",
+    "Eliminación de código muerto: definiciones no usadas tras análisis de liveness.",
+    "Propagación de constantes y copias (copy propagation) en SSA.",
+    "Common subexpression elimination (CSE) con disponibilidad de expresiones.",
+    "Loop-invariant code motion y desenrollado limitado por costo/tamaño.",
+    "Inlinining: trade-off tamaño código vs eliminar overhead de llamada.",
+    "Preservar semántica observable: orden de efectos secundarios y excepciones.",
+    "Passes iterativos hasta punto fijo o presupuesto de compilación.",
+    "Profiling guiado (PGO) versus heurísticas estáticas en optimizadores industriales."
+  ],
+  "15": [
+    "Selección de instrucciones: matching de patrones IR a opcode de la arquitectura.",
+    "Asignación de registros: grafo de conflictos, spill a stack cuando se agotan.",
+    "Calling conventions: caller/callee-saved, paso de parámetros en registros o stack.",
+    "Activation record: return address, marco de pila, variables locales alineadas.",
+    "Prologue/epilogue de funciones y restauración de registros preservados.",
+    "Emisión de etiquetas y saltos relocatables para ensamblador o linker.",
+    "Datos en secciones .text/.data; alineación y constantes embebidas en objeto.",
+    "ABI del SO: respetar convención en llamadas a libc y símbolos exportados.",
+    "Validar salida con ensamblador y prueba de ejecutable end-to-end."
+  ]
+}
