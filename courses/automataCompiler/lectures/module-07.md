@@ -157,13 +157,13 @@ Casos de prueba del snippet: `'aaaabbbb'` tiene cuatro `a` y cuatro `b`: acepta.
 ### Ejemplo CYK completo en miniatura
 
 Considere CNF con \(S 
-ightarrow CB\), \(C 
-ightarrow a\), \(B 
-ightarrow b\), además de \(S 
-ightarrow AD\), \(A 
-ightarrow a\), \(D 
-ightarrow b\) según las reglas disponibles para la cadena `aab` — el alumno debe numerar cada celda \(P[i,j]\). Para la cadena `aba` de longitud 3, la base rellena \(P[1,1]\) con variables que derivan `a`, \(P[2,2]\) con las de `b`, \(P[3,3]\) con las de `a`. Para longitud 2, la partición única une \(P[1,1]\) y \(P[2,2]\): si existe regla \(X 
-ightarrow YZ\) con \(Y\) en la primera celda y \(Z\) en la segunda, añadimos \(X\) a \(P[1,2]\). Repetimos para \(P[2,3]\). Para longitud 3 probamos cortes \(k=1\) y \(k=2\): \(P[1,3]\) recibe \(S\) solo si alguna producción binaria enlaza contenidos de \(P[1,1]\) con \(P[2,3]\) o \(P[1,2]\) con \(P[3,3]\). Este trazo manual en examen vale más que memorizar la fórmula.
+\rightarrow CB\), \(C 
+\rightarrow a\), \(B 
+\rightarrow b\), además de \(S 
+\rightarrow AD\), \(A 
+\rightarrow a\), \(D 
+\rightarrow b\) según las reglas disponibles para la cadena `aab` — el alumno debe numerar cada celda \(P[i,j]\). Para la cadena `aba` de longitud 3, la base rellena \(P[1,1]\) con variables que derivan `a`, \(P[2,2]\) con las de `b`, \(P[3,3]\) con las de `a`. Para longitud 2, la partición única une \(P[1,1]\) y \(P[2,2]\): si existe regla \(X 
+\rightarrow YZ\) con \(Y\) en la primera celda y \(Z\) en la segunda, añadimos \(X\) a \(P[1,2]\). Repetimos para \(P[2,3]\). Para longitud 3 probamos cortes \(k=1\) y \(k=2\): \(P[1,3]\) recibe \(S\) solo si alguna producción binaria enlaza contenidos de \(P[1,1]\) con \(P[2,3]\) o \(P[1,2]\) con \(P[3,3]\). Este trazo manual en examen vale más que memorizar la fórmula.
 
 La tabla triangular inferior visualiza subproblemas compartidos — la esencia de programación dinámica. Implementar CYK en Python para gramáticas de menos de diez reglas es un excelente ejercicio de laboratorio posterior al snippet del PDA.
 
@@ -174,7 +174,7 @@ Cuando \(\delta\) devuelve varias transiciones, el PDA **adivina** correctamente
 ### De producciones a acciones de pila (visión constructiva)
 
 Para convertir CFG a PDA: al empezar, push \(S\) en la pila. Repetidamente, si el tope es no terminal \(A\), sustituirlo por el lado derecho de alguna producción \(A 
-ightarrow X_1\ldots X_k\) (push en orden invertido para que \(X_1\) quede arriba). Si el tope es terminal y coincide con el símbolo de entrada actual, pop y avanzar lectura. Aceptación cuando entrada vacía y pila vacía (modo común). Seguir este algoritmo a mano en una gramática de tres reglas fija la equivalencia mejor que memorizar el teorema.
+\rightarrow X_1\ldots X_k\) (push en orden invertido para que \(X_1\) quede arriba). Si el tope es terminal y coincide con el símbolo de entrada actual, pop y avanzar lectura. Aceptación cuando entrada vacía y pila vacía (modo común). Seguir este algoritmo a mano en una gramática de tres reglas fija la equivalencia mejor que memorizar el teorema.
 
 ### Lema del bombeo para LLC (conexión)
 
@@ -191,8 +191,8 @@ Por último, lee la equivalencia CFG–PDA como bi-conditional: para demostrar q
 ## Estudio dirigido: PDA, CNF y pertenencia
 
 Trabaja con la gramática \(G\): \(S 
-ightarrow aSb \mid ab\). Verifica que \(L(G)=\{a^n b^n \mid n\ge1\}\). Intenta convertir mentalmente a PDA: cada \(a\) empuja, cada \(b\) desempila. Luego imagina conversión a CNF: aparecerán variables como \(V_{a}
-ightarrow a\) y encadenamientos binarios. El algoritmo CYK sobre \(w=aaabbb\) en CNF te obliga a considerar cada corte de subcadenas; dedica quince minutos a rellenar la mitad inferior de la tabla sin mirar solución.
+\rightarrow aSb \mid ab\). Verifica que \(L(G)=\{a^n b^n \mid n\ge1\}\). Intenta convertir mentalmente a PDA: cada \(a\) empuja, cada \(b\) desempila. Luego imagina conversión a CNF: aparecerán variables como \(V_{a}
+\rightarrow a\) y encadenamientos binarios. El algoritmo CYK sobre \(w=aaabbb\) en CNF te obliga a considerar cada corte de subcadenas; dedica quince minutos a rellenar la mitad inferior de la tabla sin mirar solución.
 
 Contrast \(a^n b^n\) con \(a^*b^*\) (regular). El segundo solo pide «algunas a seguidas de algunas b» sin igualdad; un DFA con dos fases lineales basta. Muchos exámenes mezclan ambos lenguajes en opciones múltiples para detectar confusión. El PDA no determinista para palíndromos \(w w^R\) requiere adivinar la mitad con transiciones \(\epsilon\); es buen ejercicio teórico posterior al reconocedor determinista de \(a^n b^n\).
 
@@ -201,16 +201,16 @@ En ingeniería, la pila del parser LR **no** implementa CYK: reconoce en tiempo 
 El snippet Python codifica la estrategia de dos fases sin estados explícitos. En defensa oral del laboratorio, dibuja estados \(q_0,q_1,q_{acc}\) y muestra que el comportamiento coincide. Si el profesor pregunta por \(a^n b^n c^m\), argumenta que con una pila no puedes verificar tres contadores simultáneos.
 
 Finalmente, enlaza con módulo 6: la misma cadena balanceada admitía árbol de derivación con producciones \(S
-ightarrow aSb\). CFG genera, PDA reconoce. La equivalencia es el puente entre sintaxis declarativa y autómata operacional.
+\rightarrow aSb\). CFG genera, PDA reconoce. La equivalencia es el puente entre sintaxis declarativa y autómata operacional.
 
 ## Escenarios de fallo comunes en simulaciones
 
 Entrada `ab`: una `a`, una `b`, acepta. Entrada `bab`: la fase de `a` no consume nada si el primer carácter es `b` — en el snippet, fase 2 no consume y el índice no avanza al final; rechazo correcto. Entrada `aaab`: después de procesar `b` faltantes, pila no vacía; rechazo. Documenta tres casos en tu cuaderno con la traza de la pila como columna de símbolos.
 
 Para CYK, el error típico es olvidar que solo producciones \(A
-ightarrow BC\) y \(A
-ightarrow a\) participan: si queda \(A
-ightarrow aB\) sin convertir, la tabla se llena mal. Al transformar a CNF, conserva un diccionario de reglas original→normalizadas para no perderte.
+\rightarrow BC\) y \(A
+\rightarrow a\) participan: si queda \(A
+\rightarrow aB\) sin convertir, la tabla se llena mal. Al transformar a CNF, conserva un diccionario de reglas original→normalizadas para no perderte.
 
 ## Síntesis y checklist antes de avanzar
 

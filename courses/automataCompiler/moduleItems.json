@@ -2,7 +2,7 @@
   "1": [
     "Alfabeto Σ: conjunto finito no vacío de símbolos; distinguir símbolo de cadena w ∈ Σ*.",
     "Longitud |w|, cadena vacía ε como neutro de concatenación: wε = εw = w.",
-    "Σ* versus Σ+: clausura de Kleene incluye ε; Σ+ = Σ* \\ {ε} si Σ ≠ ∅.",
+    "Σ* versus Σ+: clausura de Kleene incluye ε; Σ+ excluye ε cuando Σ no es vacío.",
     "Lenguaje formal L ⊆ Σ*: conjunto (finito o infinito); ∅ ≠ {ε}.",
     "Operaciones algebraicas: unión, concatenación de lenguajes L₁L₂ y estrella L*.",
     "Conteo: |Σ|^k cadenas de longitud exacta k; Σ* es infinito pero enumerable.",

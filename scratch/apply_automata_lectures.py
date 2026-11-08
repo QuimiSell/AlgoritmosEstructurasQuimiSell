@@ -14,35 +14,24 @@ EXERCISES = ROOT / "courses" / "automataCompiler" / "tutorExercises.json"
 
 
 def esc(s: str) -> str:
+    s = s.replace("\r\n", "\n").replace("\r", "")
     return s.replace("\\", "\\\\").replace('"', '\\"').replace("\n", "\\n")
 
 
+MODULE_START = re.compile(
+    r'\{\s*\n\s+id:\s*\d+\s*,\s*\n\s+title:\s*"MÓDULO',
+)
+
+
 def split_module_objects(body: str) -> list[str]:
+    starts = [m.start() for m in MODULE_START.finditer(body)]
+    if not starts:
+        return []
     modules: list[str] = []
-    pos = 0
-    while pos < len(body):
-        m = re.search(r"\bid:\s*\d+\s*,", body[pos:])
-        if not m:
-            break
-        id_pos = pos + m.start()
-        brace = body.rfind("{", pos, id_pos)
-        if brace == -1:
-            pos = id_pos + 1
-            continue
-        depth = 0
-        j = brace
-        while j < len(body):
-            if body[j] == "{":
-                depth += 1
-            elif body[j] == "}":
-                depth -= 1
-                if depth == 0:
-                    modules.append(body[brace : j + 1])
-                    pos = j + 1
-                    break
-            j += 1
-        else:
-            break
+    for i, start in enumerate(starts):
+        end = starts[i + 1] if i + 1 < len(starts) else len(body)
+        chunk = body[start:end].rstrip().removesuffix(",").rstrip()
+        modules.append(chunk)
     return modules
 
 
@@ -85,11 +74,31 @@ def replace_quoted(module: str, field: str, value: str) -> str:
 
 
 def module_id(module: str) -> int:
-    return int(re.search(r"\bid:\s*(\d+)", module).group(1))
+    m = re.search(r"^\s+id:\s*(\d+)\s*,\s*\n\s+title:", module, re.MULTILINE)
+    if not m:
+        raise ValueError("module id/title not found")
+    return int(m.group(1))
+
+
+def exercises_block_bounds(module: str) -> tuple[int, int] | None:
+    m = re.search(r"^\s{4,8}exercises:\s*\[", module, re.MULTILINE)
+    if not m:
+        return None
+    open_idx = m.end() - 1
+    close_idx = find_matching_bracket(module, open_idx)
+    if close_idx is None:
+        return None
+    return m.start(), close_idx + 1
 
 
 def strip_exercises(module: str) -> str:
-    return re.sub(r",\s*exercises:\s*\[[\s\S]*?\]\s*(?=,\s*\w+:|\})", "", module, count=1)
+    bounds = exercises_block_bounds(module)
+    if bounds is None:
+        return module
+    start, end = bounds
+    if start > 0 and module[start - 1] == ",":
+        start -= 1
+    return module[:start] + module[end:]
 
 
 def find_matching_bracket(s: str, open_bracket_index: int) -> int | None:
@@ -121,7 +130,7 @@ def find_matching_bracket(s: str, open_bracket_index: int) -> int | None:
 
 
 def quiz_insertion_index(module: str) -> int | None:
-    m = re.search(r"\bquiz:\s*\[", module)
+    m = re.search(r"^\s{4,8}quiz:\s*\[", module, re.MULTILINE)
     if not m:
         return None
     open_idx = m.end() - 1
@@ -155,7 +164,7 @@ def inject_exercises(module: str, exercises: list) -> str:
     return module[:insert_at] + insertion + module[insert_at:]
 
 
-def main() -> None:
+def main(*, content_only: bool = False) -> None:
     text = COURSE.read_text(encoding="utf-8")
     region = find_modules_region(text)
     if not region:
@@ -173,7 +182,7 @@ def main() -> None:
         if lecture_path.exists():
             content = lecture_path.read_text(encoding="utf-8").strip()
             module = replace_quoted(module, "content", content)
-        if str(mid) in exercises_map:
+        if not content_only and str(mid) in exercises_map:
             module = inject_exercises(module, exercises_map[str(mid)])
         updated.append(module)
 
