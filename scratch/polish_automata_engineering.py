@@ -26,16 +26,26 @@ from apply_automata_lectures import (  # noqa: E402
 )
 
 
+def items_block_bounds(module: str) -> tuple[int, int] | None:
+    m = re.search(r"^\s{4,8}items:\s*\[", module, re.MULTILINE)
+    if not m:
+        return None
+    open_idx = m.end() - 1
+    close_idx = find_matching_bracket(module, open_idx)
+    if close_idx is None:
+        return None
+    return m.start(), close_idx + 1
+
+
 def replace_items(module: str, items: list[str]) -> str:
+    bounds = items_block_bounds(module)
+    if bounds is None:
+        return module
+    start, end = bounds
     indent = "      "
     body = f",\n{indent}".join(f'"{esc(it)}"' for it in items)
-    return re.sub(
-        r"items:\s*\[(.*?)\]",
-        f"items: [\n{indent}{body}\n{indent.rstrip()}]",
-        module,
-        count=1,
-        flags=re.DOTALL,
-    )
+    block = f"items: [\n{indent}{body}\n{indent.rstrip()}]"
+    return module[:start] + block + module[end:]
 
 
 def fix_latex_in_markdown(text: str) -> str:

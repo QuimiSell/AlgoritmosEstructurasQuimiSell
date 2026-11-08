@@ -6,7 +6,7 @@ export const AUTOMATA_COMPILER_COURSE: Course = {
   shortTitle: 'Autómatas & Compiladores',
   badge: 'Teoría de la Computación & Software',
   icon: '⚙️',
-  description: 'Curso magistral de 15 módulos (~2.500 palabras de teoría desarrollada por clase): alfabetos, DFA/NFA, regex, bombeo, CFG/PDA, Turing, y un compilador de punta a punta (lexer, parser, semántica, IR, optimización y codegen), con ejercicios guiados para el tutor IA.',
+  description: 'Curso magistral de 18 módulos (~2.500 palabras de teoría desarrollada por clase): alfabetos, DFA/NFA, regex, bombeo, CFG/PDA, Turing, y un compilador de punta a punta (lexer, parser, semántica, IR, optimización y codegen), con ejercicios guiados para el tutor IA.',
   whyStudyTitle: '🧠 ¿Por qué dominar Autómatas y Compiladores?',
   whyStudyText: 'Dominar autómatas y compiladores es dominar el «cómo funciona el software que entiende software»: desde la definición formal de lenguajes (DFA, CFG, Turing) hasta lexer, parser, IR, optimización y generación de código — el mismo pipeline que LLVM, Clang y los intérpretes industriales, con rigor de ingeniería y laboratorio práctico.',
   studyPlanReasons: [
@@ -19,12 +19,15 @@ export const AUTOMATA_COMPILER_COURSE: Course = {
     { id: 7, title: "Autómatas de Pila (PDA)", why: "Reconocimiento de estructuras anidadas mediante memoria LIFO." },
     { id: 8, title: "Máquinas de Turing y Decidibilidad", why: "El límite absoluto de lo que es computable por cualquier computadora." },
     { id: 9, title: "Arquitectura de Compiladores", why: "Estructura interna: Frontend, Middle-end y Backend." },
-    { id: 10, title: "Análisis Léxico (Lexer)", why: "Conversión de texto fuente en flujo de flujo de tokens mediante autómatas y regex." },
+    { id: 10, title: "Análisis Léxico (Lexer)", why: "Conversión de texto fuente en flujo de tokens mediante autómatas y regex." },
     { id: 11, title: "Análisis Sintáctico (Parser)", why: "Generación del Árbol Sintáctico (LL(1), LR(1), LALR)." },
     { id: 12, title: "Análisis Semántico y Tablas de Símbolos", why: "Verificación de tipos, alcance de variables y construcción del AST." },
     { id: 13, title: "Código Intermedio (IR & TAC)", why: "Traducción a Código de 3 Direcciones independiente del hardware." },
     { id: 14, title: "Optimización de Código", why: "Plegado de constantes, eliminación de código muerto y optimización." },
-    { id: 15, title: "Generación de Código Objeto", why: "Traducción final a ensamblador y gestión de memoria en tiempo de ejecución." }
+    { id: 15, title: "Generación de Código Objeto", why: "Traducción final a ensamblador y gestión de memoria en tiempo de ejecución." },
+    { id: 16, title: "Minimización de DFA", why: "Autómatas equivalentes con el mínimo número de estados para lexers eficientes." },
+    { id: 17, title: "Análisis LL(1) profundo", why: "Tablas predictivas FIRST/FOLLOW para parsers descendientes sin ambigüedad." },
+    { id: 18, title: "LR/LALR y Bison", why: "Parsers ascendientes industriales y resolución de conflictos shift/reduce." }
   ],
   labChallenge: {
     title: "Construcción de un Intérprete/Compilador de Expresiones Aritméticas (Lexer + Parser AST + Evaluador)",
@@ -48,7 +51,7 @@ export const AUTOMATA_COMPILER_COURSE: Course = {
       id: 1,
       title: "MÓDULO 1: ALFABETOS, CADENAS Y LENGUAJES FORMALES",
       description: "Los bloques fundamentales de la Teoría de la Computación: símbolos, concatenación y operaciones sobre lenguajes.",
-      items: [
+items: [
       "Alfabeto Σ: conjunto finito no vacío de símbolos; distinguir símbolo de cadena w ∈ Σ*.",
       "Longitud |w|, cadena vacía ε como neutro de concatenación: wε = εw = w.",
       "Σ* versus Σ+: clausura de Kleene incluye ε; Σ+ excluye ε cuando Σ no es vacío.",
@@ -192,7 +195,7 @@ print(f"Σ* de longitud 2: {generar_cadenas_kleene(alfabeto, 2)}") # ['00', '01'
       id: 2,
       title: "MÓDULO 2: AUTÓMATAS FINITOS DETERMINISTAS (DFA)",
       description: "Reconocedores de lenguajes regulares mediante máquinas de estado finito sin ambigüedad.",
-      items: [
+items: [
       "DFA como 5-tupla M = (Q, Σ, δ, q₀, F): función total δ : Q × Σ → Q.",
       "Interpretación extendida δ* sobre cadenas; aceptación cuando δ*(q₀, w) ∈ F.",
       "Tabla de transiciones: implementación como dict anidado o matriz indexada.",
@@ -337,7 +340,7 @@ print(f"¿'111' aceptada? (3 unos): {dfa.procesar_cadena('111')}")   # False`,
       id: 3,
       title: "MÓDULO 3: AUTÓMATAS FINITOS NO DETERMINISTAS (NFA & NFA-ε)",
       description: "No determinismo, transiciones vacías ε y el algoritmo de Construcción de Subconjuntos.",
-      items: [
+items: [
       "NFA: δ : Q × (Σ ∪ {ε}) → P(Q); varios estados activos en paralelo.",
       "ε-transiciones consumen entrada vacía; cierre ε-clausura antes de leer símbolos.",
       "Algoritmo ε-clausura con pila/DFS sobre aristas ε en el grafo de estados.",
@@ -481,7 +484,7 @@ print(f"Clausura-ε de {{Q0}}: {epsilon_closure({'Q0'}, eps_map)}") # {'Q0', 'Q1
       id: 4,
       title: "MÓDULO 4: EXPRESIONES REGULARES (REGEX) Y TEOREMA DE KLEENE",
       description: "Patrones sintácticos, operadores algebraicos de lenguajes y equivalencia con autómatas.",
-      items: [
+items: [
       "Sintaxis regex: literales, concatenación implícita, |, *, +, ?, paréntesis.",
       "Semántica como lenguaje sobre Σ; precedencia: estrella > concatenación > unión.",
       "Teorema de Kleene: equivalencia regex, DFA y NFA sobre lenguajes regulares.",
@@ -617,7 +620,7 @@ print(f"¿'correo_invalido.com' válido?: {bool(evaluador.match('correo_invalido
       id: 5,
       title: "MÓDULO 5: LEMA DEL BOMBEO (PUMPING LEMMA) PARA LENGUAJES REGULARES",
       description: "Demostración rigurosa por contradicción para probar que un lenguaje NO es regular.",
-      items: [
+items: [
       "Pumping lemma para regulares: ∃p tal que |w| ≥ p ⇒ w = xyz con |xy| ≤ p, |y| ≥ 1.",
       "Condición de bombeo: ∀i ≥ 0, xyⁱz ∈ L; contradicción al bombar fuera del lenguaje.",
       "Elección de w adverso (pumping length p) y descomposición forzada en la porción xyc.",
@@ -761,7 +764,7 @@ print(f"¿'aaabbb' cumple a^n b^n?: {simular_contador_a_n_b_n('aaabbb')}") # Tru
       id: 6,
       title: "MÓDULO 6: GRAMÁTICAS LIBRES DE CONTEXTO (CFG) Y ÁRBOLES DE DERIVACIÓN",
       description: "Especificación formal de la sintaxis de lenguajes de programación mediante reglas de producción.",
-      items: [
+items: [
       "CFG G = (V, Σ, P, S): producciones A → α con A ∈ V y α ∈ (V ∪ Σ)*.",
       "Derivación leftmost/rightmost; árbol de derivación como estructura de análisis.",
       "Lenguaje generado L(G) por cadenas de terminales derivables desde S.",
@@ -907,7 +910,7 @@ print(f"¿'5 + 3 * 2' sintácticamente válida?: {cfg.es_expresion_valida(['5', 
       id: 7,
       title: "MÓDULO 7: AUTÓMATAS DE PILA (PDA) Y FORMAS NORMALES",
       description: "Reconocimiento de lenguajes libres de contexto usando memoria LIFO y Formas Normales de Chomsky.",
-      items: [
+items: [
       "PDA como 7-tupla con pila Γ; transición depende de tope y símbolo de entrada (o ε).",
       "Aceptación por pila vacía o estado final; L libre de contexto = L aceptado por PDA.",
       "Correspondencia CFG ↔ PDA: simular derivaciones con símbolos en la pila.",
@@ -1053,7 +1056,7 @@ print(f"¿'aaabb' aceptada?: {pda_reconocer_an_bn('aaabb')}")             # Fals
       id: 8,
       title: "MÓDULO 8: MÁQUINAS DE TURING (TM), JERARQUÍA DE CHOMSKY Y DECIDIBILIDAD",
       description: "El límite absoluto de la computación, el Problema de la Parada (Halting Problem) y la Jerarquía de Chomsky.",
-      items: [
+items: [
       "Máquina de Turing: cinta infinita, cabezal, transiciones δ(q, a) → (q', b, M).",
       "Problema de la parada (halting): no existe MT que decida parada para toda MT-M.",
       "Diagonal de Cantor y reducción para pruebas de indecidibilidad.",
@@ -1202,7 +1205,7 @@ print(f"TM Incremento de '1011': {tm.ejecutar()}") # '1100' (12 en decimal)`,
       id: 9,
       title: "MÓDULO 9: ARQUITECTURA DE UN COMPILADOR",
       description: "Estructura interna: Frontend, Middle-end, Backend y fases de traducción de código.",
-      items: [
+items: [
       "Fases: análisis (front), optimización intermedia (middle), generación (back).",
       "Interfaz entre fases: árbol, tabla de símbolos, IR, mapas de constantes.",
       "Manejo de errores recovery por fase sin abortar compilación prematuramente.",
@@ -1343,7 +1346,7 @@ compilador_pipeline_demo("x = 10 + 5")`,
       id: 10,
       title: "MÓDULO 10: ANÁLISIS LÉXICO (LEXER / SCANNER)",
       description: "Transformación de texto plano en un flujo estructurado de Tokens mediante Expresiones Regulares.",
-      items: [
+items: [
       "Lexema vs token: patrón en fuente versus clase + atributos en flujo interno.",
       "Autómatas y regex en especificación declarativa de tokens (Flex, lexer hand-written).",
       "Prioridad y regla longest-match para resolver conflictos entre patrones solapados.",
@@ -1500,7 +1503,7 @@ print(lexer("total = 100 + 50 * 2"))`,
       id: 11,
       title: "MÓDULO 11: ANÁLISIS SINTÁCTICO (PARSER) LL Y LR",
       description: "Construcción del Árbol de Sintaxis Abstracta (AST) mediante parsing Top-Down y Bottom-Up.",
-      items: [
+items: [
       "Parser predictive vs shift-reduce; token lookahead k en LL(k) y LR(k).",
       "FIRST/FOLLOW y tabla LL(1); conflictos indican gramática no LL(1).",
       "Construcción de tabla LR con estados de item sets y acciones shift/reduce/accept.",
@@ -1649,7 +1652,7 @@ print(f"AST resultante: {parser.parse_expresion()}") # Add(Add(10, 20), 30)`,
       id: 12,
       title: "MÓDULO 12: ANÁLISIS SEMÁNTICO Y TABLAS DE SÍMBOLOS",
       description: "Verificación de tipos, alcance de variables (Scope) y validación semántica sobre el AST.",
-      items: [
+items: [
       "Ámbitos anidados: stack de tablas de símbolos o árbol de scopes.",
       "Entradas: nombre, tipo, categoría (var/func), offset, dirección para codegen.",
       "Verificación de tipos: compatibilidad en asignaciones, llamadas y conversiones.",
@@ -1795,7 +1798,7 @@ print(f"Tipo de 'contador': {tabla.obtener_tipo('contador')}") # 'int'`,
       id: 13,
       title: "MÓDULO 13: GENERACIÓN DE CÓDIGO INTERMEDIO (IR & TAC)",
       description: "Traducción a representaciones intermedias independientes de la arquitectura (Código de 3 Direcciones).",
-      items: [
+items: [
       "IR como representación independiente de CPU y sintaxis superficial.",
       "TAC: cuádruplas (op, arg1, arg2, result) o tríadas con punteros compartidos.",
       "Temporales generados por traducción de expresiones en orden de evaluación.",
@@ -1946,7 +1949,7 @@ for inst in tac.instrucciones:
       id: 14,
       title: "MÓDULO 14: OPTIMIZACIÓN DE CÓDIGO INTERMEDIO",
       description: "Técnicas de optimización de rendimiento: Plegado de constantes, eliminación de código muerto y optimización de bucles.",
-      items: [
+items: [
       "Optimización local en bloque básico: DAG, plegado de constantes, algebra.",
       "Eliminación de código muerto: definiciones no usadas tras análisis de liveness.",
       "Propagación de constantes y copias (copy propagation) en SSA.",
@@ -2093,7 +2096,7 @@ print(f"TAC Optimizado: {optimizar_instrucciones_tac(tac_raw)}") # ['t1 = 30', '
       id: 15,
       title: "MÓDULO 15: GENERACIÓN DE CÓDIGO OBJETO Y GESTIÓN EN TIEMPO DE EJECUCIÓN",
       description: "Generación final de Ensamblador (x86/ARM), asignación de registros físicos y la pila de llamadas (Call Stack).",
-      items: [
+items: [
       "Selección de instrucciones: matching de patrones IR a opcode de la arquitectura.",
       "Asignación de registros: grafo de conflictos, spill a stack cuando se agotan.",
       "Calling conventions: caller/callee-saved, paso de parámetros en registros o stack.",
@@ -2232,5 +2235,460 @@ print(traducir_tac_a_x86("t1 = a + b"))`,
         }
       ],
 
-    }]
+    },
+{
+      id: 16,
+      title: "MÓDULO 16: MINIMIZACIÓN DE DFA Y TEOREMA DE MYHILL-NERODE",
+      description: "Estados equivalentes, algoritmo de particiones y DFA mínimo para tablas lexer compactas.",
+items: [
+      "Equivalencia de estados p ≡ q: mismas aceptaciones para todo sufijo w ∈ Σ*.",
+      "Partición inicial {F, Q∖F}; refinar por imágenes δ(p,a) y δ(q,a) hasta estabilidad.",
+      "Table-filling: marcar pares distinguibles; bloques finales = clases de equivalencia.",
+      "Outline Hopcroft: O(n log n) refinando solo bloques activos por símbolo a.",
+      "Teorema Myhill-Nerode: mínimo número de estados = índice finito de indistinguibilidad.",
+      "Eliminar inalcanzables y completar δ antes de minimizar en DFA parcial.",
+      "DFA mínimo único (salvo renombrado); minimización preserva L(M) exactamente.",
+      "Compactar tablas lexer post-union de regex: menos filas, mismo lenguaje de tokens.",
+      "Minimizar no sustituye resolución de prioridad longest-match entre reglas acción."
+],
+      content: "## Panorama del tema: MINIMIZACIÓN DE DFA — EQUIVALENCIA, PARTICIONES Y MYHILL-NERODE\n\nTras construir un DFA por determinización (módulo 3) o por producto de autómatas, el resultado suele contener **estados redundantes**: distintos identificadores de estado que, en la práctica, clasifican cada cadena de la misma manera. La **minimización** produce un DFA con el **mínimo** número de estados que reconoce el mismo lenguaje regular \\(L\\). Esa propiedad no es cosmética: tablas de transición más pequeñas aceleran el reconocimiento, reducen caché y memoria en motores léxicos (Flex, RE2, hand-written scanners) y facilitan razonar sobre equivalencia de patrones en herramientas de especificación.\n\nDos vías teóricas convergen. **Equivalencia de estados** (vista operacional): dos estados \\(p, q\\) son equivalentes si, desde ambos, toda cadena residual lleva al mismo veredicto aceptación/rechazo. El **algoritmo de particiones** (table-filling, refinamiento de Moore/Hopcroft en variantes) materializa esa idea en tiempo polinómico. El **teorema de Myhill-Nerode** (vista algebraica de **lenguajes derechos**) caracteriza la minimalidad: el número de clases de equivalencia de la relación «indistinguibilidad por sufijos» es el tamaño del DFA mínimo.\n\nEsta lección cierra el arco teórico-práctico del bloque autómata–lexer: un conjunto de reglas regex compartido en producción termina en **una** tabla DFA compacta que el runtime del lexer indexa con O(1) por carácter.\n\n## Objetivos de la lección\n\n- Formalizar equivalencia de estados y estados distinguibles en un DFA.\n- Esbozar el algoritmo de particiones (table-filling) y su refinamiento (outline Hopcroft).\n- Enunciar el teorema de Myhill-Nerode y su correlato con estados mínimos.\n- Relacionar minimización con optimización de tablas de transición léxicas.\n- Ejecutar una minimización manual sobre un DFA pequeño ligado al laboratorio.\n\n## Desarrollo de la lección\n\n### Equivalencia de estados y distinguibilidad\n\nSea \\(M = (Q, \\Sigma, \\delta, q_0, F)\\) un DFA completo (función total \\(\\delta\\)). Dos estados \\(p, q \\in Q\\) son **equivalentes** (denotado \\(p \\equiv q\\)) si para toda \\(w \\in \\Sigma^*\\):\n\n\\[\n\\delta^*(p, w) \\in F \\Leftrightarrow \\delta^*(q, w) \\in F.\n\\]\n\nSi existe alguna cadena \\(w\\) que separa aceptación, decimos que \\(p\\) y \\(q\\) son **distinguibles**. La relación \\(\\equiv\\) es una congruencia de menor índice compatible con \\(\\delta\\): estados equivalentes pueden fusionarse sin alterar \\(L(M)\\).\n\n**Estados inalcanzables** desde \\(q_0\\) no contribuyen palabras nuevas al lenguaje; se eliminan antes de minimizar. **Estados trampa** (no finales con transiciones cerradas entre sí) suelen colapsar en una sola clase si no distinguen cadenas respecto a estados finales alcanzables — cuidado al reconocer patrones con «sink» explícito en especificaciones Flex.\n\nPropiedad útil en exámenes: si \\(p \\equiv q\\) y leemos símbolo \\(a \\in \\Sigma\\), entonces \\(\\delta(p,a) \\equiv \\delta(q,a)\\). La minimización respeta esta estructura alimentando refinamientos iterativos.\n\n### Algoritmo de particiones (table-filling)\n\nVersión clásica por **relleno de tabla**:\n\n1. Partición inicial \\(P_0 = \\{F, Q \\setminus F\\}\\) (estados finales vs no finales). Si un lado es vacío, el autómata acepta todo o nada — casos degenerados.\n2. Para cada par \\((p,q)\\) de estados en **bloques distintos** de la partición actual, marcar como **distinguibles** si ya están en clases diferentes.\n3. Para pares no marcados aún en el **mismo bloque**, para cada \\(a \\in \\Sigma\\), comparar bloques de \\(\\delta(p,a)\\) y \\(\\delta(q,a)\\). Si difieren, marcar \\((p,q)\\) distinguibles.\n4. Propagar: si \\((p,q)\\) distinguibles y existe \\(r\\) tal que \\(\\delta(r,a)=p\\) y algún estado en el mismo bloque que \\(r\\) va a \\(q\\) con \\(a\\), actualizar marcas (implementaciones usan colas de pares pendientes).\n5. Repetir hasta estabilidad. Cada bloque final es una **clase de equivalencia**. Un representante por bloque, \\(q_0'\\) el bloque que contiene \\(q_0\\), finales los bloques que intersectan \\(F\\).\n\nComplejidad del table-filling ingenuo puede acercarse a \\(O(n^2 \\cdot |\\Sigma|)\\) en \\(n = |Q|\\). **Hopcroft** reduce amoritzado a \\(O(n \\log n)\\) manteniendo, por símbolo, listas de bloques «activos» que solo refinan cuando un bloque se parte. Para el curso basta el **outline**: partición inicial + refinamiento por separación de imágenes bajo \\(\\delta(\\cdot, a)\\).\n\nVariante **Moore** (minimización de máquinas de Moore, salidas en estados) inspira la intuición de separar por respuesta inmediata y luego por entradas; en DFA de aceptación la «salida» es aceptar/rechazar tras leer la cadena completa — la partición inicial por \\(F\\) es el análogo.\n\n### Teorema de Myhill-Nerode (lenguajes derechos)\n\nDefina sobre \\(\\Sigma^*\\) la relación \\(x \\sim_M y\\) si para todo \\(z \\in \\Sigma^*\\), \\(xz \\in L(M) \\Leftrightarrow yz \\in L(M)\\). Las clases \\([x]_M\\) forman el conjunto de **sufijos distinguidores**. El teorema afirma:\n\n- \\(L\\) es regular \\(\\Leftrightarrow\\) el índice de \\(\\sim\\) es finito.\n- El número mínimo de estados de un DFA para \\(L\\) es exactamente ese índice.\n- Existe un DFA mínimo único (salvo renombrado de estados) isomorfo a \\(Q\\) particionado por \\(\\sim\\).\n\nConexión con **lenguajes derechos**: si \\(L\\) es regular, las clases de equivalencia derecha \\(\\equiv_R\\) con \\(x \\equiv_R y \\Leftrightarrow \\forall z, xz \\in L \\Leftrightarrow yz \\in L\\) coinciden con las clases de Myhill-Nerode en el caso clásico de aceptación de toda la cadena. Compiladores raramente citan el nombre, pero cada fila de la tabla minimizada es un representante de una clase de cadenas **indistinguibles para el lexer** una vez fijado el prefijo ya leído.\n\nDemostración esquematizada en dos pasos: (1) un DFA con \\(n\\) estados induce como mucho \\(n\\) clases \\(\\sim\\); (2) construir DFA de clases usando \\(\\delta([x], a) = [xa]\\) — estado bien definido porque si \\(x \\sim y\\) entonces \\(xa \\sim ya\\). Minimalidad sigue de no existir fusión adicional sin identificar clases distintas.\n\n### DFA mínimo único y completitud\n\nSi \\(M\\) no es total, completar con estado trampa único antes de minimizar; luego el trampa fusiona con otras rechazas equivalentes. **Minimización conmuta** (conceptualmente) con determinización: minimizar el DFA de un NFA grande obtiene el mismo lenguaje que minimizar tras Thompson + subset, pero el orden afecta tamaños intermedios — pipelines industriales reducen ε antes de subset, minimizan al final.\n\nPara \\(L_1 \\cap L_2\\) vía producto, el DFA del producto no está minimizado; aplicar particiones después evita que el lexer herede \\(\\lvert Q_1 \\rvert \\cdot \\lvert Q_2 \\rvert\\) filas redundantes cuando los patrones comparten prefijos largos.\n\n### Aplicación en tablas del lexer\n\nUn motor léxico combina patrones \\(\\{r_1, \\ldots, r_k\\}\\). Tras unión Thompson y determinización, \\(Q\\) puede crecer brutalmente. **Minimización** comprime la matriz `estado × símbolo → nuevo_estado`. En Flex, el generador emite tablas densas o comprimidas (columnas por defecto, partición por clases de caracteres ASCII) — la minimización del DFA subyacente es un paso estándar en `re2c`, Lex/Flex y en compiladores internos de `re`.\n\nBeneficios concretos:\n\n- Menos filas ⇒ mejor localidad en tabla grande escaneando archivos de megabytes.\n- Estados fusionados ⇒ misma semántica de **longest match** y prioridad de reglas si se construyó el autómata con anclajes correctos; minimizar no altera el lenguaje reconocido.\n- Depuración: inspeccionar el DFA mínimo revela cuántas «situaciones léxicas» reales distinguen el input (útil al depurar conflictos de tokens solapados).\n\n**Precondición**: las reglas deben codificarse en un solo autómata con etiquetado de acciones por estado final / prioridad. Minimizar el DFA **sin** resolver prioridad longest-match puede producir ambigüedad semántica — la minimización es algebraica sobre el lenguaje, no sobre la **acción** retornada; por eso los generadores marcan aceptaciones con la regla ganadora antes o después del colapso, según implementación.\n\n### Contraste con NFA y con producto\n\nMinimizar un NFA directamente no está definido; primero determinizar. El peor caso de blow-up en determinización no se deshace minimizando: existen familias donde el DFA mínimo sigue exponencial respecto al tamaño del NFA. En ingeniería, se prefiere **simulación on-the-fly** del NFA para regex pequeñas y DFA materializado + minimizado para el lexer completo del lenguaje.\n\n## Demostración enlazada al código del módulo\n\nConsidere un DFA toy sobre \\(\\Sigma = \\{0,1\\}\\) que acepta cadenas cuya longitud es múltiplo de 3 (módulo 3 en el contador de estados \\(Q0, Q1, Q2\\)). Es ya **mínimo**: no hay fusión sin cambiar paridad de longitud módulo 3.\n\nPseudocódigo de **table-filling** aplicable al laboratorio (extensión de `DFA` del módulo 2):\n\n```python\ndef distinguibles(dfa):\n    Q, F, Sigma, delta = dfa.Q, dfa.F, dfa.Sigma, dfa.delta\n    # Pares no marcados: solo estados alcanzables\n    marked = set()\n    stack = []\n    for p in Q:\n        for q in Q:\n            if (p in F) ^ (q in F):\n                marked.add((p, q))\n                stack.append((p, q))\n    while stack:\n        p, q = stack.pop()\n        for a in Sigma:\n            dp, dq = delta[p][a], delta[q][a]\n            if (dp, dq) not in marked and (dq, dp) not in marked:\n                marked.add((dp, dq))\n                stack.append((dp, dq))\n    # Bloques = componentes de no-distinguibles (union-find opcional)\n    ...\n```\n\nTras ejecutar sobre un DFA de paridad par/impar de unos (dos estados), la partición estable permanece en \\(\\{Q_{\\text{par}}, Q_{\\text{impar}}\\}\\) — confirmación de minimalidad del diseño del estudiante en módulo 2.\n\nPara un DFA mal diseñado con tres estados equivalentes al par de paridad, el algoritmo fusiona en dos clases. Mapear clases a estados compactos reproduce la tabla que Flex emitiría con dos filas en lugar de tres.\n\n## Aplicaciones en sistemas reales\n\n**GNU Flex** genera autómata deterministas minimizados (con técnicas de compresión de tabla adicionales) a partir de reglas `.l`; builds grandes de compiladores dependen de ese tamaño.\n\n**RE2** de Google construye DFA sobre uniones de regex con límites de memoria; la compresión de estados es crítica para evitar OOM en patrones adversos en servicios de búsqueda.\n\n**Motores de antivirus y protocolos** usan Aho-Corasick para múltiples cadenas; la story es distinta (trie + fallas), pero subpatrones regulares individuales aún se minimizan en preprocesamiento offline.\n\n## Errores clásicos en examen\n\n- Minimizar antes de eliminar estados **inalcanzables** (estados basura que inflan particiones sin efecto en \\(L\\)).\n- Confundir estados equivalentes con estados **iguales** (mismo nombre) — equivalencia es semántica.\n- Creer que minimizar un autómata con **múltiples acciones** por estado final resuelve conflictos de prioridad léxica — la acción es metadata, no el lenguaje.\n- Olvidar **completar** el DFA antes de aplicar table-filling en exámenes que asumen \\(\\delta\\) total.\n- Afirmar que Hopcroft y table-filling producen particiones distintas en DFA completos — deben coincidir en clases finales.\n- Contar el número de estados del NFA como cota del mínimo DFA.\n\n## Preguntas de entrevista\n\n**P: ¿Por qué el DFA mínimo es único?**\n\n**R:** Las clases de Myhill-Nerode están fijadas por el lenguaje; cualquier DFA mínimo debe tener un estado por clase y transiciones consistentes con concatenación de sufijos. Renombrar estados no rompe unicidad estructural.\n\n**P: ¿Minimizar siempre vale la pena en tiempo de compilación del lexer?**\n\n**R:** Casi siempre offline: pagas determinización+minimización una vez, escaneas millones de veces. El coste de build aumenta, el runtime disminuye. Para regex dinámicas en runtime, a veces se evita materializar el DFA completo.\n\n**P: Diferencia entre distinguible por una cadena y distinguible por longitud acotada.**\n\n**R:** Equivalencia exige coincidir para **todo** sufijo; en algoritmo solo se exploran separaciones hasta estabilidad. Table-filling es correcto y completo para DFA finitos.\n\n### Ejemplo completo de refinamiento manual\n\nConsidere \\(M\\) con \\(Q = \\{s_0, s_1, s_2, s_3\\}\\), \\(\\Sigma = \\{a,b\\}\\), inicio \\(s_0\\), finales \\(F = \\{s_3\\}\\), y transiciones: desde \\(s_0\\) con `a` va a \\(s_1\\), con `b` a \\(s_2\\); \\(s_1\\) con `b` a \\(s_3\\); \\(s_2\\) con `a` a \\(s_3\\); \\(s_3\\) absorbe self-loops. El lenguaje es «terminar en `ab` o en `ba`» leído como sufijo reconocido al llegar a \\(s_3\\). La partición inicial separa \\(\\{s_3\\}\\) de \\(\\{s_0,s_1,s_2\\}\\). Bajo símbolo `a`, \\(s_0 \\to s_1\\), \\(s_1 \\to\\) trampa o rechazo, \\(s_2 \\to s_3\\) — imágenes caen en bloques distintos, marcando pares \\((s_0,s_1)\\), \\((s_1,s_2)\\), etc. Tras estabilizar, típicamente \\(s_0\\) permanece solo mientras \\(s_1\\) y \\(s_2\\) pueden fusionarse si sus destinos bajo toda cadena residual coinciden; si no, el mínimo conserva tres o cuatro clases según el diseño exacto de trampa. Este ejercicio en papel obliga a **no** saltar pasos de imagen bajo \\(\\delta(\\cdot,a)\\) y \\(\\delta(\\cdot,b)\\), error habitual cuando se aprende el algoritmo solo con definiciones.\n\n### Correspondencia Myhill-Nerode ↔ bloques del table-filling\n\nCada clase de \\(\\sim_M\\) es un conjunto de cadenas \\(w\\) que llevan desde \\(q_0\\) a estados equivalentes. Al fusionar estados del DFA, las cadenas que distinguían \\(p\\) de \\(q\\) desaparecen como separación: el bloque resultante representa la misma clase de sufijos indistinguibles. Formalizar que el table-filling produce exactamente la partición gruesa de \\(\\equiv\\) es ejercicio estándar de autómatas: inducción mostrando que no marcar un par implica indistinguibilidad para cualquier longitud de sufijo.\n\nEn implementaciones de compilador de regex, representar internamente el DFA como mapa de **clases** (enteros compactos) simplifica serialización a binario para cargar tablas en runtime embebido sin reconstruir autómata textual.\n\n## Estudio dirigido y trazas\n\nMinimice a mano un DFA de cuatro estados para cadenas sobre \\(\\{a,b\\}\\) que terminan en `ab`: dibuje tabla de pares, marque finales vs no finales, refine con \\(a\\) y \\(b\\). Compare conteo de estados antes y después.\n\nPara el lenguaje \\((01)^*\\), construya DFA de tres estados y argumente minimalidad vía Myhill-Nerode (clases de cadenas vacía, terminada en `0`, terminada en `01`).\n\nRelacione módulo 3: tras subset construction de un NFA con ε, cuántas clases produce minimización típica en el regex `a|a?b` del laboratorio.\n\nEscriba biimplicación del teorema Myhill-Nerode: «índice finito de \\(\\sim\\)» \\(\\Leftrightarrow\\) «existe DFA finito para \\(L\\)».\n\nExplique por qué el producto \\(M_1 \\times M_2\\) minimizado puede tener **menos** estados que \\(\\min(M_1) \\times \\min(M_2)\\) en cardinal — el producto explota estructura conjunta.\n\n## Profundización: Hopcroft y complejidad práctica\n\nHopcroft mantiene, para cada \\(a \\in \\Sigma\\), el conjunto de bloques «activos» que pueden dividir otros bloques. Cuando un bloque \\(B\\) se parte en \\(B_1, B_2\\), solo los pares que dependen del más pequeño se revisititan — invariante que limita trabajo total a \\(O(n \\log n)\\).\n\nEn implementaciones de Flex, tras minimización llega **compresición por equivalencia de columnas** (caracteres que inducen la misma columna de transición) — segunda capa independiente del algoritmo de estados.\n\n**Automata learning** (Angluin) reconstruye DFA mínimo consultando membership/equivalencia — puente académico entre Myhill-Nerode y testing de especificaciones.\n\n## Práctica integral\n\nImplemente union-find sobre pares no marcados del table-filling para emitir `dfa_min` con reindexación 0..k-1. Integre con simulador `procesar_cadena` del módulo 2 y verifique que cadenas de prueba conservan aceptación.\n\nCompare tamaño de tabla antes/después en autómata de cinco tokens del laboratorio léxico (módulo 10).\n\n## Síntesis y checklist antes de avanzar\n\n- Definí equivalencia de estados \\(p \\equiv q\\) con \\(\\forall w \\in \\Sigma^*\\).\n- Ejecuté o esquematé table-filling hasta partición estable.\n- Enuncié teorema Myhill-Nerode y su vínculo con número mínimo de estados.\n- Describí outline de Hopcroft frente a table-filling ingenuo.\n- Conecté minimización con tablas compactas en Flex/re2c.\n- Eliminé inalcanzables y completé \\(\\delta\\) cuando el modelo lo exige.\n- Minimicé un DFA toy manualmente y validé con el snippet conceptual.\n- Diferencié minimización del lenguaje vs resolución de prioridades léxicas.\n- Articulé por qué determinizar antes de minimizar es obligatorio en NFA.\n- Listo para LL(1) profundo (módulo 17) con autómatas regulares cerrados.",
+      codeSnippet: `# Minimización de DFA por particiones (esquema educativo)
+from collections import defaultdict
+
+def minimize_dfa(states, sigma, delta, q0, F):
+    # Estado inicial: separar finales vs no finales
+    P = [frozenset(F), frozenset(states - set(F))]
+    P = [p for p in P if p]
+    changed = True
+    while changed:
+        changed = False
+        new_P = []
+        for group in P:
+            buckets = defaultdict(set)
+            for q in group:
+                sig = tuple(delta.get((q, a), None) for a in sorted(sigma))
+                buckets[sig].add(q)
+            for part in buckets.values():
+                if len(part) < len(group):
+                    changed = True
+                new_P.append(frozenset(part))
+        P = new_P
+    # Construir DFA reducido (representante = min del bloque)
+    rep = {q: min(block) for block in P for q in block}
+    print("Bloques:", [set(b) for b in P])
+    return rep`,
+      quiz: [
+        {
+          question: "Dos estados p,q de un DFA son equivalentes si:",
+          options: ["Para todo w, aceptan w o rechazan w igual",
+          "Tienen el mismo nombre",
+          "Comparten una transición",
+          "Son iniciales"],
+          answerIndex: 0,
+          explanation: "Definición operacional de ≡."
+        },
+        {
+          question: "Partición inicial típica en table-filling:",
+          options: ["F vs Q∖F",
+          "Un solo bloque",
+          "Cada estado solo",
+          "Alfabeto Σ"],
+          answerIndex: 0,
+          explanation: "Finales vs no finales."
+        },
+        {
+          question: "Myhill-Nerode vincula:",
+          options: ["Tamaño mínimo del DFA con clases de indistinguibilidad",
+          "Solo NFA",
+          "Parser LL",
+          "CYK"],
+          answerIndex: 0,
+          explanation: "Índice finito de ∼."
+        },
+        {
+          question: "Hopcroft mejora table-filling en:",
+          options: ["Complejidad amortizada O(n log n)",
+          "Elimina necesidad de Σ",
+          "Solo NFA",
+          "LR(1)"],
+          answerIndex: 0,
+          explanation: "Refinamiento eficiente."
+        },
+        {
+          question: "Antes de minimizar conviene:",
+          options: ["Quitar inalcanzables y completar δ",
+          "Eliminar Σ",
+          "Convertir a CFG",
+          "Parser shift"],
+          answerIndex: 0,
+          explanation: "Limpieza del autómata."
+        },
+        {
+          question: "Minimizar DFA en lexer sirve para:",
+          options: ["Reducir filas de tabla manteniendo L",
+          "Resolver ambigüedad gramatical",
+          "Calcular FIRST",
+          "Spill a stack"],
+          answerIndex: 0,
+          explanation: "Compactación de transiciones."
+        },
+        {
+          question: "DFA mínimo para un lenguaje regular es:",
+          options: ["Único salvo renombrado de estados",
+          "Infinito",
+          "Dependiente del parser",
+          "Siempre un solo estado"],
+          answerIndex: 0,
+          explanation: "Unicidad estructural."
+        },
+        {
+          question: "Si p y q distinguibles, existe w tal que:",
+          options: ["Uno acepta w· y otro no",
+          "Son iguales",
+          "δ(p,a)=δ(q,a) siempre",
+          "Ambos trampa"],
+          answerIndex: 0,
+          explanation: "Cadena testigo de separación."
+        },
+        {
+          question: "Minimizar un NFA directamente:",
+          options: ["No está definido sin determinizar",
+          "Es O(1)",
+          "Usa FOLLOW",
+          "Es LR"],
+          answerIndex: 0,
+          explanation: "Primero DFA."
+        },
+        {
+          question: "Table-filling marca par (p,q) cuando:",
+          options: ["Imágenes bajo algún a caen en bloques distintos",
+          "Son iniciales",
+          "p∈F",
+          "Σ vacío"],
+          answerIndex: 0,
+          explanation: "Refinamiento por símbolo."
+        }
+      ],
+      exercises: [
+        {
+          id: 7501,
+          instruction: "Aplica table-filling manual a un DFA de tres estados equivalentes al detector de paridad de unos del módulo 2; documenta partición inicial y fusiones.",
+          placeholder: "Partición: ...",
+          expectedKeywords: ["particion", "distinguible", "equivalente", "dfa"],
+          hint: "Solo finales vs no finales; luego imágenes bajo 0 y 1.",
+          isEmailSubmission: false
+        },
+        {
+          id: 7502,
+          instruction: "DESAFÍO: Implementa en Python `minimizar_dfa(dfa)` con table-filling o union-find; prueba que el lenguaje no cambia en diez cadenas aleatorias.",
+          placeholder: "def minimizar_dfa(...):",
+          expectedKeywords: ["def", "minimizar", "dfa", "distinguible"],
+          hint: "Marca pares finales vs no finales primero; propaga con δ(a).",
+          isEmailSubmission: true
+        }
+      ],
+
+    },
+{
+      id: 17,
+      title: "MÓDULO 17: ANÁLISIS LL(1) — FIRST, FOLLOW Y TABLA PREDICTIVA",
+      description: "Cálculo algorítmico de conjuntos, gramáticas LL(1) y resolución de conflictos.",
+items: [
+      "FIRST(α): terminales que inician derivaciones; incluir ε si α ⇒* ε.",
+      "FOLLOW(A): terminales que pueden seguir a A; iniciar FOLLOW(S) con $.",
+      "Algoritmo iterativo FIRST/FOLLOW hasta punto fijo sobre producciones.",
+      "Tabla predictiva M[A,a] vacía o única; conflicto = dos producciones compiten.",
+      "Conflicto FIRST/FIRST: intersección de FIRST entre alternativas de A.",
+      "Conflicto FIRST/FOLLOW: ε en alternativa ∩ FOLLOW(A) con otro FIRST.",
+      "Eliminar recursión izquierda: A → Aα|β ⇒ A → βA', A' → αA'|ε.",
+      "Factorización a izquierda cuando alternativas comparten prefijo terminal.",
+      "Descenso recursivo y máquina LL(1) equivalentes si gramática es LL(1) sin conflictos."
+],
+      content: "## Panorama del tema: LL(1) PROFUNDO — FIRST, FOLLOW, TABLA Y CONFLICTOS\n\nEl módulo 11 introdujo el contraste LL frente a LR y el parser descendente del laboratorio. Esta lección **profundiza** en la familia **LL(1)**: gramáticas donde una única mirada al siguiente token basta para elegir la producción correcta en derivaciones **leftmost**. Ese requisito formaliza la ingeniería de parsers predictive (ANTLR con `LL(*)`, Grammars kit, herramientas educativas) y del **descenso recursivo manual** que replica las mismas decisiones sin tabla materializada.\n\nLos pilares algorítmicos son **FIRST** y **FOLLOW**: conjuntos que responden «¿qué terminal puede abrir esta cadena de símbolos?» y «¿qué terminal puede aparecer justo después de este no terminal en una derivación válida?». Sobre ellos se construye la **tabla predictiva** \\(M[A,a]\\) y se diagnostican conflictos **FIRST/FIRST** y **FIRST/FOLLOW**. También tratamos **eliminación de recursión izquierda** y factorización a izquierda, transformaciones que convierten gramáticas recurridas en especificaciones parseables top-down.\n\nEl parser predictivo y el descenso recursivo comparten la misma semántica de análisis; difieren en si la elección de producción está **codificada en tabla** (máquina con stack explícito de no terminales) o **distribuida en llamadas** a funciones `parse_X`. Dominar LL(1) es prerrequisito para escribir gramáticas de DSL sin sorpresas en generadores y para entender por qué C, Java o C++ no son LL(1) «puras».\n\n## Objetivos de la lección\n\n- Calcular FIRST y FOLLOW con algoritmos iterativos hasta punto fijo.\n- Construir y leer la tabla predictiva \\(M[A,a]\\).\n- Detectar y explicar conflictos FIRST/FIRST y FIRST/FOLLOW.\n- Aplicar eliminación de recursión izquierda y factorización a izquierda.\n- Comparar máquina predictiva vs descenso recursivo sobre la misma gramática.\n\n## Desarrollo de la lección\n\n### FIRST: definición y cálculo algorítmico\n\nPara cadena \\(\\alpha \\in (V \\cup \\Sigma)^*\\), **FIRST(\\(\\alpha\\))** es el conjunto de terminales \\(a\\) tales que \\(\\alpha \\Rightarrow^* a\\beta\\) para algún \\(\\beta\\), más \\(\\epsilon\\) si \\(\\alpha \\Rightarrow^* \\epsilon\\).\n\nAlgoritmo clásico para cada \\(A \\in V\\) hasta que no cambien conjuntos `FIRST(A)`:\n\n1. Inicializar: si \\(A \\rightarrow a\\delta\\) con \\(a \\in \\Sigma\\), añadir \\(a\\) a `FIRST(A)`; si \\(A \\rightarrow \\epsilon\\), añadir \\(\\epsilon\\).\n2. Repetir: para \\(A \\rightarrow B_1 B_2 \\cdots B_k\\), propagar `FIRST(B₁)` (sin \\(\\epsilon\\)) a `FIRST(A)`; si \\(B_1 \\Rightarrow^* \\epsilon\\), continuar con \\(B_2\\), etc.; si todos pueden derivar \\(\\epsilon\\), añadir \\(\\epsilon\\) a `FIRST(A)`.\n3. Parar en punto fijo.\n\n**FIRST de cadena** \\(\\alpha = X_1 X_2 \\cdots X_n\\): igual lógica secuencial; colecta terminales hasta el primer símbolo que no anula, o \\(\\epsilon\\) si todos anulan.\n\nComplejidad: \\(O(|V| \\cdot |P| \\cdot |G|)\\) en el peor caso con implementación ingenua; gramáticas de compilador suelen ser pequeñas en \\(V\\), el cuello es atención a \\(\\epsilon\\)-producciones.\n\n### FOLLOW: cálculo y rol en predictivo\n\n**FOLLOW(A)** (para \\(A \\in V\\)) son terminales \\(a\\) tales que alguna forma sentenciforme tenga \\(\\ldots A a \\ldots\\); también incluye **\\$** (fin de entrada) si \\(A\\) puede estar inmediatamente antes de fin de cadena en una derivación desde el axioma \\(S\\).\n\nInicialización: `FOLLOW(S)` contiene \\(\\$\\); demás vacíos. Reglas de actualización hasta punto fijo:\n\n1. Para \\(B \\rightarrow \\alpha A \\beta\\): añadir `FIRST(β)`\\(\\setminus\\{\\epsilon\\}\\) a `FOLLOW(A)`; si \\(\\epsilon \\in\\) FIRST(\\(\\beta\\)) o \\(\\beta\\) vacío, añadir `FOLLOW(B)` a `FOLLOW(A)`.\n2. Caso \\(B \\rightarrow \\alpha A\\) (A al final del cuerpo): añadir `FOLLOW(B)` a `FOLLOW(A)`.\n\nFOLLOW depende del **contexto** de aparición del no terminal; FIRST solo del cuerpo de producciones salientes de \\(A\\).\n\n### Tabla predictiva \\(M[A,a]\\)\n\nTabla con filas no terminales \\(A\\), columnas terminales \\(a\\) (más \\(\\$\\)). Entrada \\(M[A,a] = A \\rightarrow \\alpha\\) si:\n\n- \\(a \\in\\) FIRST(\\(\\alpha\\)) para alguna producción \\(A \\rightarrow \\alpha\\), o\n- \\(\\epsilon \\in\\) FIRST(\\(\\alpha\\)) y \\(a \\in\\) FOLLOW(A).\n\nCondición **LL(1)**: cada celda tiene **como mucho una** producción. Si dos producciones compiten, hay **conflicto**.\n\n**Máquina predictiva**: pila con $ abajo, S arriba; entrada con lookahead. Si tope no terminal \\(A\\) y token \\(a\\), si \\(M[A,a]\\) existe, expandir según producción (push reversos de RHS); si tope terminal \\(a\\) y coincide con entrada, pop y avanzar; error si vacío o mismatch.\n\n### Conflictos FIRST/FIRST y FIRST/FOLLOW\n\n**FIRST/FIRST**: dos producciones \\(A \\rightarrow \\alpha \\mid \\beta\\) con FIRST(\\(\\alpha\\)) \\(\\cap\\) FIRST(\\(\\beta\\)) \\(\\neq \\emptyset\\) (excluyendo manejo especial si solo uno tiene \\(\\epsilon\\) con FOLLOW). El lookahead no desambigua.\n\n**FIRST/FOLLOW**: una producción \\(A \\rightarrow \\epsilon\\) (o anulable) y otra \\(A \\rightarrow \\beta\\) con terminal \\(a\\) en ambos FIRST(\\(\\beta\\)) y FOLLOW(A) — típico del **dangling else** en gramáticas ingenuas de `if`.\n\nResoluciones habituales en ingeniería:\n\n- **Reescribir gramática**: factorización a izquierda (`stmt → if e then stmt | if e then stmt else stmt` → `stmt → if e then stmt stmt_tail`, `stmt_tail → ε | else stmt`).\n- **Precedencia** declarada (más LR que LL) o análisis ad hoc en descenso recursivo (`parse_stmt` distingue `else` mirando más allá).\n- Aceptar gramática no LL(1) y usar **lookahead más profundo** (LL(k), ANTLR adaptive).\n\n### Eliminación de recursión izquierda\n\nProducción \\(A \\rightarrow A \\alpha \\mid \\beta\\) impide descenso directo (bucle infinito en `parse_A` llamándose al inicio). **Eliminación estándar**:\n\n- \\(A \\rightarrow \\beta A'\\)\n- \\(A' \\rightarrow \\alpha A' \\mid \\epsilon\\)\n\nsi \\(\\beta\\) no deriva vacío. Si hay múltiples recursivas izquierdas, introducir \\(A_1', A_2'\\ldots\\) o concatenar tail-recursión. **Precaución**: `FIRST` y `FOLLOW` cambian; revalidar LL(1) tras transformación.\n\nRecursión izquierda **indirecta** \\(A \\Rightarrow^+ A \\alpha\\) requiere algoritmo de cierre sobre dependencias entre no terminales — mismo espíritu que eliminación en análisis de dependencias de atributos.\n\n**Factorización a izquierda**: cuando \\(A \\rightarrow \\delta \\alpha \\mid \\delta \\beta\\), factorizar \\(\\delta\\) común: \\(A \\rightarrow \\delta A'\\), \\(A' \\rightarrow \\alpha \\mid \\beta\\). Reduce conflictos FIRST/FIRST en cadenas con prefijo común (`read` vs `real`).\n\n### Parser predictivo vs descenso recursivo\n\n**Predictivo tabular**: una rutina genérica + tabla `M`; fácil de serializar, enseñar y verificar mecánicamente.\n\n**Descenso recursivo**: cada \\(A\\) es función; la elección de producción es `if token in FIRST(α): ... elif ...`. El **look-ahead** es el `peek()` del lexer del laboratorio (corregir off-by-one si consumió de más).\n\nEquivalencia: misma gramática LL(1) ⇒ mismas cadenas aceptadas. Descenso recursivo integra **acciones semánticas** al construir nodos AST en cada regla reducida sintácticamente; la máquina predictiva inserta acciones al aplicar producción.\n\nVentajas DR: código legible, mensajes de error localizados (`expected expr, got SEMI`). Ventajas tabla: verificación automática de conflictos al construir `M`, útil en generadores que emiten ambas formas.\n\n**LL(1) limitaciones**: no cubre todas las LLC sin transformación; expresiones con ambigüedad de precedencia se reescriben en capas \\(E,T,F\\) (módulo 6/11) en lugar de tabla única plana.\n\n### Conexión con el pipeline del curso\n\nLexer entrega tokens; parser LL(1) valida sintaxis antes del módulo 12 (scopes). Si la gramática del laboratorio QuimiSell falla en tabla con conflicto en `assign`, revisar factorización de `stmt_list`. IR del módulo 13 asume AST sin ε-nodos superfluos.\n\n## Demostración enlazada al código del módulo\n\nGramática mini para expresiones lineales (laboratorio):\n\n```\nE  → T E'\nE' → + T E' | ε\nT  → id | ( E )\n```\n\nCálculo FIRST: `FIRST(E) = FIRST(T) = {id, (}`, `FIRST(E') = {+, ε}`, `FIRST(T) = {id, (}`. FOLLOW: `FOLLOW(E) = {$, )}`, `FOLLOW(E') = FOLLOW(E)`, `FOLLOW(T) = {+, ), $}`.\n\nFragmento de tabla (columnas relevantes):\n\n|       | id | + | ) | $ |\n|-------|----|---|---|---|\n| E     | T E' |   |   |   |\n| E'    |    | + T E' | ε | ε |\n| T     | id | ( E ) |   |   |\n\nSnippet de **descenso recursivo** alineado al parser del módulo 11:\n\n```python\ndef parse_E(lexer):\n    n = parse_T(lexer)\n    return parse_E_prime(lexer, n)\n\ndef parse_E_prime(lexer, left):\n    tok = lexer.peek()\n    if tok == '+':\n        lexer.next()\n        right = parse_T(lexer)\n        node = ('+', left, right)\n        return parse_E_prime(lexer, node)\n    return left  # ε: FIRST(FOLLOW(E'))\n\ndef parse_T(lexer):\n    tok = lexer.peek()\n    if tok == 'id':\n        lexer.next()\n        return ('id',)\n    if tok == '(':\n        lexer.next()\n        inner = parse_E(lexer)\n        assert lexer.next() == ')'\n        return inner\n    raise SyntaxError(f\"unexpected {tok}\")\n```\n\nLa máquina predictiva con pila reproduce las mismas expansiones: en `E` con `id`, empilar `E' T` (orden inverso), reducir `T → id`, luego expandir `E'` según `+` o ε vía FOLLOW.\n\n**Eliminación de recursión** en variante incorrecta `E → E + T | T`:\n\n```\nE  → T E'\nE' → + T E' | ε\n```\n\nTras transformación, `parse_E` ya no entra en recursión infinita al inicio.\n\n## Aplicaciones en sistemas reales\n\n**ANTLR 4** usa predicción adaptativa (no exige LL(1) estricto); sigue calculando sets estilo FIRST para ramas.\n\n**Hand-written parsers** en Clang (pre-parser en partes), Rust `syn` en modo manual, y muchos intérpretes educativos usan descenso con precedencia por niveles.\n\n**Yacc/Bison no usan LL(1)** — este módulo prepara diagnóstico de por qué una gramática pasa o no a descenso antes de saltar a LR (módulo 18).\n\n## Errores clásicos en examen\n\n- Olvidar \\(\\epsilon\\) en FIRST al propagar en cadenas \\(B_1 B_2\\ldots\\).\n- No añadir \\(\\$\\) a FOLLOW(S).\n- Marcar LL(1) sin verificar **todas** las producciones de cada \\(A\\).\n- Eliminar recursión izquierda pero olvidar que \\(A'\\) hereda FOLLOW correcto.\n- Confundir conflicto FIRST/FOLLOW del `if` con error del lexer.\n- Creer que descenso recursivo no necesita FOLLOW — usa implícitamente \\(\\epsilon\\) cuando `peek` ∉ FIRST(α restante).\n- Tabla con celda doble y afirmar «parser arregla solo» sin estrategia.\n\n## Preguntas de entrevista\n\n**P: ¿Cuándo añades FOLLOW a FIRST al rellenar M[A,a]?**\n\n**R:** Cuando la producción elegida es anulable (\\(\\epsilon \\in\\) FIRST(α)) y el lookahead \\(a\\) está en FOLLOW(A); entonces la producción «vacía» aplica ante \\(a\\).\n\n**P: ¿LL(1) implica ambigüedad gratuita?\n\n**R:** No. Una gramática ambigua fallará con conflictos reduce/reduce en LR o con múltiples árboles; LL(1) sin conflictos es univariante pero no garantiza ausencia de ambigüedad en otra gramática equivalente.\n\n**P: ¿Por qué C no es LL(1)?**\n\n**R:** Constructos como declarador/función comparten prefijos; typedef vs identificador; requiere lookahead o parser LR/GLR.\n\n### WORKED EXAMPLE: dangling else reescrito\n\nGramática problemática:\n\n```\nstmt → if expr then stmt | if expr then stmt else stmt | other\n```\n\n`FIRST/FIRST` no es el conflicto principal aquí; al incluir ε en ramas internas aparece **FIRST/FOLLOW**: con lookahead `else`, tanto reducir producción anulable intermedia como expandir `else stmt` compiten en variantes LR; en LL predictivo, `stmt` sin factorizar admite ambigüedad de asociación del `else` con el `if` interno o externo (regla más cercana).\n\nFactorización recomendada:\n\n```\nstmt       → if expr then stmt else_part | other\nelse_part  → else stmt | ε\n```\n\nAhora `else` aparece solo en `else_part` tras haber leído `then stmt`. `FIRST(else_part) = {else, ε}`; para resolver ε se usa `FOLLOW(else_part) = FOLLOW(stmt)` que típicamente incluye `else`, `$`, y tokens que siguen a sentencias. La tabla LL asigna producción ε solo cuando el lookahead no es `else` en gramáticas cuidadosamente diseñadas, o se fuerza `else` a enlazar al `if` más cercano por regla gramatical explícita (sin ε que compita con `else` en el mismo conjunto FIRST/FOLLOW).\n\n### Sincronización y recovery en máquina predictiva\n\nCuando `M[A,a]` está vacía, estrategias clásicas:\n\n1. **Panic mode**: desapilar hasta encontrar símbolo en conjunto de sincronía (típicamente FOLLOW del no terminal en tope).\n2. **Phrase level**: inyectar token «ficticio» o saltar hasta delimitador `;`.\n3. **Corrección local**: insertar terminal faltante si el error es una coma omitida.\n\nDescenso recursivo suele implementar recovery ad hoc (`try/except` con skip hasta `}`). La tabla LL facilita calcular conjuntos de sincronía **sistemáticamente** como unión de FOLLOW de símbolos en pila.\n\n### Complejidad y prefijos de producción\n\nCalcular FIRST para cadenas largas en gramáticas de C++ header puede producir conjuntos grandes pero finitos. Algoritmos eficientes usan representación bitset por terminal. En generadores, **precomputar** FIRST una vez por cambio de gramática y cachear en build del compilador, no en cada compilación de usuario final.\n\nPara la gramática del laboratorio QuimiSell, liste cada no terminal en orden de dependencia (bottom-up sobre apariciones en cuerpos): calcular FIRST de símbolos hoja antes evita iteraciones extra y detecta ciclos de ε-anulación que requieren cierre de dependencias.\n\nLa **condición predictiva fuerte** exige que no haya intersección de FIRST entre alternativas **y** que ε-producciones no compitan con alternativas no triviales vía FOLLOW; en tablas impresas, marque con color las celdas que mezclan ε y terminal para estudiar exámenes de forma visual.\n\n## Estudio dirigido\n\nCalcule FIRST/FOLLOW completos para la gramática de declaraciones `D → T L`, `L → id L' | * id L'`, `L' → , id L' | ε`, `T → int | char`.\n\nDetecte conflicto en producción ambigua `E → E + E | E * E | id` y reescriba en capas.\n\nSimule pila predictiva para entrada `id + id + id` con traza celda a celda.\n\nCompare mensajes de error de tabla vacía vs `assert` en descenso recursivo.\n\n## Profundización: LL(k) y atributos\n\n**LL(k)** generaliza a k tokens de lookahead; tamaño de tabla crece exponencialmente en k — raro en tablas densas, común en decisión codificada en código.\n\n**Funciones atributas** en LL: sintetizados al completar producción; heredados más naturales en LR — diseño influye elección.\n\n**Error recovery** en predictivo: sincronización en FOLLOW del stack top; panic mode hasta token de sincronía.\n\n## Práctica integral\n\nImplemente calculador iterativo de FIRST para JSON de producciones del laboratorio.\n\nGenere `M` como `dict[(A,a)]` y lance excepción con conflicto detallado.\n\nConvierta gramática recursiva izquierda de listas `L → L , id | id` a forma LL.\n\nDocumente en tres frases cómo el módulo 11 del laboratorio implementa ε-transición implícita al retornar `left` sin consumir `+`: eso es exactamente la fila `M[E', a]` con \\(a \\in\\) FOLLOW(E) y producción \\(E' \\rightarrow \\epsilon\\).\n\nRepase la demostración con la cadena `id + ( id )` y anote el orden de llamadas `parse_E → parse_T → parse_E → …` comparándolo con profundidad de pila en la máquina predictiva.\n\n## Síntesis y checklist antes de avanzar\n\n- Calculé FIRST y FOLLOW hasta punto fijo en gramática de ejemplo.\n- Construí tabla M[A,a] y verifiqué ausencia de conflictos o los localicé.\n- Apliqué eliminación de recursión izquierda y/o factorización a izquierda.\n- Diferencié conflicto FIRST/FIRST vs FIRST/FOLLOW con caso dangling else.\n- Ejecuté traza mental predictiva vs descenso recursivo del snippet.\n- Enlacé decisión `peek()` con conjuntos FIRST/FOLLOW de ε-producciones.\n- Reconocí limitaciones LL(1) frente a gramáticas de lenguajes reales.\n- Preparé transición al módulo 18 (LR/LALR y generadores).",
+      codeSnippet: `# Cálculo de FIRST y FOLLOW (recursión izquierda eliminada)
+GRAMMAR = {
+    "E": [["T", "E'"]],
+    "E'": [["+", "T", "E'"], ["ε"]],
+    "T": [["F", "T'"]],
+    "T'": [["*", "F", "T'"], ["ε"]],
+    "F": [["(", "E", ")"], ["id"]],
 }
+
+def first(symbol, cache=None):
+    cache = cache or {}
+    if symbol in cache:
+        return cache[symbol]
+    if symbol == "ε":
+        return {"ε"}
+    if symbol not in GRAMMAR:  # terminal
+        return {symbol}
+    result = set()
+    for prod in GRAMMAR[symbol]:
+        seq = iter_prod(prod)
+        for t in seq:
+            ft = first(t, cache)
+            result |= ft - {"ε"}
+            if "ε" not in ft:
+                break
+        else:
+            result.add("ε")
+    cache[symbol] = result
+    return result
+
+def iter_prod(prod):
+    for x in prod:
+        yield x
+
+print("FIRST(E) =", first("E"))
+print("FIRST(F) =", first("F"))`,
+      quiz: [
+        {
+          question: "FIRST(A) incluye ε cuando:",
+          options: ["Existe derivación A⇒* ε",
+          "A es terminal",
+          "Solo en LR",
+          "Nunca"],
+          answerIndex: 0,
+          explanation: "Producción anulable o cadena."
+        },
+        {
+          question: "FOLLOW(S) debe contener:",
+          options: ["Marcador fin de entrada $",
+          "Solo id",
+          "Variables",
+          "Tokens lexer"],
+          answerIndex: 0,
+          explanation: "Axioma al final de cadena."
+        },
+        {
+          question: "Conflicto FIRST/FIRST en A:",
+          options: ["Dos alternativas comparten terminal en FIRST",
+          "Solo en LR",
+          "Error lexer",
+          "Ambigüedad MT"],
+          answerIndex: 0,
+          explanation: "Lookahead no único."
+        },
+        {
+          question: "Conflicto FIRST/FOLLOW aparece con:",
+          options: ["Alternativa ε y otro FIRST que intersecta FOLLOW(A)",
+          "Solo shift",
+          "DFA",
+          "Regalloc"],
+          answerIndex: 0,
+          explanation: "Clásico en anulables."
+        },
+        {
+          question: "M[A,a] usa FOLLOW(A) cuando:",
+          options: ["ε∈FIRST(α) de la producción elegida",
+          "Siempre",
+          "Nunca",
+          "Solo en yacc"],
+          answerIndex: 0,
+          explanation: "Regla predictiva estándar."
+        },
+        {
+          question: "Recursión izquierda A→Aα|β se reescribe como:",
+          options: ["A→βA', A'→αA'|ε",
+          "A→ε",
+          "Solo LR",
+          "Eliminar A"],
+          answerIndex: 0,
+          explanation: "Tail no terminal."
+        },
+        {
+          question: "Factorización a izquierda ayuda a:",
+          options: ["Separar alternativas con prefijo común",
+          "Minimizar DFA",
+          "Codegen",
+          "Pumping"],
+          answerIndex: 0,
+          explanation: "Disjunción en FIRST."
+        },
+        {
+          question: "LL(1) significa lookahead de:",
+          options: ["Un terminal",
+          "Un no terminal",
+          "Toda la gramática",
+          "Pila LR"],
+          answerIndex: 0,
+          explanation: "k=1."
+        },
+        {
+          question: "Descenso recursivo sin tabla:",
+          options: ["Codifica mismas decisiones FIRST/FOLLOW",
+          "Es LR",
+          "No usa peek",
+          "Es CYK"],
+          answerIndex: 0,
+          explanation: "Equivalente si LL(1)."
+        },
+        {
+          question: "Gramática LL(1) requiere:",
+          options: ["Celdas M con a lo sumo una producción",
+          "Dos reduces por estado",
+          "MT universal",
+          "Regex sola"],
+          answerIndex: 0,
+          explanation: "Tabla sin conflictos."
+        }
+      ],
+      exercises: [
+        {
+          id: 7601,
+          instruction: "Calcula FIRST y FOLLOW para E→T E', E'→+ T E'|ε, T→id|(E); construye filas M[E,*] y M[E',*] y verifica LL(1).",
+          placeholder: "FIRST(E) = ...",
+          expectedKeywords: ["FIRST", "FOLLOW", "LL", "tabla"],
+          hint: "FOLLOW(E') incluye ) y $ desde FOLLOW(E).",
+          isEmailSubmission: false
+        },
+        {
+          id: 7602,
+          instruction: "DESAFÍO: Transforma L→L,id|id eliminando recursión izquierda y escribe funciones parse_L / parse_L' estilo módulo 11.",
+          placeholder: "def parse_L(...):",
+          expectedKeywords: ["recursion", "L", "parse", "epsilon"],
+          hint: "L → id L', L' → , id L' | ε.",
+          isEmailSubmission: true
+        }
+      ],
+
+    },
+{
+      id: 18,
+      title: "MÓDULO 18: LR(1), LALR(1) Y GENERADORES YACC/BISON",
+      description: "Ítems LR, tablas ACTION/GOTO, conflictos y precedencia en Bison.",
+      items: [
+      "Ítem LR [A → α·β]: progreso de reconocimiento; ítem completo permite reduce.",
+      "closure: añadir [B → ·γ] cuando B sigue al punto; goto por símbolo X.",
+      "LR(1) anota lookahead en ítems; LALR fusiona cores LR(0) uniendo lookaheads.",
+      "ACTION: shift s_j, reduce A→γ, accept, error; GOTO en no terminales.",
+      "Conflicto shift/reduce: reduce posible pero también shift del mismo lookahead.",
+      "Conflicto reduce/reduce: dos producciones completas con mismo lookahead.",
+      "Bison %left/%right/%nonassoc desempata precedencia en shift/reduce.",
+      "Axioma aumentado S'→S y token $ para aceptación única.",
+      "Comparar Bison/LALR tabular vs ANTLR predicción adaptativa en mantenimiento de gramática."
+],
+      content: "## Panorama del tema: LR(1), LALR(1) Y GENERADORES DE PARSER\n\nLos parsers **LR** leen la entrada de izquierda a derecha produciendo la **derivación leftmost inversa**: reconstruyen el árbol ascendiendo desde hojas (tokens) mediante reducciones que invierten pasos de derivación. La familia **LR(k)** usa \\(k\\) símbolos de lookahead; en la práctica industrial domina **LR(1)** teórico y **LALR(1)** (Look-Ahead LR) como compromiso: tablas casi tan compactas como LR(0) con poder cercano a LR(1). **Yacc**, **GNU Bison**, **yacc** histórico de UNIX y descendientes alimentan frontends de C, SQL, Verilog y decenas de lenguajes con gramáticas voluminosas que no serían LL(1) sin torturar la especificación.\n\nEl núcleo ingenieril son los **ítems** (reglas con «punto» · marcando progreso), la operación **closure**, las transiciones **goto**, y las tablas **ACTION** y **GOTO**. Los **conflictos shift/reduce** y **reduce/reduce** señalan gramáticas no LR en su forma cruda; muchas se resuelven con **precedencia y asociatividad** de operadores declaradas en Bison, o con reescritura de gramática. **ANTLR** ofrece un camino alternativo (ALL(*)/predicción adaptativa) — comparar ambos ecosistemas ayuda a elegir toolchain en un nuevo DSL.\n\nEsta lección consolida el puente entre teoría de autómatas de pila (módulo 7) y el parser real que consume tokens del módulo 10.\n\n## Objetivos de la lección\n\n- Definir ítems LR, closure y goto sobre conjuntos de ítems.\n- Interpretar tablas ACTION (shift/reduce/accept) y GOTO.\n- Clasificar conflictos shift/reduce y reduce/reduce y sus remedios.\n- Aplicar precedencia en Bison/Yacc a conflictos de expresiones.\n- Contrastar pipeline Bison/LALR con ANTLR en proyectos de compilador.\n\n## Desarrollo de la lección\n\n### Ítems LR y automato de colecciones\n\nUn **ítem** es una producción con posición del punto: `[A → α · β]` significa que el parser ha reconocido \\(\\alpha\\) y espera derivar \\(\\beta\\). Ítem completo `[A → α ·]` indica que reducir \\(A → α\\) es legal si el contexto lookahead lo permite.\n\nDado conjunto de ítems \\(I\\):\n\n**closure(I)**:\n- Incluir todos los ítems de \\(I\\).\n- Si `[A → α · B β]` está en closure y \\(B \\rightarrow \\gamma\\) es producción, añadir `[B → · γ]` para cada \\(\\gamma\\).\n\n**goto(I, X)** para símbolo \\(X \\in V \\cup \\Sigma\\): tomar ítems `[A → α · X β]`, mover punto tras \\(X\\), aplicar closure.\n\nEl **autómata LR** tiene estados = conjuntos canónicos de ítems (closure aplicada); aristas etiquetadas con \\(X\\) vía goto. Estado inicial closure(\\{`[S' → · S $]`\\}) con axioma aumentado \\(S'\\).\n\n### Construcción LR(0) vs LR(1)\n\n**LR(0)**: un estado por colección de ítems; ACTION usa solo estado actual (sin lookahead en ítems). Potente para enseñar, insuficiente para gramáticas expresivas — abundan conflictos.\n\n**LR(1)**: cada ítem lleva **lookahead** terminal \\(a\\): `[A → α · β, a]`. Closure propaga FIRST de \\(\\beta a\\) al añadir ítems de \\(B\\). Goto actualiza lookaheads según reglas de propagación. Estados LR(1) pueden multiplicarse respecto a LR(0).\n\n**LALR(1)**: fusiona estados LR(1) que comparten el mismo **core** (mismo conjunto de ítems LR(0), ignorando lookahead) uniendo lookaheads. Reduce tablas al tamaño de LR(0) en muchos gramáticas reales; ocasionalmente introduce conflictos reduce/reduce que LR(1) puro no tiene — Bison documenta casos.\n\n### Tablas ACTION y GOTO\n\nPor estado \\(i\\) y lookahead \\(a\\):\n\n- **shift \\(s_j\\)**: empujar \\(a\\) y pasar a estado \\(j\\) (goto desde \\(i\\) con terminal \\(a\\)).\n- **reduce \\(A \\rightarrow \\gamma\\)**: desapilar \\(|\\gamma|\\) símbolos (recuperando estados), apilar \\(A\\), goto al estado desde tabla GOTO.\n- **accept**: solo en estado final con $ y axioma completo.\n- **error**: celda vacía → reject.\n\n**GOTO[i, A]** (A no terminal): estado tras reduce de \\(A\\) desde \\(i\\).\n\nEl **parser LR** mantiene pila de estados; ciclo: si ACTION es shift, empujar token; si reduce, contraer handle en tope según producción; si accept, fin.\n\n### Conflicts shift/reduce y reduce/reduce\n\n**Shift/reduce** en estado con ítem `[A → α ·]` (reducible) e ítem `[B → α' · a β]` (shift con \\(a\\)): no se sabe si reducir ahora o leer más. Clásico en `if-then-else` sin precedencia y en anidamiento de patrones similares.\n\n**Reduce/reduce**: dos producciones completas con mismo lookahead — señal de **ambigüedad** en gramática o fusión LALR demasiado agresiva.\n\nDiagnóstico Bison imprime estado con ítems conflictivos; depuración manual dibuja colección y señala lookaheads distintos.\n\n### Precedencia en Bison/Yacc\n\nDeclaraciones `%left`, `%right`, `%nonassoc` con tokens o literales definen **niveles de precedencia** (más bajo en lista = menor precedencia si se usa la convención típica de Bison). Reglas:\n\n- Dos producciones en conflicto shift/reduce con terminal \\(t\\): comparar precedencia de producción reducida vs precedencia de \\(t\\); mayor gana shift o reduce según reglas Bison.\n- `%nonassoc` prohíbe encadenar (ej. igualdad no asociativa en algunos diseños).\n\n**Asociatividad** desempata shift/reduce en mismos niveles (asoc. izquierda favorece reduce en `E → E + T` pattern, permitiendo seguir acumulando operador binario a la izquierda).\n\nEsto **no** resuelve reduce/reduce; requiere refactor de gramática o volver a LR(1) puro / gramática distinta.\n\nEjemplo declarativo:\n\n```\n%left '+''-'\n%left '*''/'\n%right '^'\n```\n\nExpresión con `+` e `*` deja reducir multiplicación antes que shift de `+` en patrones shift/reduce estándar de yacc.\n\n### Gramática aumentada y handle\n\nAxioma \\(S' \\rightarrow S\\) aísla \\(S\\) y marca aceptación con `$`. Un **handle** es cadena \\(\\beta\\) en pila tal que reducir la producción \\(A \\rightarrow \\beta\\) corresponde a un paso de derivación inversa. Parsers LR localizan handles usando ítems completos con lookahead válido — propiedad **válida LR**: solo el handle correcto reduce en cada configuración.\n\n### Comparación con ANTLR\n\n| Aspecto | Bison/LALR | ANTLR 4 |\n|---------|------------|---------|\n| Modelo | Tablas ACTION/GOTO, shift-reduce | Predicción ALL(*), grammars sin factorizar tanto |\n| Conflictos | Reportados explícitamente; precedence hacks | Menos tablas, más código generado adaptativo |\n| Gramáticas | Excelente para C-like, SQL | Muy usado en Java, C#, tooling |\n| Error messages | A veces crípticos en estados grandes | Mensajes contextuales configurables |\n| Integración | C/C++; variantes Java | Java, C#, Python, targets múltiples |\n\nANTLR **no** construye tablas LR clásicas; evita muchas restricciones LALR a costa de mayor complejidad del generador y runtime de predicción. Para cursos, Bison enseña **disciplina de conflictos** visible; ANTLR privilegia productividad en grammars de protocolos y IDEs.\n\n**GLR** (graph-structured stack) cubre ambigüedad explicítamente — fuera del núcleo LALR pero relevante en parsers de C++.\n\n### Relación con PDA y módulo 7\n\nLa pila LR replica la pila de un PDA no determinista que simula derivaciones inversas; determinismo LR(1) restringe elecciones a una pila lineal. CYK (módulo 7) decide pertenencia en \\(O(n^3)\\) sin construir parser industrial; LR es la contraparte **lineal** cuando la gramática encaja.\n\n## Demostración enlazada al código del módulo\n\nGramática LALR toy de listas y suma (fragmento estilo laboratorio):\n\n```\nS' → S\nS  → E\nE  → E + T | T\nT  → id\n```\n\nEstados LR(0) iniciales (sin lookaheads completos en tabla corta):\n\n1. `S'→·S`, `S→·E`, `E→·E+T`, `E→·T`, `T→·id`\n2. Tras shift `id`: `T→id·`, `E→T·` — reduce `T→id` en varios lookaheads; posible shift `+` en otro ítem del estado si existiera `E` incompleto.\n\n**Traza shift-reduce** para `id + id`:\n\n```\nPila estados    Entrada        Acción\n0               id + id $      shift → 3\n0 3             + id $         reduce T→id, goto E en estado 2...\n... (continuar hasta accept)\n```\n\nSnippet conceptual en Python del **simulador de tabla** (valores ficticios de estado):\n\n```python\naction = {\n    (0, 'id'): 's3',\n    (3, '+'): 'r T → id',\n    # ...\n}\ngoto_tbl = {(0, 'E'): 1, (0, 'T'): 2}\n\ndef lr_parse(tokens, action, goto_tbl):\n    stack = [0]\n    ip = 0\n    while True:\n        state = stack[-1]\n        a = tokens[ip] if ip < len(tokens) else '$'\n        act = action.get((state, a))\n        if act is None:\n            raise SyntaxError(f\"error in state {state} at {a}\")\n        if act.startswith('s'):\n            stack.append(int(act[1:]))\n            ip += 1\n        elif act.startswith('r'):\n            # pop len(rhs), push lhs via goto\n            ...\n        elif act == 'acc':\n            return True\n```\n\nEn **Bison** real, el archivo `.y` declara tokens y producciones; `bison -v` emite archivo `.output` con estados numerados — ejercicio de curso: localizar conflicto shift/reduce y aplicar `%left '+'`.\n\n## Aplicaciones en sistemas reales\n\n**GCC** historically yacc/bison derivatives en parser C; estándares nuevos exigen extensiones cuidadosas de gramática LALR.\n\n**PostgreSQL** parser SQL generado; precedencia extensa para operadores.\n\n**Redis, Bash, awk** — pipelines yacc clásicos de décadas con tablas compiladas offline.\n\n**LLVM tablegen** para DSLs internos: a veces LALR, a veces parsers hand-crafted para errores.\n\n## Errores clásicos en examen\n\n- Confundir **goto** sobre terminales (shift target) con GOTO sobre no terminales post-reduce.\n- Creer que `%left` resuelve reduce/reduce.\n- Olvidar axioma aumentado y aceptación con `$`.\n- Dibujar closure sin añadir `[B→·γ]` cuando \\(B\\) sigue al punto.\n- Asumir LR(1) y LALR(1) idénticos en toda gramática.\n- Mezclar **handle** con cualquier prefijo de pila — solo el correcto reduce.\n- Ignorar que conflicto persiste si precedencias iguales y mismo nivel nonassoc.\n\n## Preguntas de entrevista\n\n**P: Shift/reduce en expresiones: ¿shift o reduce con precedencia `*` sobre `+`?**\n\n**R:** Mayor precedencia del operador entrante favorece tratar operando pendiente como parte de subexpresión más ajustada — en yacc, declarar `*` más alto que `+` orienta reducciones de `T` antes de shifts conflictivos de suma según patrón de estados.\n\n**P: ¿Cuándo elegir ANTLR sobre Bison?**\n\n**R:** Gramáticas con prefijos difíciles de factorizar, necesidad de listeners/visitors integrados, ecosistema JVM/.NET; Bison si priorizas tablas deterministas verificables y toolchain C madura.\n\n**P: ¿LR(1) siempre más estados que LALR(1)?**\n\n**R:** LALR(1) fusiona cores; conteo de estados LALR ≤ LR(1), con posible pérdida de resolución conflictiva.\n\n### LR(1) lookahead en detalle (esquema)\n\nAl cerrar ítem `[A → α ·, a]` indica que reducir \\(A \\rightarrow \\alpha\\) es válido solo si el próximo token es \\(a\\). Al procesar `[A → α · B β, x]`, cada producción \\(B \\rightarrow \\gamma\\) genera ítems `[B → · γ, b]` para cada \\(b \\in\\) FIRST(\\(\\beta x\\)). Así el lookahead fluye **adelante** en el cuerpo y al cierre del bloque LR hereda FOLLOW del lado derecho. Este mecanismo explica por qué LR(1) resuelve más gramáticas que SLR(1), que usa FOLLOW(A) global y excesivamente grande para elegir reducciones.\n\nEn traza de depuración, anotar lookaheads junto a cada ítem evita confundir un estado LR(0) «igual» con estados LR(1) distintos que LALR fusionará — ahí nace el riesgo de reduce/reduce espurio.\n\n### Shift/reduce en gramática de expresiones: intuición de estados\n\nEn estado que contiene `[E → E · + T]` y `[T → T · * F]` (patrones simplificados) y un `T → F` completo, al ver `+` se reduce o shift según si el `+` pertenece a continuar una suma de nivel exterior o cerrar subárbol. La colección exacta de ítems depende de la gramática **desfactoring**; por eso las gramáticas yacc usan producciones `E → E + T | T` homogéneas y delegan asociatividad a precedencia.\n\n### Generadores: flujo de ingeniería\n\nPipeline típico Bison: archivo `.y` con prologue C, `%token`, reglas, acciones semánticas `{ $$ = ... }`; `bison -d` genera `y.tab.h`; `flex` provee `yylex`; compilador enlaza parser con lexer. El **matcher** LR no conoce tipos: acciones embebidas construyen AST. Comparación ANTLR: gramm `.g4` → `ANTLR` genera lexer+parser; listeners/visitors recorren árbol. Elección depende de lenguaje host y cultura del equipo, no solo de poder expresivo crudo.\n\nEn mantenimiento industrial, equipos conservan archivos `.output` de Bison en control de versiones para auditar por qué un cambio de una producción introdujo un nuevo conflicto shift/reduce en un estado numerado — práctica recomendable cuando la gramática supera cientos de reglas.\n\nLa correctitud del parser LR respecto a la gramática declarada es verificable localmente (sin backtracking global), propiedad valiosa en compiladores donde el análisis sintáctico debe ser determinista sobre entradas válidas.\n\n## Estudio dirigido\n\nConstruya closure y goto manual para gramática de 4 producciones con paréntesis balanceados aumentada.\n\nAbra salida `-v` de Bison (o trace ficticia) y liste ítems del estado conflictivo del `if`.\n\nCompare cantidad de estados LR(0) vs LR(1) en gramática pequeña con ε.\n\nRelacione pila LR con simulación PDA del módulo 7 para aceptar `a^n b^n` — por qué no es LR sin trucos.\n\n## Profundización: IELR, GLR y optimización de tablas\n\n**IELR** (Bison 3) genera tablas LR saneadas — alternativa a LALR puro cuando reduce/reduce aparece por fusión.\n\n**Compresión de tablas** (sparse rows) en parser generado reduce .rodata en binarios embebidos.\n\n**Canonical LR(1)** minimiza estados LR(1) — investigación, no siempre en herramientas docentes.\n\n## Práctica integral\n\nEscriba gramática Bison mínima con conflicto `+`/`*` y resuélvalo con precedencia sin cambiar producciones.\n\nImplemente lector de trazas que imprime pila ACTION paso a paso para cadena corta.\n\nContraste mensaje de error LR vacío vs diagnóstico ANTLR en la misma gramática mal cerrada.\n\nEscriba un párrafo que explique por qué el lexer (módulo 10) debe entregar tokens **tipados** antes de que ACTION consulte `(estado, token)`: un `id` genérico versus palabra reservada `if` cambia la columna de la tabla aunque el lexema comparta prefijo.\n\nReplique el diagrama autómata LR del módulo 11 (shift/reduce) etiquetando nodos como ítems completos en lugar de metáfora abstracta, para cerrar el círculo teórico.\n\n## Síntesis y checklist antes de avanzar\n\n- Definí ítem, closure y goto sobre conjuntos canónicos.\n- Leí tablas ACTION/GOTO y tracé shift/reduce/accept.\n- Clasifiqué shift/reduce vs reduce/reduce y remedios típicos.\n- Apliqué precedencia Bison a expresiones aritméticas.\n- Comparé LALR(1) con LR(1) y núcleo de fusión de estados.\n- Contrasté ecosistema Bison vs ANTLR para diseño de parser industrial.\n- Conecté pila LR con PDA del módulo 7 y tokens del módulo 10.\n- Listo para integrar parser en pipeline semántico (módulos 12–15).",
+      codeSnippet: `# Ítem LR y detección de conflictos en log de Bison
+ITEMS = ["S' -> . S", "S -> a .", "S -> ( S ) ."]
+
+def parse_bison_conflicts(log: str) -> list[str]:
+    return [ln.strip() for ln in log.splitlines() if "conflict" in ln.lower()]
+
+LOG = (
+    "state 42: shift/reduce conflict on token '+' resolved as shift\n"
+    "state 17: reduce/reduce conflict on token ')'"
+)
+print(parse_bison_conflicts(LOG))`,
+      quiz: [
+        {
+          question: "Un ítem LR [A→α·β] indica:",
+          options: ["Se reconoció α; falta derivar β",
+          "Reduce completo",
+          "Lexer",
+          "Solo ε"],
+          answerIndex: 0,
+          explanation: "Posición del punto."
+        },
+        {
+          question: "closure añade ítems cuando:",
+          options: ["Un no terminal sigue al punto",
+          "Llega $",
+          "Shift",
+          "Spill"],
+          answerIndex: 0,
+          explanation: "B→·γ expansion."
+        },
+        {
+          question: "Acción shift en parser LR:",
+          options: ["Empuja token y estado",
+          "Reduce producción",
+          "Acepta",
+          "Minimiza"],
+          answerIndex: 0,
+          explanation: "Avanza entrada."
+        },
+        {
+          question: "GOTO[i,A] aplica tras:",
+          options: ["Reduce de no terminal A",
+          "Lexer",
+          "FIRST",
+          "ε-clausura NFA"],
+          answerIndex: 0,
+          explanation: "Transición con A en pila."
+        },
+        {
+          question: "Conflicto shift/reduce:",
+          options: ["Dudar entre reducir y leer más",
+          "Dos lexer",
+          "DFA",
+          "Pumping"],
+          answerIndex: 0,
+          explanation: "Clásico yacc."
+        },
+        {
+          question: "Conflicto reduce/reduce:",
+          options: ["Dos producciones reducibles con mismo lookahead",
+          "Fácil con %left",
+          "Solo LL",
+          "Nunca en LALR"],
+          answerIndex: 0,
+          explanation: "Ambigüedad dura."
+        },
+        {
+          question: "%left en Bison:",
+          options: ["Asocia izquierda y nivel de precedencia",
+          "LR(0) puro",
+          "Lexer",
+          "Hopcroft"],
+          answerIndex: 0,
+          explanation: "Desempate operadores."
+        },
+        {
+          question: "LALR(1) fusiona estados LR(1) que:",
+          options: ["Comparten el mismo core de ítems",
+          "Tienen distinto Σ",
+          "Son NFA",
+          "CYK"],
+          answerIndex: 0,
+          explanation: "Compactación de lookahead."
+        },
+        {
+          question: "Axioma aumentado S'→S permite:",
+          options: ["Detectar aceptación con $ único",
+          "Eliminar GOTO",
+          "Lexer longest",
+          "SSA"],
+          answerIndex: 0,
+          explanation: "Fin de parse."
+        },
+        {
+          question: "ANTLR vs Bison clásico:",
+          options: ["ANTLR usa predicción adaptativa, Bison tablas LR",
+          "Idénticos",
+          "Solo regex",
+          "Solo MT"],
+          answerIndex: 0,
+          explanation: "Enfoques generativos distintos."
+        }
+      ],
+      exercises: [
+        {
+          id: 7701,
+          instruction: "Dibuja closure del estado inicial para S'→S, S→C, C→(C)|id; lista ítems LR(0) tras closure.",
+          placeholder: "Estado I0: ...",
+          expectedKeywords: ["closure", "item", "LR", "goto"],
+          hint: "S'→·S genera S→·C y C→·(C) y C→·id.",
+          isEmailSubmission: false
+        },
+        {
+          id: 7702,
+          instruction: "DESAFÍO: Escribe reglas Bison mínimas con conflicto +/* y resuélvelo con %left sin alterar producciones; pega fragmento .y.",
+          placeholder: "%left ...",
+          expectedKeywords: ["bison", "precedencia", "shift", "reduce"],
+          hint: "Declare * con mayor precedencia que +.",
+          isEmailSubmission: true
+        }
+      ],
+    }]
+};

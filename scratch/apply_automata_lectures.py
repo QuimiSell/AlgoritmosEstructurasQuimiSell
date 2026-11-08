@@ -39,16 +39,12 @@ def find_modules_region(text: str) -> tuple[int, int] | None:
     m = re.search(r"modules:\s*\[", text)
     if not m:
         return None
-    start = m.end()
-    depth = 1
-    i = start
-    while i < len(text) and depth > 0:
-        if text[i] == "[":
-            depth += 1
-        elif text[i] == "]":
-            depth -= 1
-        i += 1
-    return start, i - 1
+    open_idx = m.end() - 1
+    close_idx = find_matching_bracket(text, open_idx)
+    if close_idx is None:
+        return None
+    start = open_idx + 1
+    return start, close_idx
 
 
 def extract_quoted(module: str, field: str) -> str | None:
@@ -160,7 +156,9 @@ def inject_exercises(module: str, exercises: list) -> str:
             "        }"
         )
     block = ",\n".join(lines)
-    insertion = f",\n      exercises: [\n{block}\n      ]"
+    tail = module[insert_at:].lstrip()
+    prefix = "," if not tail.startswith(",") else ""
+    insertion = f"{prefix}\n      exercises: [\n{block}\n      ]"
     return module[:insert_at] + insertion + module[insert_at:]
 
 
