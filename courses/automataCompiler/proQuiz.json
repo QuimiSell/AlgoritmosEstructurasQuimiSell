@@ -1678,5 +1678,341 @@
       "answerIndex": 0,
       "explanation": "Prueba end-to-end del pipeline."
     }
+  ],
+  "16": [
+    {
+      "question": "Dos estados p,q de un DFA son equivalentes si:",
+      "options": [
+        "Para todo w, aceptan w o rechazan w igual",
+        "Tienen el mismo nombre",
+        "Comparten una transición",
+        "Son iniciales"
+      ],
+      "answerIndex": 0,
+      "explanation": "Definición operacional de ≡."
+    },
+    {
+      "question": "Partición inicial típica en table-filling:",
+      "options": [
+        "F vs Q∖F",
+        "Un solo bloque",
+        "Cada estado solo",
+        "Alfabeto Σ"
+      ],
+      "answerIndex": 0,
+      "explanation": "Finales vs no finales."
+    },
+    {
+      "question": "Myhill-Nerode vincula:",
+      "options": [
+        "Tamaño mínimo del DFA con clases de indistinguibilidad",
+        "Solo NFA",
+        "Parser LL",
+        "CYK"
+      ],
+      "answerIndex": 0,
+      "explanation": "Índice finito de ∼."
+    },
+    {
+      "question": "Hopcroft mejora table-filling en:",
+      "options": [
+        "Complejidad amortizada O(n log n)",
+        "Elimina necesidad de Σ",
+        "Solo NFA",
+        "LR(1)"
+      ],
+      "answerIndex": 0,
+      "explanation": "Refinamiento eficiente."
+    },
+    {
+      "question": "Antes de minimizar conviene:",
+      "options": [
+        "Quitar inalcanzables y completar δ",
+        "Eliminar Σ",
+        "Convertir a CFG",
+        "Parser shift"
+      ],
+      "answerIndex": 0,
+      "explanation": "Limpieza del autómata."
+    },
+    {
+      "question": "Minimizar DFA en lexer sirve para:",
+      "options": [
+        "Reducir filas de tabla manteniendo L",
+        "Resolver ambigüedad gramatical",
+        "Calcular FIRST",
+        "Spill a stack"
+      ],
+      "answerIndex": 0,
+      "explanation": "Compactación de transiciones."
+    },
+    {
+      "question": "DFA mínimo para un lenguaje regular es:",
+      "options": [
+        "Único salvo renombrado de estados",
+        "Infinito",
+        "Dependiente del parser",
+        "Siempre un solo estado"
+      ],
+      "answerIndex": 0,
+      "explanation": "Unicidad estructural."
+    },
+    {
+      "question": "Si p y q distinguibles, existe w tal que:",
+      "options": [
+        "Uno acepta w· y otro no",
+        "Son iguales",
+        "δ(p,a)=δ(q,a) siempre",
+        "Ambos trampa"
+      ],
+      "answerIndex": 0,
+      "explanation": "Cadena testigo de separación."
+    },
+    {
+      "question": "Minimizar un NFA directamente:",
+      "options": [
+        "No está definido sin determinizar",
+        "Es O(1)",
+        "Usa FOLLOW",
+        "Es LR"
+      ],
+      "answerIndex": 0,
+      "explanation": "Primero DFA."
+    },
+    {
+      "question": "Table-filling marca par (p,q) cuando:",
+      "options": [
+        "Imágenes bajo algún a caen en bloques distintos",
+        "Son iniciales",
+        "p∈F",
+        "Σ vacío"
+      ],
+      "answerIndex": 0,
+      "explanation": "Refinamiento por símbolo."
+    }
+  ],
+  "17": [
+    {
+      "question": "FIRST(A) incluye ε cuando:",
+      "options": [
+        "Existe derivación A⇒* ε",
+        "A es terminal",
+        "Solo en LR",
+        "Nunca"
+      ],
+      "answerIndex": 0,
+      "explanation": "Producción anulable o cadena."
+    },
+    {
+      "question": "FOLLOW(S) debe contener:",
+      "options": [
+        "Marcador fin de entrada $",
+        "Solo id",
+        "Variables",
+        "Tokens lexer"
+      ],
+      "answerIndex": 0,
+      "explanation": "Axioma al final de cadena."
+    },
+    {
+      "question": "Conflicto FIRST/FIRST en A:",
+      "options": [
+        "Dos alternativas comparten terminal en FIRST",
+        "Solo en LR",
+        "Error lexer",
+        "Ambigüedad MT"
+      ],
+      "answerIndex": 0,
+      "explanation": "Lookahead no único."
+    },
+    {
+      "question": "Conflicto FIRST/FOLLOW aparece con:",
+      "options": [
+        "Alternativa ε y otro FIRST que intersecta FOLLOW(A)",
+        "Solo shift",
+        "DFA",
+        "Regalloc"
+      ],
+      "answerIndex": 0,
+      "explanation": "Clásico en anulables."
+    },
+    {
+      "question": "M[A,a] usa FOLLOW(A) cuando:",
+      "options": [
+        "ε∈FIRST(α) de la producción elegida",
+        "Siempre",
+        "Nunca",
+        "Solo en yacc"
+      ],
+      "answerIndex": 0,
+      "explanation": "Regla predictiva estándar."
+    },
+    {
+      "question": "Recursión izquierda A→Aα|β se reescribe como:",
+      "options": [
+        "A→βA', A'→αA'|ε",
+        "A→ε",
+        "Solo LR",
+        "Eliminar A"
+      ],
+      "answerIndex": 0,
+      "explanation": "Tail no terminal."
+    },
+    {
+      "question": "Factorización a izquierda ayuda a:",
+      "options": [
+        "Separar alternativas con prefijo común",
+        "Minimizar DFA",
+        "Codegen",
+        "Pumping"
+      ],
+      "answerIndex": 0,
+      "explanation": "Disjunción en FIRST."
+    },
+    {
+      "question": "LL(1) significa lookahead de:",
+      "options": [
+        "Un terminal",
+        "Un no terminal",
+        "Toda la gramática",
+        "Pila LR"
+      ],
+      "answerIndex": 0,
+      "explanation": "k=1."
+    },
+    {
+      "question": "Descenso recursivo sin tabla:",
+      "options": [
+        "Codifica mismas decisiones FIRST/FOLLOW",
+        "Es LR",
+        "No usa peek",
+        "Es CYK"
+      ],
+      "answerIndex": 0,
+      "explanation": "Equivalente si LL(1)."
+    },
+    {
+      "question": "Gramática LL(1) requiere:",
+      "options": [
+        "Celdas M con a lo sumo una producción",
+        "Dos reduces por estado",
+        "MT universal",
+        "Regex sola"
+      ],
+      "answerIndex": 0,
+      "explanation": "Tabla sin conflictos."
+    }
+  ],
+  "18": [
+    {
+      "question": "Un ítem LR [A→α·β] indica:",
+      "options": [
+        "Se reconoció α; falta derivar β",
+        "Reduce completo",
+        "Lexer",
+        "Solo ε"
+      ],
+      "answerIndex": 0,
+      "explanation": "Posición del punto."
+    },
+    {
+      "question": "closure añade ítems cuando:",
+      "options": [
+        "Un no terminal sigue al punto",
+        "Llega $",
+        "Shift",
+        "Spill"
+      ],
+      "answerIndex": 0,
+      "explanation": "B→·γ expansion."
+    },
+    {
+      "question": "Acción shift en parser LR:",
+      "options": [
+        "Empuja token y estado",
+        "Reduce producción",
+        "Acepta",
+        "Minimiza"
+      ],
+      "answerIndex": 0,
+      "explanation": "Avanza entrada."
+    },
+    {
+      "question": "GOTO[i,A] aplica tras:",
+      "options": [
+        "Reduce de no terminal A",
+        "Lexer",
+        "FIRST",
+        "ε-clausura NFA"
+      ],
+      "answerIndex": 0,
+      "explanation": "Transición con A en pila."
+    },
+    {
+      "question": "Conflicto shift/reduce:",
+      "options": [
+        "Dudar entre reducir y leer más",
+        "Dos lexer",
+        "DFA",
+        "Pumping"
+      ],
+      "answerIndex": 0,
+      "explanation": "Clásico yacc."
+    },
+    {
+      "question": "Conflicto reduce/reduce:",
+      "options": [
+        "Dos producciones reducibles con mismo lookahead",
+        "Fácil con %left",
+        "Solo LL",
+        "Nunca en LALR"
+      ],
+      "answerIndex": 0,
+      "explanation": "Ambigüedad dura."
+    },
+    {
+      "question": "%left en Bison:",
+      "options": [
+        "Asocia izquierda y nivel de precedencia",
+        "LR(0) puro",
+        "Lexer",
+        "Hopcroft"
+      ],
+      "answerIndex": 0,
+      "explanation": "Desempate operadores."
+    },
+    {
+      "question": "LALR(1) fusiona estados LR(1) que:",
+      "options": [
+        "Comparten el mismo core de ítems",
+        "Tienen distinto Σ",
+        "Son NFA",
+        "CYK"
+      ],
+      "answerIndex": 0,
+      "explanation": "Compactación de lookahead."
+    },
+    {
+      "question": "Axioma aumentado S'→S permite:",
+      "options": [
+        "Detectar aceptación con $ único",
+        "Eliminar GOTO",
+        "Lexer longest",
+        "SSA"
+      ],
+      "answerIndex": 0,
+      "explanation": "Fin de parse."
+    },
+    {
+      "question": "ANTLR vs Bison clásico:",
+      "options": [
+        "ANTLR usa predicción adaptativa, Bison tablas LR",
+        "Idénticos",
+        "Solo regex",
+        "Solo MT"
+      ],
+      "answerIndex": 0,
+      "explanation": "Enfoques generativos distintos."
+    }
   ]
 }

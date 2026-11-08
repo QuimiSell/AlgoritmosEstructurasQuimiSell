@@ -268,5 +268,59 @@
       "hint": "Nodos de alto grado primero; spill si no hay color.",
       "isEmailSubmission": true
     }
+  ],
+  "16": [
+    {
+      "id": 7501,
+      "instruction": "Aplica table-filling manual a un DFA de tres estados equivalentes al detector de paridad de unos del módulo 2; documenta partición inicial y fusiones.",
+      "placeholder": "Partición: ...",
+      "expectedKeywords": ["particion", "distinguible", "equivalente", "dfa"],
+      "hint": "Solo finales vs no finales; luego imágenes bajo 0 y 1.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 7502,
+      "instruction": "DESAFÍO: Implementa en Python `minimizar_dfa(dfa)` con table-filling o union-find; prueba que el lenguaje no cambia en diez cadenas aleatorias.",
+      "placeholder": "def minimizar_dfa(...):",
+      "expectedKeywords": ["def", "minimizar", "dfa", "distinguible"],
+      "hint": "Marca pares finales vs no finales primero; propaga con δ(a).",
+      "isEmailSubmission": true
+    }
+  ],
+  "17": [
+    {
+      "id": 7601,
+      "instruction": "Calcula FIRST y FOLLOW para E→T E', E'→+ T E'|ε, T→id|(E); construye filas M[E,*] y M[E',*] y verifica LL(1).",
+      "placeholder": "FIRST(E) = ...",
+      "expectedKeywords": ["FIRST", "FOLLOW", "LL", "tabla"],
+      "hint": "FOLLOW(E') incluye ) y $ desde FOLLOW(E).",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 7602,
+      "instruction": "DESAFÍO: Transforma L→L,id|id eliminando recursión izquierda y escribe funciones parse_L / parse_L' estilo módulo 11.",
+      "placeholder": "def parse_L(...):",
+      "expectedKeywords": ["recursion", "L", "parse", "epsilon"],
+      "hint": "L → id L', L' → , id L' | ε.",
+      "isEmailSubmission": true
+    }
+  ],
+  "18": [
+    {
+      "id": 7701,
+      "instruction": "Dibuja closure del estado inicial para S'→S, S→C, C→(C)|id; lista ítems LR(0) tras closure.",
+      "placeholder": "Estado I0: ...",
+      "expectedKeywords": ["closure", "item", "LR", "goto"],
+      "hint": "S'→·S genera S→·C y C→·(C) y C→·id.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 7702,
+      "instruction": "DESAFÍO: Escribe reglas Bison mínimas con conflicto +/* y resuélvelo con %left sin alterar producciones; pega fragmento .y.",
+      "placeholder": "%left ...",
+      "expectedKeywords": ["bison", "precedencia", "shift", "reduce"],
+      "hint": "Declare * con mayor precedencia que +.",
+      "isEmailSubmission": true
+    }
   ]
 }

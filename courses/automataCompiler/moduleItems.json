@@ -163,5 +163,38 @@
     "Datos en secciones .text/.data; alineación y constantes embebidas en objeto.",
     "ABI del SO: respetar convención en llamadas a libc y símbolos exportados.",
     "Validar salida con ensamblador y prueba de ejecutable end-to-end."
+  ],
+  "16": [
+    "Equivalencia de estados p ≡ q: mismas aceptaciones para todo sufijo w ∈ Σ*.",
+    "Partición inicial {F, Q∖F}; refinar por imágenes δ(p,a) y δ(q,a) hasta estabilidad.",
+    "Table-filling: marcar pares distinguibles; bloques finales = clases de equivalencia.",
+    "Outline Hopcroft: O(n log n) refinando solo bloques activos por símbolo a.",
+    "Teorema Myhill-Nerode: mínimo número de estados = índice finito de indistinguibilidad.",
+    "Eliminar inalcanzables y completar δ antes de minimizar en DFA parcial.",
+    "DFA mínimo único (salvo renombrado); minimización preserva L(M) exactamente.",
+    "Compactar tablas lexer post-union de regex: menos filas, mismo lenguaje de tokens.",
+    "Minimizar no sustituye resolución de prioridad longest-match entre reglas acción."
+  ],
+  "17": [
+    "FIRST(α): terminales que inician derivaciones; incluir ε si α ⇒* ε.",
+    "FOLLOW(A): terminales que pueden seguir a A; iniciar FOLLOW(S) con $.",
+    "Algoritmo iterativo FIRST/FOLLOW hasta punto fijo sobre producciones.",
+    "Tabla predictiva M[A,a] vacía o única; conflicto = dos producciones compiten.",
+    "Conflicto FIRST/FIRST: intersección de FIRST entre alternativas de A.",
+    "Conflicto FIRST/FOLLOW: ε en alternativa ∩ FOLLOW(A) con otro FIRST.",
+    "Eliminar recursión izquierda: A → Aα|β ⇒ A → βA', A' → αA'|ε.",
+    "Factorización a izquierda cuando alternativas comparten prefijo terminal.",
+    "Descenso recursivo y máquina LL(1) equivalentes si gramática es LL(1) sin conflictos."
+  ],
+  "18": [
+    "Ítem LR [A → α·β]: progreso de reconocimiento; ítem completo permite reduce.",
+    "closure: añadir [B → ·γ] cuando B sigue al punto; goto por símbolo X.",
+    "LR(1) anota lookahead en ítems; LALR fusiona cores LR(0) uniendo lookaheads.",
+    "ACTION: shift s_j, reduce A→γ, accept, error; GOTO en no terminales.",
+    "Conflicto shift/reduce: reduce posible pero también shift del mismo lookahead.",
+    "Conflicto reduce/reduce: dos producciones completas con mismo lookahead.",
+    "Bison %left/%right/%nonassoc desempata precedencia en shift/reduce.",
+    "Axioma aumentado S'→S y token $ para aceptación única.",
+    "Comparar Bison/LALR tabular vs ANTLR predicción adaptativa en mantenimiento de gramática."
   ]
 }
