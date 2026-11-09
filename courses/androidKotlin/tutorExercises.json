@@ -1,0 +1,812 @@
+{
+  "1": [
+    {
+      "id": 8011,
+      "instruction": "Implementa en tu proyecto (XML) lo central del módulo 1: Instalación, primer proyecto Empty Views, JDK y flujo asistido por IA en el IDE.. Adjunta enlace GitHub o zip.",
+      "placeholder": "https://github.com/usuario/app-android",
+      "expectedKeywords": [
+        "kotlin",
+        "android",
+        "xml",
+        "gradle"
+      ],
+      "hint": "Incluye captura Android Studio y salida assembleDebug.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 8012,
+      "instruction": "DESAFÍO módulo 1: explica en 5 líneas cómo depurarías un fallo relacionado con Android Studio Ladybug+: SDK Manager, emulador ARM…",
+      "placeholder": "Paso 1: Logcat…",
+      "expectedKeywords": [
+        "Logcat",
+        "depuración",
+        "Android"
+      ],
+      "hint": "Menciona breakpoint, Layout Inspector o Database Inspector según tema.",
+      "isEmailSubmission": false
+    }
+  ],
+  "2": [
+    {
+      "id": 8021,
+      "instruction": "Implementa en tu proyecto (XML) lo central del módulo 2: minSdk/targetSdk, namespaces, permisos normal vs dangerous.. Adjunta enlace GitHub o zip.",
+      "placeholder": "https://github.com/usuario/app-android",
+      "expectedKeywords": [
+        "kotlin",
+        "android",
+        "xml",
+        "gradle"
+      ],
+      "hint": "Incluye captura Android Studio y salida assembleDebug.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 8022,
+      "instruction": "DESAFÍO módulo 2: explica en 5 líneas cómo depurarías un fallo relacionado con compileSdk y targetSdk: impacto en APIs y comporta…",
+      "placeholder": "Paso 1: Logcat…",
+      "expectedKeywords": [
+        "Logcat",
+        "depuración",
+        "Android"
+      ],
+      "hint": "Menciona breakpoint, Layout Inspector o Database Inspector según tema.",
+      "isEmailSubmission": false
+    }
+  ],
+  "3": [
+    {
+      "id": 8031,
+      "instruction": "Implementa en tu proyecto (XML) lo central del módulo 3: onCreate → onDestroy, savedInstanceState y rotación.. Adjunta enlace GitHub o zip.",
+      "placeholder": "https://github.com/usuario/app-android",
+      "expectedKeywords": [
+        "kotlin",
+        "android",
+        "xml",
+        "gradle"
+      ],
+      "hint": "Incluye captura Android Studio y salida assembleDebug.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 8032,
+      "instruction": "DESAFÍO módulo 3: explica en 5 líneas cómo depurarías un fallo relacionado con Activity como pantalla: MainActivity y AndroidMani…",
+      "placeholder": "Paso 1: Logcat…",
+      "expectedKeywords": [
+        "Logcat",
+        "depuración",
+        "Android"
+      ],
+      "hint": "Menciona breakpoint, Layout Inspector o Database Inspector según tema.",
+      "isEmailSubmission": false
+    }
+  ],
+  "4": [
+    {
+      "id": 8041,
+      "instruction": "Implementa en tu proyecto (XML) lo central del módulo 4: Jerarquía de Views, match_parent, wrap_content y @string.. Adjunta enlace GitHub o zip.",
+      "placeholder": "https://github.com/usuario/app-android",
+      "expectedKeywords": [
+        "kotlin",
+        "android",
+        "xml",
+        "gradle"
+      ],
+      "hint": "Incluye captura Android Studio y salida assembleDebug.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 8042,
+      "instruction": "DESAFÍO módulo 4: explica en 5 líneas cómo depurarías un fallo relacionado con res/layout/activity_main.xml y inflado setContentV…",
+      "placeholder": "Paso 1: Logcat…",
+      "expectedKeywords": [
+        "Logcat",
+        "depuración",
+        "Android"
+      ],
+      "hint": "Menciona breakpoint, Layout Inspector o Database Inspector según tema.",
+      "isEmailSubmission": false
+    }
+  ],
+  "5": [
+    {
+      "id": 8051,
+      "instruction": "Implementa en tu proyecto (XML) lo central del módulo 5: Eliminar findViewById; clicks, TextWatchers y Snackbar.. Adjunta enlace GitHub o zip.",
+      "placeholder": "https://github.com/usuario/app-android",
+      "expectedKeywords": [
+        "kotlin",
+        "android",
+        "xml",
+        "gradle"
+      ],
+      "hint": "Incluye captura Android Studio y salida assembleDebug.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 8052,
+      "instruction": "DESAFÍO módulo 5: explica en 5 líneas cómo depurarías un fallo relacionado con viewBinding true en build.gradle.kts genera Activi…",
+      "placeholder": "Paso 1: Logcat…",
+      "expectedKeywords": [
+        "Logcat",
+        "depuración",
+        "Android"
+      ],
+      "hint": "Menciona breakpoint, Layout Inspector o Database Inspector según tema.",
+      "isEmailSubmission": false
+    }
+  ],
+  "6": [
+    {
+      "id": 8061,
+      "instruction": "Implementa en tu proyecto (XML) lo central del módulo 6: Themes, MaterialButton, TextInputLayout y FAB.. Adjunta enlace GitHub o zip.",
+      "placeholder": "https://github.com/usuario/app-android",
+      "expectedKeywords": [
+        "kotlin",
+        "android",
+        "xml",
+        "gradle"
+      ],
+      "hint": "Incluye captura Android Studio y salida assembleDebug.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 8062,
+      "instruction": "DESAFÍO módulo 6: explica en 5 líneas cómo depurarías un fallo relacionado con Theme.Material3.DayNight sin ActionBar.…",
+      "placeholder": "Paso 1: Logcat…",
+      "expectedKeywords": [
+        "Logcat",
+        "depuración",
+        "Android"
+      ],
+      "hint": "Menciona breakpoint, Layout Inspector o Database Inspector según tema.",
+      "isEmailSubmission": false
+    }
+  ],
+  "7": [
+    {
+      "id": 8071,
+      "instruction": "Implementa en tu proyecto (XML) lo central del módulo 7: Options menu, ActionBar y NavigationView lateral.. Adjunta enlace GitHub o zip.",
+      "placeholder": "https://github.com/usuario/app-android",
+      "expectedKeywords": [
+        "kotlin",
+        "android",
+        "xml",
+        "gradle"
+      ],
+      "hint": "Incluye captura Android Studio y salida assembleDebug.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 8072,
+      "instruction": "DESAFÍO módulo 7: explica en 5 líneas cómo depurarías un fallo relacionado con menu/*.xml con item android:id y showAsAction.…",
+      "placeholder": "Paso 1: Logcat…",
+      "expectedKeywords": [
+        "Logcat",
+        "depuración",
+        "Android"
+      ],
+      "hint": "Menciona breakpoint, Layout Inspector o Database Inspector según tema.",
+      "isEmailSubmission": false
+    }
+  ],
+  "8": [
+    {
+      "id": 8081,
+      "instruction": "Implementa en tu proyecto (XML) lo central del módulo 8: ViewHolder pattern, DiffUtil y paginación manual.. Adjunta enlace GitHub o zip.",
+      "placeholder": "https://github.com/usuario/app-android",
+      "expectedKeywords": [
+        "kotlin",
+        "android",
+        "xml",
+        "gradle"
+      ],
+      "hint": "Incluye captura Android Studio y salida assembleDebug.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 8082,
+      "instruction": "DESAFÍO módulo 8: explica en 5 líneas cómo depurarías un fallo relacionado con RecyclerView + LinearLayoutManager vertical/horizo…",
+      "placeholder": "Paso 1: Logcat…",
+      "expectedKeywords": [
+        "Logcat",
+        "depuración",
+        "Android"
+      ],
+      "hint": "Menciona breakpoint, Layout Inspector o Database Inspector según tema.",
+      "isEmailSubmission": false
+    }
+  ],
+  "9": [
+    {
+      "id": 8091,
+      "instruction": "Implementa en tu proyecto (XML) lo central del módulo 9: FragmentTransaction, back stack y tabs con FragmentStateAdapter.. Adjunta enlace GitHub o zip.",
+      "placeholder": "https://github.com/usuario/app-android",
+      "expectedKeywords": [
+        "kotlin",
+        "android",
+        "xml",
+        "gradle"
+      ],
+      "hint": "Incluye captura Android Studio y salida assembleDebug.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 8092,
+      "instruction": "DESAFÍO módulo 9: explica en 5 líneas cómo depurarías un fallo relacionado con Fragment lifecycle vinculado a Activity host.…",
+      "placeholder": "Paso 1: Logcat…",
+      "expectedKeywords": [
+        "Logcat",
+        "depuración",
+        "Android"
+      ],
+      "hint": "Menciona breakpoint, Layout Inspector o Database Inspector según tema.",
+      "isEmailSubmission": false
+    }
+  ],
+  "10": [
+    {
+      "id": 8101,
+      "instruction": "Implementa en tu proyecto (XML) lo central del módulo 10: CRUD local en memoria, navegación y entrega del primer milestone.. Adjunta enlace GitHub o zip.",
+      "placeholder": "https://github.com/usuario/app-android",
+      "expectedKeywords": [
+        "kotlin",
+        "android",
+        "xml",
+        "gradle"
+      ],
+      "hint": "Incluye captura Android Studio y salida assembleDebug.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 8102,
+      "instruction": "DESAFÍO módulo 10: explica en 5 líneas cómo depurarías un fallo relacionado con Tres pantallas XML: lista, detalle, formulario.…",
+      "placeholder": "Paso 1: Logcat…",
+      "expectedKeywords": [
+        "Logcat",
+        "depuración",
+        "Android"
+      ],
+      "hint": "Menciona breakpoint, Layout Inspector o Database Inspector según tema.",
+      "isEmailSubmission": false
+    }
+  ],
+  "11": [
+    {
+      "id": 8111,
+      "instruction": "Implementa en tu proyecto (COMPOSE) lo central del módulo 11: Activar Compose, @Composable, Preview y Material3.. Adjunta enlace GitHub o zip.",
+      "placeholder": "https://github.com/usuario/app-android",
+      "expectedKeywords": [
+        "kotlin",
+        "android",
+        "compose",
+        "gradle"
+      ],
+      "hint": "Incluye captura Android Studio y salida assembleDebug.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 8112,
+      "instruction": "DESAFÍO módulo 11: explica en 5 líneas cómo depurarías un fallo relacionado con buildFeatures.compose true y BOM androidx.compose.…",
+      "placeholder": "Paso 1: Logcat…",
+      "expectedKeywords": [
+        "Logcat",
+        "depuración",
+        "Android"
+      ],
+      "hint": "Menciona breakpoint, Layout Inspector o Database Inspector según tema.",
+      "isEmailSubmission": false
+    }
+  ],
+  "12": [
+    {
+      "id": 8121,
+      "instruction": "Implementa en tu proyecto (COMPOSE) lo central del módulo 12: Padding, weight, scroll y Box con alineación.. Adjunta enlace GitHub o zip.",
+      "placeholder": "https://github.com/usuario/app-android",
+      "expectedKeywords": [
+        "kotlin",
+        "android",
+        "compose",
+        "gradle"
+      ],
+      "hint": "Incluye captura Android Studio y salida assembleDebug.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 8122,
+      "instruction": "DESAFÍO módulo 12: explica en 5 líneas cómo depurarías un fallo relacionado con Modifier.fillMaxWidth().padding(16.dp) orden impor…",
+      "placeholder": "Paso 1: Logcat…",
+      "expectedKeywords": [
+        "Logcat",
+        "depuración",
+        "Android"
+      ],
+      "hint": "Menciona breakpoint, Layout Inspector o Database Inspector según tema.",
+      "isEmailSubmission": false
+    }
+  ],
+  "13": [
+    {
+      "id": 8131,
+      "instruction": "Implementa en tu proyecto (COMPOSE) lo central del módulo 13: remember, mutableStateOf, rememberSaveable.. Adjunta enlace GitHub o zip.",
+      "placeholder": "https://github.com/usuario/app-android",
+      "expectedKeywords": [
+        "kotlin",
+        "android",
+        "compose",
+        "gradle"
+      ],
+      "hint": "Incluye captura Android Studio y salida assembleDebug.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 8132,
+      "instruction": "DESAFÍO módulo 13: explica en 5 líneas cómo depurarías un fallo relacionado con Estado que dispara recompose al cambiar .value.…",
+      "placeholder": "Paso 1: Logcat…",
+      "expectedKeywords": [
+        "Logcat",
+        "depuración",
+        "Android"
+      ],
+      "hint": "Menciona breakpoint, Layout Inspector o Database Inspector según tema.",
+      "isEmailSubmission": false
+    }
+  ],
+  "14": [
+    {
+      "id": 8141,
+      "instruction": "Implementa en tu proyecto (COMPOSE) lo central del módulo 14: Elevar estado al ancestro común; eventos vs estado.. Adjunta enlace GitHub o zip.",
+      "placeholder": "https://github.com/usuario/app-android",
+      "expectedKeywords": [
+        "kotlin",
+        "android",
+        "compose",
+        "gradle"
+      ],
+      "hint": "Incluye captura Android Studio y salida assembleDebug.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 8142,
+      "instruction": "DESAFÍO módulo 14: explica en 5 líneas cómo depurarías un fallo relacionado con Patrón: estado abajo, eventos arriba.…",
+      "placeholder": "Paso 1: Logcat…",
+      "expectedKeywords": [
+        "Logcat",
+        "depuración",
+        "Android"
+      ],
+      "hint": "Menciona breakpoint, Layout Inspector o Database Inspector según tema.",
+      "isEmailSubmission": false
+    }
+  ],
+  "15": [
+    {
+      "id": 8151,
+      "instruction": "Implementa en tu proyecto (COMPOSE) lo central del módulo 15: viewModel(), collectAsStateWithLifecycle, SavedStateHandle.. Adjunta enlace GitHub o zip.",
+      "placeholder": "https://github.com/usuario/app-android",
+      "expectedKeywords": [
+        "kotlin",
+        "android",
+        "compose",
+        "gradle"
+      ],
+      "hint": "Incluye captura Android Studio y salida assembleDebug.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 8152,
+      "instruction": "DESAFÍO módulo 15: explica en 5 líneas cómo depurarías un fallo relacionado con androidx.lifecycle:lifecycle-viewmodel-compose.…",
+      "placeholder": "Paso 1: Logcat…",
+      "expectedKeywords": [
+        "Logcat",
+        "depuración",
+        "Android"
+      ],
+      "hint": "Menciona breakpoint, Layout Inspector o Database Inspector según tema.",
+      "isEmailSubmission": false
+    }
+  ],
+  "16": [
+    {
+      "id": 8161,
+      "instruction": "Implementa en tu proyecto (COMPOSE) lo central del módulo 16: Rutas, NavController, deep links y back stack.. Adjunta enlace GitHub o zip.",
+      "placeholder": "https://github.com/usuario/app-android",
+      "expectedKeywords": [
+        "kotlin",
+        "android",
+        "compose",
+        "gradle"
+      ],
+      "hint": "Incluye captura Android Studio y salida assembleDebug.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 8162,
+      "instruction": "DESAFÍO módulo 16: explica en 5 líneas cómo depurarías un fallo relacionado con navigation-compose dependencia y NavHost.…",
+      "placeholder": "Paso 1: Logcat…",
+      "expectedKeywords": [
+        "Logcat",
+        "depuración",
+        "Android"
+      ],
+      "hint": "Menciona breakpoint, Layout Inspector o Database Inspector según tema.",
+      "isEmailSubmission": false
+    }
+  ],
+  "17": [
+    {
+      "id": 8171,
+      "instruction": "Implementa en tu proyecto (COMPOSE) lo central del módulo 17: Capas claras, unidirectional data flow, Use cases opcionales.. Adjunta enlace GitHub o zip.",
+      "placeholder": "https://github.com/usuario/app-android",
+      "expectedKeywords": [
+        "kotlin",
+        "android",
+        "compose",
+        "gradle"
+      ],
+      "hint": "Incluye captura Android Studio y salida assembleDebug.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 8172,
+      "instruction": "DESAFÍO módulo 17: explica en 5 líneas cómo depurarías un fallo relacionado con UI observa estado; ViewModel procesa intenciones.…",
+      "placeholder": "Paso 1: Logcat…",
+      "expectedKeywords": [
+        "Logcat",
+        "depuración",
+        "Android"
+      ],
+      "hint": "Menciona breakpoint, Layout Inspector o Database Inspector según tema.",
+      "isEmailSubmission": false
+    }
+  ],
+  "18": [
+    {
+      "id": 8181,
+      "instruction": "Implementa en tu proyecto (COMPOSE) lo central del módulo 18: Dependencias hacia dentro, interfaces en dominio.. Adjunta enlace GitHub o zip.",
+      "placeholder": "https://github.com/usuario/app-android",
+      "expectedKeywords": [
+        "kotlin",
+        "android",
+        "compose",
+        "gradle"
+      ],
+      "hint": "Incluye captura Android Studio y salida assembleDebug.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 8182,
+      "instruction": "DESAFÍO módulo 18: explica en 5 líneas cómo depurarías un fallo relacionado con Entities y casos de uso en domain.…",
+      "placeholder": "Paso 1: Logcat…",
+      "expectedKeywords": [
+        "Logcat",
+        "depuración",
+        "Android"
+      ],
+      "hint": "Menciona breakpoint, Layout Inspector o Database Inspector según tema.",
+      "isEmailSubmission": false
+    }
+  ],
+  "19": [
+    {
+      "id": 8191,
+      "instruction": "Implementa en tu proyecto (COMPOSE) lo central del módulo 19: suspend, Dispatchers.Main/IO, scopes y cancelación.. Adjunta enlace GitHub o zip.",
+      "placeholder": "https://github.com/usuario/app-android",
+      "expectedKeywords": [
+        "kotlin",
+        "android",
+        "compose",
+        "gradle"
+      ],
+      "hint": "Incluye captura Android Studio y salida assembleDebug.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 8192,
+      "instruction": "DESAFÍO módulo 19: explica en 5 líneas cómo depurarías un fallo relacionado con suspend fun no bloquea thread; continuations.…",
+      "placeholder": "Paso 1: Logcat…",
+      "expectedKeywords": [
+        "Logcat",
+        "depuración",
+        "Android"
+      ],
+      "hint": "Menciona breakpoint, Layout Inspector o Database Inspector según tema.",
+      "isEmailSubmission": false
+    }
+  ],
+  "20": [
+    {
+      "id": 8201,
+      "instruction": "Implementa en tu proyecto (COMPOSE) lo central del módulo 20: Cold Flow, hot StateFlow, combine y debounce.. Adjunta enlace GitHub o zip.",
+      "placeholder": "https://github.com/usuario/app-android",
+      "expectedKeywords": [
+        "kotlin",
+        "android",
+        "compose",
+        "gradle"
+      ],
+      "hint": "Incluye captura Android Studio y salida assembleDebug.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 8202,
+      "instruction": "DESAFÍO módulo 20: explica en 5 líneas cómo depurarías un fallo relacionado con Flow emisión secuencial cold por collector.…",
+      "placeholder": "Paso 1: Logcat…",
+      "expectedKeywords": [
+        "Logcat",
+        "depuración",
+        "Android"
+      ],
+      "hint": "Menciona breakpoint, Layout Inspector o Database Inspector según tema.",
+      "isEmailSubmission": false
+    }
+  ],
+  "21": [
+    {
+      "id": 8211,
+      "instruction": "Implementa en tu proyecto (COMPOSE) lo central del módulo 21: Entity, Dao, Database, migraciones y transacciones.. Adjunta enlace GitHub o zip.",
+      "placeholder": "https://github.com/usuario/app-android",
+      "expectedKeywords": [
+        "kotlin",
+        "android",
+        "compose",
+        "gradle"
+      ],
+      "hint": "Incluye captura Android Studio y salida assembleDebug.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 8212,
+      "instruction": "DESAFÍO módulo 21: explica en 5 líneas cómo depurarías un fallo relacionado con Room sobre SQLite: compile-time SQL verification.…",
+      "placeholder": "Paso 1: Logcat…",
+      "expectedKeywords": [
+        "Logcat",
+        "depuración",
+        "Android"
+      ],
+      "hint": "Menciona breakpoint, Layout Inspector o Database Inspector según tema.",
+      "isEmailSubmission": false
+    }
+  ],
+  "22": [
+    {
+      "id": 8221,
+      "instruction": "Implementa en tu proyecto (COMPOSE) lo central del módulo 22: Flow from DAO, LazyColumn, empty states.. Adjunta enlace GitHub o zip.",
+      "placeholder": "https://github.com/usuario/app-android",
+      "expectedKeywords": [
+        "kotlin",
+        "android",
+        "compose",
+        "gradle"
+      ],
+      "hint": "Incluye captura Android Studio y salida assembleDebug.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 8222,
+      "instruction": "DESAFÍO módulo 22: explica en 5 líneas cómo depurarías un fallo relacionado con dao.observeAll(): Flow<List<Note>>.…",
+      "placeholder": "Paso 1: Logcat…",
+      "expectedKeywords": [
+        "Logcat",
+        "depuración",
+        "Android"
+      ],
+      "hint": "Menciona breakpoint, Layout Inspector o Database Inspector según tema.",
+      "isEmailSubmission": false
+    }
+  ],
+  "23": [
+    {
+      "id": 8231,
+      "instruction": "Implementa en tu proyecto (COMPOSE) lo central del módulo 23: Interfaces HTTP, suspend, baseUrl y DTOs.. Adjunta enlace GitHub o zip.",
+      "placeholder": "https://github.com/usuario/app-android",
+      "expectedKeywords": [
+        "kotlin",
+        "android",
+        "compose",
+        "gradle"
+      ],
+      "hint": "Incluye captura Android Studio y salida assembleDebug.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 8232,
+      "instruction": "DESAFÍO módulo 23: explica en 5 líneas cómo depurarías un fallo relacionado con Retrofit.Builder baseUrl GsonConverterFactory.…",
+      "placeholder": "Paso 1: Logcat…",
+      "expectedKeywords": [
+        "Logcat",
+        "depuración",
+        "Android"
+      ],
+      "hint": "Menciona breakpoint, Layout Inspector o Database Inspector según tema.",
+      "isEmailSubmission": false
+    }
+  ],
+  "24": [
+    {
+      "id": 8241,
+      "instruction": "Implementa en tu proyecto (COMPOSE) lo central del módulo 24: Auth header, logging, retry y códigos HTTP.. Adjunta enlace GitHub o zip.",
+      "placeholder": "https://github.com/usuario/app-android",
+      "expectedKeywords": [
+        "kotlin",
+        "android",
+        "compose",
+        "gradle"
+      ],
+      "hint": "Incluye captura Android Studio y salida assembleDebug.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 8242,
+      "instruction": "DESAFÍO módulo 24: explica en 5 líneas cómo depurarías un fallo relacionado con Interceptor chain orden request/response.…",
+      "placeholder": "Paso 1: Logcat…",
+      "expectedKeywords": [
+        "Logcat",
+        "depuración",
+        "Android"
+      ],
+      "hint": "Menciona breakpoint, Layout Inspector o Database Inspector según tema.",
+      "isEmailSubmission": false
+    }
+  ],
+  "25": [
+    {
+      "id": 8251,
+      "instruction": "Implementa en tu proyecto (COMPOSE) lo central del módulo 25: HTTPS, Network Security Config, Keystore, ofuscación.. Adjunta enlace GitHub o zip.",
+      "placeholder": "https://github.com/usuario/app-android",
+      "expectedKeywords": [
+        "kotlin",
+        "android",
+        "compose",
+        "gradle"
+      ],
+      "hint": "Incluye captura Android Studio y salida assembleDebug.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 8252,
+      "instruction": "DESAFÍO módulo 25: explica en 5 líneas cómo depurarías un fallo relacionado con cleartextTrafficPermitted false producción.…",
+      "placeholder": "Paso 1: Logcat…",
+      "expectedKeywords": [
+        "Logcat",
+        "depuración",
+        "Android"
+      ],
+      "hint": "Menciona breakpoint, Layout Inspector o Database Inspector según tema.",
+      "isEmailSubmission": true
+    }
+  ],
+  "26": [
+    {
+      "id": 8261,
+      "instruction": "Implementa en tu proyecto (COMPOSE) lo central del módulo 26: Como chats privados WhatsApp: sin screenshots ni grabación de pantalla.. Adjunta enlace GitHub o zip.",
+      "placeholder": "https://github.com/usuario/app-android",
+      "expectedKeywords": [
+        "kotlin",
+        "android",
+        "compose",
+        "gradle"
+      ],
+      "hint": "Incluye captura Android Studio y salida assembleDebug.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 8262,
+      "instruction": "DESAFÍO módulo 26: explica en 5 líneas cómo depurarías un fallo relacionado con WindowManager.LayoutParams.FLAG_SECURE en Activity…",
+      "placeholder": "Paso 1: Logcat…",
+      "expectedKeywords": [
+        "Logcat",
+        "depuración",
+        "Android"
+      ],
+      "hint": "Menciona breakpoint, Layout Inspector o Database Inspector según tema.",
+      "isEmailSubmission": true
+    }
+  ],
+  "27": [
+    {
+      "id": 8271,
+      "instruction": "Implementa en tu proyecto (COMPOSE) lo central del módulo 27: Cámara hardware real; NO MediaProjection ni grabación pantalla.. Adjunta enlace GitHub o zip.",
+      "placeholder": "https://github.com/usuario/app-android",
+      "expectedKeywords": [
+        "kotlin",
+        "android",
+        "compose",
+        "gradle"
+      ],
+      "hint": "Incluye captura Android Studio y salida assembleDebug.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 8272,
+      "instruction": "DESAFÍO módulo 27: explica en 5 líneas cómo depurarías un fallo relacionado con CameraX ProcessCameraProvider bind lifecycle.…",
+      "placeholder": "Paso 1: Logcat…",
+      "expectedKeywords": [
+        "Logcat",
+        "depuración",
+        "Android"
+      ],
+      "hint": "Menciona breakpoint, Layout Inspector o Database Inspector según tema.",
+      "isEmailSubmission": true
+    }
+  ],
+  "28": [
+    {
+      "id": 8281,
+      "instruction": "Implementa en tu proyecto (COMPOSE) lo central del módulo 28: CAMERA, READ_MEDIA_IMAGES, requestPermissions contract.. Adjunta enlace GitHub o zip.",
+      "placeholder": "https://github.com/usuario/app-android",
+      "expectedKeywords": [
+        "kotlin",
+        "android",
+        "compose",
+        "gradle"
+      ],
+      "hint": "Incluye captura Android Studio y salida assembleDebug.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 8282,
+      "instruction": "DESAFÍO módulo 28: explica en 5 líneas cómo depurarías un fallo relacionado con Dangerous permissions solicitud en runtime Android…",
+      "placeholder": "Paso 1: Logcat…",
+      "expectedKeywords": [
+        "Logcat",
+        "depuración",
+        "Android"
+      ],
+      "hint": "Menciona breakpoint, Layout Inspector o Database Inspector según tema.",
+      "isEmailSubmission": true
+    }
+  ],
+  "29": [
+    {
+      "id": 8291,
+      "instruction": "Implementa en tu proyecto (COMPOSE) lo central del módulo 29: @HiltAndroidApp, @AndroidEntryPoint, provides Repos.. Adjunta enlace GitHub o zip.",
+      "placeholder": "https://github.com/usuario/app-android",
+      "expectedKeywords": [
+        "kotlin",
+        "android",
+        "compose",
+        "gradle"
+      ],
+      "hint": "Incluye captura Android Studio y salida assembleDebug.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 8292,
+      "instruction": "DESAFÍO módulo 29: explica en 5 líneas cómo depurarías un fallo relacionado con Hilt plugin kapt/ksp y @HiltAndroidApp Application…",
+      "placeholder": "Paso 1: Logcat…",
+      "expectedKeywords": [
+        "Logcat",
+        "depuración",
+        "Android"
+      ],
+      "hint": "Menciona breakpoint, Layout Inspector o Database Inspector según tema.",
+      "isEmailSubmission": true
+    }
+  ],
+  "30": [
+    {
+      "id": 8301,
+      "instruction": "Implementa en tu proyecto (COMPOSE) lo central del módulo 30: Compose + Room + Retrofit + CameraX + FLAG_SECURE + release.. Adjunta enlace GitHub o zip.",
+      "placeholder": "https://github.com/usuario/app-android",
+      "expectedKeywords": [
+        "kotlin",
+        "android",
+        "compose",
+        "gradle"
+      ],
+      "hint": "Incluye captura Android Studio y salida assembleDebug.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 8302,
+      "instruction": "DESAFÍO módulo 30: explica en 5 líneas cómo depurarías un fallo relacionado con App multi-pantalla: feed API, cache Room, cámara a…",
+      "placeholder": "Paso 1: Logcat…",
+      "expectedKeywords": [
+        "Logcat",
+        "depuración",
+        "Android"
+      ],
+      "hint": "Menciona breakpoint, Layout Inspector o Database Inspector según tema.",
+      "isEmailSubmission": true
+    }
+  ]
+}

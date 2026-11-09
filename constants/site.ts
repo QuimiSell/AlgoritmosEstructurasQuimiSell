@@ -29,6 +29,7 @@ export const COURSE_STUDY_ORDER: readonly string[] = [
   'ingeniero_ia',
   'evaluacion_ia',
   'edge_ia_movil',
+  'android_kotlin',
   'kali_linux',
 ] as const;
 

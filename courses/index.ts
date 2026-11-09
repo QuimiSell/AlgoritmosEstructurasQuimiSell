@@ -12,6 +12,7 @@ import { EDGE_MOBILE_AI_COURSE } from './edgeMobileAiCourse';
 import { REDES_DEV_COURSE } from './redesDevCourse';
 import { SQL_DATOS_IA_COURSE } from './sqlDatosIaCourse';
 import { EVALUACION_IA_COURSE } from './evaluacionIaCourse';
+import { ANDROID_KOTLIN_COURSE } from './androidKotlinCourse';
 
 const ALL_COURSES_MAP: Record<string, Course> = {
   matematica: MATH_COURSE,
@@ -25,6 +26,7 @@ const ALL_COURSES_MAP: Record<string, Course> = {
   ingeniero_ia: AI_ENGINEER_COURSE,
   evaluacion_ia: EVALUACION_IA_COURSE,
   edge_ia_movil: EDGE_MOBILE_AI_COURSE,
+  android_kotlin: ANDROID_KOTLIN_COURSE,
   kali_linux: KALI_LINUX_COURSE,
 };
 
@@ -48,4 +50,5 @@ export {
   REDES_DEV_COURSE,
   SQL_DATOS_IA_COURSE,
   EVALUACION_IA_COURSE,
+  ANDROID_KOTLIN_COURSE,
 };

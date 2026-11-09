@@ -1,0 +1,2762 @@
+{
+  "1": [
+    {
+      "question": "Módulo 1 (ANDROID STUDIO, KOTLIN Y CURSOR / ANTIGRAVITY): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Android Studio Ladybug+: SDK Manager, emulador ARM/x86 y dispositivo físico con depuración USB.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Android Studio Ladybug+: SDK Manager, emulador ARM/x86 y dispositivo físico con depuración USB."
+    },
+    {
+      "question": "Módulo 1 (ANDROID STUDIO, KOTLIN Y CURSOR / ANTIGRAVITY): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Kotlin en Android: nulabilidad, data class y convenciones del lenguaje vs Java.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Kotlin en Android: nulabilidad, data class y convenciones del lenguaje vs Java."
+    },
+    {
+      "question": "Módulo 1 (ANDROID STUDIO, KOTLIN Y CURSOR / ANTIGRAVITY): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "Estructura app/ src/main (kotlin, res) y sincronización Gradle.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Estructura app/ src/main (kotlin, res) y sincronización Gradle."
+    },
+    {
+      "question": "Módulo 1 (ANDROID STUDIO, KOTLIN Y CURSOR / ANTIGRAVITY): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Cursor o Antigravity CLI como copiloto: reglas .cursorrules, prompts para generar Activities seguras.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Cursor o Antigravity CLI como copiloto: reglas .cursorrules, prompts para generar Activities seguras."
+    },
+    {
+      "question": "Módulo 1 (ANDROID STUDIO, KOTLIN Y CURSOR / ANTIGRAVITY): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Git en el proyecto Android: .gitignore, no versionar local.properties ni keystores.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Git en el proyecto Android: .gitignore, no versionar local.properties ni keystores."
+    },
+    {
+      "question": "Módulo 1 (ANDROID STUDIO, KOTLIN Y CURSOR / ANTIGRAVITY): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "Build variant debug vs release y firma conceptual.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Build variant debug vs release y firma conceptual."
+    },
+    {
+      "question": "Módulo 1 (ANDROID STUDIO, KOTLIN Y CURSOR / ANTIGRAVITY): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Logcat filtrado por tag y nivel para depuración profesional.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Logcat filtrado por tag y nivel para depuración profesional."
+    },
+    {
+      "question": "Módulo 1 (ANDROID STUDIO, KOTLIN Y CURSOR / ANTIGRAVITY): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "AndroidManifest.xml: package, application, launcher Activity.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: AndroidManifest.xml: package, application, launcher Activity."
+    },
+    {
+      "question": "Módulo 1: ¿Qué herramienta asistida encaja con Android Studio en este curso?",
+      "options": [
+        "Solo Blockbench 3D.",
+        "Cursor o Antigravity CLI con revisión humana de permisos y Gradle.",
+        "Compilar sin Gradle para ir más rápido."
+      ],
+      "answerIndex": 1,
+      "explanation": "El curso promueve IA asistida con revisión de ingeniería en cada commit."
+    }
+  ],
+  "2": [
+    {
+      "question": "Módulo 2 (GRADLE, MANIFEST Y PERMISOS DECLARATIVOS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "compileSdk y targetSdk: impacto en APIs y comportamiento de permisos.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: compileSdk y targetSdk: impacto en APIs y comportamiento de permisos."
+    },
+    {
+      "question": "Módulo 2 (GRADLE, MANIFEST Y PERMISOS DECLARATIVOS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Manifest merge: libraries que inyectan permisos automáticamente.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Manifest merge: libraries que inyectan permisos automáticamente."
+    },
+    {
+      "question": "Módulo 2 (GRADLE, MANIFEST Y PERMISOS DECLARATIVOS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "uses-permission vs uses-permission-sdk-23 y maxSdkVersion.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: uses-permission vs uses-permission-sdk-23 y maxSdkVersion."
+    },
+    {
+      "question": "Módulo 2 (GRADLE, MANIFEST Y PERMISOS DECLARATIVOS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "application: allowBackup, networkSecurityConfig, tema icon.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: application: allowBackup, networkSecurityConfig, tema icon."
+    },
+    {
+      "question": "Módulo 2 (GRADLE, MANIFEST Y PERMISOS DECLARATIVOS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Product flavors y buildTypes (debug/release) sin duplicar código.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Product flavors y buildTypes (debug/release) sin duplicar código."
+    },
+    {
+      "question": "Módulo 2 (GRADLE, MANIFEST Y PERMISOS DECLARATIVOS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "versionCode/versionName y trazabilidad Play Store.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: versionCode/versionName y trazabilidad Play Store."
+    },
+    {
+      "question": "Módulo 2 (GRADLE, MANIFEST Y PERMISOS DECLARATIVOS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Dependencias implementation vs api vs kapt/ksp.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Dependencias implementation vs api vs kapt/ksp."
+    },
+    {
+      "question": "Módulo 2 (GRADLE, MANIFEST Y PERMISOS DECLARATIVOS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Repositorios Maven Google + Central; evitar JCenter obsoleto.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Repositorios Maven Google + Central; evitar JCenter obsoleto."
+    },
+    {
+      "question": "Módulo 2: ¿Qué herramienta asistida encaja con Android Studio en este curso?",
+      "options": [
+        "Solo Blockbench 3D.",
+        "Cursor o Antigravity CLI con revisión humana de permisos y Gradle.",
+        "Compilar sin Gradle para ir más rápido."
+      ],
+      "answerIndex": 1,
+      "explanation": "El curso promueve IA asistida con revisión de ingeniería en cada commit."
+    }
+  ],
+  "3": [
+    {
+      "question": "Módulo 3 (ACTIVITIES Y CICLO DE VIDA (XML)): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Activity como pantalla: MainActivity y AndroidManifest MAIN/LAUNCHER.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Activity como pantalla: MainActivity y AndroidManifest MAIN/LAUNCHER."
+    },
+    {
+      "question": "Módulo 3 (ACTIVITIES Y CICLO DE VIDA (XML)): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Callback lifecycle: Created, Started, Resumed, Paused, Stopped, Destroyed.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Callback lifecycle: Created, Started, Resumed, Paused, Stopped, Destroyed."
+    },
+    {
+      "question": "Módulo 3 (ACTIVITIES Y CICLO DE VIDA (XML)): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "onSaveInstanceState vs ViewModel para sobrevivir rotación.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: onSaveInstanceState vs ViewModel para sobrevivir rotación."
+    },
+    {
+      "question": "Módulo 3 (ACTIVITIES Y CICLO DE VIDA (XML)): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "launchMode singleTop, singleTask y back stack.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: launchMode singleTop, singleTask y back stack."
+    },
+    {
+      "question": "Módulo 3 (ACTIVITIES Y CICLO DE VIDA (XML)): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Explicit intents para abrir otra Activity.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Explicit intents para abrir otra Activity."
+    },
+    {
+      "question": "Módulo 3 (ACTIVITIES Y CICLO DE VIDA (XML)): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "Edge-to-edge y WindowInsets en XML (pre-Compose).",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Edge-to-edge y WindowInsets en XML (pre-Compose)."
+    },
+    {
+      "question": "Módulo 3 (ACTIVITIES Y CICLO DE VIDA (XML)): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Tareas y procesos: cuándo el sistema mata tu Activity.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Tareas y procesos: cuándo el sistema mata tu Activity."
+    },
+    {
+      "question": "Módulo 3 (ACTIVITIES Y CICLO DE VIDA (XML)): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Depurar con breakpoints en lifecycle callbacks.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Depurar con breakpoints en lifecycle callbacks."
+    },
+    {
+      "question": "Módulo 3: ¿Qué herramienta asistida encaja con Android Studio en este curso?",
+      "options": [
+        "Solo Blockbench 3D.",
+        "Cursor o Antigravity CLI con revisión humana de permisos y Gradle.",
+        "Compilar sin Gradle para ir más rápido."
+      ],
+      "answerIndex": 1,
+      "explanation": "El curso promueve IA asistida con revisión de ingeniería en cada commit."
+    }
+  ],
+  "4": [
+    {
+      "question": "Módulo 4 (LAYOUTS XML: CONSTRAINTLAYOUT Y RECURSOS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "res/layout/activity_main.xml y inflado setContentView.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: res/layout/activity_main.xml y inflado setContentView."
+    },
+    {
+      "question": "Módulo 4 (LAYOUTS XML: CONSTRAINTLAYOUT Y RECURSOS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "LinearLayout vs RelativeLayout legado vs ConstraintLayout moderno.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: LinearLayout vs RelativeLayout legado vs ConstraintLayout moderno."
+    },
+    {
+      "question": "Módulo 4 (LAYOUTS XML: CONSTRAINTLAYOUT Y RECURSOS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "Chains, barriers y guidelines en ConstraintLayout.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Chains, barriers y guidelines en ConstraintLayout."
+    },
+    {
+      "question": "Módulo 4 (LAYOUTS XML: CONSTRAINTLAYOUT Y RECURSOS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "dp para dimensión física, sp para texto accesible.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: dp para dimensión física, sp para texto accesible."
+    },
+    {
+      "question": "Módulo 4 (LAYOUTS XML: CONSTRAINTLAYOUT Y RECURSOS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Colores @color, drawables vectoriales y mipmaps launcher.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Colores @color, drawables vectoriales y mipmaps launcher."
+    },
+    {
+      "question": "Módulo 4 (LAYOUTS XML: CONSTRAINTLAYOUT Y RECURSOS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "Qualificadores -land, -night, -sw600dp para tablets.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Qualificadores -land, -night, -sw600dp para tablets."
+    },
+    {
+      "question": "Módulo 4 (LAYOUTS XML: CONSTRAINTLAYOUT Y RECURSOS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "include/merge para layouts reutilizables.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: include/merge para layouts reutilizables."
+    },
+    {
+      "question": "Módulo 4 (LAYOUTS XML: CONSTRAINTLAYOUT Y RECURSOS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "tools: namespace para preview en Android Studio.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: tools: namespace para preview en Android Studio."
+    },
+    {
+      "question": "Módulo 4: ¿Qué herramienta asistida encaja con Android Studio en este curso?",
+      "options": [
+        "Solo Blockbench 3D.",
+        "Cursor o Antigravity CLI con revisión humana de permisos y Gradle.",
+        "Compilar sin Gradle para ir más rápido."
+      ],
+      "answerIndex": 1,
+      "explanation": "El curso promueve IA asistida con revisión de ingeniería en cada commit."
+    }
+  ],
+  "5": [
+    {
+      "question": "Módulo 5 (VIEWBINDING Y EVENTOS DE UI): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "viewBinding true en build.gradle.kts genera ActivityMainBinding.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: viewBinding true en build.gradle.kts genera ActivityMainBinding."
+    },
+    {
+      "question": "Módulo 5 (VIEWBINDING Y EVENTOS DE UI): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Binding.inflate y binding.root para setContentView.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Binding.inflate y binding.root para setContentView."
+    },
+    {
+      "question": "Módulo 5 (VIEWBINDING Y EVENTOS DE UI): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "Listeners lambda para botones sin inner class anónima.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Listeners lambda para botones sin inner class anónima."
+    },
+    {
+      "question": "Módulo 5 (VIEWBINDING Y EVENTOS DE UI): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "EditText, validación básica y ocultar teclado.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: EditText, validación básica y ocultar teclado."
+    },
+    {
+      "question": "Módulo 5 (VIEWBINDING Y EVENTOS DE UI): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Snackbar vs Toast para feedback Material.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Snackbar vs Toast para feedback Material."
+    },
+    {
+      "question": "Módulo 5 (VIEWBINDING Y EVENTOS DE UI): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "AlertDialog.Builder y MaterialAlertDialogBuilder.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: AlertDialog.Builder y MaterialAlertDialogBuilder."
+    },
+    {
+      "question": "Módulo 5 (VIEWBINDING Y EVENTOS DE UI): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Habilitar/deshabilitar controles según estado de formulario.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Habilitar/deshabilitar controles según estado de formulario."
+    },
+    {
+      "question": "Módulo 5 (VIEWBINDING Y EVENTOS DE UI): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Binding en Fragment: onDestroyView = null para evitar leaks.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Binding en Fragment: onDestroyView = null para evitar leaks."
+    },
+    {
+      "question": "Módulo 5: ¿Qué herramienta asistida encaja con Android Studio en este curso?",
+      "options": [
+        "Solo Blockbench 3D.",
+        "Cursor o Antigravity CLI con revisión humana de permisos y Gradle.",
+        "Compilar sin Gradle para ir más rápido."
+      ],
+      "answerIndex": 1,
+      "explanation": "El curso promueve IA asistida con revisión de ingeniería en cada commit."
+    }
+  ],
+  "6": [
+    {
+      "question": "Módulo 6 (MATERIAL DESIGN 3 EN XML): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Theme.Material3.DayNight sin ActionBar.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Theme.Material3.DayNight sin ActionBar."
+    },
+    {
+      "question": "Módulo 6 (MATERIAL DESIGN 3 EN XML): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Color roles: primary, onPrimary, surface, error.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Color roles: primary, onPrimary, surface, error."
+    },
+    {
+      "question": "Módulo 6 (MATERIAL DESIGN 3 EN XML): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "TextInputLayout + TextInputEditText con hint y error.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: TextInputLayout + TextInputEditText con hint y error."
+    },
+    {
+      "question": "Módulo 6 (MATERIAL DESIGN 3 EN XML): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "MaterialButton styles filled, tonal, outlined.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: MaterialButton styles filled, tonal, outlined."
+    },
+    {
+      "question": "Módulo 6 (MATERIAL DESIGN 3 EN XML): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "CoordinatorLayout + AppBarLayout collapsing opcional.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: CoordinatorLayout + AppBarLayout collapsing opcional."
+    },
+    {
+      "question": "Módulo 6 (MATERIAL DESIGN 3 EN XML): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "NavigationBar tint y status bar con WindowCompat.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: NavigationBar tint y status bar con WindowCompat."
+    },
+    {
+      "question": "Módulo 6 (MATERIAL DESIGN 3 EN XML): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Ripple en selectableItemBackground.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Ripple en selectableItemBackground."
+    },
+    {
+      "question": "Módulo 6 (MATERIAL DESIGN 3 EN XML): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Dynamic color Android 12+ en themes.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Dynamic color Android 12+ en themes."
+    },
+    {
+      "question": "Módulo 6: ¿Qué herramienta asistida encaja con Android Studio en este curso?",
+      "options": [
+        "Solo Blockbench 3D.",
+        "Cursor o Antigravity CLI con revisión humana de permisos y Gradle.",
+        "Compilar sin Gradle para ir más rápido."
+      ],
+      "answerIndex": 1,
+      "explanation": "El curso promueve IA asistida con revisión de ingeniería en cada commit."
+    }
+  ],
+  "7": [
+    {
+      "question": "Módulo 7 (MENÚS, TOOLBAR Y DRAWER (XML)): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "menu/*.xml con item android:id y showAsAction.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: menu/*.xml con item android:id y showAsAction."
+    },
+    {
+      "question": "Módulo 7 (MENÚS, TOOLBAR Y DRAWER (XML)): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Toolbar como ActionBar setSupportActionBar.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Toolbar como ActionBar setSupportActionBar."
+    },
+    {
+      "question": "Módulo 7 (MENÚS, TOOLBAR Y DRAWER (XML)): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "OnNavigationItemSelectedListener en bottom/side nav.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: OnNavigationItemSelectedListener en bottom/side nav."
+    },
+    {
+      "question": "Módulo 7 (MENÚS, TOOLBAR Y DRAWER (XML)): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "DrawerLayout + NavigationView patrón clásico.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: DrawerLayout + NavigationView patrón clásico."
+    },
+    {
+      "question": "Módulo 7 (MENÚS, TOOLBAR Y DRAWER (XML)): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Badges y selección visual del ítem activo.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Badges y selección visual del ítem activo."
+    },
+    {
+      "question": "Módulo 7 (MENÚS, TOOLBAR Y DRAWER (XML)): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "Overflow menu en pantallas estrechas.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Overflow menu en pantallas estrechas."
+    },
+    {
+      "question": "Módulo 7 (MENÚS, TOOLBAR Y DRAWER (XML)): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "SearchView en toolbar con onQueryTextListener.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: SearchView en toolbar con onQueryTextListener."
+    },
+    {
+      "question": "Módulo 7 (MENÚS, TOOLBAR Y DRAWER (XML)): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Menús contextuales long-press en RecyclerView item.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Menús contextuales long-press en RecyclerView item."
+    },
+    {
+      "question": "Módulo 7: ¿Qué herramienta asistida encaja con Android Studio en este curso?",
+      "options": [
+        "Solo Blockbench 3D.",
+        "Cursor o Antigravity CLI con revisión humana de permisos y Gradle.",
+        "Compilar sin Gradle para ir más rápido."
+      ],
+      "answerIndex": 1,
+      "explanation": "El curso promueve IA asistida con revisión de ingeniería en cada commit."
+    }
+  ],
+  "8": [
+    {
+      "question": "Módulo 8 (RECYCLERVIEW Y LISTADAPTER (XML)): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "RecyclerView + LinearLayoutManager vertical/horizontal.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: RecyclerView + LinearLayoutManager vertical/horizontal."
+    },
+    {
+      "question": "Módulo 8 (RECYCLERVIEW Y LISTADAPTER (XML)): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "item_*.xml layout por fila separado del adapter.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: item_*.xml layout por fila separado del adapter."
+    },
+    {
+      "question": "Módulo 8 (RECYCLERVIEW Y LISTADAPTER (XML)): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "ViewHolder class que cachea referencias binding.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: ViewHolder class que cachea referencias binding."
+    },
+    {
+      "question": "Módulo 8 (RECYCLERVIEW Y LISTADAPTER (XML)): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "ListAdapter + DiffUtil.ItemCallback equals/content.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: ListAdapter + DiffUtil.ItemCallback equals/content."
+    },
+    {
+      "question": "Módulo 8 (RECYCLERVIEW Y LISTADAPTER (XML)): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "DividerItemDecoration y animaciones default.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: DividerItemDecoration y animaciones default."
+    },
+    {
+      "question": "Módulo 8 (RECYCLERVIEW Y LISTADAPTER (XML)): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "SwipeRefreshLayout envolviendo lista.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: SwipeRefreshLayout envolviendo lista."
+    },
+    {
+      "question": "Módulo 8 (RECYCLERVIEW Y LISTADAPTER (XML)): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Empty state layout cuando lista vacía.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Empty state layout cuando lista vacía."
+    },
+    {
+      "question": "Módulo 8 (RECYCLERVIEW Y LISTADAPTER (XML)): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "RecyclerView.setHasFixedSize(true) cuando procede.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: RecyclerView.setHasFixedSize(true) cuando procede."
+    },
+    {
+      "question": "Módulo 8: ¿Qué herramienta asistida encaja con Android Studio en este curso?",
+      "options": [
+        "Solo Blockbench 3D.",
+        "Cursor o Antigravity CLI con revisión humana de permisos y Gradle.",
+        "Compilar sin Gradle para ir más rápido."
+      ],
+      "answerIndex": 1,
+      "explanation": "El curso promueve IA asistida con revisión de ingeniería en cada commit."
+    }
+  ],
+  "9": [
+    {
+      "question": "Módulo 9 (FRAGMENTS Y VIEWPAGER2 (XML)): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Fragment lifecycle vinculado a Activity host.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Fragment lifecycle vinculado a Activity host."
+    },
+    {
+      "question": "Módulo 9 (FRAGMENTS Y VIEWPAGER2 (XML)): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "FragmentContainerView reemplazo de <fragment> tag.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: FragmentContainerView reemplazo de <fragment> tag."
+    },
+    {
+      "question": "Módulo 9 (FRAGMENTS Y VIEWPAGER2 (XML)): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "replace vs add y back stack popBackStack.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: replace vs add y back stack popBackStack."
+    },
+    {
+      "question": "Módulo 9 (FRAGMENTS Y VIEWPAGER2 (XML)): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "ViewPager2 + TabLayoutMediator para pestañas.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: ViewPager2 + TabLayoutMediator para pestañas."
+    },
+    {
+      "question": "Módulo 9 (FRAGMENTS Y VIEWPAGER2 (XML)): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Comunicación Fragment ↔ Activity vía interfaces o ViewModel compartido.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Comunicación Fragment ↔ Activity vía interfaces o ViewModel compartido."
+    },
+    {
+      "question": "Módulo 9 (FRAGMENTS Y VIEWPAGER2 (XML)): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "Child fragments y NestedScrollView cuidado rendimiento.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Child fragments y NestedScrollView cuidado rendimiento."
+    },
+    {
+      "question": "Módulo 9 (FRAGMENTS Y VIEWPAGER2 (XML)): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "setFragmentResult API moderna entre fragments.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: setFragmentResult API moderna entre fragments."
+    },
+    {
+      "question": "Módulo 9 (FRAGMENTS Y VIEWPAGER2 (XML)): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "ProGuard rules para Fragment subclasses.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: ProGuard rules para Fragment subclasses."
+    },
+    {
+      "question": "Módulo 9: ¿Qué herramienta asistida encaja con Android Studio en este curso?",
+      "options": [
+        "Solo Blockbench 3D.",
+        "Cursor o Antigravity CLI con revisión humana de permisos y Gradle.",
+        "Compilar sin Gradle para ir más rápido."
+      ],
+      "answerIndex": 1,
+      "explanation": "El curso promueve IA asistida con revisión de ingeniería en cada commit."
+    }
+  ],
+  "10": [
+    {
+      "question": "Módulo 10 (INTEGRACIÓN UNIDAD VISTAS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Tres pantallas XML: lista, detalle, formulario.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Tres pantallas XML: lista, detalle, formulario."
+    },
+    {
+      "question": "Módulo 10 (INTEGRACIÓN UNIDAD VISTAS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Navigation Component XML graph opcional.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Navigation Component XML graph opcional."
+    },
+    {
+      "question": "Módulo 10 (INTEGRACIÓN UNIDAD VISTAS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "ViewModel con LiveData listando ítems demo.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: ViewModel con LiveData listando ítems demo."
+    },
+    {
+      "question": "Módulo 10 (INTEGRACIÓN UNIDAD VISTAS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Validación de campos y mensajes usuario.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Validación de campos y mensajes usuario."
+    },
+    {
+      "question": "Módulo 10 (INTEGRACIÓN UNIDAD VISTAS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Persistencia temporal hasta módulo Room.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Persistencia temporal hasta módulo Room."
+    },
+    {
+      "question": "Módulo 10 (INTEGRACIÓN UNIDAD VISTAS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "README del repo con capturas y APK debug.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: README del repo con capturas y APK debug."
+    },
+    {
+      "question": "Módulo 10 (INTEGRACIÓN UNIDAD VISTAS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Rúbrica QuimiSell: modularidad paquetes ui/data.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Rúbrica QuimiSell: modularidad paquetes ui/data."
+    },
+    {
+      "question": "Módulo 10 (INTEGRACIÓN UNIDAD VISTAS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Usar Cursor para refactor package-by-feature.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Usar Cursor para refactor package-by-feature."
+    },
+    {
+      "question": "Módulo 10: ¿Qué herramienta asistida encaja con Android Studio en este curso?",
+      "options": [
+        "Solo Blockbench 3D.",
+        "Cursor o Antigravity CLI con revisión humana de permisos y Gradle.",
+        "Compilar sin Gradle para ir más rápido."
+      ],
+      "answerIndex": 1,
+      "explanation": "El curso promueve IA asistida con revisión de ingeniería en cada commit."
+    }
+  ],
+  "11": [
+    {
+      "question": "Módulo 11 (PRIMERA UI DECLARATIVA): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "buildFeatures.compose true y BOM androidx.compose.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: buildFeatures.compose true y BOM androidx.compose."
+    },
+    {
+      "question": "Módulo 11 (PRIMERA UI DECLARATIVA): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "setContent { AppTheme { ... } } en ComponentActivity.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: setContent { AppTheme { ... } } en ComponentActivity."
+    },
+    {
+      "question": "Módulo 11 (PRIMERA UI DECLARATIVA): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "Fun @Composable idempotente y recomposición explicada.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Fun @Composable idempotente y recomposición explicada."
+    },
+    {
+      "question": "Módulo 11 (PRIMERA UI DECLARATIVA): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "@Preview multipreview light/dark.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: @Preview multipreview light/dark."
+    },
+    {
+      "question": "Módulo 11 (PRIMERA UI DECLARATIVA): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "MaterialTheme colorScheme typography shapes.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: MaterialTheme colorScheme typography shapes."
+    },
+    {
+      "question": "Módulo 11 (PRIMERA UI DECLARATIVA): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "Composable functions solo desde hilo UI.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Composable functions solo desde hilo UI."
+    },
+    {
+      "question": "Módulo 11 (PRIMERA UI DECLARATIVA): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Migration strategy XML coexistencia en mismo proyecto.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Migration strategy XML coexistencia en mismo proyecto."
+    },
+    {
+      "question": "Módulo 11 (PRIMERA UI DECLARATIVA): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Lint Compose y strong skipping mode flags.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Lint Compose y strong skipping mode flags."
+    },
+    {
+      "question": "Módulo 11: ¿Qué herramienta asistida encaja con Android Studio en este curso?",
+      "options": [
+        "Solo Blockbench 3D.",
+        "Cursor o Antigravity CLI con revisión humana de permisos y Gradle.",
+        "Compilar sin Gradle para ir más rápido."
+      ],
+      "answerIndex": 1,
+      "explanation": "El curso promueve IA asistida con revisión de ingeniería en cada commit."
+    }
+  ],
+  "12": [
+    {
+      "question": "Módulo 12 (LAYOUT COMPOSE: MODIFIER, COLUMN, ROW): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Modifier.fillMaxWidth().padding(16.dp) orden importa.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Modifier.fillMaxWidth().padding(16.dp) orden importa."
+    },
+    {
+      "question": "Módulo 12 (LAYOUT COMPOSE: MODIFIER, COLUMN, ROW): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Column vertical, Row horizontal, Box overlay.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Column vertical, Row horizontal, Box overlay."
+    },
+    {
+      "question": "Módulo 12 (LAYOUT COMPOSE: MODIFIER, COLUMN, ROW): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "verticalScroll(rememberScrollState()) vs LazyColumn.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: verticalScroll(rememberScrollState()) vs LazyColumn."
+    },
+    {
+      "question": "Módulo 12 (LAYOUT COMPOSE: MODIFIER, COLUMN, ROW): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Spacer y Arrangement.spacedBy.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Spacer y Arrangement.spacedBy."
+    },
+    {
+      "question": "Módulo 12 (LAYOUT COMPOSE: MODIFIER, COLUMN, ROW): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Alignment.CenterHorizontally vs Alignment.End.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Alignment.CenterHorizontally vs Alignment.End."
+    },
+    {
+      "question": "Módulo 12 (LAYOUT COMPOSE: MODIFIER, COLUMN, ROW): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "Intrinsic measurements para alturas dinámicas.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Intrinsic measurements para alturas dinámicas."
+    },
+    {
+      "question": "Módulo 12 (LAYOUT COMPOSE: MODIFIER, COLUMN, ROW): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Responsive con BoxWithConstraints.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Responsive con BoxWithConstraints."
+    },
+    {
+      "question": "Módulo 12 (LAYOUT COMPOSE: MODIFIER, COLUMN, ROW): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Density-independent dp y sp en Compose.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Density-independent dp y sp en Compose."
+    },
+    {
+      "question": "Módulo 12: ¿Qué herramienta asistida encaja con Android Studio en este curso?",
+      "options": [
+        "Solo Blockbench 3D.",
+        "Cursor o Antigravity CLI con revisión humana de permisos y Gradle.",
+        "Compilar sin Gradle para ir más rápido."
+      ],
+      "answerIndex": 1,
+      "explanation": "El curso promueve IA asistida con revisión de ingeniería en cada commit."
+    }
+  ],
+  "13": [
+    {
+      "question": "Módulo 13 (ESTADO Y RECOMPOSICIÓN): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Estado que dispara recompose al cambiar .value.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Estado que dispara recompose al cambiar .value."
+    },
+    {
+      "question": "Módulo 13 (ESTADO Y RECOMPOSICIÓN): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "rememberSaveable con Saver para rotación.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: rememberSaveable con Saver para rotación."
+    },
+    {
+      "question": "Módulo 13 (ESTADO Y RECOMPOSICIÓN): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "Delegados by mutableStateOf en data holders.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Delegados by mutableStateOf en data holders."
+    },
+    {
+      "question": "Módulo 13 (ESTADO Y RECOMPOSICIÓN): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Stateful vs stateless composables.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Stateful vs stateless composables."
+    },
+    {
+      "question": "Módulo 13 (ESTADO Y RECOMPOSICIÓN): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "SideEffect, LaunchedEffect, DisposableEffect cuándo usarlos.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: SideEffect, LaunchedEffect, DisposableEffect cuándo usarlos."
+    },
+    {
+      "question": "Módulo 13 (ESTADO Y RECOMPOSICIÓN): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "derivedStateOf para cálculos caros.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: derivedStateOf para cálculos caros."
+    },
+    {
+      "question": "Módulo 13 (ESTADO Y RECOMPOSICIÓN): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "No mutar listas en sitio: nueva lista inmutable.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: No mutar listas en sitio: nueva lista inmutable."
+    },
+    {
+      "question": "Módulo 13 (ESTADO Y RECOMPOSICIÓN): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Antipatrón: crear state en cada recomposition sin remember.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Antipatrón: crear state en cada recomposition sin remember."
+    },
+    {
+      "question": "Módulo 13: ¿Qué herramienta asistida encaja con Android Studio en este curso?",
+      "options": [
+        "Solo Blockbench 3D.",
+        "Cursor o Antigravity CLI con revisión humana de permisos y Gradle.",
+        "Compilar sin Gradle para ir más rápido."
+      ],
+      "answerIndex": 1,
+      "explanation": "El curso promueve IA asistida con revisión de ingeniería en cada commit."
+    }
+  ],
+  "14": [
+    {
+      "question": "Módulo 14 (STATE HOISTING Y UI STATE): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Patrón: estado abajo, eventos arriba.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Patrón: estado abajo, eventos arriba."
+    },
+    {
+      "question": "Módulo 14 (STATE HOISTING Y UI STATE): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "UiState data class inmutable para pantalla.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: UiState data class inmutable para pantalla."
+    },
+    {
+      "question": "Módulo 14 (STATE HOISTING Y UI STATE): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "Callbacks onNameChange vs setName directo.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Callbacks onNameChange vs setName directo."
+    },
+    {
+      "question": "Módulo 14 (STATE HOISTING Y UI STATE): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Múltiples fuentes de verdad = bugs.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Múltiples fuentes de verdad = bugs."
+    },
+    {
+      "question": "Módulo 14 (STATE HOISTING Y UI STATE): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "rememberUpdatedState para lambdas estables.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: rememberUpdatedState para lambdas estables."
+    },
+    {
+      "question": "Módulo 14 (STATE HOISTING Y UI STATE): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "key() en LazyColumn para identidad ítem.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: key() en LazyColumn para identidad ítem."
+    },
+    {
+      "question": "Módulo 14 (STATE HOISTING Y UI STATE): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Hoisting hasta ViewModel en módulo 15.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Hoisting hasta ViewModel en módulo 15."
+    },
+    {
+      "question": "Módulo 14 (STATE HOISTING Y UI STATE): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Compose stability annotations @Stable @Immutable.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Compose stability annotations @Stable @Immutable."
+    },
+    {
+      "question": "Módulo 14: ¿Qué herramienta asistida encaja con Android Studio en este curso?",
+      "options": [
+        "Solo Blockbench 3D.",
+        "Cursor o Antigravity CLI con revisión humana de permisos y Gradle.",
+        "Compilar sin Gradle para ir más rápido."
+      ],
+      "answerIndex": 1,
+      "explanation": "El curso promueve IA asistida con revisión de ingeniería en cada commit."
+    }
+  ],
+  "15": [
+    {
+      "question": "Módulo 15 (VIEWMODEL + COMPOSE + LIFECYCLE): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "androidx.lifecycle:lifecycle-viewmodel-compose.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: androidx.lifecycle:lifecycle-viewmodel-compose."
+    },
+    {
+      "question": "Módulo 15 (VIEWMODEL + COMPOSE + LIFECYCLE): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "ViewModel sobrevive rotación; no guarda Context.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: ViewModel sobrevive rotación; no guarda Context."
+    },
+    {
+      "question": "Módulo 15 (VIEWMODEL + COMPOSE + LIFECYCLE): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "StateFlow expuesto uiState; collect en UI.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: StateFlow expuesto uiState; collect en UI."
+    },
+    {
+      "question": "Módulo 15 (VIEWMODEL + COMPOSE + LIFECYCLE): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "collectAsStateWithLifecycle para STARTED.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: collectAsStateWithLifecycle para STARTED."
+    },
+    {
+      "question": "Módulo 15 (VIEWMODEL + COMPOSE + LIFECYCLE): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "SavedStateHandle para argumentos de navegación.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: SavedStateHandle para argumentos de navegación."
+    },
+    {
+      "question": "Módulo 15 (VIEWMODEL + COMPOSE + LIFECYCLE): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "viewModelScope.launch para trabajo async.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: viewModelScope.launch para trabajo async."
+    },
+    {
+      "question": "Módulo 15 (VIEWMODEL + COMPOSE + LIFECYCLE): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Limpiar jobs en onCleared si manual.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Limpiar jobs en onCleared si manual."
+    },
+    {
+      "question": "Módulo 15 (VIEWMODEL + COMPOSE + LIFECYCLE): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Factory custom cuando ViewModel necesita repo.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Factory custom cuando ViewModel necesita repo."
+    },
+    {
+      "question": "Módulo 15: ¿Qué herramienta asistida encaja con Android Studio en este curso?",
+      "options": [
+        "Solo Blockbench 3D.",
+        "Cursor o Antigravity CLI con revisión humana de permisos y Gradle.",
+        "Compilar sin Gradle para ir más rápido."
+      ],
+      "answerIndex": 1,
+      "explanation": "El curso promueve IA asistida con revisión de ingeniería en cada commit."
+    }
+  ],
+  "16": [
+    {
+      "question": "Módulo 16 (NAVEGACIÓN COMPOSE (NAVHOST)): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "navigation-compose dependencia y NavHost.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: navigation-compose dependencia y NavHost."
+    },
+    {
+      "question": "Módulo 16 (NAVEGACIÓN COMPOSE (NAVHOST)): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "composable(\"route\") { } destinations.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: composable(\"route\") { } destinations."
+    },
+    {
+      "question": "Módulo 16 (NAVEGACIÓN COMPOSE (NAVHOST)): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "navigate con popUpTo inclusive back stack limpio.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: navigate con popUpTo inclusive back stack limpio."
+    },
+    {
+      "question": "Módulo 16 (NAVEGACIÓN COMPOSE (NAVHOST)): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Argumentos type-safe Navigation 2.8+ routes.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Argumentos type-safe Navigation 2.8+ routes."
+    },
+    {
+      "question": "Módulo 16 (NAVEGACIÓN COMPOSE (NAVHOST)): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Nested navigation graphs por feature.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Nested navigation graphs por feature."
+    },
+    {
+      "question": "Módulo 16 (NAVEGACIÓN COMPOSE (NAVHOST)): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "Single-activity architecture recomendada.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Single-activity architecture recomendada."
+    },
+    {
+      "question": "Módulo 16 (NAVEGACIÓN COMPOSE (NAVHOST)): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Predictive back gesture Android 14+.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Predictive back gesture Android 14+."
+    },
+    {
+      "question": "Módulo 16 (NAVEGACIÓN COMPOSE (NAVHOST)): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Deep link intent-filter en manifest.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Deep link intent-filter en manifest."
+    },
+    {
+      "question": "Módulo 16: ¿Qué herramienta asistida encaja con Android Studio en este curso?",
+      "options": [
+        "Solo Blockbench 3D.",
+        "Cursor o Antigravity CLI con revisión humana de permisos y Gradle.",
+        "Compilar sin Gradle para ir más rápido."
+      ],
+      "answerIndex": 1,
+      "explanation": "El curso promueve IA asistida con revisión de ingeniería en cada commit."
+    }
+  ],
+  "17": [
+    {
+      "question": "Módulo 17 (ARQUITECTURA MVVM EN ANDROID): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "UI observa estado; ViewModel procesa intenciones.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: UI observa estado; ViewModel procesa intenciones."
+    },
+    {
+      "question": "Módulo 17 (ARQUITECTURA MVVM EN ANDROID): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Repository abstrae fuentes datos local/remota.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Repository abstrae fuentes datos local/remota."
+    },
+    {
+      "question": "Módulo 17 (ARQUITECTURA MVVM EN ANDROID): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "Domain layer puro Kotlin sin Android imports.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Domain layer puro Kotlin sin Android imports."
+    },
+    {
+      "question": "Módulo 17 (ARQUITECTURA MVVM EN ANDROID): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Mappers DTO ↔ Entity ↔ UiModel.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Mappers DTO ↔ Entity ↔ UiModel."
+    },
+    {
+      "question": "Módulo 17 (ARQUITECTURA MVVM EN ANDROID): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Errores modelados sealed class Result.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Errores modelados sealed class Result."
+    },
+    {
+      "question": "Módulo 17 (ARQUITECTURA MVVM EN ANDROID): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "Single source of truth en Room o remote.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Single source of truth en Room o remote."
+    },
+    {
+      "question": "Módulo 17 (ARQUITECTURA MVVM EN ANDROID): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Offline-first con cache y refresh.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Offline-first con cache y refresh."
+    },
+    {
+      "question": "Módulo 17 (ARQUITECTURA MVVM EN ANDROID): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Package by feature ui/domain/data.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Package by feature ui/domain/data."
+    },
+    {
+      "question": "Módulo 17: ¿Qué herramienta asistida encaja con Android Studio en este curso?",
+      "options": [
+        "Solo Blockbench 3D.",
+        "Cursor o Antigravity CLI con revisión humana de permisos y Gradle.",
+        "Compilar sin Gradle para ir más rápido."
+      ],
+      "answerIndex": 1,
+      "explanation": "El curso promueve IA asistida con revisión de ingeniería en cada commit."
+    }
+  ],
+  "18": [
+    {
+      "question": "Módulo 18 (CLEAN ARCHITECTURE Y CAPAS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Entities y casos de uso en domain.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Entities y casos de uso en domain."
+    },
+    {
+      "question": "Módulo 18 (CLEAN ARCHITECTURE Y CAPAS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Implementaciones Room/Retrofit en data.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Implementaciones Room/Retrofit en data."
+    },
+    {
+      "question": "Módulo 18 (CLEAN ARCHITECTURE Y CAPAS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "Presentation solo Android framework adentro.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Presentation solo Android framework adentro."
+    },
+    {
+      "question": "Módulo 18 (CLEAN ARCHITECTURE Y CAPAS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Inversión dependencias con interfaces.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Inversión dependencias con interfaces."
+    },
+    {
+      "question": "Módulo 18 (CLEAN ARCHITECTURE Y CAPAS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "DTO vs domain model naming explícito.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: DTO vs domain model naming explícito."
+    },
+    {
+      "question": "Módulo 18 (CLEAN ARCHITECTURE Y CAPAS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "Testabilidad domain sin Robolectric.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Testabilidad domain sin Robolectric."
+    },
+    {
+      "question": "Módulo 18 (CLEAN ARCHITECTURE Y CAPAS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Over-engineering: no 5 capas en app trivia.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Over-engineering: no 5 capas en app trivia."
+    },
+    {
+      "question": "Módulo 18 (CLEAN ARCHITECTURE Y CAPAS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Modularización :core :feature:login futuro.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Modularización :core :feature:login futuro."
+    },
+    {
+      "question": "Módulo 18: ¿Qué herramienta asistida encaja con Android Studio en este curso?",
+      "options": [
+        "Solo Blockbench 3D.",
+        "Cursor o Antigravity CLI con revisión humana de permisos y Gradle.",
+        "Compilar sin Gradle para ir más rápido."
+      ],
+      "answerIndex": 1,
+      "explanation": "El curso promueve IA asistida con revisión de ingeniería en cada commit."
+    }
+  ],
+  "19": [
+    {
+      "question": "Módulo 19 (COROUTINAS EN ANDROID): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "suspend fun no bloquea thread; continuations.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: suspend fun no bloquea thread; continuations."
+    },
+    {
+      "question": "Módulo 19 (COROUTINAS EN ANDROID): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "launch vs async vs withContext.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: launch vs async vs withContext."
+    },
+    {
+      "question": "Módulo 19 (COROUTINAS EN ANDROID): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "Main inmediate para UI post-frame.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Main inmediate para UI post-frame."
+    },
+    {
+      "question": "Módulo 19 (COROUTINAS EN ANDROID): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "SupervisorJob evita cancelación hermana total.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: SupervisorJob evita cancelación hermana total."
+    },
+    {
+      "question": "Módulo 19 (COROUTINAS EN ANDROID): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "try/catch en coroutine; CoroutineExceptionHandler.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: try/catch en coroutine; CoroutineExceptionHandler."
+    },
+    {
+      "question": "Módulo 19 (COROUTINAS EN ANDROID): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "delay vs Thread.sleep prohibido en main.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: delay vs Thread.sleep prohibido en main."
+    },
+    {
+      "question": "Módulo 19 (COROUTINAS EN ANDROID): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "structured concurrency jerarquía padre-hijo.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: structured concurrency jerarquía padre-hijo."
+    },
+    {
+      "question": "Módulo 19 (COROUTINAS EN ANDROID): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "kotlinx.coroutines en tests runTest.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: kotlinx.coroutines en tests runTest."
+    },
+    {
+      "question": "Módulo 19: ¿Qué herramienta asistida encaja con Android Studio en este curso?",
+      "options": [
+        "Solo Blockbench 3D.",
+        "Cursor o Antigravity CLI con revisión humana de permisos y Gradle.",
+        "Compilar sin Gradle para ir más rápido."
+      ],
+      "answerIndex": 1,
+      "explanation": "El curso promueve IA asistida con revisión de ingeniería en cada commit."
+    }
+  ],
+  "20": [
+    {
+      "question": "Módulo 20 (FLOW, STATEFLOW Y UI REACTIVA): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Flow emisión secuencial cold por collector.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Flow emisión secuencial cold por collector."
+    },
+    {
+      "question": "Módulo 20 (FLOW, STATEFLOW Y UI REACTIVA): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "stateIn sharingStarted WhileSubscribed(5000).",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: stateIn sharingStarted WhileSubscribed(5000)."
+    },
+    {
+      "question": "Módulo 20 (FLOW, STATEFLOW Y UI REACTIVA): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "SharedFlow eventos one-shot navegación snack.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: SharedFlow eventos one-shot navegación snack."
+    },
+    {
+      "question": "Módulo 20 (FLOW, STATEFLOW Y UI REACTIVA): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "map filter flatMapLatest en pipelines.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: map filter flatMapLatest en pipelines."
+    },
+    {
+      "question": "Módulo 20 (FLOW, STATEFLOW Y UI REACTIVA): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "distinctUntilChanged evita recomposes.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: distinctUntilChanged evita recomposes."
+    },
+    {
+      "question": "Módulo 20 (FLOW, STATEFLOW Y UI REACTIVA): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "flowOn(Dispatchers.IO) upstream.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: flowOn(Dispatchers.IO) upstream."
+    },
+    {
+      "question": "Módulo 20 (FLOW, STATEFLOW Y UI REACTIVA): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Room observe as Flow<List<Entity>>.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Room observe as Flow<List<Entity>>."
+    },
+    {
+      "question": "Módulo 20 (FLOW, STATEFLOW Y UI REACTIVA): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Testing Turbine library asserts.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Testing Turbine library asserts."
+    },
+    {
+      "question": "Módulo 20: ¿Qué herramienta asistida encaja con Android Studio en este curso?",
+      "options": [
+        "Solo Blockbench 3D.",
+        "Cursor o Antigravity CLI con revisión humana de permisos y Gradle.",
+        "Compilar sin Gradle para ir más rápido."
+      ],
+      "answerIndex": 1,
+      "explanation": "El curso promueve IA asistida con revisión de ingeniería en cada commit."
+    }
+  ],
+  "21": [
+    {
+      "question": "Módulo 21 (SQLITE CON ANOTACIONES): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Room sobre SQLite: compile-time SQL verification.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Room sobre SQLite: compile-time SQL verification."
+    },
+    {
+      "question": "Módulo 21 (SQLITE CON ANOTACIONES): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "@Entity tableName primaryKey autoGenerate.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: @Entity tableName primaryKey autoGenerate."
+    },
+    {
+      "question": "Módulo 21 (SQLITE CON ANOTACIONES): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "@Dao @Insert @Update @Delete @Query.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: @Dao @Insert @Update @Delete @Query."
+    },
+    {
+      "question": "Módulo 21 (SQLITE CON ANOTACIONES): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "@Database entities exportSchema true prod.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: @Database entities exportSchema true prod."
+    },
+    {
+      "question": "Módulo 21 (SQLITE CON ANOTACIONES): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Migration startVersion endVersion SQL manual.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Migration startVersion endVersion SQL manual."
+    },
+    {
+      "question": "Módulo 21 (SQLITE CON ANOTACIONES): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "Fallback destructive solo debug.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Fallback destructive solo debug."
+    },
+    {
+      "question": "Módulo 21 (SQLITE CON ANOTACIONES): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Relaciones @Embedded @Relation one-to-many.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Relaciones @Embedded @Relation one-to-many."
+    },
+    {
+      "question": "Módulo 21 (SQLITE CON ANOTACIONES): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Transacción @Transaction funciones Dao.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Transacción @Transaction funciones Dao."
+    },
+    {
+      "question": "Módulo 21: ¿Qué herramienta asistida encaja con Android Studio en este curso?",
+      "options": [
+        "Solo Blockbench 3D.",
+        "Cursor o Antigravity CLI con revisión humana de permisos y Gradle.",
+        "Compilar sin Gradle para ir más rápido."
+      ],
+      "answerIndex": 1,
+      "explanation": "El curso promueve IA asistida con revisión de ingeniería en cada commit."
+    }
+  ],
+  "22": [
+    {
+      "question": "Módulo 22 (ROOM + COMPOSE LISTAS REACTIVAS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "dao.observeAll(): Flow<List<Note>>.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: dao.observeAll(): Flow<List<Note>>."
+    },
+    {
+      "question": "Módulo 22 (ROOM + COMPOSE LISTAS REACTIVAS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "flatMapLatest collect en ViewModel.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: flatMapLatest collect en ViewModel."
+    },
+    {
+      "question": "Módulo 22 (ROOM + COMPOSE LISTAS REACTIVAS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "LazyColumn items con key = note.id.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: LazyColumn items con key = note.id."
+    },
+    {
+      "question": "Módulo 22 (ROOM + COMPOSE LISTAS REACTIVAS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "SwipeToDismiss + delete en Dao.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: SwipeToDismiss + delete en Dao."
+    },
+    {
+      "question": "Módulo 22 (ROOM + COMPOSE LISTAS REACTIVAS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Search query filtrado SQL LIKE.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Search query filtrado SQL LIKE."
+    },
+    {
+      "question": "Módulo 22 (ROOM + COMPOSE LISTAS REACTIVAS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "Inserción on IO dispatcher.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Inserción on IO dispatcher."
+    },
+    {
+      "question": "Módulo 22 (ROOM + COMPOSE LISTAS REACTIVAS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "UI loading hasta primera emisión.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: UI loading hasta primera emisión."
+    },
+    {
+      "question": "Módulo 22 (ROOM + COMPOSE LISTAS REACTIVAS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Prepopulate database callback onCreate.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Prepopulate database callback onCreate."
+    },
+    {
+      "question": "Módulo 22: ¿Qué herramienta asistida encaja con Android Studio en este curso?",
+      "options": [
+        "Solo Blockbench 3D.",
+        "Cursor o Antigravity CLI con revisión humana de permisos y Gradle.",
+        "Compilar sin Gradle para ir más rápido."
+      ],
+      "answerIndex": 1,
+      "explanation": "El curso promueve IA asistida con revisión de ingeniería en cada commit."
+    }
+  ],
+  "23": [
+    {
+      "question": "Módulo 23 (RETROFIT + GSON Y APIS REST): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Retrofit.Builder baseUrl GsonConverterFactory.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Retrofit.Builder baseUrl GsonConverterFactory."
+    },
+    {
+      "question": "Módulo 23 (RETROFIT + GSON Y APIS REST): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "@GET @POST @Path @Query @Body.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: @GET @POST @Path @Query @Body."
+    },
+    {
+      "question": "Módulo 23 (RETROFIT + GSON Y APIS REST): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "suspend fun sin Callback legacy.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: suspend fun sin Callback legacy."
+    },
+    {
+      "question": "Módulo 23 (RETROFIT + GSON Y APIS REST): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Gson @SerializedName vs Moshi Kotlin codegen.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Gson @SerializedName vs Moshi Kotlin codegen."
+    },
+    {
+      "question": "Módulo 23 (RETROFIT + GSON Y APIS REST): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Envelopes API errores JSON campo message.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Envelopes API errores JSON campo message."
+    },
+    {
+      "question": "Módulo 23 (RETROFIT + GSON Y APIS REST): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "BaseResponse<T> genérico parse.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: BaseResponse<T> genérico parse."
+    },
+    {
+      "question": "Módulo 23 (RETROFIT + GSON Y APIS REST): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Timeout connect/read OkHttp.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Timeout connect/read OkHttp."
+    },
+    {
+      "question": "Módulo 23 (RETROFIT + GSON Y APIS REST): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Chucker debug inspector HTTP.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Chucker debug inspector HTTP."
+    },
+    {
+      "question": "Módulo 23: ¿Qué herramienta asistida encaja con Android Studio en este curso?",
+      "options": [
+        "Solo Blockbench 3D.",
+        "Cursor o Antigravity CLI con revisión humana de permisos y Gradle.",
+        "Compilar sin Gradle para ir más rápido."
+      ],
+      "answerIndex": 1,
+      "explanation": "El curso promueve IA asistida con revisión de ingeniería en cada commit."
+    }
+  ],
+  "24": [
+    {
+      "question": "Módulo 24 (OKHTTP, INTERCEPTORS Y ERRORES): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Interceptor chain orden request/response.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Interceptor chain orden request/response."
+    },
+    {
+      "question": "Módulo 24 (OKHTTP, INTERCEPTORS Y ERRORES): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Authenticator refresh token 401.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Authenticator refresh token 401."
+    },
+    {
+      "question": "Módulo 24 (OKHTTP, INTERCEPTORS Y ERRORES): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "HttpLoggingInterceptor BODY solo debug.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: HttpLoggingInterceptor BODY solo debug."
+    },
+    {
+      "question": "Módulo 24 (OKHTTP, INTERCEPTORS Y ERRORES): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "map HTTP 4xx a UiError.UserMessage.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: map HTTP 4xx a UiError.UserMessage."
+    },
+    {
+      "question": "Módulo 24 (OKHTTP, INTERCEPTORS Y ERRORES): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Idempotency POST críticos.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Idempotency POST críticos."
+    },
+    {
+      "question": "Módulo 24 (OKHTTP, INTERCEPTORS Y ERRORES): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "Caching CacheControl offline stub.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Caching CacheControl offline stub."
+    },
+    {
+      "question": "Módulo 24 (OKHTTP, INTERCEPTORS Y ERRORES): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Multipart upload imágenes CameraX después.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Multipart upload imágenes CameraX después."
+    },
+    {
+      "question": "Módulo 24 (OKHTTP, INTERCEPTORS Y ERRORES): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "ProGuard keep rules Gson models.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: ProGuard keep rules Gson models."
+    },
+    {
+      "question": "Módulo 24: ¿Qué herramienta asistida encaja con Android Studio en este curso?",
+      "options": [
+        "Solo Blockbench 3D.",
+        "Cursor o Antigravity CLI con revisión humana de permisos y Gradle.",
+        "Compilar sin Gradle para ir más rápido."
+      ],
+      "answerIndex": 1,
+      "explanation": "El curso promueve IA asistida con revisión de ingeniería en cada commit."
+    }
+  ],
+  "25": [
+    {
+      "question": "Módulo 25 (RED Y SECRETOS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "cleartextTrafficPermitted false producción.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: cleartextTrafficPermitted false producción."
+    },
+    {
+      "question": "Módulo 25 (RED Y SECRETOS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "network_security_config pin set opcional.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: network_security_config pin set opcional."
+    },
+    {
+      "question": "Módulo 25 (RED Y SECRETOS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "Secrets en BuildConfig o remote config.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Secrets en BuildConfig o remote config."
+    },
+    {
+      "question": "Módulo 25 (RED Y SECRETOS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Android Keystore asymmetric keys.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Android Keystore asymmetric keys."
+    },
+    {
+      "question": "Módulo 25 (RED Y SECRETOS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "EncryptedSharedPreferences para tokens.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: EncryptedSharedPreferences para tokens."
+    },
+    {
+      "question": "Módulo 25 (RED Y SECRETOS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "Root detection y tamper awareness básico.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Root detection y tamper awareness básico."
+    },
+    {
+      "question": "Módulo 25 (RED Y SECRETOS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "SafetyNet/Play Integrity overview.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: SafetyNet/Play Integrity overview."
+    },
+    {
+      "question": "Módulo 25 (RED Y SECRETOS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "R8 full mode shrink recursos.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: R8 full mode shrink recursos."
+    },
+    {
+      "question": "Módulo 25: ¿Qué herramienta asistida encaja con Android Studio en este curso?",
+      "options": [
+        "Solo Blockbench 3D.",
+        "Cursor o Antigravity CLI con revisión humana de permisos y Gradle.",
+        "Compilar sin Gradle para ir más rápido."
+      ],
+      "answerIndex": 1,
+      "explanation": "El curso promueve IA asistida con revisión de ingeniería en cada commit."
+    }
+  ],
+  "26": [
+    {
+      "question": "Módulo 26 (FLAG_SECURE Y ANTI-CAPTURA): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "WindowManager.LayoutParams.FLAG_SECURE en Activity sensible.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: WindowManager.LayoutParams.FLAG_SECURE en Activity sensible."
+    },
+    {
+      "question": "Módulo 26 (FLAG_SECURE Y ANTI-CAPTURA): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "window.setFlags(FLAG_SECURE, FLAG_SECURE) onCreate.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: window.setFlags(FLAG_SECURE, FLAG_SECURE) onCreate."
+    },
+    {
+      "question": "Módulo 26 (FLAG_SECURE Y ANTI-CAPTURA): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "Efecto: screenshots negro, recents oculta contenido parcial.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Efecto: screenshots negro, recents oculta contenido parcial."
+    },
+    {
+      "question": "Módulo 26 (FLAG_SECURE Y ANTI-CAPTURA): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "No confundir con MediaProjection (eso ES grabar pantalla).",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: No confundir con MediaProjection (eso ES grabar pantalla)."
+    },
+    {
+      "question": "Módulo 26 (FLAG_SECURE Y ANTI-CAPTURA): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Compose: LocalView.current context Activity window flags.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Compose: LocalView.current context Activity window flags."
+    },
+    {
+      "question": "Módulo 26 (FLAG_SECURE Y ANTI-CAPTURA): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "Sensitive screens composable wrapper remember flag.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Sensitive screens composable wrapper remember flag."
+    },
+    {
+      "question": "Módulo 26 (FLAG_SECURE Y ANTI-CAPTURA): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Excluir solo pantallas confidenciales no toda app.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Excluir solo pantallas confidenciales no toda app."
+    },
+    {
+      "question": "Módulo 26 (FLAG_SECURE Y ANTI-CAPTURA): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Limitaciones OEM y Android 14 thumbnail policies.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Limitaciones OEM y Android 14 thumbnail policies."
+    },
+    {
+      "question": "Módulo 26: ¿Qué herramienta asistida encaja con Android Studio en este curso?",
+      "options": [
+        "Solo Blockbench 3D.",
+        "Cursor o Antigravity CLI con revisión humana de permisos y Gradle.",
+        "Compilar sin Gradle para ir más rápido."
+      ],
+      "answerIndex": 1,
+      "explanation": "El curso promueve IA asistida con revisión de ingeniería en cada commit."
+    }
+  ],
+  "27": [
+    {
+      "question": "Módulo 27 (PREVIEW Y CAPTURA DE FOTO): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "CameraX ProcessCameraProvider bind lifecycle.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: CameraX ProcessCameraProvider bind lifecycle."
+    },
+    {
+      "question": "Módulo 27 (PREVIEW Y CAPTURA DE FOTO): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "PreviewView en Compose AndroidView bridge.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: PreviewView en Compose AndroidView bridge."
+    },
+    {
+      "question": "Módulo 27 (PREVIEW Y CAPTURA DE FOTO): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "ImageCapture takePicture flash mode.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: ImageCapture takePicture flash mode."
+    },
+    {
+      "question": "Módulo 27 (PREVIEW Y CAPTURA DE FOTO): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "ImageAnalysis ML opcional barcode.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: ImageAnalysis ML opcional barcode."
+    },
+    {
+      "question": "Módulo 27 (PREVIEW Y CAPTURA DE FOTO): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Selector LENS_FACING_BACK vs FRONT.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Selector LENS_FACING_BACK vs FRONT."
+    },
+    {
+      "question": "Módulo 27 (PREVIEW Y CAPTURA DE FOTO): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "Resolution y aspect ratio strategy.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Resolution y aspect ratio strategy."
+    },
+    {
+      "question": "Módulo 27 (PREVIEW Y CAPTURA DE FOTO): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Executor main vs background capture.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Executor main vs background capture."
+    },
+    {
+      "question": "Módulo 27 (PREVIEW Y CAPTURA DE FOTO): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Guardar MediaStore o app-specific storage.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Guardar MediaStore o app-specific storage."
+    },
+    {
+      "question": "Módulo 27: ¿Qué herramienta asistida encaja con Android Studio en este curso?",
+      "options": [
+        "Solo Blockbench 3D.",
+        "Cursor o Antigravity CLI con revisión humana de permisos y Gradle.",
+        "Compilar sin Gradle para ir más rápido."
+      ],
+      "answerIndex": 1,
+      "explanation": "El curso promueve IA asistida con revisión de ingeniería en cada commit."
+    }
+  ],
+  "28": [
+    {
+      "question": "Módulo 28 (PERMISOS RUNTIME Y SCOPED STORAGE): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Dangerous permissions solicitud en runtime Android 6+.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Dangerous permissions solicitud en runtime Android 6+."
+    },
+    {
+      "question": "Módulo 28 (PERMISOS RUNTIME Y SCOPED STORAGE): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "rememberLauncherForActivityResult RequestPermission.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: rememberLauncherForActivityResult RequestPermission."
+    },
+    {
+      "question": "Módulo 28 (PERMISOS RUNTIME Y SCOPED STORAGE): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "shouldShowRequestPermissionRationale UX educativa.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: shouldShowRequestPermissionRationale UX educativa."
+    },
+    {
+      "question": "Módulo 28 (PERMISOS RUNTIME Y SCOPED STORAGE): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Permisos granular media Android 13.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Permisos granular media Android 13."
+    },
+    {
+      "question": "Módulo 28 (PERMISOS RUNTIME Y SCOPED STORAGE): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Scoped storage SAF sin WRITE_EXTERNAL_STORAGE legacy.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Scoped storage SAF sin WRITE_EXTERNAL_STORAGE legacy."
+    },
+    {
+      "question": "Módulo 28 (PERMISOS RUNTIME Y SCOPED STORAGE): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "FileProvider authorities para share URI.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: FileProvider authorities para share URI."
+    },
+    {
+      "question": "Módulo 28 (PERMISOS RUNTIME Y SCOPED STORAGE): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Foto capturada permisos mínimos necesarios.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Foto capturada permisos mínimos necesarios."
+    },
+    {
+      "question": "Módulo 28 (PERMISOS RUNTIME Y SCOPED STORAGE): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Manifest merged permission camera hardware feature.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Manifest merged permission camera hardware feature."
+    },
+    {
+      "question": "Módulo 28: ¿Qué herramienta asistida encaja con Android Studio en este curso?",
+      "options": [
+        "Solo Blockbench 3D.",
+        "Cursor o Antigravity CLI con revisión humana de permisos y Gradle.",
+        "Compilar sin Gradle para ir más rápido."
+      ],
+      "answerIndex": 1,
+      "explanation": "El curso promueve IA asistida con revisión de ingeniería en cada commit."
+    }
+  ],
+  "29": [
+    {
+      "question": "Módulo 29 (INYECCIÓN HILT Y MÓDULOS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Hilt plugin kapt/ksp y @HiltAndroidApp Application.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Hilt plugin kapt/ksp y @HiltAndroidApp Application."
+    },
+    {
+      "question": "Módulo 29 (INYECCIÓN HILT Y MÓDULOS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "@AndroidEntryPoint Activity/Fragment.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: @AndroidEntryPoint Activity/Fragment."
+    },
+    {
+      "question": "Módulo 29 (INYECCIÓN HILT Y MÓDULOS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "@HiltViewModel constructor inject.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: @HiltViewModel constructor inject."
+    },
+    {
+      "question": "Módulo 29 (INYECCIÓN HILT Y MÓDULOS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Module @Provides @Singleton Retrofit Room.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Module @Provides @Singleton Retrofit Room."
+    },
+    {
+      "question": "Módulo 29 (INYECCIÓN HILT Y MÓDULOS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Qualifiers @IoDispatcher @MainDispatcher.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Qualifiers @IoDispatcher @MainDispatcher."
+    },
+    {
+      "question": "Módulo 29 (INYECCIÓN HILT Y MÓDULOS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "Testing @BindValue test modules.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Testing @BindValue test modules."
+    },
+    {
+      "question": "Módulo 29 (INYECCIÓN HILT Y MÓDULOS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Hilt navigation compose hiltViewModel().",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Hilt navigation compose hiltViewModel()."
+    },
+    {
+      "question": "Módulo 29 (INYECCIÓN HILT Y MÓDULOS): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Evitar field injection prefer constructor.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Evitar field injection prefer constructor."
+    },
+    {
+      "question": "Módulo 29: ¿Qué herramienta asistida encaja con Android Studio en este curso?",
+      "options": [
+        "Solo Blockbench 3D.",
+        "Cursor o Antigravity CLI con revisión humana de permisos y Gradle.",
+        "Compilar sin Gradle para ir más rápido."
+      ],
+      "answerIndex": 1,
+      "explanation": "El curso promueve IA asistida con revisión de ingeniería en cada commit."
+    }
+  ],
+  "30": [
+    {
+      "question": "Módulo 30 (APP PROFESIONAL COMPOSE): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "App multi-pantalla: feed API, cache Room, cámara adjunto.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: App multi-pantalla: feed API, cache Room, cámara adjunto."
+    },
+    {
+      "question": "Módulo 30 (APP PROFESIONAL COMPOSE): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "Chat o notas privadas pantalla con FLAG_SECURE.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Chat o notas privadas pantalla con FLAG_SECURE."
+    },
+    {
+      "question": "Módulo 30 (APP PROFESIONAL COMPOSE): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "Arquitectura MVVM/Hilt verificable en diagrama.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Arquitectura MVVM/Hilt verificable en diagrama."
+    },
+    {
+      "question": "Módulo 30 (APP PROFESIONAL COMPOSE): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Tests mínimos ViewModel + Dao.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Tests mínimos ViewModel + Dao."
+    },
+    {
+      "question": "Módulo 30 (APP PROFESIONAL COMPOSE): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "CI GitHub Actions assembleDebug lint.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: CI GitHub Actions assembleDebug lint."
+    },
+    {
+      "question": "Módulo 30 (APP PROFESIONAL COMPOSE): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Hardcodear API keys en strings.xml versionados en Git.",
+        "APK/AAB release firmado upload-key seguro.",
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: APK/AAB release firmado upload-key seguro."
+    },
+    {
+      "question": "Módulo 30 (APP PROFESIONAL COMPOSE): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ignorar el ciclo de vida y retener referencias a Activity en estático.",
+        "Play Console checklist privacidad.",
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: Play Console checklist privacidad."
+    },
+    {
+      "question": "Módulo 30 (APP PROFESIONAL COMPOSE): ¿Cuál afirmación describe correctamente el concepto?",
+      "options": [
+        "Ejecutar operaciones de red directamente en onCreate sin coroutines.",
+        "README español con stack y decisiones.",
+        "Hardcodear API keys en strings.xml versionados en Git."
+      ],
+      "answerIndex": 1,
+      "explanation": "El temario establece: README español con stack y decisiones."
+    },
+    {
+      "question": "Módulo 30: ¿Qué herramienta asistida encaja con Android Studio en este curso?",
+      "options": [
+        "Solo Blockbench 3D.",
+        "Cursor o Antigravity CLI con revisión humana de permisos y Gradle.",
+        "Compilar sin Gradle para ir más rápido."
+      ],
+      "answerIndex": 1,
+      "explanation": "El curso promueve IA asistida con revisión de ingeniería en cada commit."
+    }
+  ]
+}
