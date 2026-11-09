@@ -63,6 +63,10 @@ function moduleTrackLabel(courseId: string, modId: number): string {
   if (courseId === 'redes_desarrolladores') return 'TCP/IP · DNS · HTTP';
   if (courseId === 'sql_datos_ia') return 'SQL · RAG · Datos';
   if (courseId === 'edge_ia_movil') return 'Edge · IA local';
+  if (courseId === 'android_kotlin') {
+    if (modId <= 10) return 'XML · Views';
+    return 'Compose · Jetpack';
+  }
   if (courseId === 'evaluacion_ia') return 'Eval · Guardrails · SLO';
   if (courseId === 'ingeniero_ia') return 'Arquitectura IA';
   if (courseId === 'clean_code_solid') return 'Clean Code · SOLID';
@@ -582,7 +586,11 @@ const App: React.FC = () => {
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                      <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-50">Implementación / Demostración</h3>
                      <span className="text-xs font-bold text-slate-400 dark:text-slate-500 font-mono shrink-0">
-                       {activeCourseId === 'kali_linux' ? 'Bash / Kali Linux CLI' : 'Python'}
+                       {activeCourseId === 'kali_linux'
+                         ? 'Bash / Kali Linux CLI'
+                         : activeCourseId === 'android_kotlin'
+                           ? 'Kotlin / Android'
+                           : 'Python'}
                      </span>
                   </div>
                   <CodeBlock code={activeModule.codeSnippet} />
@@ -626,6 +634,8 @@ const App: React.FC = () => {
                       "Un LLM no pasa assert. Métricas, guardrails y pruebas adversariales separan un demo de algo que puedes mantener en producción sin sorpresas."
                     ) : activeCourseId === 'edge_ia_movil' ? (
                       "Ejecutar modelos en el dispositivo reduce latencia y protege datos del usuario. Cuantización, TFLite y buen diseño de app son habilidades concretas de ingeniería móvil."
+                    ) : activeCourseId === 'android_kotlin' ? (
+                      "Kotlin, Compose y Room son el estándar industrial. Dominar MVVM, Retrofit y FLAG_SECURE en pantallas sensibles te prepara para apps reales en Play Store, no solo tutoriales de botones."
                     ) : activeCourseId === 'clean_code_solid' ? (
                       "Cualquier programador puede escribir código que una computadora entienda; los ingenieros de elite escriben código que los humanos pueden entender (Tío Bob)."
                     ) : activeCourseId === 'ingeniero_ia' ? (
