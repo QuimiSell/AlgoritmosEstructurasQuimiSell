@@ -1,0 +1,2018 @@
+{
+  "1": [
+    {
+      "question": "Sea Σ = {0,1}. ¿Qué conjunto describe Σ*?",
+      "options": [
+        "Todas las cadenas finitas sobre {0,1}, incluyendo ε",
+        "Cadenas de longitud al menos 1",
+        "Solo cadenas con un número par de símbolos",
+        "Únicamente {ε, 0, 1}"
+      ],
+      "answerIndex": 0,
+      "explanation": "Σ* es la unión de Σ^k para k ≥ 0; incluye la cadena vacía."
+    },
+    {
+      "question": "Con |Σ| = 3, ¿cuántas cadenas distintas tienen longitud exactamente 4?",
+      "options": [
+        "12",
+        "81",
+        "27",
+        "64"
+      ],
+      "answerIndex": 1,
+      "explanation": "Cada posición elige 3 símbolos: 3⁴ = 81."
+    },
+    {
+      "question": "¿En qué difieren ∅ y {ε} como lenguajes?",
+      "options": [
+        "∅ no tiene cadenas; {ε} contiene una cadena de longitud 0",
+        "Son iguales porque ε no cuenta",
+        "∅ contiene ε implícitamente",
+        "{ε} no es subconjunto de Σ*"
+      ],
+      "answerIndex": 0,
+      "explanation": "El lenguaje vacío no contiene ningún elemento; {ε} tiene exactamente un miembro."
+    },
+    {
+      "question": "Concatenar '10' con '01' produce:",
+      "options": [
+        "'1001'",
+        "'11'",
+        "'0101'",
+        "Error: símbolos incompatibles"
+      ],
+      "answerIndex": 0,
+      "explanation": "La concatenación pega secuencias: '10'·'01' = '1001', |w| = 4."
+    },
+    {
+      "question": "Si L₁ = {a, ab} y L₂ = {b}, ¿qué cadenas están en L₁L₂?",
+      "options": [
+        "{ab, abb}",
+        "{b, ab}",
+        "{ab}",
+        "{aab, abb}"
+      ],
+      "answerIndex": 0,
+      "explanation": "Cada w₁∈L₁ sigue a w₂='b': 'a'+'b'='ab'; 'ab'+'b'='abb'."
+    },
+    {
+      "question": "Un lexer «ASCII only» rechaza Unicode no mapeado. Formalmente modela:",
+      "options": [
+        "Verificar w ∈ Σ* para un Σ finito de caracteres permitidos",
+        "Decidir si w es regular",
+        "Comprobar que |w| > 0",
+        "Traducir w a tokens sin alfabeto"
+      ],
+      "answerIndex": 0,
+      "explanation": "Todo símbolo de w debe estar en Σ; fuera de Σ no hay cadena válida sobre ese alfabeto."
+    },
+    {
+      "question": "¿Por qué Σ⁺ excluye ε cuando Σ no es vacío?",
+      "options": [
+        "Σ⁺ es unión de Σ^k con k ≥ 1",
+        "ε no es un símbolo de Σ",
+        "Σ⁺ es igual a Σ",
+        "Porque Kleene no admite cero repeticiones"
+      ],
+      "answerIndex": 0,
+      "explanation": "Definición estándar: Σ⁺ = ⋃_{k≥1} Σ^k; el caso k=0 queda solo en Σ*."
+    },
+    {
+      "question": "Depura: `len(concatenar('', 'abc'))` en el snippet del módulo devuelve:",
+      "options": [
+        "3",
+        "0",
+        "4",
+        "TypeError"
+      ],
+      "answerIndex": 0,
+      "explanation": "ε es neutro: concatenar cadena vacía no altera longitud."
+    },
+    {
+      "question": "L = {0ⁿ | n ≥ 0}. ¿Qué relación tiene con Σ* para Σ={0}?",
+      "options": [
+        "L es un subconjunto propio infinito de Σ*",
+        "L = Σ* completo",
+        "L es finito",
+        "L no ⊆ Σ*"
+      ],
+      "answerIndex": 0,
+      "explanation": "Solo usa el símbolo 0 pero admite cualquier longitud; Σ* también tendría cadenas con 1 si Σ={0,1}."
+    },
+    {
+      "question": "¿Cuál operación entre lenguajes NO corresponde directamente a un operador regex estándar?",
+      "options": [
+        "Complemento respecto a Σ*",
+        "Unión",
+        "Concatenación",
+        "Estrella de Kleene"
+      ],
+      "answerIndex": 0,
+      "explanation": "Unión, concat y estrella son primitivas regex; complemento requiere teorema adicional (DFA)."
+    }
+  ],
+  "2": [
+    {
+      "question": "En M = (Q, Σ, δ, q₀, F), ¿qué garantiza que M sea determinista?",
+      "options": [
+        "δ : Q × Σ → Q es función total",
+        "δ devuelve un conjunto de estados",
+        "Existen transiciones ε",
+        "Q es infinito"
+      ],
+      "answerIndex": 0,
+      "explanation": "Un único siguiente estado para cada (q, a) y definido para todo par válido."
+    },
+    {
+      "question": "DFA de paridad de 1s en {0,1} con q₀ aceptor (ε acepta). ¿Acepta '1100'?",
+      "options": [
+        "Sí, hay dos 1s",
+        "No, termina en 0",
+        "Solo si hay un 1 inicial",
+        "Depende de no determinismo"
+      ],
+      "answerIndex": 0,
+      "explanation": "Conteo de unos: dos es par → estado aceptor."
+    },
+    {
+      "question": "δ*(q, w) para w = a₁…aₙ se define por:",
+      "options": [
+        "Aplicar δ iterativamente desde el último símbolo hacia atrás",
+        "Inducción: δ*(q, ε)=q; δ*(q, wa)=δ(δ*(q,w), a)",
+        "Solo un paso δ(q, aₙ)",
+        "Unión de δ en cada prefijo"
+      ],
+      "answerIndex": 1,
+      "explanation": "Extensión recursiva estándar de δ a cadenas."
+    },
+    {
+      "question": "Implementas δ como `dict` anidado. ¿Qué ocurre si falta una entrada para (q, 'a')?",
+      "options": [
+        "Violación de totalidad; la simulación debe fallar o usar trampa explícita",
+        "Se interpreta como rechazo implícito sin romper modelo DFA",
+        "Equivale a NFA",
+        "Python devuelve ε"
+      ],
+      "answerIndex": 0,
+      "explanation": "DFA formal requiere destino definido; en práctica se usa estado trampa explícito."
+    },
+    {
+      "question": "L = {w ∈ {0,1}* | w termina en '01'}. ¿Qué diseño es correcto?",
+      "options": [
+        "Recordar sufijo relevante (últimos símbolos vistos)",
+        "Un solo estado sin memoria",
+        "Solo contar ceros",
+        "Pila auxiliar obligatoria"
+      ],
+      "answerIndex": 0,
+      "explanation": "Memoria finita de prefijos recientes basta; es regular."
+    },
+    {
+      "question": "Producto de autómatas A y B para L(A) ∩ L(B) usa:",
+      "options": [
+        "Estados Q_A × Q_B y δ producto con aceptación en F_A × F_B",
+        "Unión de tablas δ sin sincronizar",
+        "Solo estados de A",
+        "Complemento de A"
+      ],
+      "answerIndex": 0,
+      "explanation": "Construcción clásica del producto cartesiano sincronizado."
+    },
+    {
+      "question": "Complejidad de simular un DFA sobre |w| = n:",
+      "options": [
+        "O(n) tiempo, O(1) espacio extra",
+        "O(2ⁿ)",
+        "O(n log n)",
+        "O(1) solo si F es unitario"
+      ],
+      "answerIndex": 0,
+      "explanation": "Un paso por símbolo, un entero de estado."
+    },
+    {
+      "question": "Estado trampa qₜ sirve para:",
+      "options": [
+        "Absorber cadenas ya rechazadas manteniendo δ total",
+        "Acelerar minimización únicamente",
+        "Simular ε",
+        "Marcar aceptación"
+      ],
+      "answerIndex": 0,
+      "explanation": "Desde qₜ todos los símbolos regresan a qₜ y qₜ ∉ F."
+    },
+    {
+      "question": "Depura: w aceptada pero δ*(q₀,w) ∉ F. La causa más probable en código:",
+      "options": [
+        "Estado inicial o conjunto F mal inicializado",
+        "El alfabeto Σ es infinito",
+        "δ* no existe para DFA",
+        "Solo falla con ε"
+      ],
+      "answerIndex": 0,
+      "explanation": "Errores típicos de implementación: q₀, F o transición mal copiada."
+    },
+    {
+      "question": "¿Qué componente de la 5-tupla puede omitirse en una demostración teórica pero no en simulación?",
+      "options": [
+        "Ninguno: q₀, F y δ son necesarios para ejecutar",
+        "F porque basta alcanzar cualquier estado",
+        "Σ porque el código no usa alfabeto",
+        "Q porque δ es suficiente"
+      ],
+      "answerIndex": 0,
+      "explanation": "Sin F no hay criterio de aceptación; sin q₀ no hay inicio."
+    }
+  ],
+  "3": [
+    {
+      "question": "Un NFA con transiciones ε permite:",
+      "options": [
+        "Cambiar de estado sin consumir símbolo de entrada",
+        "Leer dos símbolos a la vez",
+        "Retroceder en la cinta",
+        "Solo aceptar ε"
+      ],
+      "answerIndex": 0,
+      "explanation": "ε-arcos no avanzan el índice de lectura."
+    },
+    {
+      "question": "ε-clausura de {q₀} antes de leer 'a' incluye:",
+      "options": [
+        "Todos los estados alcanzables solo por ε desde q₀",
+        "Todos los estados de Q",
+        "Solo q₀",
+        "Estados alcanzables leyendo 'a'"
+      ],
+      "answerIndex": 0,
+      "explanation": "Definición: clausura reflexiva-transitiva de relaciones ε."
+    },
+    {
+      "question": "En construcción de subconjuntos, un estado del DFA es:",
+      "options": [
+        "Un subconjunto de estados del NFA",
+        "Un solo estado del NFA duplicado",
+        "Una pila",
+        "Una expresión regular"
+      ],
+      "answerIndex": 0,
+      "explanation": "Cada conjunto de estados simultáneamente activos forma un estado DFA."
+    },
+    {
+      "question": "NFA con n estados → DFA equivalente en el peor caso:",
+      "options": [
+        "Hasta 2ⁿ estados",
+        "Siempre n estados",
+        "n² estados",
+        "2n estados exactos"
+      ],
+      "answerIndex": 0,
+      "explanation": "Ejemplo clásico { w | a en posiciones múltiplos de i para i divisores } exhibe blow-up."
+    },
+    {
+      "question": "Simulas NFA sin determinizar: en cada paso conservas:",
+      "options": [
+        "Conjunto activo de estados tras ε-clausura",
+        "Un único estado elegido al azar",
+        "Solo el tope de pila",
+        "La cadena reversa"
+      ],
+      "answerIndex": 0,
+      "explanation": "Simulación por conjuntos es estándar y correcta."
+    },
+    {
+      "question": "¿Por qué Thompson introduce ε al construir uniones?",
+      "options": [
+        "Para bifurcar sin leer entrada hacia sub-autómatas",
+        "Para consumir el símbolo |",
+        "Para convertir a CFG",
+        "Para hacer el NFA determinista"
+      ],
+      "answerIndex": 0,
+      "explanation": "ε conecta inicio a ramas paralelas de la alternancia."
+    },
+    {
+      "question": "Depura: determinización acepta cadenas que el NFA rechazaba. Causa típica:",
+      "options": [
+        "ε-clausura omitida al calcular δ_DFA",
+        "Uso de pila",
+        "Σ vacío",
+        "F demasiado pequeño"
+      ],
+      "answerIndex": 0,
+      "explanation": "Sin ε-clausura los estados iniciales/compuestos son incorrectos."
+    },
+    {
+      "question": "L(NFA) coincide con L(DFA) determinizado si:",
+      "options": [
+        "La construcción de subconjuntos se aplicó correctamente",
+        "El NFA no tiene ε",
+        "Q tiene un solo estado",
+        "Solo si el lenguaje es finito"
+      ],
+      "answerIndex": 0,
+      "explanation": "La determinización es equivalente en lenguaje cuando es correcta."
+    },
+    {
+      "question": "frozenset de estados como clave en dict de transiciones evita:",
+      "options": [
+        "Mutabilidad de sets como claves de hash",
+        "Determinismo",
+        "ε-transiciones",
+        "Aceptación"
+      ],
+      "answerIndex": 0,
+      "explanation": "Los sets mutables no son hashables en Python."
+    },
+    {
+      "question": "NFA adecuado para regex (a|b)*c porque:",
+      "options": [
+        "La unión y repetición se cablean localmente con pocos estados",
+        "Requiere memoria de pila",
+        "Es más lento que CYK",
+        "No admite ε"
+      ],
+      "answerIndex": 0,
+      "explanation": "Construcciones composicionales de Thompson son naturales en NFA."
+    }
+  ],
+  "4": [
+    {
+      "question": "Precedencia estándar en regex: ¿qué opera primero?",
+      "options": [
+        "Estrella (Kleene)",
+        "Unión",
+        "Paréntesis externos",
+        "Concatenación antes que estrella"
+      ],
+      "answerIndex": 0,
+      "explanation": "Orden habitual: paréntesis > * > concat > |."
+    },
+    {
+      "question": "(0|1)*0 representa:",
+      "options": [
+        "Cadenas binarias que terminan en 0",
+        "Cadenas que empiezan en 0",
+        "Solo '0'",
+        "Cadenas con un solo 1"
+      ],
+      "answerIndex": 0,
+      "explanation": "Cualquier prefijo binario seguido de 0 final."
+    },
+    {
+      "question": "Teorema de Kleene establece equivalencia entre:",
+      "options": [
+        "Regex, NFA/DFA y lenguajes regulares",
+        "CFG y PDA solamente",
+        "MT y C",
+        "Lexer y optimizador"
+      ],
+      "answerIndex": 0,
+      "explanation": "Las tres caracterizaciones definen la misma clase."
+    },
+    {
+      "question": "Thompson para concatenación rs conecta:",
+      "options": [
+        "Aceptación de r con inicio de s via ε",
+        "Unión directa de alfababetos",
+        "Estados finales de s con inicio de r",
+        "Dos iniciales sin enlace"
+      ],
+      "answerIndex": 0,
+      "explanation": "Salida de r enlaza por ε a entrada de s."
+    },
+    {
+      "question": "a+b en notación regex (sin espacios) suele significar:",
+      "options": [
+        "Una o más repeticiones de 'a' seguidas de literal 'b'",
+        "Suma aritmética",
+        "Unión a ∪ {b}",
+        "La cadena 'ab' opcional"
+      ],
+      "answerIndex": 0,
+      "explanation": "+ es clausura positiva; luego concat con b."
+    },
+    {
+      "question": "¿Qué lenguaje NO puede describirse con regex sobre Σ={(,)}?",
+      "options": [
+        "Paréntesis balanceados arbitrarios",
+        "Cadena vacía",
+        "Secuencia '(()'",
+        "Un solo '('"
+      ],
+      "answerIndex": 0,
+      "explanation": "Balanceo anidado requiere contador (CF), no memoria finita."
+    },
+    {
+      "question": "Depura: patrón (0*)*1 acepta '111'. ¿Es correcto para Σ={0,1}?",
+      "options": [
+        "Sí: (0*)* consume cero ceros repetidamente y exige un 1",
+        "No: necesita al menos un 0",
+        "No: * no anida",
+        "Solo acepta ε"
+      ],
+      "answerIndex": 0,
+      "explanation": "(0*)* puede repetir la subexpresión vacía; luego el 1 final satisface."
+    },
+    {
+      "question": "Eliminación de estados en DFA produce:",
+      "options": [
+        "Una expresión regular equivalente",
+        "Una CFG",
+        "Una MT",
+        "Un parser LL(1)"
+      ],
+      "answerIndex": 0,
+      "explanation": "Método algebraico clásico DFA → regex."
+    },
+    {
+      "question": "Motor regex con backtracking greedy puede diferir del autómata cuando:",
+      "options": [
+        "Hay capturas y anclas POSIX no regulares puras",
+        "El alfabeto es binario",
+        "No hay unión",
+        "Siempre coinciden en teoría"
+      ],
+      "answerIndex": 0,
+      "explanation": "Extensiones (lookahead, backrefs) salen de regex clásicas; greedy puede divergir en implementaciones."
+    },
+    {
+      "question": "Identificador [A-Za-z_][A-Za-z0-9_]* en lexer mapea a:",
+      "options": [
+        "Lenguaje regular reconocido por DFA combinado",
+        "Lenguaje CF sin regular",
+        "Solo un símbolo terminal",
+        "Gramática de Turing"
+      ],
+      "answerIndex": 0,
+      "explanation": "Prefijo-clase y repetición son operadores regulares."
+    }
+  ],
+  "5": [
+    {
+      "question": "Pumping lemma para L regular afirma que existen p y descomposición w = xyz con:",
+      "options": [
+        "|xy| ≤ p, |y| ≥ 1 y xyⁱz ∈ L para todo i ≥ 0",
+        "|y| > p siempre",
+        "y puede ser ε",
+        "Solo aplica si L es finito"
+      ],
+      "answerIndex": 0,
+      "explanation": "Condiciones estándar del lema."
+    },
+    {
+      "question": "Para demostrar {aⁿbⁿ | n≥0} no regular, w adversarial típico con longitud ≥ p:",
+      "options": [
+        "aᵖbᵖ",
+        "aᵖ",
+        "bᵖaᵖ",
+        "(ab)ᵖ"
+      ],
+      "answerIndex": 0,
+      "explanation": "Fuerza balance; bombeo en y rompe igualdad de a y b."
+    },
+    {
+      "question": "Si en bombeo elegimos i = 0, efecto sobre w = xyz:",
+      "options": [
+        "Se elimina una ocurrencia de y",
+        "Se duplica y",
+        "Se invierte z",
+        "No cambia la longitud total"
+      ],
+      "answerIndex": 0,
+      "explanation": "xy⁰z = xz, útil para probar salida del lenguaje."
+    },
+    {
+      "question": "Error frecuente en exámenes:",
+      "options": [
+        "Asumir que y debe contener solo b cuando w = aᵖbᵖ",
+        "Elegir p arbitrario del lema",
+        "Usar contradicción",
+        "Considerar i ≥ 0"
+      ],
+      "answerIndex": 0,
+      "explanation": "Con |xy| ≤ p, y cae solo en bloque inicial de a's."
+    },
+    {
+      "question": "L = {ww | w ∈ {0,1}*} es no regular porque:",
+      "options": [
+        "Requiere comparar mitades separadas por distancia variable",
+        "Es finito",
+        "Es igual a (0|1)*",
+        "Tiene ε"
+      ],
+      "answerIndex": 0,
+      "explanation": "Memoria finita no guarda primera mitad para longitudes crecientes."
+    },
+    {
+      "question": "Pumping lemma es suficiente para probar no regularidad:",
+      "options": [
+        "Sí cuando el argumento de contradicción cierra correctamente",
+        "No: nunca sirve",
+        "Solo para lenguajes finitos",
+        "Solo con NFA"
+      ],
+      "answerIndex": 0,
+      "explanation": "Es herramienta estándar de prueba por contradicción."
+    },
+    {
+      "question": "Depura prueba: concluyes L regular porque bombea una vez. Fallo:",
+      "options": [
+        "Debes mostrar violación ∀i, no un caso aislado",
+        "Falta alfabeto",
+        "No se usa z",
+        "w es demasiado corta siempre"
+      ],
+      "answerIndex": 0,
+      "explanation": "La condición del lema quantifica sobre todo i."
+    },
+    {
+      "question": "Palíndromos sobre {a,b} con longitud par:",
+      "options": [
+        "No son regulares (misma técnica de cruce)",
+        "Son regulares por regex a*b*a",
+        "Son finitos",
+        "Son CF pero también regulares"
+      ],
+      "answerIndex": 0,
+      "explanation": "Comparación simétrica de extremos requiere más que un contador."
+    },
+    {
+      "question": "Si L es regular, entonces para suficientemente largas cadenas:",
+      "options": [
+        "Una porción y se puede repetir sin salir de L",
+        "No hay cadenas largas",
+        "Todas las descomposiciones fallan",
+        "p = |Σ|"
+      ],
+      "answerIndex": 0,
+      "explanation": "Interpretación operativa del lema."
+    },
+    {
+      "question": "Bombeo falla para diseñar DFA de aⁿbⁿ implica:",
+      "options": [
+        "Buscar PDA/CFG, no más estados DFA",
+        "El lenguaje es regular",
+        "El lema está mal enunciado",
+        "Usar solo ε-NFA"
+      ],
+      "answerIndex": 0,
+      "explanation": "Señal de que memoria finita no bastará."
+    }
+  ],
+  "6": [
+    {
+      "question": "Una CFG G = (V, Σ, P, S) genera cadenas en:",
+      "options": [
+        "(V ∪ Σ)* restringidas a terminales en L(G)",
+        "Solo Σ",
+        "Solo V",
+        "ε únicamente"
+      ],
+      "answerIndex": 0,
+      "explanation": "Derivaciones mezclan no terminales hasta emitir solo terminales."
+    },
+    {
+      "question": "Derivación leftmost expande:",
+      "options": [
+        "El no terminal más a la izquierda en cada paso",
+        "El más a la derecha",
+        "Todos a la vez",
+        "Solo terminales"
+      ],
+      "answerIndex": 0,
+      "explanation": "Convención útil para parsers predictivos."
+    },
+    {
+      "question": "Gramática E → E + E | E * E | id es:",
+      "options": [
+        "Ambigua para id + id * id",
+        "No ambigua",
+        "Regular",
+        "Tipo 0 solamente"
+      ],
+      "answerIndex": 0,
+      "explanation": "Dos árboles (asociatividad distinta) para la misma cadena."
+    },
+    {
+      "question": "Eliminar ambigüedad en expresiones suele usar:",
+      "options": [
+        "Capas de precedencia (term/factor) o precedencias declaradas",
+        "Solo más terminales",
+        "Convertir a DFA",
+        "ε-producciones únicamente"
+      ],
+      "answerIndex": 0,
+      "explanation": "Refuerza estructura jerárquica de operadores."
+    },
+    {
+      "question": "El lexer entrega tokens; la CFG del parser usa:",
+      "options": [
+        "Símbolos terminales que son clases de token",
+        "Caracteres ASCII individuales siempre",
+        "Solo números",
+        "Estados del DFA directamente"
+      ],
+      "answerIndex": 0,
+      "explanation": "Nivel de abstracción tras análisis léxico."
+    },
+    {
+      "question": "Producción S → aSb | ε genera:",
+      "options": [
+        "{aⁿbⁿ | n ≥ 0}",
+        "{aⁿbⁿbⁿ}",
+        "Regular con n≤3",
+        "L vacío"
+      ],
+      "answerIndex": 0,
+      "explanation": "Cada paso añade un par a…b alrededor."
+    },
+    {
+      "question": "Árbol de derivación distinto del AST porque:",
+      "options": [
+        "El AST contrae nodos sintácticos y pierde símbolos intermedios",
+        "Son idénticos siempre",
+        "El AST incluye tokens de caracteres",
+        "La derivación es LR únicamente"
+      ],
+      "answerIndex": 0,
+      "explanation": "AST es vista abstracta para análisis posterior."
+    },
+    {
+      "question": "Depura: parser reduce pero semántica falla tipos. Causa probable:",
+      "options": [
+        "Gramática acepta sintaxis inválida semánticamente",
+        "CFG mal definida",
+        "Lexer no corre",
+        "CYK en vez de LL"
+      ],
+      "answerIndex": 0,
+      "explanation": "Sintaxis correcta no implica semántica; ver siguiente fase."
+    },
+    {
+      "question": "Recursión izquierda A → Aα | β dificulta:",
+      "options": [
+        "Parsers LL(1) sin transformación",
+        "Parsers LR",
+        "Generación ε",
+        "Tokens NUM"
+      ],
+      "answerIndex": 0,
+      "explanation": "Descenso recursivo predictivo necesita eliminarla o usar LR."
+    },
+    {
+      "question": "L(G) = ∅ ocurre si:",
+      "options": [
+        "Ningún no terminal deriva cadena de terminales",
+        "S tiene producción ε",
+        "Σ es infinito",
+        "Hay ambigüedad"
+      ],
+      "answerIndex": 0,
+      "explanation": "Sin derivaciones terminantes el lenguaje es vacío."
+    }
+  ],
+  "7": [
+    {
+      "question": "Un PDA lee entrada y manipula:",
+      "options": [
+        "Una pila LIFO de símbolos de Γ",
+        "Dos cintas",
+        "Solo contador modulo k",
+        "Registro único"
+      ],
+      "answerIndex": 0,
+      "explanation": "Memoria adicional estructurada como pila."
+    },
+    {
+      "question": "L libre de contexto coincide con lenguajes aceptados por:",
+      "options": [
+        "Algún PDA (modo estándar del curso)",
+        "Solo DFA",
+        "Solo MT deterministas",
+        "Regex"
+      ],
+      "answerIndex": 0,
+      "explanation": "Teorema central CFG ↔ PDA."
+    },
+    {
+      "question": "En CNF, las producciones permitidas son:",
+      "options": [
+        "A → BC o A → a con a terminal",
+        "A → ε sin restricción",
+        "A → w con |w|>2",
+        "Solo ε"
+      ],
+      "answerIndex": 0,
+      "explanation": "Forma binaria o terminal única."
+    },
+    {
+      "question": "CYK decide w ∈ L(G) en tiempo:",
+      "options": [
+        "O(n³ · |G|) para |w|=n",
+        "O(n)",
+        "Exponencial siempre",
+        "O(log n)"
+      ],
+      "answerIndex": 0,
+      "explanation": "Programación dinámica sobre subcadenas."
+    },
+    {
+      "question": "Para w = 'aabb', tabla CYK en celda (1,4) indica:",
+      "options": [
+        "Si el substring completo es generable desde algún no terminal",
+        "Solo el primer símbolo",
+        "Longitud 0",
+        "Error léxico"
+      ],
+      "answerIndex": 0,
+      "explanation": "Celda agrega intervalos [i,j] de la cadena."
+    },
+    {
+      "question": "{aⁿbⁿcⁿ | n≥0} no es libre de contexto por:",
+      "options": [
+        "Necesita comparar tres contadores simultáneos",
+        "Es regular",
+        "Es finito",
+        "CYK es O(n)"
+      ],
+      "answerIndex": 0,
+      "explanation": "PDA tiene una sola pila; no alcanza para tres bloques."
+    },
+    {
+      "question": "Simular derivación CFG con PDA típicamente:",
+      "options": [
+        "Empuja RHS en reverso al leer expansión",
+        "Usa ε solo",
+        "No usa pila",
+        "Lee la entrada al revés únicamente"
+      ],
+      "answerIndex": 0,
+      "explanation": "Construcción estándar top-down."
+    },
+    {
+      "question": "PDA determinista vs no determinista:",
+      "options": [
+        "Determinista estricto es subclase propia",
+        "Siempre equivalentes",
+        "Igual que DFA",
+        "Solo ND acepta regulares"
+      ],
+      "answerIndex": 0,
+      "explanation": "Hay CF que requieren no determinismo de pila."
+    },
+    {
+      "question": "Shift-reduce parser usa pila para:",
+      "options": [
+        "Símbolos gramaticales y estados LR",
+        "Solo tipos",
+        "Hash de identificadores",
+        "Bytecode"
+      ],
+      "answerIndex": 0,
+      "explanation": "Pila guía reducciones y shifts."
+    },
+    {
+      "question": "Depura CYK: celda (i,j) True pero S no aparece en (1,n). Conclusión:",
+      "options": [
+        "w ∉ L(G) aunque haya subcadenas derivables",
+        "w ∈ L",
+        "Gramática regular",
+        "Error lexer"
+      ],
+      "answerIndex": 0,
+      "explanation": "Aceptación requiere S deriva w completo."
+    }
+  ],
+  "8": [
+    {
+      "question": "Problema de la parada es:",
+      "options": [
+        "Indecidible",
+        "NP-completo",
+        "O(n)",
+        "Regular"
+      ],
+      "answerIndex": 0,
+      "explanation": "No existe algoritmo correcto y total que decida parada para todas las MT."
+    },
+    {
+      "question": "Jerarquía de Chomsky: tipo 3 ⊆ tipo 2 porque:",
+      "options": [
+        "Toda CFG regular puede restringirse a forma regular",
+        "Los regulares requieren pila",
+        "Los CF son finitos",
+        "MT ⊆ REG"
+      ],
+      "answerIndex": 0,
+      "explanation": "Gramáticas regulares son casos particulares de CFG."
+    },
+    {
+      "question": "Lenguaje recursivo (decidible) implica:",
+      "options": [
+        "Existe MT que decide L y siempre para",
+        "Solo enumeración",
+        "Ser regular",
+        "No tener complemento"
+      ],
+      "answerIndex": 0,
+      "explanation": "Decisión total y correcta para todo input."
+    },
+    {
+      "question": "Reducción de H a L muestra:",
+      "options": [
+        "Si L fuera decidible entonces H sería decidible",
+        "L es regular",
+        "H es regular",
+        "L ⊆ Σ*"
+      ],
+      "answerIndex": 0,
+      "explanation": "Esquema estándar de reducibilidad para indecidibilidad."
+    },
+    {
+      "question": "MT multi-cinta vs mono-cinta:",
+      "options": [
+        "Mismo poder computacional",
+        "Multi-cinta es más potente",
+        "Mono-cinta decide parada",
+        "Multi no lee entrada"
+      ],
+      "answerIndex": 0,
+      "explanation": "Simulación polinomial conserva computabilidad."
+    },
+    {
+      "question": "Universalidad Turing permite:",
+      "options": [
+        "Interpretar ⟨M⟩, x en una MT fija U",
+        "Eliminar CFG",
+        "Optimizar LLVM",
+        "Tokenizar"
+      ],
+      "answerIndex": 0,
+      "explanation": "Máquina universal simula codificaciones de otras máquinas."
+    },
+    {
+      "question": "¿Cuál problema es decidible?",
+      "options": [
+        "¿DFA acepta la cadena vacía? (finito y mecánico)",
+        "Equivalencia de dos MT arbitrarias",
+        "Parada de MT general",
+        "¿MT imprime 2? con entrada arbitraria"
+      ],
+      "answerIndex": 0,
+      "explanation": "Chequear δ*(q₀, ε)∈F es finito."
+    },
+    {
+      "question": "Tipo 1 (sensibles al contexto) respecto a tipo 2:",
+      "options": [
+        "Incluye reglas con restricciones de contexto más allá de CFG pura",
+        "Es igual a regular",
+        "No existe",
+        "Solo trivial"
+      ],
+      "answerIndex": 0,
+      "explanation": "Jerarquía estricta entre clases."
+    },
+    {
+      "question": "Depura argumento: «como no puedo diseñar DFA, el problema no existe». Error:",
+      "options": [
+        "Indecidibilidad trata decidibilidad, no solo sintaxis regular",
+        "DFA siempre existe",
+        "MT no importa",
+        "Chomsky no aplica"
+      ],
+      "answerIndex": 0,
+      "explanation": "Clases más allá de regulares siguen siendo bien definidas."
+    },
+    {
+      "question": "RE pero no recursivo implica:",
+      "options": [
+        "Enumerables pero con MT que puede no parar en negativas",
+        "Regulares",
+        "Vacío",
+        "Sin complemento enumerable"
+      ],
+      "answerIndex": 0,
+      "explanation": "Aceptación enumerativa ≠ decisión total."
+    }
+  ],
+  "9": [
+    {
+      "question": "Frontend del compilador agrupa:",
+      "options": [
+        "Lexer, parser y análisis semántico",
+        "Solo codegen",
+        "Solo linker",
+        "Optimización de loops exclusiva"
+      ],
+      "answerIndex": 0,
+      "explanation": "Análisis hasta IR/tabla de símbolos decorada."
+    },
+    {
+      "question": "Middle-end típicamente opera sobre:",
+      "options": [
+        "IR con optimizaciones machine-independent",
+        "Caracteres fuente",
+        "Binario ejecutable final",
+        "Solo comentarios"
+      ],
+      "answerIndex": 0,
+      "explanation": "Transformaciones portables antes del backend."
+    },
+    {
+      "question": "¿Qué artefacto conecta parser con semántica?",
+      "options": [
+        "AST/tabla de símbolos en construcción",
+        "Archivo .o",
+        "Regex del lexer",
+        "Linker script"
+      ],
+      "answerIndex": 0,
+      "explanation": "Estructura parseada alimenta chequeos."
+    },
+    {
+      "question": "Error recovery en parser debe:",
+      "options": [
+        "Reportar y sincronizar para continuar diagnósticos",
+        "Silenciar todos los errores",
+        "Abortar sin mensaje",
+        "Saltar codegen"
+      ],
+      "answerIndex": 0,
+      "explanation": "Múltiples errores por archivo en IDE."
+    },
+    {
+      "question": "Compilación separada por archivos requiere:",
+      "options": [
+        "Objetos con símbolos exportados resueltos en enlace",
+        "Un solo paso lexer",
+        "Sin tablas",
+        "CYK"
+      ],
+      "answerIndex": 0,
+      "explanation": "Linker resuelve referencias cruzadas."
+    },
+    {
+      "question": "LLVM IR como middle-end facilita:",
+      "options": [
+        "Reusar optimizaciones y backends para varios lenguajes",
+        "Eliminar lexer",
+        "Ejecutar sin OS",
+        "Solo regex"
+      ],
+      "answerIndex": 0,
+      "explanation": "Portabilidad y passes compartidos."
+    },
+    {
+      "question": "Depura pipeline: tokens correctos pero AST vacío. Fallo en:",
+      "options": [
+        "Parser o activación del constructor de AST",
+        "Linker",
+        "Reg alloc",
+        "SSA φ"
+      ],
+      "answerIndex": 0,
+      "explanation": "Lexer OK; construcción sintáctica falló."
+    },
+    {
+      "question": "Opción `-O2` en gcc/clang afecta principalmente:",
+      "options": [
+        "Passes de optimización sobre IR",
+        "Longitud del lexer",
+        "Charset",
+        "Nombre del ejecutable"
+      ],
+      "answerIndex": 0,
+      "explanation": "Niveles disparan conjuntos de optimizaciones."
+    },
+    {
+      "question": "Separación lexer/parser evita:",
+      "options": [
+        "Mezclar reconocimiento de caracteres con gramática de tokens",
+        "Cualquier tabla",
+        "IR",
+        "Diagnósticos"
+      ],
+      "answerIndex": 0,
+      "explanation": "Responsabilidades distintas y alfabeto distinto."
+    },
+    {
+      "question": "Diagnóstico con línea/columna proviene típicamente de:",
+      "options": [
+        "Atributos de posición en tokens",
+        "IR TAC",
+        "Spill slots",
+        "Opcode final"
+      ],
+      "answerIndex": 0,
+      "explanation": "El lexer/parser propagan localización."
+    }
+  ],
+  "10": [
+    {
+      "question": "Token vs lexema:",
+      "options": [
+        "Lexema es texto concreto; token es clase + atributos",
+        "Son sinónimos",
+        "Token es carácter único siempre",
+        "Lexema es tipo enum"
+      ],
+      "answerIndex": 0,
+      "explanation": "Flujo interno abstrae patrones."
+    },
+    {
+      "question": "Regla longest-match resuelve:",
+      "options": [
+        "'>' vs '>>' en operadores compuestos",
+        "Ambigüedad CFG",
+        "SSA",
+        "Parada MT"
+      ],
+      "answerIndex": 0,
+      "explanation": "Prefiere lexema más largo válido."
+    },
+    {
+      "question": "Orden de reglas en lexer importa cuando:",
+      "options": [
+        "Patrones se solapan y prioridad rompe empates",
+        "No hay regex",
+        "Σ vacío",
+        "Solo números pares"
+      ],
+      "answerIndex": 0,
+      "explanation": "Primera regla ganadora tras longest-match."
+    },
+    {
+      "question": "Keyword `if` versus identificador `iffy`:",
+      "options": [
+        "Clasificar ID luego filtrar tabla reservadas o patrón priorizado",
+        "Dos lexers separados obligatorios",
+        "No distinguibles",
+        "Solo con CYK"
+      ],
+      "answerIndex": 0,
+      "explanation": "Estrategias estándar con tabla de palabras reservadas."
+    },
+    {
+      "question": "Literal mal cerrado `'abc` sin comilla final es:",
+      "options": [
+        "Error léxico",
+        "Error de parse",
+        "Warning SSA",
+        "Spill"
+      ],
+      "answerIndex": 0,
+      "explanation": "Lexer detecta estado no terminal del autómata de literal."
+    },
+    {
+      "question": "DFA combinado de tokens se obtiene con:",
+      "options": [
+        "Construcción de autómata producto/estado con prioridades",
+        "CYK",
+        "Parser LR",
+        "Halting"
+      ],
+      "answerIndex": 0,
+      "explanation": "Simulación única sobre el archivo."
+    },
+    {
+      "question": "Espacios en blanco usualmente:",
+      "options": [
+        "Se descartan o emiten token separado según diseño",
+        "Detienen compilación",
+        "Son terminales en CFG",
+        "Generan IR"
+      ],
+      "answerIndex": 0,
+      "explanation": "Política del lenguaje."
+    },
+    {
+      "question": "Overflow al escanear INT_MAX+1:",
+      "options": [
+        "Error léxico o semántico según política; lexer puede marcar rango",
+        "Aceptar silenciosamente",
+        "Parse shift",
+        "φ-node"
+      ],
+      "answerIndex": 0,
+      "explanation": "Muchos compiladores reportan literal fuera de rango."
+    },
+    {
+      "question": "Complejidad del lexer sobre n caracteres:",
+      "options": [
+        "O(n)",
+        "O(n³)",
+        "O(2ⁿ)",
+        "O(n log n) siempre"
+      ],
+      "answerIndex": 0,
+      "explanation": "Un paso por carácter con DFA."
+    },
+    {
+      "question": "Depura: lexer emite ID para '123abc'. Causa:",
+      "options": [
+        "Regla NUM mal priorizada o no cubre el caso",
+        "Parser LR",
+        "Linker",
+        "Register alloc"
+      ],
+      "answerIndex": 0,
+      "explanation": "Patrones deben clasificar prefijos numéricos vs identificadores."
+    }
+  ],
+  "11": [
+    {
+      "question": "Parser LL(1) consulta:",
+      "options": [
+        "Siguiente token de lookahead",
+        "Dos pilas de MT",
+        "Solo semántica",
+        "IR final"
+      ],
+      "answerIndex": 0,
+      "explanation": "Un token de anticipación en la variante LL(1)."
+    },
+    {
+      "question": "Conflicto shift/reduce en tabla LR indica:",
+      "options": [
+        "Gramática no LR (o errores en construcción)",
+        "Lexer falló",
+        "Lenguaje no CF",
+        "Tipos incompatibles"
+      ],
+      "answerIndex": 0,
+      "explanation": "Tabla inconsistente para la gramática."
+    },
+    {
+      "question": "FIRST(α) contiene:",
+      "options": [
+        "Terminales que pueden iniciar derivaciones de α",
+        "Todos los no terminales",
+        "Follow de S",
+        "Solo ε"
+      ],
+      "answerIndex": 0,
+      "explanation": "Conjunto predictivo clásico."
+    },
+    {
+      "question": "LALR difiere de LR(1) en:",
+      "options": [
+        "Fusión de estados con kernels iguales",
+        "Usar regex",
+        "Eliminar pila",
+        "Ser LL"
+      ],
+      "answerIndex": 0,
+      "explanation": "Tablas más compactas con posible conflicto residual controlado."
+    },
+    {
+      "question": "AST para `a+b*c` sin ambigüedad usa:",
+      "options": [
+        "Gramática con niveles de precedencia o precedencias en parser",
+        "Solo regex",
+        "CYK manual",
+        "DFA"
+      ],
+      "answerIndex": 0,
+      "explanation": "Multiplica más ajustado que suma."
+    },
+    {
+      "question": "Descenso recursivo: cada no terminal suele mapear a:",
+      "options": [
+        "Una función de parsing",
+        "Un opcode",
+        "Un registro",
+        "Un φ"
+      ],
+      "answerIndex": 0,
+      "explanation": "Patrón pedagógico directo."
+    },
+    {
+      "question": "Acción reduce en LR significa:",
+      "options": [
+        "Aplicar producción y reemplazar tope de pila por LHS",
+        "Leer otro carácter",
+        "Emitir asm",
+        "Cerrar archivo"
+      ],
+      "answerIndex": 0,
+      "explanation": "Paso reduce según handle."
+    },
+    {
+      "question": "Depura: parse OK pero árbol plano para expresiones. Causa:",
+      "options": [
+        "Gramática sin reflejar precedencia/asociatividad",
+        "Lexer omitido",
+        "SSA mal",
+        "Linker"
+      ],
+      "answerIndex": 0,
+      "explanation": "Producciones planas generan AST incorrecto."
+    },
+    {
+      "question": "Item LR [A → α·β, a] anticipa:",
+      "options": [
+        "Terminal viable siguiente en el contexto",
+        "Solo ε",
+        "Registro RAX",
+        "Tipo int"
+      ],
+      "answerIndex": 0,
+      "explanation": "Información LR(1) para cerrar acciones."
+    },
+    {
+      "question": "Aceptación en parser LR ocurre cuando:",
+      "options": [
+        "Se reduce a S y se consumió $ de entrada",
+        "Lexer termina",
+        "Spill ocurre",
+        "φ insertado"
+      ],
+      "answerIndex": 0,
+      "explanation": "Condición estándar con sentinel."
+    }
+  ],
+  "12": [
+    {
+      "question": "Tabla de símbolos en scope anidado se implementa con:",
+      "options": [
+        "Pila de tablas o árbol de scopes",
+        "Solo hash global",
+        "Pila LR",
+        "Registros físicos"
+      ],
+      "answerIndex": 0,
+      "explanation": "Entrar/salir scope empuja/oculta niveles."
+    },
+    {
+      "question": "Shadowing de variable:",
+      "options": [
+        "Declaración interna oculta homónima externa en su bloque",
+        "Error siempre",
+        "Igual que redefinición global ilegal",
+        "Problema del linker"
+      ],
+      "answerIndex": 0,
+      "explanation": "Resolución por cadena de scopes."
+    },
+    {
+      "question": "Chequeo `x + true` en lenguaje tipado estático falla por:",
+      "options": [
+        "Tipos incompatibles en la adición",
+        "Lexer",
+        "Parada MT",
+        "Spill"
+      ],
+      "answerIndex": 0,
+      "explanation": "Reglas semánticas de operadores."
+    },
+    {
+      "question": "Atributos sintetizados:",
+      "options": [
+        "Se calculan ascendiendo en el AST",
+        "Vienen solo del padre",
+        "Son tokens",
+        "Son opcodes"
+      ],
+      "answerIndex": 0,
+      "explanation": "Información fluye de hijos a padre."
+    },
+    {
+      "question": "Binding de llamada foo(a,b) requiere:",
+      "options": [
+        "Coincidencia de aridad y tipos de parámetros con firma",
+        "Solo nombre",
+        "Solo regex",
+        "CYK"
+      ],
+      "answerIndex": 0,
+      "explanation": "Semántica de invocación."
+    },
+    {
+      "question": "Variable usada antes de declarar en mismo bloque:",
+      "options": [
+        "Error semántico",
+        "OK siempre",
+        "Lexer error",
+        "Linker"
+      ],
+      "answerIndex": 0,
+      "explanation": "Reglas de orden de declaración del lenguaje."
+    },
+    {
+      "question": "Decoración del AST con tipos sirve para:",
+      "options": [
+        "IR y codegen posteriores",
+        "Solo formato",
+        "Ejecutar regex",
+        "DFA"
+      ],
+      "answerIndex": 0,
+      "explanation": "Propagación hacia generación."
+    },
+    {
+      "question": "Depura: símbolo global no visible en función. Causa:",
+      "options": [
+        "Scope no enlazó correctamente o falta `extern`/declaración",
+        "Parser shift",
+        "φ faltante",
+        "Overflow literal"
+      ],
+      "answerIndex": 0,
+      "explanation": "Enlace entre tablas y política de visibilidad."
+    },
+    {
+      "question": "Conversión implícita int→float en suma es:",
+      "options": [
+        "Regla de promoción en chequeo semántico",
+        "LR action",
+        "Token",
+        "Spill"
+      ],
+      "answerIndex": 0,
+      "explanation": "Coerciones definidas en estándar del lenguaje."
+    },
+    {
+      "question": "`return` fuera de función es:",
+      "options": [
+        "Error semántico/contextual",
+        "Lexer",
+        "Optimización",
+        "Opcode NOP"
+      ],
+      "answerIndex": 0,
+      "explanation": "Restricción de estructura del programa."
+    }
+  ],
+  "13": [
+    {
+      "question": "TAC cuádrupla `(+, a, b, t1)` significa:",
+      "options": [
+        "t1 = a + b",
+        "saltar a t1",
+        "definir función",
+        "lexer"
+      ],
+      "answerIndex": 0,
+      "explanation": "Formato de tres direcciones con destino explícito."
+    },
+    {
+      "question": "Temporales t1, t2 se introducen para:",
+      "options": [
+        "Romper expresiones complejas en pasos evaluables",
+        "Nombres de usuario",
+        "Tokens",
+        "Solo debug"
+      ],
+      "answerIndex": 0,
+      "explanation": "Traducción sistemática de expresiones."
+    },
+    {
+      "question": "SSA requiere:",
+      "options": [
+        "Cada variable definida exactamente una vez por versión; φ en joins",
+        "Sin saltos",
+        "Sin temporales",
+        "Solo regex"
+      ],
+      "answerIndex": 0,
+      "explanation": "Single static assignment con funciones φ."
+    },
+    {
+      "question": "φ(x1, x2) en un join:",
+      "options": [
+        "Selecciona valor según rama de control ejecutada",
+        "Suma operandos",
+        "Lee memoria",
+        "Es token"
+      ],
+      "answerIndex": 0,
+      "explanation": "Placeholder de merge de definiciones."
+    },
+    {
+      "question": "Traducción de `if (c) S` en IR incluye:",
+      "options": [
+        "Salto condicional a etiquetas",
+        "Solo opcode ret",
+        "Lexer rule",
+        "CYK"
+      ],
+      "answerIndex": 0,
+      "explanation": "Control flow explícito."
+    },
+    {
+      "question": "IR portátil permite:",
+      "options": [
+        "Backend distinto para misma representación",
+        "Eliminar semántica",
+        "Evitar lexer",
+        "Hacer regular el lenguaje"
+      ],
+      "answerIndex": 0,
+      "explanation": "Desacople máquina."
+    },
+    {
+      "question": "Depura IR: temporal usado antes de definir. Causa:",
+      "options": [
+        "Orden de emisión incorrecto en traducción",
+        "Spill",
+        "Halting",
+        "FIRST/FOLLOW"
+      ],
+      "answerIndex": 0,
+      "explanation": "Secuencia de cuádruplas debe respetar definiciones."
+    },
+    {
+      "question": "Activación de función en IR establece:",
+      "options": [
+        "Marco/registros según convención",
+        "Solo AST",
+        "Regex",
+        "DFA"
+      ],
+      "answerIndex": 0,
+      "explanation": "Prologue y manejo de parámetros."
+    },
+    {
+      "question": "LLVM bitcode es ejemplo de:",
+      "options": [
+        "IR intermedio optimizable",
+        "Token",
+        "Gramática",
+        "Tabla FIRST"
+      ],
+      "answerIndex": 0,
+      "explanation": "Representación serializable."
+    },
+    {
+      "question": "Bloque básico es:",
+      "options": [
+        "Secuencia lineal sin saltos internos salvo al final",
+        "Todo el programa",
+        "Un token",
+        "CYK celda"
+      ],
+      "answerIndex": 0,
+      "explanation": "Unidad estándar para análisis de flujo."
+    }
+  ],
+  "14": [
+    {
+      "question": "Constant folding 3*5 → 15:",
+      "options": [
+        "Optimización algebraica local",
+        "Error semántico",
+        "Lexer",
+        "Parsing"
+      ],
+      "answerIndex": 0,
+      "explanation": "Evalúa en compile-time operaciones conocidas."
+    },
+    {
+      "question": "Dead code elimination necesita:",
+      "options": [
+        "Análisis de liveness/def-use",
+        "Solo regex",
+        "CYK",
+        "FIRST"
+      ],
+      "answerIndex": 0,
+      "explanation": "Eliminar instrucciones sin efecto observable."
+    },
+    {
+      "question": "CSE evita:",
+      "options": [
+        "Recalcular la misma expresión en un bloque",
+        "Todos los saltos",
+        "Lexer",
+        "Tabla de símbolos"
+      ],
+      "answerIndex": 0,
+      "explanation": "Reuse temporales para expresiones comunes."
+    },
+    {
+      "question": "Loop-invariant code motion mueve:",
+      "options": [
+        "Instrucciones cuyos operandos no cambian en iteración",
+        "Todo el loop fuera del programa",
+        "Lexer adentro del loop",
+        "Solo φ"
+      ],
+      "answerIndex": 0,
+      "explanation": "Reduce trabajo repetido."
+    },
+    {
+      "question": "Inlining trade-off:",
+      "options": [
+        "Menos overhead de llamada pero más código",
+        "Siempre reduce tamaño",
+        "Impide optimizar",
+        "Solo afecta lexer"
+      ],
+      "answerIndex": 0,
+      "explanation": "Balance tamaño vs velocidad."
+    },
+    {
+      "question": "Optimización no puede reordenar libremente si:",
+      "options": [
+        "Hay efectos laterales u orden de excepciones visible",
+        "Hay enteros",
+        "Hay IR",
+        "Hay DFA"
+      ],
+      "answerIndex": 0,
+      "explanation": "Semántica observable limita transformaciones."
+    },
+    {
+      "question": "Copy propagation tras SSA:",
+      "options": [
+        "Reemplaza usos de copias por fuente original cuando seguro",
+        "Elimina lexer",
+        "Cambia API del SO",
+        "Rompe tipos"
+      ],
+      "answerIndex": 0,
+      "explanation": "Simplifica grafo de def-use."
+    },
+    {
+      "question": "Depura: optimizador elimina printf «muerto» pero usuario lo necesitaba. Causa:",
+      "options": [
+        "Análisis de efectos consideró la llamada sin efecto",
+        "Parser LR",
+        "φ mal",
+        "Token"
+      ],
+      "answerIndex": 0,
+      "explanation": "Modelado de efectos secundarios conservador vs agresivo."
+    },
+    {
+      "question": "PGO usa:",
+      "options": [
+        "Perfiles de ejecución para guiar decisiones",
+        "Solo teoría de bombeo",
+        "CYK",
+        "NFA ε"
+      ],
+      "answerIndex": 0,
+      "explanation": "Datos de runtime en compilación."
+    },
+    {
+      "question": "Iterar passes hasta punto fijo:",
+      "options": [
+        "Aplica optimizaciones hasta que no cambia IR",
+        "Impide compilar",
+        "Solo en lexer",
+        "Es parsing"
+      ],
+      "answerIndex": 0,
+      "explanation": "Monotonía/no cambio estabiliza."
+    }
+  ],
+  "15": [
+    {
+      "question": "Calling convention define:",
+      "options": [
+        "Qué registros/stack usan parámetros y quién preserva registros",
+        "Solo tokens",
+        "Gramática",
+        "CYK"
+      ],
+      "answerIndex": 0,
+      "explanation": "ABI entre llamador y llamado."
+    },
+    {
+      "question": "Spill en asignación de registros:",
+      "options": [
+        "Variable va a stack por falta de registradores libres",
+        "Error fatal siempre",
+        "Lexer",
+        "Parse shift"
+      ],
+      "answerIndex": 0,
+      "explanation": "Memoria respaldo cuando el grafo de conflictos no cabe."
+    },
+    {
+      "question": "Activation record contiene:",
+      "options": [
+        "Retorno, marco anterior, locales y temporales spill",
+        "Solo lexer buffer",
+        "Tabla LR",
+        "Solo φ"
+      ],
+      "answerIndex": 0,
+      "explanation": "Layout de pila por invocación."
+    },
+    {
+      "question": "Prologue de función:",
+      "options": [
+        "Prepara marco de pila y guarda registros callee-saved usados",
+        "Lexifica entrada",
+        "Ejecuta CYK",
+        "Elimina IR"
+      ],
+      "answerIndex": 0,
+      "explanation": "Preámbulo antes del cuerpo."
+    },
+    {
+      "question": "Pattern matching de instrucciones mapea:",
+      "options": [
+        "Árbol IR/tabla a opcodes de CPU",
+        "Tokens a lexer",
+        "MT a regex",
+        "FIRST a FOLLOW"
+      ],
+      "answerIndex": 0,
+      "explanation": "Selección de código en backend."
+    },
+    {
+      "question": "Salto relocatable en .text:",
+      "options": [
+        "Offset ajustado por linker al cargar",
+        "Valor final fijo en lexer",
+        "Solo IR",
+        "φ incondicional"
+      ],
+      "answerIndex": 0,
+      "explanation": "Relocalización de símbolos."
+    },
+    {
+      "question": "Alineación de stack en x86-64 System V:",
+      "options": [
+        "SP múltiplo de 16 antes de `call`",
+        "Sin restricción",
+        "Solo 4 bytes",
+        "Lexer rule"
+      ],
+      "answerIndex": 0,
+      "explanation": "Requisito ABI común."
+    },
+    {
+      "question": "Depura: crash al llamar C desde codegen. Causa frecuente:",
+      "options": [
+        "Convención de registro/stack incorrecta",
+        "CYK",
+        "Bombeo",
+        "Ambigüedad CFG"
+      ],
+      "answerIndex": 0,
+      "explanation": "Desajuste ABI rompe calling."
+    },
+    {
+      "question": "Callee-saved registros:",
+      "options": [
+        "Preservados por la función llamada si los modifica",
+        "Ignorados siempre",
+        "Solo lexer",
+        "Tokens"
+      ],
+      "answerIndex": 0,
+      "explanation": "Responsabilidad del callee."
+    },
+    {
+      "question": "Validación final del backend:",
+      "options": [
+        "Ensamblar/enlazar y ejecutar prueba golden",
+        "Solo leer IR",
+        "FIRST/FOLLOW",
+        "ε-clausura"
+      ],
+      "answerIndex": 0,
+      "explanation": "Prueba end-to-end del pipeline."
+    }
+  ],
+  "16": [
+    {
+      "question": "Dos estados p,q de un DFA son equivalentes si:",
+      "options": [
+        "Para todo w, aceptan w o rechazan w igual",
+        "Tienen el mismo nombre",
+        "Comparten una transición",
+        "Son iniciales"
+      ],
+      "answerIndex": 0,
+      "explanation": "Definición operacional de ≡."
+    },
+    {
+      "question": "Partición inicial típica en table-filling:",
+      "options": [
+        "F vs Q∖F",
+        "Un solo bloque",
+        "Cada estado solo",
+        "Alfabeto Σ"
+      ],
+      "answerIndex": 0,
+      "explanation": "Finales vs no finales."
+    },
+    {
+      "question": "Myhill-Nerode vincula:",
+      "options": [
+        "Tamaño mínimo del DFA con clases de indistinguibilidad",
+        "Solo NFA",
+        "Parser LL",
+        "CYK"
+      ],
+      "answerIndex": 0,
+      "explanation": "Índice finito de ∼."
+    },
+    {
+      "question": "Hopcroft mejora table-filling en:",
+      "options": [
+        "Complejidad amortizada O(n log n)",
+        "Elimina necesidad de Σ",
+        "Solo NFA",
+        "LR(1)"
+      ],
+      "answerIndex": 0,
+      "explanation": "Refinamiento eficiente."
+    },
+    {
+      "question": "Antes de minimizar conviene:",
+      "options": [
+        "Quitar inalcanzables y completar δ",
+        "Eliminar Σ",
+        "Convertir a CFG",
+        "Parser shift"
+      ],
+      "answerIndex": 0,
+      "explanation": "Limpieza del autómata."
+    },
+    {
+      "question": "Minimizar DFA en lexer sirve para:",
+      "options": [
+        "Reducir filas de tabla manteniendo L",
+        "Resolver ambigüedad gramatical",
+        "Calcular FIRST",
+        "Spill a stack"
+      ],
+      "answerIndex": 0,
+      "explanation": "Compactación de transiciones."
+    },
+    {
+      "question": "DFA mínimo para un lenguaje regular es:",
+      "options": [
+        "Único salvo renombrado de estados",
+        "Infinito",
+        "Dependiente del parser",
+        "Siempre un solo estado"
+      ],
+      "answerIndex": 0,
+      "explanation": "Unicidad estructural."
+    },
+    {
+      "question": "Si p y q distinguibles, existe w tal que:",
+      "options": [
+        "Uno acepta w· y otro no",
+        "Son iguales",
+        "δ(p,a)=δ(q,a) siempre",
+        "Ambos trampa"
+      ],
+      "answerIndex": 0,
+      "explanation": "Cadena testigo de separación."
+    },
+    {
+      "question": "Minimizar un NFA directamente:",
+      "options": [
+        "No está definido sin determinizar",
+        "Es O(1)",
+        "Usa FOLLOW",
+        "Es LR"
+      ],
+      "answerIndex": 0,
+      "explanation": "Primero DFA."
+    },
+    {
+      "question": "Table-filling marca par (p,q) cuando:",
+      "options": [
+        "Imágenes bajo algún a caen en bloques distintos",
+        "Son iniciales",
+        "p∈F",
+        "Σ vacío"
+      ],
+      "answerIndex": 0,
+      "explanation": "Refinamiento por símbolo."
+    }
+  ],
+  "17": [
+    {
+      "question": "FIRST(A) incluye ε cuando:",
+      "options": [
+        "Existe derivación A⇒* ε",
+        "A es terminal",
+        "Solo en LR",
+        "Nunca"
+      ],
+      "answerIndex": 0,
+      "explanation": "Producción anulable o cadena."
+    },
+    {
+      "question": "FOLLOW(S) debe contener:",
+      "options": [
+        "Marcador fin de entrada $",
+        "Solo id",
+        "Variables",
+        "Tokens lexer"
+      ],
+      "answerIndex": 0,
+      "explanation": "Axioma al final de cadena."
+    },
+    {
+      "question": "Conflicto FIRST/FIRST en A:",
+      "options": [
+        "Dos alternativas comparten terminal en FIRST",
+        "Solo en LR",
+        "Error lexer",
+        "Ambigüedad MT"
+      ],
+      "answerIndex": 0,
+      "explanation": "Lookahead no único."
+    },
+    {
+      "question": "Conflicto FIRST/FOLLOW aparece con:",
+      "options": [
+        "Alternativa ε y otro FIRST que intersecta FOLLOW(A)",
+        "Solo shift",
+        "DFA",
+        "Regalloc"
+      ],
+      "answerIndex": 0,
+      "explanation": "Clásico en anulables."
+    },
+    {
+      "question": "M[A,a] usa FOLLOW(A) cuando:",
+      "options": [
+        "ε∈FIRST(α) de la producción elegida",
+        "Siempre",
+        "Nunca",
+        "Solo en yacc"
+      ],
+      "answerIndex": 0,
+      "explanation": "Regla predictiva estándar."
+    },
+    {
+      "question": "Recursión izquierda A→Aα|β se reescribe como:",
+      "options": [
+        "A→βA', A'→αA'|ε",
+        "A→ε",
+        "Solo LR",
+        "Eliminar A"
+      ],
+      "answerIndex": 0,
+      "explanation": "Tail no terminal."
+    },
+    {
+      "question": "Factorización a izquierda ayuda a:",
+      "options": [
+        "Separar alternativas con prefijo común",
+        "Minimizar DFA",
+        "Codegen",
+        "Pumping"
+      ],
+      "answerIndex": 0,
+      "explanation": "Disjunción en FIRST."
+    },
+    {
+      "question": "LL(1) significa lookahead de:",
+      "options": [
+        "Un terminal",
+        "Un no terminal",
+        "Toda la gramática",
+        "Pila LR"
+      ],
+      "answerIndex": 0,
+      "explanation": "k=1."
+    },
+    {
+      "question": "Descenso recursivo sin tabla:",
+      "options": [
+        "Codifica mismas decisiones FIRST/FOLLOW",
+        "Es LR",
+        "No usa peek",
+        "Es CYK"
+      ],
+      "answerIndex": 0,
+      "explanation": "Equivalente si LL(1)."
+    },
+    {
+      "question": "Gramática LL(1) requiere:",
+      "options": [
+        "Celdas M con a lo sumo una producción",
+        "Dos reduces por estado",
+        "MT universal",
+        "Regex sola"
+      ],
+      "answerIndex": 0,
+      "explanation": "Tabla sin conflictos."
+    }
+  ],
+  "18": [
+    {
+      "question": "Un ítem LR [A→α·β] indica:",
+      "options": [
+        "Se reconoció α; falta derivar β",
+        "Reduce completo",
+        "Lexer",
+        "Solo ε"
+      ],
+      "answerIndex": 0,
+      "explanation": "Posición del punto."
+    },
+    {
+      "question": "closure añade ítems cuando:",
+      "options": [
+        "Un no terminal sigue al punto",
+        "Llega $",
+        "Shift",
+        "Spill"
+      ],
+      "answerIndex": 0,
+      "explanation": "B→·γ expansion."
+    },
+    {
+      "question": "Acción shift en parser LR:",
+      "options": [
+        "Empuja token y estado",
+        "Reduce producción",
+        "Acepta",
+        "Minimiza"
+      ],
+      "answerIndex": 0,
+      "explanation": "Avanza entrada."
+    },
+    {
+      "question": "GOTO[i,A] aplica tras:",
+      "options": [
+        "Reduce de no terminal A",
+        "Lexer",
+        "FIRST",
+        "ε-clausura NFA"
+      ],
+      "answerIndex": 0,
+      "explanation": "Transición con A en pila."
+    },
+    {
+      "question": "Conflicto shift/reduce:",
+      "options": [
+        "Dudar entre reducir y leer más",
+        "Dos lexer",
+        "DFA",
+        "Pumping"
+      ],
+      "answerIndex": 0,
+      "explanation": "Clásico yacc."
+    },
+    {
+      "question": "Conflicto reduce/reduce:",
+      "options": [
+        "Dos producciones reducibles con mismo lookahead",
+        "Fácil con %left",
+        "Solo LL",
+        "Nunca en LALR"
+      ],
+      "answerIndex": 0,
+      "explanation": "Ambigüedad dura."
+    },
+    {
+      "question": "%left en Bison:",
+      "options": [
+        "Asocia izquierda y nivel de precedencia",
+        "LR(0) puro",
+        "Lexer",
+        "Hopcroft"
+      ],
+      "answerIndex": 0,
+      "explanation": "Desempate operadores."
+    },
+    {
+      "question": "LALR(1) fusiona estados LR(1) que:",
+      "options": [
+        "Comparten el mismo core de ítems",
+        "Tienen distinto Σ",
+        "Son NFA",
+        "CYK"
+      ],
+      "answerIndex": 0,
+      "explanation": "Compactación de lookahead."
+    },
+    {
+      "question": "Axioma aumentado S'→S permite:",
+      "options": [
+        "Detectar aceptación con $ único",
+        "Eliminar GOTO",
+        "Lexer longest",
+        "SSA"
+      ],
+      "answerIndex": 0,
+      "explanation": "Fin de parse."
+    },
+    {
+      "question": "ANTLR vs Bison clásico:",
+      "options": [
+        "ANTLR usa predicción adaptativa, Bison tablas LR",
+        "Idénticos",
+        "Solo regex",
+        "Solo MT"
+      ],
+      "answerIndex": 0,
+      "explanation": "Enfoques generativos distintos."
+    }
+  ]
+}

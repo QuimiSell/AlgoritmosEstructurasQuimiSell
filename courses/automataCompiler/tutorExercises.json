@@ -1,0 +1,326 @@
+{
+  "1": [
+    {
+      "id": 6001,
+      "instruction": "Sin usar bibliotecas: escribe en Python una función `pertenece_kleene(w, sigma)` que devuelva True si todos los caracteres de `w` están en `sigma` (alfabeto finito dado como set). Prueba con w='ab' y sigma={'a','b','c'}.",
+      "placeholder": "def pertenece_kleene(w, sigma): ...",
+      "expectedKeywords": ["def", "pertenece", "sigma", "return"],
+      "hint": "Itera cada char de w y verifica char in sigma.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 6002,
+      "instruction": "DESAFÍO: Implementa `generar_longitud_k(sigma, k)` que liste TODAS las cadenas de longitud exactamente k sobre el alfabeto sigma (recursión como en el snippet del módulo). Envía el código.",
+      "placeholder": "def generar_longitud_k(...):",
+      "expectedKeywords": ["def", "generar", "k", "return"],
+      "hint": "Caso base k==0 devuelve ['']; recursión concatena un símbolo a cada cadena de longitud k-1.",
+      "isEmailSubmission": true
+    }
+  ],
+  "2": [
+    {
+      "id": 6101,
+      "instruction": "Extiende el DFA del snippet para que acepte cadenas binarias cuya longitud sea múltiplo de 3 (incluyendo ε). Describe estados y transiciones en comentarios y el método `procesar_cadena`.",
+      "placeholder": "class DFA_Multiplo3: ...",
+      "expectedKeywords": ["class", "def", "estado", "return"],
+      "hint": "Usa un contador módulo 3 en el estado o tres estados Q0,Q1,Q2.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 6102,
+      "instruction": "DESAFÍO: Dibuja la tabla δ para un DFA que acepte cadenas sobre {a,b} que terminen en 'ab'. Implementa la tabla como dict anidado en Python y valida 'baba' vs 'baa'.",
+      "placeholder": "transiciones = {...}",
+      "expectedKeywords": ["def", "transicion", "return", "ab"],
+      "hint": "Necesitas distinguir si viste 'a' pendiente de confirmar 'b'.",
+      "isEmailSubmission": true
+    }
+  ],
+  "3": [
+    {
+      "id": 6201,
+      "instruction": "Completa la función `epsilon_closure` del módulo para un NFA dado: añade un test que verifique que aplicar ε-transiciones desde {q0} alcanza todos los estados esperados.",
+      "placeholder": "def epsilon_closure(...):",
+      "expectedKeywords": ["epsilon_closure", "stack", "set"],
+      "hint": "DFS o BFS sobre transiciones ε sin consumir entrada.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 6202,
+      "instruction": "DESAFÍO: Escribe pseudocódigo del algoritmo de construcción de subconjuntos que convierte un NFA a DFA; incluye el paso de ε-closure al iniciar cada estado del DFA.",
+      "placeholder": "def subset_construction(nfa):",
+      "expectedKeywords": ["subset", "closure", "estados", "dfa"],
+      "hint": "Cada estado del DFA es un subconjunto de estados del NFA.",
+      "isEmailSubmission": true
+    }
+  ],
+  "4": [
+    {
+      "id": 6301,
+      "instruction": "Escribe una regex en Python (sin usar re) que describa identificadores: letra seguida de letras/dígitos/guion bajo. Luego usa `re.match` del snippet para validar 'x1' y rechazar '1x'.",
+      "placeholder": "patron = r'...'",
+      "expectedKeywords": ["re", "match", "patron"],
+      "hint": "Clase de caracteres [a-zA-Z_] y repetición con +.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 6302,
+      "instruction": "DESAFÍO: Explica en comentarios cómo Thompson construye un NFA-ε para el operador alternancia (r|s) con transiciones ε. Opcional: esquema de estados en ASCII.",
+      "placeholder": "# Thompson: r|s ...",
+      "expectedKeywords": ["epsilon", "nfa", "union", "thompson"],
+      "hint": "Estado inicial con ε a dos sub-autómatas y ε a aceptación común.",
+      "isEmailSubmission": true
+    }
+  ],
+  "5": [
+    {
+      "id": 6401,
+      "instruction": "Usando el argumento del Pumping Lemma, escribe una prueba en prosa de por qué L={a^n b^n | n≥0} no es regular (elige p, w, descomposición xyz y bombeo i=0 o i=2).",
+      "placeholder": "Prueba: Sea p ...",
+      "expectedKeywords": ["pumping", "regular", "contradiccion", "xyz"],
+      "hint": "w = a^p b^p; bombea y solo con a's.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 6402,
+      "instruction": "DESAFÍO: Modifica el simulador del snippet para mostrar que un DFA no puede distinguir igual número de a's y b's en cadenas largas (por qué falla con memoria finita).",
+      "placeholder": "def simular_contador...",
+      "expectedKeywords": ["dfa", "estado", "memoria", "b^n"],
+      "hint": "Relaciona |Q| con el límite de conteo.",
+      "isEmailSubmission": true
+    }
+  ],
+  "6": [
+    {
+      "id": 6501,
+      "instruction": "Escribe una CFG en notación textual (E→E+T|T, etc.) para expresiones con + y * sin ambigüedad. Deriva leftmost la cadena 'id+id*id'.",
+      "placeholder": "E -> ...",
+      "expectedKeywords": ["E", "T", "->", "derivacion"],
+      "hint": "Tres niveles E, T, F como en el módulo.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 6502,
+      "instruction": "DESAFÍO: Diseña gramática para if-else con ambigüedad del dangling else y propón una gramática no ambigua (statement/ matched / unmatched).",
+      "placeholder": "Stmt -> ...",
+      "expectedKeywords": ["if", "else", "ambig", "gram"],
+      "hint": "Separa statement matched vs unmatched.",
+      "isEmailSubmission": true
+    }
+  ],
+  "7": [
+    {
+      "id": 6601,
+      "instruction": "Describe en 8 líneas cómo un PDA acepta a^n b^n: pila, push en a's, pop en b's, aceptación con pila vacía.",
+      "placeholder": "PDA: ...",
+      "expectedKeywords": ["pila", "push", "pop", "an", "bn"],
+      "hint": "Un solo símbolo en la pila.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 6602,
+      "instruction": "DESAFÍO: Escribe los pasos del algoritmo CYK para la cadena 'baab' dada una gramática en CNF (puedes inventar una pequeña).",
+      "placeholder": "Tabla CYK: ...",
+      "expectedKeywords": ["CYK", "tabla", "CNF", "celda"],
+      "hint": "Triángulo inferior de subcadenas.",
+      "isEmailSubmission": true
+    }
+  ],
+  "8": [
+    {
+      "id": 6701,
+      "instruction": "Redacta el argumento de diagonalización del problema de la parada en 10 oraciones: máquina H que contradice a sí misma.",
+      "placeholder": "Sea H la MT que...",
+      "expectedKeywords": ["halting", "diagonal", "contradiccion", "indecidible"],
+      "hint": "Entrada (M,w) → H niega el comportamiento de M sobre su propia codificación.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 6702,
+      "instruction": "DESAFÍO: Clasifica en la jerarquía de Chomsky: (a) identificadores C, (b) L={a^n b^n c^n}, (c) cualquier lenguaje recursivamente enumerable.",
+      "placeholder": "Tipo 3/2/1/0: ...",
+      "expectedKeywords": ["Chomsky", "tipo", "regular", "libre"],
+      "hint": "(a) tipo 3, (b) no LLC típicamente tipo 1, (c) tipo 0.",
+      "isEmailSubmission": true
+    }
+  ],
+  "9": [
+    {
+      "id": 6801,
+      "instruction": "Lista las fases frontend/middle/backend y un artefacto de salida de cada una (tokens, AST, IR, asm).",
+      "placeholder": "Frontend: ...",
+      "expectedKeywords": ["frontend", "lexer", "parser", "backend", "IR"],
+      "hint": "Sigue el pipeline del diagrama del módulo.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 6802,
+      "instruction": "DESAFÍO: Compara en 5 viñetas cómo Clang y un intérprete Python difieren en dónde termina el frontend.",
+      "placeholder": "- Clang: ...",
+      "expectedKeywords": ["clang", "python", "parser", "compilador"],
+      "hint": "Python hace bytecode tras parsing; Clang genera LLVM IR.",
+      "isEmailSubmission": true
+    }
+  ],
+  "10": [
+    {
+      "id": 6901,
+      "instruction": "Añade al lexer del módulo reconocimiento de números flotantes (dígitos, punto, dígitos). Define el nuevo token FLOAT.",
+      "placeholder": "TOKEN_FLOAT = ...",
+      "expectedKeywords": ["token", "float", "lexer", "def"],
+      "hint": "Extiende la máquina de estados o regex del lexer.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 6902,
+      "instruction": "DESAFÍO: Implementa recuperación de error léxico: ante carácter ilegal @, reporta línea/columna y continúa tokenizando.",
+      "placeholder": "def tokenize(...):",
+      "expectedKeywords": ["error", "linea", "columna", "tokenize"],
+      "hint": "Guarda line/col en el objeto token o en mensaje de error.",
+      "isEmailSubmission": true
+    }
+  ],
+  "11": [
+    {
+      "id": 7001,
+      "instruction": "Escribe gramática LL(1) para expresiones solo con + y identificadores; calcula FIRST(E) y FOLLOW(E).",
+      "placeholder": "FIRST(E) = ...",
+      "expectedKeywords": ["FIRST", "FOLLOW", "LL", "E"],
+      "hint": "E → E + T | T sin recursion izquierda o versión desambiguada.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 7002,
+      "instruction": "DESAFÍO: Implementa función parseExpr() por descenso recursivo que construya un AST para '1+2*3' respetando precedencia.",
+      "placeholder": "def parseExpr():",
+      "expectedKeywords": ["parse", "AST", "recursiv", "precedencia"],
+      "hint": "parseTerm y parseFactor como en Pratt/climbing.",
+      "isEmailSubmission": true
+    }
+  ],
+  "12": [
+    {
+      "id": 7101,
+      "instruction": "Simula tabla de símbolos con dict anidado: declare 'x' en global y 'y' en bloque interno; lookup de 'y' fuera del bloque debe fallar.",
+      "placeholder": "class SymbolTable: ...",
+      "expectedKeywords": ["scope", "symbol", "tabla", "def"],
+      "hint": "Pila de diccionarios o estructura parent pointer.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 7102,
+      "instruction": "DESAFÍO: Escribe reglas de type checking para suma (int+int) y error (string+int) como pseudocódigo del visitor semántico.",
+      "placeholder": "def visit_BinOp(...):",
+      "expectedKeywords": ["type", "check", "error", "visit"],
+      "hint": "Compara tipos de hijos del AST.",
+      "isEmailSubmission": true
+    }
+  ],
+  "13": [
+    {
+      "id": 7201,
+      "instruction": "Traduce AST 'a = b + c' a tres cuádruplas (asignación y suma temporal).",
+      "placeholder": "t1 = b + c; a = t1",
+      "expectedKeywords": ["t1", "cuadrupla", "+", "="],
+      "hint": "Cada operador binario genera temporal.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 7202,
+      "instruction": "DESAFÍO: Explica qué es SSA y por qué LLVM usa nombres únicos por asignación en una función.",
+      "placeholder": "SSA: ...",
+      "expectedKeywords": ["SSA", "phi", "LLVM", "unico"],
+      "hint": "Una sola definición por variable en el IR.",
+      "isEmailSubmission": true
+    }
+  ],
+  "14": [
+    {
+      "id": 7301,
+      "instruction": "Aplica constant folding manual al código: x = 3+5*2; escribe el IR después del plegado.",
+      "placeholder": "x = 13",
+      "expectedKeywords": ["constant", "fold", "13"],
+      "hint": "Primero 5*2=10, luego 3+10=13.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 7302,
+      "instruction": "DESAFÍO: Identifica código muerto en un basic block y propón eliminación DCE paso a paso.",
+      "placeholder": "Block: t1=...",
+      "expectedKeywords": ["dead", "code", "DCE", "block"],
+      "hint": "Temporales no usados por salidas del bloque.",
+      "isEmailSubmission": true
+    }
+  ],
+  "15": [
+    {
+      "id": 7401,
+      "instruction": "Describe layout de activation record (return address, saved fp, locales) para una llamada f() en x86-64.",
+      "placeholder": "Stack frame: ...",
+      "expectedKeywords": ["stack", "frame", "rbp", "rsp"],
+      "hint": "Push rbp; mov rbp,rsp; sub rsp, ...",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 7402,
+      "instruction": "DESAFÍO: Asigna dos variables vivas a 3 registros con coloreo de grafos (simplifica el grafo de interferencia del módulo).",
+      "placeholder": "Registros: ...",
+      "expectedKeywords": ["grafo", "color", "spill", "registro"],
+      "hint": "Nodos de alto grado primero; spill si no hay color.",
+      "isEmailSubmission": true
+    }
+  ],
+  "16": [
+    {
+      "id": 7501,
+      "instruction": "Aplica table-filling manual a un DFA de tres estados equivalentes al detector de paridad de unos del módulo 2; documenta partición inicial y fusiones.",
+      "placeholder": "Partición: ...",
+      "expectedKeywords": ["particion", "distinguible", "equivalente", "dfa"],
+      "hint": "Solo finales vs no finales; luego imágenes bajo 0 y 1.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 7502,
+      "instruction": "DESAFÍO: Implementa en Python `minimizar_dfa(dfa)` con table-filling o union-find; prueba que el lenguaje no cambia en diez cadenas aleatorias.",
+      "placeholder": "def minimizar_dfa(...):",
+      "expectedKeywords": ["def", "minimizar", "dfa", "distinguible"],
+      "hint": "Marca pares finales vs no finales primero; propaga con δ(a).",
+      "isEmailSubmission": true
+    }
+  ],
+  "17": [
+    {
+      "id": 7601,
+      "instruction": "Calcula FIRST y FOLLOW para E→T E', E'→+ T E'|ε, T→id|(E); construye filas M[E,*] y M[E',*] y verifica LL(1).",
+      "placeholder": "FIRST(E) = ...",
+      "expectedKeywords": ["FIRST", "FOLLOW", "LL", "tabla"],
+      "hint": "FOLLOW(E') incluye ) y $ desde FOLLOW(E).",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 7602,
+      "instruction": "DESAFÍO: Transforma L→L,id|id eliminando recursión izquierda y escribe funciones parse_L / parse_L' estilo módulo 11.",
+      "placeholder": "def parse_L(...):",
+      "expectedKeywords": ["recursion", "L", "parse", "epsilon"],
+      "hint": "L → id L', L' → , id L' | ε.",
+      "isEmailSubmission": true
+    }
+  ],
+  "18": [
+    {
+      "id": 7701,
+      "instruction": "Dibuja closure del estado inicial para S'→S, S→C, C→(C)|id; lista ítems LR(0) tras closure.",
+      "placeholder": "Estado I0: ...",
+      "expectedKeywords": ["closure", "item", "LR", "goto"],
+      "hint": "S'→·S genera S→·C y C→·(C) y C→·id.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 7702,
+      "instruction": "DESAFÍO: Escribe reglas Bison mínimas con conflicto +/* y resuélvelo con %left sin alterar producciones; pega fragmento .y.",
+      "placeholder": "%left ...",
+      "expectedKeywords": ["bison", "precedencia", "shift", "reduce"],
+      "hint": "Declare * con mayor precedencia que +.",
+      "isEmailSubmission": true
+    }
+  ]
+}
