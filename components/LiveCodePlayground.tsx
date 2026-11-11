@@ -18,7 +18,6 @@ function binarySearch(arr, target) {
 
   while (low <= high) {
     steps++;
-    // Evita overflow de enteros:
     const mid = low + Math.floor((high - low) / 2);
     console.log(\`Paso \${steps}: mid=\${mid}, valor=\${arr[mid]}\`);
 
@@ -32,7 +31,7 @@ function binarySearch(arr, target) {
     }
   }
 
-  return -1; // No encontrado
+  return -1;
 }
 
 const sortedList = [2, 5, 8, 12, 16, 23, 38, 56, 72, 91, 105, 128];
@@ -74,7 +73,7 @@ console.log("Ordenado:", sorted);
   fibonacciDP: {
     name: 'Fibonacci: Recursivo vs DP O(n)',
     description: 'Comparación empírica entre O(2ⁿ) y Programación Dinámica O(n).',
-    code: `// Programación Dinámica (Memoización) O(n) vs Recursión Simple O(2ⁿ)
+    code: `// Programación Dinámica (Memoización) O(n)
 function fibMemo(n, memo = {}) {
   if (n in memo) return memo[n];
   if (n <= 1) return n;
@@ -90,71 +89,177 @@ const duration = (performance.now() - start).toFixed(4);
 
 console.log(\`Fibonacci(40) = \${res}\`);
 console.log(\`Tiempo de ejecución con DP: \${duration} ms (Instantáneo O(n))\`);
-console.log("Nota: La versión sin DP requeriría más de 1 billón de llamadas recursivas.");
 `,
   },
-  twoSum: {
-    name: 'Two Sum con Hash Map O(n)',
-    description: 'El clásico de entrevista técnica resuelto en tiempo lineal.',
-    code: `// Two Sum: Encontrar dos números que sumen el objetivo
-function twoSum(nums, target) {
-  const map = new Map(); // O(1) búsquedas
+  vectorCosine: {
+    name: 'Embeddings & Distancia Coseno (IA)',
+    description: 'Cálculo de similitud semántica para RAG y Búsqueda Vectorial.',
+    code: `// Similitud de Coseno para Embeddings de IA (RAG)
+function cosineSimilarity(vecA, vecB) {
+  let dotProduct = 0;
+  let normA = 0;
+  let normB = 0;
 
-  for (let i = 0; i < nums.length; i++) {
-    const complement = target - nums[i];
-    if (map.has(complement)) {
-      console.log(\`Encontrado: \${nums[map.get(complement)]} + \${nums[i]} = \${target}\`);
-      return [map.get(complement), i];
-    }
-    map.set(nums[i], i);
+  for (let i = 0; i < vecA.length; i++) {
+    dotProduct += vecA[i] * vecB[i];
+    normA += vecA[i] * vecA[i];
+    normB += vecB[i] * vecB[i];
   }
 
-  return [];
+  return dotProduct / (Math.sqrt(normA) * Math.sqrt(normB));
 }
 
-const nums = [2, 7, 11, 15, 33];
-const target = 18;
-const indices = twoSum(nums, target);
-console.log(\`Índices resultantes para target=\${target}:\`, indices);
+// Dos vectores embeddings de 4 dimensiones simulados:
+const userQuery = [0.82, 0.12, 0.54, 0.31]; // "cursos de algoritmos"
+const doc1 = [0.79, 0.15, 0.51, 0.28];      // Documento: Algoritmos y Big-O
+const doc2 = [0.05, 0.88, 0.12, 0.94];      // Documento: Recetas de cocina
+
+console.log("Similitud Query con Doc1 (Algoritmos):", cosineSimilarity(userQuery, doc1).toFixed(4));
+console.log("Similitud Query con Doc2 (Cocina):", cosineSimilarity(userQuery, doc2).toFixed(4));
+console.log("El motor RAG inyectará Doc1 por alta afinidad semántica (>0.98).");
+`,
+  },
+  matrixMult: {
+    name: 'Multiplicación de Matrices (Álgebra)',
+    description: 'Operación central de capas densas de Deep Learning (GEMM).',
+    code: `// Multiplicación de Matrices A (2x3) * B (3x2) = C (2x2)
+function matrixMultiply(A, B) {
+  const rowsA = A.length;
+  const colsA = A[0].length;
+  const colsB = B[0].length;
+
+  const C = Array.from({ length: rowsA }, () => new Array(colsB).fill(0));
+
+  for (let i = 0; i < rowsA; i++) {
+    for (let j = 0; j < colsB; j++) {
+      for (let k = 0; k < colsA; k++) {
+        C[i][j] += A[i][k] * B[k][j];
+      }
+    }
+  }
+
+  return C;
+}
+
+const A = [[1, 2, 3], [4, 5, 6]];
+const B = [[7, 8], [9, 1], [2, 3]];
+console.log("Matriz A (2x3):", A);
+console.log("Matriz B (3x2):", B);
+console.log("Resultado C (2x2):", matrixMultiply(A, B));
+`,
+  },
+  sqlEngine: {
+    name: 'Motor SQL en Memoria (Query Plan)',
+    description: 'Filtrado relacional y análisis de complejidad de índices.',
+    code: `// Motor SQL en Memoria
+const table = [
+  { id: 1, name: "Alice", role: "Dev", salary: 3500 },
+  { id: 2, name: "Bob", role: "QA", salary: 2800 },
+  { id: 3, name: "Charlie", role: "Dev", salary: 4200 },
+  { id: 4, name: "Diana", role: "Architect", salary: 5600 }
+];
+
+function query(data, predicate, projection) {
+  return data.filter(predicate).map(projection);
+}
+
+console.log("Ejecutando: SELECT name, salary FROM table WHERE salary >= 3500");
+const results = query(table, (row) => row.salary >= 3500, (row) => ({ name: row.name, salary: row.salary }));
+console.log("Filas retornadas:", results);
+`,
+  },
+  tokenizerLexer: {
+    name: 'Lexer & Tokenizer (Compiladores)',
+    description: 'Transformación de código fuente a flujo de tokens lexicos.',
+    code: `// Lexer simple para expresiones matemáticas: "x = 42 + y;"
+function tokenize(code) {
+  const tokens = [];
+  const regex = /\\s*(=>|[-+*\\/=<>()]|\\d+|[a-zA-Z_]\\w*)/y;
+  let match;
+
+  while ((match = regex.exec(code)) !== null) {
+    const text = match[1];
+    let type = "IDENTIFIER";
+    if (/^\\d+$/.test(text)) type = "NUMBER";
+    else if (/^[-+*\\/]$/.test(text)) type = "OPERATOR";
+    else if (text === "=") type = "ASSIGN";
+    tokens.push({ type, value: text });
+  }
+
+  return tokens;
+}
+
+const inputCode = "resultado = 100 + variable * 2";
+console.log("Código fuente:", inputCode);
+console.log("Tokens generados por el Lexer:", tokenize(inputCode));
+`,
+  },
+  quantizationINT8: {
+    name: 'Cuantización INT8 (Edge AI)',
+    description: 'Compresión numérica de pesos FP32 a INT8.',
+    code: `// Cuantización Simétrica de Tensores FP32 a INT8
+function quantizeFP32toINT8(weights) {
+  const maxVal = Math.max(...weights.map(Math.abs));
+  const scale = maxVal / 127.0; // Rango [-127, 127]
+
+  const quantized = weights.map(w => Math.round(w / scale));
+  const dequantized = quantized.map(q => Number((q * scale).toFixed(3)));
+
+  return { scale, quantized, dequantized };
+}
+
+const tensor = [0.824, -0.412, 0.056, 1.250, -1.180];
+console.log("Tensor FP32 Original:", tensor);
+const result = quantizeFP32toINT8(tensor);
+console.log("Escala:", result.scale.toFixed(4));
+console.log("Valores INT8 (1 byte cada uno):", result.quantized);
+console.log("Reconstrucción De-cuantizada:", result.dequantized);
+console.log("Ahorro de memoria RAM: 75% (de 4 bytes a 1 byte por peso).");
 `,
   },
 };
 
 interface LiveCodePlaygroundProps {
+  courseId?: string;
   initialCode?: string;
   moduleId?: number;
 }
 
 export const LiveCodePlayground: React.FC<LiveCodePlaygroundProps> = ({
+  courseId = 'algoritmos',
   initialCode,
   moduleId = 1,
 }) => {
-  const defaultKey =
-    moduleId === 1 || moduleId === 9
-      ? 'binarySearch'
-      : moduleId === 7 || moduleId === 8
-      ? 'quickSort'
-      : moduleId === 16
-      ? 'fibonacciDP'
-      : 'twoSum';
+  const getCourseDefaultTemplate = (cId: string, mId: number) => {
+    if (cId === 'matematica') return 'matrixMult';
+    if (cId === 'sql_datos_ia') return 'sqlEngine';
+    if (cId === 'automatas_compiladores') return 'tokenizerLexer';
+    if (cId === 'ingeniero_ia' || cId === 'evaluacion_ia') return 'vectorCosine';
+    if (cId === 'edge_ia_movil') return 'quantizationINT8';
+    if (mId === 1 || mId === 9) return 'binarySearch';
+    if (mId === 7 || mId === 8) return 'quickSort';
+    if (mId === 16) return 'fibonacciDP';
+    return 'vectorCosine';
+  };
+
+  const defaultKey = getCourseDefaultTemplate(courseId, moduleId);
 
   const [selectedTemplate, setSelectedTemplate] = useState<string>(defaultKey);
-  const [code, setCode] = useState<string>(initialCode || TEMPLATES[defaultKey].code);
+  const [code, setCode] = useState<string>(initialCode || TEMPLATES[defaultKey]?.code || TEMPLATES.binarySearch.code);
   const [outputLogs, setOutputLogs] = useState<string[]>([]);
   const [executionTime, setExecutionTime] = useState<number | null>(null);
   const [hasError, setHasError] = useState<boolean>(false);
-  const [benchmarkResults, setBenchmarkResults] = useState<
-    { n: number; timeMs: number }[] | null
-  >(null);
+  const [benchmarkResults, setBenchmarkResults] = useState<{ n: number; timeMs: number }[] | null>(null);
 
   useEffect(() => {
+    const key = getCourseDefaultTemplate(courseId, moduleId);
+    setSelectedTemplate(key);
     if (initialCode) {
       setCode(initialCode);
-    } else if (TEMPLATES[defaultKey]) {
-      setCode(TEMPLATES[defaultKey].code);
-      setSelectedTemplate(defaultKey);
+    } else if (TEMPLATES[key]) {
+      setCode(TEMPLATES[key].code);
     }
-  }, [initialCode, moduleId, defaultKey]);
+  }, [courseId, moduleId, initialCode]);
 
   const handleSelectTemplate = (key: string) => {
     setSelectedTemplate(key);
@@ -170,21 +275,17 @@ export const LiveCodePlayground: React.FC<LiveCodePlaygroundProps> = ({
     setHasError(false);
     setBenchmarkResults(null);
 
-    // Override console.log safely
     const originalLog = console.log;
     console.log = (...args: any[]) => {
       logs.push(
         args
-          .map((a) =>
-            typeof a === 'object' ? JSON.stringify(a) : String(a)
-          )
+          .map((a) => (typeof a === 'object' ? JSON.stringify(a) : String(a)))
           .join(' ')
       );
     };
 
     const t0 = performance.now();
     try {
-      // Execute in sandbox function
       const fn = new Function(code);
       fn();
       const t1 = performance.now();
@@ -209,7 +310,6 @@ export const LiveCodePlayground: React.FC<LiveCodePlaygroundProps> = ({
       const arr = Array.from({ length: n }, () => Math.floor(Math.random() * n));
       const t0 = performance.now();
 
-      // Benchmark linear scan vs sorting
       let sum = 0;
       for (let i = 0; i < arr.length; i++) {
         sum += arr[i];
@@ -254,7 +354,7 @@ export const LiveCodePlayground: React.FC<LiveCodePlaygroundProps> = ({
                   : 'bg-slate-800 hover:bg-slate-700 text-slate-300'
               }`}
             >
-              {t.name.split(' ')[0]} {t.name.split(' ')[1]}
+              {t.name.split(' ')[0]} {t.name.split(' ')[1] || ''}
             </button>
           ))}
         </div>
@@ -336,7 +436,7 @@ export const LiveCodePlayground: React.FC<LiveCodePlaygroundProps> = ({
                       ? 'text-rose-400 bg-rose-950/40 p-2 rounded-lg border border-rose-900/60'
                       : log.startsWith('Paso')
                       ? 'text-indigo-300'
-                      : log.includes('¡Encontrado') || log.includes('Ordenado')
+                      : log.includes('¡Encontrado') || log.includes('Ordenado') || log.includes('Resultado')
                       ? 'text-emerald-300 font-bold'
                       : 'text-slate-300'
                   }`}

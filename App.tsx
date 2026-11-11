@@ -21,6 +21,7 @@ import MathModuleExtras from './components/MathModuleExtras';
 import ModuleNavigation from './components/ModuleNavigation';
 import SiteFooter from './components/SiteFooter';
 import DataStructureVisualizer from './components/DataStructureVisualizer';
+import DomainInteractiveSimulator from './components/DomainInteractiveSimulator';
 import LiveCodePlayground from './components/LiveCodePlayground';
 import LevelProgressiveView from './components/LevelProgressiveView';
 import { useTheme } from './hooks/useTheme';
@@ -507,6 +508,7 @@ const App: React.FC = () => {
               {/* 1. LEVEL PROGRESSIVE PEDAGOGICAL BREAKDOWN */}
               {(learningTab === 'all' || learningTab === 'theory') && (
                 <LevelProgressiveView
+                  courseId={activeCourseId}
                   moduleId={activeModule.id}
                   moduleTitle={activeModule.title}
                   theoryContent={activeModule.content}
@@ -520,11 +522,11 @@ const App: React.FC = () => {
                   <div className="flex items-center justify-between">
                     <span className="text-xs font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-2">
                       <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                      Simulación Interactiva en Tiempo Real
+                      Simulación Interactiva del Dominio ({activeCourse.shortTitle})
                     </span>
-                    <span className="text-[11px] text-slate-400 font-mono">Modo adaptado a Unidad {activeModule.id}</span>
+                    <span className="text-[11px] text-slate-400 font-mono">Modo adaptado a {activeCourse.title}</span>
                   </div>
-                  <DataStructureVisualizer moduleId={activeModule.id} />
+                  <DomainInteractiveSimulator courseId={activeCourseId} moduleId={activeModule.id} />
                 </div>
               )}
 
@@ -536,9 +538,10 @@ const App: React.FC = () => {
                       <span className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse"></span>
                       Entorno de Ejecución & Pruebas en Vivo
                     </span>
-                    <span className="text-[11px] text-slate-400 font-mono">Sandbox V8 / Microsegundos</span>
+                    <span className="text-[11px] text-slate-400 font-mono">Sandbox V8 / Microsegundos ({activeCourse.shortTitle})</span>
                   </div>
                   <LiveCodePlayground
+                    courseId={activeCourseId}
                     moduleId={activeModule.id}
                     initialCode={activeModule.codeSnippet}
                   />
