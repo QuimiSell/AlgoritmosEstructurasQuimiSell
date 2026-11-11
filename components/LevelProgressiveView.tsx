@@ -212,7 +212,7 @@ function getCoursePedagogy(courseId: string, moduleId: number): PedagogyData {
     case 'kali_linux':
       return {
         level0Metaphor:
-          'El hacking ético con Kali Linux no es romper cosas a lo loco: es el trabajo minucioso de un cerrajero profesional de alta seguridad que audita una fortaleza para encontrar cada rendija antes de que lo hagan los delincuentes.',
+          'La seguridad ofensiva ética con Kali Linux no consiste en ejecutar ataques indiscriminados, sino en la metodología rigurosa de un auditor de seguridad que evalúa defensas perimetrales y analiza vectores de riesgo antes de que actores maliciosos puedan explotarlos.',
         level0Rule:
           'Un escáner automático sin comprensión del paquete de red subyacente es solo ruido inútil. La precisión técnica supera a la fuerza bruta.',
         intermediateArchitecture:

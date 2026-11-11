@@ -65,7 +65,7 @@ const AIChatDrawer: React.FC<AIChatDrawerProps> = ({ moduleTitle, moduleId, modu
 
     const emailSubject = encodeURIComponent(`Revisión Módulo ${moduleId}: ${moduleTitle.split(': ')[1] || ''}`);
     const emailBody = encodeURIComponent(
-      `Hola Profesor QuimiSell,\n\nAdjunto mi código para revisión del Módulo ${moduleId} (${moduleTitle.split(': ')[1] || ''}).\n\n[CÓDIGO COPIADO EN TU PORTAPAPELES - PEGAR AQUÍ CON CTRL+V]\n\nPreguntas o consultas sobre el ejercicio:\n- \n\nQuedo atento a sus comentarios.`
+      `Estimado Equipo Académico QuimiSell,\n\nAdjunto mi solución técnica para la revisión del Módulo ${moduleId} (${moduleTitle.split(': ')[1] || ''}).\n\n[CÓDIGO COPIADO EN TU PORTAPAPELES - PEGAR AQUÍ CON CTRL+V]\n\nConsultas técnicas y arquitectura:\n- \n\nAtentamente,\nEstudiante de Master Class QuimiSell`
     );
     
     window.open(`mailto:quimicabless2020@gmail.com?subject=${emailSubject}&body=${emailBody}`);

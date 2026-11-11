@@ -125,9 +125,9 @@ function getPerspectiveText(courseId: string): string {
     case 'android_kotlin':
       return 'Kotlin, Compose y Room son el estándar industrial. Dominar MVVM, Retrofit y FLAG_SECURE en pantallas sensibles te prepara para apps reales en Play Store, no solo tutoriales de botones.';
     case 'clean_code_solid':
-      return 'Cualquier programador puede escribir código que una computadora entienda; los ingenieros de elite escriben código que los humanos pueden entender (Tío Bob).';
+      return 'Cualquier programador puede escribir código que una computadora entienda; los ingenieros de elite escriben código que los humanos pueden entender (Robert C. Martin).';
     case 'ingeniero_ia':
-      return 'En la era de la IA, teclear sintaxis es un commoditie. Tu mayor activo es el razonamiento de sistemas, el criterio de arquitectura y la verificación formal.';
+      return 'En la era de la IA, teclear sintaxis es un commodity. Tu mayor activo es el razonamiento de sistemas, el criterio de arquitectura y la verificación formal.';
     case 'automatas_compiladores':
       return 'Dominar autómatas y compiladores te permite entender lo que ocurre en las entrañas de los lenguajes de programación y optimizadores.';
     case 'matematica':
@@ -417,7 +417,7 @@ const App: React.FC = () => {
                onClick={() => setShowFinalExam(true)}
                className="hidden xl:inline bg-slate-900 dark:bg-slate-800 text-white px-4 py-2 rounded-full text-xs font-bold hover:bg-slate-800 dark:hover:bg-slate-700 transition shadow-xs active:scale-95 cursor-pointer whitespace-nowrap"
              >
-               Práctica Final
+               Evaluación Final
              </button>
           </nav>
         </div>
@@ -498,7 +498,7 @@ const App: React.FC = () => {
                   className="w-full text-left px-4 py-3 rounded-xl bg-slate-900 text-white text-sm font-bold transition cursor-pointer flex items-center gap-2"
                 >
                   <span>✍️</span>
-                  <span>Práctica Final</span>
+                  <span>Evaluación Final</span>
                 </button>
               </div>
               <div className="p-4">
@@ -903,9 +903,9 @@ const App: React.FC = () => {
                 {(learningTab === 'all' || learningTab === 'theory') && activeCourseId === 'clean_code_solid' && activeModule.id === 1 && (
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 animate-in fade-in slide-in-from-bottom-6 duration-700">
                     {[
-                      { l: 'Tío Bob', t: 'Robert C. Martin', c: 'Autor de "Clean Code" & SOLID' },
-                      { l: 'Boy Scout', t: 'Regla de Oro', c: 'Deja el código más limpio que como estaba' },
-                      { l: 'Nombres', t: 'Intención Reveladora', c: 'Expresa el propósito sin comentarios' },
+                      { l: 'Clean Code', t: 'Robert C. Martin', c: 'Principios de Arquitectura & SOLID' },
+                      { l: 'Boy Scout', t: 'Regla de Oro', c: 'Mantén el código más limpio de lo que lo encontraste' },
+                      { l: 'Nombres', t: 'Intención Reveladora', c: 'Expresa el propósito sin comentarios innecesarios' },
                       { l: '10 a 1', t: 'Ratio Lectura/Escritura', c: 'Pasamos más tiempo leyendo código' },
                       { l: 'Deuda', t: 'Deuda Técnica', c: 'Costo futuro por tomar atajos hoy' },
                       { l: 'Pequeñas', t: 'Funciones de 10 líneas', c: 'Funciones que hacen una sola cosa bien' },
@@ -923,7 +923,7 @@ const App: React.FC = () => {
                 {(learningTab === 'all' || learningTab === 'theory') && activeCourseId === 'ingeniero_ia' && activeModule.id === 1 && (
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 animate-in fade-in slide-in-from-bottom-6 duration-700">
                     {[
-                      { l: 'Arquitecto', t: 'De Vibe Coder a Arquitecto', c: 'La sintaxis la genera la IA; el diseño es tuyo' },
+                      { l: 'Arquitecto', t: 'Ingeniería de Sistemas de IA', c: 'La IA asiste la sintaxis; la arquitectura y verificación formal son humanas' },
                       { l: 'Hardware', t: 'RAM & CPU Cache', c: 'La IA no siente la latencia física de la CPU' },
                       { l: 'TDD', t: 'Test Automated Harness', c: 'Barrera de contención contra alucinaciones' },
                       { l: 'Seguridad', t: 'DevSecOps & OWASP', c: 'Auditoría estricta de vulnerabilidades' },
@@ -1183,3 +1183,4 @@ const App: React.FC = () => {
 };
 
 export default App;
+
