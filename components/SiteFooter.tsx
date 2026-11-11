@@ -48,7 +48,7 @@ const SiteFooter: React.FC = () => {
   };
 
   return (
-    <footer className="mt-auto border-t border-slate-200/80 dark:border-slate-800 bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900 pb-20 lg:pb-0">
+    <footer className="mt-auto border-t border-slate-200/80 dark:border-slate-800 bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900 pb-28 sm:pb-32 lg:pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-12">
         {/* Marca */}
         <div className="text-center max-w-xl mx-auto mb-8 sm:mb-10">

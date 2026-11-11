@@ -108,6 +108,37 @@ function moduleTrackLabel(courseId: string, modId: number): string {
   return 'Contenido Universitario';
 }
 
+function getPerspectiveText(courseId: string): string {
+  switch (courseId) {
+    case 'kali_linux':
+      return 'En ciberseguridad, un escáner automático sin comprensión del paquete TCP subyacente es ruido inútil. Dominar cada flag (-sS, -T, NSE) y el estándar PTES te convierte en un auditor ético de precisión quirúrgica.';
+    case 'git_devops_vercel':
+      return 'Rama → pull request → CI verde → revisión → merge es el ritmo de cualquier equipo serio. Automatizar build y deploy te libera para pensar en el producto, no en copiar archivos a mano.';
+    case 'redes_desarrolladores':
+      return 'Antes de herramientas ofensivas, entiende DNS, TLS y HTTP. Saber leer un waterfall de red te ahorra horas culpando al framework cuando el problema es latencia o CORS.';
+    case 'sql_datos_ia':
+      return 'Los sistemas con IA necesitan datos ordenados: JOINs correctos, índices y metadata de documentos. Sin eso, cualquier modelo — por bueno que sea — trabaja sobre arena movediza.';
+    case 'evaluacion_ia':
+      return 'Un LLM no pasa assert. Métricas, guardrails y pruebas adversariales separan un demo de algo que puedes mantener en producción sin sorpresas.';
+    case 'edge_ia_movil':
+      return 'Ejecutar modelos en el dispositivo reduce latencia y protege datos del usuario. Cuantización, TFLite y buen diseño de app son habilidades concretas de ingeniería móvil.';
+    case 'android_kotlin':
+      return 'Kotlin, Compose y Room son el estándar industrial. Dominar MVVM, Retrofit y FLAG_SECURE en pantallas sensibles te prepara para apps reales en Play Store, no solo tutoriales de botones.';
+    case 'clean_code_solid':
+      return 'Cualquier programador puede escribir código que una computadora entienda; los ingenieros de elite escriben código que los humanos pueden entender (Tío Bob).';
+    case 'ingeniero_ia':
+      return 'En la era de la IA, teclear sintaxis es un commoditie. Tu mayor activo es el razonamiento de sistemas, el criterio de arquitectura y la verificación formal.';
+    case 'automatas_compiladores':
+      return 'Dominar autómatas y compiladores te permite entender lo que ocurre en las entrañas de los lenguajes de programación y optimizadores.';
+    case 'matematica':
+      return 'La matemática es la herramienta analítica para formular modelos, optimizar funciones y garantizar el correcto funcionamiento del software.';
+    case 'complejidad_algoritmica':
+      return 'Big-O es el idioma universal de escalabilidad: desde un bucle en Python hasta los FLOPs de un Transformer en GPU, quien domina la complejidad diseña sistemas que no colapsan.';
+    default:
+      return 'En las Big Tech como Google o Microsoft, no solo evalúan si tu código funciona, sino su eficiencia asintótica.';
+  }
+}
+
 const App: React.FC = () => {
   const initialRoute = useMemo(() => parseUrlRoute(), []);
   const [activeCourseId, setActiveCourseId] = useState<string>(initialRoute.courseId);
@@ -226,27 +257,28 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 transition-colors duration-300 selection:bg-indigo-100 dark:selection:bg-indigo-900 selection:text-indigo-900 dark:selection:text-indigo-100">
       {/* Header */}
-      <header className="bg-white/80 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-50 supports-[padding:max(0px)]:pt-[env(safe-area-inset-top)] transition-colors duration-300">
-        <div className="max-w-7xl mx-auto px-3 sm:px-4 h-14 sm:h-16 flex items-center justify-between gap-2">
+      <header className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 sticky top-0 z-50 supports-[padding:max(0px)]:pt-[env(safe-area-inset-top)] transition-colors duration-300">
+        <div className="max-w-[1600px] mx-auto px-3 sm:px-6 h-14 sm:h-16 flex items-center justify-between gap-3">
+          {/* Brand & Active Course Identifier */}
           <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
-            <div className="w-9 h-9 sm:w-10 sm:h-10 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold shadow-lg shadow-indigo-200/80 dark:shadow-indigo-900/40 shrink-0">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold shadow-md shadow-indigo-500/20 shrink-0 text-sm sm:text-base">
               {activeCourse.icon}
             </div>
             <div className="flex flex-col min-w-0">
-               <h1 className="text-sm sm:text-lg font-bold tracking-tight text-slate-900 dark:text-slate-50 leading-none flex items-center gap-1.5 sm:gap-2 truncate">
+               <h1 className="text-xs sm:text-base lg:text-lg font-black tracking-tight text-slate-900 dark:text-slate-50 leading-none flex items-center gap-1.5 truncate">
                 Master Class <span className="gradient-text shrink-0">QuimiSell</span>
               </h1>
-              <span className="text-[9px] sm:text-[10px] text-indigo-600 dark:text-indigo-400 font-bold uppercase tracking-widest mt-0.5 truncate">
+              <span className="text-[9px] sm:text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-widest mt-0.5 truncate">
                 {activeCourse.shortTitle}
               </span>
             </div>
           </div>
 
-          {/* Quick Search Palette (Spotlight) */}
+          {/* Quick Search Palette (Spotlight on Desktop) */}
           <button
             type="button"
             onClick={() => setShowCommandPalette(true)}
-            className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 border border-slate-200 dark:border-slate-700 text-xs font-semibold transition cursor-pointer"
+            className="hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 border border-slate-200 dark:border-slate-700 text-xs font-semibold transition cursor-pointer"
           >
             <span>🔍</span>
             <span className="hidden md:inline">Buscar...</span>
@@ -260,19 +292,9 @@ const App: React.FC = () => {
             type="button"
             aria-label="Buscar en cursos"
             onClick={() => setShowCommandPalette(true)}
-            className="sm:hidden shrink-0 w-9 h-9 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 flex items-center justify-center text-sm shadow-sm active:scale-95 transition cursor-pointer"
+            className="sm:hidden shrink-0 w-9 h-9 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 flex items-center justify-center text-sm shadow-xs active:scale-95 transition cursor-pointer"
           >
             🔍
-          </button>
-
-          {/* Share button */}
-          <button
-            type="button"
-            onClick={() => setShowShareModal(true)}
-            className="flex items-center gap-1.5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full text-xs font-bold shadow-md shadow-indigo-600/25 active:scale-95 transition cursor-pointer shrink-0"
-          >
-            <span>🔗</span>
-            <span className="hidden sm:inline">Compartir</span>
           </button>
 
           {/* Mobile menu button */}
@@ -281,14 +303,12 @@ const App: React.FC = () => {
             aria-label={mobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
             aria-expanded={mobileMenuOpen}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden shrink-0 w-9 h-9 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 flex items-center justify-center text-base font-bold shadow-sm active:scale-95 transition cursor-pointer"
+            className="md:hidden shrink-0 w-9 h-9 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 flex items-center justify-center text-base font-bold shadow-xs active:scale-95 transition cursor-pointer"
           >
             {mobileMenuOpen ? '✕' : '☰'}
           </button>
 
-          <div className="flex items-center gap-2 shrink-0">
-            <ThemeToggle theme={theme} onToggle={toggleTheme} compact />
-
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex gap-3 lg:gap-4 xl:gap-5 items-center shrink-0 min-w-0">
              <button
                type="button"
@@ -327,7 +347,7 @@ const App: React.FC = () => {
                  aria-expanded={courseMenuOpen}
                  aria-controls="course-menu-panel"
                  onClick={() => setCourseMenuOpen((open) => !open)}
-                 className="flex items-center gap-1.5 sm:gap-2 bg-indigo-50 dark:bg-indigo-950/50 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 text-indigo-950 dark:text-indigo-100 border border-indigo-200 dark:border-indigo-800 px-3 sm:px-4 py-2 rounded-full text-[10px] sm:text-xs font-extrabold transition shadow-sm cursor-pointer max-w-[9rem] sm:max-w-none"
+                 className="flex items-center gap-1.5 sm:gap-2 bg-indigo-50 dark:bg-indigo-950/50 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 text-indigo-950 dark:text-indigo-100 border border-indigo-200 dark:border-indigo-800 px-3 sm:px-4 py-2 rounded-full text-[10px] sm:text-xs font-extrabold transition shadow-xs cursor-pointer max-w-[9rem] sm:max-w-none"
                >
                  <span className="shrink-0">{activeCourse.icon}</span>
                  <span className="truncate">{activeCourse.shortTitle}</span>
@@ -380,15 +400,26 @@ const App: React.FC = () => {
                )}
              </div>
 
-              <button
-                type="button"
-                onClick={() => setShowFinalExam(true)}
-                className="hidden lg:inline bg-slate-900 dark:bg-indigo-600 text-white px-4 xl:px-5 py-2 rounded-full text-xs xl:text-sm font-bold hover:bg-slate-800 dark:hover:bg-indigo-500 transition shadow-md active:scale-95 cursor-pointer whitespace-nowrap"
-              >
-                Práctica Final
-              </button>
+             <ThemeToggle theme={theme} onToggle={toggleTheme} compact />
+
+             {/* Share button */}
+             <button
+               type="button"
+               onClick={() => setShowShareModal(true)}
+               className="flex items-center gap-1.5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white px-3.5 py-2 rounded-full text-xs font-bold shadow-md shadow-indigo-600/25 active:scale-95 transition cursor-pointer shrink-0"
+             >
+               <span>🔗</span>
+               <span>Compartir</span>
+             </button>
+
+             <button
+               type="button"
+               onClick={() => setShowFinalExam(true)}
+               className="hidden xl:inline bg-slate-900 dark:bg-slate-800 text-white px-4 py-2 rounded-full text-xs font-bold hover:bg-slate-800 dark:hover:bg-slate-700 transition shadow-xs active:scale-95 cursor-pointer whitespace-nowrap"
+             >
+               Práctica Final
+             </button>
           </nav>
-          </div>
         </div>
 
         {/* Mobile navigation panel */}
@@ -405,6 +436,13 @@ const App: React.FC = () => {
               className="md:hidden absolute left-0 right-0 top-full z-50 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-2xl max-h-[calc(100dvh-3.5rem)] sm:max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain scroll-touch pb-[env(safe-area-inset-bottom)]"
             >
               <div className="p-4 space-y-2 border-b border-slate-100 dark:border-slate-800">
+                <div className="flex items-center justify-between p-3 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 mb-2">
+                  <span className="text-xs font-bold text-slate-700 dark:text-slate-200 flex items-center gap-2">
+                    <span>🌓</span>
+                    <span>Modo Visual (Tema)</span>
+                  </span>
+                  <ThemeToggle theme={theme} onToggle={toggleTheme} compact />
+                </div>
                 <span className="block text-[10px] font-black text-slate-400 uppercase tracking-widest pb-1">Herramientas & Exploración</span>
                 <button
                   type="button"
@@ -501,7 +539,7 @@ const App: React.FC = () => {
         )}
       </header>
 
-      <div className="flex-1 flex flex-col lg:flex-row max-w-7xl mx-auto w-full min-w-0">
+      <div className="flex-1 flex flex-col lg:flex-row max-w-[1600px] mx-auto w-full min-w-0">
         {/* Desktop Sidebar Navigation */}
         <aside className="hidden lg:block lg:w-80 p-4 border-r border-slate-200 dark:border-slate-800 overflow-y-auto lg:max-h-[calc(100dvh-4rem)] overscroll-contain scroll-touch bg-slate-50/50 dark:bg-slate-900/50 shrink-0 transition-colors duration-300">
           <div className="space-y-2">
@@ -548,32 +586,35 @@ const App: React.FC = () => {
           </div>
         </aside>
 
-        {/* Mobile / Tablet horizontal module strip */}
-        <div className="lg:hidden sticky top-14 sm:top-16 z-30 bg-slate-50/95 dark:bg-slate-900/95 backdrop-blur-sm border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
-          <div className="px-3 py-2">
-            <span className="text-[9px] font-extrabold text-indigo-600 uppercase tracking-wider block mb-2 px-1">
-              Módulo {activeModuleId} / {activeCourse.modules.length} · {activeCourse.shortTitle}
-            </span>
-            <div className="flex gap-2 overflow-x-auto scroll-touch pb-1 -mx-1 px-1">
+        {/* Mobile / Tablet horizontal module strip (Non-sticky to prevent screen clipping) */}
+        <div className="lg:hidden bg-slate-100/70 dark:bg-slate-900/70 border-b border-slate-200/80 dark:border-slate-800 transition-colors duration-300">
+          <div className="px-3.5 py-2.5">
+            <div className="flex items-center justify-between mb-2 px-1">
+              <span className="text-[10px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-widest">
+                Módulo {activeModuleId} de {activeCourse.modules.length}
+              </span>
+              <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500">
+                {activeCourse.shortTitle}
+              </span>
+            </div>
+            <div className="flex gap-2 overflow-x-auto scroll-touch pb-1 scrollbar-hide">
               {activeCourse.modules.map((mod) => (
                 <button
                   key={mod.id}
                   type="button"
                   onClick={() => handleSelectModule(mod.id)}
-                  className={`shrink-0 flex items-center gap-2 px-3 py-2 rounded-xl text-left transition cursor-pointer ${
+                  className={`shrink-0 flex items-center gap-2 px-3 py-1.5 rounded-full text-left transition cursor-pointer ${
                     activeModuleId === mod.id
-                      ? isPolishedCourse
-                        ? polishedMobileActiveClass(activeCourseId, mod.id)
-                        : 'bg-indigo-600 text-white shadow-md'
-                      : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700'
+                      ? 'bg-indigo-600 text-white shadow-sm ring-2 ring-indigo-500/30'
+                      : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200/80 dark:border-slate-700/80 hover:bg-slate-50 dark:hover:bg-slate-700'
                   }`}
                 >
-                  <span className={`w-6 h-6 rounded-md flex items-center justify-center text-[10px] font-black shrink-0 ${
+                  <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-black shrink-0 ${
                     activeModuleId === mod.id ? 'bg-white/20' : moduleDone(mod.id) ? 'bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300' : 'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-300'
                   }`}>
                     {moduleDone(mod.id) ? '✓' : mod.id}
                   </span>
-                  <span className="text-xs font-bold max-w-[9rem] sm:max-w-[12rem] truncate">
+                  <span className="text-xs font-bold max-w-[10rem] truncate">
                     {mod.title.split(': ')[1] || mod.title}
                   </span>
                 </button>
@@ -614,303 +655,411 @@ const App: React.FC = () => {
           </section>
           )}
 
-          {/* Module Content */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-10">
-            <div className="lg:col-span-2 space-y-8 sm:space-y-12 min-w-0">
-              
-              {/* Interactive Tabs Toolbar */}
-              <div className="bg-slate-100 dark:bg-slate-900/90 p-1.5 sm:p-2 rounded-2xl border border-slate-200 dark:border-slate-800 flex items-center gap-1.5 overflow-x-auto scroll-touch shadow-sm sticky top-28 sm:top-32 z-20 backdrop-blur-md">
-                {[
-                  { id: 'all', label: '🌟 Vista Integral' },
-                  { id: 'simulator', label: '🕹️ Simulador Visual' },
-                  { id: 'playground', label: '💻 Code Playground' },
-                  { id: 'theory', label: '📖 Teoría por Niveles' },
-                  { id: 'quiz', label: '📝 Evaluación' },
-                ].map((tab) => (
-                  <button
-                    key={tab.id}
-                    onClick={() => handleSelectTab(tab.id as any)}
-                    className={`px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition flex items-center gap-1.5 whitespace-nowrap cursor-pointer ${
-                      learningTab === tab.id
-                        ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
-                        : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-white dark:hover:bg-slate-800'
-                    }`}
-                  >
-                    <span>{tab.label}</span>
-                  </button>
-                ))}
-
+          {/* Interactive Workspace Modes Toolbar (Pills, Glassmorphism, Google/Apple style) */}
+          <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl p-2 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 flex items-center justify-between gap-2 overflow-x-auto scroll-touch shadow-sm sticky top-16 sm:top-20 z-20">
+            <div className="flex items-center gap-1.5 shrink-0">
+              {[
+                { id: 'all', label: '🌟 Vista Integral' },
+                { id: 'simulator', label: '🕹️ Simulador Visual' },
+                { id: 'playground', label: '💻 Code Playground' },
+                { id: 'theory', label: '📖 Teoría por Niveles' },
+                { id: 'quiz', label: '📝 Evaluación' },
+              ].map((tab) => (
                 <button
-                  type="button"
-                  onClick={() => setShowShareModal(true)}
-                  className="ml-auto px-3 py-2 rounded-xl text-xs font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50/80 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/80 border border-indigo-200 dark:border-indigo-800/80 transition flex items-center gap-1.5 whitespace-nowrap cursor-pointer shrink-0"
+                  key={tab.id}
+                  onClick={() => handleSelectTab(tab.id as any)}
+                  className={`px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition flex items-center gap-1.5 whitespace-nowrap cursor-pointer ${
+                    learningTab === tab.id
+                      ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
+                  }`}
                 >
-                  <span>🔗</span>
-                  <span className="hidden sm:inline">Compartir Módulo</span>
+                  <span>{tab.label}</span>
                 </button>
+              ))}
+            </div>
+
+            <button
+              type="button"
+              onClick={() => setShowShareModal(true)}
+              className="px-3.5 py-2 rounded-xl text-xs font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50/80 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/80 border border-indigo-200 dark:border-indigo-800/80 transition flex items-center gap-1.5 whitespace-nowrap cursor-pointer shrink-0"
+            >
+              <span>🔗</span>
+              <span className="hidden sm:inline">Compartir Módulo</span>
+            </button>
+          </div>
+
+          {/* 1. DEDICATED FULL-WIDTH STUDIO: SIMULADOR VISUAL */}
+          {learningTab === 'simulator' && (
+            <div className="space-y-6 animate-in fade-in duration-300">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 bg-gradient-to-r from-indigo-50/80 to-purple-50/80 dark:from-slate-900 dark:to-indigo-950/40 p-4 sm:p-5 rounded-2xl border border-indigo-100 dark:border-indigo-900/40">
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span className="text-xs font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
+                      Estudio Visual 100% Canvas • {activeCourse.title}
+                    </span>
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white mt-1">
+                    Módulo {activeModule.id}: {activeModule.title}
+                  </h3>
+                </div>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => handleSelectTab('all')}
+                    className="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 dark:text-slate-300 bg-white dark:bg-slate-800 hover:bg-slate-100 border border-slate-200 dark:border-slate-700 transition cursor-pointer"
+                  >
+                    ← Ver con Teoría
+                  </button>
+                  <button
+                    onClick={() => handleSelectTab('playground')}
+                    className="px-3 py-1.5 rounded-xl text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 hover:bg-emerald-100 border border-emerald-200 dark:border-emerald-800 transition cursor-pointer"
+                  >
+                    Abrir Playground 💻 →
+                  </button>
+                </div>
               </div>
 
-              {/* 1. LEVEL PROGRESSIVE PEDAGOGICAL BREAKDOWN */}
-              {(learningTab === 'all' || learningTab === 'theory') && (
-                <LevelProgressiveView
-                  courseId={activeCourseId}
-                  moduleId={activeModule.id}
+              <DomainInteractiveSimulator courseId={activeCourseId} moduleId={activeModule.id} />
+
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-2">
+                <AIChatDrawer
                   moduleTitle={activeModule.title}
-                  theoryContent={activeModule.content}
-                  keyConcepts={activeModule.items}
+                  moduleId={activeModule.id}
+                  moduleExercises={activeModule.exercises}
                 />
-              )}
-
-              {/* 2. INTERACTIVE VISUALIZER SUITE */}
-              {(learningTab === 'all' || learningTab === 'simulator') && (
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                      Simulación Interactiva del Dominio ({activeCourse.shortTitle})
-                    </span>
-                    <span className="text-[11px] text-slate-400 font-mono">Modo adaptado a {activeCourse.title}</span>
+                <div className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/40 dark:to-orange-950/30 border border-amber-100 dark:border-amber-900/50 p-5 sm:p-8 rounded-2xl sm:rounded-[2rem] space-y-4 shadow-sm relative overflow-hidden">
+                  <div className="relative z-10">
+                    <h4 className="font-bold text-amber-900 dark:text-amber-200 flex items-center gap-2 text-lg">
+                      <span>💡</span> Perspectiva Profesional
+                    </h4>
+                    <p className="text-amber-800/80 dark:text-amber-200/80 leading-relaxed font-medium">
+                      {getPerspectiveText(activeCourseId)}
+                      <span className="block mt-4 text-xs font-bold uppercase tracking-wider text-amber-900/50 dark:text-amber-400/50">Técnica Feynman:</span>
+                      Explicar cada concepto con tus propias palabras y código simple es el camino más efectivo para el aprendizaje profundo.
+                    </p>
                   </div>
-                  <DomainInteractiveSimulator courseId={activeCourseId} moduleId={activeModule.id} />
+                  <div className="absolute top-0 right-0 -mr-4 -mt-4 opacity-10">
+                    <span className="text-7xl">⚡</span>
+                  </div>
                 </div>
-              )}
+              </div>
+            </div>
+          )}
 
-              {/* 3. LIVE CODE PLAYGROUND & BENCHMARK SANDBOX */}
-              {(learningTab === 'all' || learningTab === 'playground') && (
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-black uppercase tracking-wider text-emerald-600 dark:text-emerald-400 flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse"></span>
-                      Entorno de Ejecución & Pruebas en Vivo
+          {/* 2. DEDICATED FULL-WIDTH STUDIO: LIVE CODE PLAYGROUND */}
+          {learningTab === 'playground' && (
+            <div className="space-y-6 animate-in fade-in duration-300">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 bg-gradient-to-r from-emerald-50/80 to-teal-50/80 dark:from-slate-900 dark:to-emerald-950/40 p-4 sm:p-5 rounded-2xl border border-emerald-100 dark:border-emerald-900/40">
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-cyan-500 animate-pulse"></span>
+                    <span className="text-xs font-black uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+                      Entorno de Ejecución & Pruebas en Vivo (IDE Studio) • {activeCourse.title}
                     </span>
-                    <span className="text-[11px] text-slate-400 font-mono">Sandbox V8 / Microsegundos ({activeCourse.shortTitle})</span>
                   </div>
-                  <LiveCodePlayground
+                  <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white mt-1">
+                    Módulo {activeModule.id}: {activeModule.title}
+                  </h3>
+                </div>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => handleSelectTab('all')}
+                    className="px-3 py-1.5 rounded-xl text-xs font-bold text-slate-600 dark:text-slate-300 bg-white dark:bg-slate-800 hover:bg-slate-100 border border-slate-200 dark:border-slate-700 transition cursor-pointer"
+                  >
+                    ← Ver con Teoría
+                  </button>
+                  <button
+                    onClick={() => handleSelectTab('simulator')}
+                    className="px-3 py-1.5 rounded-xl text-xs font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/40 hover:bg-indigo-100 border border-indigo-200 dark:border-indigo-800 transition cursor-pointer"
+                  >
+                    Abrir Simulador 🕹️ →
+                  </button>
+                </div>
+              </div>
+
+              <LiveCodePlayground
+                courseId={activeCourseId}
+                moduleId={activeModule.id}
+                initialCode={activeModule.codeSnippet}
+              />
+
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-2">
+                <AIChatDrawer
+                  moduleTitle={activeModule.title}
+                  moduleId={activeModule.id}
+                  moduleExercises={activeModule.exercises}
+                />
+                <div className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/40 dark:to-orange-950/30 border border-amber-100 dark:border-amber-900/50 p-5 sm:p-8 rounded-2xl sm:rounded-[2rem] space-y-4 shadow-sm relative overflow-hidden">
+                  <div className="relative z-10">
+                    <h4 className="font-bold text-amber-900 dark:text-amber-200 flex items-center gap-2 text-lg">
+                      <span>💡</span> Perspectiva Profesional
+                    </h4>
+                    <p className="text-amber-800/80 dark:text-amber-200/80 leading-relaxed font-medium">
+                      {getPerspectiveText(activeCourseId)}
+                      <span className="block mt-4 text-xs font-bold uppercase tracking-wider text-amber-900/50 dark:text-amber-400/50">Técnica Feynman:</span>
+                      Explicar cada concepto con tus propias palabras y código simple es el camino más efectivo para el aprendizaje profundo.
+                    </p>
+                  </div>
+                  <div className="absolute top-0 right-0 -mr-4 -mt-4 opacity-10">
+                    <span className="text-7xl">⚡</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* 3. BALANCED 12-COLUMN WORKSPACE: ALL / THEORY / QUIZ */}
+          {(learningTab === 'all' || learningTab === 'theory' || learningTab === 'quiz') && (
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+              <div className="lg:col-span-8 space-y-8 sm:space-y-12 min-w-0">
+
+                {/* 1. LEVEL PROGRESSIVE PEDAGOGICAL BREAKDOWN */}
+                {(learningTab === 'all' || learningTab === 'theory') && (
+                  <LevelProgressiveView
                     courseId={activeCourseId}
                     moduleId={activeModule.id}
-                    initialCode={activeModule.codeSnippet}
+                    moduleTitle={activeModule.title}
+                    theoryContent={activeModule.content}
+                    keyConcepts={activeModule.items}
                   />
-                </div>
-              )}
+                )}
 
-              {/* Big O Specific Content for Algoritmos / Complejidad Module 1 */}
-              {(learningTab === 'all' || learningTab === 'theory') && activeCourseId === 'algoritmos' && activeModule.id === 1 && (
-                <AlgorithmsBigOSection />
-              )}
-              {(learningTab === 'all' || learningTab === 'theory') && isComplexityCourse && (
-                <ComplexityModuleExtras moduleId={activeModule.id} />
-              )}
-
-              {(learningTab === 'all' || learningTab === 'theory') && isMathCourse && (
-                <MathModuleExtras moduleId={activeModule.id} />
-              )}
-
-              {/* Automata Highlights for Module 1 */}
-              {(learningTab === 'all' || learningTab === 'theory') && activeCourseId === 'automatas_compiladores' && activeModule.id === 1 && (
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 animate-in fade-in slide-in-from-bottom-6 duration-700">
-                  {[
-                    { l: 'Σ', t: 'Alfabeto', c: 'Conjunto finito de símbolos (ej: {0,1})' },
-                    { l: 'w', t: 'Cadena', c: 'Secuencia finita de símbolos de Σ' },
-                    { l: 'ε', t: 'Cadena Vacía', c: 'Cadena de longitud |ε| = 0' },
-                    { l: 'Σ*', t: 'Estrella de Kleene', c: 'Todas las cadenas posibles (incluye ε)' },
-                    { l: 'Σ+', t: 'Clausura Positiva', c: 'Cadenas de longitud ≥ 1 (excluye ε)' },
-                    { l: 'L ⊆ Σ*', t: 'Lenguaje Formal', c: 'Cualquier subconjunto de cadenas de Σ*' },
-                  ].map(card => (
-                    <div key={card.l} className="group bg-slate-50 dark:bg-slate-800/50 p-5 rounded-2xl border border-slate-100 dark:border-slate-700 transition-all hover:bg-white dark:hover:bg-slate-800 hover:shadow-xl hover:-translate-y-1">
-                      <span className="text-indigo-600 dark:text-indigo-400 font-black block text-xl mb-1 font-mono">{card.l}</span>
-                      <span className="text-slate-900 dark:text-slate-100 text-sm font-bold block">{card.t}</span>
-                      <span className="text-slate-400 dark:text-slate-500 text-[11px] mt-2 block font-mono italic">{card.c}</span>
+                {/* 2. INTERACTIVE VISUALIZER SUITE (Preview with Studio expand button) */}
+                {learningTab === 'all' && (
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between flex-wrap gap-2">
+                      <span className="text-xs font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        Simulación Interactiva del Dominio ({activeCourse.shortTitle})
+                      </span>
+                      <button
+                        onClick={() => handleSelectTab('simulator')}
+                        className="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 flex items-center gap-1 cursor-pointer bg-indigo-50 dark:bg-indigo-950/60 px-2.5 py-1 rounded-lg border border-indigo-200/80 dark:border-indigo-800/80 transition"
+                      >
+                        <span>⤢ Expandir a Estudio 100% Canvas</span>
+                      </button>
                     </div>
-                  ))}
-                </div>
-              )}
-
-              {/* Clean Code Highlights for Module 1 */}
-              {(learningTab === 'all' || learningTab === 'theory') && activeCourseId === 'clean_code_solid' && activeModule.id === 1 && (
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 animate-in fade-in slide-in-from-bottom-6 duration-700">
-                  {[
-                    { l: 'Tío Bob', t: 'Robert C. Martin', c: 'Autor de "Clean Code" & SOLID' },
-                    { l: 'Boy Scout', t: 'Regla de Oro', c: 'Deja el código más limpio que como estaba' },
-                    { l: 'Nombres', t: 'Intención Reveladora', c: 'Expresa el propósito sin comentarios' },
-                    { l: '10 a 1', t: 'Ratio Lectura/Escritura', c: 'Pasamos más tiempo leyendo código' },
-                    { l: 'Deuda', t: 'Deuda Técnica', c: 'Costo futuro por tomar atajos hoy' },
-                    { l: 'Pequeñas', t: 'Funciones de 10 líneas', c: 'Funciones que hacen una sola cosa bien' },
-                  ].map(card => (
-                    <div key={card.l} className="group bg-slate-50 dark:bg-slate-800/50 p-5 rounded-2xl border border-slate-100 dark:border-slate-700 transition-all hover:bg-white dark:hover:bg-slate-800 hover:shadow-xl hover:-translate-y-1">
-                      <span className="text-indigo-600 dark:text-indigo-400 font-black block text-xl mb-1 font-mono">{card.l}</span>
-                      <span className="text-slate-900 dark:text-slate-100 text-sm font-bold block">{card.t}</span>
-                      <span className="text-slate-400 dark:text-slate-500 text-[11px] mt-2 block font-mono italic">{card.c}</span>
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              {/* AI Engineer Highlights for Module 1 */}
-              {(learningTab === 'all' || learningTab === 'theory') && activeCourseId === 'ingeniero_ia' && activeModule.id === 1 && (
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 animate-in fade-in slide-in-from-bottom-6 duration-700">
-                  {[
-                    { l: 'Arquitecto', t: 'De Vibe Coder a Arquitecto', c: 'La sintaxis la genera la IA; el diseño es tuyo' },
-                    { l: 'Hardware', t: 'RAM & CPU Cache', c: 'La IA no siente la latencia física de la CPU' },
-                    { l: 'TDD', t: 'Test Automated Harness', c: 'Barrera de contención contra alucinaciones' },
-                    { l: 'Seguridad', t: 'DevSecOps & OWASP', c: 'Auditoría estricta de vulnerabilidades' },
-                    { l: 'Agentes', t: 'Bucle ReAct & Tools', c: 'Dirigir equipos de subagentes con contexto' },
-                    { l: 'Sistemas', t: 'System Design & CAP', c: 'Diseño para millones de usuarios simultáneos' },
-                  ].map(card => (
-                    <div key={card.l} className="group bg-slate-50 dark:bg-slate-800/50 p-5 rounded-2xl border border-slate-100 dark:border-slate-700 transition-all hover:bg-white dark:hover:bg-slate-800 hover:shadow-xl hover:-translate-y-1">
-                      <span className="text-indigo-600 dark:text-indigo-400 font-black block text-xl mb-1 font-mono">{card.l}</span>
-                      <span className="text-slate-900 dark:text-slate-100 text-sm font-bold block">{card.t}</span>
-                      <span className="text-slate-400 dark:text-slate-500 text-[11px] mt-2 block font-mono italic">{card.c}</span>
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              {(learningTab === 'all' || learningTab === 'theory') && isKaliCourse && (
-                <KaliModuleExtras moduleId={activeModule.id} />
-              )}
-
-              {/* Theory Article */}
-              {(learningTab === 'all' || learningTab === 'theory') && (
-                <article className="space-y-6 min-w-0 reading-card rounded-2xl sm:rounded-[2rem] border border-slate-100 dark:border-slate-800 p-5 sm:p-8 lg:p-10 shadow-sm">
-                  <div className="flex items-center gap-3">
-                    <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-50 shrink-0">
-                      {isAlgorithmsCourse
-                        ? '📖 Profundización Teórica Universitaria'
-                        : isComplexityCourse
-                          ? '📊 Profundización Teórica'
-                          : isKaliCourse
-                            ? '🐉 Profundización Teórica'
-                            : isMathCourse
-                              ? '📐 Profundización Teórica'
-                              : 'Profundización Teórica'}
-                    </h3>
-                    <div className="h-px flex-1 bg-slate-100 dark:bg-slate-800 min-w-0"></div>
+                    <DomainInteractiveSimulator courseId={activeCourseId} moduleId={activeModule.id} />
                   </div>
-                  <TheoryContent content={activeModule.content} />
-                  
-                  <div className="bg-slate-50 dark:bg-slate-800/40 p-4 sm:p-8 rounded-2xl sm:rounded-[2rem] border border-slate-100 dark:border-slate-700/60">
-                    <h4 className="font-bold text-slate-900 dark:text-slate-50 mb-4 sm:mb-6 flex items-center gap-3 text-base sm:text-lg">
-                      <span className="w-2 h-6 sm:h-8 bg-gradient-to-b from-indigo-500 to-violet-500 rounded-full shrink-0"></span>
-                      Conceptos Clave de Ingeniería & Arquitectura
-                    </h4>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      {activeModule.items.map((item, i) => (
-                        <div key={i} className="flex items-start gap-3 bg-white dark:bg-slate-900/60 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700/60 hover:border-indigo-200 dark:hover:border-indigo-700 transition group">
-                          <div className="mt-1 w-5 h-5 rounded-full bg-indigo-50 dark:bg-indigo-950 flex items-center justify-center text-indigo-600 dark:text-indigo-400 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
-                            <span className="text-[10px]">●</span>
-                          </div>
-                          <span className="text-slate-700 dark:text-slate-200 font-semibold text-sm leading-tight">{item}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                )}
 
-                  {isPolishedCourse && (
-                    <ModuleNavigation
-                      currentId={activeModule.id}
-                      totalModules={activeCourse.modules.length}
-                      onNavigate={handleSelectModule}
-                      getTitle={(id) => {
-                        const mod = activeCourse.modules.find(m => m.id === id);
-                        return mod?.title.split(': ')[1] || mod?.title || '';
-                      }}
+                {/* 3. LIVE CODE PLAYGROUND (Preview with Studio expand button) */}
+                {learningTab === 'all' && (
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between flex-wrap gap-2">
+                      <span className="text-xs font-black uppercase tracking-wider text-emerald-600 dark:text-emerald-400 flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse"></span>
+                        Entorno de Ejecución & Pruebas en Vivo
+                      </span>
+                      <button
+                        onClick={() => handleSelectTab('playground')}
+                        className="text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 flex items-center gap-1 cursor-pointer bg-emerald-50 dark:bg-emerald-950/60 px-2.5 py-1 rounded-lg border border-emerald-200/80 dark:border-emerald-800/80 transition"
+                      >
+                        <span>⤢ Abrir en Estudio IDE</span>
+                      </button>
+                    </div>
+                    <LiveCodePlayground
+                      courseId={activeCourseId}
+                      moduleId={activeModule.id}
+                      initialCode={activeModule.codeSnippet}
                     />
-                  )}
-                </article>
-              )}
-
-              {/* Code Demonstration Block */}
-              {(learningTab === 'all' || learningTab === 'theory') && activeModule.codeSnippet && (
-                <div className="space-y-4 sm:space-y-6 min-w-0">
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                     <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-50">Implementación / Demostración</h3>
-                     <div className="flex items-center gap-2">
-                       <button
-                         onClick={() => {
-                           setLearningTab('playground');
-                           window.scrollTo({ top: 400, behavior: 'smooth' });
-                         }}
-                         className="px-3 py-1 rounded-lg text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white transition flex items-center gap-1 cursor-pointer"
-                       >
-                         <span>▶ Probar en el Playground</span>
-                       </button>
-                       <span className="text-xs font-bold text-slate-400 dark:text-slate-500 font-mono shrink-0">
-                         {activeCourseId === 'kali_linux'
-                           ? 'Bash / Kali Linux CLI'
-                           : activeCourseId === 'android_kotlin'
-                             ? 'Kotlin / Android'
-                             : 'TypeScript / Python'}
-                       </span>
-                     </div>
                   </div>
-                  <CodeBlock code={activeModule.codeSnippet} />
-                </div>
-              )}
+                )}
 
-              {/* Quiz Section */}
-              {(learningTab === 'all' || learningTab === 'quiz') && activeModule.quiz && (
-                <QuizSection
-                  questions={activeModule.quiz}
-                  moduleId={activeModule.id}
-                  courseId={activeCourseId}
-                  onProgressUpdate={bumpProgress}
-                />
-              )}
-            </div>
+                {/* Big O Specific Content for Algoritmos / Complejidad Module 1 */}
+                {(learningTab === 'all' || learningTab === 'theory') && activeCourseId === 'algoritmos' && activeModule.id === 1 && (
+                  <AlgorithmsBigOSection />
+                )}
+                {(learningTab === 'all' || learningTab === 'theory') && isComplexityCourse && (
+                  <ComplexityModuleExtras moduleId={activeModule.id} />
+                )}
 
-            {/* Right Sidebar */}
-            <div className="space-y-6 sm:space-y-8 min-w-0">
-              {/* IA Assistant Component */}
-              <AIChatDrawer 
-                moduleTitle={activeModule.title} 
-                moduleId={activeModule.id} 
-                moduleExercises={activeModule.exercises}
-              />
-              
-              <div className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/40 dark:to-orange-950/30 border border-amber-100 dark:border-amber-900/50 p-5 sm:p-8 rounded-2xl sm:rounded-[2rem] space-y-4 shadow-sm relative overflow-hidden">
-                <div className="relative z-10">
-                  <h4 className="font-bold text-amber-900 dark:text-amber-200 flex items-center gap-2 text-lg">
-                    <span>💡</span> Perspectiva Profesional
-                  </h4>
-                  <p className="text-amber-800/80 dark:text-amber-200/80 leading-relaxed font-medium">
-                    {activeCourseId === 'kali_linux' ? (
-                      "En ciberseguridad, un escáner automático sin comprensión del paquete TCP subyacente es ruido inútil. Dominar cada flag (-sS, -T, NSE) y el estándar PTES te convierte en un auditor ético de precisión quirúrgica."
-                    ) : activeCourseId === 'git_devops_vercel' ? (
-                      "Rama → pull request → CI verde → revisión → merge es el ritmo de cualquier equipo serio. Automatizar build y deploy te libera para pensar en el producto, no en copiar archivos a mano."
-                    ) : activeCourseId === 'redes_desarrolladores' ? (
-                      "Antes de herramientas ofensivas, entiende DNS, TLS y HTTP. Saber leer un waterfall de red te ahorra horas culpando al framework cuando el problema es latencia o CORS."
-                    ) : activeCourseId === 'sql_datos_ia' ? (
-                      "Los sistemas con IA necesitan datos ordenados: JOINs correctos, índices y metadata de documentos. Sin eso, cualquier modelo — por bueno que sea — trabaja sobre arena movediza."
-                    ) : activeCourseId === 'evaluacion_ia' ? (
-                      "Un LLM no pasa assert. Métricas, guardrails y pruebas adversariales separan un demo de algo que puedes mantener en producción sin sorpresas."
-                    ) : activeCourseId === 'edge_ia_movil' ? (
-                      "Ejecutar modelos en el dispositivo reduce latencia y protege datos del usuario. Cuantización, TFLite y buen diseño de app son habilidades concretas de ingeniería móvil."
-                    ) : activeCourseId === 'android_kotlin' ? (
-                      "Kotlin, Compose y Room son el estándar industrial. Dominar MVVM, Retrofit y FLAG_SECURE en pantallas sensibles te prepara para apps reales en Play Store, no solo tutoriales de botones."
-                    ) : activeCourseId === 'clean_code_solid' ? (
-                      "Cualquier programador puede escribir código que una computadora entienda; los ingenieros de elite escriben código que los humanos pueden entender (Tío Bob)."
-                    ) : activeCourseId === 'ingeniero_ia' ? (
-                      "En la era de la IA, teclear sintaxis es un commoditie. Tu mayor activo es el razonamiento de sistemas, el criterio de arquitectura y la verificación formal."
-                    ) : activeCourseId === 'automatas_compiladores' ? (
-                      "Dominar autómatas y compiladores te permite entender lo que ocurre en las entrañas de los lenguajes de programación y optimizadores."
-                    ) : activeCourseId === 'matematica' ? (
-                      "La matemática es la herramienta analítica para formular modelos, optimizar funciones y garantizar el correcto funcionamiento del software."
-                    ) : activeCourseId === 'complejidad_algoritmica' ? (
-                      "Big-O es el idioma universal de escalabilidad: desde un bucle en Python hasta los FLOPs de un Transformer en GPU, quien domina la complejidad diseña sistemas que no colapsan."
-                    ) : (
-                      "En las Big Tech como Google o Microsoft, no solo evalúan si tu código funciona, sino su eficiencia asintótica."
+                {(learningTab === 'all' || learningTab === 'theory') && isMathCourse && (
+                  <MathModuleExtras moduleId={activeModule.id} />
+                )}
+
+                {/* Automata Highlights for Module 1 */}
+                {(learningTab === 'all' || learningTab === 'theory') && activeCourseId === 'automatas_compiladores' && activeModule.id === 1 && (
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 animate-in fade-in slide-in-from-bottom-6 duration-700">
+                    {[
+                      { l: 'Σ', t: 'Alfabeto', c: 'Conjunto finito de símbolos (ej: {0,1})' },
+                      { l: 'w', t: 'Cadena', c: 'Secuencia finita de símbolos de Σ' },
+                      { l: 'ε', t: 'Cadena Vacía', c: 'Cadena de longitud |ε| = 0' },
+                      { l: 'Σ*', t: 'Estrella de Kleene', c: 'Todas las cadenas posibles (incluye ε)' },
+                      { l: 'Σ+', t: 'Clausura Positiva', c: 'Cadenas de longitud ≥ 1 (excluye ε)' },
+                      { l: 'L ⊆ Σ*', t: 'Lenguaje Formal', c: 'Cualquier subconjunto de cadenas de Σ*' },
+                    ].map(card => (
+                      <div key={card.l} className="group bg-slate-50 dark:bg-slate-800/50 p-5 rounded-2xl border border-slate-100 dark:border-slate-700 transition-all hover:bg-white dark:hover:bg-slate-800 hover:shadow-xl hover:-translate-y-1">
+                        <span className="text-indigo-600 dark:text-indigo-400 font-black block text-xl mb-1 font-mono">{card.l}</span>
+                        <span className="text-slate-900 dark:text-slate-100 text-sm font-bold block">{card.t}</span>
+                        <span className="text-slate-400 dark:text-slate-500 text-[11px] mt-2 block font-mono italic">{card.c}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* Clean Code Highlights for Module 1 */}
+                {(learningTab === 'all' || learningTab === 'theory') && activeCourseId === 'clean_code_solid' && activeModule.id === 1 && (
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 animate-in fade-in slide-in-from-bottom-6 duration-700">
+                    {[
+                      { l: 'Tío Bob', t: 'Robert C. Martin', c: 'Autor de "Clean Code" & SOLID' },
+                      { l: 'Boy Scout', t: 'Regla de Oro', c: 'Deja el código más limpio que como estaba' },
+                      { l: 'Nombres', t: 'Intención Reveladora', c: 'Expresa el propósito sin comentarios' },
+                      { l: '10 a 1', t: 'Ratio Lectura/Escritura', c: 'Pasamos más tiempo leyendo código' },
+                      { l: 'Deuda', t: 'Deuda Técnica', c: 'Costo futuro por tomar atajos hoy' },
+                      { l: 'Pequeñas', t: 'Funciones de 10 líneas', c: 'Funciones que hacen una sola cosa bien' },
+                    ].map(card => (
+                      <div key={card.l} className="group bg-slate-50 dark:bg-slate-800/50 p-5 rounded-2xl border border-slate-100 dark:border-slate-700 transition-all hover:bg-white dark:hover:bg-slate-800 hover:shadow-xl hover:-translate-y-1">
+                        <span className="text-indigo-600 dark:text-indigo-400 font-black block text-xl mb-1 font-mono">{card.l}</span>
+                        <span className="text-slate-900 dark:text-slate-100 text-sm font-bold block">{card.t}</span>
+                        <span className="text-slate-400 dark:text-slate-500 text-[11px] mt-2 block font-mono italic">{card.c}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* AI Engineer Highlights for Module 1 */}
+                {(learningTab === 'all' || learningTab === 'theory') && activeCourseId === 'ingeniero_ia' && activeModule.id === 1 && (
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 animate-in fade-in slide-in-from-bottom-6 duration-700">
+                    {[
+                      { l: 'Arquitecto', t: 'De Vibe Coder a Arquitecto', c: 'La sintaxis la genera la IA; el diseño es tuyo' },
+                      { l: 'Hardware', t: 'RAM & CPU Cache', c: 'La IA no siente la latencia física de la CPU' },
+                      { l: 'TDD', t: 'Test Automated Harness', c: 'Barrera de contención contra alucinaciones' },
+                      { l: 'Seguridad', t: 'DevSecOps & OWASP', c: 'Auditoría estricta de vulnerabilidades' },
+                      { l: 'Agentes', t: 'Bucle ReAct & Tools', c: 'Dirigir equipos de subagentes con contexto' },
+                      { l: 'Sistemas', t: 'System Design & CAP', c: 'Diseño para millones de usuarios simultáneos' },
+                    ].map(card => (
+                      <div key={card.l} className="group bg-slate-50 dark:bg-slate-800/50 p-5 rounded-2xl border border-slate-100 dark:border-slate-700 transition-all hover:bg-white dark:hover:bg-slate-800 hover:shadow-xl hover:-translate-y-1">
+                        <span className="text-indigo-600 dark:text-indigo-400 font-black block text-xl mb-1 font-mono">{card.l}</span>
+                        <span className="text-slate-900 dark:text-slate-100 text-sm font-bold block">{card.t}</span>
+                        <span className="text-slate-400 dark:text-slate-500 text-[11px] mt-2 block font-mono italic">{card.c}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {(learningTab === 'all' || learningTab === 'theory') && isKaliCourse && (
+                  <KaliModuleExtras moduleId={activeModule.id} />
+                )}
+
+                {/* Theory Article */}
+                {(learningTab === 'all' || learningTab === 'theory') && (
+                  <article className="space-y-6 min-w-0 reading-card rounded-2xl sm:rounded-[2rem] border border-slate-100 dark:border-slate-800 p-5 sm:p-8 lg:p-10 shadow-sm">
+                    <div className="flex items-center gap-3">
+                      <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-50 shrink-0">
+                        {isAlgorithmsCourse
+                          ? '📖 Profundización Teórica Universitaria'
+                          : isComplexityCourse
+                            ? '📊 Profundización Teórica'
+                            : isKaliCourse
+                              ? '🐉 Profundización Teórica'
+                              : isMathCourse
+                                ? '📐 Profundización Teórica'
+                                : 'Profundización Teórica'}
+                      </h3>
+                      <div className="h-px flex-1 bg-slate-100 dark:bg-slate-800 min-w-0"></div>
+                    </div>
+                    <TheoryContent content={activeModule.content} />
+                    
+                    <div className="bg-slate-50 dark:bg-slate-800/40 p-4 sm:p-8 rounded-2xl sm:rounded-[2rem] border border-slate-100 dark:border-slate-700/60">
+                      <h4 className="font-bold text-slate-900 dark:text-slate-50 mb-4 sm:mb-6 flex items-center gap-3 text-base sm:text-lg">
+                        <span className="w-2 h-6 sm:h-8 bg-gradient-to-b from-indigo-500 to-violet-500 rounded-full shrink-0"></span>
+                        Conceptos Clave de Ingeniería & Arquitectura
+                      </h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {activeModule.items.map((item, i) => (
+                          <div key={i} className="flex items-start gap-3 bg-white dark:bg-slate-900/60 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700/60 hover:border-indigo-200 dark:hover:border-indigo-700 transition group">
+                            <div className="mt-1 w-5 h-5 rounded-full bg-indigo-50 dark:bg-indigo-950 flex items-center justify-center text-indigo-600 dark:text-indigo-400 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                              <span className="text-[10px]">●</span>
+                            </div>
+                            <span className="text-slate-700 dark:text-slate-200 font-semibold text-sm leading-tight">{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {isPolishedCourse && (
+                      <ModuleNavigation
+                        currentId={activeModule.id}
+                        totalModules={activeCourse.modules.length}
+                        onNavigate={handleSelectModule}
+                        getTitle={(id) => {
+                          const mod = activeCourse.modules.find(m => m.id === id);
+                          return mod?.title.split(': ')[1] || mod?.title || '';
+                        }}
+                      />
                     )}
-                    <span className="block mt-4 text-xs font-bold uppercase tracking-wider text-amber-900/50 dark:text-amber-400/50">Técnica Feynman:</span>
-                    Explicar cada concepto con tus propias palabras y código simple es el camino más efectivo para el aprendizaje profundo.
-                  </p>
-                </div>
-                <div className="absolute top-0 right-0 -mr-4 -mt-4 opacity-10">
-                  <span className="text-7xl">⚡</span>
-                </div>
+                  </article>
+                )}
+
+                {/* Code Demonstration Block */}
+                {(learningTab === 'all' || learningTab === 'theory') && activeModule.codeSnippet && (
+                  <div className="space-y-4 sm:space-y-6 min-w-0">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                       <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-50">Implementación / Demostración</h3>
+                       <div className="flex items-center gap-2">
+                         <button
+                           onClick={() => {
+                             setLearningTab('playground');
+                             window.scrollTo({ top: 380, behavior: 'smooth' });
+                           }}
+                           className="px-3 py-1 rounded-lg text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white transition flex items-center gap-1 cursor-pointer"
+                         >
+                           <span>▶ Probar en el Playground</span>
+                         </button>
+                         <span className="text-xs font-bold text-slate-400 dark:text-slate-500 font-mono shrink-0">
+                           {activeCourseId === 'kali_linux'
+                             ? 'Bash / Kali Linux CLI'
+                             : activeCourseId === 'android_kotlin'
+                               ? 'Kotlin / Android'
+                               : 'TypeScript / Python'}
+                         </span>
+                       </div>
+                    </div>
+                    <CodeBlock code={activeModule.codeSnippet} />
+                  </div>
+                )}
+
+                {/* Quiz Section */}
+                {(learningTab === 'all' || learningTab === 'quiz') && activeModule.quiz && (
+                  <QuizSection
+                    questions={activeModule.quiz}
+                    moduleId={activeModule.id}
+                    courseId={activeCourseId}
+                    onProgressUpdate={bumpProgress}
+                  />
+                )}
               </div>
 
+              {/* Right Sidebar */}
+              <div className="lg:col-span-4 space-y-6 sm:space-y-8 min-w-0 sticky top-24">
+                {/* IA Assistant Component */}
+                <AIChatDrawer 
+                  moduleTitle={activeModule.title} 
+                  moduleId={activeModule.id} 
+                  moduleExercises={activeModule.exercises}
+                />
+                
+                <div className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/40 dark:to-orange-950/30 border border-amber-100 dark:border-amber-900/50 p-5 sm:p-8 rounded-2xl sm:rounded-[2rem] space-y-4 shadow-sm relative overflow-hidden">
+                  <div className="relative z-10">
+                    <h4 className="font-bold text-amber-900 dark:text-amber-200 flex items-center gap-2 text-lg">
+                      <span>💡</span> Perspectiva Profesional
+                    </h4>
+                    <p className="text-amber-800/80 dark:text-amber-200/80 leading-relaxed font-medium">
+                      {getPerspectiveText(activeCourseId)}
+                      <span className="block mt-4 text-xs font-bold uppercase tracking-wider text-amber-900/50 dark:text-amber-400/50">Técnica Feynman:</span>
+                      Explicar cada concepto con tus propias palabras y código simple es el camino más efectivo para el aprendizaje profundo.
+                    </p>
+                  </div>
+                  <div className="absolute top-0 right-0 -mr-4 -mt-4 opacity-10">
+                    <span className="text-7xl">⚡</span>
+                  </div>
+                </div>
+
+              </div>
             </div>
-          </div>
+          )}
         </main>
       </div>
 
