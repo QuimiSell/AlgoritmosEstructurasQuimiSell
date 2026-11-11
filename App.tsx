@@ -24,9 +24,15 @@ import DataStructureVisualizer from './components/DataStructureVisualizer';
 import DomainInteractiveSimulator from './components/DomainInteractiveSimulator';
 import LiveCodePlayground from './components/LiveCodePlayground';
 import LevelProgressiveView from './components/LevelProgressiveView';
+import ShareModal from './components/ShareModal';
+import CommandPaletteModal from './components/CommandPaletteModal';
+import CareerRoadmapModal from './components/CareerRoadmapModal';
+import DevCheatsheetModal from './components/DevCheatsheetModal';
+import Toast from './components/Toast';
 import { useTheme } from './hooks/useTheme';
 import { getCompletedModuleIds } from './hooks/useModuleProgress';
 import { useMenuDismiss } from './hooks/useMenuDismiss';
+import { parseUrlRoute, buildRouteUrl, LearningTab } from './hooks/useUrlRouting';
 
 function polishedSidebarActiveClass(courseId: string, modId: number): string {
   if (courseId === 'algoritmos') {
@@ -103,14 +109,20 @@ function moduleTrackLabel(courseId: string, modId: number): string {
 }
 
 const App: React.FC = () => {
-  const [activeCourseId, setActiveCourseId] = useState<string>('algoritmos');
-  const [learningTab, setLearningTab] = useState<'all' | 'simulator' | 'playground' | 'theory' | 'quiz'>('all');
-  const [activeModuleId, setActiveModuleId] = useState<number>(1);
+  const initialRoute = useMemo(() => parseUrlRoute(), []);
+  const [activeCourseId, setActiveCourseId] = useState<string>(initialRoute.courseId);
+  const [learningTab, setLearningTab] = useState<LearningTab>(initialRoute.tab);
+  const [activeModuleId, setActiveModuleId] = useState<number>(initialRoute.moduleId);
   const [courseMenuOpen, setCourseMenuOpen] = useState<boolean>(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const [showFinalExam, setShowFinalExam] = useState<boolean>(false);
   const [showStudyPlan, setShowStudyPlan] = useState<boolean>(false);
   const [showLabChallenge, setShowLabChallenge] = useState<boolean>(false);
+  const [showShareModal, setShowShareModal] = useState<boolean>(false);
+  const [showCommandPalette, setShowCommandPalette] = useState<boolean>(false);
+  const [showRoadmap, setShowRoadmap] = useState<boolean>(false);
+  const [showCheatsheet, setShowCheatsheet] = useState<boolean>(false);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [progressVersion, setProgressVersion] = useState(0);
   const { theme, toggleTheme } = useTheme();
   const courseMenuRef = useRef<HTMLDivElement>(null);
@@ -139,17 +151,62 @@ const App: React.FC = () => {
     [completedModuleIds]
   );
 
+  // Sync URL in address bar whenever state changes
+  useEffect(() => {
+    const targetUrl = buildRouteUrl(activeCourseId, activeModuleId, learningTab);
+    const currentFull = window.location.pathname + window.location.search;
+    if (currentFull !== targetUrl) {
+      window.history.replaceState(null, '', targetUrl);
+    }
+  }, [activeCourseId, activeModuleId, learningTab]);
+
+  // Handle browser Back / Forward (popstate) & mobile swipe navigation
+  useEffect(() => {
+    const handlePopState = () => {
+      const nextRoute = parseUrlRoute();
+      setActiveCourseId(nextRoute.courseId);
+      setActiveModuleId(nextRoute.moduleId);
+      setLearningTab(nextRoute.tab);
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  // Keyboard shortcut Ctrl + K / Cmd + K for Spotlight Command Palette
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setShowCommandPalette((prev) => !prev);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   const handleSelectCourse = (courseId: string) => {
     setActiveCourseId(courseId);
     setActiveModuleId(1);
     setCourseMenuOpen(false);
     setMobileMenuOpen(false);
+    const newUrl = buildRouteUrl(courseId, 1, learningTab);
+    window.history.pushState(null, '', newUrl);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleSelectModule = (moduleId: number) => {
     setActiveModuleId(moduleId);
+    const newUrl = buildRouteUrl(activeCourseId, moduleId, learningTab);
+    window.history.pushState(null, '', newUrl);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleSelectTab = (tab: LearningTab) => {
+    setLearningTab(tab);
+    const newUrl = buildRouteUrl(activeCourseId, activeModuleId, tab);
+    window.history.replaceState(null, '', newUrl);
+    window.scrollTo({ top: 380, behavior: 'smooth' });
   };
 
   useEffect(() => {
@@ -185,13 +242,46 @@ const App: React.FC = () => {
             </div>
           </div>
 
+          {/* Quick Search Palette (Spotlight) */}
+          <button
+            type="button"
+            onClick={() => setShowCommandPalette(true)}
+            className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 border border-slate-200 dark:border-slate-700 text-xs font-semibold transition cursor-pointer"
+          >
+            <span>🔍</span>
+            <span className="hidden md:inline">Buscar...</span>
+            <kbd className="px-1.5 py-0.5 rounded text-[9px] font-black uppercase tracking-wider bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-400">
+              Ctrl+K
+            </kbd>
+          </button>
+
+          {/* Mobile search button */}
+          <button
+            type="button"
+            aria-label="Buscar en cursos"
+            onClick={() => setShowCommandPalette(true)}
+            className="sm:hidden shrink-0 w-9 h-9 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 flex items-center justify-center text-sm shadow-sm active:scale-95 transition cursor-pointer"
+          >
+            🔍
+          </button>
+
+          {/* Share button */}
+          <button
+            type="button"
+            onClick={() => setShowShareModal(true)}
+            className="flex items-center gap-1.5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full text-xs font-bold shadow-md shadow-indigo-600/25 active:scale-95 transition cursor-pointer shrink-0"
+          >
+            <span>🔗</span>
+            <span className="hidden sm:inline">Compartir</span>
+          </button>
+
           {/* Mobile menu button */}
           <button
             type="button"
             aria-label={mobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
             aria-expanded={mobileMenuOpen}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden shrink-0 w-10 h-10 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 flex items-center justify-center text-lg font-bold shadow-sm active:scale-95 transition cursor-pointer"
+            className="md:hidden shrink-0 w-9 h-9 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 flex items-center justify-center text-base font-bold shadow-sm active:scale-95 transition cursor-pointer"
           >
             {mobileMenuOpen ? '✕' : '☰'}
           </button>
@@ -199,7 +289,21 @@ const App: React.FC = () => {
           <div className="flex items-center gap-2 shrink-0">
             <ThemeToggle theme={theme} onToggle={toggleTheme} compact />
 
-          <nav className="hidden md:flex gap-3 lg:gap-4 xl:gap-6 items-center shrink-0 min-w-0">
+          <nav className="hidden md:flex gap-3 lg:gap-4 xl:gap-5 items-center shrink-0 min-w-0">
+             <button
+               type="button"
+               onClick={() => setShowRoadmap(true)}
+               className="hidden xl:inline text-xs lg:text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition cursor-pointer bg-transparent border-none p-0 whitespace-nowrap"
+             >
+               🗺️ Roadmap
+             </button>
+             <button
+               type="button"
+               onClick={() => setShowCheatsheet(true)}
+               className="hidden xl:inline text-xs lg:text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition cursor-pointer bg-transparent border-none p-0 whitespace-nowrap"
+             >
+               📋 Chuletas
+             </button>
              <button
                type="button"
                onClick={() => setShowStudyPlan(true)}
@@ -301,27 +405,62 @@ const App: React.FC = () => {
               className="md:hidden absolute left-0 right-0 top-full z-50 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-2xl max-h-[calc(100dvh-3.5rem)] sm:max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain scroll-touch pb-[env(safe-area-inset-bottom)]"
             >
               <div className="p-4 space-y-2 border-b border-slate-100 dark:border-slate-800">
-                <span className="block text-[10px] font-black text-slate-400 uppercase tracking-widest pb-1">Menú</span>
+                <span className="block text-[10px] font-black text-slate-400 uppercase tracking-widest pb-1">Herramientas & Exploración</span>
+                <button
+                  type="button"
+                  onClick={() => { setShowCommandPalette(true); setMobileMenuOpen(false); }}
+                  className="w-full text-left px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-indigo-950/50 text-sm font-bold text-slate-800 dark:text-slate-200 transition cursor-pointer flex items-center justify-between"
+                >
+                  <span className="flex items-center gap-2"><span>🔍</span><span>Buscar Algoritmos & Temas</span></span>
+                  <span className="text-[10px] bg-slate-200 dark:bg-slate-700 px-2 py-0.5 rounded font-mono">Ctrl+K</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => { setShowShareModal(true); setMobileMenuOpen(false); }}
+                  className="w-full text-left px-4 py-3 rounded-xl bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-950/50 dark:to-purple-950/40 text-indigo-950 dark:text-indigo-200 text-sm font-bold transition cursor-pointer flex items-center gap-2 border border-indigo-200 dark:border-indigo-800"
+                >
+                  <span>🔗</span>
+                  <span>Compartir este Curso / Módulo</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => { setShowRoadmap(true); setMobileMenuOpen(false); }}
+                  className="w-full text-left px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-indigo-950/50 text-sm font-bold text-slate-800 dark:text-slate-200 transition cursor-pointer flex items-center gap-2"
+                >
+                  <span>🗺️</span>
+                  <span>Roadmap de Carrera</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => { setShowCheatsheet(true); setMobileMenuOpen(false); }}
+                  className="w-full text-left px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-indigo-950/50 text-sm font-bold text-slate-800 dark:text-slate-200 transition cursor-pointer flex items-center gap-2"
+                >
+                  <span>📋</span>
+                  <span>Chuletario Rápido Dev</span>
+                </button>
                 <button
                   type="button"
                   onClick={() => { setShowStudyPlan(true); setMobileMenuOpen(false); }}
-                  className="w-full text-left px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-indigo-950/50 text-sm font-bold text-slate-800 dark:text-slate-200 transition cursor-pointer"
+                  className="w-full text-left px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-indigo-950/50 text-sm font-bold text-slate-800 dark:text-slate-200 transition cursor-pointer flex items-center gap-2"
                 >
-                  📚 Plan de Estudios
+                  <span>📚</span>
+                  <span>Plan de Estudios</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => { setShowLabChallenge(true); setMobileMenuOpen(false); }}
-                  className="w-full text-left px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-indigo-950/50 text-sm font-bold text-slate-800 dark:text-slate-200 transition cursor-pointer"
+                  className="w-full text-left px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-indigo-950/50 text-sm font-bold text-slate-800 dark:text-slate-200 transition cursor-pointer flex items-center gap-2"
                 >
-                  🧪 Laboratorio
+                  <span>🧪</span>
+                  <span>Laboratorio</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => { setShowFinalExam(true); setMobileMenuOpen(false); }}
-                  className="w-full text-left px-4 py-3 rounded-xl bg-slate-900 text-white text-sm font-bold transition cursor-pointer"
+                  className="w-full text-left px-4 py-3 rounded-xl bg-slate-900 text-white text-sm font-bold transition cursor-pointer flex items-center gap-2"
                 >
-                  ✍️ Práctica Final
+                  <span>✍️</span>
+                  <span>Práctica Final</span>
                 </button>
               </div>
               <div className="p-4">
@@ -490,10 +629,7 @@ const App: React.FC = () => {
                 ].map((tab) => (
                   <button
                     key={tab.id}
-                    onClick={() => {
-                      setLearningTab(tab.id as any);
-                      window.scrollTo({ top: 380, behavior: 'smooth' });
-                    }}
+                    onClick={() => handleSelectTab(tab.id as any)}
                     className={`px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition flex items-center gap-1.5 whitespace-nowrap cursor-pointer ${
                       learningTab === tab.id
                         ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
@@ -503,6 +639,15 @@ const App: React.FC = () => {
                     <span>{tab.label}</span>
                   </button>
                 ))}
+
+                <button
+                  type="button"
+                  onClick={() => setShowShareModal(true)}
+                  className="ml-auto px-3 py-2 rounded-xl text-xs font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50/80 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/80 border border-indigo-200 dark:border-indigo-800/80 transition flex items-center gap-1.5 whitespace-nowrap cursor-pointer shrink-0"
+                >
+                  <span>🔗</span>
+                  <span className="hidden sm:inline">Compartir Módulo</span>
+                </button>
               </div>
 
               {/* 1. LEVEL PROGRESSIVE PEDAGOGICAL BREAKDOWN */}
@@ -776,10 +921,7 @@ const App: React.FC = () => {
         <div className="max-w-md mx-auto grid grid-cols-5 gap-1 text-center">
           <button
             type="button"
-            onClick={() => {
-              setLearningTab('all');
-              window.scrollTo({ top: 380, behavior: 'smooth' });
-            }}
+            onClick={() => handleSelectTab('all')}
             className={`flex flex-col items-center justify-center py-1.5 rounded-xl transition active:scale-95 cursor-pointer ${
               learningTab === 'all'
                 ? 'text-indigo-600 dark:text-indigo-400 font-extrabold bg-indigo-50 dark:bg-indigo-950/60 shadow-sm'
@@ -792,10 +934,7 @@ const App: React.FC = () => {
 
           <button
             type="button"
-            onClick={() => {
-              setLearningTab('simulator');
-              window.scrollTo({ top: 380, behavior: 'smooth' });
-            }}
+            onClick={() => handleSelectTab('simulator')}
             className={`flex flex-col items-center justify-center py-1.5 rounded-xl transition active:scale-95 cursor-pointer ${
               learningTab === 'simulator'
                 ? 'text-indigo-600 dark:text-indigo-400 font-extrabold bg-indigo-50 dark:bg-indigo-950/60 shadow-sm'
@@ -808,10 +947,7 @@ const App: React.FC = () => {
 
           <button
             type="button"
-            onClick={() => {
-              setLearningTab('playground');
-              window.scrollTo({ top: 380, behavior: 'smooth' });
-            }}
+            onClick={() => handleSelectTab('playground')}
             className={`flex flex-col items-center justify-center py-1.5 rounded-xl transition active:scale-95 cursor-pointer ${
               learningTab === 'playground'
                 ? 'text-indigo-600 dark:text-indigo-400 font-extrabold bg-indigo-50 dark:bg-indigo-950/60 shadow-sm'
@@ -824,27 +960,20 @@ const App: React.FC = () => {
 
           <button
             type="button"
-            onClick={() => {
-              setLearningTab('quiz');
-              window.scrollTo({ top: 380, behavior: 'smooth' });
-            }}
-            className={`flex flex-col items-center justify-center py-1.5 rounded-xl transition active:scale-95 cursor-pointer ${
-              learningTab === 'quiz'
-                ? 'text-indigo-600 dark:text-indigo-400 font-extrabold bg-indigo-50 dark:bg-indigo-950/60 shadow-sm'
-                : 'text-slate-500 dark:text-slate-400'
-            }`}
+            onClick={() => setShowCommandPalette(true)}
+            className="flex flex-col items-center justify-center py-1.5 rounded-xl text-slate-500 dark:text-slate-400 active:scale-95 transition cursor-pointer"
           >
-            <span className="text-lg">📝</span>
-            <span className="text-[10px] mt-0.5 tracking-tight">Quiz</span>
+            <span className="text-lg">🔍</span>
+            <span className="text-[10px] mt-0.5 tracking-tight">Buscar</span>
           </button>
 
           <button
             type="button"
-            onClick={() => setMobileMenuOpen(true)}
-            className="flex flex-col items-center justify-center py-1.5 rounded-xl text-slate-500 dark:text-slate-400 active:scale-95 transition cursor-pointer"
+            onClick={() => setShowShareModal(true)}
+            className="flex flex-col items-center justify-center py-1.5 rounded-xl text-indigo-600 dark:text-indigo-400 font-bold active:scale-95 transition cursor-pointer"
           >
-            <span className="text-lg">📚</span>
-            <span className="text-[10px] mt-0.5 tracking-tight">Temario</span>
+            <span className="text-lg">🔗</span>
+            <span className="text-[10px] mt-0.5 tracking-tight">Compartir</span>
           </button>
         </div>
       </nav>
@@ -858,6 +987,47 @@ const App: React.FC = () => {
       )}
       {showFinalExam && (
         <FinalExamModal course={activeCourse} onClose={() => setShowFinalExam(false)} />
+      )}
+      {showShareModal && (
+        <ShareModal
+          course={activeCourse}
+          module={activeModule}
+          tab={learningTab}
+          onClose={() => setShowShareModal(false)}
+          onShowToast={(msg) => setToastMessage(msg)}
+        />
+      )}
+      {showCommandPalette && (
+        <CommandPaletteModal
+          isOpen={showCommandPalette}
+          onClose={() => setShowCommandPalette(false)}
+          onSelect={(cId, mId) => {
+            handleSelectCourse(cId);
+            if (mId > 1) {
+              setTimeout(() => handleSelectModule(mId), 50);
+            }
+          }}
+        />
+      )}
+      {showRoadmap && (
+        <CareerRoadmapModal
+          onClose={() => setShowRoadmap(false)}
+          onSelectCourse={(cId) => {
+            handleSelectCourse(cId);
+          }}
+        />
+      )}
+      {showCheatsheet && (
+        <DevCheatsheetModal
+          onClose={() => setShowCheatsheet(false)}
+          onShowToast={(msg) => setToastMessage(msg)}
+        />
+      )}
+      {toastMessage && (
+        <Toast
+          message={toastMessage}
+          onClose={() => setToastMessage(null)}
+        />
       )}
     </div>
   );

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { QuizQuestion } from '../domain/models';
 import { markQuizPassed } from '../hooks/useModuleProgress';
+import { fireConfetti } from '../utils/confetti';
 
 interface QuizSectionProps {
   questions: QuizQuestion[];
@@ -36,6 +37,9 @@ const QuizSection: React.FC<QuizSectionProps> = ({
     if (progressReportedRef.current === reportKey) return;
     progressReportedRef.current = reportKey;
     markQuizPassed(courseId, moduleId, scorePct);
+    if (scorePct >= 70) {
+      fireConfetti(2200);
+    }
     onProgressUpdate?.();
   }, [isFinished, scorePct, courseId, moduleId, onProgressUpdate, questions.length]);
 
