@@ -1,13 +1,25 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    
+    <!-- iOS / Apple Mobile Web App & PWA -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="QuimiSell">
+    <link rel="apple-touch-icon" href="/favicon.svg">
+    <link rel="apple-touch-startup-image" href="/favicon.svg">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Theme Color matching Notch / Dynamic Island -->
     <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#020617" media="(prefers-color-scheme: dark)">
-    <title>Master Class QuimiSell — Algoritmos y Estructuras de Datos</title>
+    
+    <title>Master Class QuimiSell — Cursos Universitarios & Simuladores</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    
     <script>
       (function () {
         var t = localStorage.getItem('quimisell-theme');
@@ -22,7 +34,7 @@
         darkMode: 'class',
       };
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <script type="importmap">
 {
   "imports": {
@@ -36,7 +48,7 @@
 </script>
 <link rel="stylesheet" href="/index.css">
 </head>
-<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300">
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 antialiased selection:bg-indigo-500 selection:text-white">
     <div id="root"></div>
 <script type="module" src="/index.tsx"></script>
 </body>

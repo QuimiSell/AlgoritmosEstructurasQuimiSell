@@ -771,6 +771,84 @@ const App: React.FC = () => {
 
       <SiteFooter />
 
+      {/* Barra Móvil iOS PWA (Optimizada para iPhone, Notch y Grabación de Pantalla) */}
+      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border-t border-slate-200/80 dark:border-slate-800/80 px-2 pt-2 pb-[max(env(safe-area-inset-bottom),10px)] shadow-[0_-4px_25px_rgba(0,0,0,0.12)]">
+        <div className="max-w-md mx-auto grid grid-cols-5 gap-1 text-center">
+          <button
+            type="button"
+            onClick={() => {
+              setLearningTab('all');
+              window.scrollTo({ top: 380, behavior: 'smooth' });
+            }}
+            className={`flex flex-col items-center justify-center py-1.5 rounded-xl transition active:scale-95 cursor-pointer ${
+              learningTab === 'all'
+                ? 'text-indigo-600 dark:text-indigo-400 font-extrabold bg-indigo-50 dark:bg-indigo-950/60 shadow-sm'
+                : 'text-slate-500 dark:text-slate-400'
+            }`}
+          >
+            <span className="text-lg">🌟</span>
+            <span className="text-[10px] mt-0.5 tracking-tight">Ruta</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => {
+              setLearningTab('simulator');
+              window.scrollTo({ top: 380, behavior: 'smooth' });
+            }}
+            className={`flex flex-col items-center justify-center py-1.5 rounded-xl transition active:scale-95 cursor-pointer ${
+              learningTab === 'simulator'
+                ? 'text-indigo-600 dark:text-indigo-400 font-extrabold bg-indigo-50 dark:bg-indigo-950/60 shadow-sm'
+                : 'text-slate-500 dark:text-slate-400'
+            }`}
+          >
+            <span className="text-lg">🕹️</span>
+            <span className="text-[10px] mt-0.5 tracking-tight">Simulador</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => {
+              setLearningTab('playground');
+              window.scrollTo({ top: 380, behavior: 'smooth' });
+            }}
+            className={`flex flex-col items-center justify-center py-1.5 rounded-xl transition active:scale-95 cursor-pointer ${
+              learningTab === 'playground'
+                ? 'text-indigo-600 dark:text-indigo-400 font-extrabold bg-indigo-50 dark:bg-indigo-950/60 shadow-sm'
+                : 'text-slate-500 dark:text-slate-400'
+            }`}
+          >
+            <span className="text-lg">💻</span>
+            <span className="text-[10px] mt-0.5 tracking-tight">Código</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => {
+              setLearningTab('quiz');
+              window.scrollTo({ top: 380, behavior: 'smooth' });
+            }}
+            className={`flex flex-col items-center justify-center py-1.5 rounded-xl transition active:scale-95 cursor-pointer ${
+              learningTab === 'quiz'
+                ? 'text-indigo-600 dark:text-indigo-400 font-extrabold bg-indigo-50 dark:bg-indigo-950/60 shadow-sm'
+                : 'text-slate-500 dark:text-slate-400'
+            }`}
+          >
+            <span className="text-lg">📝</span>
+            <span className="text-[10px] mt-0.5 tracking-tight">Quiz</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen(true)}
+            className="flex flex-col items-center justify-center py-1.5 rounded-xl text-slate-500 dark:text-slate-400 active:scale-95 transition cursor-pointer"
+          >
+            <span className="text-lg">📚</span>
+            <span className="text-[10px] mt-0.5 tracking-tight">Temario</span>
+          </button>
+        </div>
+      </nav>
+
       {/* Modals */}
       {showStudyPlan && (
         <StudyPlanModal course={activeCourse} onClose={() => setShowStudyPlan(false)} />

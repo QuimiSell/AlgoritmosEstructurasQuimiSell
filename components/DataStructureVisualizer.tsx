@@ -582,7 +582,7 @@ export const DataStructureVisualizer: React.FC<DataStructureVisualizerProps> = (
           </div>
 
           {/* Bars Visualization Area */}
-          <div className="h-56 sm:h-64 bg-slate-950/80 rounded-2xl p-4 sm:p-6 flex items-end justify-center gap-2 sm:gap-3 border border-slate-800 relative">
+          <div className="h-56 sm:h-64 bg-slate-950/80 rounded-2xl p-2.5 sm:p-6 flex items-end justify-center gap-1 sm:gap-3 border border-slate-800 relative overflow-hidden">
             {sortArray.map((val, idx) => {
               const isActive = sortIndices.active.includes(idx);
               const isSorted = sortIndices.sorted.includes(idx);
@@ -593,13 +593,13 @@ export const DataStructureVisualizer: React.FC<DataStructureVisualizerProps> = (
               if (isSorted) barBg = 'bg-gradient-to-t from-emerald-600 to-teal-400';
 
               return (
-                <div key={idx} className="flex-1 max-w-[48px] flex flex-col items-center gap-1.5 h-full justify-end">
-                  <span className="text-[10px] sm:text-xs font-bold text-slate-300 font-mono">{val}</span>
+                <div key={idx} className="flex-1 max-w-[34px] sm:max-w-[48px] flex flex-col items-center gap-1 sm:gap-1.5 h-full justify-end">
+                  <span className="text-[9px] sm:text-xs font-bold text-slate-300 font-mono">{val}</span>
                   <div
                     style={{ height: barHeight }}
                     className={`w-full rounded-t-lg transition-all duration-200 shadow-md ${barBg}`}
                   />
-                  <span className="text-[9px] font-bold text-slate-500">[{idx}]</span>
+                  <span className="text-[8px] sm:text-[9px] font-bold text-slate-500">[{idx}]</span>
                 </div>
               );
             })}
