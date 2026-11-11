@@ -4,14 +4,24 @@ import { Module } from '../domain/models';
 const MODULE_THEMES: Record<number, { icon: string; gradient: string; glow: string }> = {
   1: { icon: '📐', gradient: 'from-indigo-600 via-violet-600 to-purple-700', glow: 'bg-indigo-500/30' },
   2: { icon: '📋', gradient: 'from-blue-600 via-cyan-600 to-teal-600', glow: 'bg-cyan-500/30' },
-  3: { icon: '🔑', gradient: 'from-violet-600 via-purple-600 to-fuchsia-600', glow: 'bg-violet-500/30' },
-  4: { icon: '🌳', gradient: 'from-emerald-600 via-green-600 to-teal-600', glow: 'bg-emerald-500/30' },
-  5: { icon: '🕸️', gradient: 'from-orange-600 via-amber-600 to-yellow-600', glow: 'bg-amber-500/30' },
-  6: { icon: '🔀', gradient: 'from-rose-600 via-pink-600 to-fuchsia-600', glow: 'bg-rose-500/30' },
-  7: { icon: '🔍', gradient: 'from-sky-600 via-blue-600 to-indigo-600', glow: 'bg-sky-500/30' },
-  8: { icon: '🧩', gradient: 'from-purple-600 via-violet-600 to-indigo-600', glow: 'bg-purple-500/30' },
-  9: { icon: '💎', gradient: 'from-teal-600 via-cyan-600 to-blue-600', glow: 'bg-teal-500/30' },
-  10: { icon: '🌍', gradient: 'from-indigo-600 via-blue-600 to-cyan-600', glow: 'bg-blue-500/30' },
+  3: { icon: '🔗', gradient: 'from-violet-600 via-purple-600 to-fuchsia-600', glow: 'bg-violet-500/30' },
+  4: { icon: '🥞', gradient: 'from-amber-600 via-orange-600 to-rose-600', glow: 'bg-amber-500/30' },
+  5: { icon: '🗝️', gradient: 'from-emerald-600 via-teal-600 to-cyan-600', glow: 'bg-emerald-500/30' },
+  6: { icon: '🪆', gradient: 'from-fuchsia-600 via-pink-600 to-rose-600', glow: 'bg-fuchsia-500/30' },
+  7: { icon: '🃏', gradient: 'from-sky-600 via-blue-600 to-indigo-600', glow: 'bg-sky-500/30' },
+  8: { icon: '⚡', gradient: 'from-purple-600 via-violet-600 to-indigo-600', glow: 'bg-purple-500/30' },
+  9: { icon: '🔍', gradient: 'from-teal-600 via-cyan-600 to-blue-600', glow: 'bg-teal-500/30' },
+  10: { icon: '🌳', gradient: 'from-emerald-600 via-green-600 to-teal-600', glow: 'bg-emerald-500/30' },
+  11: { icon: '⚖️', gradient: 'from-indigo-600 via-purple-600 to-pink-600', glow: 'bg-indigo-500/30' },
+  12: { icon: '🏥', gradient: 'from-cyan-600 via-teal-600 to-emerald-600', glow: 'bg-cyan-500/30' },
+  13: { icon: '🕸️', gradient: 'from-orange-600 via-amber-600 to-yellow-600', glow: 'bg-amber-500/30' },
+  14: { icon: '🧭', gradient: 'from-blue-600 via-indigo-600 to-purple-600', glow: 'bg-blue-500/30' },
+  15: { icon: '🛣️', gradient: 'from-rose-600 via-red-600 to-orange-600', glow: 'bg-rose-500/30' },
+  16: { icon: '🧠', gradient: 'from-purple-600 via-fuchsia-600 to-pink-600', glow: 'bg-purple-500/30' },
+  17: { icon: '💎', gradient: 'from-teal-600 via-emerald-600 to-green-600', glow: 'bg-teal-500/30' },
+  18: { icon: '🌲', gradient: 'from-violet-600 via-indigo-600 to-blue-600', glow: 'bg-violet-500/30' },
+  19: { icon: '🎲', gradient: 'from-amber-600 via-yellow-600 to-orange-600', glow: 'bg-yellow-500/30' },
+  20: { icon: '🚀', gradient: 'from-indigo-700 via-purple-700 to-pink-700', glow: 'bg-pink-500/30' },
 };
 
 interface AlgorithmsHeroProps {
@@ -44,7 +54,7 @@ const AlgorithmsHero: React.FC<AlgorithmsHeroProps> = ({ module, totalModules })
             <span>{theme.icon}</span> Algoritmos & Estructuras
           </span>
           <span className="inline-flex px-3 py-1 rounded-full bg-black/20 text-[10px] font-bold uppercase tracking-widest">
-            Módulo {module.id} / {totalModules}
+            Módulo {module.id} / {totalModules} · Nivel 0 a Universitario
           </span>
         </div>
 
@@ -58,9 +68,10 @@ const AlgorithmsHero: React.FC<AlgorithmsHeroProps> = ({ module, totalModules })
         <div className="mt-6 sm:mt-8 flex flex-wrap gap-3 sm:gap-4">
           {[
             { label: 'Módulos', value: String(totalModules) },
-            { label: 'Autoevaluación', value: '12 preguntas' },
-            { label: 'Demos', value: 'Python' },
-          ].map(stat => (
+            { label: 'Simulador', value: 'En Vivo 🕹️' },
+            { label: 'Playground', value: 'Sandbox 💻' },
+            { label: 'Ruta', value: '0 ➔ Univ 🎓' },
+          ].map((stat) => (
             <div
               key={stat.label}
               className="px-4 py-2.5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/15 min-w-[5.5rem]"

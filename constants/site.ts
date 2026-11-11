@@ -18,9 +18,9 @@ export const SITE = {
 
 /** Orden recomendado del plan de estudios (1 = empezar aquí). */
 export const COURSE_STUDY_ORDER: readonly string[] = [
-  'matematica',
   'algoritmos',
   'complejidad_algoritmica',
+  'matematica',
   'clean_code_solid',
   'git_devops_vercel',
   'redes_desarrolladores',
