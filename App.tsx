@@ -302,7 +302,7 @@ const App: React.FC = () => {
                onClick={() => setShowCheatsheet(true)}
                className="hidden xl:inline text-xs lg:text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition cursor-pointer bg-transparent border-none p-0 whitespace-nowrap"
              >
-               📋 Chuletas
+               ⚡ Cheat Sheets
              </button>
              <button
                type="button"
@@ -435,8 +435,8 @@ const App: React.FC = () => {
                   onClick={() => { setShowCheatsheet(true); setMobileMenuOpen(false); }}
                   className="w-full text-left px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-indigo-950/50 text-sm font-bold text-slate-800 dark:text-slate-200 transition cursor-pointer flex items-center gap-2"
                 >
-                  <span>📋</span>
-                  <span>Chuletario Rápido Dev</span>
+                  <span>⚡</span>
+                  <span>Cheat Sheets & Comandos</span>
                 </button>
                 <button
                   type="button"
