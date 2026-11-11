@@ -121,32 +121,34 @@ const FinalExamModal: React.FC<FinalExamModalProps> = ({ course, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-md z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 overflow-y-auto overscroll-contain">
-      <div className="bg-white dark:bg-slate-900 rounded-t-[2rem] sm:rounded-[2rem] w-full max-w-4xl shadow-2xl flex flex-col max-h-[92dvh] sm:max-h-[90dvh] overflow-hidden border border-slate-100 dark:border-slate-800 animate-in slide-in-from-bottom-4 sm:zoom-in-95 duration-200 pb-[env(safe-area-inset-bottom)]">
+    <div className="fixed inset-0 bg-slate-900/60 dark:bg-black/75 backdrop-blur-md z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 overflow-y-auto overscroll-contain">
+      <div className="bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 rounded-t-[2rem] sm:rounded-[2rem] w-full max-w-4xl shadow-2xl flex flex-col max-h-[92dvh] sm:max-h-[90dvh] overflow-hidden border border-slate-200/80 dark:border-slate-800 animate-in slide-in-from-bottom-4 sm:zoom-in-95 duration-200 pb-[env(safe-area-inset-bottom)]">
         
         {/* Cabecera */}
-        <header className="p-4 sm:p-6 border-b border-slate-150 bg-slate-50 flex items-start sm:items-center justify-between gap-3 shrink-0">
+        <header className="p-4 sm:p-6 border-b border-slate-200/80 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/80 flex items-start sm:items-center justify-between gap-3 shrink-0">
           <div className="flex items-start sm:items-center gap-3 min-w-0 flex-1">
-            <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white text-lg font-bold shadow-lg shadow-indigo-100 shrink-0">
+            <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white text-lg font-bold shadow-lg shadow-indigo-600/30 shrink-0">
               ✍️
             </div>
             <div className="min-w-0">
-              <h2 className="text-base sm:text-xl font-extrabold text-slate-900 leading-snug break-words">Evaluación Final: {course.shortTitle}</h2>
-              <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block mt-1.5">
+              <h2 className="text-base sm:text-xl font-extrabold text-slate-900 dark:text-white leading-snug break-words">Evaluación Final: {course.shortTitle}</h2>
+              <span className="text-[10px] text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider block mt-1.5">
                 Práctica final integradora de {examQuestions.length} preguntas (mínimo {EXAM_TARGET_QUESTIONS} por curso)
               </span>
             </div>
           </div>
           <button 
+            type="button"
             onClick={onClose} 
-            className="w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:bg-slate-200 hover:text-slate-800 transition active:scale-90 font-bold cursor-pointer"
+            className="w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:text-slate-800 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-800 transition active:scale-90 font-bold cursor-pointer"
+            aria-label="Cerrar evaluación"
           >
             ✕
           </button>
         </header>
 
         {/* Contenido Deslizable */}
-        <div className="flex-1 overflow-y-auto overscroll-contain scroll-touch p-4 sm:p-6 md:p-8 space-y-6 sm:space-y-8 scrollbar-hide min-h-0">
+        <div className="flex-1 overflow-y-auto overscroll-contain scroll-touch p-4 sm:p-6 md:p-8 space-y-6 sm:space-y-8 min-h-0">
           
           {/* Banner de Estado o Resultado */}
           {submitted ? (
@@ -197,38 +199,38 @@ const FinalExamModal: React.FC<FinalExamModalProps> = ({ course, onClose }) => {
                   className={`p-6 rounded-2xl border transition ${
                     submitted 
                       ? isCorrect 
-                        ? 'bg-emerald-50/40 border-emerald-200' 
-                        : 'bg-rose-50/40 border-rose-200'
+                        ? 'bg-emerald-50/40 dark:bg-emerald-950/30 border-emerald-200 dark:border-emerald-800/60' 
+                        : 'bg-rose-50/40 dark:bg-rose-950/30 border-rose-200 dark:border-rose-800/60'
                       : selectedOpt !== undefined
-                        ? 'bg-indigo-50/30 border-indigo-200'
-                        : 'bg-slate-50/50 border-slate-150'
+                        ? 'bg-indigo-50/30 dark:bg-indigo-950/30 border-indigo-200 dark:border-indigo-800/60'
+                        : 'bg-slate-50/60 dark:bg-slate-800/40 border-slate-200/80 dark:border-slate-700/60'
                   }`}
                 >
                   <div className="flex items-center justify-between mb-3">
-                    <span className="text-[10px] font-black uppercase tracking-wider text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-md">
+                    <span className="text-[10px] font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/60 px-2.5 py-1 rounded-md border border-indigo-200/60 dark:border-indigo-800/60">
                       Módulo {eq.moduleId}: {eq.moduleTitle}
                     </span>
                     <span className="text-xs font-bold text-slate-400">Pregunta {idx + 1}</span>
                   </div>
 
-                  <h4 className="font-bold text-slate-900 text-base mb-4 leading-snug">
+                  <h4 className="font-bold text-slate-900 dark:text-slate-100 text-base mb-4 leading-snug">
                     {eq.question.question}
                   </h4>
 
                   <div className="space-y-2 mb-4">
                     {eq.question.options.map((opt, oIdx) => {
-                      let btnStyle = "border-slate-200 bg-white hover:border-indigo-300 text-slate-700";
+                      let btnStyle = "border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/80 hover:border-indigo-300 dark:hover:border-indigo-500 text-slate-700 dark:text-slate-200";
 
                       if (submitted) {
                         if (oIdx === eq.question.answerIndex) {
-                          btnStyle = "border-emerald-500 bg-emerald-50 text-emerald-950 font-bold";
+                          btnStyle = "border-emerald-500 bg-emerald-50 dark:bg-emerald-950/60 text-emerald-950 dark:text-emerald-200 font-bold";
                         } else if (selectedOpt === oIdx) {
-                          btnStyle = "border-rose-500 bg-rose-50 text-rose-950 font-bold";
+                          btnStyle = "border-rose-500 bg-rose-50 dark:bg-rose-950/60 text-rose-950 dark:text-rose-200 font-bold";
                         } else {
-                          btnStyle = "border-slate-100 bg-slate-50 text-slate-400 opacity-60";
+                          btnStyle = "border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40 text-slate-400 opacity-60";
                         }
                       } else if (selectedOpt === oIdx) {
-                        btnStyle = "border-indigo-600 bg-indigo-50/80 text-indigo-950 font-bold shadow-sm";
+                        btnStyle = "border-indigo-600 dark:border-indigo-500 bg-indigo-50/80 dark:bg-indigo-950/70 text-indigo-950 dark:text-indigo-200 font-bold shadow-sm";
                       }
 
                       return (
@@ -240,10 +242,10 @@ const FinalExamModal: React.FC<FinalExamModalProps> = ({ course, onClose }) => {
                         >
                           <span>{opt}</span>
                           {submitted && oIdx === eq.question.answerIndex && (
-                            <span className="text-emerald-600 font-bold">✓ Correcta</span>
+                            <span className="text-emerald-600 dark:text-emerald-400 font-bold">✓ Correcta</span>
                           )}
                           {submitted && selectedOpt === oIdx && oIdx !== eq.question.answerIndex && (
-                            <span className="text-rose-600 font-bold">✕ Incorrecta</span>
+                            <span className="text-rose-600 dark:text-rose-400 font-bold">✕ Incorrecta</span>
                           )}
                         </button>
                       );
@@ -251,8 +253,8 @@ const FinalExamModal: React.FC<FinalExamModalProps> = ({ course, onClose }) => {
                   </div>
 
                   {submitted && (
-                    <div className="bg-white/80 p-4 rounded-xl border border-slate-200/60 text-xs text-slate-600">
-                      <span className="font-bold text-slate-900 block mb-1">💡 Explicación:</span>
+                    <div className="bg-white/80 dark:bg-slate-850 p-4 rounded-xl border border-slate-200/60 dark:border-slate-700 text-xs text-slate-600 dark:text-slate-300">
+                      <span className="font-bold text-slate-900 dark:text-white block mb-1">💡 Explicación:</span>
                       {eq.question.explanation}
                     </div>
                   )}
@@ -264,16 +266,16 @@ const FinalExamModal: React.FC<FinalExamModalProps> = ({ course, onClose }) => {
         </div>
 
         {/* Footer de Acciones */}
-        <footer className="p-4 sm:p-6 border-t border-slate-100 bg-slate-50 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3 shrink-0">
+        <footer className="p-4 sm:p-6 border-t border-slate-200/80 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/90 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3 shrink-0">
           {submitted ? (
             <button
               onClick={handleReset}
-              className="text-xs font-bold text-rose-600 hover:text-rose-700 hover:underline cursor-pointer text-center sm:text-left"
+              className="text-xs font-bold text-rose-600 dark:text-rose-400 hover:text-rose-700 dark:hover:text-rose-300 hover:underline cursor-pointer text-center sm:text-left"
             >
               🔄 Reiniciar y Volver a Intentar
             </button>
           ) : (
-            <span className="text-xs font-semibold text-slate-400 text-center sm:text-left">
+            <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 text-center sm:text-left">
               Completado: {totalAnswered} de {examQuestions.length}
             </span>
           )}
@@ -281,7 +283,7 @@ const FinalExamModal: React.FC<FinalExamModalProps> = ({ course, onClose }) => {
           <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
             <button
               onClick={onClose}
-              className="px-5 py-2.5 rounded-full text-xs font-bold text-slate-600 hover:bg-slate-200 transition cursor-pointer"
+              className="px-5 py-2.5 rounded-full text-xs font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800 transition cursor-pointer"
             >
               Cerrar
             </button>
@@ -300,19 +302,19 @@ const FinalExamModal: React.FC<FinalExamModalProps> = ({ course, onClose }) => {
 
       {/* Modal de Confirmación de Reinicio */}
       {showResetConfirm && (
-        <div className="fixed inset-0 bg-slate-950/40 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white p-6 rounded-2xl max-w-sm w-full shadow-2xl border border-slate-100 text-center space-y-4 animate-in zoom-in-95 duration-150">
-            <div className="w-12 h-12 bg-rose-100 text-rose-600 rounded-full flex items-center justify-center mx-auto text-xl font-bold">
+        <div className="fixed inset-0 bg-slate-950/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl max-w-sm w-full shadow-2xl border border-slate-200/80 dark:border-slate-800 text-center space-y-4 animate-in zoom-in-95 duration-150">
+            <div className="w-12 h-12 bg-rose-100 dark:bg-rose-950/60 text-rose-600 dark:text-rose-400 rounded-full flex items-center justify-center mx-auto text-xl font-bold">
               ⚠️
             </div>
-            <h3 className="font-extrabold text-slate-900 text-base">¿Reiniciar Evaluación?</h3>
-            <p className="text-xs text-slate-500 font-medium leading-relaxed">
+            <h3 className="font-extrabold text-slate-900 dark:text-white text-base">¿Reiniciar Evaluación?</h3>
+            <p className="text-xs text-slate-600 dark:text-slate-400 font-medium leading-relaxed">
               Se borrarán tus respuestas guardadas y calificación actual. Deberás responder las {examQuestions.length} preguntas desde el principio.
             </p>
             <div className="flex gap-2 justify-center pt-2">
               <button
                 onClick={() => setShowResetConfirm(false)}
-                className="px-4 py-2 bg-slate-100 text-slate-700 text-xs font-bold rounded-full hover:bg-slate-200 transition cursor-pointer"
+                className="px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-bold rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition cursor-pointer"
               >
                 Cancelar
               </button>
@@ -329,15 +331,15 @@ const FinalExamModal: React.FC<FinalExamModalProps> = ({ course, onClose }) => {
 
       {/* Alerta de Validación (Preguntas Incompletas) */}
       {showValidationAlert && (
-        <div className="fixed inset-0 bg-slate-950/40 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white p-6 rounded-2xl max-w-sm w-full shadow-2xl border border-slate-100 text-center space-y-4 animate-in zoom-in-95 duration-150">
-            <div className="w-12 h-12 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center mx-auto text-xl font-bold">
+        <div className="fixed inset-0 bg-slate-950/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl max-w-sm w-full shadow-2xl border border-slate-200/80 dark:border-slate-800 text-center space-y-4 animate-in zoom-in-95 duration-150">
+            <div className="w-12 h-12 bg-amber-100 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 rounded-full flex items-center justify-center mx-auto text-xl font-bold">
               📝
             </div>
-            <h3 className="font-extrabold text-slate-900 text-base">Preguntas Pendientes</h3>
-            <p className="text-xs text-slate-500 font-medium leading-relaxed">
+            <h3 className="font-extrabold text-slate-900 dark:text-white text-base">Preguntas Pendientes</h3>
+            <p className="text-xs text-slate-600 dark:text-slate-400 font-medium leading-relaxed">
               Por favor responde las {examQuestions.length} preguntas antes de entregar el examen. 
-              Has respondido <span className="font-bold text-slate-900">{totalAnswered} de {examQuestions.length}</span>.
+              Has respondido <span className="font-bold text-slate-900 dark:text-white">{totalAnswered} de {examQuestions.length}</span>.
             </p>
             <button
               onClick={() => setShowValidationAlert(false)}
