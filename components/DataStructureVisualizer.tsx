@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 
 export type VisualizerMode =
   | 'sorting'
@@ -10,7 +10,8 @@ export type VisualizerMode =
   | 'bigo'
   | 'hash-table'
   | 'dp-grid'
-  | 'bloom-filter';
+  | 'bloom-filter'
+  | 'ram-memory';
 
 interface DataStructureVisualizerProps {
   initialMode?: VisualizerMode;
@@ -28,7 +29,7 @@ export const DataStructureVisualizer: React.FC<DataStructureVisualizerProps> = (
       case 1:
         return 'bigo';
       case 2:
-        return 'binary-search';
+        return 'ram-memory';
       case 3:
         return 'linked-list';
       case 4:
@@ -53,10 +54,16 @@ export const DataStructureVisualizer: React.FC<DataStructureVisualizerProps> = (
         return 'graph-traversal';
       case 16:
         return 'dp-grid';
+      case 17:
+        return 'dp-grid';
+      case 18:
+        return 'bst-tree';
       case 19:
         return 'bloom-filter';
+      case 20:
+        return 'hash-table';
       default:
-        return 'sorting';
+        return 'bigo';
     }
   };
 
@@ -480,6 +487,197 @@ export const DataStructureVisualizer: React.FC<DataStructureVisualizerProps> = (
     );
   };
 
+
+  // ----------------------------------------------------
+  // 8. MEMORIA RAM & ARREGLOS DINÁMICOS STATE
+  // ----------------------------------------------------
+  const [ramArray, setRamArray] = useState<number[]>([10, 25, 40]);
+  const [ramCapacity, setRamCapacity] = useState<number>(4);
+  const [ramInput, setRamInput] = useState<string>('88');
+  const [ramResizedNotice, setRamResizedNotice] = useState<string | null>(null);
+  const [ramViewMode, setRamViewMode] = useState<'contiguous' | 'linked'>('contiguous');
+
+  const handleRamInsert = () => {
+    const val = parseInt(ramInput) || Math.floor(Math.random() * 90 + 10);
+    if (ramArray.length >= ramCapacity) {
+      const nextCap = ramCapacity * 2;
+      setRamCapacity(nextCap);
+      setRamArray([...ramArray, val]);
+      setRamResizedNotice(`¡Capacidad superada (${ramArray.length}/${ramCapacity})! Se reservó un nuevo bloque contiguo de ${nextCap} celdas en RAM y se copiaron los elementos. Costo amortizado por inserción: O(1).`);
+    } else {
+      setRamArray([...ramArray, val]);
+      setRamResizedNotice(null);
+    }
+  };
+
+  const handleRamPop = () => {
+    if (ramArray.length > 0) {
+      setRamArray(ramArray.slice(0, -1));
+      setRamResizedNotice(null);
+    }
+  };
+
+  // ----------------------------------------------------
+  // 9. RECORRIDO EN GRAFOS (BFS & DFS) STATE
+  // ----------------------------------------------------
+  const GRAPH_NODES: Record<string, { label: string; x: number; y: number; neighbors: string[] }> = {
+    A: { label: 'A', x: 200, y: 35, neighbors: ['B', 'C'] },
+    B: { label: 'B', x: 90, y: 120, neighbors: ['A', 'D', 'E'] },
+    C: { label: 'C', x: 310, y: 120, neighbors: ['A', 'F'] },
+    D: { label: 'D', x: 45, y: 220, neighbors: ['B'] },
+    E: { label: 'E', x: 145, y: 220, neighbors: ['B', 'F'] },
+    F: { label: 'F', x: 340, y: 220, neighbors: ['C', 'E'] },
+  };
+
+  const [graphAlgorithm, setGraphAlgorithm] = useState<'BFS' | 'DFS'>('BFS');
+  const [graphCurrentNode, setGraphCurrentNode] = useState<string | null>(null);
+  const [graphVisited, setGraphVisited] = useState<string[]>([]);
+  const [graphFrontier, setGraphFrontier] = useState<string[]>(['A']);
+  const [graphFinished, setGraphFinished] = useState<boolean>(false);
+  const [graphLog, setGraphLog] = useState<string>("Inicia desde el nodo raíz 'A'.");
+
+  const handleResetGraph = () => {
+    setGraphCurrentNode(null);
+    setGraphVisited([]);
+    setGraphFrontier(['A']);
+    setGraphFinished(false);
+    setGraphLog(`Listo para iniciar recorrido con ${graphAlgorithm} desde el nodo 'A'.`);
+  };
+
+  const handleGraphStep = () => {
+    if (graphFinished || graphFrontier.length === 0) {
+      setGraphFinished(true);
+      setGraphLog(`Recorrido ${graphAlgorithm} finalizado. Todos los nodos alcanzables fueron visitados.`);
+      return;
+    }
+
+    const nextFrontier = [...graphFrontier];
+    const curr = graphAlgorithm === 'BFS' ? nextFrontier.shift()! : nextFrontier.pop()!;
+    setGraphCurrentNode(curr);
+
+    const newVisited = graphVisited.includes(curr) ? graphVisited : [...graphVisited, curr];
+    setGraphVisited(newVisited);
+
+    const unvisitedNeighbors = GRAPH_NODES[curr].neighbors.filter(
+      (n) => !newVisited.includes(n) && !nextFrontier.includes(n)
+    );
+
+    const updatedFrontier = graphAlgorithm === 'BFS'
+      ? [...nextFrontier, ...unvisitedNeighbors]
+      : [...nextFrontier, ...unvisitedNeighbors.slice().reverse()];
+
+    setGraphFrontier(updatedFrontier);
+
+    if (updatedFrontier.length === 0 && newVisited.length === Object.keys(GRAPH_NODES).length) {
+      setGraphFinished(true);
+      setGraphLog(`🎉 Nodo '${curr}' procesado. ¡Recorrido ${graphAlgorithm} completado!`);
+    } else {
+      setGraphLog(
+        `Visitando nodo '${curr}'. ` +
+        (unvisitedNeighbors.length > 0
+          ? `Encolando vecinos [${unvisitedNeighbors.join(', ')}] en la ${graphAlgorithm === 'BFS' ? 'Cola FIFO' : 'Pila LIFO'}.`
+          : 'Sin vecinos nuevos no explorados.')
+      );
+    }
+  };
+
+  // ----------------------------------------------------
+  // 10. PROGRAMACIÓN DINÁMICA (MOCHILA 0/1) STATE
+  // ----------------------------------------------------
+  interface DPItem {
+    name: string;
+    weight: number;
+    value: number;
+  }
+  const DP_ITEMS: DPItem[] = [
+    { name: 'Laptop', weight: 3, value: 50 },
+    { name: 'Teléfono', weight: 1, value: 30 },
+    { name: 'Cámara', weight: 2, value: 40 },
+    { name: 'Auriculares', weight: 1, value: 15 },
+  ];
+  const DP_CAPACITY = 4;
+
+  const [dpActiveCell, setDpActiveCell] = useState<{ i: number; w: number }>({ i: 2, w: 3 });
+
+  const dpMatrix = useMemo(() => {
+    const N = DP_ITEMS.length;
+    const dp: number[][] = Array.from({ length: N + 1 }, () => Array(DP_CAPACITY + 1).fill(0));
+    for (let i = 1; i <= N; i++) {
+      const item = DP_ITEMS[i - 1];
+      for (let w = 0; w <= DP_CAPACITY; w++) {
+        if (item.weight <= w) {
+          dp[i][w] = Math.max(dp[i - 1][w], item.value + dp[i - 1][w - item.weight]);
+        } else {
+          dp[i][w] = dp[i - 1][w];
+        }
+      }
+    }
+    return dp;
+  }, []);
+
+  // ----------------------------------------------------
+  // 11. FILTRO DE BLOOM (BIG DATA & PROBABILÍSTICO) STATE
+  // ----------------------------------------------------
+  const BLOOM_SIZE = 16;
+  const [bloomBits, setBloomBits] = useState<boolean[]>(() => {
+    const arr = Array(BLOOM_SIZE).fill(false);
+    [3, 7, 11, 4, 9, 14].forEach((idx) => (arr[idx] = true));
+    return arr;
+  });
+  const [bloomAddedWords, setBloomAddedWords] = useState<string[]>(['google', 'cache']);
+  const [bloomInputWord, setBloomInputWord] = useState<string>('quimisell');
+  const [bloomTestWord, setBloomTestWord] = useState<string>('quimisell');
+  const [bloomTestResult, setBloomTestResult] = useState<string | null>(null);
+
+  const bloomHash1 = (str: string) => {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) hash = (hash + str.charCodeAt(i)) % BLOOM_SIZE;
+    return hash;
+  };
+  const bloomHash2 = (str: string) => {
+    let hash = 7;
+    for (let i = 0; i < str.length; i++) hash = (hash * 31 + str.charCodeAt(i)) % BLOOM_SIZE;
+    return hash;
+  };
+  const bloomHash3 = (str: string) => {
+    let hash = 13;
+    for (let i = 0; i < str.length; i++) hash = (hash * 17 + str.charCodeAt(i) * 3) % BLOOM_SIZE;
+    return (hash + BLOOM_SIZE) % BLOOM_SIZE;
+  };
+
+  const handleBloomInsert = () => {
+    const w = bloomInputWord.trim().toLowerCase();
+    if (!w) return;
+    const h1 = bloomHash1(w);
+    const h2 = bloomHash2(w);
+    const h3 = bloomHash3(w);
+    const newBits = [...bloomBits];
+    newBits[h1] = true;
+    newBits[h2] = true;
+    newBits[h3] = true;
+    setBloomBits(newBits);
+    if (!bloomAddedWords.includes(w)) {
+      setBloomAddedWords([...bloomAddedWords, w]);
+    }
+    setBloomInputWord('');
+  };
+
+  const handleBloomTest = () => {
+    const w = bloomTestWord.trim().toLowerCase();
+    if (!w) return;
+    const h1 = bloomHash1(w);
+    const h2 = bloomHash2(w);
+    const h3 = bloomHash3(w);
+    const match1 = bloomBits[h1];
+    const match2 = bloomBits[h2];
+    const match3 = bloomBits[h3];
+    if (match1 && match2 && match3) {
+      setBloomTestResult(`⚠️ Posiblemente en el conjunto (Bits [${h1}, ${h2}, ${h3}] activos en 1). Podría ser falso positivo.`);
+    } else {
+      setBloomTestResult(`✅ DEFINITIVAMENTE NO ESTÁ EN EL CONJUNTO (El bit ${!match1 ? h1 : !match2 ? h2 : h3} está en 0). 0% falsos negativos.`);
+    }
+  };
+
   return (
     <div className="bg-slate-900 text-slate-100 rounded-3xl p-4 sm:p-6 lg:p-8 border border-slate-800 shadow-2xl relative overflow-hidden transition-all duration-300">
       {/* Top Header & Visualizer Mode Bar */}
@@ -506,13 +704,17 @@ export const DataStructureVisualizer: React.FC<DataStructureVisualizerProps> = (
         {/* Mode Selector Dropdown / Pills */}
         <div className="flex items-center gap-1.5 overflow-x-auto scroll-touch pb-1">
           {[
+            { id: 'bigo', label: '📈 Sandbox Big-O' },
+            { id: 'ram-memory', label: '💾 Memoria RAM & Punteros' },
+            { id: 'linked-list', label: '🔗 Lista Enlazada' },
+            { id: 'stack-queue', label: '🥞 Pila & Cola' },
+            { id: 'hash-table', label: '🗝️ Tabla Hash' },
+            { id: 'bst-tree', label: '🌳 Árbol BST & AVL' },
             { id: 'sorting', label: '📊 Ordenamiento' },
             { id: 'binary-search', label: '🔍 Búsqueda Binaria' },
-            { id: 'stack-queue', label: '🥞 Pila & Cola' },
-            { id: 'linked-list', label: '🔗 Lista Enlazada' },
-            { id: 'bst-tree', label: '🌳 Árbol BST' },
-            { id: 'hash-table', label: '🗝️ Tabla Hash' },
-            { id: 'bigo', label: '📈 Sandbox Big-O' },
+            { id: 'graph-traversal', label: '🕸️ Grafos (BFS/DFS)' },
+            { id: 'dp-grid', label: '🧮 Programación Dinámica' },
+            { id: 'bloom-filter', label: '🌸 Filtro de Bloom' },
           ].map((item) => (
             <button
               key={item.id}
@@ -1210,6 +1412,453 @@ export const DataStructureVisualizer: React.FC<DataStructureVisualizerProps> = (
           </div>
         </div>
       )}
+
+      {/* ---------------------------------------------------- */}
+      {/* MODE 8: RAM MEMORY & POINTERS                        */}
+      {/* ---------------------------------------------------- */}
+      {mode === 'ram-memory' && (
+        <div className="space-y-6">
+          <div className="flex flex-wrap items-center justify-between gap-3 bg-slate-800/60 p-4 rounded-2xl border border-slate-700/60">
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => setRamViewMode('contiguous')}
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition ${
+                  ramViewMode === 'contiguous' ? 'bg-indigo-600 text-white shadow-md' : 'bg-slate-700 text-slate-300'
+                }`}
+              >
+                📦 Arreglo Contiguo (Caché L1 Friendly)
+              </button>
+              <button
+                onClick={() => setRamViewMode('linked')}
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition ${
+                  ramViewMode === 'linked' ? 'bg-purple-600 text-white shadow-md' : 'bg-slate-700 text-slate-300'
+                }`}
+              >
+                ⛓️ Punteros Dispersos en Heap
+              </button>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <input
+                type="number"
+                value={ramInput}
+                onChange={(e) => setRamInput(e.target.value)}
+                placeholder="Valor"
+                className="w-20 px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 text-xs text-white outline-none focus:ring-2 focus:ring-indigo-500 font-mono"
+              />
+              <button
+                onClick={handleRamInsert}
+                className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white transition cursor-pointer"
+              >
+                + Push Elemento
+              </button>
+              <button
+                onClick={handleRamPop}
+                className="px-3 py-1.5 rounded-xl text-xs font-bold bg-rose-600 hover:bg-rose-500 text-white transition cursor-pointer"
+              >
+                - Pop
+              </button>
+            </div>
+          </div>
+
+          {ramResizedNotice && (
+            <div className="p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl text-xs text-amber-300 flex items-center gap-2 animate-in fade-in">
+              <span>⚡</span>
+              <span>{ramResizedNotice}</span>
+            </div>
+          )}
+
+          {/* RAM Visualization Strip */}
+          <div className="bg-slate-950 p-6 rounded-2xl border border-slate-800 space-y-4">
+            <div className="flex items-center justify-between text-xs text-slate-400 font-mono">
+              <span>Dirección Base RAM: <strong className="text-indigo-400">0x7FFE_0040</strong></span>
+              <span>Longitud: <strong className="text-white">{ramArray.length}</strong> / Capacidad: <strong className="text-emerald-400">{ramCapacity}</strong></span>
+            </div>
+
+            {ramViewMode === 'contiguous' ? (
+              <div className="space-y-3">
+                <div className="grid grid-cols-4 sm:grid-cols-8 gap-2">
+                  {Array.from({ length: ramCapacity }).map((_, idx) => {
+                    const hasVal = idx < ramArray.length;
+                    const hexAddr = '0x' + (0x7ffe0040 + idx * 4).toString(16).toUpperCase();
+                    return (
+                      <div
+                        key={idx}
+                        className={`p-3 rounded-xl border flex flex-col items-center justify-between transition-all ${
+                          hasVal
+                            ? 'bg-gradient-to-b from-indigo-950/70 to-slate-900 border-indigo-500/60 shadow-md shadow-indigo-500/20'
+                            : 'bg-slate-900/40 border-dashed border-slate-800 opacity-60'
+                        }`}
+                      >
+                        <span className="text-[9px] font-mono text-slate-500">{hexAddr}</span>
+                        <span className="text-base sm:text-lg font-black font-mono my-2 text-white">
+                          {hasVal ? ramArray[idx] : '—'}
+                        </span>
+                        <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded ${
+                          hasVal ? 'bg-indigo-500/20 text-indigo-300' : 'bg-slate-800 text-slate-500'
+                        }`}>
+                          arr[{idx}]
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+                <div className="text-[11px] text-slate-400 flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 inline-block"></span>
+                  <span><strong>Localidad Espacial Óptima:</strong> La CPU carga toda la línea de caché (64 bytes) de una vez, logrando lecturas en <strong>~1-3 ns (Caché L1)</strong>.</span>
+                </div>
+              </div>
+            ) : (
+              <div className="space-y-3">
+                <div className="flex flex-wrap items-center gap-3">
+                  {ramArray.map((val, idx) => {
+                    const nodeAddr = '0x' + (0x10a000 + idx * 0x3f0).toString(16).toUpperCase();
+                    const nextAddr = idx < ramArray.length - 1 ? '0x' + (0x10a000 + (idx + 1) * 0x3f0).toString(16).toUpperCase() : 'NULL';
+                    return (
+                      <div key={idx} className="flex items-center gap-2">
+                        <div className="bg-purple-950/60 border border-purple-500/60 p-3 rounded-xl flex flex-col font-mono text-xs">
+                          <span className="text-[9px] text-slate-400">Dir: {nodeAddr}</span>
+                          <span className="text-base font-bold text-white my-1">data: {val}</span>
+                          <span className="text-[10px] text-purple-300">next: {nextAddr}</span>
+                        </div>
+                        {idx < ramArray.length - 1 && (
+                          <span className="text-purple-400 font-bold text-lg">➔</span>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+                <div className="text-[11px] text-slate-400 flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-amber-400 inline-block"></span>
+                  <span><strong>Penalización por Punteros:</strong> Cada nodo reside en una página arbitraria de memoria. El procesador sufre <strong>Cache Misses (~60-100 ns en RAM física)</strong> por cada salto de puntero.</span>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* ---------------------------------------------------- */}
+      {/* MODE 9: GRAPH TRAVERSAL (BFS & DFS)                  */}
+      {/* ---------------------------------------------------- */}
+      {mode === 'graph-traversal' && (
+        <div className="space-y-6">
+          <div className="flex flex-wrap items-center justify-between gap-3 bg-slate-800/60 p-4 rounded-2xl border border-slate-700/60">
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => { setGraphAlgorithm('BFS'); handleResetGraph(); }}
+                className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition ${
+                  graphAlgorithm === 'BFS' ? 'bg-cyan-600 text-white shadow-md' : 'bg-slate-700 text-slate-300'
+                }`}
+              >
+                🌊 BFS (Anchura · Cola FIFO)
+              </button>
+              <button
+                onClick={() => { setGraphAlgorithm('DFS'); handleResetGraph(); }}
+                className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition ${
+                  graphAlgorithm === 'DFS' ? 'bg-rose-600 text-white shadow-md' : 'bg-slate-700 text-slate-300'
+                }`}
+              >
+                🧗 DFS (Profundidad · Pila LIFO)
+              </button>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <button
+                onClick={handleGraphStep}
+                disabled={graphFinished}
+                className="px-4 py-1.5 rounded-xl text-xs font-bold bg-indigo-600 hover:bg-indigo-500 disabled:opacity-40 text-white transition cursor-pointer"
+              >
+                Paso a Paso ➔
+              </button>
+              <button
+                onClick={handleResetGraph}
+                className="px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-700 hover:bg-slate-600 text-slate-300 transition cursor-pointer"
+              >
+                Reiniciar
+              </button>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {/* SVG Graph Canvas */}
+            <div className="lg:col-span-2 bg-slate-950 p-4 rounded-2xl border border-slate-800 flex items-center justify-center relative min-h-[300px]">
+              <svg className="w-full max-w-[420px] h-[280px]" viewBox="0 0 400 270">
+                {/* Edges */}
+                <line x1={GRAPH_NODES.A.x} y1={GRAPH_NODES.A.y} x2={GRAPH_NODES.B.x} y2={GRAPH_NODES.B.y} stroke="#334155" strokeWidth="2.5" />
+                <line x1={GRAPH_NODES.A.x} y1={GRAPH_NODES.A.y} x2={GRAPH_NODES.C.x} y2={GRAPH_NODES.C.y} stroke="#334155" strokeWidth="2.5" />
+                <line x1={GRAPH_NODES.B.x} y1={GRAPH_NODES.B.y} x2={GRAPH_NODES.D.x} y2={GRAPH_NODES.D.y} stroke="#334155" strokeWidth="2.5" />
+                <line x1={GRAPH_NODES.B.x} y1={GRAPH_NODES.B.y} x2={GRAPH_NODES.E.x} y2={GRAPH_NODES.E.y} stroke="#334155" strokeWidth="2.5" />
+                <line x1={GRAPH_NODES.C.x} y1={GRAPH_NODES.C.y} x2={GRAPH_NODES.F.x} y2={GRAPH_NODES.F.y} stroke="#334155" strokeWidth="2.5" />
+                <line x1={GRAPH_NODES.E.x} y1={GRAPH_NODES.E.y} x2={GRAPH_NODES.F.x} y2={GRAPH_NODES.F.y} stroke="#334155" strokeWidth="2.5" strokeDasharray="4 4" />
+
+                {/* Nodes */}
+                {Object.entries(GRAPH_NODES).map(([id, n]) => {
+                  const isCurrent = graphCurrentNode === id;
+                  const isVisited = graphVisited.includes(id);
+                  const inFrontier = graphFrontier.includes(id);
+
+                  let fillColor = '#1e293b';
+                  let strokeColor = '#475569';
+                  if (isCurrent) {
+                    fillColor = '#f59e0b';
+                    strokeColor = '#fbbf24';
+                  } else if (isVisited) {
+                    fillColor = '#10b981';
+                    strokeColor = '#34d399';
+                  } else if (inFrontier) {
+                    fillColor = '#6366f1';
+                    strokeColor = '#818cf8';
+                  }
+
+                  return (
+                    <g key={id}>
+                      <circle
+                        cx={n.x}
+                        cy={n.y}
+                        r="18"
+                        fill={fillColor}
+                        stroke={strokeColor}
+                        strokeWidth="3"
+                        className="transition-all duration-300"
+                      />
+                      <text
+                        x={n.x}
+                        y={n.y + 5}
+                        textAnchor="middle"
+                        fill="#ffffff"
+                        fontSize="13"
+                        fontWeight="bold"
+                        fontFamily="monospace"
+                      >
+                        {id}
+                      </text>
+                    </g>
+                  );
+                })}
+              </svg>
+            </div>
+
+            {/* Frontier & Execution Status */}
+            <div className="space-y-4">
+              <div className="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-3 text-xs">
+                <span className="font-bold text-slate-300 block">
+                  {graphAlgorithm === 'BFS' ? '📥 Cola FIFO (Frontier)' : '📚 Pila LIFO (Call Stack)'}:
+                </span>
+                <div className="flex gap-1.5 flex-wrap min-h-[32px] items-center">
+                  {graphFrontier.length === 0 ? (
+                    <span className="text-slate-500 font-mono italic">Vacía</span>
+                  ) : (
+                    graphFrontier.map((n, i) => (
+                      <span key={i} className="px-2.5 py-1 rounded-lg bg-indigo-950 border border-indigo-700 text-indigo-300 font-mono font-bold">
+                        {n}
+                      </span>
+                    ))
+                  )}
+                </div>
+
+                <span className="font-bold text-slate-300 block pt-2 border-t border-slate-800">
+                  ✅ Historial de Visita:
+                </span>
+                <div className="flex gap-1.5 flex-wrap min-h-[32px] items-center">
+                  {graphVisited.length === 0 ? (
+                    <span className="text-slate-500 font-mono italic">Ninguno</span>
+                  ) : (
+                    graphVisited.map((n, i) => (
+                      <span key={i} className="px-2.5 py-1 rounded-lg bg-emerald-950 border border-emerald-700 text-emerald-300 font-mono font-bold">
+                        {n}
+                      </span>
+                    ))
+                  )}
+                </div>
+              </div>
+
+              <div className="p-3 bg-slate-800/80 rounded-xl border border-slate-700 text-xs text-slate-300 leading-relaxed font-mono">
+                {graphLog}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ---------------------------------------------------- */}
+      {/* MODE 10: DYNAMIC PROGRAMMING (0/1 KNAPSACK)          */}
+      {/* ---------------------------------------------------- */}
+      {mode === 'dp-grid' && (
+        <div className="space-y-6">
+          <div className="flex flex-wrap items-center justify-between gap-3 bg-slate-800/60 p-4 rounded-2xl border border-slate-700/60">
+            <div>
+              <h4 className="text-sm font-bold text-white">Problema de la Mochila 0/1 (Knapsack DP)</h4>
+              <p className="text-xs text-slate-400">
+                Capacidad máxima W = 4 kg. Haz clic en cualquier celda para inspeccionar la decisión óptima.
+              </p>
+            </div>
+            <span className="px-3 py-1 rounded-xl bg-violet-500/20 text-violet-300 border border-violet-500/30 font-mono text-xs font-bold">
+              Complejidad: O(N · W)
+            </span>
+          </div>
+
+          <div className="bg-slate-950 p-4 sm:p-6 rounded-2xl border border-slate-800 overflow-x-auto">
+            <table className="w-full text-xs font-mono border-collapse">
+              <thead>
+                <tr className="border-b border-slate-800 text-slate-400">
+                  <th className="p-2 text-left">Ítem / Peso</th>
+                  {Array.from({ length: DP_CAPACITY + 1 }).map((_, w) => (
+                    <th key={w} className="p-2 text-center">Cap = {w}kg</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b border-slate-900 bg-slate-900/40 text-slate-500">
+                  <td className="p-2 font-bold">Base (Sin ítems)</td>
+                  {Array.from({ length: DP_CAPACITY + 1 }).map((_, w) => (
+                    <td key={w} className="p-2 text-center">0</td>
+                  ))}
+                </tr>
+                {DP_ITEMS.map((item, iIdx) => {
+                  const row = iIdx + 1;
+                  return (
+                    <tr key={item.name} className="border-b border-slate-800/60 hover:bg-slate-900/40">
+                      <td className="p-2 text-white font-bold whitespace-nowrap">
+                        {item.name} <span className="text-slate-400 font-normal">({item.weight}kg, ${item.value})</span>
+                      </td>
+                      {Array.from({ length: DP_CAPACITY + 1 }).map((_, w) => {
+                        const val = dpMatrix[row][w];
+                        const isSelected = dpActiveCell.i === row && dpActiveCell.w === w;
+                        return (
+                          <td
+                            key={w}
+                            onClick={() => setDpActiveCell({ i: row, w })}
+                            className={`p-2 text-center cursor-pointer transition-all rounded-lg font-bold ${
+                              isSelected
+                                ? 'bg-indigo-600 text-white scale-110 shadow-lg shadow-indigo-500/30 ring-2 ring-indigo-400'
+                                : 'text-slate-300 hover:bg-slate-800'
+                            }`}
+                          >
+                            ${val}
+                          </td>
+                        );
+                      })}
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+
+            {/* Active Cell Formula Explanation */}
+            <div className="mt-4 p-4 bg-indigo-950/40 border border-indigo-900/60 rounded-xl text-xs space-y-2">
+              <span className="font-bold text-indigo-300 block">
+                Subproblema Seleccionado: Celda dp[{dpActiveCell.i}][{dpActiveCell.w}] (${dpMatrix[dpActiveCell.i][dpActiveCell.w]})
+              </span>
+              <p className="text-slate-300 leading-relaxed font-mono text-[11px]">
+                Fórmula de Bellman: <code>dp[i][w] = max(dp[i-1][w], valor + dp[i-1][w - peso])</code>
+                <br />
+                Evita recalcular 2ⁿ combinaciones evaluando cada capacidad solo una vez en la matriz.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ---------------------------------------------------- */}
+      {/* MODE 11: BLOOM FILTER (BIG DATA PROBABILISTIC)       */}
+      {/* ---------------------------------------------------- */}
+      {mode === 'bloom-filter' && (
+        <div className="space-y-6">
+          <div className="flex flex-wrap items-center justify-between gap-3 bg-slate-800/60 p-4 rounded-2xl border border-slate-700/60">
+            <div>
+              <h4 className="text-sm font-bold text-white">Filtro de Bloom (Arreglo de Bits Probabilístico)</h4>
+              <p className="text-xs text-slate-400">
+                Arreglo de 16 bits con 3 funciones hash independientes (h₁, h₂, h₃).
+              </p>
+            </div>
+            <span className="px-3 py-1 rounded-xl bg-pink-500/20 text-pink-300 border border-pink-500/30 font-mono text-xs font-bold">
+              Espacio: O(m) · Consulta: O(k)
+            </span>
+          </div>
+
+          {/* 16-Bit Array Visual */}
+          <div className="bg-slate-950 p-6 rounded-2xl border border-slate-800 space-y-4">
+            <span className="text-xs text-slate-400 font-mono block">Arreglo de Bits en RAM (m = 16):</span>
+            <div className="grid grid-cols-8 sm:grid-cols-16 gap-1.5">
+              {bloomBits.map((bit, idx) => (
+                <div
+                  key={idx}
+                  className={`p-2.5 rounded-xl border flex flex-col items-center justify-between transition-all ${
+                    bit
+                      ? 'bg-pink-600/30 border-pink-500 text-pink-200 shadow-md shadow-pink-500/20'
+                      : 'bg-slate-900 border-slate-800 text-slate-600'
+                  }`}
+                >
+                  <span className="text-[9px] font-mono opacity-60">[{idx}]</span>
+                  <span className="text-base font-black font-mono my-0.5">{bit ? '1' : '0'}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex items-center gap-2 text-xs text-slate-400 pt-2">
+              <span>Palabras insertadas:</span>
+              {bloomAddedWords.map((w) => (
+                <span key={w} className="px-2 py-0.5 rounded-md bg-slate-800 text-pink-300 font-mono font-bold">
+                  {w}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Controls: Insert & Query */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Insert Word */}
+            <div className="bg-slate-900 p-4 rounded-2xl border border-slate-800 space-y-3">
+              <span className="text-xs font-bold text-white block">1. Insertar Elemento</span>
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  value={bloomInputWord}
+                  onChange={(e) => setBloomInputWord(e.target.value)}
+                  placeholder="Ej: bitcoin, postgres..."
+                  className="w-full px-3 py-1.5 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white outline-none focus:ring-2 focus:ring-pink-500 font-mono"
+                />
+                <button
+                  onClick={handleBloomInsert}
+                  className="px-4 py-1.5 rounded-xl text-xs font-bold bg-pink-600 hover:bg-pink-500 text-white transition cursor-pointer shrink-0"
+                >
+                  + Hashear
+                </button>
+              </div>
+              <p className="text-[11px] text-slate-400">
+                Calcula 3 posiciones en el arreglo y conmuta sus bits a <strong>1</strong>.
+              </p>
+            </div>
+
+            {/* Test Word */}
+            <div className="bg-slate-900 p-4 rounded-2xl border border-slate-800 space-y-3">
+              <span className="text-xs font-bold text-white block">2. Comprobar Pertenencia</span>
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  value={bloomTestWord}
+                  onChange={(e) => setBloomTestWord(e.target.value)}
+                  placeholder="Palabra a verificar..."
+                  className="w-full px-3 py-1.5 rounded-xl bg-slate-950 border border-slate-700 text-xs text-white outline-none focus:ring-2 focus:ring-emerald-500 font-mono"
+                />
+                <button
+                  onClick={handleBloomTest}
+                  className="px-4 py-1.5 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white transition cursor-pointer shrink-0"
+                >
+                  🔍 Consultar
+                </button>
+              </div>
+              {bloomTestResult && (
+                <div className="p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs font-mono">
+                  {bloomTestResult}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 };

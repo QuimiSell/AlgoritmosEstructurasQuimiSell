@@ -1,3 +1,285 @@
+
+function getAlgorithmsModulePedagogy(moduleId: number): PedagogyData {
+  switch (moduleId) {
+    case 1:
+      return {
+        level0Metaphor:
+          "Buscar a alguien en una libreta de un millón de nombres: hojear página por página es O(n) (tiempo lineal); abrirla por la mitad una y otra vez es O(log n) (tiempo logarítmico: solo 20 pasos); si tienes un índice directo, es O(1) (tiempo constante).",
+        level0Rule:
+          "Big-O nunca mide segundos de reloj (el hardware varía), sino cómo crece el número de operaciones de CPU cuando el tamaño de entrada (n) se multiplica por millones.",
+        intermediateArchitecture:
+          "Ciclos de instrucción y cuello de botella de Von Neumann: Un algoritmo O(n²) para n=100,000 colapsa la CPU ejecutando 10¹⁰ instrucciones (~100 segundos de cómputo ininterrumpido), mientras que O(n log n) ejecuta ~1.6×10⁶ instrucciones (~0.002 segundos).",
+        intermediatePitfalls:
+          "Ignorar las constantes ocultas en algoritmos teóricos: un algoritmo O(n) con constante oculta c=5,000 puede ser en la práctica más lento que un O(n log n) con c=2 para arreglos pequeños.",
+        universityTheory:
+          "Definición formal asintótica con límites de Cauchy: f(n) ∈ O(g(n)) ⟺ ∃ c > 0, n₀ > 0 : 0 ≤ f(n) ≤ c · g(n)  ∀ n ≥ n₀. Cotas complementarias Ω(g(n)) (cota inferior) y Θ(g(n)) (cota ajustada exacta).",
+        universityFormula: "f(n) = O(g(n)) ⟺ lim sup_{n ➔ ∞} (f(n) / g(n)) < ∞",
+        industryCase:
+          "Google descarta terminantemente revisiones de código que contengan algoritmos cuadráticos O(n²) en flujos de indexación, ya que procesar 10 millones de URLs llevaría 27 horas en lugar de milisegundos.",
+      };
+
+    case 2:
+      return {
+        level0Metaphor:
+          "La memoria RAM es una hilera infinita de casilleros numerados con candados idénticos. Un arreglo contiguo ocupa casilleros contiguos (101, 102, 103...), por lo que el cartero va directo al casillero base + índice sin buscar.",
+        level0Rule:
+          "Acceder a arr[i] es O(1) porque el procesador calcula la dirección física directamente con una multiplicación en hardware: Dir = Base + (i × TamañoElemento).",
+        intermediateArchitecture:
+          "Líneas de Caché L1/L2 (64 bytes) y Localidad Espacial: Al acceder a arr[0], el controlador de memoria carga en un solo ciclo los 16 enteros adyacentes en la memoria caché ultrarrápida del procesador (~1 ns de latencia).",
+        intermediatePitfalls:
+          "Confundir capacidad con longitud en arreglos dinámicos (std::vector / ArrayList / slices). Al sobrepasar la capacidad, el motor debe reservar un nuevo bloque contiguo de tamaño doble (2×) y copiar todos los elementos en O(n).",
+        universityTheory:
+          "Análisis Amortizado por el Método del Crédito Bancario: Aunque duplicar la capacidad cuesta O(n), ocurre tan infrecuentemente (cada 2^k inserciones) que el costo promedio distribuido por inserción es estrictamente O(1).",
+        universityFormula: "Costo Amortizado = \\hat{c}_i = c_i + \\Phi(D_i) - \\Phi(D_{i-1}) = O(1)",
+        industryCase:
+          "El motor V8 de Node.js y Google Chrome almacena arreglos numéricos puros como bloques de memoria plana (PACKED_ELEMENTS) para maximizar instrucciones vectoriales SIMD de la CPU.",
+      };
+
+    case 3:
+      return {
+        level0Metaphor:
+          "Una lista enlazada es una búsqueda del tesoro: cada pista (nodo) tiene un pergamino con el valor y un mapa que señala dónde está escondida la siguiente pista en algún lugar remoto de la isla.",
+        level0Rule:
+          "Insertar al inicio o eliminar un nodo sabiendo su referencia es O(1) instantáneo: solo cambias la flecha del puntero sin mover de lugar a ningún otro elemento de la memoria.",
+        intermediateArchitecture:
+          "Fragmentación del Heap y Cache Misses: Cada nodo de la lista se crea con malloc/new en páginas distantes de RAM. Seguir un puntero 'next' fuerza a la CPU a esperar entre 60 y 100 ns por cada salto debido a fallas de caché L3.",
+        intermediatePitfalls:
+          "Pérdida de referencias y fugas de memoria (Memory Leaks): Si reasignas el puntero de la cabeza antes de conectar el nuevo nodo (head = new_node sin hacer new_node.next = head), el resto de la lista queda inaccesible en el Heap.",
+        universityTheory:
+          "Invariantes de Listas Doblemente Enlazadas y Centinelas (Dummy Nodes): Uso de nodos fantasma 'head' y 'tail' para eliminar todos los casos especiales (lista vacía, inserción en extremos) y garantizar código sin condicionales if-else.",
+        universityFormula: "Invariante: \\forall x \\neq \\text{tail}, \\; x.\\text{next}.\\text{prev} = x",
+        industryCase:
+          "El planificador del kernel de Linux (CFS) y la caché LRU (Least Recently Used) de Redis utilizan listas doblemente enlazadas circulares para reubicar nodos en tiempo O(1) estricto.",
+      };
+
+    case 4:
+      return {
+        level0Metaphor:
+          "Una Pila (Stack) es una torre de platos limpios: el último que lavas es el primero que tomas (LIFO). Una Cola (Queue) es la fila del banco: la primera persona en llegar es la primera en ser atendida (FIFO).",
+        level0Rule:
+          "La Pila gobierna el pasado (cómo retroceder o deshacer Ctrl+Z); la Cola gobierna el futuro (el orden estricto de tareas pendientes por procesar).",
+        intermediateArchitecture:
+          "Call Stack del Procesador y Registros RSP/RBP: Cada llamada a función empuja un Stack Frame con sus variables locales y la dirección de retorno. Si una función se llama recursivamente sin límite, agota los 1-8 MB del Stack causando Stack Overflow.",
+        intermediatePitfalls:
+          "Implementar una cola usando un arreglo simple desplazando con arr.shift() o list.pop(0): desplazar todos los elementos a la izquierda cuesta O(n). En producción debe usarse un arreglo circular (Ring Buffer) o una lista enlazada.",
+        universityTheory:
+          "Teorema de Autómatas de Pila (PDA): Las pilas son computacionalmente equivalentes a los lenguajes libres de contexto (Chomsky Nivel 2). Permiten evaluar expresiones aritméticas en notación postfija (Algoritmo Shunting-yard de Dijkstra).",
+        universityFormula: "LIFO: \\text{Pop}(\\text{Push}(S, x)) = S \\; \\land \\; \\text{Top} = x",
+        industryCase:
+          "Kafka, RabbitMQ y AWS SQS procesan billones de mensajes diarios estructurados estrictamente como Colas Distribuidas (FIFO) con semántica de entrega garantizada.",
+      };
+
+    case 5:
+      return {
+        level0Metaphor:
+          "Una Tabla Hash es el casillero de un hotel con 100 casilleros: cuando llegas con tu apellido 'García', una fórmula matemática calcula al instante casillero = 42 y el recepcionista va directo sin revisar los otros 99.",
+        level0Rule:
+          "Acceso, inserción y eliminación en O(1) tiempo promedio gracias a la conversión matemática de la clave alfanumérica en un índice numérico entero.",
+        intermediateArchitecture:
+          "Estrategias de Colisión: Encadenamiento Separado (listas enlazadas por bucket) vs Direccionamiento Abierto (Linear/Quadratic Probing). Factor de Carga α = n / m: si supera 0.75, la tabla debe hacer Rehash duplicando m.",
+        intermediatePitfalls:
+          "Ataques de Denegación de Servicio por Colisión (HashDoS): Atacantes maliciosos envían miles de claves diseñadas para chocar en el mismo bucket, degradando el rendimiento de O(1) a O(n) y saturando el servidor web.",
+        universityTheory:
+          "Familia de Hashing Universal y Dispersión Uniforme: Una familia H de funciones hash es universal si ∀ x ≠ y, P(h(x) = h(y)) ≤ 1/m. Algoritmos modernos como MurmurHash3 y SipHash protegen la integridad asintótica.",
+        universityFormula: "α = n / m ≤ 0.75 ⟹ E[Búsqueda] = 1 + α/2 = O(1)",
+        industryCase:
+          "PostgreSQL, Python 3 (SipHash-2-4) y Rust protegen sus diccionarios de ataques DoS asignando una semilla aleatoria (secret random seed) en cada inicio del proceso.",
+      };
+
+    case 6:
+      return {
+        level0Metaphor:
+          "La recursión es mirar entre dos espejos enfrentados: cada reflejo contiene al anterior ligeramente más pequeño, hasta que un reflejo final se topa con un muro opaco (el caso base) y la luz regresa por fin.",
+        level0Rule:
+          "Todo algoritmo recursivo requiere obligatoriamente dos componentes: un Caso Base ineludible (que no se llama a sí mismo) y un Paso Inductivo que reduce el tamaño del problema.",
+        intermediateArchitecture:
+          "Consumo del Call Stack y Optimización de Cola (Tail Call Optimization - TCO): Si la llamada recursiva es la última instrucción ejecutada, un compilador inteligente puede reutilizar el mismo Stack Frame sin consumir memoria adicional O(1).",
+        intermediatePitfalls:
+          "Recursión con subproblemas solapados (como Fibonacci ingenuo): calcular fib(40) repite millones de veces los mismos cálculos, disparando la complejidad a O(2ⁿ) y congelando el equipo.",
+        universityTheory:
+          "El Teorema Maestro para recurrencias divide y vencerás: T(n) = aT(n/b) + f(n). Clasifica formalmente la complejidad comparando f(n) con n^{log_b(a)} en tres casos cerrados.",
+        universityFormula: "T(n) = a · T(n/b) + Θ(n^k log^p n)",
+        industryCase:
+          "Los motores de ajedrez como Stockfish utilizan recursión con poda alfa-beta (Alpha-Beta Pruning) para explorar 70 millones de posiciones por segundo descartando ramas subóptimas.",
+      };
+
+    case 7:
+    case 8:
+      return {
+        level0Metaphor:
+          "Ordenar cartas en la mano: Insertion Sort toma cada carta nueva y la desliza hacia la izquierda hasta su lugar correcto. MergeSort divide el mazo en dos pilas iguales, ordena cada pila y las fusiona de vuelta como un cierre de cremallera.",
+        level0Rule:
+          "Los ordenamientos elementales son O(n²) para principiantes; los avanzados son O(n log n), el límite teórico insuperable para cualquier algoritmo basado en comparaciones.",
+        intermediateArchitecture:
+          "Estabilidad de Ordenamiento: Un algoritmo es estable si conserva el orden relativo original de elementos con claves idénticas. Vital en bases de datos para ordenar primero por apellido y luego por fecha.",
+        intermediatePitfalls:
+          "El peor caso O(n²) de QuickSort: Si el pivote elegido es siempre el mínimo o el máximo (e.g. en un arreglo ya ordenado), QuickSort degenera a particiones desbalanceadas 1 vs n-1.",
+        universityTheory:
+          "Teorema del Límite Inferior por Árboles de Decisión: Cualquier algoritmo de ordenamiento basado en comparaciones de dos elementos requiere al menos log₂(n!) = Ω(n log n) comparaciones en el peor caso.",
+        universityFormula: "log_2(n!) = ∑_{i=1}^n log_2(i) = Θ(n log n)",
+        industryCase:
+          "Python y Java utilizan Timsort (creado por Tim Peters), un híbrido de MergeSort y Insertion Sort que detecta tramos naturales ya ordenados logrando O(n) en arreglos pre-ordenados.",
+      };
+
+    case 9:
+      return {
+        level0Metaphor:
+          "Adivinar un número secreto entre 1 y 100: Si preguntas '¿Es 50?' y te dicen 'Mayor', descartas 50 posibilidades de un solo tiro. Con solo 7 preguntas puedes adivinar entre 100 números; con 30 preguntas, entre mil millones.",
+        level0Rule:
+          "Búsqueda Binaria requiere estrictamente que el arreglo esté ordenado. Cada comparación reduce el espacio de búsqueda exactamente a la mitad (log₂ n).",
+        intermediateArchitecture:
+          "Prevención del Bug Histórico de Java (Joshua Bloch): Escribir mid = (low + high) / 2 produce desbordamiento de enteros (Integer Overflow) para arreglos con más de 2³⁰ elementos. La fórmula correcta es mid = low + (high - low) / 2.",
+        intermediatePitfalls:
+          "Condición de parada en el bucle: Usar while (low < high) en lugar de while (low <= high) suele provocar que el algoritmo falle silenciosamente al buscar elementos en los bordes.",
+        universityTheory:
+          "Búsqueda Binaria sobre el Espacio de Respuestas: No solo busca elementos en arreglos, sino la solución óptima en problemas monótonos donde una función predicado f(x) cambia de True a False (e.g. capacidad mínima de envío).",
+        universityFormula: "Pasos Máximos = ⌈ log_2(n) ⌉",
+        industryCase:
+          "Git Bisect utiliza búsqueda binaria sobre el historial de commits (DAG linealizado) para aislar el commit exacto que introdujo un bug entre 50,000 commits en menos de 16 pruebas.",
+      };
+
+    case 10:
+    case 11:
+      return {
+        level0Metaphor:
+          "Un Árbol Binario de Búsqueda es un bibliotecario ordenado: todo libro con título menor al actual va a la estantería izquierda; todo libro mayor va a la derecha. Un árbol balanceado (AVL) reorganiza automáticamente las ramas para que ninguna crezca demasiado chueca.",
+        level0Rule:
+          "Invariante BST: izq.valor < nodo.valor < der.valor. Garantiza búsquedas en O(h), donde h es la altura del árbol.",
+        intermediateArchitecture:
+          "Riesgo de Degeneración a Lista: Insertar elementos ordenados [1, 2, 3, 4, 5] en un BST desbalanceado produce un árbol degenerado de altura h = n, degradando la búsqueda a O(n). Los árboles AVL aplican rotaciones para mantener h ≤ 1.44 log₂(n).",
+        intermediatePitfalls:
+          "Eliminación de un nodo con dos hijos: Debe sustituirse por su sucesor in-order (el mínimo del subárbol derecho) o predecesor in-order, y luego eliminar dicho sucesor sin romper los punteros.",
+        universityTheory:
+          "Factor de Balance AVL: Balance(N) = Altura(izq) - Altura(der) ∈ {-1, 0, 1}. Desbalances Left-Left y Right-Right se resuelven con rotación simple en O(1); Left-Right y Right-Left con rotación doble en O(1).",
+        universityFormula: "h_{AVL} < 1.4404 · log_2(n + 2) - 0.3277 = O(log n)",
+        industryCase:
+          "std::map de C++ y TreeMap de Java están implementados con Árboles Rojo-Negro (Red-Black Trees), una variante con reglas de balance ligeramente más laxas que reduce el número de rotaciones al insertar.",
+      };
+
+    case 12:
+      return {
+        level0Metaphor:
+          "Un Montículo (Heap) es la sala de urgencias de un hospital: no atiende por orden de llegada, sino que el paciente con mayor gravedad (prioridad máxima) siempre está en la cima listo para entrar a cirugía.",
+        level0Rule:
+          "Un Max-Heap garantiza que el nodo padre es siempre mayor o igual que sus hijos. La extracción del máximo es O(log n) y la consulta del tope es O(1).",
+        intermediateArchitecture:
+          "Almacenamiento Continuo en Arreglos sin Punteros: Un árbol binario completo se almacena limpiamente en un arreglo plano: padre = (i-1)//2, hijo_izq = 2i+1, hijo_der = 2i+2. Cero consumo extra en punteros de 64 bits.",
+        intermediatePitfalls:
+          "Construir un Heap insertando elementos uno a uno con n inserciones toma O(n log n). La construcción óptima (Algoritmo de Floyd / Heapify Bottom-Up) se ejecuta en tiempo lineal estricto O(n).",
+        universityTheory:
+          "Demostración de Build-Heap O(n) por Serie Aritmético-Geométrica: La mayoría de los nodos residen en las hojas (altura 0), por lo que la suma de alturas multiplicada por la cantidad de nodos a cada nivel converge a una constante 2n.",
+        universityFormula: "∑_{h=0}^{⌊log n⌋} (n / 2^{h+1}) · O(h) = O(2n) = O(n)",
+        industryCase:
+          "El algoritmo de Dijkstra para rutas de GPS y el planificador de hilos de Android utilizan Colas de Prioridad (Min-Heaps) para seleccionar el siguiente evento con menor timestamp en O(log n).",
+      };
+
+    case 13:
+    case 14:
+    case 15:
+      return {
+        level0Metaphor:
+          "Un Grafo es la red de vuelos mundiales: las ciudades son vértices (nodos) y los vuelos entre ellas son aristas (enlaces con distancia en km). BFS expande ondas concéntricas como una gota en agua; DFS explora un túnel hasta el final antes de retroceder.",
+        level0Rule:
+          "BFS usa una Cola FIFO y encuentra el camino con menor número de aristas. Dijkstra usa una Cola de Prioridad y encuentra el camino de menor costo ponderado en aristas con pesos positivos.",
+        intermediateArchitecture:
+          "Matriz de Adyacencia O(V²) vs Lista de Adyacencia O(V + E): En grafos dispersos del mundo real (donde cada usuario tiene ~500 amigos entre 3,000M), una matriz consumiría terabytes vacíos. Las listas de adyacencia son el estándar industrial.",
+        intermediatePitfalls:
+          "Ejecutar Dijkstra con aristas de peso negativo: Dijkstra asume codiciosamente que agregar aristas incrementa el costo. Con pesos negativos entra en bucles erróneos; se debe utilizar el Algoritmo de Bellman-Ford O(V · E).",
+        universityTheory:
+          "Lema del Apretón de Manos (Handshaking Lemma): En todo grafo no dirigido, la suma de los grados de todos los vértices es exactamente el doble del número de aristas: ∑ deg(v) = 2|E|. Por tanto, el número de vértices de grado impar es siempre par.",
+        universityFormula: "Dijkstra Complejidad = O((V + E) · log V)",
+        industryCase:
+          "Google Maps y Uber calculan rutas óptimas en tiempo real preprocesando la red vial con algoritmos de grafos basados en Jerarquías de Contracción (Contraction Hierarchies) acelerando Dijkstra a microsegundos.",
+      };
+
+    case 16:
+      return {
+        level0Metaphor:
+          "Escribir en una pizarra 1 + 1 + 1 + 1 = 4. Si añades '+ 1', no vuelves a contar los primeros cuatro desde cero: recuerdas que la suma daba 4 y le sumas 1 = 5. Eso es Programación Dinámica: recordar el pasado para no repetir trabajo.",
+        level0Rule:
+          "Transforma algoritmos de fuerza bruta exponenciales O(2ⁿ) en tiempos polinomiales O(n · k) guardando en una tabla (memo/dp) los resultados de subproblemas que se repiten.",
+        intermediateArchitecture:
+          "Top-Down con Memoización (Recursión + Hash/Arreglo) vs Bottom-Up con Tabulación (Bucles iterativos ordenados): Bottom-up evita el gasto del Call Stack y permite optimizar el espacio reteniendo solo las últimas filas (Space Optimization).",
+        intermediatePitfalls:
+          "Aplicar DP a problemas que no cumplen la Subestructura Óptima: Si la solución global óptima no puede construirse a partir de las soluciones óptimas de sus subproblemas, la ecuación de Bellman fallará.",
+        universityTheory:
+          "Ecuación de Recurrencia de Bellman y Principio de Optimalidad: Una política óptima tiene la propiedad de que, sean cuales sean el estado inicial y las decisiones tomadas, las decisiones restantes deben constituir una política óptima respecto al estado resultante.",
+        universityFormula: "dp[i][w] = max(dp[i-1][w], v_i + dp[i-1][w - w_i])",
+        industryCase:
+          "El algoritmo de Git Diff (LCS - Longest Common Subsequence) y el corrector ortográfico de Microsoft Word (Distancia de Levenshtein) utilizan matrices de programación dinámica cuadráticas.",
+      };
+
+    case 17:
+      return {
+        level0Metaphor:
+          "Dar cambio de dinero con monedas: Si debes devolver 37 centavos, tomas primero la moneda más grande posible (25¢), luego la siguiente (10¢), y luego dos de 1¢. Un algoritmo voraz toma la mejor decisión inmediata sin mirar atrás.",
+        level0Rule:
+          "Los algoritmos voraces (Greedy) eligen la opción localmente óptima en cada paso con la esperanza de alcanzar el óptimo global; solo funcionan cuando se demuestra matemáticamente la Propiedad de Elección Voraz.",
+        intermediateArchitecture:
+          "Compresión de Huffman en Sistemas de Archivos: Asigna códigos de longitud variable: las letras más frecuentes (como 'e' y 'a') reciben códigos binarios muy cortos (1 o 2 bits); las infrecuentes ('z', 'x') reciben códigos largos.",
+        intermediatePitfalls:
+          "La trampa de asumir que Greedy siempre funciona: Para monedas de denominaciones [1, 3, 4], dar cambio de 6 con Greedy daría 4 + 1 + 1 (3 monedas), cuando la solución óptima es 3 + 3 (2 monedas). Allí se requiere DP.",
+        universityTheory:
+          "Teoría de Matroides de Whitney: Una estructura algebraica (E, I) que cumple los axiomas de subconjuntos independientes garantiza formalmente que el algoritmo voraz encuentra el óptimo global.",
+        universityFormula: "Longitud Media = L = ∑_{i=1}^n p_i · l_i ≥ H(X) = -∑ p_i log_2 p_i",
+        industryCase:
+          "Los formatos de compresión ZIP, GZIP y JPEG utilizan Codificación de Huffman combinada con LZ77 para comprimir archivos multimedia sin pérdida de fidelidad.",
+      };
+
+    case 18:
+      return {
+        level0Metaphor:
+          "El teclado predictivo de tu teléfono: al escribir 'alg', el sistema navega un árbol de letras donde 'a' se conecta a 'l', y esta a 'g'. De ahí cuelgan 'algoritmo', 'álgebra' y 'algodón', mostrándote sugerencias instantáneas.",
+        level0Rule:
+          "Un Trie busca prefijos de palabras en tiempo O(L), donde L es la longitud de la palabra buscada, ¡completamente independiente de si el diccionario contiene 10 palabras o 10 millones!",
+        intermediateArchitecture:
+          "Árboles de Segmentos (Segment Trees) con Lazy Propagation: Permiten actualizar rangos de arreglos gigantes y consultar la suma, mínimo o máximo de un intervalo [L, R] en tiempo O(log n) en lugar de O(n).",
+        intermediatePitfalls:
+          "Consumo excesivo de memoria en Tries ingenuos: Si cada nodo contiene un arreglo de 26 o 256 punteros (la mayoría vacíos), un diccionario puede consumir cientos de megabytes. Se mitiga comprimiendo cadenas lineales (Radix Tree / Patricia Trie).",
+        universityTheory:
+          "Radix Tree y Fenwick Tree (Binary Indexed Tree): Un árbol de Fenwick almacena sumas acumuladas utilizando operaciones a nivel de bits con el bit menos significativo (i & -i), logrando actualizaciones y consultas en O(log n) con solo O(n) memoria plana.",
+        universityFormula: "Actualización Fenwick: i ← i + (i & -i)",
+        industryCase:
+          "El autocompletado del buscador de Google y las tablas de enrutamiento IP de los routers Cisco BGP utilizan Tries y Radix Trees para resolver prefijos de red a velocidad de hardware.",
+      };
+
+    case 19:
+      return {
+        level0Metaphor:
+          "El detector de metales del aeropuerto: Si pita, es posible que lleves una moneda o una hebilla (posible falsa alarma / falso positivo); pero si NO pita, el guardia tiene la certeza casi absoluta de que no llevas una barra de acero.",
+        level0Rule:
+          "Un Filtro de Bloom garantiza CERO falsos negativos: si dice que un elemento NO está, definitivamente no está. Si dice que SÍ está, existe una pequeña probabilidad calculable de falso positivo.",
+        intermediateArchitecture:
+          "Eficiencia Asombrosa de Memoria: Mientras una tabla hash requeriría almacenar cadenas completas (e.g. 50 bytes por URL), un Filtro de Bloom solo almacena un arreglo de bits compacto (~10 bits por elemento), reduciendo el uso de RAM en más del 95%.",
+        intermediatePitfalls:
+          "Los Filtros de Bloom tradicionales no permiten eliminar elementos (hacer delete): poner un bit en 0 podría romper el hash de otros elementos que compartan ese mismo bit. Para soportar borrados se usa un Counting Bloom Filter.",
+        universityTheory:
+          "Probabilidad Formal de Falsos Positivos: Dados m bits, n elementos y k funciones de hash independientes, la probabilidad de falso positivo p se minimiza cuando k = (m/n) · ln(2).",
+        universityFormula: "p ≈ (1 - e^{-kn/m})^k ;  k_{óptimo} = (m/n) · ln 2",
+        industryCase:
+          "Apache Cassandra, Google Bigtable y RocksDB consultan un Filtro de Bloom en memoria RAM antes de leer el disco SSD. Si el filtro dice que la fila no existe, se ahorra una costosa lectura mecánica de I/O.",
+      };
+
+    case 20:
+    default:
+      return {
+        level0Metaphor:
+          "Los cimientos de un rascacielos: los algoritmos y estructuras de datos no son un ejercicio académico aislado; son los pilares invisibles que sostienen las bases de datos de miles de millones de usuarios, los motores de IA y los kernels de sistemas operativos.",
+        level0Rule:
+          "La arquitectura de datos correcta supera a cualquier supercomputadora: un mal algoritmo O(n²) colapsa el centro de datos más potente, mientras que un buen diseño O(1) o O(log n) funciona sin esfuerzo en un dispositivo móvil.",
+        intermediateArchitecture:
+          "B+ Trees en Motores de Bases de Datos (PostgreSQL / MySQL InnoDB): Las ramas se mantienen amplias (factor de abanico fan-out de 100 a 1000) para que la altura del árbol sea de solo 3 o 4 niveles, minimizando los accesos a disco.",
+        intermediatePitfalls:
+          "Premature Optimization vs Arquitectura Escalable: Donald Knuth advertía sobre optimizaciones prematuras en código insignificante; sin embargo, elegir la estructura de datos incorrecta al inicio del sistema es un error de arquitectura irreparable.",
+        universityTheory:
+          "LSM-Trees (Log-Structured Merge-Trees) y Grafos de Computación (DAGs): Las bases NoSQL transforman escrituras aleatorias lentas en escrituras secuenciales en disco mediante MemTables en RAM y SSTables inmutables.",
+        universityFormula: "Profundidad B+Tree = h ≤ ⌈ log_{⌈m/2⌉} ((n+1)/2) ⌉ + 1",
+        industryCase:
+          "PyTorch y TensorFlow modelan modelos de redes neuronales como Grafos Acíclicos Dirigidos (DAGs) de tensores, ejecutando algoritmos de ordenamiento topológico y diferenciación automática para entrenar modelos LLM a escala petabyte.",
+      };
+  }
+}
+
 import React, { useState } from 'react';
 
 export type AcademicLevel = 'all' | 'level0' | 'intermediate' | 'university';
