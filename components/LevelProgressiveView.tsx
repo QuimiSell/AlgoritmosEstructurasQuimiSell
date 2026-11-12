@@ -1,4 +1,171 @@
 
+function getComputationalThinkingPedagogy(moduleId: number): PedagogyData {
+  switch (moduleId) {
+    case 1:
+      return {
+        level0Metaphor:
+          "Un arquitecto no empieza a colocar ladrillos a lo loco: primero inspecciona el terreno, entrevista a la familia y traza los planos. La ingeniería de software es exactamente igual: entender el problema real antes de picar código.",
+        level0Rule:
+          "El 80% del tiempo de un ingeniero se invierte en delimitar el problema y diseñar el proceso; el código es solo el resultado final.",
+        intermediateArchitecture:
+          "Descomposición Modular y Acoplamiento Débil: Diseñar subsistemas con interfaces de entrada y salida claras para que un fallo en la pasarela de pagos no congele el catálogo de productos.",
+        intermediatePitfalls:
+          "La trampa de asumir que el cliente sabe lo que quiere: no validar las restricciones iniciales lleva a construir software que nadie puede usar.",
+        universityTheory:
+          "Teoría General de Sistemas de Von Bertalanffy: Un sistema no es la simple suma de sus partes, sino la red de interacciones entre sus componentes y su entorno.",
+        universityFormula: "Sistema = \\langle Entidades, Relaciones, Fronteras, Entradas, Salidas \\rangle",
+        industryCase:
+          "En Amazon, los equipos escriben un documento de 6 páginas (PR/FAQ) especificando todo el producto antes de que un solo ingeniero escriba una sola línea de código.",
+      };
+    case 2:
+      return {
+        level0Metaphor:
+          "Escribir una receta de cocina en servilletas: si la receta dice claramente 'batir 3 huevos y agregar harina lentamente', cualquier cocinero podrá prepararla sin fallar.",
+        level0Rule:
+          "El pseudocódigo es el lenguaje universal del pensamiento algorítmico: si no lo puedes explicar en español estructurado, no lo puedes programar.",
+        intermediateArchitecture:
+          "Gramáticas Formales y Análisis Léxico: El pseudocódigo sigue una sintaxis simplificada que el cerebro humano procesa sin la sobrecarga de puntos y comas o llaves.",
+        intermediatePitfalls:
+          "Escribir pseudocódigo ambiguo que deja decisiones al aire (ej: 'repetir varias veces' en lugar de 'MIENTRAS i < total').",
+        universityTheory:
+          "Tesis de Church-Turing: Cualquier algoritmo computable puede ser expresado de forma determinista mediante una secuencia finita de pasos discretos.",
+        universityFormula: "Algoritmo = \\text{Secuencia Finita } (s_0, s_1, ..., s_k) \\text{ donde cada } s_i \\text{ es determinista}",
+        industryCase:
+          "En las entrevistas de Google y Meta, los evaluadores piden primero escribir la idea en pseudocódigo o diagrama en la pizarra antes de tocar el teclado.",
+      };
+    case 3:
+      return {
+        level0Metaphor:
+          "Una variable es una caja etiquetada con cinta adhesiva donde guardas algo. La etiqueta dice 'edad' y adentro hay un papel que dice '25'.",
+        level0Rule:
+          "Una variable no es el valor, es la dirección con nombre que le permite a tu programa encontrar el valor en la memoria RAM.",
+        intermediateArchitecture:
+          "Alineación en Memoria y Tipos Primitivos: Un entero de 32 bits ocupa 4 bytes contiguos; un double IEEE 754 ocupa 8 bytes. Operaciones bitwise permiten empaquetar múltiples banderas booleanas en un solo byte.",
+        intermediatePitfalls:
+          "El error de coerción implícita de tipos (5 == '5'): sumar un número con un string produce concatenación silenciosa ('10' + 2 = '102').",
+        universityTheory:
+          "Sistemas de Tipos de Curry-Howard: Los tipos en lenguajes de programación son equivalentes a proposiciones lógicas, y los programas son demostraciones matemáticas de dichas proposiciones.",
+        universityFormula: "IEEE 754: \\text{Valor} = (-1)^s \\times (1 + \\text{Mantisa}) \\times 2^{(\\text{Exponente} - 1023)}",
+        industryCase:
+          "El misil Ariane 5 de la Agencia Espacial Europea explotó en 1996 a los 37 segundos del despegue debido a un desbordamiento de conversión de entero de 64 bits a 16 bits sin validación.",
+      };
+    case 4:
+      return {
+        level0Metaphor:
+          "Un semáforo en una autopista: si la luz es roja, te detienes; si es verde, avanzas. Las bifurcaciones permiten que tu programa elija caminos distintos según las condiciones del momento.",
+        level0Rule:
+          "Usa Guard Clauses para validar errores primero y retornar temprano, eliminando la pirámide de la muerte de if/else anidados.",
+        intermediateArchitecture:
+          "Predicción de Bifurcaciones en la CPU (Branch Prediction): El procesador anticipa qué rama del 'if' se ejecutará. Si el código falla la predicción (Branch Misprediction), la CPU debe vaciar su pipeline de instrucciones perdiendo ~15-20 ciclos de reloj.",
+        intermediatePitfalls:
+          "Evaluación perezosa mal comprendida: confiar en que una segunda condición se evalúe cuando la primera ya causó un cortocircuito.",
+        universityTheory:
+          "Álgebra de Boole y Tablas de Verdad: Simplificación de compuertas lógicas mediante las Leyes de De Morgan: !(A && B) == !A || !B.",
+        universityFormula: "\\neg(A \\land B) \\iff \\neg A \\lor \\neg B ; \\quad \\neg(A \\lor B) \\iff \\neg A \\land \\neg B",
+        industryCase:
+          "Los motores de bases de datos como SQLite optimizan sus consultas reordenando las condiciones del WHERE para evaluar primero las más restrictivas y reducir el tiempo de CPU.",
+      };
+    case 5:
+      return {
+        level0Metaphor:
+          "La cinta transportadora de una fábrica: revisa una por una 10,000 botellas para asegurarse de que tengan tapa. Si alguna no tiene, la aparta.",
+        level0Rule:
+          "Todo bucle debe tener garantizada su condición de salida; de lo contrario, tu aplicación consumirá el 100% de la CPU en un bucle infinito.",
+        intermediateArchitecture:
+          "Desenrollado de Bucles (Loop Unrolling) por Compiladores: Compiladores como GCC y Clang transforman bucles pequeños en secuencias de instrucciones planas para evitar saltos en el Program Counter y aprovechar instrucciones SIMD.",
+        intermediatePitfalls:
+          "Errores de 'Off-by-One' (desfase por uno): iterar hasta i <= arr.length en lugar de i < arr.length, provocando un error de índice fuera de rango.",
+        universityTheory:
+          "Invariantes de Bucle y Demostración de Terminación de Floyd: Una propiedad lógica que es verdadera antes de la primera iteración, se mantiene verdadera después de cada paso, y demuestra la corrección del resultado al finalizar.",
+        universityFormula: "\\{P \\land C\\} \\; S \\; \\{P\\} \\implies \\{P\\} \\; \\text{while } C \\text{ do } S \\; \\{P \\land \\neg C\\}",
+        industryCase:
+          "El framework React utiliza reconciliación de listas con 'keys' únicas para iterar y actualizar únicamente los nodos del DOM que cambiaron, evitando repintar toda la pantalla.",
+      };
+    case 6:
+      return {
+        level0Metaphor:
+          "Un operario en una estación de ensamblaje: busca la pieza en el estante (Fetch), lee el manual para saber qué herramienta usar (Decode), y aprieta el tornillo con la máquina (Execute).",
+        level0Rule:
+          "Toda instrucción que escribes en código termina convertida en pulsos binarios ejecutados por la ALU y los registros de la CPU a la velocidad de la luz.",
+        intermediateArchitecture:
+          "El Data Path de Von Neumann: El Program Counter (PC) apunta a la siguiente instrucción, el Registro de Instrucción (IR) la retiene, la Unidad de Control genera señales de control, y los buses de direcciones y datos conectan la CPU con la RAM.",
+        intermediatePitfalls:
+          "El cuello de botella de Von Neumann: La velocidad de procesamiento de la CPU supera enormemente el ancho de banda del bus que la conecta a la RAM, forzando a la CPU a esperar datos.",
+        universityTheory:
+          "Arquitectura RISC vs CISC: Conjuntos de instrucciones reducidos de longitud fija (ARM/RISC-V) frente a instrucciones complejas de longitud variable (x86-64).",
+        universityFormula: "\\text{Tiempo CPU} = \\text{Instrucciones} \\times \\text{CPI (Ciclos por Instrucción)} \\times \\text{Tiempo de Ciclo de Reloj}",
+        industryCase:
+          "Los procesadores Apple Silicon (M1/M2/M3/M4) y los servidores Graviton de AWS adoptaron la arquitectura ARM por su Data Path de bajo consumo y alta eficiencia energética.",
+      };
+    case 7:
+      return {
+        level0Metaphor:
+          "Tener un cuaderno de notas en tu mano (0.5 segundos) vs ir a la biblioteca de tu colonia a buscar un libro (5 minutos) vs mandar una carta a otro país en barco (8 años).",
+        level0Rule:
+          "Los registros y la caché L1 son ultrarrápidos pero minúsculos; la RAM es amplia pero lenta; el disco y la red son gigantescos pero astronómicamente lentos.",
+        intermediateArchitecture:
+          "El Call Stack y los Stack Frames: Cada función apila registros RSP/RBP con sus variables primitivas locales. Al retornar, la CPU solo decrementa el puntero RSP en 0 ciclos, liberando la memoria al instante sin recolector de basura.",
+        intermediatePitfalls:
+          "Fuga de memoria (Memory Leak) en el Heap: Crear objetos o suscribirse a eventos y nunca desreferenciarlos, saturando la RAM hasta que el sistema operativo mata el proceso (OOM Killer).",
+        universityTheory:
+          "Principio de Localidad de Referencia de Denning: Programas bien diseñados exhiben Localidad Temporal (reutilizan datos usados recientemente) y Localidad Espacial (usan datos contiguos en memoria).",
+        universityFormula: "\\text{Tiempo Medio de Acceso (AMAT)} = \\text{Hit Time} + (\\text{Miss Rate} \\times \\text{Miss Penalty})",
+        industryCase:
+          "Bases de datos en memoria como Redis guardan todo en RAM para responder en microsegundos, usando el disco únicamente como respaldo persistente asíncrono.",
+      };
+    case 8:
+      return {
+        level0Metaphor:
+          "Una tostadora de pan: le metes una rebanada de pan (parámetro), aplica calor (proceso interno), y sale una tostada crujiente (retorno). No mancha la mesa ni modifica la cafetera.",
+        level0Rule:
+          "Escribe funciones puras: que dependan únicamente de sus parámetros de entrada y no alteren variables globales externas.",
+        intermediateArchitecture:
+          "Convención de Llamadas ABI (Application Binary Interface): En x86-64, los primeros 6 parámetros de una función se pasan directamente en registros ultra-rápidos (RDI, RSI, RDX, RCX, R8, R9), evitando tocar la RAM.",
+        intermediatePitfalls:
+          "Efectos secundarios silenciosos (Side Effects): Pasar un objeto a una función y modificar sus propiedades internas, alterando el estado en otras partes no relacionadas de la app.",
+        universityTheory:
+          "Cálculo Lambda de Alonzo Church: Fundamento matemático de las funciones puras donde el cómputo se expresa mediante la aplicación y abstracción de funciones sin estado mutable.",
+        universityFormula: "f: X \\to Y \\quad \\text{donde} \\quad \\forall x_1 = x_2 \\implies f(x_1) = f(x_2)",
+        industryCase:
+          "Redux en React y los microservicios 'Serverless' en AWS Lambda basan su arquitectura entera en funciones puras sin estado para escalar horizontalmente a millones de peticiones.",
+      };
+    case 9:
+      return {
+        level0Metaphor:
+          "El paracaídas de emergencia de un avión: no lo usas para volar, pero si un motor falla a 10,000 metros, te salva la vida en lugar de estrellarte.",
+        level0Rule:
+          "El manejo defensivo de errores no es para ocultar bugs; es para atrapar fallos esperados (red caída, datos corruptos) y recuperarse con dignidad.",
+        intermediateArchitecture:
+          "Desenrollado de Pila en Excepciones (Stack Unwinding): Cuando se lanza un error ('throw'), el runtime de JS/Python destruye los Stack Frames uno a uno buscando el bloque 'catch' más cercano.",
+        intermediatePitfalls:
+          "Capturar excepciones con 'catch(e) {}' vacío: silenciar los errores impide que los ingenieros sepan por qué se cayó el sistema en producción.",
+        universityTheory:
+          "Manejo de Errores por Monadas (Result / Either): En lenguajes modernos como Rust, los errores no son excepciones invisibles, sino valores explícitos Result<T, E> que el compilador te obliga a manejar.",
+        universityFormula: "\\text{Result}\\langle T, E \\rangle = \\text{Ok}(T) \\mid \\text{Err}(E)",
+        industryCase:
+          "Sistemas de misión crítica como los de la NASA y Stripe aplican 'Fail-Fast' y manejo estricto de excepciones: si un dato no cumple las invariantes, se rechaza de inmediato antes de procesar pagos.",
+      };
+    case 10:
+    default:
+      return {
+        level0Metaphor:
+          "El control de calidad de una fábrica de autos: antes de que el vehículo salga a la calle, se prueban los frenos, las luces y la resistencia en caso de choque para certificar que resistirá el mundo real.",
+        level0Rule:
+          "Un buen ingeniero no confía ciegamente en el código generado por IA; audita la seguridad, comprueba casos borde y escribe pruebas que certifiquen el funcionamiento.",
+        intermediateArchitecture:
+          "Auditoría Estática y Dinámica de Sistemas: Comprobar la coherencia de tipos, la validación de límites, la ausencia de variables globales y la resiliencia ante entradas maliciosas.",
+        intermediatePitfalls:
+          "Aceptar código que pasa la prueba 'del camino feliz' pero colapsa cuando el usuario ingresa strings vacíos, números negativos o caracteres especiales.",
+        universityTheory:
+          "Verificación Formal de Software y Pruebas de Propiedades (Property-Based Testing): Demostrar que un sistema cumple sus especificaciones para todo el dominio de entradas posibles.",
+        universityFormula: "\\forall x \\in \\text{Dominio}, \\quad \\text{Invariante}(f(x)) = \\text{True}",
+        industryCase:
+          "En OpenAI, Google y Microsoft, los ingenieros utilizan herramientas automáticas de auditoría y benchmarks de evaluación para certificar que el código generado por modelos LLM no contenga brechas de seguridad.",
+      };
+  }
+}
+
+
 function getAlgorithmsModulePedagogy(moduleId: number): PedagogyData {
   switch (moduleId) {
     case 1:
@@ -508,22 +675,12 @@ function getCoursePedagogy(courseId: string, moduleId: number): PedagogyData {
           'Equipos de Red Team y Blue Team en instituciones financieras auditan periódicamente su infraestructura contra el marco MITRE ATT&CK para neutralizar campañas avanzadas (APTs).',
       };
 
-    default: // algoritmos
-      return {
-        level0Metaphor:
-          'Un algoritmo es una receta precisa: si sigues los pasos en orden con los ingredientes adecuados, siempre obtienes el mismo resultado perfecto. La estructura de datos es el recipiente de cocina donde guardas los ingredientes para encontrarlos al instante.',
-        level0Rule:
-          'Medir operaciones en función del tamaño de entrada (n) te permite predecir si tu código sobrevivirá cuando tu app pase de 10 a 10 millones de usuarios.',
-        intermediateArchitecture:
-          'Representación en memoria RAM y CPU: Arreglos contiguos optimizan la memoria caché L1/L2; listas enlazadas flexibilizan inserciones pero fragmentan el Heap. Elige según la proporción de lecturas vs escrituras.',
-        intermediatePitfalls:
-          'Olvidar los casos borde: colecciones vacías (null/undefined), un solo elemento, índices fuera de rango y desbordamiento aritmético de enteros (Integer Overflow).',
-        universityTheory:
-          'Demostración formal asintótica con límites y constantes c, n₀. Teorema Maestro para recurrencias divide y vencerás T(n) = aT(n/b) + f(n).',
-        universityFormula: 'f(n) = O(g(n)) ⟺ ∃ c > 0, n₀ > 0 : 0 ≤ f(n) ≤ c · g(n)  ∀ n ≥ n₀',
-        industryCase:
-          'Motores de bases de datos como PostgreSQL y MySQL InnoDB estructuran sus índices en B+ Trees para garantizar lecturas en tiempo logarítmico minimizando los costosos accesos mecánicos a disco.',
-      };
+    case 'pensamiento_computacional':
+      return getComputationalThinkingPedagogy(moduleId);
+    case 'algoritmos':
+      return getAlgorithmsModulePedagogy(moduleId);
+    default:
+      return getComputationalThinkingPedagogy(moduleId);
   }
 }
 

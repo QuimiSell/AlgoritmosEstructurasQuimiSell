@@ -1,5 +1,6 @@
 import { Course } from '../domain/models';
 import { COURSE_STUDY_ORDER } from '../constants/site';
+import { COMPUTATIONAL_THINKING_COURSE } from './computationalThinkingCourse';
 import { ALGORITHMS_COURSE } from './algorithmsCourse';
 import { ALGORITHMIC_COMPLEXITY_COURSE } from './algorithmicComplexityCourse';
 import { MATH_COURSE } from './mathCourse';
@@ -15,6 +16,7 @@ import { EVALUACION_IA_COURSE } from './evaluacionIaCourse';
 import { ANDROID_KOTLIN_COURSE } from './androidKotlinCourse';
 
 const ALL_COURSES_MAP: Record<string, Course> = {
+  pensamiento_computacional: COMPUTATIONAL_THINKING_COURSE,
   matematica: MATH_COURSE,
   algoritmos: ALGORITHMS_COURSE,
   complejidad_algoritmica: ALGORITHMIC_COMPLEXITY_COURSE,
@@ -38,6 +40,7 @@ export const COURSES: Course[] = COURSE_STUDY_ORDER.map(
 export const COURSES_MAP: Record<string, Course> = ALL_COURSES_MAP;
 
 export {
+  COMPUTATIONAL_THINKING_COURSE,
   ALGORITHMS_COURSE,
   ALGORITHMIC_COMPLEXITY_COURSE,
   KALI_LINUX_COURSE,

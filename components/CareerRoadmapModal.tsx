@@ -27,6 +27,7 @@ const CAREER_TRACKS: Track[] = [
     color: 'from-blue-600 to-indigo-600',
     description: 'De la lógica discreta y estructuras de datos elementales al Teorema Maestro y compiladores formales.',
     courses: [
+      { id: 'pensamiento_computacional', role: 'Paso 0: Inicio', focus: 'Pensamiento, pseudocódigo y Data Path' },
       { id: 'matematica', role: 'Paso 1: Fundamento', focus: 'Lógica booleana, conjuntos y cálculo' },
       { id: 'algoritmos', role: 'Paso 2: Core', focus: '20 módulos: RAM, BST, Grafos y DP' },
       { id: 'complejidad_algoritmica', role: 'Paso 3: Asintótica', focus: 'Big-O, Master Theorem y FLOPs' },

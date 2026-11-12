@@ -17,6 +17,7 @@ interface HomePageProps {
 
 function getCourseCategory(courseId: string): 'cs' | 'ai' | 'security' | 'dev' {
   switch (courseId) {
+    case 'pensamiento_computacional':
     case 'matematica':
     case 'algoritmos':
     case 'complejidad_algoritmica':
@@ -111,7 +112,7 @@ export const HomePage: React.FC<HomePageProps> = ({
 
           {/* Subtítulo */}
           <p className="text-base sm:text-lg md:text-xl text-slate-300 font-medium leading-relaxed max-w-3xl mx-auto">
-            13 materias universitarias completas con más de 150 módulos interactivos, simuladores en tiempo real, entornos de ejecución en vivo y preparación rigurosa para entrevistas Big Tech.
+            14 materias universitarias completas con más de 160 módulos interactivos, simuladores en tiempo real, entornos de ejecución en vivo y preparación rigurosa para entrevistas Big Tech.
           </p>
 
           {/* Barra de Acciones Principales */}
@@ -120,7 +121,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               href="#catalogo"
               className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-extrabold px-6 py-3.5 rounded-2xl shadow-lg shadow-indigo-600/30 transition active:scale-95 flex items-center gap-2 cursor-pointer text-sm"
             >
-              <span>🚀 Explorar los 13 Cursos</span>
+              <span>🚀 Explorar los 14 Cursos</span>
             </a>
 
             <button
@@ -214,7 +215,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               </span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mt-1">
-              Catálogo de los 13 Cursos Universitarios
+              Catálogo de los 14 Cursos Universitarios
             </h2>
             <p className="text-sm text-slate-500 dark:text-slate-400 mt-1 max-w-2xl font-medium">
               Selecciona una materia para iniciar su contenido pedagógico por niveles, experimentar en los simuladores interactivos o ejecutar pruebas de código en vivo.
@@ -462,7 +463,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               4 Especializaciones de Carrera Sugeridas
             </h2>
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-              Organizamos las 13 materias para prepararte con precisión según tu objetivo profesional.
+              Organizamos las 14 materias para prepararte con precisión según tu objetivo profesional.
             </p>
           </div>
           <button
@@ -479,7 +480,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             {
               title: 'Computer Science Core',
               icon: '🧠',
-              courses: 'Matemática, Algoritmos, Complejidad, Autómatas',
+              courses: 'Pensamiento, Matemática, Algoritmos, Complejidad',
               role: 'Fundamento Ingenieril',
             },
             {
@@ -526,7 +527,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           ¿Listo para transformar tu perfil técnico al nivel de las Big Tech?
         </h2>
         <p className="text-slate-300 text-sm max-w-lg mx-auto font-medium">
-          Elige cualquiera de los 13 cursos universitarios y comienza a aprender hoy mismo con explicaciones visuales y código en vivo.
+          Elige cualquiera de los 14 cursos universitarios y comienza a aprender hoy mismo con explicaciones visuales y código en vivo.
         </p>
         <div className="pt-2">
           <a

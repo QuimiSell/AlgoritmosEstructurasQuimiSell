@@ -37,6 +37,11 @@ import { useMenuDismiss } from './hooks/useMenuDismiss';
 import { parseUrlRoute, buildRouteUrl, LearningTab } from './hooks/useUrlRouting';
 
 function polishedSidebarActiveClass(courseId: string, modId: number): string {
+  if (courseId === 'pensamiento_computacional') {
+    if (modId <= 5) return 'bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-950/50 dark:to-orange-950/40 text-amber-800 dark:text-amber-200 shadow-md ring-1 ring-amber-200 dark:ring-amber-800';
+    if (modId <= 8) return 'bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-indigo-950/50 dark:to-blue-950/40 text-indigo-800 dark:text-indigo-200 shadow-md ring-1 ring-indigo-200 dark:ring-indigo-800';
+    return 'bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-950/50 dark:to-teal-950/40 text-emerald-800 dark:text-emerald-200 shadow-md ring-1 ring-emerald-200 dark:ring-emerald-800';
+  }
   if (courseId === 'algoritmos') {
     if (modId <= 4) return 'bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-950/50 dark:to-teal-950/40 text-emerald-800 dark:text-emerald-200 shadow-md ring-1 ring-emerald-200 dark:ring-emerald-800';
     if (modId <= 12) return 'bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/50 dark:to-indigo-950/40 text-blue-800 dark:text-blue-200 shadow-md ring-1 ring-blue-200 dark:ring-blue-800';
@@ -61,6 +66,11 @@ function polishedSidebarActiveClass(courseId: string, modId: number): string {
 }
 
 function polishedMobileActiveClass(courseId: string, modId: number): string {
+  if (courseId === 'pensamiento_computacional') {
+    if (modId <= 5) return 'bg-amber-600 text-white shadow-md';
+    if (modId <= 8) return 'bg-indigo-600 text-white shadow-md';
+    return 'bg-emerald-600 text-white shadow-md';
+  }
   if (courseId === 'algoritmos') {
     if (modId <= 4) return 'bg-emerald-600 text-white shadow-md';
     if (modId <= 12) return 'bg-indigo-600 text-white shadow-md';
@@ -81,6 +91,11 @@ function polishedMobileActiveClass(courseId: string, modId: number): string {
 }
 
 function moduleTrackLabel(courseId: string, modId: number): string {
+  if (courseId === 'pensamiento_computacional') {
+    if (modId <= 5) return 'Nivel 0: Lógica & Pseudocódigo';
+    if (modId <= 8) return 'Nivel 1: Data Path & Hardware';
+    return 'Nivel 2: Resiliencia & Auditoría IA';
+  }
   if (courseId === 'algoritmos') {
     if (modId <= 4) return 'Nivel 0: Fundamentos & RAM';
     if (modId <= 9) return 'Nivel Intermedio: Algoritmia';
@@ -390,7 +405,7 @@ const App: React.FC = () => {
                       <span className="text-base">🏠</span>
                       <div className="flex flex-col min-w-0">
                         <span>Ver Catálogo Completo</span>
-                        <span className="text-[9px] text-indigo-700 dark:text-indigo-300 font-medium">Página de inicio · 13 materias</span>
+                        <span className="text-[9px] text-indigo-700 dark:text-indigo-300 font-medium">Página de inicio · 14 materias</span>
                       </div>
                     </button>
                    <span className="sticky top-0 z-10 block px-3 py-1.5 text-[8px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest border-b border-slate-100 dark:border-slate-800 mb-1 bg-white dark:bg-slate-900">
@@ -487,7 +502,7 @@ const App: React.FC = () => {
                 >
                   <span className="text-lg">🏠</span>
                   <div className="flex flex-col min-w-0">
-                    <span>Catálogo Principal (13 Cursos)</span>
+                    <span>Catálogo Principal (14 Cursos)</span>
                     <span className={`text-[10px] font-medium ${isHomeView ? 'text-indigo-100' : 'text-slate-400'}`}>Página de inicio, filtros y métricas</span>
                   </div>
                 </button>
@@ -612,7 +627,7 @@ const App: React.FC = () => {
             >
               <span className="text-indigo-600 dark:text-indigo-400 group-hover:-translate-x-0.5 transition-transform font-black">←</span>
               <span>Volver al Catálogo</span>
-              <span className="ml-auto text-[10px] text-slate-400">13 Cursos</span>
+              <span className="ml-auto text-[10px] text-slate-400">14 Cursos</span>
             </button>
             <div className="px-3 mb-4">
               <span className="text-[9px] font-extrabold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/60 px-2 py-1 rounded-md uppercase tracking-wider block w-max mb-1">

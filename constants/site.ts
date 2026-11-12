@@ -18,6 +18,7 @@ export const SITE = {
 
 /** Orden recomendado del plan de estudios (1 = empezar aquí). */
 export const COURSE_STUDY_ORDER: readonly string[] = [
+  'pensamiento_computacional',
   'algoritmos',
   'complejidad_algoritmica',
   'matematica',

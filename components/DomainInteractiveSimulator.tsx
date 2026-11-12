@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import DataStructureVisualizer from './DataStructureVisualizer';
 import KaliTerminalSimulator from './KaliTerminalSimulator';
+import DataPathSimulator from './DataPathSimulator';
 
 interface DomainInteractiveSimulatorProps {
   courseId: string;
@@ -136,6 +137,10 @@ export const DomainInteractiveSimulator: React.FC<DomainInteractiveSimulatorProp
   const [activityState, setActivityState] = useState<string>('onResume');
 
   // ROUTE PER COURSE
+  if (courseId === 'pensamiento_computacional') {
+    return <DataPathSimulator moduleId={moduleId} />;
+  }
+
   if (courseId === 'algoritmos') {
     return <DataStructureVisualizer moduleId={moduleId} />;
   }
