@@ -4,6 +4,7 @@ import { COURSES_MAP, COURSES } from '../courses';
 export type LearningTab = 'all' | 'simulator' | 'playground' | 'theory' | 'quiz';
 
 export interface RouteState {
+  isHome: boolean;
   courseId: string;
   moduleId: number;
   tab: LearningTab;
@@ -31,7 +32,7 @@ const ALIASES: Record<string, string> = {
 
 export function parseUrlRoute(): RouteState {
   if (typeof window === 'undefined') {
-    return { courseId: 'algoritmos', moduleId: 1, tab: 'all' };
+    return { isHome: true, courseId: 'algoritmos', moduleId: 1, tab: 'all' };
   }
 
   const path = window.location.pathname.toLowerCase();
@@ -44,7 +45,8 @@ export function parseUrlRoute(): RouteState {
 
   // 1. Parse Path (/curso/algoritmos/modulo/3 or /curso/algoritmos)
   const pathParts = path.split('/').filter(Boolean);
-  if (pathParts[0] === 'curso' || pathParts[0] === 'course') {
+  const hasCourseInPath = pathParts[0] === 'curso' || pathParts[0] === 'course';
+  if (hasCourseInPath) {
     if (pathParts[1]) {
       detectedCourse = pathParts[1];
     }
@@ -91,7 +93,20 @@ export function parseUrlRoute(): RouteState {
     detectedCourse = ALIASES[detectedCourse];
   }
 
-  // Validate course exists in COURSES_MAP
+  const hasCourseInQuery = Boolean(qCourse);
+  const hasCourseInHash = Boolean(hash && hash.includes('curso'));
+  const isExplicitHome =
+    path === '/' ||
+    path === '' ||
+    path === '/inicio' ||
+    path === '/catalogo' ||
+    searchParams.has('inicio') ||
+    searchParams.has('catalogo') ||
+    searchParams.has('home');
+
+  const isHome = isExplicitHome || (!hasCourseInPath && !hasCourseInQuery && !hasCourseInHash && !detectedCourse);
+
+  // Validate course exists in COURSES_MAP (or fallback)
   if (!COURSES_MAP[detectedCourse]) {
     detectedCourse = 'algoritmos';
   }
@@ -102,13 +117,17 @@ export function parseUrlRoute(): RouteState {
   }
 
   return {
+    isHome: Boolean(isHome),
     courseId: detectedCourse,
     moduleId: detectedModule,
     tab: detectedTab,
   };
 }
 
-export function buildRouteUrl(courseId: string, moduleId = 1, tab: LearningTab = 'all'): string {
+export function buildRouteUrl(courseId?: string | null, moduleId = 1, tab: LearningTab = 'all'): string {
+  if (!courseId || courseId === 'home') {
+    return '/';
+  }
   let url = `/curso/${courseId}/modulo/${moduleId}`;
   if (tab && tab !== 'all') {
     url += `?tab=${tab}`;
@@ -116,7 +135,7 @@ export function buildRouteUrl(courseId: string, moduleId = 1, tab: LearningTab =
   return url;
 }
 
-export function getAbsoluteShareableUrl(courseId: string, moduleId = 1, tab: LearningTab = 'all'): string {
+export function getAbsoluteShareableUrl(courseId?: string | null, moduleId = 1, tab: LearningTab = 'all'): string {
   if (typeof window === 'undefined') return '';
   const origin = window.location.origin;
   return `${origin}${buildRouteUrl(courseId, moduleId, tab)}`;

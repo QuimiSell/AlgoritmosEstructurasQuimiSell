@@ -29,6 +29,8 @@ import CommandPaletteModal from './components/CommandPaletteModal';
 import CareerRoadmapModal from './components/CareerRoadmapModal';
 import DevCheatsheetModal from './components/DevCheatsheetModal';
 import Toast from './components/Toast';
+import { HomePage } from './components/HomePage';
+import { Course } from './domain/models';
 import { useTheme } from './hooks/useTheme';
 import { getCompletedModuleIds } from './hooks/useModuleProgress';
 import { useMenuDismiss } from './hooks/useMenuDismiss';
@@ -141,6 +143,8 @@ function getPerspectiveText(courseId: string): string {
 
 const App: React.FC = () => {
   const initialRoute = useMemo(() => parseUrlRoute(), []);
+  const [isHomeView, setIsHomeView] = useState<boolean>(initialRoute.isHome);
+  const [selectedStudyPlanCourse, setSelectedStudyPlanCourse] = useState<Course | null>(null);
   const [activeCourseId, setActiveCourseId] = useState<string>(initialRoute.courseId);
   const [learningTab, setLearningTab] = useState<LearningTab>(initialRoute.tab);
   const [activeModuleId, setActiveModuleId] = useState<number>(initialRoute.moduleId);
@@ -164,6 +168,19 @@ const App: React.FC = () => {
   useMenuDismiss(courseMenuOpen, closeCourseMenu, courseMenuRef);
   useMenuDismiss(mobileMenuOpen, closeMobileMenu, mobileMenuRef);
 
+  const handleGoHome = useCallback(() => {
+    setIsHomeView(true);
+    setCourseMenuOpen(false);
+    setMobileMenuOpen(false);
+    window.history.pushState(null, '', '/');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
+  const handleOpenStudyPlanForCourse = useCallback((course: Course) => {
+    setSelectedStudyPlanCourse(course);
+    setShowStudyPlan(true);
+  }, []);
+
   const activeCourse = COURSES_MAP[activeCourseId] || COURSES[0];
   const isAlgorithmsCourse = activeCourseId === 'algoritmos';
   const isComplexityCourse = activeCourseId === 'complejidad_algoritmica';
@@ -184,17 +201,18 @@ const App: React.FC = () => {
 
   // Sync URL in address bar whenever state changes
   useEffect(() => {
-    const targetUrl = buildRouteUrl(activeCourseId, activeModuleId, learningTab);
+    const targetUrl = isHomeView ? '/' : buildRouteUrl(activeCourseId, activeModuleId, learningTab);
     const currentFull = window.location.pathname + window.location.search;
     if (currentFull !== targetUrl) {
       window.history.replaceState(null, '', targetUrl);
     }
-  }, [activeCourseId, activeModuleId, learningTab]);
+  }, [isHomeView, activeCourseId, activeModuleId, learningTab]);
 
   // Handle browser Back / Forward (popstate) & mobile swipe navigation
   useEffect(() => {
     const handlePopState = () => {
       const nextRoute = parseUrlRoute();
+      setIsHomeView(nextRoute.isHome);
       setActiveCourseId(nextRoute.courseId);
       setActiveModuleId(nextRoute.moduleId);
       setLearningTab(nextRoute.tab);
@@ -217,6 +235,7 @@ const App: React.FC = () => {
   }, []);
 
   const handleSelectCourse = (courseId: string) => {
+    setIsHomeView(false);
     setActiveCourseId(courseId);
     setActiveModuleId(1);
     setCourseMenuOpen(false);
@@ -227,6 +246,7 @@ const App: React.FC = () => {
   };
 
   const handleSelectModule = (moduleId: number) => {
+    setIsHomeView(false);
     setActiveModuleId(moduleId);
     const newUrl = buildRouteUrl(activeCourseId, moduleId, learningTab);
     window.history.pushState(null, '', newUrl);
@@ -361,6 +381,18 @@ const App: React.FC = () => {
                    aria-label="Seleccionar curso"
                    className="absolute right-0 mt-2 w-[min(20rem,calc(100vw-1.5rem))] bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 p-2 z-50 animate-in fade-in slide-in-from-top-3 duration-200 max-h-[min(70dvh,28rem)] overflow-y-auto overscroll-contain scroll-touch"
                  >
+                    <button
+                      type="button"
+                      role="menuitem"
+                      onClick={handleGoHome}
+                      className="w-full text-left px-3 py-2 rounded-xl mb-1.5 flex items-center gap-2 bg-indigo-50/80 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/80 text-indigo-950 dark:text-indigo-100 text-xs font-bold transition cursor-pointer border border-indigo-200/80 dark:border-indigo-800/80"
+                    >
+                      <span className="text-base">🏠</span>
+                      <div className="flex flex-col min-w-0">
+                        <span>Ver Catálogo Completo</span>
+                        <span className="text-[9px] text-indigo-700 dark:text-indigo-300 font-medium">Página de inicio · 13 materias</span>
+                      </div>
+                    </button>
                    <span className="sticky top-0 z-10 block px-3 py-1.5 text-[8px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest border-b border-slate-100 dark:border-slate-800 mb-1 bg-white dark:bg-slate-900">
                      Plan de estudios · {COURSES.length} materias (orden recomendado)
                    </span>
@@ -444,6 +476,21 @@ const App: React.FC = () => {
                   <ThemeToggle theme={theme} onToggle={toggleTheme} compact />
                 </div>
                 <span className="block text-[10px] font-black text-slate-400 uppercase tracking-widest pb-1">Herramientas & Exploración</span>
+                <button
+                  type="button"
+                  onClick={handleGoHome}
+                  className={`w-full text-left px-4 py-3 rounded-xl text-sm font-bold transition cursor-pointer flex items-center gap-3 ${
+                    isHomeView
+                      ? 'bg-indigo-600 text-white shadow-md'
+                      : 'bg-slate-50 dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-indigo-950/50 text-slate-800 dark:text-slate-200'
+                  }`}
+                >
+                  <span className="text-lg">🏠</span>
+                  <div className="flex flex-col min-w-0">
+                    <span>Catálogo Principal (13 Cursos)</span>
+                    <span className={`text-[10px] font-medium ${isHomeView ? 'text-indigo-100' : 'text-slate-400'}`}>Página de inicio, filtros y métricas</span>
+                  </div>
+                </button>
                 <button
                   type="button"
                   onClick={() => { setShowCommandPalette(true); setMobileMenuOpen(false); }}
@@ -540,9 +587,33 @@ const App: React.FC = () => {
       </header>
 
       <div className="flex-1 flex flex-col lg:flex-row max-w-[1600px] mx-auto w-full min-w-0">
+        {isHomeView ? (
+          <main className="flex-1 p-3 sm:p-6 lg:p-10 min-w-0 transition-colors duration-300">
+            <HomePage
+              courses={COURSES}
+              activeCourseId={activeCourseId}
+              onSelectCourse={handleSelectCourse}
+              onOpenRoadmap={() => setShowRoadmap(true)}
+              onOpenCheatsheet={() => setShowCheatsheet(true)}
+              onOpenCommandPalette={() => setShowCommandPalette(true)}
+              onOpenStudyPlan={handleOpenStudyPlanForCourse}
+              progressVersion={progressVersion}
+            />
+          </main>
+        ) : (
+          <>
         {/* Desktop Sidebar Navigation */}
         <aside className="hidden lg:block lg:w-80 p-4 border-r border-slate-200 dark:border-slate-800 overflow-y-auto lg:max-h-[calc(100dvh-4rem)] overscroll-contain scroll-touch bg-slate-50/50 dark:bg-slate-900/50 shrink-0 transition-colors duration-300">
           <div className="space-y-2">
+            <button
+              type="button"
+              onClick={handleGoHome}
+              className="w-full mb-3 px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 text-slate-700 dark:text-slate-300 text-xs font-bold flex items-center gap-2 transition cursor-pointer group"
+            >
+              <span className="text-indigo-600 dark:text-indigo-400 group-hover:-translate-x-0.5 transition-transform font-black">←</span>
+              <span>Volver al Catálogo</span>
+              <span className="ml-auto text-[10px] text-slate-400">13 Cursos</span>
+            </button>
             <div className="px-3 mb-4">
               <span className="text-[9px] font-extrabold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/60 px-2 py-1 rounded-md uppercase tracking-wider block w-max mb-1">
                 {activeCourse.badge} ({activeCourse.modules.length} Módulos)
@@ -625,6 +696,20 @@ const App: React.FC = () => {
 
         {/* Main Content Area */}
         <main className="flex-1 p-4 sm:p-6 lg:p-10 space-y-8 sm:space-y-10 pb-20 sm:pb-24 bg-white dark:bg-slate-950 min-w-0 transition-colors duration-300">
+          {/* Breadcrumb back to catalog */}
+          <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 dark:text-slate-400 -mb-4">
+            <button
+              type="button"
+              onClick={handleGoHome}
+              className="hover:text-indigo-600 dark:hover:text-indigo-400 transition flex items-center gap-1 cursor-pointer font-bold"
+            >
+              <span>🏠 Catálogo</span>
+            </button>
+            <span>/</span>
+            <span className="text-slate-900 dark:text-slate-100 font-extrabold truncate">{activeCourse.title}</span>
+            <span>/</span>
+            <span className="text-indigo-600 dark:text-indigo-400 font-bold truncate">Módulo {activeModule.id}</span>
+          </div>
           {/* Welcome Banner */}
           {isAlgorithmsCourse ? (
             <AlgorithmsHero module={activeModule} totalModules={activeCourse.modules.length} />
@@ -1061,6 +1146,8 @@ const App: React.FC = () => {
             </div>
           )}
         </main>
+          </>
+        )}
       </div>
 
       <SiteFooter />
@@ -1070,42 +1157,66 @@ const App: React.FC = () => {
         <div className="max-w-md mx-auto grid grid-cols-5 gap-1 text-center">
           <button
             type="button"
-            onClick={() => handleSelectTab('all')}
+            onClick={isHomeView ? () => window.scrollTo({ top: 0, behavior: 'smooth' }) : handleGoHome}
             className={`flex flex-col items-center justify-center py-1.5 rounded-xl transition active:scale-95 cursor-pointer ${
-              learningTab === 'all'
+              isHomeView
                 ? 'text-indigo-600 dark:text-indigo-400 font-extrabold bg-indigo-50 dark:bg-indigo-950/60 shadow-sm'
                 : 'text-slate-500 dark:text-slate-400'
             }`}
           >
-            <span className="text-lg">🌟</span>
-            <span className="text-[10px] mt-0.5 tracking-tight">Ruta</span>
+            <span className="text-lg">🏠</span>
+            <span className="text-[10px] mt-0.5 tracking-tight">{isHomeView ? 'Inicio' : 'Catálogo'}</span>
           </button>
 
-          <button
-            type="button"
-            onClick={() => handleSelectTab('simulator')}
-            className={`flex flex-col items-center justify-center py-1.5 rounded-xl transition active:scale-95 cursor-pointer ${
-              learningTab === 'simulator'
-                ? 'text-indigo-600 dark:text-indigo-400 font-extrabold bg-indigo-50 dark:bg-indigo-950/60 shadow-sm'
-                : 'text-slate-500 dark:text-slate-400'
-            }`}
-          >
-            <span className="text-lg">🕹️</span>
-            <span className="text-[10px] mt-0.5 tracking-tight">Simulador</span>
-          </button>
+          {isHomeView ? (
+            <>
+              <button
+                type="button"
+                onClick={() => setShowRoadmap(true)}
+                className="flex flex-col items-center justify-center py-1.5 rounded-xl text-slate-500 dark:text-slate-400 active:scale-95 transition cursor-pointer"
+              >
+                <span className="text-lg">🗺️</span>
+                <span className="text-[10px] mt-0.5 tracking-tight">Roadmap</span>
+              </button>
 
-          <button
-            type="button"
-            onClick={() => handleSelectTab('playground')}
-            className={`flex flex-col items-center justify-center py-1.5 rounded-xl transition active:scale-95 cursor-pointer ${
-              learningTab === 'playground'
-                ? 'text-indigo-600 dark:text-indigo-400 font-extrabold bg-indigo-50 dark:bg-indigo-950/60 shadow-sm'
-                : 'text-slate-500 dark:text-slate-400'
-            }`}
-          >
-            <span className="text-lg">💻</span>
-            <span className="text-[10px] mt-0.5 tracking-tight">Código</span>
-          </button>
+              <button
+                type="button"
+                onClick={() => setShowCheatsheet(true)}
+                className="flex flex-col items-center justify-center py-1.5 rounded-xl text-slate-500 dark:text-slate-400 active:scale-95 transition cursor-pointer"
+              >
+                <span className="text-lg">⚡</span>
+                <span className="text-[10px] mt-0.5 tracking-tight">Cheats</span>
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                type="button"
+                onClick={() => handleSelectTab('simulator')}
+                className={`flex flex-col items-center justify-center py-1.5 rounded-xl transition active:scale-95 cursor-pointer ${
+                  learningTab === 'simulator'
+                    ? 'text-indigo-600 dark:text-indigo-400 font-extrabold bg-indigo-50 dark:bg-indigo-950/60 shadow-sm'
+                    : 'text-slate-500 dark:text-slate-400'
+                }`}
+              >
+                <span className="text-lg">🕹️</span>
+                <span className="text-[10px] mt-0.5 tracking-tight">Simulador</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => handleSelectTab('playground')}
+                className={`flex flex-col items-center justify-center py-1.5 rounded-xl transition active:scale-95 cursor-pointer ${
+                  learningTab === 'playground'
+                    ? 'text-indigo-600 dark:text-indigo-400 font-extrabold bg-indigo-50 dark:bg-indigo-950/60 shadow-sm'
+                    : 'text-slate-500 dark:text-slate-400'
+                }`}
+              >
+                <span className="text-lg">💻</span>
+                <span className="text-[10px] mt-0.5 tracking-tight">Código</span>
+              </button>
+            </>
+          )}
 
           <button
             type="button"
@@ -1129,7 +1240,13 @@ const App: React.FC = () => {
 
       {/* Modals */}
       {showStudyPlan && (
-        <StudyPlanModal course={activeCourse} onClose={() => setShowStudyPlan(false)} />
+        <StudyPlanModal
+          course={selectedStudyPlanCourse || activeCourse}
+          onClose={() => {
+            setShowStudyPlan(false);
+            setSelectedStudyPlanCourse(null);
+          }}
+        />
       )}
       {showLabChallenge && (
         <LabChallengeModal course={activeCourse} onClose={() => setShowLabChallenge(false)} />
