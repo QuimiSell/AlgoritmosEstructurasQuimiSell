@@ -136,7 +136,11 @@ export const HomePage: React.FC<HomePageProps> = ({
               onClick={onOpenCheatsheet}
               className="bg-slate-800/90 hover:bg-slate-700/90 text-white font-bold px-5 py-3.5 rounded-2xl border border-slate-700 transition active:scale-95 flex items-center gap-2 cursor-pointer text-sm backdrop-blur-md"
             >
-              <span>⚡ Cheat Sheets</span>
+              <svg className="w-4 h-4 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="4 17 10 11 4 5" />
+                <line x1="12" y1="19" x2="20" y2="19" />
+              </svg>
+              <span>Cheat Sheets</span>
             </button>
 
             <button
