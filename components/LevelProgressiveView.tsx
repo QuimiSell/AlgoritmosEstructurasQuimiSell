@@ -525,18 +525,19 @@ function getCoursePedagogy(courseId: string, moduleId: number): PedagogyData {
     case 'git_devops_vercel':
       return {
         level0Metaphor:
-          'Git es una máquina del tiempo para tu código. No guarda copias enteras de carpetas con nombres como "proyecto_final_v2_este_si.zip", sino una cadena criptográfica de fotos exactas (instantáneas) que te permite retroceder a cualquier segundo del pasado.',
+          'Git es una máquina del tiempo inmutable para tu código, y DevSecOps es la aduana de seguridad de alta tecnología: ningún cambio sube a producción sin pasar por el arco detector de secretos (TruffleHog), los rayos X del código fuente (Semgrep SAST) y la inspección de dependencias (Trivy SCA).',
         level0Rule:
-          'Commit pequeño y atómico, rama corta por feature, CI verde antes de mergear a producción.',
+          'Shift-Left: La seguridad se verifica en local y en el Pull Request; nunca esperes a que el software esté en producción para buscar vulnerabilidades.',
         intermediateArchitecture:
-          'Modelo de Objetos de Git en el disco: Blobs (contenido), Trees (carpetas), Commits (metadata y puntero al árbol) y Tags. Todos identificados mediante hashes SHA-1 / SHA-256 en el directorio .git/objects.',
+          'Pipeline DevSecOps orquestado en GitHub Actions mediante Grafo Acíclico Dirigido (DAG): Checkout ➔ Secret Scanning (TruffleHog) ➔ SAST (Semgrep AST Taint Analysis) ➔ SCA (Trivy CVEs) ➔ Vitest QA ➔ DAST (OWASP ZAP en preview) ➔ Despliegue Inmutable en Vercel Edge.',
         intermediatePitfalls:
-          'Hacer git rebase en ramas públicas compartidas: reescribe el historial de commits y desincroniza los repositorios de todo tu equipo de trabajo.',
+          'Hacer git rm de un archivo con secretos (.env) creyendo que se eliminó: los Blobs históricos de Git son inmutables y los bots maliciosos extraen llaves de AWS o Stripe de commits públicos en menos de 120 segundos.',
         universityTheory:
-          'Git como Grafo Acíclico Dirigido (DAG): el algoritmo de Three-Way Merge localiza el ancestro común más cercano (Lowest Common Ancestor - LCA) para resolver conflictos automáticamente.',
-        universityFormula: 'H(commit) = SHA256(tree_hash + parent_hashes + author + committer + message)',
+          'Modelo de Seguridad Shift-Left y Análisis de Flujo de Datos Contaminados (Taint Analysis): Rastrear formalmente fuentes no confiables (Sources) hasta sumideros de ejecución (Sinks) para certificar la ausencia de vulnerabilidades OWASP Top 10.',
+        universityFormula:
+          '\\text{Pipeline Valido} = \\text{SAST}(AST) \\land \\text{SCA}(\\text{CVE}) \\land \\text{DAST}(\\text{HTTP}) \\land \\text{Secrets}(\\text{Entropy} < H_{\\text{crit}})',
         industryCase:
-          'Vercel y GitHub Actions implementan Immutable Deployments: cada pull request genera una URL de vista previa única en Edge Workers antes de tocar el dominio principal de producción.',
+          'Tras el ataque a la cadena de suministro de SolarWinds y las brechas masivas de API keys, gigantes tecnológicos como Google, Stripe y Amazon volvieron obligatorio el escaneo automatizado SAST/SCA en cada Pull Request antes de autorizar cualquier merge.',
       };
 
     case 'redes_desarrolladores':

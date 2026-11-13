@@ -1,102 +1,106 @@
-import { Course } from '../domain/models';
+import { Course, TutorExercise } from '../domain/models';
 
 export const GIT_DEVOPS_COURSE: Course = {
   id: 'git_devops_vercel',
-  title: 'Git, GitHub, CI/CD y Deploy Estático en Vercel ($0)',
-  shortTitle: 'Git & DevOps Vercel',
-  badge: 'DevOps & Plataformas Cloud',
-  icon: '🔀',
-  description: '10 módulos prácticos: control de versiones con Git, colaboración en GitHub, Pull Requests profesionales, GitHub Actions CI y deploy estático gratuito en Vercel sin base de datos.',
-  whyStudyTitle: '🚀 ¿Por qué dominar Git y DevOps antes de desplegar?',
-  whyStudyText: 'Ningún proyecto profesional vive solo en tu laptop. Git registra cada cambio, GitHub habilita colaboración y revisión, GitHub Actions automatiza calidad (lint, build, tests) y Vercel publica tu sitio estático a una CDN global por $0. Este pipeline — sin backend ni base de datos — es el stack ideal para portafolios, landings y MVPs como los de QuimiSell.',
+  title: 'Git, GitHub, DevSecOps y CI/CD: De Pipelines a Producción Segura',
+  shortTitle: 'Git & DevSecOps',
+  badge: 'DevSecOps, CI/CD & Seguridad en Pipelines',
+  icon: '🛡️',
+  description:
+    '10 módulos prácticos: control de versiones Git, colaboración en GitHub, análisis estático SAST (Semgrep/CodeQL), análisis dinámico DAST (OWASP ZAP), auditoría SCA (Trivy), detección de secretos (TruffleHog), pipelines CI/CD y deploy inmutable $0.',
+  whyStudyTitle: '🛡️ ¿Por qué DevSecOps (SAST, DAST, SCA y Secrets) es el nuevo estándar indispensable?',
+  whyStudyText:
+    'El desarrollo de software tradicional delegaba la seguridad al final, resultando en brechas catastróficas y filtraciones masivas de datos. En la era moderna de la IA y la computación en la nube, DevSecOps traslada la seguridad hacia la izquierda ("Shift-Left"): cada Pull Request es escaneado automáticamente contra secretos expuestos (TruffleHog), vulnerabilidades semánticas del OWASP Top 10 (Semgrep/CodeQL SAST), paquetes comprometidos en la cadena de suministro (Trivy SCA) y debilidades activas en tiempo de ejecución (OWASP ZAP DAST) antes de llegar a producción.',
   studyPlanReasons: [
     {
       id: 1,
       title: "Fundamentos Git",
-      why: "Comprende snapshots, staging y commits antes de colaborar."
+      why: "Comprende snapshots, staging y commits inmutables antes de colaborar."
     },
     {
       id: 2,
-      title: "Comandos Diarios",
-      why: "status, diff, log y recuperación de errores locales."
+      title: "Comandos Diarios y Conventional Commits",
+      why: "status, diff, log, Conventional Commits y recuperación de errores locales."
     },
     {
       id: 3,
-      title: "Ramas y Integración",
-      why: "Feature branches, merge, rebase y resolución de conflictos."
+      title: "Ramas, Merge y Rebase",
+      why: "Feature branches, merge sin fast-forward, rebase interactivo y resolución de conflictos."
     },
     {
       id: 4,
-      title: "GitHub Remoto",
-      why: "clone, push, pull y autenticación segura."
+      title: "GitHub Remoto y Autenticación",
+      why: "clone, push, pull con rebase y llaves SSH / tokens con alcance mínimo."
     },
     {
       id: 5,
-      title: "Colaboración",
-      why: "Forks, issues, permisos y protección de main."
+      title: "Colaboración y Protección de Código",
+      why: "Forks, issues, .gitignore estricto y políticas de protección de ramas principales."
     },
     {
       id: 6,
-      title: "Pull Requests",
-      why: "Flujo profesional de revisión y merge."
+      title: "Pull Requests Profesionales",
+      why: "Plantillas de PR, code review técnico, aprobación de pares y squash merge."
     },
     {
       id: 7,
-      title: "Calidad en Repo",
-      why: "Lint, hooks, .gitignore y Dependabot."
+      title: "DevSecOps: Secret Scanning y Pre-commit",
+      why: "Detección de claves API con TruffleHog y hooks con Husky antes de tocar git."
     },
     {
       id: 8,
-      title: "GitHub Actions CI",
-      why: "Workflows YAML, triggers y jobs de build."
+      title: "CI Automatizado y SAST (Semgrep & CodeQL)",
+      why: "Análisis estático de AST contra OWASP Top 10 integrado en GitHub Actions."
     },
     {
       id: 9,
-      title: "CI Avanzado",
-      why: "Cache, matrix, artifacts y secrets."
+      title: "Auditoría SCA (Trivy) y DAST (OWASP ZAP)",
+      why: "Escaneo de CVEs en dependencias y pruebas dinámicas en preview deployments."
     },
     {
       id: 10,
-      title: "Deploy Vercel $0",
-      why: "Hosting estático global sin base de datos."
+      title: "Despliegue Inmutable $0 y Políticas Zero Trust",
+      why: "Hosting estático global en Vercel, cabeceras CSP/HSTS y rollbacks instantáneos."
     }
   ],
   labChallenge: {
-    title: "Pipeline Completo: Git → GitHub Actions → Vercel Estático $0",
-    badge: "Laboratorio Git, DevOps y Deploy",
-    description: "Construye un sitio React/Vite estático sin base de datos, con repositorio GitHub, CI con GitHub Actions (lint + build) y deploy automático en Vercel plan gratuito. Incluye al menos un Pull Request con preview deployment.",
+    title: "Pipeline DevSecOps Completo: Git → Secret Scanning → SAST/SCA → DAST → Deploy $0",
+    badge: "Laboratorio Profesional DevSecOps & CI/CD",
+    description:
+      "Diseña e implementa un pipeline integral DevSecOps en GitHub Actions para un proyecto estático React/Vite. El pipeline debe bloquear secrets con TruffleHog, realizar análisis estático SAST con Semgrep OSS contra OWASP Top 10, auditar dependencias con Trivy SCA, ejecutar pruebas automatizadas y publicar el sitio con cabeceras estrictas de seguridad en Vercel por $0.",
     requirements: [
-      "• Repositorio GitHub público con README, .gitignore (node_modules, dist, .env) y al menos 3 commits en feature branch.",
-      "• Workflow CI en .github/workflows/ que ejecute npm ci, npm run lint y npm run build en cada PR.",
-      "• Sitio estático desplegado en Vercel (plan Hobby $0) con URL .vercel.app funcional.",
-      "• Un Pull Request documentado con descripción, checklist y screenshot del preview deployment.",
-      "• Sin backend ni base de datos: solo HTML/JS/CSS estático."
+      "• Repositorio GitHub con .gitignore estricto y pre-commit hook de secret scanning.",
+      "• Pipeline GitHub Actions (.github/workflows/devsecops.yml) con jobs paralelos de SAST (Semgrep) y SCA (Trivy).",
+      "• Bloqueo estricto del Pull Request si Semgrep detecta vulnerabilidades OWASP o Trivy detecta CVEs CRITICAL.",
+      "• Escaneo dinámico DAST con OWASP ZAP Baseline sobre la URL de staging/preview.",
+      "• Despliegue estático inmutable en Vercel ($0) configurando cabeceras de seguridad CSP, HSTS y X-Frame-Options en vercel.json."
     ],
     cleanCodeRules: [
-      "• Conventional Commits en mensajes (feat:, fix:, docs:).",
-      "• Branch protection conceptual: no push directo a main (usar PR).",
-      "• Secretos (VERCEL_TOKEN si aplica) solo en GitHub Secrets, nunca en código.",
-      "• Enviar evidencia al catedrático quimicabless2020@gmail.com."
+      "• Shift-Left estricto: la seguridad se valida en local y en el PR, nunca después del deploy.",
+      "• Secretos inyectados exclusivamente mediante GitHub Secrets o Vercel Environment Variables.",
+      "• Conventional Commits (feat:, fix:, sec:, ci:) y Branch Protection en main.",
+      "• Enviar evidencia y URL con el informe de seguridad a quimicabless2020@gmail.com."
     ],
-    emailSubject: "Laboratorio QuimiSell: Reto Git DevOps Vercel - [Tu Nombre]",
+    emailSubject: "Laboratorio QuimiSell: Reto DevSecOps Pipeline Completo - [Tu Nombre]",
     emailBodyTemplate: `Hola Profesor QuimiSell,
 
-Adjunto el enlace a mi repositorio con el pipeline Git → GitHub Actions → Vercel estático ($0, sin base de datos).
+Adjunto mi laboratorio de DevSecOps con pipeline automatizado en GitHub Actions:
 
-Enlace del repositorio: [PEGA TU ENLACE DE GITHUB AQUÍ]
-URL Vercel en producción: [PEGA TU URL .vercel.app]
+Enlace del Repositorio GitHub: [PEGA TU ENLACE AQUÍ]
+URL Vercel en Producción: [PEGA TU URL .vercel.app]
 
-Evidencia del laboratorio:
-- PR con preview deployment: [ENLACE AL PR]
-- CI verde (screenshot o enlace a Actions run)
-
-Tecnología: React/Vite (o similar estático)
+Evidencias del Pipeline DevSecOps:
+1. Secret Scanning (TruffleHog / Husky pre-commit): [ENLACE O DETALLE]
+2. SAST con Semgrep OSS (OWASP Top 10): [JOB STATUS EN ACTIONS]
+3. SCA con Trivy (Auditoría de package-lock.json): [CVEs EVALUADOS]
+4. DAST con OWASP ZAP Baseline Scan (Preview URL): [REPORTE DE CABECERAS]
+5. Despliegue seguro en Vercel con vercel.json: [CABECERAS CONFIGURADAS]
 
 Saludos cordiales.
-
-(Correo del catedrático: quimicabless2020@gmail.com)`
+(Correo catedrático: quimicabless2020@gmail.com)`
   },
   modules: [{
+
       id: 1,
       title: "MÓDULO 1: CONTROL DE VERSIONES Y FILOSOFÍA GIT",
       description: "Por qué Git es el estándar de la industria y cómo piensa en snapshots, no en copias.",
@@ -723,129 +727,129 @@ feat: añade formulario de contacto estático
     },
 {
       id: 7,
-      title: "MÓDULO 7: CODE REVIEW Y CALIDAD EN EL REPOSITORIO",
-      description: "Revisiones efectivas, linters, hooks y .gitignore para repos profesionales.",
+      title: "MÓDULO 7: DEVSECOPS, PRE-COMMIT HOOKS Y SECRET SCANNING (TRUFFLEHOG & GITGUARDIAN)",
+      description: "Shift-Left Security: Bloquea claves API, tokens de AWS y secretos privados antes de que toquen el servidor Git.",
       items: [
-      "Principios de code review: claridad, seguridad, tests, no bike-shedding.",
-      "ESLint + Prettier en frontend TypeScript/React.",
-      "husky + lint-staged para pre-commit hooks.",
-      ".gitignore: node_modules, dist, .env, .vercel.",
-      "Dependabot y security alerts de GitHub.",
-      "Definición operativa de los términos centrales de CODE REVIEW Y CALIDAD EN EL REPOSITORIO.",
-      "Ejemplo numérico o de código trazado paso a paso.",
-      "Pregunta tipo entrevista técnica con respuesta esperada.",
-      "Relación explícita con el snippet de implementación del módulo."
-],
-      content: "## Panorama del tema: CODE REVIEW Y CALIDAD EN EL REPOSITORIO\n\nRevisiones efectivas, linters, hooks y .gitignore para repos profesionales.\n\nCode review no es buscar errores de sintaxis (eso lo hace CI): es validar diseño, legibilidad y riesgos. Pregunta: ¿entendería esto un compañero en 6 meses? ¿Hay edge cases sin cubrir? Automatiza lo repetible: ESLint detecta anti-patterns, Prettier formatea, husky ejecuta lint antes de cada commit. .gitignore debe excluir artefactos generados y secretos. GitHub Dependabot alerta vulnerabilidades en dependencias. Para un sitio estático $0, la calidad en el repo evita desplegar builds rotos a Vercel.\n\nEste módulo es material de estudio **autocontenido**: puedes aprenderlo completo aquí, sin pagar plataformas externas ni depender de internet después de cargar la página. Lee en orden, ejecuta el snippet, resuelve la autoevaluación y repasa los puntos que falles.\n\n## Qué aprenderás en este módulo\n\n· Principios de code review: claridad, seguridad, tests, no bike-shedding.\n· ESLint + Prettier en frontend TypeScript/React.\n· husky + lint-staged para pre-commit hooks.\n· .gitignore: node_modules, dist, .env, .vercel.\n· Dependabot y security alerts de GitHub.\n· Definición operativa de los términos centrales de CODE REVIEW Y CALIDAD EN EL REPOSITORIO.\n· Ejemplo numérico o de código trazado paso a paso.\n· Pregunta tipo entrevista técnica con respuesta esperada.\n· Dominar las 12 preguntas de autoevaluación con ≥70% de aciertos antes de avanzar.\n\n## Desarrollo teórico detallado\n\n## 1. Principios de code review: claridad, seguridad, tests, no bike-shedding.\n\n**Qué es y por qué importa.** Dentro de CODE REVIEW Y CALIDAD EN EL REPOSITORIO, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Principios de code review: claridad, seguridad, tests, no bike-shedding. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Principios de code review: claridad, seguridad, tests, no bike-shedding.» y cuándo lo evitarías.\n\n## 2. ESLint + Prettier en frontend TypeScript/React.\n\n**Qué es y por qué importa.** Dentro de CODE REVIEW Y CALIDAD EN EL REPOSITORIO, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** ESLint + Prettier en frontend TypeScript/React. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «ESLint + Prettier en frontend TypeScript/React.» y cuándo lo evitarías.\n\n## 3. husky + lint-staged para pre-commit hooks.\n\n**Qué es y por qué importa.** Dentro de CODE REVIEW Y CALIDAD EN EL REPOSITORIO, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** husky + lint-staged para pre-commit hooks. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «husky + lint-staged para pre-commit hooks.» y cuándo lo evitarías.\n\n## 4. .gitignore: node_modules, dist, .env, .vercel.\n\n**Qué es y por qué importa.** Dentro de CODE REVIEW Y CALIDAD EN EL REPOSITORIO, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** .gitignore: node_modules, dist, .env, .vercel. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «.gitignore: node_modules, dist, .env, .vercel.» y cuándo lo evitarías.\n\n## 5. Dependabot y security alerts de GitHub.\n\n**Qué es y por qué importa.** Dentro de CODE REVIEW Y CALIDAD EN EL REPOSITORIO, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Dependabot y security alerts de GitHub. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Dependabot y security alerts de GitHub.» y cuándo lo evitarías.\n\n## 6. Definición operativa de los términos centrales de CODE REVIEW Y CALIDAD EN EL REPOSITORIO.\n\n**Qué es y por qué importa.** Dentro de CODE REVIEW Y CALIDAD EN EL REPOSITORIO, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Definición operativa de los términos centrales de CODE REVIEW Y CALIDAD EN EL REPOSITORIO. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Definición operativa de los términos centrales de CODE REVIEW Y CALIDAD EN EL REPOSITORIO.» y cuándo lo evitarías.\n\n## 7. Ejemplo numérico o de código trazado paso a paso.\n\n**Qué es y por qué importa.** Dentro de CODE REVIEW Y CALIDAD EN EL REPOSITORIO, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Ejemplo numérico o de código trazado paso a paso. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Ejemplo numérico o de código trazado paso a paso.» y cuándo lo evitarías.\n\n## 8. Pregunta tipo entrevista técnica con respuesta esperada.\n\n**Qué es y por qué importa.** Dentro de CODE REVIEW Y CALIDAD EN EL REPOSITORIO, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Pregunta tipo entrevista técnica con respuesta esperada. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Pregunta tipo entrevista técnica con respuesta esperada.» y cuándo lo evitarías.\n\n## Aplicaciones en sistemas reales\n\n**Ejemplo 1:** Linux kernel usa Git desde 2002; miles de contribuidores coordinan ramas sin bloquear el trunk.\n\n**Ejemplo 2:** Linux kernel usa Git desde 2002; miles de contribuidores coordinan ramas sin bloquear el trunk.\n\n**Ejemplo 3:** Linux kernel usa Git desde 2002; miles de contribuidores coordinan ramas sin bloquear el trunk.\n\nEstos casos muestran por qué CODE REVIEW Y CALIDAD EN EL REPOSITORIO no es teórico: empresas y proyectos open source aplican estos principios diariamente. Al estudiar, elige uno y escribe cómo encajaría el concepto del módulo en ese escenario.\n\n## Errores comunes al estudiar\n\n· Memorizar definiciones sin resolver al menos un ejercicio o modificar el snippet del módulo.\n· Copiar código del módulo sin trazar manualmente cuántas operaciones ejecuta en el peor caso.\n· Memorizar definiciones sin resolver al menos un ejercicio o modificar el snippet del módulo.\n· Copiar código del módulo sin trazar manualmente cuántas operaciones ejecuta en el peor caso.\n\n## Síntesis para repasar\n\nCierra el módulo resumiendo CODE REVIEW Y CALIDAD EN EL REPOSITORIO en cinco líneas propias. Vuelve a leer los **Conceptos clave** del panel, ejecuta el código de referencia y completa la autoevaluación. Si fallas más de 3 preguntas, relee el bloque teórico correspondiente antes de continuar — el siguiente módulo asume que dominas este.",
-      codeSnippet: `# .gitignore mínimo para React + Vercel
-node_modules/
-dist/
+        "Filosofía DevSecOps: De la seguridad perimetral reactiva a la seguridad embebida (Shift-Left).",
+        "El vector de riesgo de credenciales filtradas: API keys de OpenAI, Stripe, AWS y tokens JWT en el historial.",
+        "Por qué git rm y .gitignore no borran secretos: la inmutabilidad de los Blobs en .git/objects.",
+        "Secret Scanning en local con Husky y lint-staged.",
+        "Detección con TruffleHog y GitGuardian: expresiones regulares de alta precisión y análisis de entropía de Shannon.",
+        "Sanitización y respuesta a incidentes: git-filter-repo y revocación forzosa de llaves comprometidas."
+      ],
+      content: `## Panorama: DevSecOps y la Filosofía Shift-Left
+
+En el desarrollo de software tradicional, la seguridad era una fase tardía: los desarrolladores escribían código durante meses, lo entregaban al equipo de operaciones (Ops) y, justo antes del lanzamiento, un auditor de seguridad (Sec) realizaba pruebas de penetración. Si se descubría una falla crítica o una credencial expuesta, el proyecto se retrasaba semanas o se lanzaba con parches improvisados.
+
+**DevSecOps** revoluciona este paradigma introduciendo el principio de **Shift-Left (mover la seguridad hacia la izquierda)**: integrar la verificación de seguridad en cada paso del ciclo de vida, desde el primer commit en la máquina del desarrollador hasta el pipeline de CI/CD.
+
+### 1. La Trampa de las Credenciales en Git
+Uno de los errores más costosos en la industria es commitear accidentalmente un archivo con credenciales (por ejemplo, un archivo .env o una constante con una API key de OpenAI, AWS o Stripe). 
+
+* **El Mito del .gitignore Tardío:** Si agregas una clave a un commit, haces push y luego añades el archivo a .gitignore, **la clave sigue visible en el historial perpetuo de Git**. Cualquier clon del repositorio puede leer el commit anterior y extraer la credencial.
+* **Bots de Escaneo en GitHub:** Existen actores maliciosos que monitorean la API de eventos públicos de GitHub en tiempo real. Una llave de AWS expuesta en un commit público suele ser secuestrada en menos de **2 minutos** para minar criptomonedas o exfiltrar bases de datos.
+
+### 2. Detección Local con Husky y TruffleHog
+Para evitar que un secreto abandone tu laptop:
+1. **Husky:** Permite ejecutar hooks nativos de Git (pre-commit, pre-push) de forma automática en el equipo de desarrollo.
+2. **TruffleHog:** Herramienta open source de vanguardia para escaneo de secretos. No solo busca strings simples; utiliza detectores especializados para más de 700 tipos de credenciales y calcula la **entropía de Shannon** para identificar cadenas aleatorias de alta densidad criptográfica.
+
+### 3. Respuesta a Incidentes: Purgado de Secretos
+Si una clave llegó al historial:
+1. **Paso 0 Obligatorio:** Revocar la credencial de inmediato en la consola del proveedor (AWS, Stripe, OpenAI). Asume que la clave ya fue copiada.
+2. **Limpieza del Historial:** Utilizar git-filter-repo (sucesor moderno de git filter-branch) para reescribir los árboles de Git eliminando el archivo del pasado, seguido de un push forzado controlado.`,
+      codeSnippet: `# 1. Configurar Husky en el proyecto
+npx husky-init && npm install
+
+# 2. Agregar hook de pre-commit para escanear secretos con TruffleHog
+cat << 'EOF' > .husky/pre-commit
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🔍 Escaneando cambios staged en busca de secretos..."
+# TruffleHog analiza solo los archivos preparados para el commit
+trufflehog git file://. --since-commit HEAD --only-verified --fail
+EOF
+
+chmod +x .husky/pre-commit
+
+# 3. .gitignore estricto para evitar filtraciones
+# .gitignore
 .env
 .env.local
-.vercel
-
-# package.json scripts
-"scripts": {
-  "lint": "eslint src --ext .ts,.tsx",
-  "format": "prettier --write src"
-}
-
-# husky pre-commit (conceptual)
-npx lint-staged  # solo archivos staged`,
+.env.*.local
+*.pem
+*.key
+id_rsa
+node_modules/
+dist/`,
       quiz: [
         {
-          question: "Code review debe enfocarse en...",
-          options: ["Solo estilo de comillas", "Diseño, claridad, seguridad y tests", "Velocidad de tipeo"],
+          question: "¿Por qué agregar un archivo con secretos a .gitignore después de haber hecho commit NO soluciona la filtración?",
+          options: [
+            "Porque .gitignore solo funciona en sistemas Linux",
+            "Porque Git es inmutable y el archivo permanece guardado en los Blobs históricos del repositorio",
+            "Porque GitHub ignora automáticamente el archivo .gitignore",
+            "Porque los archivos secretos se suben por Bluetooth"
+          ],
           answerIndex: 1,
-          explanation: "Humanos validan lo que las máquinas no captan."
+          explanation: "Los commits en Git son inmutables. Si un archivo fue versionado una vez, permanecerá en el historial de objetos .git hasta que se reescriba todo el grafo con herramientas como git-filter-repo."
         },
         {
-          question: ".gitignore debe incluir...",
-          options: ["src/", "node_modules/ y .env", "package.json"],
+          question: "¿Cuál es la primera acción obligatoria que debe realizar un ingeniero si commitea por error una API key de producción a GitHub?",
+          options: [
+            "Borrar el repositorio entero de GitHub",
+            "Revocar e invalidar la credencial de inmediato en el panel del proveedor (AWS, Stripe, OpenAI)",
+            "Hacer otro commit diciendo 'secreto borrado'",
+            "Apagar la laptop"
+          ],
           answerIndex: 1,
-          explanation: "Dependencias y secretos no van al historial."
+          explanation: "Los escáneres automáticos capturan secretos en segundos. Lo primero y más crítico es revocar la clave para que cualquier copia robada quede inutilizable."
         },
         {
-          question: "husky + lint-staged ejecutan checks...",
-          options: ["Solo en CI remoto", "Antes de cada commit local", "Solo al desplegar"],
-          answerIndex: 1,
-          explanation: "Pre-commit evita subir código con lint roto."
-        },
-        {
-          question: "Dependabot en GitHub...",
-          options: ["Despliega en Vercel", "Alerta vulnerabilidades en dependencias", "Crea ramas automáticamente siempre"],
-          answerIndex: 1,
-          explanation: "Monitorea CVEs en package.json y similares."
-        },
-        {
-          question: "ESLint y Prettier respectivamente...",
-          options: ["Compilan y despliegan", "Detectan problemas y formatean código", "Reemplazan Git"],
-          answerIndex: 1,
-          explanation: "Lint analiza reglas; Prettier unifica estilo."
-        },
-      ,
-        {
-          question: "Según el temario de 'MÓDULO 7: CODE REVIEW Y CALIDAD EN EL REPOSITORIO', ¿cuál afirmación es correcta sobre: Principios de code review: claridad, seguridad, tests, no bike-shedding?",
-          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Principios de code review: claridad, seguridad, tests, no bike-shed...", "Asumir que más líneas de código siempre implican mayor eficiencia."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Principios de code review: claridad, seguridad, tests, no bike-shedding. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 7: CODE REVIEW Y CALIDAD EN EL REPOSITORIO', ¿cuál afirmación es correcta sobre: ESLint + Prettier en frontend TypeScript/React?",
-          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: ESLint + Prettier en frontend TypeScript/React", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que ESLint + Prettier en frontend TypeScript/React. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 7: CODE REVIEW Y CALIDAD EN EL REPOSITORIO', ¿cuál afirmación es correcta sobre: husky + lint-staged para pre-commit hooks?",
-          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: husky + lint-staged para pre-commit hooks", "Confundir el concepto con una técnica ortogonal no relacionada."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que husky + lint-staged para pre-commit hooks. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 7: CODE REVIEW Y CALIDAD EN EL REPOSITORIO', ¿cuál afirmación es correcta sobre: .gitignore: node_modules, dist, .env, .vercel?",
-          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: .gitignore: node_modules, dist, .env, .vercel", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que .gitignore: node_modules, dist, .env, .vercel. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 7: CODE REVIEW Y CALIDAD EN EL REPOSITORIO', ¿cuál afirmación es correcta sobre: Dependabot y security alerts de GitHub?",
-          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Dependabot y security alerts de GitHub", "Mezclar responsabilidades en una sola función o módulo monolítico."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Dependabot y security alerts de GitHub. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 7: CODE REVIEW Y CALIDAD EN EL REPOSITORIO', ¿cuál afirmación es correcta sobre: Definición operativa de los términos centrales de CODE REVIEW Y CALIDAD EN EL...?",
-          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Definición operativa de los términos centrales de CODE REVIEW Y CAL...", "Asumir que más líneas de código siempre implican mayor eficiencia."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Definición operativa de los términos centrales de CODE REVIEW Y CALIDAD EN EL REPOSITORIO. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 7: CODE REVIEW Y CALIDAD EN EL REPOSITORIO', ¿cuál afirmación es correcta sobre: Ejemplo numérico o de código trazado paso a paso?",
-          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Ejemplo numérico o de código trazado paso a paso", "Aplicar la regla solo en el best case ignorando el peor escenario."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Ejemplo numérico o de código trazado paso a paso. Las otras opciones representan malentendidos típicos."
+          question: "¿Qué técnica utiliza TruffleHog para detectar contraseñas y llaves que no coinciden con patrones de texto conocidos?",
+          options: [
+            "Análisis de Entropía de Shannon para detectar cadenas de alta aleatoriedad criptográfica",
+            "Adivinanza por fuerza bruta",
+            "Lectura del historial del navegador",
+            "Compresión gzip"
+          ],
+          answerIndex: 0,
+          explanation: "La entropía de Shannon mide el desorden o aleatoriedad de un conjunto de caracteres. Las llaves criptográficas tienen una entropía muy superior a palabras del lenguaje natural."
         }
       ]
     },
-{
+    {
       id: 8,
-      title: "MÓDULO 8: GITHUB ACTIONS — INTRODUCCIÓN A CI",
-      description: "Integración continua: automatizar lint, test y build en cada push y PR.",
+      title: "MÓDULO 8: GITHUB ACTIONS CI Y ANÁLISIS ESTÁTICO DE SEGURIDAD (SAST CON SEMGREP & CODEQL)",
+      description: "Automatiza la detección de vulnerabilidades del OWASP Top 10 en cada Pull Request mediante análisis sintáctico semántico.",
       items: [
-      "Workflow YAML en .github/workflows/.",
-      "Triggers: on push, pull_request, schedule.",
-      "Jobs, steps, runs-on (ubuntu-latest).",
-      "Actions del marketplace: actions/checkout, setup-node.",
-      "Badges de status en README.",
-      "Definición operativa de los términos centrales de GITHUB ACTIONS — INTRODUCCIÓN A CI.",
-      "Ejemplo numérico o de código trazado paso a paso.",
-      "Pregunta tipo entrevista técnica con respuesta esperada.",
-      "Relación explícita con el snippet de implementación del módulo."
-],
-      content: "## Panorama del tema: GITHUB ACTIONS — INTRODUCCIÓN A CI\n\nIntegración continua: automatizar lint, test y build en cada push y PR.\n\nGitHub Actions es CI/CD nativo: defines workflows en YAML que corren en runners de GitHub. Cada push o PR puede disparar lint, tests y build antes de permitir merge. Estructura: workflow → jobs (paralelos) → steps (secuenciales). Para un frontend estático, un job típico: checkout código, setup Node 20, npm ci, npm run lint, npm run build. Si falla, el PR muestra X roja y branch protection bloquea merge. Los minutos gratuitos (2,000/mes en plan free) bastan para proyectos estudiantiles y startups tempranas como QuimiSell.\n\nEste módulo es material de estudio **autocontenido**: puedes aprenderlo completo aquí, sin pagar plataformas externas ni depender de internet después de cargar la página. Lee en orden, ejecuta el snippet, resuelve la autoevaluación y repasa los puntos que falles.\n\n## Qué aprenderás en este módulo\n\n· Workflow YAML en .github/workflows/.\n· Triggers: on push, pull_request, schedule.\n· Jobs, steps, runs-on (ubuntu-latest).\n· Actions del marketplace: actions/checkout, setup-node.\n· Badges de status en README.\n· Definición operativa de los términos centrales de GITHUB ACTIONS — INTRODUCCIÓN A CI.\n· Ejemplo numérico o de código trazado paso a paso.\n· Pregunta tipo entrevista técnica con respuesta esperada.\n· Dominar las 12 preguntas de autoevaluación con ≥70% de aciertos antes de avanzar.\n\n## Desarrollo teórico detallado\n\n## 1. Workflow YAML en .github/workflows/.\n\n**Qué es y por qué importa.** Dentro de GITHUB ACTIONS — INTRODUCCIÓN A CI, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Workflow YAML en .github/workflows/. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Workflow YAML en .github/workflows/.» y cuándo lo evitarías.\n\n## 2. Triggers: on push, pull_request, schedule.\n\n**Qué es y por qué importa.** Dentro de GITHUB ACTIONS — INTRODUCCIÓN A CI, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Triggers: on push, pull_request, schedule. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Triggers: on push, pull_request, schedule.» y cuándo lo evitarías.\n\n## 3. Jobs, steps, runs-on (ubuntu-latest).\n\n**Qué es y por qué importa.** Dentro de GITHUB ACTIONS — INTRODUCCIÓN A CI, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Jobs, steps, runs-on (ubuntu-latest). — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Jobs, steps, runs-on (ubuntu-latest).» y cuándo lo evitarías.\n\n## 4. Actions del marketplace: actions/checkout, setup-node.\n\n**Qué es y por qué importa.** Dentro de GITHUB ACTIONS — INTRODUCCIÓN A CI, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Actions del marketplace: actions/checkout, setup-node. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Actions del marketplace: actions/checkout, setup-node.» y cuándo lo evitarías.\n\n## 5. Badges de status en README.\n\n**Qué es y por qué importa.** Dentro de GITHUB ACTIONS — INTRODUCCIÓN A CI, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Badges de status en README. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Badges de status en README.» y cuándo lo evitarías.\n\n## 6. Definición operativa de los términos centrales de GITHUB ACTIONS — INTRODUCCIÓN A CI.\n\n**Qué es y por qué importa.** Dentro de GITHUB ACTIONS — INTRODUCCIÓN A CI, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Definición operativa de los términos centrales de GITHUB ACTIONS — INTRODUCCIÓN A CI. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Definición operativa de los términos centrales de GITHUB ACTIONS — INTRODUCCIÓN A CI.» y cuándo lo evitarías.\n\n## 7. Ejemplo numérico o de código trazado paso a paso.\n\n**Qué es y por qué importa.** Dentro de GITHUB ACTIONS — INTRODUCCIÓN A CI, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Ejemplo numérico o de código trazado paso a paso. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Ejemplo numérico o de código trazado paso a paso.» y cuándo lo evitarías.\n\n## 8. Pregunta tipo entrevista técnica con respuesta esperada.\n\n**Qué es y por qué importa.** Dentro de GITHUB ACTIONS — INTRODUCCIÓN A CI, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Pregunta tipo entrevista técnica con respuesta esperada. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Pregunta tipo entrevista técnica con respuesta esperada.» y cuándo lo evitarías.\n\n## Aplicaciones en sistemas reales\n\n**Ejemplo 1:** Este repo QuimiSell despliega a Vercel solo cuando GitHub Actions pasa typecheck + build en el PR.\n\n**Ejemplo 2:** Este repo QuimiSell despliega a Vercel solo cuando GitHub Actions pasa typecheck + build en el PR.\n\n**Ejemplo 3:** Este repo QuimiSell despliega a Vercel solo cuando GitHub Actions pasa typecheck + build en el PR.\n\nEstos casos muestran por qué GITHUB ACTIONS — INTRODUCCIÓN A CI no es teórico: empresas y proyectos open source aplican estos principios diariamente. Al estudiar, elige uno y escribe cómo encajaría el concepto del módulo en ese escenario.\n\n## Errores comunes al estudiar\n\n· Ignorar la sección de aplicaciones reales: ahí se ancla la memoria a largo plazo.\n· Confundir el caso promedio con el peor caso al estimar rendimiento de un algoritmo.\n· Ignorar la sección de aplicaciones reales: ahí se ancla la memoria a largo plazo.\n· Confundir el caso promedio con el peor caso al estimar rendimiento de un algoritmo.\n\n## Síntesis para repasar\n\nCierra el módulo resumiendo GITHUB ACTIONS — INTRODUCCIÓN A CI en cinco líneas propias. Vuelve a leer los **Conceptos clave** del panel, ejecuta el código de referencia y completa la autoevaluación. Si fallas más de 3 preguntas, relee el bloque teórico correspondiente antes de continuar — el siguiente módulo asume que dominas este.",
-      codeSnippet: `# .github/workflows/ci.yml
-name: CI
+        "Qué es SAST (Static Application Security Testing): inspección de AST sin ejecutar el código.",
+        "Diferencia entre Linter (estilo/formato) y SAST (análisis semántico y flujo de datos contaminados).",
+        "Reglas de Semgrep OSS: sintaxis pattern-matching agnóstica para JavaScript, TypeScript y Python.",
+        "Detección de vectores OWASP Top 10: Inyección SQL, Cross-Site Scripting (XSS), eval() inseguro y Path Traversal.",
+        "Workflow de GitHub Actions: runners, triggers en pull_request y generación de reportes SARIF.",
+        "Integración con GitHub Code Scanning y branch protection para bloquear merges vulnerables."
+      ],
+      content: `## Panorama: Análisis Estático de Seguridad (SAST)
+
+En un pipeline DevSecOps maduro, la revisión de código por humanos no es suficiente para garantizar la ausencia de fallos de seguridad. Un revisor humano puede pasar por alto una inyección de dependencias o un uso peligroso de dangerouslySetInnerHTML. Aquí es donde entra el **SAST (Static Application Security Testing)**.
+
+### 1. ¿Cómo Funciona el SAST?
+A diferencia de los linters tradicionales (como ESLint o Prettier) que analizan el estilo sintáctico o malas prácticas superficiales, los analizadores SAST modernos como **Semgrep** y **GitHub CodeQL** convierten el código fuente en un **Árbol de Sintaxis Abstracta (AST)** y realizan **Análisis de Flujo de Datos Contaminados (Taint Analysis)**:
+* Rastrean la entrada del usuario desde una fuente no confiable (req.query, input) hasta un sumidero crítico (eval(), consulta SQL, innerHTML).
+* Si el dato viaja sin sanitización o validación previa, el analizador detecta la vulnerabilidad y falla el build.
+
+### 2. Semgrep OSS: La Herramienta Estrella de la Industria
+Semgrep es un motor de análisis estático ultra-rápido que permite buscar patrones de código utilizando la propia sintaxis del lenguaje objetivo:
+* Incluye paquetes de reglas de la comunidad como p/owasp-top-ten, p/security-audit y p/react.
+* Es completamente open source y se ejecuta en segundos en los runners de GitHub Actions.
+
+### 3. El Formato SARIF y GitHub Security
+Los resultados del análisis SAST se exportan en formato **SARIF (Static Analysis Results Interchange Format)**. GitHub interpreta este archivo estándar y muestra las alertas de seguridad directamente en las líneas de código afectadas dentro del Pull Request, impidiendo que el desarrollador haga merge hasta corregir la vulnerabilidad.`,
+      codeSnippet: `# .github/workflows/sast.yml
+name: "DevSecOps: SAST Security Scan"
+
 on:
   push:
     branches: [main]
@@ -853,312 +857,457 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  semgrep-sast:
+    name: "Semgrep OSS SAST Scan"
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-      - run: npm ci
-      - run: npm run lint
-      - run: npm run build`,
-      quiz: [
-        {
-          question: "Los workflows de GitHub Actions viven en...",
-          options: [".github/workflows/", "vercel.json", "package-lock.json"],
-          answerIndex: 0,
-          explanation: "YAML versionado junto al código."
-        },
-        {
-          question: "on: pull_request dispara el workflow cuando...",
-          options: ["Solo haces push a main", "Se abre o actualiza un PR", "Nunca"],
-          answerIndex: 1,
-          explanation: "CI en PR valida cambios antes de merge."
-        },
-        {
-          question: "actions/checkout@v4 hace...",
-          options: ["Despliega en Vercel", "Clona el repo en el runner", "Ejecuta tests E2E"],
-          answerIndex: 1,
-          explanation: "Primer step estándar para tener el código."
-        },
-        {
-          question: "npm ci vs npm install en CI...",
-          options: ["Son idénticos siempre", "npm ci es determinista desde lockfile", "npm ci no existe"],
-          answerIndex: 1,
-          explanation: "ci instala exactamente lo del package-lock.json."
-        },
-        {
-          question: "CI verde en PR significa...",
-          options: ["Todos los jobs pasaron", "Merge automático sin review", "Despliegue a producción forzado"],
-          answerIndex: 0,
-          explanation: "Checks exitosos; merge aún puede requerir review."
-        },
-      ,
-        {
-          question: "Según el temario de 'MÓDULO 8: GITHUB ACTIONS — INTRODUCCIÓN A CI', ¿cuál afirmación es correcta sobre: Workflow YAML en .github/workflows/?",
-          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Workflow YAML en .github/workflows/", "Descartar el análisis asintótico por constantes de hardware."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Workflow YAML en .github/workflows/. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 8: GITHUB ACTIONS — INTRODUCCIÓN A CI', ¿cuál afirmación es correcta sobre: Triggers: on push, pull_request, schedule?",
-          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Triggers: on push, pull_request, schedule", "Aplicar la regla solo en el best case ignorando el peor escenario."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Triggers: on push, pull_request, schedule. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 8: GITHUB ACTIONS — INTRODUCCIÓN A CI', ¿cuál afirmación es correcta sobre: Jobs, steps, runs-on (ubuntu-latest)?",
-          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Jobs, steps, runs-on (ubuntu-latest)", "Ignorar casos borde y entradas vacías en el diseño."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Jobs, steps, runs-on (ubuntu-latest). Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 8: GITHUB ACTIONS — INTRODUCCIÓN A CI', ¿cuál afirmación es correcta sobre: Actions del marketplace: actions/checkout, setup-node?",
-          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Actions del marketplace: actions/checkout, setup-node", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Actions del marketplace: actions/checkout, setup-node. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 8: GITHUB ACTIONS — INTRODUCCIÓN A CI', ¿cuál afirmación es correcta sobre: Badges de status en README?",
-          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Badges de status en README", "Asumir que más líneas de código siempre implican mayor eficiencia."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Badges de status en README. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 8: GITHUB ACTIONS — INTRODUCCIÓN A CI', ¿cuál afirmación es correcta sobre: Definición operativa de los términos centrales de GITHUB ACTIONS — INTRODUCCI...?",
-          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Definición operativa de los términos centrales de GITHUB ACTIONS — ...", "Descartar el análisis asintótico por constantes de hardware."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Definición operativa de los términos centrales de GITHUB ACTIONS — INTRODUCCIÓN A CI. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 8: GITHUB ACTIONS — INTRODUCCIÓN A CI', ¿cuál afirmación es correcta sobre: Ejemplo numérico o de código trazado paso a paso?",
-          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Ejemplo numérico o de código trazado paso a paso", "Optimizar prematuramente sin perfilar el cuello de botella real."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Ejemplo numérico o de código trazado paso a paso. Las otras opciones representan malentendidos típicos."
-        }
-      ]
-    },
-{
-      id: 9,
-      title: "MÓDULO 9: GITHUB ACTIONS AVANZADO — CACHE Y DEPLOY HOOKS",
-      description: "Optimizar pipelines: caché, matrices, artifacts y secrets para despliegue.",
-      items: [
-      "Cache de dependencias con actions/cache o setup-node cache.",
-      "Strategy matrix: probar Node 18 y 20 en paralelo.",
-      "Artifacts: subir carpeta dist/ entre jobs.",
-      "GitHub Secrets para tokens (VERCEL_TOKEN, no en código).",
-      "Workflow dispatch manual y environments (staging/prod).",
-      "Definición operativa de los términos centrales de GITHUB ACTIONS AVANZADO — CACHE Y DEPLOY HOOKS.",
-      "Ejemplo numérico o de código trazado paso a paso.",
-      "Pregunta tipo entrevista técnica con respuesta esperada.",
-      "Relación explícita con el snippet de implementación del módulo."
-],
-      content: "## Panorama del tema: GITHUB ACTIONS AVANZADO — CACHE Y DEPLOY HOOKS\n\nOptimizar pipelines: caché, matrices, artifacts y secrets para despliegue.\n\nPipelines maduros minimizan tiempo y repiten menos trabajo. setup-node con cache: 'npm' reutiliza node_modules entre runs. Matrix strategy prueba múltiples versiones en paralelo. Artifacts guardan build output para un job de deploy separado. Los secrets se configuran en Settings → Secrets: nunca en YAML en texto plano. GitHub Environments añaden approval gates para producción. Para sitio estático sin base de datos, el artifact dist/ es todo lo que Vercel necesita; el deploy puede ser automático vía integración nativa o action personalizada.\n\nEste módulo es material de estudio **autocontenido**: puedes aprenderlo completo aquí, sin pagar plataformas externas ni depender de internet después de cargar la página. Lee en orden, ejecuta el snippet, resuelve la autoevaluación y repasa los puntos que falles.\n\n## Qué aprenderás en este módulo\n\n· Cache de dependencias con actions/cache o setup-node cache.\n· Strategy matrix: probar Node 18 y 20 en paralelo.\n· Artifacts: subir carpeta dist/ entre jobs.\n· GitHub Secrets para tokens (VERCEL_TOKEN, no en código).\n· Workflow dispatch manual y environments (staging/prod).\n· Definición operativa de los términos centrales de GITHUB ACTIONS AVANZADO — CACHE Y DEPLOY HOOKS.\n· Ejemplo numérico o de código trazado paso a paso.\n· Pregunta tipo entrevista técnica con respuesta esperada.\n· Dominar las 12 preguntas de autoevaluación con ≥70% de aciertos antes de avanzar.\n\n## Desarrollo teórico detallado\n\n## 1. Cache de dependencias con actions/cache o setup-node cache.\n\n**Qué es y por qué importa.** Dentro de GITHUB ACTIONS AVANZADO — CACHE Y DEPLOY HOOKS, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Cache de dependencias con actions/cache o setup-node cache. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Cache de dependencias con actions/cache o setup-node cache.» y cuándo lo evitarías.\n\n## 2. Strategy matrix: probar Node 18 y 20 en paralelo.\n\n**Qué es y por qué importa.** Dentro de GITHUB ACTIONS AVANZADO — CACHE Y DEPLOY HOOKS, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Strategy matrix: probar Node 18 y 20 en paralelo. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Strategy matrix: probar Node 18 y 20 en paralelo.» y cuándo lo evitarías.\n\n## 3. Artifacts: subir carpeta dist/ entre jobs.\n\n**Qué es y por qué importa.** Dentro de GITHUB ACTIONS AVANZADO — CACHE Y DEPLOY HOOKS, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Artifacts: subir carpeta dist/ entre jobs. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Artifacts: subir carpeta dist/ entre jobs.» y cuándo lo evitarías.\n\n## 4. GitHub Secrets para tokens (VERCEL_TOKEN, no en código).\n\n**Qué es y por qué importa.** Dentro de GITHUB ACTIONS AVANZADO — CACHE Y DEPLOY HOOKS, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** GitHub Secrets para tokens (VERCEL_TOKEN, no en código). — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «GitHub Secrets para tokens (VERCEL_TOKEN, no en código).» y cuándo lo evitarías.\n\n## 5. Workflow dispatch manual y environments (staging/prod).\n\n**Qué es y por qué importa.** Dentro de GITHUB ACTIONS AVANZADO — CACHE Y DEPLOY HOOKS, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Workflow dispatch manual y environments (staging/prod). — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Workflow dispatch manual y environments (staging/prod).» y cuándo lo evitarías.\n\n## 6. Definición operativa de los términos centrales de GITHUB ACTIONS AVANZADO — CACHE Y DEPLOY HOOKS.\n\n**Qué es y por qué importa.** Dentro de GITHUB ACTIONS AVANZADO — CACHE Y DEPLOY HOOKS, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Definición operativa de los términos centrales de GITHUB ACTIONS AVANZADO — CACHE Y DEPLOY HOOKS. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Definición operativa de los términos centrales de GITHUB ACTIONS AVANZADO — CACHE Y DEPLOY HOOKS.» y cuándo lo evitarías.\n\n## 7. Ejemplo numérico o de código trazado paso a paso.\n\n**Qué es y por qué importa.** Dentro de GITHUB ACTIONS AVANZADO — CACHE Y DEPLOY HOOKS, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Ejemplo numérico o de código trazado paso a paso. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Ejemplo numérico o de código trazado paso a paso.» y cuándo lo evitarías.\n\n## 8. Pregunta tipo entrevista técnica con respuesta esperada.\n\n**Qué es y por qué importa.** Dentro de GITHUB ACTIONS AVANZADO — CACHE Y DEPLOY HOOKS, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Pregunta tipo entrevista técnica con respuesta esperada. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Pregunta tipo entrevista técnica con respuesta esperada.» y cuándo lo evitarías.\n\n## Aplicaciones en sistemas reales\n\n**Ejemplo 1:** Linux kernel usa Git desde 2002; miles de contribuidores coordinan ramas sin bloquear el trunk.\n\n**Ejemplo 2:** Linux kernel usa Git desde 2002; miles de contribuidores coordinan ramas sin bloquear el trunk.\n\n**Ejemplo 3:** Linux kernel usa Git desde 2002; miles de contribuidores coordinan ramas sin bloquear el trunk.\n\nEstos casos muestran por qué GITHUB ACTIONS AVANZADO — CACHE Y DEPLOY HOOKS no es teórico: empresas y proyectos open source aplican estos principios diariamente. Al estudiar, elige uno y escribe cómo encajaría el concepto del módulo en ese escenario.\n\n## Errores comunes al estudiar\n\n· Ignorar la sección de aplicaciones reales: ahí se ancla la memoria a largo plazo.\n· Confundir el caso promedio con el peor caso al estimar rendimiento de un algoritmo.\n· Ignorar la sección de aplicaciones reales: ahí se ancla la memoria a largo plazo.\n· Confundir el caso promedio con el peor caso al estimar rendimiento de un algoritmo.\n\n## Síntesis para repasar\n\nCierra el módulo resumiendo GITHUB ACTIONS AVANZADO — CACHE Y DEPLOY HOOKS en cinco líneas propias. Vuelve a leer los **Conceptos clave** del panel, ejecuta el código de referencia y completa la autoevaluación. Si fallas más de 3 preguntas, relee el bloque teórico correspondiente antes de continuar — el siguiente módulo asume que dominas este.",
-      codeSnippet: `# Matrix + cache
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18, 20]
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: \${{ matrix.node-version }}
-          cache: 'npm'
-      - run: npm ci && npm test
+    permissions:
+      security-events: write # Permite subir alertas a la pestaña Security
+      contents: read
 
-# Secret en step (nunca hardcodear)
-- name: Deploy
-  env:
-    VERCEL_TOKEN: \${{ secrets.VERCEL_TOKEN }}
-  run: npx vercel --prod --token $VERCEL_TOKEN`,
+    steps:
+      - name: "Checkout del Código"
+        uses: actions/checkout@v4
+
+      - name: "Ejecutar Semgrep con reglas OWASP Top 10"
+        run: |
+          docker run --rm -v "\${{ github.workspace }}:/src" returntocorp/semgrep:latest \\
+            semgrep scan \\
+            --config=p/owasp-top-ten \\
+            --config=p/security-audit \\
+            --sarif --output=semgrep-results.sarif \\
+            --error
+
+      - name: "Subir reporte SARIF a GitHub Security"
+        if: always()
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: semgrep-results.sarif`,
       quiz: [
         {
-          question: "GitHub Secrets se usan para...",
-          options: ["Publicar tokens en logs", "Inyectar credenciales sin exponerlas en el repo", "Reemplazar .gitignore"],
+          question: "¿Cuál es la diferencia fundamental entre un Linter tradicional (como ESLint) y un motor SAST (como Semgrep o CodeQL)?",
+          options: [
+            "El linter solo funciona en Windows y SAST en Mac",
+            "El linter revisa formato y convenciones sintácticas; SAST realiza análisis semántico profundo y rastrea flujos de datos no confiables (Taint Analysis)",
+            "El motor SAST compila el código a binario x86",
+            "No hay ninguna diferencia"
+          ],
           answerIndex: 1,
-          explanation: "Variables cifradas accesibles solo en workflows."
+          explanation: "SAST analiza la estructura semántica y la procedencia de datos para identificar fallos de seguridad (inyecciones, desbordamientos, ejecución remota), mientras que los linters se enfocan en coherencia estilística."
         },
         {
-          question: "Strategy matrix permite...",
-          options: ["Un solo runner", "Ejecutar el job con varias combinaciones en paralelo", "Eliminar tests"],
+          question: "¿Qué es el estándar SARIF en el ecosistema de CI/CD?",
+          options: [
+            "Un tipo de base de datos en memoria",
+            "Un formato JSON estandarizado para intercambiar resultados de análisis estático entre escáneres y plataformas como GitHub",
+            "Un protocolo de compresión de imágenes",
+            "Un nuevo lenguaje de programación"
+          ],
           answerIndex: 1,
-          explanation: "Ej: probar Node 18 y 20 simultáneamente."
+          explanation: "SARIF (Static Analysis Results Interchange Format) es el formato estándar de la industria que permite a herramientas como Semgrep, Trivy y CodeQL mostrar sus hallazgos en la interfaz unificada de GitHub Security."
         },
         {
-          question: "Artifacts en Actions...",
-          options: ["Borran el repo", "Persisten archivos entre jobs o para descarga", "Solo guardan logs"],
+          question: "¿Qué vulnerabilidad del OWASP Top 10 previene Semgrep al detectar patrones como 'SELECT * FROM users WHERE id = ' + userId?",
+          options: [
+            "Cross-Site Request Forgery (CSRF)",
+            "Inyección SQL (SQL Injection - A03)",
+            "Fallo de memoria Heap",
+            "Ataque de denegación de servicio distribuido (DDoS)"
+          ],
           answerIndex: 1,
-          explanation: "Útil para pasar dist/ al job de deploy."
-        },
-        {
-          question: "Cache en CI reduce...",
-          options: ["Seguridad", "Tiempo de instalación de dependencias", "Número de commits"],
-          answerIndex: 1,
-          explanation: "Reutiliza node_modules entre ejecuciones."
-        },
-        {
-          question: "VERCEL_TOKEN debe estar en...",
-          options: ["README.md", "GitHub Secrets", "Commit message"],
-          answerIndex: 1,
-          explanation: "Nunca versionar tokens en el repositorio."
-        },
-      ,
-        {
-          question: "Según el temario de 'MÓDULO 9: GITHUB ACTIONS AVANZADO — CACHE Y DEPLOY HOOKS', ¿cuál afirmación es correcta sobre: Cache de dependencias con actions/cache o setup-node cache?",
-          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Cache de dependencias con actions/cache o setup-node cache", "Optimizar prematuramente sin perfilar el cuello de botella real."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Cache de dependencias con actions/cache o setup-node cache. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 9: GITHUB ACTIONS AVANZADO — CACHE Y DEPLOY HOOKS', ¿cuál afirmación es correcta sobre: Strategy matrix: probar Node 18 y 20 en paralelo?",
-          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Strategy matrix: probar Node 18 y 20 en paralelo", "Asumir que más líneas de código siempre implican mayor eficiencia."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Strategy matrix: probar Node 18 y 20 en paralelo. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 9: GITHUB ACTIONS AVANZADO — CACHE Y DEPLOY HOOKS', ¿cuál afirmación es correcta sobre: Artifacts: subir carpeta dist/ entre jobs?",
-          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Artifacts: subir carpeta dist/ entre jobs", "Mezclar responsabilidades en una sola función o módulo monolítico."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Artifacts: subir carpeta dist/ entre jobs. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 9: GITHUB ACTIONS AVANZADO — CACHE Y DEPLOY HOOKS', ¿cuál afirmación es correcta sobre: GitHub Secrets para tokens (VERCEL_TOKEN, no en código)?",
-          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: GitHub Secrets para tokens (VERCEL_TOKEN, no en código)", "Confundir el concepto con una técnica ortogonal no relacionada."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que GitHub Secrets para tokens (VERCEL_TOKEN, no en código). Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 9: GITHUB ACTIONS AVANZADO — CACHE Y DEPLOY HOOKS', ¿cuál afirmación es correcta sobre: Workflow dispatch manual y environments (staging/prod)?",
-          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Workflow dispatch manual y environments (staging/prod)", "Descartar el análisis asintótico por constantes de hardware."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Workflow dispatch manual y environments (staging/prod). Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 9: GITHUB ACTIONS AVANZADO — CACHE Y DEPLOY HOOKS', ¿cuál afirmación es correcta sobre: Definición operativa de los términos centrales de GITHUB ACTIONS AVANZADO — C...?",
-          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Definición operativa de los términos centrales de GITHUB ACTIONS AV...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Definición operativa de los términos centrales de GITHUB ACTIONS AVANZADO — CACHE Y DEPLOY HOOKS. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 9: GITHUB ACTIONS AVANZADO — CACHE Y DEPLOY HOOKS', ¿cuál afirmación es correcta sobre: Ejemplo numérico o de código trazado paso a paso?",
-          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Ejemplo numérico o de código trazado paso a paso", "Asumir que más líneas de código siempre implican mayor eficiencia."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Ejemplo numérico o de código trazado paso a paso. Las otras opciones representan malentendidos típicos."
+          explanation: "Concatenar variables no sanitizadas directamente en consultas SQL es el patrón clásico de inyección SQL (OWASP A03), el cual se previene utilizando consultas parametrizadas o Prepared Statements."
         }
       ]
     },
-{
-      id: 10,
-      title: "MÓDULO 10: VERCEL — DEPLOY ESTÁTICO $0 SIN BASE DE DATOS",
-      description: "De GitHub a producción global: hosting gratuito para SPAs y sitios estáticos.",
+    {
+      id: 9,
+      title: "MÓDULO 9: AUDITORÍA DE DEPENDENCIAS (SCA CON TRIVY) Y ANÁLISIS DINÁMICO DAST (OWASP ZAP)",
+      description: "Defensa de la cadena de suministro de software y verificación dinámica en tiempo de ejecución contra entornos de preview.",
       items: [
-      "Vercel Hobby plan: $0 para proyectos personales y OSS.",
-      "Importar repo GitHub → auto-deploy en cada push a main.",
-      "Framework presets: Vite, Next.js static export, React.",
-      "Preview URLs por PR sin configuración extra.",
-      "Sin backend ni DB: formularios con mailto o servicios externos.",
-      "Definición operativa de los términos centrales de VERCEL — DEPLOY ESTÁTICO $0 SIN BASE DE DATOS.",
-      "Ejemplo numérico o de código trazado paso a paso.",
-      "Pregunta tipo entrevista técnica con respuesta esperada.",
-      "Relación explícita con el snippet de implementación del módulo."
-],
-      content: "## Panorama del tema: VERCEL — DEPLOY ESTÁTICO $0 SIN BASE DE DATOS\n\nDe GitHub a producción global: hosting gratuito para SPAs y sitios estáticos.\n\nVercel es la pieza final del pipeline QuimiSell: conectas tu repo GitHub, seleccionas framework (Vite/React), y cada merge a main despliega en segundos a una CDN global. El plan Hobby cuesta $0 para uso personal/educativo: incluye HTTPS automático, preview deployments y dominio .vercel.app. Para sitios sin base de datos, el build genera HTML/JS/CSS estáticos; no necesitas servidor Node permanente. Variables de entorno en dashboard Vercel (no en git) configuran API keys si usas servicios externos. Arquitectura ideal estudiante: Git → GitHub → Actions (CI) → Vercel (CD) → $0/mes.\n\nEste módulo es material de estudio **autocontenido**: puedes aprenderlo completo aquí, sin pagar plataformas externas ni depender de internet después de cargar la página. Lee en orden, ejecuta el snippet, resuelve la autoevaluación y repasa los puntos que falles.\n\n## Qué aprenderás en este módulo\n\n· Vercel Hobby plan: $0 para proyectos personales y OSS.\n· Importar repo GitHub → auto-deploy en cada push a main.\n· Framework presets: Vite, Next.js static export, React.\n· Preview URLs por PR sin configuración extra.\n· Sin backend ni DB: formularios con mailto o servicios externos.\n· Definición operativa de los términos centrales de VERCEL — DEPLOY ESTÁTICO $0 SIN BASE DE DATOS.\n· Ejemplo numérico o de código trazado paso a paso.\n· Pregunta tipo entrevista técnica con respuesta esperada.\n· Dominar las 12 preguntas de autoevaluación con ≥70% de aciertos antes de avanzar.\n\n## Desarrollo teórico detallado\n\n## 1. Vercel Hobby plan: $0 para proyectos personales y OSS.\n\n**Qué es y por qué importa.** Dentro de VERCEL — DEPLOY ESTÁTICO $0 SIN BASE DE DATOS, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Vercel Hobby plan: $0 para proyectos personales y OSS. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Vercel Hobby plan: $0 para proyectos personales y OSS.» y cuándo lo evitarías.\n\n## 2. Importar repo GitHub → auto-deploy en cada push a main.\n\n**Qué es y por qué importa.** Dentro de VERCEL — DEPLOY ESTÁTICO $0 SIN BASE DE DATOS, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Importar repo GitHub → auto-deploy en cada push a main. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Importar repo GitHub → auto-deploy en cada push a main.» y cuándo lo evitarías.\n\n## 3. Framework presets: Vite, Next.js static export, React.\n\n**Qué es y por qué importa.** Dentro de VERCEL — DEPLOY ESTÁTICO $0 SIN BASE DE DATOS, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Framework presets: Vite, Next.js static export, React. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Framework presets: Vite, Next.js static export, React.» y cuándo lo evitarías.\n\n## 4. Preview URLs por PR sin configuración extra.\n\n**Qué es y por qué importa.** Dentro de VERCEL — DEPLOY ESTÁTICO $0 SIN BASE DE DATOS, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Preview URLs por PR sin configuración extra. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Preview URLs por PR sin configuración extra.» y cuándo lo evitarías.\n\n## 5. Sin backend ni DB: formularios con mailto o servicios externos.\n\n**Qué es y por qué importa.** Dentro de VERCEL — DEPLOY ESTÁTICO $0 SIN BASE DE DATOS, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Sin backend ni DB: formularios con mailto o servicios externos. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Sin backend ni DB: formularios con mailto o servicios externos.» y cuándo lo evitarías.\n\n## 6. Definición operativa de los términos centrales de VERCEL — DEPLOY ESTÁTICO $0 SIN BASE DE DATOS.\n\n**Qué es y por qué importa.** Dentro de VERCEL — DEPLOY ESTÁTICO $0 SIN BASE DE DATOS, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Definición operativa de los términos centrales de VERCEL — DEPLOY ESTÁTICO $0 SIN BASE DE DATOS. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Definición operativa de los términos centrales de VERCEL — DEPLOY ESTÁTICO $0 SIN BASE DE DATOS.» y cuándo lo evitarías.\n\n## 7. Ejemplo numérico o de código trazado paso a paso.\n\n**Qué es y por qué importa.** Dentro de VERCEL — DEPLOY ESTÁTICO $0 SIN BASE DE DATOS, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Ejemplo numérico o de código trazado paso a paso. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Ejemplo numérico o de código trazado paso a paso.» y cuándo lo evitarías.\n\n## 8. Pregunta tipo entrevista técnica con respuesta esperada.\n\n**Qué es y por qué importa.** Dentro de VERCEL — DEPLOY ESTÁTICO $0 SIN BASE DE DATOS, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Pregunta tipo entrevista técnica con respuesta esperada. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Pregunta tipo entrevista técnica con respuesta esperada.» y cuándo lo evitarías.\n\n## Aplicaciones en sistemas reales\n\n**Ejemplo 1:** Linux kernel usa Git desde 2002; miles de contribuidores coordinan ramas sin bloquear el trunk.\n\n**Ejemplo 2:** Linux kernel usa Git desde 2002; miles de contribuidores coordinan ramas sin bloquear el trunk.\n\n**Ejemplo 3:** Linux kernel usa Git desde 2002; miles de contribuidores coordinan ramas sin bloquear el trunk.\n\nEstos casos muestran por qué VERCEL — DEPLOY ESTÁTICO $0 SIN BASE DE DATOS no es teórico: empresas y proyectos open source aplican estos principios diariamente. Al estudiar, elige uno y escribe cómo encajaría el concepto del módulo en ese escenario.\n\n## Errores comunes al estudiar\n\n· Avanzar al siguiente módulo sin alcanzar al menos 70% en la autoevaluación.\n· Estudiar solo la definición sin un ejemplo numérico concreto (valores pequeños de n).\n· Avanzar al siguiente módulo sin alcanzar al menos 70% en la autoevaluación.\n· Estudiar solo la definición sin un ejemplo numérico concreto (valores pequeños de n).\n\n## Síntesis para repasar\n\nCierra el módulo resumiendo VERCEL — DEPLOY ESTÁTICO $0 SIN BASE DE DATOS en cinco líneas propias. Vuelve a leer los **Conceptos clave** del panel, ejecuta el código de referencia y completa la autoevaluación. Si fallas más de 3 preguntas, relee el bloque teórico correspondiente antes de continuar — el siguiente módulo asume que dominas este.",
-      codeSnippet: `# vercel.json para SPA (Vite/React)
+        "Seguridad en la Cadena de Suministro (Supply Chain): por qué el 85% de tu código son dependencias de terceros.",
+        "SCA (Software Composition Analysis): escaneo de package-lock.json y contenedores con Trivy.",
+        "Métricas CVSS (Common Vulnerability Scoring System) y base de datos CVE / NVD.",
+        "DAST (Dynamic Application Security Testing): pruebas de caja negra contra aplicaciones web en ejecución.",
+        "OWASP ZAP (Zed Attack Proxy): Baseline Scan automatizado en GitHub Actions.",
+        "Validación de cabeceras de seguridad HTTP: Content-Security-Policy (CSP), HSTS, X-Frame-Options y cookies seguras."
+      ],
+      content: `## Panorama: Cadena de Suministro (SCA) y Pruebas Dinámicas (DAST)
+
+Una aplicación web moderna rara vez se escribe desde cero. Cuando ejecutas npm install react, no solo instalas React: instalas un árbol transitivo de cientos de paquetes desarrollados por terceros. Si uno solo de esos paquetes contiene una vulnerabilidad conocida o es víctima de un ataque de secuestro de cuenta (Dependency Confusion o Typosquatting), tu aplicación entera queda comprometida.
+
+### 1. SCA: Software Composition Analysis con Trivy
+El análisis **SCA** inspecciona los archivos de bloqueo (package-lock.json, requirements.txt, Pipfile.lock) y compara las versiones instaladas contra las bases de datos globales de vulnerabilidades conocidas:
+* **CVE (Common Vulnerabilities and Exposures)** y **NVD (National Vulnerability Database)**.
+* **Trivy (de Aqua Security):** Es el estándar de oro en SCA por su velocidad y capacidad para escanear dependencias de lenguajes, imágenes de contenedores Docker y configuraciones de infraestructura como código (IaC).
+* **Política de Puerta de Enlace (Gate):** En CI/CD configuramos Trivy con --exit-code 1 --severity CRITICAL,HIGH para abortar el despliegue si existe una vulnerabilidad severa con exploit conocido.
+
+### 2. DAST: Dynamic Application Security Testing con OWASP ZAP
+Mientras que el SAST analiza el código fuente sin ejecutarlo, el **DAST** ataca la aplicación desde el exterior como lo haría un ciberdelincuente real (análisis de caja negra):
+* No necesita acceso al código fuente.
+* Evalúa la aplicación desplegada en una URL de **Preview / Staging** (como las que genera Vercel en cada Pull Request).
+* **OWASP ZAP (Zed Attack Proxy):** Es la herramienta DAST open source más adoptada del mundo. Su modo Baseline Scan analiza en segundos:
+  * Cabeceras de seguridad ausentes: Content-Security-Policy (previene XSS), X-Frame-Options: DENY (previene Clickjacking), Strict-Transport-Security (fuerza HTTPS).
+  * Cookies sin banderas Secure, HttpOnly o SameSite.
+  * Exposición de archivos de depuración o rutas administrativas (/.git, /.env, /admin).`,
+      codeSnippet: `# .github/workflows/devsecops-audit.yml
+name: "DevSecOps: SCA & DAST Audit"
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  trivy-sca:
+    name: "Trivy: Auditoría de Dependencias (SCA)"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: "Escanear dependencias con Trivy"
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          severity: 'CRITICAL,HIGH'
+          exit-code: '1' # Falla el PR si hay vulnerabilidades críticas
+
+  owasp-zap-dast:
+    name: "OWASP ZAP: Dynamic Security Testing (DAST)"
+    runs-on: ubuntu-latest
+    # Se ejecuta sobre la URL de staging o preview deployment
+    steps:
+      - name: "ZAP Baseline Scan contra Staging"
+        uses: zaproxy/action-baseline@v0.12.0
+        with:
+          token: \${{ secrets.GITHUB_TOKEN }}
+          target: 'https://staging.tu-proyecto.vercel.app'
+          issue_title: 'ZAP Security Report: Fallos detectados en Preview'
+          fail_action: false`,
+      quiz: [
+        {
+          question: "¿Por qué el análisis SCA (Software Composition Analysis) es indispensable en aplicaciones modernas de JavaScript/Python?",
+          options: [
+            "Porque más del 80% del código en producción proviene de librerías de terceros en npm o pip",
+            "Porque permite que la aplicación cargue más rápido en teléfonos",
+            "Porque reemplaza a la base de datos SQL",
+            "Porque formatea el código con sangría de 2 espacios"
+          ],
+          answerIndex: 0,
+          explanation: "La inmensa mayoría del código ejecutado en un servidor o navegador son librerías de terceros; el SCA garantiza que ninguna de esas dependencias contenga CVEs conocidos con exploits activos."
+        },
+        {
+          question: "¿Qué ventaja crítica ofrece el análisis DAST (OWASP ZAP) sobre el análisis estático SAST?",
+          options: [
+            "DAST evalúa la aplicación en ejecución real en la red, detectando malas configuraciones de cabeceras HTTP, cookies y rutas expuestas que el código estático no muestra",
+            "DAST lee el código ensamblador del microprocesador",
+            "DAST permite programar sin necesidad de escribir código",
+            "DAST solo funciona si la aplicación tiene fallos de ortografía"
+          ],
+          answerIndex: 0,
+          explanation: "DAST interactúa con la aplicación viva a través del protocolo HTTP, probando exactamente lo que experimenta un atacante en la red e identificando fallos de configuración de servidor."
+        },
+        {
+          question: "¿Qué ataque web previene la cabecera HTTP 'X-Frame-Options: DENY' detectada por escáneres DAST?",
+          options: [
+            "Inyección de comandos en el shell",
+            "Clickjacking (hacer que el usuario haga clic en un iframe oculto transparente sobre un sitio legítimo)",
+            "Desbordamiento de búfer en memoria RAM",
+            "Infección de virus por correo electrónico"
+          ],
+          answerIndex: 1,
+          explanation: "X-Frame-Options: DENY prohíbe que navegadores embeban tu aplicación dentro de un <iframe> en otro dominio, neutralizando por completo el vector de Clickjacking."
+        }
+      ]
+    },
+    {
+      id: 10,
+      title: "MÓDULO 10: DESPLIEGUE INMUTABLE $0 (CD), POLÍTICAS ZERO TRUST Y ROLLBACKS",
+      description: "De la integración continua a la entrega continua: despliegues inmutables en Edge Networks, protección de producción y arquitectura Zero Trust.",
+      items: [
+        "Despliegues Inmutables (Immutable Deployments): cada release es un artefacto sellado que nunca muta.",
+        "Orquestación de CI/CD: encadenar jobs con la directiva 'needs' para condicionar el deploy al éxito de SAST, SCA y tests.",
+        "Arquitectura Zero-Trust en CI/CD: tokens efímeros OIDC (OpenID Connect) y mínimo privilegio en GITHUB_TOKEN.",
+        "Branch Protection en GitHub: requerir aprobación de Code Owners y checks verdes obligatorios.",
+        "Configuración de cabeceras web defensivas en vercel.json (CSP, HSTS, Referrer-Policy).",
+        "Estrategias de Rollback Automático y Health Checks posteriores al deploy."
+      ],
+      content: `## Panorama: Despliegue Inmutable y Zero Trust
+
+El objetivo final de un pipeline DevSecOps es entregar valor al usuario de forma continua y automatizada, pero con **garantías matemáticas de seguridad y estabilidad**. Ya no es aceptable conectarse por SSH a un servidor y editar archivos con nano o reiniciar servicios manualmente.
+
+### 1. Despliegues Inmutables en la Red Edge
+En plataformas serverless y estáticas modernas como Vercel y Cloudflare Pages:
+* Cada Pull Request y cada commit en main genera una **construcción inmutable (Immutable Build)**: un paquete sellado con un hash criptográfico único.
+* La versión se distribuye a cientos de servidores perimetrales (Edge CDN) alrededor del planeta por **$0/mes** en planes gratuitos.
+* **Rollbacks Instantáneos:** Si se detecta un incidente en producción, volver a la versión anterior toma exactamente **0.5 segundos**, pues basta redirigir el puntero DNS/Edge a la construcción inmutable previa sin tener que reconstruir ni reinstalar dependencias.
+
+### 2. Principio de Mínimo Privilegio y Zero-Trust
+Un error común en GitHub Actions es otorgar permisos de lectura y escritura totales a los workflows. En un entorno Zero-Trust:
+* Declaramos permissions: { contents: read, security-events: write } explícitamente en el YAML.
+* Para conectar con proveedores en la nube (AWS, GCP, Vercel), empleamos **OIDC (OpenID Connect)** para obtener credenciales criptográficas de vida corta (15 minutos), eliminando por completo las contraseñas estáticas de larga duración.
+
+### 3. El Pipeline DevSecOps Completo: Resumen de Flujo
+1. **Developer:** Escribe código y ejecuta git commit.
+2. **Husky (Local):** Escanea secretos con TruffleHog. Si detecta claves, bloquea el commit.
+3. **Pull Request:** Dispara el workflow de GitHub Actions.
+4. **Job SAST:** Semgrep OSS analiza el AST en busca de patrones OWASP Top 10.
+5. **Job SCA:** Trivy analiza package-lock.json en busca de CVEs conocidos.
+6. **Job Tests:** Vitest corre la suite de pruebas unitarias y de integración.
+7. **Job Preview Deploy:** Vercel genera una URL efímera de vista previa.
+8. **Job DAST:** OWASP ZAP ataca la URL de vista previa y verifica cabeceras HTTP.
+9. **Branch Protection:** Si todos los checks están en verde y los Code Owners aprueban, se hace **Squash & Merge** a main.
+10. **CD Producción:** Publicación global instantánea con cabeceras de seguridad estrictas.`,
+      codeSnippet: `# vercel.json: Cabeceras estrictas de seguridad web en producción
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": "vite",
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" },
+        { 
+          "key": "Content-Security-Policy", 
+          "value": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:;" 
+        },
+        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" }
+      ]
+    }
+  ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
-}
-
-# package.json
-"scripts": {
-  "build": "vite build",
-  "preview": "vite preview"
-}
-
-# Deploy: conectar repo en vercel.com → Import → auto CI/CD`,
+}`,
       quiz: [
         {
-          question: "Vercel Hobby plan para proyectos personales cuesta...",
-          options: ["$99/mes", "$0", "Solo con base de datos"],
+          question: "¿Cuál es la principal ventaja técnica de los Despliegues Inmutables (Immutable Deployments)?",
+          options: [
+            "Permiten editar el código directamente en el servidor de producción con nano",
+            "Cada versión es un artefacto sellado con hash único; si hay un fallo, el rollback a una versión previa es instantáneo en la CDN sin recompilar",
+            "Consumen el doble de ancho de banda",
+            "Obligan a apagar el servidor durante 2 horas"
+          ],
           answerIndex: 1,
-          explanation: "Tier gratuito para uso personal y educativo."
+          explanation: "Los despliegues inmutables garantizan que el código nunca se corrompa en vivo y permiten revertir cualquier versión problemática en milisegundos redirigiendo el enrutamiento del Edge."
         },
         {
-          question: "Preview deployment en Vercel se genera...",
-          options: ["Solo manualmente", "Automáticamente por cada PR", "Solo los domingos"],
+          question: "¿Por qué en GitHub Actions se debe configurar 'permissions' con alcance mínimo en lugar de usar los permisos por defecto?",
+          options: [
+            "Para ahorrar batería en los servidores de GitHub",
+            "Para seguir el Principio de Mínimo Privilegio (Zero-Trust): si una acción de terceros es vulnerada, no podrá secuestrar ni escribir en el repositorio",
+            "Porque GitHub cobra más dinero por cada permiso habilitado",
+            "Porque los permisos impiden que el código compile"
+          ],
           answerIndex: 1,
-          explanation: "Integración GitHub crea URL preview por PR."
+          explanation: "La directiva permissions restringe las capacidades del GITHUB_TOKEN; limitarlo a solo lectura previene ataques en la cadena de suministro dentro de los propios workflows."
         },
         {
-          question: "Sitio estático sin DB en Vercel sirve archivos desde...",
-          options: ["MySQL", "CDN global (edge)", "FTP local"],
+          question: "¿Qué directiva en un workflow de GitHub Actions asegura que el job de Despliegue a Producción solo se ejecute si los jobs de SAST, SCA y Tests terminaron con éxito?",
+          options: [
+            "await: [all]",
+            "needs: [sast-scan, sca-audit, test-suite]",
+            "run-after: true",
+            "delay: 500"
+          ],
           answerIndex: 1,
-          explanation: "HTML/JS/CSS precompilados distribuidos globalmente."
-        },
-        {
-          question: "outputDirectory en Vite típicamente es...",
-          options: ["src/", "dist/", "node_modules/"],
-          answerIndex: 1,
-          explanation: "vite build genera artefactos en dist/."
-        },
-        {
-          question: "Secretos de producción en Vercel se configuran en...",
-          options: ["README", "Dashboard Environment Variables", "Commits"],
-          answerIndex: 1,
-          explanation: "Variables en panel Vercel, nunca en el repo."
-        },
-      ,
-        {
-          question: "Según el temario de 'MÓDULO 10: VERCEL — DEPLOY ESTÁTICO $0 SIN BASE DE DATOS', ¿cuál afirmación es correcta sobre: Vercel Hobby plan: $0 para proyectos personales y OSS?",
-          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Vercel Hobby plan: $0 para proyectos personales y OSS", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Vercel Hobby plan: $0 para proyectos personales y OSS. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 10: VERCEL — DEPLOY ESTÁTICO $0 SIN BASE DE DATOS', ¿cuál afirmación es correcta sobre: Importar repo GitHub → auto-deploy en cada push a main?",
-          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Importar repo GitHub → auto-deploy en cada push a main", "Aplicar la regla solo en el best case ignorando el peor escenario."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Importar repo GitHub → auto-deploy en cada push a main. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 10: VERCEL — DEPLOY ESTÁTICO $0 SIN BASE DE DATOS', ¿cuál afirmación es correcta sobre: Framework presets: Vite, Next.js static export, React?",
-          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Framework presets: Vite, Next.js static export, React", "Aplicar la regla solo en el best case ignorando el peor escenario."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Framework presets: Vite, Next.js static export, React. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 10: VERCEL — DEPLOY ESTÁTICO $0 SIN BASE DE DATOS', ¿cuál afirmación es correcta sobre: Preview URLs por PR sin configuración extra?",
-          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Preview URLs por PR sin configuración extra", "Asumir que más líneas de código siempre implican mayor eficiencia."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Preview URLs por PR sin configuración extra. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 10: VERCEL — DEPLOY ESTÁTICO $0 SIN BASE DE DATOS', ¿cuál afirmación es correcta sobre: Sin backend ni DB: formularios con mailto o servicios externos?",
-          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Sin backend ni DB: formularios con mailto o servicios externos", "Aplicar la regla solo en el best case ignorando el peor escenario."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Sin backend ni DB: formularios con mailto o servicios externos. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 10: VERCEL — DEPLOY ESTÁTICO $0 SIN BASE DE DATOS', ¿cuál afirmación es correcta sobre: Definición operativa de los términos centrales de VERCEL — DEPLOY ESTÁTICO $0...?",
-          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Definición operativa de los términos centrales de VERCEL — DEPLOY E...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Definición operativa de los términos centrales de VERCEL — DEPLOY ESTÁTICO $0 SIN BASE DE DATOS. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 10: VERCEL — DEPLOY ESTÁTICO $0 SIN BASE DE DATOS', ¿cuál afirmación es correcta sobre: Ejemplo numérico o de código trazado paso a paso?",
-          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Ejemplo numérico o de código trazado paso a paso", "Descartar el análisis asintótico por constantes de hardware."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Ejemplo numérico o de código trazado paso a paso. Las otras opciones representan malentendidos típicos."
+          explanation: "La palabra clave 'needs' define el Grafo Acíclico Dirigido (DAG) de dependencias entre jobs; si cualquiera de los jobs listados en 'needs' falla, el job dependiente se omite automáticamente."
         }
       ]
-    }]
+    }
+  ]
 };
+
+// =========================================================================
+// EJERCICIOS PRÁCTICOS DEVSECOPS & GIT (20 DESAFÍOS: 2 POR MÓDULO)
+// =========================================================================
+const GIT_DEVOPS_EXERCISES: Record<number, TutorExercise[]> = {
+  1: [
+    {
+      id: 7011,
+      instruction: "Configuración de Identidad Git: Escribe los dos comandos oficiales para configurar tu nombre y correo global en Git.",
+      placeholder: "# Configura user.name y user.email\n",
+      expectedKeywords: ["git", "config", "--global", "user.name", "user.email"],
+      hint: "Usa: 'git config --global user.name \"Tu Nombre\"' y 'git config --global user.email \"tu@correo.com\"'.",
+      isEmailSubmission: false
+    },
+    {
+      id: 7012,
+      instruction: "Inspección Criptográfica de Commits: Escribe el comando para ver el hash SHA y los metadatos completos del commit más reciente.",
+      placeholder: "# Comando git para inspeccionar el último commit\n",
+      expectedKeywords: ["git", "log", "-1"],
+      hint: "Usa 'git log -1' o 'git show HEAD' para examinar el hash, autor, fecha y diff del commit.",
+      isEmailSubmission: false
+    }
+  ],
+  2: [
+    {
+      id: 7021,
+      instruction: "Conventional Commits: Escribe el comando para preparar todos los cambios modificados y hacer un commit que cumpla el estándar Conventional Commits para una nueva función de autenticación.",
+      placeholder: "# git add y git commit siguiendo Conventional Commits\n",
+      expectedKeywords: ["git", "add", "git", "commit", "-m", "feat"],
+      hint: "Usa 'git add .' seguido de 'git commit -m \"feat(auth): implementar inicio de sesion seguro\"'.",
+      isEmailSubmission: false
+    },
+    {
+      id: 7022,
+      instruction: "Recuperación Local Segura: Escribe el comando para desmarcar (unstage) un archivo 'config.json' que agregaste por error con 'git add' sin perder los cambios en tu disco.",
+      placeholder: "# Desmarcar archivo de staging area\n",
+      expectedKeywords: ["git", "restore", "--staged"],
+      hint: "Usa 'git restore --staged config.json' para sacarlo del index manteniendo las modificaciones en tu editor.",
+      isEmailSubmission: false
+    }
+  ],
+  3: [
+    {
+      id: 7031,
+      instruction: "Creación de Feature Branch: Escribe el comando para crear una nueva rama llamada 'feature/recuperar-password' y moverte a ella en una sola instrucción.",
+      placeholder: "# Crear y cambiar a rama feature\n",
+      expectedKeywords: ["git", "checkout", "-b"],
+      hint: "Usa 'git checkout -b feature/recuperar-password' o 'git switch -c feature/recuperar-password'.",
+      isEmailSubmission: false
+    },
+    {
+      id: 7032,
+      instruction: "Merge sin Fast-Forward: Escribe el comando para fusionar la rama 'feature/pagos' en la rama actual preservando explícitamente el commit de merge en el historial.",
+      placeholder: "# Merge preservando el nodo del grafo\n",
+      expectedKeywords: ["git", "merge", "--no-ff"],
+      hint: "Usa 'git merge --no-ff feature/pagos' para crear un commit de integración visible en el DAG de Git.",
+      isEmailSubmission: false
+    }
+  ],
+  4: [
+    {
+      id: 7041,
+      instruction: "Conexión con Remoto Seguro: Escribe los comandos para vincular tu repositorio local con el remoto de GitHub y realizar el primer push vinculando la rama main upstream.",
+      placeholder: "# Vincular origen remoto y hacer push -u\n",
+      expectedKeywords: ["git", "remote", "add", "origin", "git", "push", "-u"],
+      hint: "Usa 'git remote add origin https://github.com/usuario/repo.git' y luego 'git push -u origin main'.",
+      isEmailSubmission: false
+    },
+    {
+      id: 7042,
+      instruction: "Sincronización Limpia con Rebase: Escribe el comando para descargar los cambios del servidor y aplicarlos sobre tu trabajo local sin crear commits de merge 'Merge branch' innecesarios.",
+      placeholder: "# Pull con rebase automático\n",
+      expectedKeywords: ["git", "pull", "--rebase"],
+      hint: "Usa 'git pull --rebase origin main' para mantener un historial lineal y limpio.",
+      isEmailSubmission: false
+    }
+  ],
+  5: [
+    {
+      id: 7051,
+      instruction: "Reglas Esenciales de .gitignore: Escribe el contenido de un archivo .gitignore para proteger un proyecto web bloqueando dependencias, archivos de variables de entorno y llaves privadas.",
+      placeholder: "# Escribe al menos 4 patrones esenciales en .gitignore\n",
+      expectedKeywords: ["node_modules", ".env", "dist", "*.pem"],
+      hint: "Incluye: 'node_modules/', '.env', '.env.local', 'dist/', '*.pem', '*.key'.",
+      isEmailSubmission: false
+    },
+    {
+      id: 7052,
+      instruction: "Sincronización de Fork con Upstream: Escribe el comando para agregar el repositorio original de la organización como 'upstream' en tu fork local.",
+      placeholder: "# Agregar remoto upstream\n",
+      expectedKeywords: ["git", "remote", "add", "upstream"],
+      hint: "Usa 'git remote add upstream https://github.com/organizacion/proyecto-original.git'.",
+      isEmailSubmission: false
+    }
+  ],
+  6: [
+    {
+      id: 7061,
+      instruction: "Plantilla de Pull Request: Escribe la estructura Markdown básica para '.github/pull_request_template.md' que contenga descripción, tipo de cambio y checklist de seguridad.",
+      placeholder: "## Descripción del Cambio\n\n### Tipo de Cambio\n- [ ] feat\n- [ ] fix\n- [ ] security\n\n### Checklist DevSecOps\n",
+      expectedKeywords: ["Descripción", "security", "Checklist", "tests"],
+      hint: "Las plantillas profesionales exigen verificar que se ejecutaron linters, tests y que no se incluyeron credenciales.",
+      isEmailSubmission: false
+    },
+    {
+      id: 7062,
+      instruction: "Resolución Local de Conflictos de PR: Escribe los pasos en comandos Git para actualizar tu feature branch con los cambios de main antes de enviar el Pull Request a revisión.",
+      placeholder: "# Comandos para actualizar feature branch con main\n",
+      expectedKeywords: ["git", "checkout", "main", "git", "pull", "git", "merge"],
+      hint: "Actualiza main con 'git checkout main && git pull', luego 'git checkout feature/mi-rama' y 'git merge main' para resolver conflictos en tu entorno local.",
+      isEmailSubmission: false
+    }
+  ],
+  7: [
+    {
+      id: 7071,
+      instruction: "Husky & TruffleHog Pre-Commit Hook: Escribe el script de shell que ejecuta TruffleHog en el hook '.husky/pre-commit' para bloquear el commit si detecta secretos verificados.",
+      placeholder: "#!/usr/bin/env sh\n# Ejecuta TruffleHog sobre archivos locales staged\n",
+      expectedKeywords: ["trufflehog", "git", "file://.", "--fail"],
+      hint: "El comando es: 'trufflehog git file://. --since-commit HEAD --only-verified --fail'. Retorna código de salida distinto de cero si halla secretos.",
+      isEmailSubmission: false
+    },
+    {
+      id: 7072,
+      instruction: "Remediación y Purgado de Secretos: Escribe el comando de desecho inmediato si hiciste un commit local con un secreto y necesitas deshacerlo conservando tus archivos de código.",
+      placeholder: "# Deshacer el último commit local sin perder archivos\n",
+      expectedKeywords: ["git", "reset", "HEAD~1"],
+      hint: "Usa 'git reset --soft HEAD~1' para desarmar el commit peligroso manteniendo los cambios en staging, y quita el secreto antes de volver a commitear.",
+      isEmailSubmission: false
+    }
+  ],
+  8: [
+    {
+      id: 7081,
+      instruction: "GitHub Actions SAST Workflow: Escribe la definición YAML de un job en GitHub Actions que ejecute Semgrep con la configuración 'p/owasp-top-ten' y exporte resultados SARIF.",
+      placeholder: "name: SAST Scan\njobs:\n  semgrep:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n",
+      expectedKeywords: ["semgrep", "owasp-top-ten", "sarif", "runs-on"],
+      hint: "Usa el contenedor oficial 'returntocorp/semgrep' o el action oficial con '--config=p/owasp-top-ten --sarif'.",
+      isEmailSubmission: false
+    },
+    {
+      id: 7082,
+      instruction: "Regla Personalizada Semgrep: Escribe una regla YAML básica de Semgrep que busque llamadas a la función prohibida 'eval(...)'.",
+      placeholder: "rules:\n  - id: prohibir-eval-inseguro\n    message: 'El uso de eval() permite ejecución arbitraria de código (RCE)'\n    severity: ERROR\n    languages: [javascript, typescript]\n    pattern: \n",
+      expectedKeywords: ["rules", "id", "pattern", "eval(...)"],
+      hint: "El patrón de Semgrep es directo: 'pattern: eval(...)'. Semgrep identificará cualquier llamada a eval sin importar el espaciado.",
+      isEmailSubmission: false
+    }
+  ],
+  9: [
+    {
+      id: 7091,
+      instruction: "Trivy SCA en GitHub Actions: Escribe el step de GitHub Actions que utilice 'aquasecurity/trivy-action' para auditar el sistema de archivos buscando vulnerabilidades CRITICAL y HIGH.",
+      placeholder: "- name: Trivy SCA Scan\n  uses: aquasecurity/trivy-action@master\n  with:\n",
+      expectedKeywords: ["aquasecurity/trivy-action", "scan-type", "severity", "CRITICAL"],
+      hint: "Configura 'scan-type: fs', 'scan-ref: .' y 'severity: CRITICAL,HIGH'.",
+      isEmailSubmission: false
+    },
+    {
+      id: 7092,
+      instruction: "OWASP ZAP Baseline DAST Scan: Escribe el step de GitHub Actions que utilice 'zaproxy/action-baseline' para escanear una URL de preview de Vercel.",
+      placeholder: "- name: OWASP ZAP DAST Scan\n  uses: zaproxy/action-baseline@v0.12.0\n  with:\n",
+      expectedKeywords: ["zaproxy/action-baseline", "target", "token"],
+      hint: "Pasa 'target: https://tu-preview.vercel.app' y 'token: ${{ secrets.GITHUB_TOKEN }}'.",
+      isEmailSubmission: false
+    }
+  ],
+  10: [
+    {
+      id: 7101,
+      instruction: "Cabeceras Defensivas en vercel.json: Escribe la sección de cabeceras de seguridad para 'vercel.json' bloqueando Clickjacking con 'X-Frame-Options: DENY' y forzando tipado MIME estricto.",
+      placeholder: "{\n  \"headers\": [\n    {\n      \"source\": \"/(.*)\",\n      \"headers\": [\n        { \"key\": \"X-Frame-Options\", \"value\": \"DENY\" },\n        \"...\"\n",
+      expectedKeywords: ["headers", "X-Frame-Options", "DENY", "X-Content-Type-Options", "nosniff"],
+      hint: "Agrega '{ \"key\": \"X-Content-Type-Options\", \"value\": \"nosniff\" }' y '{ \"key\": \"X-Frame-Options\", \"value\": \"DENY\" }'.",
+      isEmailSubmission: false
+    },
+    {
+      id: 7102,
+      instruction: "Orquestación Segura con 'needs': Escribe la cabecera de un job de 'deploy-produccion' en GitHub Actions que exija que los jobs 'sast' y 'sca' hayan pasado con éxito.",
+      placeholder: "deploy-produccion:\n  name: Deploy Seguro a Vercel\n  runs-on: ubuntu-latest\n  # Requiere que sast y sca sean exitosos\n",
+      expectedKeywords: ["needs", "sast", "sca"],
+      hint: "Agrega: 'needs: [sast, sca]'. Esto impide el despliegue automático si se detectan vulnerabilidades de seguridad.",
+      isEmailSubmission: false
+    }
+  ]
+};
+
+// Adjuntar ejercicios estructurados a cada módulo de Git & DevSecOps
+GIT_DEVOPS_COURSE.modules.forEach((mod) => {
+  if (GIT_DEVOPS_EXERCISES[mod.id]) {
+    mod.exercises = GIT_DEVOPS_EXERCISES[mod.id];
+  }
+});

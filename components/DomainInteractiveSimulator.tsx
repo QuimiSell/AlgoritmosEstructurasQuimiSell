@@ -30,12 +30,18 @@ export const DomainInteractiveSimulator: React.FC<DomainInteractiveSimulatorProp
   };
 
   // ----------------------------------------------------
-  // GIT / DEVOPS SIMULATOR (git_devops_vercel)
+  // DEVSECOPS & CI/CD SIMULATOR (git_devops_vercel)
   // ----------------------------------------------------
-  const [gitCommits, setGitCommits] = useState<string[]>(['C0 (init)', 'C1 (feat: ui)', 'C2 (fix: auth)']);
+  const [gitCommits, setGitCommits] = useState<string[]>([
+    'C0 (init: scaffold)',
+    'C1 (feat: ui & auth)',
+    'C2 (sec: add husky pre-commit)',
+  ]);
   const [gitBranch, setGitBranch] = useState<string>('main');
   const [ciStatus, setCiStatus] = useState<'idle' | 'running' | 'success' | 'failed'>('idle');
   const [ciLogs, setCiLogs] = useState<string[]>([]);
+  const [devSecOpsScenario, setDevSecOpsScenario] = useState<'clean' | 'secret_leak' | 'owasp_vuln' | 'sca_cve'>('clean');
+  const [activePipelineStage, setActivePipelineStage] = useState<number>(-1);
 
   const handleGitCommit = () => {
     const nextId = `C${gitCommits.length}`;
@@ -44,18 +50,101 @@ export const DomainInteractiveSimulator: React.FC<DomainInteractiveSimulatorProp
 
   const handleRunCiPipeline = () => {
     setCiStatus('running');
-    setCiLogs(['Iniciando pipeline de GitHub Actions...', '✓ lint: ESLint pasó con 0 advertencias']);
+    setActivePipelineStage(0);
+    setCiLogs(['[CI/CD] Inicializando Runner GitHub Actions (ubuntu-latest)...']);
+
     setTimeout(() => {
-      setCiLogs((prev) => [...prev, '✓ test: Jest suite 42/42 tests exitosos']);
-      setTimeout(() => {
+      // Step 1: TruffleHog Secret Scanning
+      if (devSecOpsScenario === 'secret_leak') {
+        setActivePipelineStage(0);
         setCiLogs((prev) => [
           ...prev,
-          '✓ build: Vite empaquetó 787 módulos en 1.84s',
-          '🚀 Deploy: Desplegado en Vercel Edge Network (https://master-class-quimisell.vercel.app)',
+          '🔍 [TRUFFLEHOG] Escaneando commits en busca de credenciales expuestas...',
+          '❌ [TRUFFLEHOG] ALERTA CRÍTICA: Se detectó Stripe Secret Key (sk_live_51M...) en config/keys.ts!',
+          '⛔ POLÍTICA SHIFT-LEFT: Commit bloqueado antes del push. Revoque la clave en Stripe y use git reset HEAD~1.',
         ]);
-        setCiStatus('success');
-      }, 700);
-    }, 600);
+        setCiStatus('failed');
+        return;
+      }
+
+      setCiLogs((prev) => [
+        ...prev,
+        '✓ [TRUFFLEHOG] Secret Scanning: 0 credenciales expuestas en commits (Entropy Shannon OK).',
+      ]);
+      setActivePipelineStage(1);
+
+      setTimeout(() => {
+        // Step 2: Semgrep SAST
+        if (devSecOpsScenario === 'owasp_vuln') {
+          setActivePipelineStage(1);
+          setCiLogs((prev) => [
+            ...prev,
+            '🛡️ [SEMGREP SAST] Analizando Árbol de Sintaxis Abstracta (AST) contra OWASP Top 10...',
+            '❌ [SEMGREP] VULNERABILIDAD OWASP A03 (SQL Injection): query insegura "SELECT * FROM users WHERE id = " + userId',
+            '⛔ BRANCH PROTECTION: Pull Request bloqueado. Utilice consultas parametrizadas o Prepared Statements.',
+          ]);
+          setCiStatus('failed');
+          return;
+        }
+
+        setCiLogs((prev) => [
+          ...prev,
+          '✓ [SEMGREP SAST] 0 fallos de código fuente detectados (Reglas p/owasp-top-ten y p/security-audit aprobadas).',
+        ]);
+        setActivePipelineStage(2);
+
+        setTimeout(() => {
+          // Step 3: Trivy SCA
+          if (devSecOpsScenario === 'sca_cve') {
+            setActivePipelineStage(2);
+            setCiLogs((prev) => [
+              ...prev,
+              '📦 [TRIVY SCA] Auditando dependencias en package-lock.json contra bases de datos CVE/NVD...',
+              '❌ [TRIVY] VULNERABILIDAD CRÍTICA EN CADENA DE SUMINISTRO: CVE-2024-21538 en paquete transitivo.',
+              '⛔ PIPELINE FAIL-FAST: Build abortado por directiva --severity CRITICAL. Ejecute npm audit fix.',
+            ]);
+            setCiStatus('failed');
+            return;
+          }
+
+          setCiLogs((prev) => [
+            ...prev,
+            '✓ [TRIVY SCA] Software Composition Analysis: 0 vulnerabilidades CRITICAL/HIGH en dependencias.',
+          ]);
+          setActivePipelineStage(3);
+
+          setTimeout(() => {
+            // Step 4: Tests
+            setCiLogs((prev) => [
+              ...prev,
+              '✓ [VITEST QA] 42/42 tests unitarios e integrales aprobados con 94.8% de cobertura.',
+              '✓ [BUILD] Vite empaquetó 798 módulos en 2.12s con chunks inmutables.',
+            ]);
+            setActivePipelineStage(4);
+
+            setTimeout(() => {
+              // Step 5: DAST
+              setCiLogs((prev) => [
+                ...prev,
+                '⚡ [OWASP ZAP DAST] Escaneando URL de preview staging (análisis dinámico de caja negra)...',
+                '✓ [OWASP ZAP] Cabeceras de seguridad verificadas: CSP, HSTS, X-Frame-Options: DENY, X-Content-Type: nosniff.',
+              ]);
+              setActivePipelineStage(5);
+
+              setTimeout(() => {
+                // Step 6: Deploy
+                setCiLogs((prev) => [
+                  ...prev,
+                  '🚀 [VERCEL EDGE] Despliegue inmutable completado con éxito ($0/mes).',
+                  '🌐 URL Global: https://master-class-quimisell.vercel.app (CDN Edge Global)',
+                ]);
+                setCiStatus('success');
+              }, 500);
+            }, 600);
+          }, 600);
+        }, 600);
+      }, 600);
+    }, 500);
   };
 
   // ----------------------------------------------------
@@ -266,14 +355,25 @@ export const DomainInteractiveSimulator: React.FC<DomainInteractiveSimulatorProp
   }
 
   if (courseId === 'git_devops_vercel') {
+    const pipelineStages = [
+      { id: 0, name: 'Secret Scan', tool: 'TruffleHog', icon: '🔑', desc: 'Pre-commit / Commits' },
+      { id: 1, name: 'SAST Scan', tool: 'Semgrep OSS', icon: '🛡️', desc: 'OWASP Top 10 AST' },
+      { id: 2, name: 'SCA Audit', tool: 'Trivy Security', icon: '📦', desc: 'package-lock.json CVEs' },
+      { id: 3, name: 'QA & Build', tool: 'Vitest + Vite', icon: '🧪', desc: '42 Tests + Chunks' },
+      { id: 4, name: 'DAST Scan', tool: 'OWASP ZAP', icon: '⚡', desc: 'Preview URL Headers' },
+      { id: 5, name: 'Edge Deploy', tool: 'Vercel CDN', icon: '🚀', desc: 'Producción Inmutable $0' },
+    ];
+
     return (
       <div className="bg-slate-900 text-slate-100 rounded-3xl p-5 sm:p-7 border border-slate-800 space-y-6 shadow-2xl">
-        <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-800 pb-4 gap-3">
           <div className="flex items-center gap-3">
-            <span className="text-3xl">🚀</span>
+            <span className="text-3xl">🛡️</span>
             <div>
-              <h4 className="text-lg font-bold text-white">Simulador de Git & Pipeline CI/CD</h4>
-              <p className="text-xs text-slate-400">Grafo de ramas y automatización de despliegue en Vercel</p>
+              <h4 className="text-lg font-bold text-white">Simulador de Pipeline DevSecOps & CI/CD</h4>
+              <p className="text-xs text-slate-400">
+                Shift-Left: TruffleHog (Secrets) ➔ Semgrep (SAST) ➔ Trivy (SCA) ➔ Vitest ➔ OWASP ZAP (DAST) ➔ Vercel Edge
+              </p>
             </div>
           </div>
           <div className="flex items-center gap-2">
@@ -285,44 +385,205 @@ export const DomainInteractiveSimulator: React.FC<DomainInteractiveSimulatorProp
             </button>
             <button
               onClick={handleRunCiPipeline}
-              className="px-4 py-1.5 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white transition cursor-pointer"
+              className="px-4 py-1.5 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white transition cursor-pointer shadow-lg shadow-emerald-950/40"
             >
-              ▶ Disparar CI/CD
+              ▶ Disparar DevSecOps
             </button>
           </div>
         </div>
 
-        {/* Visual Git Commit Tree */}
-        <div className="bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-3">
+        {/* Selector de Escenarios DevSecOps */}
+        <div className="space-y-2">
+          <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block font-mono">
+            Selecciona el escenario de auditoría para probar el pipeline:
+          </span>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
+            <button
+              onClick={() => {
+                setDevSecOpsScenario('clean');
+                setCiStatus('idle');
+                setActivePipelineStage(-1);
+              }}
+              className={`p-2.5 rounded-xl border text-left text-xs transition cursor-pointer flex flex-col justify-between ${
+                devSecOpsScenario === 'clean'
+                  ? 'bg-emerald-950/40 border-emerald-500 text-emerald-200'
+                  : 'bg-slate-950/60 border-slate-800 text-slate-400 hover:border-slate-700'
+              }`}
+            >
+              <span className="font-bold text-white flex items-center gap-1.5">
+                <span>🛡️</span> 1. Shift-Left Seguro
+              </span>
+              <span className="text-[10px] text-slate-400 mt-1">
+                Pasa TruffleHog, Semgrep SAST, Trivy y ZAP al 100%
+              </span>
+            </button>
+
+            <button
+              onClick={() => {
+                setDevSecOpsScenario('secret_leak');
+                setCiStatus('idle');
+                setActivePipelineStage(-1);
+              }}
+              className={`p-2.5 rounded-xl border text-left text-xs transition cursor-pointer flex flex-col justify-between ${
+                devSecOpsScenario === 'secret_leak'
+                  ? 'bg-amber-950/40 border-amber-500 text-amber-200'
+                  : 'bg-slate-950/60 border-slate-800 text-slate-400 hover:border-slate-700'
+              }`}
+            >
+              <span className="font-bold text-white flex items-center gap-1.5">
+                <span>🔑</span> 2. Fuga de Secretos
+              </span>
+              <span className="text-[10px] text-slate-400 mt-1">
+                TruffleHog bloquea el commit por Stripe API key
+              </span>
+            </button>
+
+            <button
+              onClick={() => {
+                setDevSecOpsScenario('owasp_vuln');
+                setCiStatus('idle');
+                setActivePipelineStage(-1);
+              }}
+              className={`p-2.5 rounded-xl border text-left text-xs transition cursor-pointer flex flex-col justify-between ${
+                devSecOpsScenario === 'owasp_vuln'
+                  ? 'bg-red-950/40 border-red-500 text-red-200'
+                  : 'bg-slate-950/60 border-slate-800 text-slate-400 hover:border-slate-700'
+              }`}
+            >
+              <span className="font-bold text-white flex items-center gap-1.5">
+                <span>⚠️</span> 3. Brecha OWASP SQLi
+              </span>
+              <span className="text-[10px] text-slate-400 mt-1">
+                Semgrep SAST bloquea el PR por query concatenada
+              </span>
+            </button>
+
+            <button
+              onClick={() => {
+                setDevSecOpsScenario('sca_cve');
+                setCiStatus('idle');
+                setActivePipelineStage(-1);
+              }}
+              className={`p-2.5 rounded-xl border text-left text-xs transition cursor-pointer flex flex-col justify-between ${
+                devSecOpsScenario === 'sca_cve'
+                  ? 'bg-purple-950/40 border-purple-500 text-purple-200'
+                  : 'bg-slate-950/60 border-slate-800 text-slate-400 hover:border-slate-700'
+              }`}
+            >
+              <span className="font-bold text-white flex items-center gap-1.5">
+                <span>📦</span> 4. CVE en Dependencia
+              </span>
+              <span className="text-[10px] text-slate-400 mt-1">
+                Trivy SCA aborta el build por vulnerabilidad crítica
+              </span>
+            </button>
+          </div>
+        </div>
+
+        {/* 6 Visual DevSecOps Pipeline Stages */}
+        <div className="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-2">
           <div className="flex items-center justify-between text-xs font-mono text-slate-400">
-            <span>Rama activa: <strong className="text-indigo-400">{gitBranch}</strong></span>
+            <span>ETAPAS AUTOMATIZADAS DEL PIPELINE (.github/workflows/devsecops.yml)</span>
+            <span
+              className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
+                ciStatus === 'success'
+                  ? 'bg-emerald-950 text-emerald-400 border border-emerald-600'
+                  : ciStatus === 'failed'
+                  ? 'bg-red-950 text-red-400 border border-red-600'
+                  : ciStatus === 'running'
+                  ? 'bg-indigo-950 text-indigo-400 border border-indigo-600 animate-pulse'
+                  : 'bg-slate-900 text-slate-500'
+              }`}
+            >
+              {ciStatus.toUpperCase()}
+            </span>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 pt-1">
+            {pipelineStages.map((stage) => {
+              const isPassed =
+                ciStatus === 'success' ||
+                (ciStatus === 'failed' && activePipelineStage > stage.id) ||
+                (ciStatus === 'running' && activePipelineStage > stage.id);
+              const isCurrent = ciStatus === 'running' && activePipelineStage === stage.id;
+              const isFailed = ciStatus === 'failed' && activePipelineStage === stage.id;
+
+              return (
+                <div
+                  key={stage.id}
+                  className={`p-3 rounded-xl border flex flex-col justify-between transition-all ${
+                    isFailed
+                      ? 'bg-red-950/60 border-red-500 shadow-md shadow-red-950/50'
+                      : isPassed
+                      ? 'bg-emerald-950/40 border-emerald-500/80'
+                      : isCurrent
+                      ? 'bg-indigo-950/50 border-indigo-400 animate-pulse shadow-md shadow-indigo-950/50'
+                      : 'bg-slate-900/60 border-slate-800 text-slate-500'
+                  }`}
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="text-lg">{stage.icon}</span>
+                    <span className="text-[10px] font-mono font-bold">
+                      {isFailed ? '❌' : isPassed ? '✅' : isCurrent ? '⏳' : '⚪'}
+                    </span>
+                  </div>
+                  <div className="mt-2">
+                    <span className="text-xs font-bold text-white block truncate">{stage.name}</span>
+                    <span className="text-[10px] font-mono text-cyan-300 block">{stage.tool}</span>
+                    <span className="text-[9px] text-slate-400 block truncate">{stage.desc}</span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Visual Git Commit Tree */}
+        <div className="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-2">
+          <div className="flex items-center justify-between text-xs font-mono text-slate-400">
+            <span>
+              Rama activa: <strong className="text-indigo-400">{gitBranch}</strong>
+            </span>
             <span>HEAD ➔ {gitCommits[gitCommits.length - 1]}</span>
           </div>
 
-          <div className="flex items-center gap-3 overflow-x-auto py-3">
+          <div className="flex items-center gap-3 overflow-x-auto py-2">
             {gitCommits.map((c, i) => (
               <div key={i} className="flex items-center gap-2 shrink-0">
-                <div className="px-3 py-2 rounded-xl bg-indigo-950 border border-indigo-700 text-indigo-200 font-mono text-xs font-bold flex items-center gap-2 shadow-md">
-                  <span className="w-2.5 h-2.5 rounded-full bg-indigo-400 animate-pulse"></span>
+                <div className="px-3 py-1.5 rounded-xl bg-indigo-950 border border-indigo-700 text-indigo-200 font-mono text-xs font-bold flex items-center gap-2 shadow-md">
+                  <span className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
                   {c}
                 </div>
-                {i < gitCommits.length - 1 && <span className="text-slate-600 text-lg">──➔</span>}
+                {i < gitCommits.length - 1 && <span className="text-slate-600 text-sm">──➔</span>}
               </div>
             ))}
           </div>
         </div>
 
-        {/* CI/CD Terminal Output */}
+        {/* DevSecOps Terminal Output */}
         {ciStatus !== 'idle' && (
-          <div className="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-1.5 font-mono text-xs">
+          <div className="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-1.5 font-mono text-xs max-h-60 overflow-y-auto">
             <span className="text-[10px] uppercase font-bold text-emerald-400 block mb-1">
-              GitHub Actions runner (ubuntu-latest)
+              GitHub Actions runner (ubuntu-latest) · Job Log
             </span>
-            {ciLogs.map((log, idx) => (
-              <div key={idx} className={log.includes('🚀') ? 'text-cyan-300 font-bold' : 'text-slate-300'}>
-                {log}
-              </div>
-            ))}
+            {ciLogs.map((log, idx) => {
+              const isError = log.includes('❌') || log.includes('⛔');
+              const isSuccess = log.includes('✓') || log.includes('🚀');
+              return (
+                <div
+                  key={idx}
+                  className={
+                    isError
+                      ? 'text-rose-400 font-semibold'
+                      : isSuccess
+                      ? 'text-emerald-300'
+                      : 'text-slate-300'
+                  }
+                >
+                  {log}
+                </div>
+              );
+            })}
           </div>
         )}
       </div>
