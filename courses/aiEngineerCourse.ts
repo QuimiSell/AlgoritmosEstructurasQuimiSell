@@ -1,4 +1,4 @@
-import { Course } from '../domain/models';
+import { Course, TutorExercise } from '../domain/models';
 
 export const AI_ENGINEER_COURSE: Course = {
   id: 'ingeniero_ia',
@@ -2811,3 +2811,86 @@ print(MANIFIESTO_INGENIERO_SENIOR)`,
       ]
     }]
 };
+// =========================================================================
+// EJERCICIOS PRÁCTICOS DE TUTORÍA: INGENIERO DE IA & AGENTES AUTÓNOMOS
+// =========================================================================
+const AI_ENGINEER_EXERCISES: Record<number, TutorExercise[]> = {
+  "1": [
+    {
+      "id": 101,
+      "instruction": "Escribe un System Prompt profesional para un Agente de Arquitectura de Software que exija formato estricto JSON, razonamiento previo y rechazo de suposiciones no verificadas.",
+      "placeholder": "Eres un Arquitecto de Software Principal. Tu misión es analizar requerimientos técnicos.\nREGLAS INQUEBRANTABLES:\n1. Razona paso a paso antes de emitir tu dictamen.\n2. Si faltan datos, declara 'INFORMACIÓN INSUFICIENTE' en lugar de alucinar.\n3. Responde estrictamente con un JSON que cumpla el esquema: { \"arquitectura\": string, \"riesgos\": string[], \"costo_estimado\": string }.",
+      "expectedKeywords": [
+        "JSON",
+        "Razona",
+        "INFORMACIÓN INSUFICIENTE"
+      ],
+      "hint": "Estructura el prompt definiendo rol, reglas de validación y esquema JSON de salida.",
+      "isEmailSubmission": false
+    }
+  ],
+  "4": [
+    {
+      "id": 401,
+      "instruction": "Implementa en TypeScript o Python el ciclo ReAct (Reasoning + Acting) para un Agente que debe buscar datos en base de datos antes de responder.",
+      "placeholder": "async function runReActAgent(question: string) {\n  // 1. Thought: Razonamiento\n  const thought = 'Necesito consultar el saldo del usuario usando la herramienta get_balance';\n  // 2. Action: Llamada a herramienta\n  const toolResult = await callTool('get_balance', { userId: 'usr_881' });\n  // 3. Observation: Resultado observado\n  const observation = `Saldo actual: $4,520 USD`;\n  // 4. Final Answer\n  return `El saldo de su cuenta es $4,520 USD.`;\n}",
+      "expectedKeywords": [
+        "Thought",
+        "Action",
+        "Observation",
+        "Final Answer"
+      ],
+      "hint": "Modela las cuatro fases del patrón ReAct: Thought, Action, Observation y Final Answer.",
+      "isEmailSubmission": false
+    }
+  ],
+  "5": [
+    {
+      "id": 501,
+      "instruction": "Escribe una prueba unitaria automatizada con Vitest que valide que la respuesta de un LLM cumple con un esquema JSON tipado y no contiene campos alucinados.",
+      "placeholder": "import { describe, it, expect } from 'vitest';\n\ndescribe('LLM Output Contract', () => {\n  it('debe contener campos requeridos id y status', () => {\n    const mockLlmResponse = JSON.parse('{\"id\": \"task_12\", \"status\": \"SUCCESS\"}');\n    expect(mockLlmResponse).toHaveProperty('id');\n    expect(mockLlmResponse).toHaveProperty('status');\n    expect(['SUCCESS', 'FAILED']).toContain(mockLlmResponse.status);\n  });\n});",
+      "expectedKeywords": [
+        "describe",
+        "it",
+        "expect",
+        "toHaveProperty"
+      ],
+      "hint": "Verifica que el objeto parseado contenga las propiedades esperadas y valores dentro del enum permitido.",
+      "isEmailSubmission": false
+    }
+  ],
+  "8": [
+    {
+      "id": 801,
+      "instruction": "Implementa una función de sanitización y detección de Prompt Injection para neutralizar intentos de bypass como 'Ignora todas las instrucciones previas'.",
+      "placeholder": "function detectPromptInjection(userInput: string): boolean {\n  const injectionPatterns = [\n    /ignore previous instructions/i,\n    /ignora todas las instrucciones/i,\n    /you are now in developer mode/i,\n    /system prompt override/i\n  ];\n  return injectionPatterns.some(pattern => pattern.test(userInput));\n}",
+      "expectedKeywords": [
+        "injectionPatterns",
+        "test",
+        "userInput"
+      ],
+      "hint": "Crea una lista de patrones regex que detecten frases clásicas de ataque adversario y retorna true si se detecta.",
+      "isEmailSubmission": false
+    }
+  ],
+  "14": [
+    {
+      "id": 1401,
+      "instruction": "Diseña una consulta semántica para un sistema RAG que devuelva los 3 fragmentos de mayor relevancia usando similitud coseno.",
+      "placeholder": "async function retrieveRelevantChunks(queryEmbedding: number[], topK = 3) {\n  const chunks = await vectorDb.query({\n    vector: queryEmbedding,\n    topK,\n    includeMetadata: true\n  });\n  return chunks.map(c => c.metadata.text);\n}",
+      "expectedKeywords": [
+        "queryEmbedding",
+        "topK",
+        "vectorDb"
+      ],
+      "hint": "Invoca la búsqueda vectorial especificando el vector de consulta y el parámetro `topK = 3`.",
+      "isEmailSubmission": false
+    }
+  ]
+};
+
+AI_ENGINEER_COURSE.modules.forEach((mod) => {
+  if (AI_ENGINEER_EXERCISES[mod.id]) {
+    mod.exercises = AI_ENGINEER_EXERCISES[mod.id];
+  }
+});

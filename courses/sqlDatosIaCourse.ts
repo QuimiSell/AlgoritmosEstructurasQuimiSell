@@ -1,4 +1,4 @@
-import { Course } from '../domain/models';
+import { Course, TutorExercise } from '../domain/models';
 
 export const SQL_DATOS_IA_COURSE: Course = {
   id: 'sql_datos_ia',
@@ -1067,3 +1067,293 @@ localStorage.setItem('quimisell-progress', JSON.stringify({
       ]
     }]
 };
+// =========================================================================
+// 20 EJERCICIOS PRÁCTICOS DE TUTORÍA: SQL AVANZADO, DATOS Y VECTOR DBS
+// =========================================================================
+const SQL_DATOS_IA_EXERCISES: Record<number, TutorExercise[]> = {
+  "1": [
+    {
+      "id": 101,
+      "instruction": "Define una tabla relacional `orders` con clave primaria (PK) UUID, clave foránea (FK) referenciando `users(id)` con integridad `ON DELETE CASCADE` y restricción `CHECK` de importe positivo.",
+      "placeholder": "CREATE TABLE orders (\n  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),\n  user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,\n  amount NUMERIC(10, 2) NOT NULL CHECK (amount > 0),\n  status VARCHAR(20) DEFAULT 'PENDING',\n  created_at TIMESTAMPTZ DEFAULT NOW()\n);",
+      "expectedKeywords": [
+        "PRIMARY KEY",
+        "REFERENCES",
+        "ON DELETE CASCADE",
+        "CHECK"
+      ],
+      "hint": "Usa `PRIMARY KEY`, `REFERENCES users(id) ON DELETE CASCADE` y `CHECK (amount > 0)`.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 102,
+      "instruction": "Compara cuándo elegir una base de datos relacional tabular (PostgreSQL) frente a un almacén documental NoSQL (MongoDB), evaluando consistencia ACID y esquemas dinámicos.",
+      "placeholder": "// PostgreSQL (Relacional): Esquema estricto, integridad referencial FK, consistencia ACID absoluta; ideal para finanzas, inventarios y compras.\n// MongoDB (NoSQL): Documentos JSON polimórficos sin esquema fijo, escalabilidad horizontal flexible; ideal para catálogos heterogéneos y logs.",
+      "expectedKeywords": [
+        "PostgreSQL",
+        "NoSQL",
+        "ACID",
+        "esquema"
+      ],
+      "hint": "Enfatiza que SQL garantiza ACID y normalización, mientras NoSQL prioriza flexibilidad de esquema JSON y particionado horizontal.",
+      "isEmailSubmission": false
+    }
+  ],
+  "2": [
+    {
+      "id": 201,
+      "instruction": "Escribe una consulta SQL analítica que agrupe pedidos por categoría, calcule el total vendido y la cantidad de órdenes, filtrando solo aquellas categorías con más de 5 órdenes.",
+      "placeholder": "SELECT \n  category,\n  COUNT(*) AS total_orders,\n  SUM(amount) AS total_revenue\nFROM orders\nGROUP BY category\nHAVING COUNT(*) > 5\nORDER BY total_revenue DESC;",
+      "expectedKeywords": [
+        "SELECT",
+        "GROUP BY",
+        "HAVING",
+        "COUNT"
+      ],
+      "hint": "Utiliza `GROUP BY category`, `HAVING COUNT(*) > 5` y agrega la suma con `SUM(amount)`.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 202,
+      "instruction": "Escribe una consulta utilizando funciones ventana (Window Functions) para calcular el rango de ventas de cada producto particionado por categoría con `ROW_NUMBER()`.",
+      "placeholder": "SELECT \n  product_id,\n  category,\n  price,\n  ROW_NUMBER() OVER (PARTITION BY category ORDER BY price DESC) AS rank_in_category\nFROM products;",
+      "expectedKeywords": [
+        "ROW_NUMBER()",
+        "OVER",
+        "PARTITION BY",
+        "ORDER BY"
+      ],
+      "hint": "Usa la sintaxis `ROW_NUMBER() OVER (PARTITION BY category ORDER BY price DESC)`.",
+      "isEmailSubmission": false
+    }
+  ],
+  "3": [
+    {
+      "id": 301,
+      "instruction": "Escribe una consulta que liste todos los clientes registrados y el monto de su última orden, incluyendo clientes que aún no han realizado ninguna compra (`LEFT JOIN`).",
+      "placeholder": "SELECT \n  u.id, u.name, u.email,\n  COALESCE(o.amount, 0) AS last_order_amount\nFROM users u\nLEFT JOIN orders o ON u.id = o.user_id\nORDER BY u.created_at DESC;",
+      "expectedKeywords": [
+        "LEFT JOIN",
+        "ON",
+        "COALESCE"
+      ],
+      "hint": "Utiliza `LEFT JOIN orders o ON u.id = o.user_id` para preservar usuarios sin compras.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 302,
+      "instruction": "Explica la diferencia matemática y de rendimiento entre un `INNER JOIN`, un `LEFT JOIN` y el peligroso producto cartesiano (`CROSS JOIN`) accidental.",
+      "placeholder": "// INNER JOIN: Retorna únicamente la intersección (filas con coincidencia exacta en ambas tablas).\n// LEFT JOIN: Retorna todas las filas de la tabla izquierda más las coincidencias derechas (o NULL si no hay).\n// CROSS JOIN: Producto cartesiano de NxM filas; si ambas tablas tienen 10,000 filas produce 100,000,000 filas saturando la RAM.",
+      "expectedKeywords": [
+        "INNER JOIN",
+        "LEFT JOIN",
+        "CROSS JOIN",
+        "cartesiano"
+      ],
+      "hint": "Destaca que olvidar la condición `ON` provoca un producto cartesiano NxM que agota la memoria del motor.",
+      "isEmailSubmission": false
+    }
+  ],
+  "4": [
+    {
+      "id": 401,
+      "instruction": "Analiza la salida de `EXPLAIN ANALYZE` en PostgreSQL: explica por qué un `Seq Scan` (escaneo secuencial) degrada con millones de registros y cómo un `Index Scan` en árbol B+ optimiza el costo a O(log N).",
+      "placeholder": "-- EXPLAIN ANALYZE SELECT * FROM users WHERE email = 'selvin@quimisell.dev';\n-- Seq Scan: Lee cada página del disco O(N). En 1M filas tarda cientos de ms.\n-- CREATE INDEX idx_users_email ON users(email);\n-- Index Scan (B+ Tree): Desciende por la estructura balanceada en O(log N) saltando directamente a los bloques de disco en < 2ms.",
+      "expectedKeywords": [
+        "Seq Scan",
+        "Index Scan",
+        "EXPLAIN ANALYZE",
+        "B+"
+      ],
+      "hint": "Explica que `Seq Scan` recorre todas las tuplas de disco, mientras el índice B+ Tree navega nodos ordenados en tiempo logarítmico.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 402,
+      "instruction": "Crea un índice B-Tree compuesto sobre las columnas `(status, created_at)` y explica la regla de prefijo izquierdo para que las consultas aprovechen el índice.",
+      "placeholder": "CREATE INDEX idx_orders_status_date ON orders(status, created_at);\n-- La regla del prefijo izquierdo exige que las consultas filtren por 'status' primero para usar el índice;\n-- Filtrar solo por 'created_at' no podrá usar la raíz del árbol compuesto eficientemente.",
+      "expectedKeywords": [
+        "CREATE INDEX",
+        "status",
+        "created_at",
+        "prefijo"
+      ],
+      "hint": "Crea el índice con `CREATE INDEX idx_orders_status_date ON orders(status, created_at)` y cita la regla del prefijo izquierdo.",
+      "isEmailSubmission": false
+    }
+  ],
+  "5": [
+    {
+      "id": 501,
+      "instruction": "Aplica las Formas Normales (1FN, 2FN y 3FN) para refactorizar una tabla monolítica desnormalizada `OrderReceipt` con datos repetidos de cliente y productos.",
+      "placeholder": "-- 1FN: Valores atómicos sin arrays separados por comas.\n-- 2FN: Dependencia funcional completa de la clave primaria (separar customers de orders).\n-- 3FN: Eliminar dependencias transitivas (separar items en order_items con su propio product_id).",
+      "expectedKeywords": [
+        "1FN",
+        "2FN",
+        "3FN",
+        "atómicos"
+      ],
+      "hint": "Define que 1FN exige atomicidad, 2FN dependencia total de PK y 3FN eliminación de dependencias transitivas.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 502,
+      "instruction": "Explica el Teorema CAP (Consistencia, Disponibilidad, Tolerancia a Particiones) y argumenta por qué en particiones de red una base distribuida debe elegir entre CP o AP.",
+      "placeholder": "// Teorema CAP (Eric Brewer):\n// Ante una partición de red inevitable (P), el sistema debe elegir:\n// - Consistencia (CP, ej: CockroachDB/Spanner): Rechaza escrituras si no puede garantizar lectura idéntica en todos los nodos.\n// - Disponibilidad (AP, ej: Cassandra/DynamoDB): Acepta escrituras en nodos aislados admitiendo consistencia eventual.",
+      "expectedKeywords": [
+        "Teorema CAP",
+        "Consistencia",
+        "Disponibilidad",
+        "Partición"
+      ],
+      "hint": "Explica que al ocurrir una partición (P), elegir Consistencia (CP) bloquea peticiones, mientras elegir Disponibilidad (AP) acepta datos eventualmente consistentes.",
+      "isEmailSubmission": false
+    }
+  ],
+  "6": [
+    {
+      "id": 601,
+      "instruction": "Escribe una transacción bancaria ACID en PostgreSQL que transfiera saldo entre dos cuentas, asegurando que un fallo revierta con `ROLLBACK` y un éxito consolide con `COMMIT`.",
+      "placeholder": "BEGIN;\n  UPDATE accounts SET balance = balance - 100.00 WHERE id = 'cuenta_a' AND balance >= 100.00;\n  UPDATE accounts SET balance = balance + 100.00 WHERE id = 'cuenta_b';\n  -- Si ocurre cualquier error o condición inválida: ROLLBACK;\nCOMMIT;",
+      "expectedKeywords": [
+        "BEGIN",
+        "UPDATE",
+        "COMMIT",
+        "ROLLBACK"
+      ],
+      "hint": "Escribe el bloque transaccional con `BEGIN;`, las actualizaciones de saldo y el `COMMIT;` final.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 602,
+      "instruction": "Explica cómo se produce un Deadlock (bloqueo mutuo) en transacciones concurrentes y cuál es la regla de oro arquitectónica para prevenirlo en código de producción.",
+      "placeholder": "// Deadlock: Ocurre cuando Tx1 bloquea Fila A e intenta bloquear Fila B, mientras Tx2 bloquea Fila B e intenta bloquear Fila A simultáneamente.\n// Regla de Oro: Acceder y bloquear siempre los recursos en un orden determinista estricto (ej: ordenar los IDs de menor a mayor antes de iniciar los locks).",
+      "expectedKeywords": [
+        "Deadlock",
+        "bloqueo",
+        "orden determinista"
+      ],
+      "hint": "Explica que el interbloqueo ocurre por bloqueos cruzados y se previene ordenando los recursos por ID antes de bloquearlos.",
+      "isEmailSubmission": false
+    }
+  ],
+  "7": [
+    {
+      "id": 701,
+      "instruction": "Consulta y filtra atributos dentro de una columna JSONB en PostgreSQL utilizando los operadores `->` (objeto) y `->>` (texto extraído) con cláusula WHERE.",
+      "placeholder": "SELECT \n  id,\n  metadata->>'plan' AS user_plan,\n  (metadata->'settings'->>'dark_mode')::boolean AS dark_mode_enabled\nFROM user_profiles\nWHERE metadata->>'country' = 'GT'\n  AND (metadata->>'score')::int > 80;",
+      "expectedKeywords": [
+        "metadata->>",
+        "metadata->",
+        "JSONB",
+        "WHERE"
+      ],
+      "hint": "Usa `->>` para extraer texto y `->` para navegar objetos anidados dentro de la columna JSONB.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 702,
+      "instruction": "Crea un índice GIN (Generalized Inverted Index) sobre una columna JSONB para acelerar búsquedas de atributos arbitrarios con el operador de contención `@>`.",
+      "placeholder": "CREATE INDEX idx_user_profiles_metadata ON user_profiles USING GIN (metadata);\n-- Ahora las consultas con el operador de contención son instantáneas:\n-- SELECT * FROM user_profiles WHERE metadata @> '{\"role\": \"admin\", \"verified\": true}';",
+      "expectedKeywords": [
+        "CREATE INDEX",
+        "USING GIN",
+        "JSONB",
+        "@>"
+      ],
+      "hint": "Usa `CREATE INDEX idx_name ON table USING GIN (columna)` y cita el operador `@>`.",
+      "isEmailSubmission": false
+    }
+  ],
+  "8": [
+    {
+      "id": 801,
+      "instruction": "Habilita la extensión `pgvector` en PostgreSQL, crea una tabla `document_embeddings` con un vector de dimensión 1536 y un índice HNSW para búsqueda rápida por distancia coseno.",
+      "placeholder": "CREATE EXTENSION IF NOT EXISTS vector;\n\nCREATE TABLE document_embeddings (\n  id BIGSERIAL PRIMARY KEY,\n  content TEXT NOT NULL,\n  embedding vector(1536)\n);\n\nCREATE INDEX idx_docs_hnsw ON document_embeddings \nUSING hnsw (embedding vector_cosine_ops);",
+      "expectedKeywords": [
+        "CREATE EXTENSION IF NOT EXISTS vector",
+        "vector(1536)",
+        "hnsw",
+        "vector_cosine_ops"
+      ],
+      "hint": "Usa `CREATE EXTENSION IF NOT EXISTS vector`, `vector(1536)` y `USING hnsw (embedding vector_cosine_ops)`.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 802,
+      "instruction": "Escribe una consulta de similitud coseno utilizando el operador `<=>` de `pgvector` para recuperar los 5 fragmentos más cercanos semánticamente a un vector de entrada.",
+      "placeholder": "SELECT \n  id, content,\n  1 - (embedding <=> '[0.012, -0.045, 0.089, ...]') AS cosine_similarity\nFROM document_embeddings\nORDER BY embedding <=> '[0.012, -0.045, 0.089, ...]'\nLIMIT 5;",
+      "expectedKeywords": [
+        "<=>",
+        "ORDER BY",
+        "LIMIT 5",
+        "cosine_similarity"
+      ],
+      "hint": "Utiliza el operador de distancia coseno `<=>` en la cláusula `ORDER BY embedding <=> query_vector LIMIT 5`.",
+      "isEmailSubmission": false
+    }
+  ],
+  "9": [
+    {
+      "id": 901,
+      "instruction": "Diseña una función de particionado (Chunking) semántico en Python con solapamiento (overlap) para preparar documentos extensos antes de generar embeddings para un pipeline RAG.",
+      "placeholder": "def semantic_chunking(text: str, chunk_size=500, chunk_overlap=50) -> list[str]:\n    words = text.split()\n    chunks = []\n    step = chunk_size - chunk_overlap\n    for i in range(0, len(words), step):\n        chunk = ' '.join(words[i:i + chunk_size])\n        if chunk:\n            chunks.append(chunk)\n    return chunks",
+      "expectedKeywords": [
+        "chunk_size",
+        "chunk_overlap",
+        "chunks",
+        "split"
+      ],
+      "hint": "Implementa una función que avance con paso `chunk_size - chunk_overlap` para preservar contexto entre fragmentos vecinos.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 902,
+      "instruction": "Diseña una consulta de búsqueda híbrida que combine puntuación de texto completo tradicional (Full-Text Search con `tsvector`) y búsqueda vectorial semántica (`vector <=>`).",
+      "placeholder": "-- Búsqueda Híbrida: RRF (Reciprocal Rank Fusion)\nWITH fts AS (\n  SELECT id, ts_rank(to_tsvector('spanish', content), plainto_tsquery('spanish', 'ciberseguridad')) AS rank_score\n  FROM documents WHERE to_tsvector('spanish', content) @@ plainto_tsquery('spanish', 'ciberseguridad')\n),\nvec AS (\n  SELECT id, 1 - (embedding <=> '[...]') AS vec_score\n  FROM documents ORDER BY embedding <=> '[...]' LIMIT 20\n)\nSELECT COALESCE(fts.id, vec.id) AS doc_id, (COALESCE(rank_score, 0) * 0.4 + COALESCE(vec_score, 0) * 0.6) AS final_score\nFROM fts FULL OUTER JOIN vec ON fts.id = vec.id\nORDER BY final_score DESC LIMIT 5;",
+      "expectedKeywords": [
+        "to_tsvector",
+        "embedding <=>",
+        "FULL OUTER JOIN",
+        "final_score"
+      ],
+      "hint": "Combina `ts_rank` y `embedding <=>` ponderando ambas puntuaciones para obtener lo mejor de palabras exactas y semántica.",
+      "isEmailSubmission": false
+    }
+  ],
+  "10": [
+    {
+      "id": 1001,
+      "instruction": "Configura una arquitectura de replicación primaria/réplica de lectura (Read Replica) en PostgreSQL y explica por qué aísla el tráfico transaccional de consultas analíticas pesadas.",
+      "placeholder": "// Arquitectura Master-Replica:\n// 1. Nodo Primario (Escrituras/Transacciones ACID): Procesa INSERT, UPDATE, DELETE y propaga el WAL (Write-Ahead Logging).\n// 2. Read Replicas (Lecturas pesadas): Consumen consultas de reportes, analítica y RAG sin degradar los bloqueos de escritura.",
+      "expectedKeywords": [
+        "WAL",
+        "Primario",
+        "Replica",
+        "Lecturas"
+      ],
+      "hint": "Menciona cómo el Write-Ahead Log (WAL) replica datos hacia los nodos de solo lectura para liberar al nodo primario.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 1002,
+      "instruction": "Diseña una estrategia de datos $0 local-first: utiliza SQLite embebido en el cliente para funcionamiento offline y sincronización idempotente hacia PostgreSQL central.",
+      "placeholder": "// Estrategia Local-First $0:\n// 1. Cliente móvil/web opera con SQLite/IndexedDB localmente sin latencia ni dependencia de red.\n// 2. Cada mutación genera un evento con UUID y timestamp.\n// 3. Al recuperar conectividad, el cliente sincroniza con endpoints idempotentes (INSERT ON CONFLICT DO UPDATE) evitando duplicados.",
+      "expectedKeywords": [
+        "SQLite",
+        "Local-First",
+        "idempotente",
+        "ON CONFLICT"
+      ],
+      "hint": "Describe cómo SQLite local almacena las mutaciones y la sincronización remota usa `ON CONFLICT DO UPDATE` idempotente.",
+      "isEmailSubmission": false
+    }
+  ]
+};
+
+// Adjuntar ejercicios estructurados a cada módulo de SQL & Vector DBs
+SQL_DATOS_IA_COURSE.modules.forEach((mod) => {
+  if (SQL_DATOS_IA_EXERCISES[mod.id]) {
+    mod.exercises = SQL_DATOS_IA_EXERCISES[mod.id];
+  }
+});

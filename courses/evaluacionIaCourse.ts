@@ -1,4 +1,4 @@
-import { Course } from '../domain/models';
+import { Course, TutorExercise } from '../domain/models';
 
 export const EVALUACION_IA_COURSE: Course = {
   id: 'evaluacion_ia',
@@ -1019,3 +1019,58 @@ Score: [X]%
       ]
     }]
 };
+// =========================================================================
+// EJERCICIOS PRÁCTICOS DE TUTORÍA: EVALUACIÓN DE SISTEMAS IA
+// =========================================================================
+const EVALUACION_IA_EXERCISES: Record<number, TutorExercise[]> = {
+  "2": [
+    {
+      "id": 201,
+      "instruction": "Calcula Precision, Recall y F1-Score a partir de los valores de la matriz de confusión: Verdaderos Positivos (TP=80), Falsos Positivos (FP=20) y Falsos Negativos (FN=10).",
+      "placeholder": "const TP = 80, FP = 20, FN = 10;\nconst precision = TP / (TP + FP); // 80 / 100 = 0.80\nconst recall = TP / (TP + FN);    // 80 / 90  = 0.888\nconst f1Score = (2 * precision * recall) / (precision + recall); // ~0.842",
+      "expectedKeywords": [
+        "precision",
+        "recall",
+        "f1Score",
+        "TP"
+      ],
+      "hint": "Calcula `precision = TP / (TP + FP)`, `recall = TP / (TP + FN)` y `f1Score = 2 * (P * R) / (P + R)`.",
+      "isEmailSubmission": false
+    }
+  ],
+  "4": [
+    {
+      "id": 401,
+      "instruction": "Diseña un prompt evaluador para LLM-as-a-Judge que califique la fidelidad (Faithfulness) de una respuesta respecto al contexto recuperado en una escala de 1 a 5 con justificación.",
+      "placeholder": "Eres un Juez Experto e Imparcial de Sistemas RAG.\nEvalúa si la RESPUESTA se deriva ÚNICAMENTE del CONTEXTO proporcionado.\nCRITERIOS:\n5: 100% fiel, cada afirmación está respaldada en el texto.\n1: Contiene alucinaciones graves o contradicciones.\nFORMATO DE SALIDA (JSON):\n{ \"faithfulness_score\": number, \"justification\": string }",
+      "expectedKeywords": [
+        "Juez",
+        "Faithfulness",
+        "CONTEXTO",
+        "JSON"
+      ],
+      "hint": "Define la escala de evaluación, el criterio de fidelidad y la salida JSON esperada.",
+      "isEmailSubmission": false
+    }
+  ],
+  "5": [
+    {
+      "id": 501,
+      "instruction": "Implementa un guardrail de validación en TypeScript que verifique que el contenido devuelto por la IA no expone datos personales sensibles (PII: emails o tarjetas).",
+      "placeholder": "function validatePiiGuardrail(text: string): { valid: boolean; reason?: string } {\n  const emailRegex = /\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}\\b/;\n  const creditCardRegex = /\\b(?:\\d{4}[ -]?){3}\\d{4}\\b/;\n  if (emailRegex.test(text)) return { valid: false, reason: 'Detección de email PII' };\n  if (creditCardRegex.test(text)) return { valid: false, reason: 'Detección de tarjeta de crédito PII' };\n  return { valid: true };\n}",
+      "expectedKeywords": [
+        "validatePiiGuardrail",
+        "emailRegex",
+        "creditCardRegex"
+      ],
+      "hint": "Utiliza expresiones regulares para detectar patrones de email y números de tarjeta de crédito.",
+      "isEmailSubmission": false
+    }
+  ]
+};
+
+EVALUACION_IA_COURSE.modules.forEach((mod) => {
+  if (EVALUACION_IA_EXERCISES[mod.id]) {
+    mod.exercises = EVALUACION_IA_EXERCISES[mod.id];
+  }
+});

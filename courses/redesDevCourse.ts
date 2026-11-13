@@ -1,12 +1,12 @@
-import { Course } from '../domain/models';
+import { Course, TutorExercise } from '../domain/models';
 
 export const REDES_DEV_COURSE: Course = {
   id: 'redes_desarrolladores',
-  title: 'Redes para Desarrolladores (TCP/IP, DNS, HTTP, TLS)',
+  title: 'Redes para Desarrolladores, Microservicios y Arquitectura de APIs (TCP/IP, gRPC, TLS, Resiliencia)',
   shortTitle: 'Redes Dev',
-  badge: 'Fundamentos de Red',
+  badge: 'Redes, Microservicios & APIs',
   icon: '🌐',
-  description: '10 módulos: OSI/TCP-IP, IP, DNS, HTTP/HTTPS, TLS, REST, CDN, CORS, diagnóstico y puente hacia Kali Linux.',
+  description: '10 módulos prácticos: modelo OSI/TCP-IP, DNS, HTTP/3 (QUIC), TLS 1.3, gRPC vs WebSockets vs REST, resiliencia con Circuit Breakers y Rate Limiting, reverse proxies Nginx/Caddy y diagnóstico de red.',
   whyStudyTitle: '🔌 ¿Por qué redes antes de Kali y APIs?',
   whyStudyText: 'Sin entender DNS, TLS y HTTP, Nmap y pentesting son botones sin contexto. Todo dev que despliega en Vercel o construye APIs móviles necesita esta base — especialmente en ciberseguridad defensiva QuimiSell.',
   studyPlanReasons: [
@@ -1026,3 +1026,290 @@ curl -v https://api.github.com`,
       ]
     }]
 };
+// =========================================================================
+// 20 EJERCICIOS PRÁCTICOS DE TUTORÍA: REDES DEV, MICROSERVICIOS Y APIS
+// =========================================================================
+const REDES_DEV_EXERCISES: Record<number, TutorExercise[]> = {
+  "1": [
+    {
+      "id": 101,
+      "instruction": "Diferencia la Capa 4 (Transporte: TCP/UDP con puertos) de la Capa 7 (Aplicación: HTTP/gRPC). Explica por qué TCP garantiza entrega ordenada mediante números de secuencia.",
+      "placeholder": "// Capa 4 vs Capa 7:\n// TCP utiliza números de secuencia (SYN, ACK) para reordenar y retransmitir paquetes perdidos;\n// HTTP/gRPC operan en Capa 7 transmitiendo payloads de negocio sobre el socket confiable de Capa 4.",
+      "expectedKeywords": [
+        "Capa 4",
+        "Capa 7",
+        "TCP",
+        "secuencia"
+      ],
+      "hint": "Menciona que TCP opera en Capa 4 con números de secuencia y acuse de recibo (ACK), mientras HTTP opera en Capa 7.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 102,
+      "instruction": "Describe el Three-Way Handshake de TCP (SYN, SYN-ACK, ACK) y explica por qué previene conexiones fantasma antes de enviar datos.",
+      "placeholder": "// Three-Way Handshake TCP:\n// 1. Cliente envía SYN (Sequence Number x)\n// 2. Servidor responde SYN-ACK (Ack x+1, Seq y)\n// 3. Cliente confirma ACK (Ack y+1) y se establece la conexión ESTABLISHED.",
+      "expectedKeywords": [
+        "SYN",
+        "SYN-ACK",
+        "ACK",
+        "Handshake"
+      ],
+      "hint": "Estructura los 3 pasos: Cliente envía SYN, Servidor responde SYN-ACK, Cliente envía ACK final.",
+      "isEmailSubmission": false
+    }
+  ],
+  "2": [
+    {
+      "id": 201,
+      "instruction": "Calcula la máscara de red y la cantidad de hosts utilizables para la subred privada `192.168.1.0/24`.",
+      "placeholder": "const subnetMask = '255.255.255.0';\nconst totalIps = 256;\nconst usableHosts = 254; // Se descuentan la IP de red (192.168.1.0) y broadcast (192.168.1.255)",
+      "expectedKeywords": [
+        "255.255.255.0",
+        "254",
+        "broadcast"
+      ],
+      "hint": "Un bloque /24 posee máscara 255.255.255.0 y 254 hosts utilizables tras descontar red y broadcast.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 202,
+      "instruction": "Identifica los rangos de IPs privadas definidos en el estándar RFC 1918 y explica el rol de NAT (Network Address Translation).",
+      "placeholder": "// Rangos RFC 1918 Privados:\n// Clase A: 10.0.0.0/8\n// Clase B: 172.16.0.0/12\n// Clase C: 192.168.0.0/16\n// NAT traduce múltiples IPs privadas a una IP pública para navegar en Internet.",
+      "expectedKeywords": [
+        "10.0.0.0",
+        "172.16.0.0",
+        "192.168.0.0",
+        "NAT"
+      ],
+      "hint": "Lista 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16 y explica cómo NAT traduce hacia la IP pública.",
+      "isEmailSubmission": false
+    }
+  ],
+  "3": [
+    {
+      "id": 301,
+      "instruction": "Configura los registros DNS esenciales para el dominio `quimisell.dev`: registro A (IPv4), CNAME (subdominio) y TXT (verificación SPF).",
+      "placeholder": "// Registros DNS para quimisell.dev:\n// A      @            76.76.21.21      (Vercel Edge)\n// CNAME  app          quimisell.dev\n// TXT    @            v=spf1 include:_spf.google.com ~all",
+      "expectedKeywords": [
+        "A",
+        "CNAME",
+        "TXT",
+        "quimisell.dev"
+      ],
+      "hint": "Incluye el registro A apuntando a la IP pública, CNAME para alias y TXT para verificación de correo o dominio.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 302,
+      "instruction": "Explica el ciclo de vida de una consulta DNS: diferencia un Servidor Recursivo (ej: 8.8.8.8) de un Servidor Autoritativo y el rol del TTL.",
+      "placeholder": "// Flujo DNS:\n// 1. Resolver Recursivo (ISP / 8.8.8.8) consulta cache; si expira el TTL, escala a Root Server -> TLD (.dev) -> Autoritativo.\n// 2. El servidor Autoritativo devuelve la IP definitiva con un TTL (Time To Live).",
+      "expectedKeywords": [
+        "Recursivo",
+        "Autoritativo",
+        "TTL"
+      ],
+      "hint": "Explica que el resolver recursivo busca la IP en nombre del cliente y el autoritativo posee la respuesta definitiva.",
+      "isEmailSubmission": false
+    }
+  ],
+  "4": [
+    {
+      "id": 401,
+      "instruction": "Compara HTTP/1.1 con HTTP/2: explica cómo la multiplexación de streams binarios sobre una única conexión TCP elimina el Head-of-Line Blocking de HTTP/1.1.",
+      "placeholder": "// HTTP/1.1 sufre Head-of-Line Blocking porque cada petición requiere una conexión TCP o se encola secuencialmente.\n// HTTP/2 divide los mensajes en tramas binarias multiplexadas en streams paralelos sobre un solo socket TCP.",
+      "expectedKeywords": [
+        "HTTP/1.1",
+        "HTTP/2",
+        "multiplexación",
+        "Head-of-Line"
+      ],
+      "hint": "Enfatiza que HTTP/2 introduce framing binario y multiplexación de múltiples streams concurrentes en una sola conexión TCP.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 402,
+      "instruction": "Explica por qué HTTP/3 reemplaza TCP por el protocolo QUIC sobre UDP y cómo logra conexiones con 0-RTT (Zero Round Trip Time).",
+      "placeholder": "// HTTP/3 utiliza QUIC sobre UDP para eliminar el bloqueo de transporte a nivel de paquete de TCP.\n// Incorpora cifrado TLS 1.3 nativo en el handshake inicial, permitiendo reanudar sesiones con 0-RTT de latencia.",
+      "expectedKeywords": [
+        "QUIC",
+        "UDP",
+        "0-RTT",
+        "HTTP/3"
+      ],
+      "hint": "Menciona que QUIC opera sobre UDP integrando TLS 1.3 nativamente y eliminando el retraso de retransmisión TCP.",
+      "isEmailSubmission": false
+    }
+  ],
+  "5": [
+    {
+      "id": 501,
+      "instruction": "Detalla el protocolo de negociación TLS 1.3: explica el intercambio de llaves Diffie-Hellman efímero y la validación de certificados X.509.",
+      "placeholder": "// TLS 1.3 Handshake:\n// 1. ClientHello con extensiones de llaves Diffie-Hellman efímeras (ECDHE).\n// 2. ServerHello con certificado X.509 firmado por una CA y cálculo inmediato de la llave simétrica AES-GCM.\n// Reduce la latencia a 1 solo RTT.",
+      "expectedKeywords": [
+        "TLS 1.3",
+        "Diffie-Hellman",
+        "X.509",
+        "CA"
+      ],
+      "hint": "Describe cómo TLS 1.3 logra cifrado con Perfect Forward Secrecy usando ECDHE y certificados validados por Autoridades Certificadoras (CA).",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 502,
+      "instruction": "Implementa y explica la arquitectura mTLS (Mutual TLS): ¿por qué es fundamental para la seguridad Zero-Trust en una malla de microservicios?",
+      "placeholder": "// mTLS (Mutual TLS):\n// Tanto el cliente como el servidor se autentican mutuamente mediante certificados X.509.\n// Garantiza Zero-Trust: ningún microservicio confía en el tráfico interno de la red sin verificar la identidad criptográfica.",
+      "expectedKeywords": [
+        "mTLS",
+        "Mutual TLS",
+        "Zero-Trust",
+        "certificados"
+      ],
+      "hint": "Enfatiza que en mTLS ambos extremos presentan y verifican certificados, impidiendo ataques Man-in-the-Middle dentro del cluster.",
+      "isEmailSubmission": false
+    }
+  ],
+  "6": [
+    {
+      "id": 601,
+      "instruction": "Define un servicio gRPC con Protocol Buffers (`syntax = 'proto3'`) y explica por qué su serialización binaria supera a JSON REST en microservicios de alta concurrencia.",
+      "placeholder": "syntax = \"proto3\";\n\nmessage OrderRequest {\n  string order_id = 1;\n  double amount = 2;\n}\n\nservice OrderService {\n  rpc ProcessOrder (OrderRequest) returns (OrderResponse);\n}\n// Protobuf serializa campos en binario compacto con tipado estricto, reduciendo hasta un 70% el payload frente a JSON.",
+      "expectedKeywords": [
+        "proto3",
+        "message",
+        "service",
+        "rpc"
+      ],
+      "hint": "Escribe un bloque con `syntax = \"proto3\"`, `message OrderRequest` y `service OrderService` con método `rpc`.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 602,
+      "instruction": "Implementa un servidor WebSocket en Node.js para transmitir cotizaciones financieras en tiempo real y explica la diferencia con sondeo HTTP (Polling).",
+      "placeholder": "import { WebSocketServer } from 'ws';\nconst wss = new WebSocketServer({ port: 8080 });\n\nwss.on('connection', (ws) => {\n  console.log('Cliente conectado');\n  const timer = setInterval(() => {\n    ws.send(JSON.stringify({ price: 150.25, time: Date.now() }));\n  }, 1000);\n  ws.on('close', () => clearInterval(timer));\n});",
+      "expectedKeywords": [
+        "WebSocketServer",
+        "connection",
+        "ws.send"
+      ],
+      "hint": "Utiliza `WebSocketServer`, escucha el evento `connection` y envía mensajes con `ws.send()` en un canal bidireccional continuo.",
+      "isEmailSubmission": false
+    }
+  ],
+  "7": [
+    {
+      "id": 701,
+      "instruction": "Configura los encabezados HTTP de caching óptimos para archivos estáticos inmutables y para respuestas dinámicas que requieren revalidación.",
+      "placeholder": "// Para archivos estáticos con hash de compilación (JS, CSS, imágenes):\n// Cache-Control: public, max-age=31536000, immutable\n\n// Para datos dinámicos de API:\n// Cache-Control: no-cache, must-revalidate\n// ETag: W/\"33a64df551425fcc55e4d42a148795d9f25f89d4\"",
+      "expectedKeywords": [
+        "Cache-Control",
+        "max-age",
+        "immutable",
+        "ETag"
+      ],
+      "hint": "Aplica `Cache-Control: public, max-age=31536000, immutable` para estáticos y `ETag` para validación condicional 304 Not Modified.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 702,
+      "instruction": "Implementa el patrón Circuit Breaker en TypeScript con sus tres estados: CLOSED (tráfico normal), OPEN (fallo detectado, rechazo inmediato) y HALF-OPEN (prueba de recuperación).",
+      "placeholder": "type CircuitState = 'CLOSED' | 'OPEN' | 'HALF_OPEN';\nclass CircuitBreaker {\n  private state: CircuitState = 'CLOSED';\n  private failureCount = 0;\n  private lastFailureTime = 0;\n  \n  async execute<T>(action: () => Promise<T>): Promise<T> {\n    if (this.state === 'OPEN') {\n      if (Date.now() - this.lastFailureTime > 10000) this.state = 'HALF_OPEN';\n      else throw new Error('Circuit Breaker OPEN: Servicio temporalmente degradado');\n    }\n    try {\n      const res = await action();\n      this.state = 'CLOSED'; this.failureCount = 0;\n      return res;\n    } catch (err) {\n      this.failureCount++; this.lastFailureTime = Date.now();\n      if (this.failureCount >= 3) this.state = 'OPEN';\n      throw err;\n    }\n  }\n}",
+      "expectedKeywords": [
+        "CircuitState",
+        "CLOSED",
+        "OPEN",
+        "HALF_OPEN"
+      ],
+      "hint": "Modela los tres estados `CLOSED`, `OPEN` y `HALF_OPEN` con umbral de fallos y tiempo de enfriamiento.",
+      "isEmailSubmission": false
+    }
+  ],
+  "8": [
+    {
+      "id": 801,
+      "instruction": "Configura los encabezados CORS seguros en un servidor backend para permitir peticiones únicamente desde el frontend `https://quimisell.dev` y gestionar solicitudes Preflight OPTIONS.",
+      "placeholder": "app.use((req, res, next) => {\n  res.setHeader('Access-Control-Allow-Origin', 'https://quimisell.dev');\n  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');\n  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');\n  if (req.method === 'OPTIONS') return res.sendStatus(204);\n  next();\n});",
+      "expectedKeywords": [
+        "Access-Control-Allow-Origin",
+        "Access-Control-Allow-Methods",
+        "OPTIONS"
+      ],
+      "hint": "Establece `Access-Control-Allow-Origin: https://quimisell.dev` y responde 204 No Content en peticiones preflight `OPTIONS`.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 802,
+      "instruction": "Configura una Cookie de sesión con todos los atributos de seguridad requeridos por la industria bancaria para prevenir robo por XSS y ataques CSRF.",
+      "placeholder": "res.setHeader('Set-Cookie', [\n  'session_token=secret_jwt_xyz',\n  'Secure',             // Solo viaja por HTTPS\n  'HttpOnly',           // Inaccesible desde JavaScript (previene XSS)\n  'SameSite=Strict',    // No se envía en peticiones cross-site (previene CSRF)\n  'Path=/',\n  'Max-Age=86400'\n].join('; '));",
+      "expectedKeywords": [
+        "Secure",
+        "HttpOnly",
+        "SameSite=Strict"
+      ],
+      "hint": "Incluye obligatoriamente las tres directivas de protección: `Secure`, `HttpOnly` y `SameSite=Strict`.",
+      "isEmailSubmission": false
+    }
+  ],
+  "9": [
+    {
+      "id": 901,
+      "instruction": "Escribe un comando `curl` avanzado para inspeccionar el tiempo de DNS, TLS Handshake, TTFT (Time to First Byte) y cabeceras de respuesta de una API.",
+      "placeholder": "curl -w \"@curl-format.txt\" -o /dev/null -s -v -I https://api.quimisell.dev/v1/health\n# Donde curl-format.txt mide: time_namelookup, time_connect, time_appconnect, time_starttransfer, time_total",
+      "expectedKeywords": [
+        "curl",
+        "-v",
+        "-I",
+        "time_total"
+      ],
+      "hint": "Utiliza `curl -v -I` con opciones de formateo `-w` para auditar tiempos de latencia y código de estado HTTP.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 902,
+      "instruction": "Explica cómo diagnosticar un cuello de botella o pérdida de paquetes en la red utilizando `traceroute` (o `tracert` en Windows) e interpretando el TTL de los paquetes IP.",
+      "placeholder": "// traceroute envía paquetes UDP/ICMP incrementando el TTL (Time To Live) de 1 en 1.\n// Cada router intermedio descuenta 1 al TTL; al llegar a 0 devuelve ICMP Time Exceeded.\n// Si un salto muestra '* * *', indica descarte de paquetes, firewall restrictivo o congestión en ese nodo.",
+      "expectedKeywords": [
+        "traceroute",
+        "TTL",
+        "ICMP",
+        "Time Exceeded"
+      ],
+      "hint": "Menciona cómo el incremento sucesivo del TTL fuerza a cada router a responder con ICMP Time Exceeded.",
+      "isEmailSubmission": false
+    }
+  ],
+  "10": [
+    {
+      "id": 1001,
+      "instruction": "Configura un bloque de Reverse Proxy en Nginx con balanceo de carga `upstream` round-robin hacia dos instancias backend y pase de cabeceras reales.",
+      "placeholder": "upstream backend_cluster {\n  server 10.0.0.1:3000;\n  server 10.0.0.2:3000;\n}\n\nserver {\n  listen 443 ssl http2;\n  server_name api.quimisell.dev;\n\n  location / {\n    proxy_pass http://backend_cluster;\n    proxy_set_header Host $host;\n    proxy_set_header X-Real-IP $remote_addr;\n    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\n  }\n}",
+      "expectedKeywords": [
+        "upstream",
+        "proxy_pass",
+        "proxy_set_header",
+        "X-Real-IP"
+      ],
+      "hint": "Define el bloque `upstream backend_cluster` y usa `proxy_pass http://backend_cluster` con cabeceras de forward.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 1002,
+      "instruction": "Implementa el algoritmo de Rate Limiting Token Bucket en TypeScript para limitar clientes a 10 peticiones por segundo con recarga continua.",
+      "placeholder": "class TokenBucketRateLimiter {\n  private tokens: number;\n  private lastRefill: number;\n  constructor(private capacity = 10, private refillRatePerSec = 10) {\n    this.tokens = capacity; this.lastRefill = Date.now();\n  }\n  allowRequest(): boolean {\n    const now = Date.now();\n    const elapsed = (now - this.lastRefill) / 1000;\n    this.tokens = Math.min(this.capacity, this.tokens + elapsed * this.refillRatePerSec);\n    this.lastRefill = now;\n    if (this.tokens >= 1) { this.tokens -= 1; return true; }\n    return false; // Retornar HTTP 429 Too Many Requests\n  }\n}",
+      "expectedKeywords": [
+        "TokenBucket",
+        "tokens",
+        "capacity",
+        "refill"
+      ],
+      "hint": "Calcula los tokens recargados en función del tiempo transcurrido y rechaza la petición con `HTTP 429` si el bucket está vacío.",
+      "isEmailSubmission": false
+    }
+  ]
+};
+
+// Adjuntar ejercicios estructurados a cada módulo de Redes Dev
+REDES_DEV_COURSE.modules.forEach((mod) => {
+  if (REDES_DEV_EXERCISES[mod.id]) {
+    mod.exercises = REDES_DEV_EXERCISES[mod.id];
+  }
+});

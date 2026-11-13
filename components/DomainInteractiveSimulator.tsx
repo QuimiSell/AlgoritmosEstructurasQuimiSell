@@ -148,33 +148,98 @@ export const DomainInteractiveSimulator: React.FC<DomainInteractiveSimulatorProp
   };
 
   // ----------------------------------------------------
-  // NETWORKING SIMULATOR (redes_desarrolladores)
+  // NETWORKING & MICROSERVICES SIMULATOR (redes_desarrolladores)
   // ----------------------------------------------------
+  const [netActiveTab, setNetActiveTab] = useState<'handshake' | 'protocols' | 'circuit' | 'ratelimit'>('handshake');
   const [tcpState, setTcpState] = useState<number>(0);
   const tcpSteps = [
-    { title: 'Estado Inicial: CLOSED / LISTEN', desc: 'Cliente en puerto efímero, Servidor escuchando en :443' },
-    { title: 'Paso 1: SYN (Synchronize)', desc: 'Cliente ➔ Servidor: SYN=1, SeqNum=1000' },
-    { title: 'Paso 2: SYN-ACK', desc: 'Servidor ➔ Cliente: SYN=1, ACK=1, AckNum=1001, SeqNum=5000' },
-    { title: 'Paso 3: ACK (Establecido)', desc: 'Cliente ➔ Servidor: ACK=1, AckNum=5001. ¡Canal TCP ESTABLISHED!' },
+    { title: 'Estado Inicial: CLOSED / LISTEN', desc: 'Cliente en puerto efímero :52341, Servidor escuchando en :443 (TLS/TCP)' },
+    { title: 'Paso 1: SYN (Synchronize)', desc: 'Cliente ➔ Servidor: SYN=1, SeqNum=1000. Negociación inicial de buffers y MSS.' },
+    { title: 'Paso 2: SYN-ACK', desc: 'Servidor ➔ Cliente: SYN=1, ACK=1, AckNum=1001, SeqNum=5000. Servidor confirma y sincroniza.' },
+    { title: 'Paso 3: ACK + TLS 1.3 Handshake', desc: 'Cliente ➔ Servidor: ACK=1, AckNum=5001 + Intercambio ECDHE. ¡Conexión Cifrada ESTABLISHED!' },
   ];
+  // Microservices Resilience: Circuit Breaker
+  const [circuitState, setCircuitState] = useState<'CLOSED' | 'OPEN' | 'HALF_OPEN'>('CLOSED');
+  const [serviceFailures, setServiceFailures] = useState<number>(0);
+  const [circuitLogs, setCircuitLogs] = useState<string[]>([
+    '[INIT] Circuit Breaker en estado CLOSED: tráfico normal hacia Microservicio Pagos.'
+  ]);
+  const triggerCircuitSuccess = () => {
+    setCircuitState('CLOSED');
+    setServiceFailures(0);
+    setCircuitLogs((prev) => [
+      `[HTTP 200] Microservicio respondió en 14ms. Estado: CLOSED (Saludable).`,
+      ...prev.slice(0, 4)
+    ]);
+  };
+  const triggerCircuitFailure = () => {
+    const nextFails = serviceFailures + 1;
+    setServiceFailures(nextFails);
+    if (nextFails >= 3) {
+      setCircuitState('OPEN');
+      setCircuitLogs((prev) => [
+        `[CRITICAL TRIP] 3 fallos consecutivos detectados. Circuito cambia a OPEN. Fallbacks inmediatos activos en 0ms.`,
+        ...prev.slice(0, 4)
+      ]);
+    } else {
+      setCircuitLogs((prev) => [
+        `[TIMEOUT 504] Fallo ${nextFails}/3 en Microservicio Pagos.`,
+        ...prev.slice(0, 4)
+      ]);
+    }
+  };
+  const triggerCircuitTestRecovery = () => {
+    setCircuitState('HALF_OPEN');
+    setCircuitLogs((prev) => [
+      `[HALF-OPEN] Enviando petición sonda de prueba (Canary Probe) para verificar recuperación del servicio...`,
+      ...prev.slice(0, 4)
+    ]);
+  };
+
+  // Rate Limiting: Token Bucket
+  const [bucketTokens, setBucketTokens] = useState<number>(8);
+  const [rateLimitLogs, setRateLimitLogs] = useState<string[]>([
+    '[INIT] Token Bucket iniciado: Capacidad 10 tokens, recarga: 5 tokens/seg.'
+  ]);
+  const sendRateLimitedRequest = () => {
+    if (bucketTokens > 0) {
+      setBucketTokens((t) => t - 1);
+      setRateLimitLogs((prev) => [
+        `[HTTP 200 OK] Petición procesada exitosamente. Tokens restantes: ${bucketTokens - 1}/10.`,
+        ...prev.slice(0, 4)
+      ]);
+    } else {
+      setRateLimitLogs((prev) => [
+        `[HTTP 429 TOO MANY REQUESTS] Rate Limit Excedido: Bucket vacío. Tráfico bloqueado en el API Gateway.`,
+        ...prev.slice(0, 4)
+      ]);
+    }
+  };
+
+  // Protocols Comparison
+  const [protocolView, setProtocolView] = useState<'rest' | 'grpc' | 'ws'>('grpc');
 
   // ----------------------------------------------------
   // SQL / DATA SIMULATOR (sql_datos_ia)
   // ----------------------------------------------------
+  const [sqlActiveTab, setSqlActiveTab] = useState<'explain' | 'deadlock' | 'vector'>('explain');
+  const [sqlHasIndex, setSqlHasIndex] = useState<boolean>(true);
   const [sqlQuery, setSqlQuery] = useState<string>('SELECT id, nombre, rol, salario FROM ingenieros WHERE salario >= 4000;');
   const [sqlOutput, setSqlOutput] = useState<any[]>([
     { id: 1, nombre: 'Selvin López', rol: 'AI Systems Architect', salario: 5500 },
     { id: 3, nombre: 'Elena Vásquez', rol: 'Data Platform Engineer', salario: 4200 },
   ]);
-  const [sqlPlan, setSqlPlan] = useState<string>('Index Scan using idx_salario on ingenieros (cost=0.15..8.25 rows=2 width=32)');
+  const [sqlPlan, setSqlPlan] = useState<string>('Index Scan using idx_salario on ingenieros (cost=0.15..8.25 rows=2 width=32) [Tiempo de ejecución: 1.8ms]');
+  const [deadlockStep, setDeadlockStep] = useState<number>(0);
+  const [vectorQueryText, setVectorQueryText] = useState<string>('seguridad y autenticación en APIs');
 
   const runSqlEngine = () => {
-    if (sqlQuery.toLowerCase().includes('where')) {
+    if (sqlHasIndex) {
       setSqlOutput([
         { id: 1, nombre: 'Selvin López', rol: 'AI Systems Architect', salario: 5500 },
         { id: 3, nombre: 'Elena Vásquez', rol: 'Data Platform Engineer', salario: 4200 },
       ]);
-      setSqlPlan('Index Scan using idx_salario on ingenieros: O(log n) mediante B+ Tree. Costo I/O: 1 página.');
+      setSqlPlan('Index Scan using idx_salario on ingenieros (cost=0.15..8.25 rows=2) [B+ Tree traversal en O(log n). Tiempo: 1.8ms]');
     } else {
       setSqlOutput([
         { id: 1, nombre: 'Selvin López', rol: 'AI Systems Architect', salario: 5500 },
@@ -182,7 +247,7 @@ export const DomainInteractiveSimulator: React.FC<DomainInteractiveSimulatorProp
         { id: 3, nombre: 'Elena Vásquez', rol: 'Data Platform Engineer', salario: 4200 },
         { id: 4, nombre: 'Beatriz Solís', rol: 'Security Analyst', salario: 3900 },
       ]);
-      setSqlPlan('Seq Scan (Lectura secuencial) on ingenieros: O(n) lectura de tabla completa.');
+      setSqlPlan('Seq Scan (Lectura Secuencial de Disco) on ingenieros (cost=0.00..450.00 rows=4) [O(n) lectura de cada página de disco. Tiempo: 420.5ms]');
     }
   };
 
@@ -227,15 +292,19 @@ export const DomainInteractiveSimulator: React.FC<DomainInteractiveSimulatorProp
   // ----------------------------------------------------
   // AI ENGINEER & EVALUATION (ingeniero_ia / evaluacion_ia)
   // ----------------------------------------------------
+  const [aiActiveTab, setAiActiveTab] = useState<'react' | 'rag' | 'judge'>('react');
   const [reactStep, setReactStep] = useState<number>(0);
   const reactCycle = [
-    { type: 'Question', text: 'Usuario: "¿Cuál es el precio de una acción de Google y su P/E ratio actual?"' },
-    { type: 'Thought', text: 'Pensamiento IA: Necesito datos en tiempo real. No debo alucinar. Usaré la tool search_market().' },
-    { type: 'Action', text: 'Acción: search_market({ ticker: "GOOGL" })' },
-    { type: 'Observation', text: 'Observación Tool: { price: 178.45, pe_ratio: 24.3, volume: "22M" }' },
-    { type: 'Final Answer', text: 'Respuesta al Usuario: La acción de Google cotiza en $178.45 con un P/E ratio de 24.3.' },
+    { type: 'Question', text: 'Usuario: "¿Cuál es el balance actual de la cuenta y sus últimos 2 movimientos?"' },
+    { type: 'Thought', text: 'Pensamiento IA: Necesito consultar la base de datos transaccional usando la herramienta get_account_summary().' },
+    { type: 'Action', text: 'Acción Tool Call: get_account_summary({ account_id: "acc_9921" })' },
+    { type: 'Observation', text: 'Observación Tool: { balance: 4250.00, currency: "USD", status: "ACTIVE", txs: ["-$45.00 Starbucks", "+$1200.00 Salario"] }' },
+    { type: 'Final Answer', text: 'Respuesta al Usuario: Tu cuenta acc_9921 tiene un saldo de $4,250.00 USD. Tus últimos movimientos fueron un abono de +$1,200.00 y un débito de -$45.00.' },
   ];
-
+  const [ragRetrievalStep, setRagRetrievalStep] = useState<number>(3);
+  const [judgeFaithfulness, setJudgeFaithfulness] = useState<number>(98);
+  const [judgeRelevance, setJudgeRelevance] = useState<number>(95);
+  const [judgeContextPrecision, setJudgeContextPrecision] = useState<number>(92);
   // ----------------------------------------------------
   // EDGE AI & MOBILITY (edge_ia_movil)
   // ----------------------------------------------------
@@ -626,50 +695,312 @@ export const DomainInteractiveSimulator: React.FC<DomainInteractiveSimulatorProp
   if (courseId === 'redes_desarrolladores') {
     return (
       <div className="bg-slate-900 text-slate-100 rounded-3xl p-5 sm:p-7 border border-slate-800 space-y-6 shadow-2xl">
-        <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+        {/* Header Redes */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-800 pb-4 gap-3">
           <div className="flex items-center gap-3">
             <span className="text-3xl">🌐</span>
             <div>
-              <h4 className="text-lg font-bold text-white">Simulador de Redes: Handshake TCP & HTTP/3</h4>
-              <p className="text-xs text-slate-400">Inspección de tramas, números de secuencia y latencia RTT</p>
+              <h4 className="text-lg font-bold text-white">Simulador de Redes, Microservicios & Arquitectura de APIs</h4>
+              <p className="text-xs text-slate-400">Handshake TCP/TLS, Benchmark gRPC vs REST, Circuit Breakers y Rate Limiting</p>
             </div>
           </div>
-          <button
-            onClick={() => setTcpState((s) => (s + 1) % 4)}
-            className="px-4 py-2 rounded-xl text-xs font-bold bg-indigo-600 hover:bg-indigo-500 text-white transition"
-          >
-            Siguiente Paso TCP ({tcpState + 1}/4)
-          </button>
+          {/* Navegación pestañas */}
+          <div className="flex flex-wrap items-center gap-1.5 bg-slate-950 p-1.5 rounded-2xl border border-slate-800">
+            <button
+              onClick={() => setNetActiveTab('handshake')}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition ${
+                netActiveTab === 'handshake' ? 'bg-indigo-600 text-white shadow-lg' : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              🤝 TCP / HTTP/3
+            </button>
+            <button
+              onClick={() => setNetActiveTab('protocols')}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition ${
+                netActiveTab === 'protocols' ? 'bg-cyan-600 text-white shadow-lg' : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              ⚡ REST vs gRPC
+            </button>
+            <button
+              onClick={() => setNetActiveTab('circuit')}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition ${
+                netActiveTab === 'circuit' ? 'bg-rose-600 text-white shadow-lg' : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              🛡️ Circuit Breaker
+            </button>
+            <button
+              onClick={() => setNetActiveTab('ratelimit')}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition ${
+                netActiveTab === 'ratelimit' ? 'bg-amber-600 text-white shadow-lg' : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              🪣 Token Bucket
+            </button>
+          </div>
         </div>
 
-        <div className="bg-slate-950 p-6 rounded-2xl border border-slate-800 flex items-center justify-between relative">
-          <div className="flex flex-col items-center gap-2">
-            <div className="w-16 h-16 rounded-2xl bg-indigo-900 border border-indigo-700 flex items-center justify-center text-2xl shadow-lg">
-              💻
+        {/* TAB 1: TCP & HTTP/3 HANDSHAKE */}
+        {netActiveTab === 'handshake' && (
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-semibold text-slate-300">
+                Inspección de tramas Capa 4 (TCP), Cifrado TLS 1.3 y Evolución a UDP (QUIC / HTTP/3)
+              </span>
+              <button
+                onClick={() => setTcpState((s) => (s + 1) % 4)}
+                className="px-4 py-1.5 rounded-xl text-xs font-bold bg-indigo-600 hover:bg-indigo-500 text-white transition shadow-lg cursor-pointer"
+              >
+                Avanzar Handshake ({tcpState + 1}/4)
+              </button>
             </div>
-            <span className="text-xs font-mono font-bold text-slate-300">Cliente (Browser)</span>
-            <span className="text-[10px] font-mono text-slate-500">192.168.1.15:52341</span>
-          </div>
 
-          <div className="flex-1 px-8 flex flex-col items-center gap-2">
-            <span className="text-xs font-mono font-bold text-amber-400">{tcpSteps[tcpState].title}</span>
-            <div className="w-full h-1 bg-slate-800 relative rounded-full">
-              <div
-                className="h-full bg-indigo-500 rounded-full transition-all duration-500"
-                style={{ width: `${((tcpState + 1) / 4) * 100}%` }}
-              ></div>
-            </div>
-            <span className="text-[11px] text-slate-400 text-center font-mono">{tcpSteps[tcpState].desc}</span>
-          </div>
+            <div className="bg-slate-950 p-6 rounded-2xl border border-slate-800 flex items-center justify-between relative">
+              <div className="flex flex-col items-center gap-2">
+                <div className="w-16 h-16 rounded-2xl bg-indigo-900 border border-indigo-700 flex items-center justify-center text-2xl shadow-lg">
+                  💻
+                </div>
+                <span className="text-xs font-mono font-bold text-slate-300">Cliente (Browser)</span>
+                <span className="text-[10px] font-mono text-slate-500">192.168.1.15:52341</span>
+              </div>
 
-          <div className="flex flex-col items-center gap-2">
-            <div className="w-16 h-16 rounded-2xl bg-purple-900 border border-purple-700 flex items-center justify-center text-2xl shadow-lg">
-              🏢
+              <div className="flex-1 px-8 flex flex-col items-center gap-2">
+                <span className="text-xs font-mono font-bold text-amber-400">{tcpSteps[tcpState].title}</span>
+                <div className="w-full h-1 bg-slate-800 relative rounded-full">
+                  <div
+                    className="h-full bg-indigo-500 rounded-full transition-all duration-500"
+                    style={{ width: `${((tcpState + 1) / 4) * 100}%` }}
+                  ></div>
+                </div>
+                <span className="text-[11px] text-slate-400 text-center font-mono">{tcpSteps[tcpState].desc}</span>
+              </div>
+
+              <div className="flex flex-col items-center gap-2">
+                <div className="w-16 h-16 rounded-2xl bg-purple-900 border border-purple-700 flex items-center justify-center text-2xl shadow-lg">
+                  🏢
+                </div>
+                <span className="text-xs font-mono font-bold text-slate-300">Servidor Web / Edge</span>
+                <span className="text-[10px] font-mono text-slate-500">76.76.21.21:443</span>
+              </div>
             </div>
-            <span className="text-xs font-mono font-bold text-slate-300">Servidor Web</span>
-            <span className="text-[10px] font-mono text-slate-500">93.184.216.34:443</span>
           </div>
-        </div>
+        )}
+
+        {/* TAB 2: REST VS GRPC VS WEBSOCKETS */}
+        {netActiveTab === 'protocols' && (
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-semibold text-slate-300">
+                Comparativa de Serialización y Protocolos de Transporte en Microservicios
+              </span>
+              <div className="flex items-center gap-1.5 bg-slate-950 p-1 rounded-xl border border-slate-800">
+                {(['rest', 'grpc', 'ws'] as const).map((proto) => (
+                  <button
+                    key={proto}
+                    onClick={() => setProtocolView(proto)}
+                    className={`px-3 py-1 rounded-lg text-xs font-bold uppercase transition ${
+                      protocolView === proto ? 'bg-cyan-600 text-white' : 'text-slate-400 hover:text-white'
+                    }`}
+                  >
+                    {proto}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <div className={`p-4 rounded-2xl border transition ${
+                protocolView === 'rest' ? 'bg-slate-950 border-cyan-500/80 shadow-lg' : 'bg-slate-950/60 border-slate-800'
+              }`}>
+                <div className="flex justify-between items-center mb-2">
+                  <span className="font-bold text-cyan-400 text-xs">JSON REST (HTTP/1.1)</span>
+                  <span className="text-[10px] bg-slate-800 px-2 py-0.5 rounded text-slate-300 font-mono">1,420 bytes</span>
+                </div>
+                <p className="text-[11px] text-slate-400 leading-relaxed font-mono">
+                  Payload en texto plano JSON con campos repetitivos (&quot;customer_id&quot;). Requiere serialización/parseo intensivo de strings.
+                </p>
+                <div className="mt-3 pt-2 border-t border-slate-800 text-[10px] text-slate-500 flex justify-between">
+                  <span>Latencia: 45ms</span>
+                  <span>Head-of-Line: SÍ</span>
+                </div>
+              </div>
+
+              <div className={`p-4 rounded-2xl border transition ${
+                protocolView === 'grpc' ? 'bg-slate-950 border-cyan-500/80 shadow-lg' : 'bg-slate-950/60 border-slate-800'
+              }`}>
+                <div className="flex justify-between items-center mb-2">
+                  <span className="font-bold text-emerald-400 text-xs">gRPC + Protobuf (HTTP/2)</span>
+                  <span className="text-[10px] bg-emerald-950 text-emerald-300 px-2 py-0.5 rounded font-mono">312 bytes (-78%)</span>
+                </div>
+                <p className="text-[11px] text-slate-400 leading-relaxed font-mono">
+                  Serialización binaria compacta con esquema estricto (tags numéricos). Multiplexación sobre streams binarios concurrentes.
+                </p>
+                <div className="mt-3 pt-2 border-t border-slate-800 text-[10px] text-slate-500 flex justify-between">
+                  <span className="text-emerald-400 font-bold">Latencia: 8ms</span>
+                  <span>Streaming: Bidireccional</span>
+                </div>
+              </div>
+
+              <div className={`p-4 rounded-2xl border transition ${
+                protocolView === 'ws' ? 'bg-slate-950 border-cyan-500/80 shadow-lg' : 'bg-slate-950/60 border-slate-800'
+              }`}>
+                <div className="flex justify-between items-center mb-2">
+                  <span className="font-bold text-purple-400 text-xs">WebSockets (Full-Duplex)</span>
+                  <span className="text-[10px] bg-purple-950 text-purple-300 px-2 py-0.5 rounded font-mono">2 bytes header</span>
+                </div>
+                <p className="text-[11px] text-slate-400 leading-relaxed font-mono">
+                  Socket persistente bidireccional tras handshake HTTP. Cero sobrecarga de headers en mensajes subsiguientes.
+                </p>
+                <div className="mt-3 pt-2 border-t border-slate-800 text-[10px] text-slate-500 flex justify-between">
+                  <span>Latencia: 3ms</span>
+                  <span>Casos: Chat, Finanzas en vivo</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* TAB 3: CIRCUIT BREAKER RESILIENCE */}
+        {netActiveTab === 'circuit' && (
+          <div className="space-y-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-semibold text-slate-300">
+                  Patrón Circuit Breaker (Máquina de Estados de Resiliencia)
+                </span>
+                <span className={`text-[10px] px-2.5 py-0.5 rounded-full font-black uppercase font-mono ${
+                  circuitState === 'CLOSED'
+                    ? 'bg-emerald-950 text-emerald-300 border border-emerald-800'
+                    : circuitState === 'OPEN'
+                    ? 'bg-rose-950 text-rose-300 border border-rose-800 animate-pulse'
+                    : 'bg-amber-950 text-amber-300 border border-amber-800'
+                }`}>
+                  Estado: {circuitState}
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={triggerCircuitSuccess}
+                  className="px-3 py-1 rounded-xl text-xs font-bold bg-emerald-700 hover:bg-emerald-600 text-white transition"
+                >
+                  ✅ Petición Exitosa (200)
+                </button>
+                <button
+                  onClick={triggerCircuitFailure}
+                  className="px-3 py-1 rounded-xl text-xs font-bold bg-rose-700 hover:bg-rose-600 text-white transition"
+                >
+                  💥 Simular Timeout / Fallo
+                </button>
+                {circuitState === 'OPEN' && (
+                  <button
+                    onClick={triggerCircuitTestRecovery}
+                    className="px-3 py-1 rounded-xl text-xs font-bold bg-amber-600 hover:bg-amber-500 text-white transition"
+                  >
+                    🔄 Test Sonda (Half-Open)
+                  </button>
+                )}
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <div className={`p-4 rounded-2xl border text-center transition ${
+                circuitState === 'CLOSED' ? 'bg-emerald-950/40 border-emerald-500 text-emerald-200' : 'bg-slate-950/60 border-slate-800 text-slate-500'
+              }`}>
+                <span className="text-xl block mb-1">🟢</span>
+                <span className="font-bold text-xs block">CLOSED (Normal)</span>
+                <span className="text-[10px] block mt-1">El tráfico fluye sin restricciones. Fallos registrados: {serviceFailures}/3.</span>
+              </div>
+
+              <div className={`p-4 rounded-2xl border text-center transition ${
+                circuitState === 'OPEN' ? 'bg-rose-950/40 border-rose-500 text-rose-200 shadow-lg' : 'bg-slate-950/60 border-slate-800 text-slate-500'
+              }`}>
+                <span className="text-xl block mb-1">🔴</span>
+                <span className="font-bold text-xs block">OPEN (Aislado)</span>
+                <span className="text-[10px] block mt-1">Llamadas rechazadas en 0ms. Retorna respuesta degradada o caché fallback.</span>
+              </div>
+
+              <div className={`p-4 rounded-2xl border text-center transition ${
+                circuitState === 'HALF_OPEN' ? 'bg-amber-950/40 border-amber-500 text-amber-200' : 'bg-slate-950/60 border-slate-800 text-slate-500'
+              }`}>
+                <span className="text-xl block mb-1">🟡</span>
+                <span className="font-bold text-xs block">HALF-OPEN (Prueba)</span>
+                <span className="text-[10px] block mt-1">Permite pasar 1 petición de prueba. Si triunfa cierra el circuito; si falla lo abre de nuevo.</span>
+              </div>
+            </div>
+
+            <div className="bg-slate-950 p-3.5 rounded-2xl border border-slate-800 font-mono text-[11px] text-slate-400 space-y-1">
+              <span className="text-[10px] font-bold text-slate-500 block uppercase">Telemetría del Circuit Breaker:</span>
+              {circuitLogs.map((log, idx) => (
+                <div key={idx} className="truncate">{log}</div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* TAB 4: RATE LIMITER TOKEN BUCKET */}
+        {netActiveTab === 'ratelimit' && (
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <span className="text-xs font-semibold text-slate-300 block">
+                  Algoritmo Token Bucket en API Gateway
+                </span>
+                <span className="text-[10px] text-slate-400">
+                  Protección contra sobrecargas, ataques de fuerza bruta y abuso de cuota.
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setBucketTokens(10)}
+                  className="px-3 py-1 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:text-white transition"
+                >
+                  🔄 Recargar Bucket (10)
+                </button>
+                <button
+                  onClick={sendRateLimitedRequest}
+                  className="px-4 py-1.5 rounded-xl text-xs font-bold bg-amber-600 hover:bg-amber-500 text-white transition shadow-lg"
+                >
+                  ⚡ Enviar Petición HTTP
+                </button>
+              </div>
+            </div>
+
+            <div className="bg-slate-950 p-5 rounded-2xl border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <div className="w-14 h-14 rounded-2xl bg-amber-950/60 border border-amber-800/80 flex items-center justify-center text-2xl">
+                  🪣
+                </div>
+                <div>
+                  <span className="text-xs font-mono font-bold text-white block">Tokens en el Bucket:</span>
+                  <span className="text-2xl font-mono font-black text-amber-400">{bucketTokens} <span className="text-xs text-slate-500">/ 10</span></span>
+                </div>
+              </div>
+
+              <div className="flex-1 w-full sm:max-w-xs space-y-1.5">
+                <div className="flex justify-between text-[11px] font-mono text-slate-400">
+                  <span>Capacidad Disponible</span>
+                  <span className="font-bold text-amber-400">{bucketTokens * 10}%</span>
+                </div>
+                <div className="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                  <div
+                    className={`h-full transition-all duration-300 ${bucketTokens > 3 ? 'bg-amber-500' : 'bg-rose-500'}`}
+                    style={{ width: `${bucketTokens * 10}%` }}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-slate-950 p-3.5 rounded-2xl border border-slate-800 font-mono text-[11px] text-slate-400 space-y-1">
+              <span className="text-[10px] font-bold text-slate-500 block uppercase">Registro del Reverse Proxy:</span>
+              {rateLimitLogs.map((log, idx) => (
+                <div key={idx} className={log.includes('429') ? 'text-rose-400 font-bold truncate' : 'text-emerald-400 truncate'}>
+                  {log}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     );
   }
@@ -677,70 +1008,223 @@ export const DomainInteractiveSimulator: React.FC<DomainInteractiveSimulatorProp
   if (courseId === 'sql_datos_ia') {
     return (
       <div className="bg-slate-900 text-slate-100 rounded-3xl p-5 sm:p-7 border border-slate-800 space-y-6 shadow-2xl">
-        <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+        {/* Header SQL & Vector */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-800 pb-4 gap-3">
           <div className="flex items-center gap-3">
             <span className="text-3xl">🗄️</span>
             <div>
-              <h4 className="text-lg font-bold text-white">Motor SQL & Optimizador EXPLAIN ANALYZE</h4>
-              <p className="text-xs text-slate-400">Consultas relacionales, índices B+ Tree y embeddings para RAG</p>
+              <h4 className="text-lg font-bold text-white">Motor SQL, Optimizador EXPLAIN & Bases Vectoriales (pgvector)</h4>
+              <p className="text-xs text-slate-400">B+ Trees, Análisis de costos de disco, Transacciones ACID y Búsqueda Semántica RAG</p>
             </div>
           </div>
-          <button
-            onClick={runSqlEngine}
-            className="px-5 py-2 rounded-xl text-xs font-black bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-lg transition"
-          >
-            ▶ Ejecutar SQL
-          </button>
-        </div>
-
-        <div className="space-y-2">
-          <label className="text-xs font-mono text-slate-400">Editor SQL interactivo:</label>
-          <input
-            type="text"
-            value={sqlQuery}
-            onChange={(e) => setSqlQuery(e.target.value)}
-            className="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 font-mono text-xs text-emerald-400 outline-none focus:ring-2 focus:ring-indigo-500"
-          />
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-2">
-            <span className="text-[10px] font-mono uppercase text-slate-400 font-bold block">
-              Resultados de la Consulta ({sqlOutput.length} filas)
-            </span>
-            <div className="overflow-x-auto">
-              <table className="w-full text-left font-mono text-xs text-slate-300">
-                <thead>
-                  <tr className="border-b border-slate-800 text-slate-500">
-                    <th className="p-1.5">id</th>
-                    <th className="p-1.5">nombre</th>
-                    <th className="p-1.5">rol</th>
-                    <th className="p-1.5">salario</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {sqlOutput.map((row) => (
-                    <tr key={row.id} className="border-b border-slate-900">
-                      <td className="p-1.5 text-indigo-400">{row.id}</td>
-                      <td className="p-1.5">{row.nombre}</td>
-                      <td className="p-1.5 text-slate-400">{row.rol}</td>
-                      <td className="p-1.5 text-emerald-400">${row.salario}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <div className="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-2">
-            <span className="text-[10px] font-mono uppercase text-amber-400 font-bold block">
-              Plan de Ejecución del Optimizador (EXPLAIN)
-            </span>
-            <div className="p-3 rounded-xl bg-slate-900 border border-slate-800 font-mono text-xs text-slate-300 leading-relaxed">
-              {sqlPlan}
-            </div>
+          <div className="flex flex-wrap items-center gap-1.5 bg-slate-950 p-1.5 rounded-2xl border border-slate-800">
+            <button
+              onClick={() => setSqlActiveTab('explain')}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition ${
+                sqlActiveTab === 'explain' ? 'bg-teal-600 text-white shadow-lg' : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              🌳 EXPLAIN & B+ Tree
+            </button>
+            <button
+              onClick={() => setSqlActiveTab('deadlock')}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition ${
+                sqlActiveTab === 'deadlock' ? 'bg-rose-600 text-white shadow-lg' : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              🔒 ACID & Deadlocks
+            </button>
+            <button
+              onClick={() => setSqlActiveTab('vector')}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition ${
+                sqlActiveTab === 'vector' ? 'bg-purple-600 text-white shadow-lg' : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              📐 pgvector & RAG
+            </button>
           </div>
         </div>
+
+        {/* TAB 1: EXPLAIN ANALYZE & B-TREE */}
+        {sqlActiveTab === 'explain' && (
+          <div className="space-y-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-semibold text-slate-300">Estado del Índice:</span>
+                <button
+                  onClick={() => { setSqlHasIndex(!sqlHasIndex); }}
+                  className={`px-3 py-1 rounded-xl text-xs font-bold transition ${
+                    sqlHasIndex ? 'bg-emerald-600 text-white' : 'bg-rose-600 text-white'
+                  }`}
+                >
+                  {sqlHasIndex ? '✅ Con Índice B+ Tree (idx_salario)' : '❌ Sin Índice (Seq Scan O(n))'}
+                </button>
+              </div>
+              <button
+                onClick={runSqlEngine}
+                className="px-4 py-1.5 rounded-xl text-xs font-black bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-lg transition cursor-pointer"
+              >
+                ▶ Ejecutar y Perfilar Consulta
+              </button>
+            </div>
+
+            <div className="space-y-1.5">
+              <label className="text-[11px] font-mono text-slate-400">Sentencia SQL a evaluar:</label>
+              <input
+                type="text"
+                value={sqlQuery}
+                onChange={(e) => setSqlQuery(e.target.value)}
+                className="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 font-mono text-xs text-emerald-400 outline-none focus:ring-2 focus:ring-teal-500"
+              />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-2">
+                <span className="text-[10px] font-mono uppercase text-slate-400 font-bold block">
+                  Filas Recuperadas ({sqlOutput.length} registros)
+                </span>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left font-mono text-xs text-slate-300">
+                    <thead>
+                      <tr className="border-b border-slate-800 text-slate-500">
+                        <th className="p-1.5">id</th>
+                        <th className="p-1.5">nombre</th>
+                        <th className="p-1.5">rol</th>
+                        <th className="p-1.5">salario</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {sqlOutput.map((row) => (
+                        <tr key={row.id} className="border-b border-slate-900">
+                          <td className="p-1.5 text-teal-400">{row.id}</td>
+                          <td className="p-1.5">{row.nombre}</td>
+                          <td className="p-1.5 text-slate-400">{row.rol}</td>
+                          <td className="p-1.5 text-emerald-400">${row.salario}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div className="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-2">
+                <span className="text-[10px] font-mono uppercase text-amber-400 font-bold block">
+                  Plan de Ejecución del Optimizador (EXPLAIN ANALYZE)
+                </span>
+                <div className="p-3.5 rounded-xl bg-slate-900 border border-slate-800 font-mono text-xs text-slate-300 leading-relaxed">
+                  {sqlPlan}
+                </div>
+                <div className="p-2.5 rounded-xl bg-slate-900/60 border border-slate-800 text-[10px] text-slate-400 leading-relaxed">
+                  💡 <strong>Diagnóstico Senior:</strong> {sqlHasIndex 
+                    ? 'El índice B+ Tree permite saltar directamente a las páginas de disco mediante punteros ordenados en O(log n).' 
+                    : 'Sin índice, la base de datos se ve forzada a cargar todas las páginas del disco en el buffer pool para evaluar cada tupla.'}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* TAB 2: ACID CONCURRENCY & DEADLOCK */}
+        {sqlActiveTab === 'deadlock' && (
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-semibold text-slate-300">
+                Simulación de Concurrencia Transaccional: Bloqueos Cruzados (Deadlock)
+              </span>
+              <button
+                onClick={() => setDeadlockStep((s) => (s + 1) % 4)}
+                className="px-3.5 py-1.5 bg-rose-600 hover:bg-rose-500 text-white rounded-xl text-xs font-bold transition shadow-lg cursor-pointer"
+              >
+                Paso Deadlock ({deadlockStep + 1}/4)
+              </button>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className={`p-4 rounded-2xl border transition ${
+                deadlockStep >= 1 ? 'bg-slate-950 border-indigo-700' : 'bg-slate-950/60 border-slate-800'
+              }`}>
+                <span className="text-xs font-bold text-indigo-400 block mb-2">Transacción 1 (Tx1)</span>
+                <div className="space-y-1.5 font-mono text-[11px]">
+                  <p className={deadlockStep >= 1 ? 'text-emerald-400 font-bold' : 'text-slate-600'}>1. BEGIN;</p>
+                  <p className={deadlockStep >= 1 ? 'text-emerald-400 font-bold' : 'text-slate-600'}>2. UPDATE cuentas SET saldo = saldo - 50 WHERE id = &apos;A&apos;; [Bloquea Fila A]</p>
+                  <p className={deadlockStep >= 3 ? 'text-rose-400 font-bold animate-pulse' : 'text-slate-600'}>3. UPDATE cuentas SET saldo = saldo + 50 WHERE id = &apos;B&apos;; [ESPERA Fila B...]</p>
+                </div>
+              </div>
+
+              <div className={`p-4 rounded-2xl border transition ${
+                deadlockStep >= 2 ? 'bg-slate-950 border-purple-700' : 'bg-slate-950/60 border-slate-800'
+              }`}>
+                <span className="text-xs font-bold text-purple-400 block mb-2">Transacción 2 (Tx2)</span>
+                <div className="space-y-1.5 font-mono text-[11px]">
+                  <p className={deadlockStep >= 2 ? 'text-emerald-400 font-bold' : 'text-slate-600'}>1. BEGIN;</p>
+                  <p className={deadlockStep >= 2 ? 'text-emerald-400 font-bold' : 'text-slate-600'}>2. UPDATE cuentas SET saldo = saldo - 20 WHERE id = &apos;B&apos;; [Bloquea Fila B]</p>
+                  <p className={deadlockStep >= 3 ? 'text-rose-400 font-bold animate-pulse' : 'text-slate-600'}>3. UPDATE cuentas SET saldo = saldo + 20 WHERE id = &apos;A&apos;; [ESPERA Fila A...]</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-slate-950 p-4 rounded-2xl border border-slate-800 font-mono text-xs">
+              {deadlockStep === 3 ? (
+                <div className="text-rose-400 space-y-1">
+                  <span className="font-bold block">🚨 DEADLOCK DETECTADO POR EL MOTOR:</span>
+                  <p className="text-slate-300 text-[11px]">
+                    Tx1 espera Fila B (retenida por Tx2) mientras Tx2 espera Fila A (retenida por Tx1).
+                    PostgreSQL aborta automáticamente Tx2 con error: <code>deadlock detected (Process 4812 waits for ShareLock)</code>.
+                  </p>
+                  <p className="text-emerald-400 text-[10px] mt-2 font-bold">
+                    ✅ Solución de Arquitectura: Adquirir los bloqueos siempre en un orden determinista predecible (bloquear primero el ID alfabéticamente menor).
+                  </p>
+                </div>
+              ) : (
+                <div className="text-slate-400 text-[11px]">
+                  Avanza los pasos para observar cómo dos transacciones concurrentes adquieren bloqueos exclusivos en orden invertido provocando un ciclo de espera mutua.
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* TAB 3: VECTOR DB & PGVECTOR */}
+        {sqlActiveTab === 'vector' && (
+          <div className="space-y-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <span className="text-xs font-semibold text-slate-300">
+                Extensión pgvector: Búsqueda Semántica por Similitud Coseno (Operador &lt;=&gt;)
+              </span>
+              <span className="text-[10px] font-mono text-purple-400 bg-purple-950/60 px-2.5 py-0.5 rounded-full border border-purple-800">
+                Índice: HNSW (1536 dimensiones)
+              </span>
+            </div>
+
+            <div className="space-y-1.5">
+              <label className="text-[11px] font-mono text-slate-400">Texto de búsqueda de usuario (se convierte en Embedding vectorial):</label>
+              <input
+                type="text"
+                value={vectorQueryText}
+                onChange={(e) => setVectorQueryText(e.target.value)}
+                className="w-full px-4 py-2 rounded-xl bg-slate-950 border border-slate-800 font-mono text-xs text-purple-300 outline-none"
+              />
+            </div>
+
+            <div className="space-y-2">
+              {[
+                { id: 101, text: "Configuración de Tokens JWT, cabeceras Bearer y roles en Spring Security", sim: "0.942 (Alta afinidad)" },
+                { id: 102, text: "Auditoría de vulnerabilidades OWASP Top 10 y cifrado en tránsito TLS 1.3", sim: "0.885 (Afinidad media)" },
+                { id: 103, text: "Optimización de consultas SQL relacionales con índices B+ Tree", sim: "0.412 (Baja afinidad)" },
+              ].map((doc) => (
+                <div key={doc.id} className="p-3.5 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-between gap-3 font-mono text-xs">
+                  <div className="space-y-0.5">
+                    <span className="text-purple-400 font-bold block text-[10px]">Chunk #{doc.id}</span>
+                    <span className="text-slate-300 text-[11px]">{doc.text}</span>
+                  </div>
+                  <span className="text-[11px] font-bold text-emerald-400 whitespace-nowrap bg-slate-900 px-2 py-1 rounded-lg border border-slate-800">
+                    Coseno: {doc.sim}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     );
   }
@@ -1156,43 +1640,193 @@ Duration: 6ms`}
   if (courseId === 'ingeniero_ia' || courseId === 'evaluacion_ia') {
     return (
       <div className="bg-slate-900 text-slate-100 rounded-3xl p-5 sm:p-7 border border-slate-800 space-y-6 shadow-2xl">
-        <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+        {/* Header Agente IA */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-800 pb-4 gap-3">
           <div className="flex items-center gap-3">
             <span className="text-3xl">🤖</span>
             <div>
-              <h4 className="text-lg font-bold text-white">Simulador de Agente ReAct & Guardrails de IA</h4>
-              <p className="text-xs text-slate-400">Bucle Reasoning + Acting (Pensamiento ➔ Acción ➔ Observación)</p>
+              <h4 className="text-lg font-bold text-white">Laboratorio de Agentes Autónomos ReAct, RAG & Evaluación de LLMs</h4>
+              <p className="text-xs text-slate-400">Ciclo Reasoning + Acting, Tool Calling con JSON Schema, Re-ranking y Métricas LLM-as-a-Judge</p>
             </div>
           </div>
-          <button
-            onClick={() => setReactStep((s) => (s + 1) % reactCycle.length)}
-            className="px-4 py-2 rounded-xl text-xs font-bold bg-purple-600 hover:bg-purple-500 text-white transition cursor-pointer"
-          >
-            Siguiente Paso ReAct ({reactStep + 1}/{reactCycle.length})
-          </button>
-        </div>
-
-        <div className="bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-3 font-mono text-xs">
-          {reactCycle.slice(0, reactStep + 1).map((step, idx) => (
-            <div
-              key={idx}
-              className={`p-3 rounded-xl border ${
-                step.type === 'Thought'
-                  ? 'bg-purple-950/50 border-purple-800 text-purple-200'
-                  : step.type === 'Action'
-                  ? 'bg-amber-950/50 border-amber-800 text-amber-200'
-                  : step.type === 'Observation'
-                  ? 'bg-blue-950/50 border-blue-800 text-blue-200'
-                  : 'bg-emerald-950/50 border-emerald-800 text-emerald-200 font-bold'
+          <div className="flex flex-wrap items-center gap-1.5 bg-slate-950 p-1.5 rounded-2xl border border-slate-800">
+            <button
+              onClick={() => setAiActiveTab('react')}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition ${
+                aiActiveTab === 'react' ? 'bg-purple-600 text-white shadow-lg' : 'text-slate-400 hover:text-white'
               }`}
             >
-              <span className="text-[10px] uppercase tracking-wider font-black block opacity-70">
-                [{step.type}]
-              </span>
-              {step.text}
-            </div>
-          ))}
+              🔄 Ciclo ReAct
+            </button>
+            <button
+              onClick={() => setAiActiveTab('rag')}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition ${
+                aiActiveTab === 'rag' ? 'bg-cyan-600 text-white shadow-lg' : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              📚 RAG & Re-ranking
+            </button>
+            <button
+              onClick={() => setAiActiveTab('judge')}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition ${
+                aiActiveTab === 'judge' ? 'bg-emerald-600 text-white shadow-lg' : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              ⚖️ LLM-as-a-Judge
+            </button>
+          </div>
         </div>
+
+        {/* TAB 1: REACT AGENT LOOP */}
+        {aiActiveTab === 'react' && (
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-semibold text-slate-300">
+                Bucle Agéntico Autónomo: Thought ➔ Tool Calling ➔ Observation ➔ Final Answer
+              </span>
+              <button
+                onClick={() => setReactStep((s) => (s + 1) % reactCycle.length)}
+                className="px-4 py-1.5 rounded-xl text-xs font-bold bg-purple-600 hover:bg-purple-500 text-white transition shadow-lg cursor-pointer"
+              >
+                Avanzar Ciclo ReAct ({reactStep + 1}/{reactCycle.length})
+              </button>
+            </div>
+
+            <div className="bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-3 font-mono text-xs">
+              {reactCycle.slice(0, reactStep + 1).map((step, idx) => (
+                <div
+                  key={idx}
+                  className={`p-3.5 rounded-xl border transition ${
+                    step.type === 'Thought'
+                      ? 'bg-purple-950/40 border-purple-800 text-purple-200'
+                      : step.type === 'Action'
+                      ? 'bg-amber-950/40 border-amber-800 text-amber-200'
+                      : step.type === 'Observation'
+                      ? 'bg-cyan-950/40 border-cyan-800 text-cyan-200'
+                      : 'bg-emerald-950/40 border-emerald-800 text-emerald-200 font-bold'
+                  }`}
+                >
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-[10px] uppercase tracking-wider font-black opacity-80">
+                      [{step.type}]
+                    </span>
+                    <span className="text-[10px] opacity-60">Paso 0{idx + 1}</span>
+                  </div>
+                  <p className="text-[11px] leading-relaxed">{step.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* TAB 2: RAG PIPELINE & RE-RANKING */}
+        {aiActiveTab === 'rag' && (
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-semibold text-slate-300">
+                Pipeline RAG: Recuperación Vectorial Densa + Re-ranking con Cross-Encoder
+              </span>
+              <span className="text-[10px] font-mono text-cyan-400 bg-cyan-950/60 px-2.5 py-0.5 rounded-full border border-cyan-800">
+                Top-2 Chunks Inyectados al Contexto
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-2">
+                <span className="text-xs font-bold text-slate-400 block">
+                  1. Recuperación Vectorial Inicial (Top-4 por distancia coseno)
+                </span>
+                <div className="space-y-2 font-mono text-[11px]">
+                  <div className="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">
+                    Chunk A: &quot;Guía de autenticación de microservicios con OAuth2...&quot; (Score: 0.89)
+                  </div>
+                  <div className="p-2.5 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">
+                    Chunk B: &quot;Expiración de tokens y rotación de refresh tokens...&quot; (Score: 0.87)
+                  </div>
+                  <div className="p-2.5 bg-slate-900/50 rounded-lg border border-slate-800/60 text-slate-500">
+                    Chunk C: &quot;Historia de la criptografía simétrica en los 80s...&quot; (Score: 0.74)
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-slate-950 p-4 rounded-2xl border border-cyan-800/80 space-y-2 shadow-lg">
+                <span className="text-xs font-bold text-cyan-400 block">
+                  2. Cross-Encoder Re-ranker (Atención profunda Pregunta-Documento)
+                </span>
+                <div className="space-y-2 font-mono text-[11px]">
+                  <div className="p-2.5 bg-cyan-950/40 rounded-lg border border-cyan-700 text-cyan-200 font-bold">
+                    🥇 Chunk B ➔ Re-rank Score: 0.96 (Relevancia exacta para la respuesta)
+                  </div>
+                  <div className="p-2.5 bg-cyan-950/40 rounded-lg border border-cyan-700 text-cyan-200 font-bold">
+                    🥈 Chunk A ➔ Re-rank Score: 0.93 (Contexto de soporte de protocolo)
+                  </div>
+                  <div className="text-[10px] text-slate-400 pl-1 pt-1">
+                    ℹ️ El Re-ranker descartó el Chunk C por considerarlo ruido irrelevante, reduciendo tokens y alucinaciones.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* TAB 3: LLM-AS-A-JUDGE EVALUATION */}
+        {aiActiveTab === 'judge' && (
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <span className="text-xs font-semibold text-slate-300 block">
+                  Framework de Evaluación Sistemática (Métricas Ragas & LLM-as-a-Judge)
+                </span>
+                <span className="text-[10px] text-slate-400">
+                  Calificación automatizada de respuestas frente al contexto de referencia sin evaluación humana manual.
+                </span>
+              </div>
+              <span className="text-xs font-bold font-mono text-emerald-400 bg-emerald-950/60 px-3 py-1 rounded-xl border border-emerald-800">
+                STATUS: PASS (SLA Aprobado)
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div className="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-2">
+                <div className="flex justify-between items-center text-xs">
+                  <span className="font-bold text-slate-300">Faithfulness (Fidelidad)</span>
+                  <span className="font-mono font-bold text-emerald-400">{judgeFaithfulness}%</span>
+                </div>
+                <div className="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                  <div className="h-full bg-emerald-500 w-[98%]" />
+                </div>
+                <p className="text-[10px] text-slate-500">Mide la ausencia de alucinaciones: todas las afirmaciones provienen del contexto.</p>
+              </div>
+
+              <div className="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-2">
+                <div className="flex justify-between items-center text-xs">
+                  <span className="font-bold text-slate-300">Answer Relevance</span>
+                  <span className="font-mono font-bold text-emerald-400">{judgeRelevance}%</span>
+                </div>
+                <div className="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                  <div className="h-full bg-emerald-500 w-[95%]" />
+                </div>
+                <p className="text-[10px] text-slate-500">Mide qué tan concisa y directamente responde a la pregunta original del usuario.</p>
+              </div>
+
+              <div className="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-2">
+                <div className="flex justify-between items-center text-xs">
+                  <span className="font-bold text-slate-300">Context Precision</span>
+                  <span className="font-mono font-bold text-emerald-400">{judgeContextPrecision}%</span>
+                </div>
+                <div className="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                  <div className="h-full bg-emerald-500 w-[92%]" />
+                </div>
+                <p className="text-[10px] text-slate-500">Mide la proporción de fragmentos relevantes recuperados respecto al ruido total.</p>
+              </div>
+            </div>
+
+            <div className="bg-slate-950 p-3.5 rounded-2xl border border-slate-800 font-mono text-[11px] text-slate-400 flex items-center justify-between">
+              <span>🛡️ Prompt Injection Shield (Detección Adversarial):</span>
+              <span className="text-emerald-400 font-bold">0 Ataques Detectados (100% Blindado)</span>
+            </div>
+          </div>
+        )}
       </div>
     );
   }
