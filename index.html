@@ -27,6 +27,16 @@
           document.documentElement.classList.add('dark');
         }
       })();
+      // Detección y activación automática de actualizaciones PWA
+      if ('serviceWorker' in navigator) {
+        var isReloading = false;
+        navigator.serviceWorker.addEventListener('controllerchange', function() {
+          if (!isReloading) {
+            isReloading = true;
+            window.location.reload();
+          }
+        });
+      }
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>

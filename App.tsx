@@ -296,17 +296,25 @@ const App: React.FC = () => {
         <div className="max-w-[1600px] mx-auto px-3 sm:px-6 h-14 sm:h-16 flex items-center justify-between gap-3">
           {/* Brand & Active Course Identifier */}
           <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
-            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold shadow-md shadow-indigo-500/20 shrink-0 text-sm sm:text-base">
-              {activeCourse.icon}
-            </div>
-            <div className="flex flex-col min-w-0">
-               <h1 className="text-xs sm:text-base lg:text-lg font-black tracking-tight text-slate-900 dark:text-slate-50 leading-none flex items-center gap-1.5 truncate">
-                Master Class <span className="gradient-text shrink-0">QuimiSell</span>
-              </h1>
-              <span className="text-[9px] sm:text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-widest mt-0.5 truncate">
-                {activeCourse.shortTitle}
-              </span>
-            </div>
+            <button
+              type="button"
+              onClick={handleGoHome}
+              title="Volver al Catálogo de 14 Cursos"
+              className="flex items-center gap-2 sm:gap-3 min-w-0 text-left bg-transparent border-none p-0 cursor-pointer group focus:outline-none"
+            >
+              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold shadow-md shadow-indigo-500/20 shrink-0 text-sm sm:text-base group-hover:scale-105 transition-transform">
+                {activeCourse.icon}
+              </div>
+              <div className="flex flex-col min-w-0">
+                <h1 className="text-xs sm:text-base lg:text-lg font-black tracking-tight text-slate-900 dark:text-slate-50 leading-none flex items-center gap-1.5 truncate group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                  Master Class <span className="gradient-text shrink-0">QuimiSell</span>
+                </h1>
+                <span className="text-[9px] sm:text-[10px] text-indigo-600 dark:text-indigo-400 font-extrabold uppercase tracking-widest mt-0.5 truncate flex items-center gap-1">
+                  <span>{activeCourse.shortTitle}</span>
+                  <span className="text-[8px] text-slate-400 dark:text-slate-500 font-normal">· Catálogo (14)</span>
+                </span>
+              </div>
+            </button>
           </div>
 
           {/* Quick Search Palette (Spotlight on Desktop) */}

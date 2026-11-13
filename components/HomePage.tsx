@@ -71,6 +71,16 @@ export const HomePage: React.FC<HomePageProps> = ({
     };
   }, [courses, progressVersion, activeCourseId]);
 
+  // Estadísticas de conteo dinámico por categoría
+  const categoryCounts = useMemo(() => {
+    const counts: Record<string, number> = { all: courses.length, cs: 0, ai: 0, security: 0, dev: 0 };
+    for (const c of courses) {
+      const cat = getCourseCategory(c.id);
+      counts[cat] = (counts[cat] || 0) + 1;
+    }
+    return counts;
+  }, [courses]);
+
   // Filtrado de cursos por categoría y búsqueda
   const filteredCourses = useMemo(() => {
     const q = searchQuery.toLowerCase().trim();
@@ -247,11 +257,11 @@ export const HomePage: React.FC<HomePageProps> = ({
         {/* Filtros de Categoría */}
         <div className="flex items-center gap-2 overflow-x-auto scroll-touch pb-2 scrollbar-hide">
           {[
-            { id: 'all', label: 'Todos los Cursos', count: courses.length },
-            { id: 'cs', label: '🧠 Ciencias de la Computación', count: 4 },
-            { id: 'ai', label: '🤖 Inteligencia Artificial & Datos', count: 4 },
-            { id: 'security', label: '🛡️ Ciberseguridad & Redes', count: 2 },
-            { id: 'dev', label: '⚙️ Arquitectura & Software', count: 3 },
+            { id: 'all', label: 'Todos los Cursos', count: categoryCounts.all },
+            { id: 'cs', label: '🧠 Ciencias de la Computación', count: categoryCounts.cs },
+            { id: 'ai', label: '🤖 Inteligencia Artificial & Datos', count: categoryCounts.ai },
+            { id: 'security', label: '🛡️ Ciberseguridad & Redes', count: categoryCounts.security },
+            { id: 'dev', label: '⚙️ Arquitectura & Software', count: categoryCounts.dev },
           ].map((cat) => (
             <button
               key={cat.id}
