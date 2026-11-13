@@ -1,14 +1,14 @@
-import { Course } from '../domain/models';
+import { Course, TutorExercise } from '../domain/models';
 
 export const CLEAN_CODE_COURSE: Course = {
   id: 'clean_code_solid',
-  title: 'Clean Code, SOLID y Patrones de Diseño',
-  shortTitle: 'Clean Code & SOLID',
-  badge: 'Arquitectura & Calidad de Software',
+  title: 'Clean Code, SOLID, Patrones de Diseño y QA Testing Automatizado',
+  shortTitle: 'Clean Code & QA',
+  badge: 'Arquitectura, SOLID & QA Engineering',
   icon: '🧼',
-  description: 'Basado en los principios de Robert C. Martin (Tío Bob) y el Gang of Four (GoF): aprende a escribir código limpio, mantenible, escalable y libre de deuda técnica.',
-  whyStudyTitle: '🧠 ¿Por qué estudiar Clean Code y SOLID?',
-  whyStudyText: 'Cualquier programador puede escribir código que una computadora entienda; los ingenieros de elite escriben código que los humanos pueden entender. Este curso transmite los principios fundamentales planteados por Robert C. Martin (Tío Bob) en su célebre libro "Clean Code": funciones pequeñas, nombres expresivos, acoplamiento débil, alta cohesión y los 5 Principios SOLID.',
+  description: '10 módulos prácticos: código limpio según Robert C. Martin (Tío Bob), principios SOLID, patrones GoF esenciales, TDD con Vitest/pytest, pruebas de integración, E2E con Playwright, pruebas de carga con k6 y auditoría anti-IA.',
+  whyStudyTitle: '🧼 ¿Por qué Clean Code y QA Automatizado son inseparables?',
+  whyStudyText: 'Cualquier programador puede escribir código que una computadora entienda; los ingenieros de élite escriben código que los humanos pueden entender y refactorizar con total seguridad. Refactorizar código sin una suite de pruebas automatizadas es como caminar en la cuerda floja sin red de protección: cualquier cambio arquitectónico corre el riesgo de introducir regresiones catastróficas. Este curso combina los fundamentos de Robert C. Martin (Tío Bob) y el Gang of Four (GoF) con la Pirámide de Pruebas moderna: Unit Testing y TDD (Red-Green-Refactor) con Vitest y pytest, pruebas de integración con MSW, pruebas End-to-End (E2E) con Playwright, pruebas de estrés con k6 y Property-Based Testing para blindar el código contra alucinaciones y edge cases de la IA.',
   studyPlanReasons: [
     { id: 1, title: "Filosofía Clean Code y Nombres Expresivos", why: "Escribir código intencional y autodocumentado según el Tío Bob." },
     { id: 2, title: "Funciones y Manejo de Excepciones", why: "Diseño de funciones que hacen una sola cosa y gestión limpia de errores." },
@@ -17,14 +17,14 @@ export const CLEAN_CODE_COURSE: Course = {
     { id: 5, title: "Open/Closed Principle (OCP)", why: "Abierto para extensión, cerrado para modificación mediante abstracción." },
     { id: 6, title: "Liskov Substitution Principle (LSP)", why: "Garantizar que las subclases puedan sustituir a sus clases base sin romper contratos." },
     { id: 7, title: "Interface Segregation & Dependency Inversion", why: "Interfaces específicas e inyección de dependencias (DIP)." },
-    { id: 8, title: "Patrones Creacionales (GoF)", why: "Singleton, Factory Method, Abstract Factory, Builder y Prototype." },
-    { id: 9, title: "Patrones Estructurales (GoF)", why: "Adapter, Decorator, Facade, Composite y Proxy." },
-    { id: 10, title: "Patrones de Comportamiento (GoF)", why: "Strategy, Observer, Command, State y Chain of Responsibility." }
+    { id: 8, title: "Patrones de Diseño GoF (Creacionales, Estructurales & Strategy)", why: "Factory, Builder, Adapter, Strategy y Observer para erradicar switches monolíticos y código acoplado." },
+    { id: 9, title: "QA & La Pirámide de Pruebas: Unit Testing & TDD (Vitest/pytest)", why: "Pirámide de Mike Cohn, ciclo Red-Green-Refactor, patrón AAA, Test Doubles (Mocks/Stubs) y cobertura de ramas." },
+    { id: 10, title: "QA Avanzado: Integración, E2E (Playwright), Carga (k6) & Anti-IA", why: "Pruebas de contratos con MSW, automatización web E2E en Playwright, pruebas de estrés con k6 y Property-Based Testing." }
   ],
   labChallenge: {
-    title: "Refactorización de un Sistema Legacy con Principios SOLID y Patrón Strategy",
-    badge: "Laboratorio de Clean Code",
-    description: "Tu objetivo es tomar un bloque de código 'spaghetti' monolítico lleno de condicionales anidadas `if-else` y refactorizarlo aplicando el Principio de Responsabilidad Única (SRP), Inversión de Dependencias (DIP) y el Patrón de Diseño Strategy.",
+    title: "Refactorización Legacy a SOLID + Suite Completa de Pruebas Automatizadas (Vitest & Playwright)",
+    badge: "Laboratorio de Clean Code & QA Engineering",
+    description: "Tu objetivo es tomar un servicio legacy 'spaghetti' monolítico con lógica acoplada a base de datos y pasarela de pago, refactorizarlo aplicando Principios SOLID (SRP, DIP) y el Patrón Strategy, y blindarlo con una suite de pruebas unitarias TDD (Vitest) y una prueba E2E (Playwright).",
     requirements: [
       "• Eliminar condicionales anidadas: Reemplazar estructuras `switch`/`if` por la interfaz Strategy.",
       "• Inyección de Dependencias: Pasar los servicios concretos mediante interfaces en el constructor.",
@@ -826,350 +826,461 @@ class ServicioUsuarioClean:
         }
       ]
     },
-{
+    {
       id: 8,
-      title: "MÓDULO 8: PATRONES DE DISEÑO CREACIONALES (GANG OF FOUR)",
-      description: "Mecanismos de creación de objetos flexibles: Singleton, Factory Method, Abstract Factory, Builder y Prototype.",
+      title: "MÓDULO 8: PATRONES DE DISEÑO ESENCIALES (GANG OF FOUR: CREACIONALES, ESTRUCTURALES Y ESTRATEGIA)",
+      description: "Patrones GoF aplicados al código limpio: Factory Method, Builder, Adapter, Decorator, Strategy y Observer para erradicar monolitos y habilitar testabilidad real.",
       items: [
-      "Origen de los Patrones de Diseño (Libro GoF - Gang of Four 1994).",
-      "Patrón Singleton: Garantizar una única instancia global y cuándo EVITARLO.",
-      "Patrón Factory Method: Delegar la instanciación a subclases especializadas.",
-      "Patrón Abstract Factory: Familias de objetos relacionados.",
-      "Patrón Builder: Construcción paso a paso de objetos complejos.",
-      "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
-      "Errores frecuentes de principiantes y cómo evitarlos en producción.",
-      "Mapa mental de PATRONES DE DISEÑO CREACIONALES (GANG OF FOUR).",
-      "Preguntas tipo entrevista técnica.",
-      "Glosario: 5 términos que defines sin diccionario.",
-      "Conexión con el laboratorio del curso.",
-      "Repaso offline sin internet ni APIs de pago."
+        "Origen e intención de los Patrones de Diseño (Gang of Four 1994).",
+        "Patrones Creacionales: Factory Method y Builder para encapsular instanciaciones complejas.",
+        "Patrón Singleton: Casos legítimos (connection pools) y por qué destruye la testabilidad si no se abstrae.",
+        "Patrones Estructurales: Adapter y Decorator para integrar APIs legadas y extender comportamientos.",
+        "Patrón de Comportamiento Strategy: Reemplazar árboles de if-else gigantes por polimorfismo dinámico.",
+        "Patrón Observer: Suscripción reactiva y desacoplamiento temporal de eventos.",
+        "Relación directa entre Patrones GoF y Principios SOLID (especialmente OCP y DIP).",
+        "Antipatrones comunes: 'Factory-itis' (sobreingeniería) y Singletons globales mutables no mockeables."
 ],
-      content: "## Panorama del tema: PATRONES DE DISEÑO CREACIONALES (GANG OF FOUR)\n\nMecanismos de creación de objetos flexibles: Singleton, Factory Method, Abstract Factory, Builder y Prototype.\n\nLos Patrones Creacionales abstraen el proceso de instanciación de objetos. El patrón **Factory Method** define una interfaz para crear un objeto, permitiendo a las subclases decidir qué clase concreta instanciar. El patrón **Builder** separa la construcción de un objeto complejo de su representación (ideal para evitar constructores con 10 parámetros). El patrón **Singleton** asegura que una clase tenga una única instancia en todo el sistema (aunque debe usarse con precaución para no crear un estado global acoplado).\n\nEste módulo es material de estudio **autocontenido**: puedes aprenderlo completo aquí, sin pagar plataformas externas ni depender de internet después de cargar la página. Lee en orden, ejecuta el snippet, resuelve la autoevaluación y repasa los puntos que falles.\n\n## Qué aprenderás en este módulo\n\n· Origen de los Patrones de Diseño (Libro GoF - Gang of Four 1994).\n· Patrón Singleton: Garantizar una única instancia global y cuándo EVITARLO.\n· Patrón Factory Method: Delegar la instanciación a subclases especializadas.\n· Patrón Abstract Factory: Familias de objetos relacionados.\n· Patrón Builder: Construcción paso a paso de objetos complejos.\n· Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.\n· Errores frecuentes de principiantes y cómo evitarlos en producción.\n· Mapa mental de PATRONES DE DISEÑO CREACIONALES (GANG OF FOUR).\n· Dominar las 12 preguntas de autoevaluación con ≥70% de aciertos antes de avanzar.\n\n## Desarrollo teórico detallado\n\n## 1. Origen de los Patrones de Diseño (Libro GoF - Gang of Four 1994).\n\n**Qué es y por qué importa.** Dentro de PATRONES DE DISEÑO CREACIONALES (GANG OF FOUR), este punto es central en ingeniería de software mantenible, SOLID y patrones de diseño. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Origen de los Patrones de Diseño (Libro GoF - Gang of Four 1994). — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Origen de los Patrones de Diseño (Libro GoF - Gang of Four 1994).» y cuándo lo evitarías.\n\n## 2. Patrón Singleton: Garantizar una única instancia global y cuándo EVITARLO.\n\n**Qué es y por qué importa.** Dentro de PATRONES DE DISEÑO CREACIONALES (GANG OF FOUR), este punto es central en ingeniería de software mantenible, SOLID y patrones de diseño. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Patrón Singleton: Garantizar una única instancia global y cuándo EVITARLO. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Patrón Singleton: Garantizar una única instancia global y cuándo EVITARLO.» y cuándo lo evitarías.\n\n## 3. Patrón Factory Method: Delegar la instanciación a subclases especializadas.\n\n**Qué es y por qué importa.** Dentro de PATRONES DE DISEÑO CREACIONALES (GANG OF FOUR), este punto es central en ingeniería de software mantenible, SOLID y patrones de diseño. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Patrón Factory Method: Delegar la instanciación a subclases especializadas. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Patrón Factory Method: Delegar la instanciación a subclases especializadas.» y cuándo lo evitarías.\n\n## 4. Patrón Abstract Factory: Familias de objetos relacionados.\n\n**Qué es y por qué importa.** Dentro de PATRONES DE DISEÑO CREACIONALES (GANG OF FOUR), este punto es central en ingeniería de software mantenible, SOLID y patrones de diseño. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Patrón Abstract Factory: Familias de objetos relacionados. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Patrón Abstract Factory: Familias de objetos relacionados.» y cuándo lo evitarías.\n\n## 5. Patrón Builder: Construcción paso a paso de objetos complejos.\n\n**Qué es y por qué importa.** Dentro de PATRONES DE DISEÑO CREACIONALES (GANG OF FOUR), este punto es central en ingeniería de software mantenible, SOLID y patrones de diseño. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Patrón Builder: Construcción paso a paso de objetos complejos. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Patrón Builder: Construcción paso a paso de objetos complejos.» y cuándo lo evitarías.\n\n## 6. Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.\n\n**Qué es y por qué importa.** Dentro de PATRONES DE DISEÑO CREACIONALES (GANG OF FOUR), este punto es central en ingeniería de software mantenible, SOLID y patrones de diseño. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.» y cuándo lo evitarías.\n\n## 7. Errores frecuentes de principiantes y cómo evitarlos en producción.\n\n**Qué es y por qué importa.** Dentro de PATRONES DE DISEÑO CREACIONALES (GANG OF FOUR), este punto es central en ingeniería de software mantenible, SOLID y patrones de diseño. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Errores frecuentes de principiantes y cómo evitarlos en producción. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Errores frecuentes de principiantes y cómo evitarlos en producción.» y cuándo lo evitarías.\n\n## 8. Mapa mental de PATRONES DE DISEÑO CREACIONALES (GANG OF FOUR).\n\n**Qué es y por qué importa.** Dentro de PATRONES DE DISEÑO CREACIONALES (GANG OF FOUR), este punto es central en ingeniería de software mantenible, SOLID y patrones de diseño. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Mapa mental de PATRONES DE DISEÑO CREACIONALES (GANG OF FOUR). — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Mapa mental de PATRONES DE DISEÑO CREACIONALES (GANG OF FOUR).» y cuándo lo evitarías.\n\n## Aplicaciones en sistemas reales\n\n**Ejemplo 1:** En code reviews de empresas grandes, rechazan PRs cuyos nombres no revelan intención aunque 'funcionen'.\n\n**Ejemplo 2:** En code reviews de empresas grandes, rechazan PRs cuyos nombres no revelan intención aunque 'funcionen'.\n\n**Ejemplo 3:** En code reviews de empresas grandes, rechazan PRs cuyos nombres no revelan intención aunque 'funcionen'.\n\nEstos casos muestran por qué PATRONES DE DISEÑO CREACIONALES (GANG OF FOUR) no es teórico: empresas y proyectos open source aplican estos principios diariamente. Al estudiar, elige uno y escribe cómo encajaría el concepto del módulo en ese escenario.\n\n## Errores comunes al estudiar\n\n· Confundir el caso promedio con el peor caso al estimar rendimiento de un algoritmo.\n· Ignorar la sección de aplicaciones reales: ahí se ancla la memoria a largo plazo.\n· Confundir el caso promedio con el peor caso al estimar rendimiento de un algoritmo.\n· Ignorar la sección de aplicaciones reales: ahí se ancla la memoria a largo plazo.\n\n## Síntesis para repasar\n\nCierra el módulo resumiendo PATRONES DE DISEÑO CREACIONALES (GANG OF FOUR) en cinco líneas propias. Vuelve a leer los **Conceptos clave** del panel, ejecuta el código de referencia y completa la autoevaluación. Si fallas más de 3 preguntas, relee el bloque teórico correspondiente antes de continuar — el siguiente módulo asume que dominas este.",
-      codeSnippet: `# Ejemplo del Patrón Builder en Python
-class ConsultaSQL:
-    def __init__(self):
-        self.tabla = ""
-        self.condiciones = []
-        self.limite = None
-
-class ConsultaSQLBuilder:
-    def __init__(self):
-        self._query = ConsultaSQL()
-
-    def desde_tabla(self, tabla: str):
-        self._query.tabla = tabla
-        return self
-
-    def donde(self, condicion: str):
-        self._query.condiciones.append(condicion)
-        return self
-
-    def build((self) -> str:
-        where_clause = f" WHERE {' AND '.join(self._query.condiciones)}" if self._query.condiciones else ""
-        return f"SELECT * FROM {self._query.tabla}{where_clause}"
-
-query = ConsultaSQLBuilder().desde_tabla("usuarios").donde("edad > 18").donde("activo = 1").build()
-print(query) # SELECT * FROM usuarios WHERE edad > 18 AND activo = 1`,
+      content: "## Panorama del tema: PATRONES DE DISEÑO ESENCIALES (GANG OF FOUR)\n\nLos Patrones de Diseño descritos por el Gang of Four (Erich Gamma, Richard Helm, Ralph Johnson y John Vlissides en 1994) no son fragmentos de código listos para copiar y pegar: son planos arquitectónicos comprobados para resolver problemas recurrentes en el diseño de software orientado a objetos.\n\nEn el desarrollo profesional y en la era de los asistentes de IA, los patrones de diseño son el lenguaje común que te permite comunicar intenciones arquitectónicas con precisión quirúrgica. Un código sin patrones tiende a acumular condicionales anidadas monstruosas (if/else de 50 líneas) y acoplamiento directo a clases concretas (new MySQLConnection()), volviéndose prácticamente imposible de someter a pruebas unitarias automatizadas.\n\n### 1. Patrones Creacionales: Factory Method y Builder\n- Factory Method: Desacopla al creador del objeto de las clases concretas instanciadas. Define una interfaz de creación (createNotifier()) y deja que subclases o configuraciones decidan si instanciar SlackNotifier, EmailNotifier o MockNotifier para tests.\n- Builder: Resuelve el problema del \"Constructor Telescópico\" (constructores con 8 argumentos donde la mitad son nulos o booleanos confusos). Permite construir objetos complejos paso a paso con una API fluida (new UserQueryBuilder().from('users').whereActive().limit(10).build()).\n\n### 2. Patrón Singleton: Cuándo sí y por qué suele ser un antipatrón en QA\nEl patrón Singleton garantiza una única instancia en toda la aplicación. Es útil para recursos pesados compartidos (como un pool de conexiones a la base de datos). Sin embargo, en Clean Code y QA moderno se considera un olor a código (code smell) cuando almacena estado mutable global:\n1. Impide la ejecución de pruebas unitarias en paralelo (los tests se interfieren entre sí).\n2. Oculta dependencias reales en lugar de declararlas explícitamente en el constructor.\n3. Para resolverlo, se utiliza un Singleton gestionado por un contenedor de Inversión de Control (IoC / DI Container) en lugar de una variable estática rígida.\n\n### 3. Patrones Estructurales: Adapter y Decorator\n- Adapter (Adaptador): Permite que interfaces incompatibles colaboren. Si contratas una nueva pasarela de pagos que devuelve XML y tu sistema espera JSON estandarizado, el Adapter envuelve la pasarela externa y traduce las solicitudes sin alterar la lógica de negocio.\n- Decorator: Añade responsabilidades a un objeto dinámicamente sin modificar su clase original (por ejemplo, añadir métricas de latencia, logging o compresión gzip a un stream HTTP).\n\n### 4. Patrones de Comportamiento: Strategy y Observer\n- Strategy (Estrategia): Es el rey de la refactorización Clean Code. Permite definir una familia de algoritmos, encapsular cada uno en una clase independiente y hacerlos intercambiables en tiempo de ejecución. Erradica por completo los condicionales gigantescos switch (user.plan) y permite mockear comportamientos en tests con cero fricción.\n- Observer (Observador): Define una relación de uno a muchos: cuando el sujeto cambia su estado, todos sus suscriptores son notificados automáticamente. Es la base de arquitecturas orientadas a eventos y bibliotecas reactivas.\n\n## Aplicaciones en sistemas reales\n- Stripe & PayPal SDKs: Utilizan el patrón Strategy para alternar entre diferentes métodos de autenticación (API Keys, OAuth2, Webhooks).\n- Express & NestJS Middlewares: Implementan variaciones de Decorator y Chain of Responsibility para validar JWTs y autorizaciones antes de que la petición llegue al controlador.\n\n## Errores comunes al estudiar\n- Aplicar patrones de diseño antes de tiempo (sobreingeniería o \"Pattern Overdose\"): no crees un Factory de Abstract Factories para un script de 30 líneas.\n- Usar Singletons globales que dificultan el aislamiento en suites de pruebas unitarias.",
+      codeSnippet: "// ==========================================\n// ANTES: Código monolítico lleno de switches\n// ==========================================\nclass OrderServiceLegacy {\n  processPayment(amount: number, method: string) {\n    if (method === 'CREDIT_CARD') {\n      console.log('Conectando a Visa/Mastercard Gateway...');\n    } else if (method === 'PAYPAL') {\n      console.log('Autenticando token PayPal Express...');\n    } else if (method === 'CRYPTO') {\n      console.log('Esperando 3 confirmaciones en blockchain...');\n    } else {\n      throw new Error('Método de pago no soportado');\n    }\n  }\n}\n\n// ==========================================\n// DESPUÉS: Patrón Strategy + Inversión de Control (DIP)\n// ==========================================\nexport interface PaymentStrategy {\n  pay(amount: number): Promise<{ success: boolean; txId: string }>;\n}\n\nexport class CreditCardStrategy implements PaymentStrategy {\n  async pay(amount: number) {\n    return { success: true, txId: 'cc_' + Math.random().toString(36).substring(7) };\n  }\n}\n\nexport class PayPalStrategy implements PaymentStrategy {\n  async pay(amount: number) {\n    return { success: true, txId: 'pp_' + Math.random().toString(36).substring(7) };\n  }\n}\n\nexport class OrderService {\n  constructor(private paymentStrategy: PaymentStrategy) {}\n\n  async checkout(amount: number) {\n    if (amount <= 0) throw new Error('Monto inválido');\n    return await this.paymentStrategy.pay(amount);\n  }\n}",
       quiz: [
         {
-          question: "¿Cuál es el propósito fundamental del patrón de diseño Singleton?",
-          options: ["Crear copias múltiples de un objeto", "Garantizar que una clase tenga una única instancia en toda la aplicación y proporcionar un punto de acceso global a ella", "Eliminar variables"],
-          answerIndex: 1,
-          explanation: "Singleton restringe la creación a una única instancia (útil para pools de conexiones o loggers)."
+                "question": "¿Cuál es la principal ventaja de aplicar el Patrón Strategy frente a un bloque switch condicional?",
+                "options": [
+                        "Hace que la CPU ejecute el código el doble de rápido sin usar memoria RAM.",
+                        "Permite añadir nuevos algoritmos creando nuevas clases sin modificar el código existente (cumpliendo OCP) y facilita inyectar mocks en pruebas unitarias.",
+                        "Elimina la necesidad de definir tipos o interfaces en TypeScript."
+                ],
+                "answerIndex": 1,
+                "explanation": "Strategy encapsula cada algoritmo en su propia clase bajo una interfaz común, habilitando la extensión sin modificar código base y permitiendo sustituirlo por mocks durante los tests."
         },
         {
-          question: "¿Para qué sirve el patrón de diseño Builder (Constructor)?",
-          options: ["Para construir objetos complejos paso a paso mediante una interfaz fluida, evitando constructores gigantes llenos de parámetros", "Para hacer bucles", "Para compilar C++"],
-          answerIndex: 0,
-          explanation: "Builder permite configurar objetos atributo por atributo de forma legible y segura."
+                "question": "¿Por qué el patrón Singleton estático clásico suele considerarse un antipatrón en QA y pruebas unitarias?",
+                "options": [
+                        "Porque comparte estado mutable global en toda la aplicación, acoplando los tests entre sí y provocando que no puedan ejecutarse en paralelo de forma aislada.",
+                        "Porque los compiladores modernos prohíben la palabra clave static.",
+                        "Porque solo funciona en entornos Linux y falla en Windows y macOS."
+                ],
+                "answerIndex": 0,
+                "explanation": "Los Singletons con estado mutable global crean acoplamiento temporal entre pruebas: el resultado de un test depende de si otro test corrió antes y alteró ese estado."
         },
         {
-          question: "¿Qué patrón creacional delega la lógica de instanciación a métodos de clases derivadas?",
-          options: ["Factory Method (Método Fábrica)", "Observer", "Adapter"],
-          answerIndex: 0,
-          explanation: "Factory Method define el contrato de creación y deja que las subclases concretas decidan qué tipo de objeto instanciar."
+                "question": "¿Qué patrón estructural utilizarías para integrar una biblioteca externa cuya API no coincide con las interfaces de tu dominio?",
+                "options": [
+                        "Patrón Adapter (Adaptador)",
+                        "Patrón Singleton",
+                        "Patrón Prototype"
+                ],
+                "answerIndex": 0,
+                "explanation": "Adapter envuelve la interfaz externa incompatible y la adapta a la interfaz requerida por el dominio, protegiendo a la aplicación de cambios en el proveedor externo."
         },
         {
-          question: "¿Por qué el patrón Singleton suele ser considerado un antipatrón en arquitecturas modernas si se abusa de él?",
-          options: ["Porque introduce un estado global acoplado y dificulta las pruebas unitarias aisladas con Mocks", "Porque es muy fácil de usar", "Porque borra el código"],
-          answerIndex: 0,
-          explanation: "El estado global de un Singleton crea acoplamiento oculto entre componentes y complica el aislamiento en los tests."
-        },
-        {
-          question: "¿Qué patrón creacional permite clonar o duplicar objetos existentes sin depender de sus clases concretas?",
-          options: ["Patrón Prototype (Prototipo)", "Singleton", "Facade"],
-          answerIndex: 0,
-          explanation: "Prototype delega la copia al propio objeto a través de una interfaz de clonado (`clone()`)."
+                "question": "¿Qué patrón creacional es ideal para construir objetos con múltiples configuraciones opcionales sin recurrir a constructores telescópicos?",
+                "options": [
+                        "Patrón Builder (Constructor)",
+                        "Patrón Interpreter",
+                        "Patrón State"
+                ],
+                "answerIndex": 0,
+                "explanation": "Builder permite construir paso a paso objetos complejos mediante métodos fluidos, evitando constructores gigantes con argumentos posicionales confusos."
         }
-      ,
-        {
-          question: "Según el temario de 'MÓDULO 8: PATRONES DE DISEÑO CREACIONALES (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Origen de los Patrones de Diseño (Libro GoF - Gang of Four 1994)?",
-          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Origen de los Patrones de Diseño (Libro GoF - Gang of Four 1994)", "Descartar el análisis asintótico por constantes de hardware."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Origen de los Patrones de Diseño (Libro GoF - Gang of Four 1994). Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 8: PATRONES DE DISEÑO CREACIONALES (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Patrón Singleton: Garantizar una única instancia global y cuándo EVITARLO?",
-          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Patrón Singleton: Garantizar una única instancia global y cuándo EV...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Patrón Singleton: Garantizar una única instancia global y cuándo EVITARLO. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 8: PATRONES DE DISEÑO CREACIONALES (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Patrón Factory Method: Delegar la instanciación a subclases especializadas?",
-          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Patrón Factory Method: Delegar la instanciación a subclases especia...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Patrón Factory Method: Delegar la instanciación a subclases especializadas. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 8: PATRONES DE DISEÑO CREACIONALES (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Patrón Abstract Factory: Familias de objetos relacionados?",
-          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Patrón Abstract Factory: Familias de objetos relacionados", "Descartar el análisis asintótico por constantes de hardware."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Patrón Abstract Factory: Familias de objetos relacionados. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 8: PATRONES DE DISEÑO CREACIONALES (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Patrón Builder: Construcción paso a paso de objetos complejos?",
-          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Patrón Builder: Construcción paso a paso de objetos complejos", "Descartar el análisis asintótico por constantes de hardware."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Patrón Builder: Construcción paso a paso de objetos complejos. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 8: PATRONES DE DISEÑO CREACIONALES (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
-          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Descartar el análisis asintótico por constantes de hardware."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 8: PATRONES DE DISEÑO CREACIONALES (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
-          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
-        }
-      ]
+]
     },
-{
+    {
       id: 9,
-      title: "MÓDULO 9: PATRONES DE DISEÑO ESTRUCTURALES (GANG OF FOUR)",
-      description: "Composición de clases y objetos: Adapter, Decorator, Facade, Composite y Proxy.",
+      title: "MÓDULO 9: QA & LA PIRÁMIDE DE PRUEBAS: UNIT TESTING & TDD CON VITEST / PYTEST",
+      description: "Fundamentos de Aseguramiento de Calidad (QA): Pirámide de Pruebas de Mike Cohn, TDD (Red-Green-Refactor), patrón AAA, Test Doubles (Mocks, Stubs, Spies) y métricas de cobertura.",
       items: [
-      "Patrón Adapter: Adaptar interfaces incompatibles sin tocar el código fuente.",
-      "Patrón Decorator: Añadir funcionalidades a un objeto dinámicamente en tiempo de ejecución.",
-      "Patrón Facade (Fachada): Proporcionar una interfaz simplificada a un sistema complejo.",
-      "Patrón Composite: Tratar objetos individuales y composiciones de objetos de forma uniforme.",
-      "Patrón Proxy: Controlar el acceso a un objeto (Lazy loading, seguridad, almacenamiento en caché).",
-      "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
-      "Errores frecuentes de principiantes y cómo evitarlos en producción.",
-      "Mapa mental de PATRONES DE DISEÑO ESTRUCTURALES (GANG OF FOUR).",
-      "Preguntas tipo entrevista técnica.",
-      "Glosario: 5 términos que defines sin diccionario.",
-      "Conexión con el laboratorio del curso.",
-      "Repaso offline sin internet ni APIs de pago."
+        "La Pirámide de Pruebas de Mike Cohn: 70% Unit, 20% Integración, 10% E2E vs el Antipatrón Ice-Cream Cone.",
+        "Test-Driven Development (TDD): El ciclo Red-Green-Refactor y las Tres Leyes de TDD del Tío Bob.",
+        "El Patrón AAA (Arrange, Act, Assert) y los principios FIRST para pruebas de élite.",
+        "Test Doubles según Gerard Meszaros: Dummies, Fakes, Stubs, Spies y Mocks.",
+        "Mocking práctico en Vitest (vi.fn, vi.spyOn) y pytest (unittest.mock, monkeypatch).",
+        "Métricas de Cobertura de Código: Line, Branch, Function Coverage y sus límites reales.",
+        "Mutation Testing (Stryker): ¿Tus pruebas realmente detectan fallos o solo inflan el coverage?",
+        "Antipatrones de testing: Testear detalles de implementación internos en vez de comportamientos observables."
 ],
-      content: "## Panorama del tema: PATRONES DE DISEÑO ESTRUCTURALES (GANG OF FOUR)\n\nComposición de clases y objetos: Adapter, Decorator, Facade, Composite y Proxy.\n\nLos Patrones Estructurales explican cómo ensamblar objetos y clases en estructuras más grandes manteniendo la flexibilidad. El patrón **Adapter** actúa como un conversor de enchufe de viaje entre dos interfaces incompatibles. El patrón **Decorator** envuelve un objeto para agregar responsabilidades dinámicamente sin usar herencia rígida. El patrón **Facade** ofrece un único punto de entrada sencillo para ocultar la complejidad de un subsistema con decenas de clases.\n\nEste módulo es material de estudio **autocontenido**: puedes aprenderlo completo aquí, sin pagar plataformas externas ni depender de internet después de cargar la página. Lee en orden, ejecuta el snippet, resuelve la autoevaluación y repasa los puntos que falles.\n\n## Qué aprenderás en este módulo\n\n· Patrón Adapter: Adaptar interfaces incompatibles sin tocar el código fuente.\n· Patrón Decorator: Añadir funcionalidades a un objeto dinámicamente en tiempo de ejecución.\n· Patrón Facade (Fachada): Proporcionar una interfaz simplificada a un sistema complejo.\n· Patrón Composite: Tratar objetos individuales y composiciones de objetos de forma uniforme.\n· Patrón Proxy: Controlar el acceso a un objeto (Lazy loading, seguridad, almacenamiento en caché).\n· Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.\n· Errores frecuentes de principiantes y cómo evitarlos en producción.\n· Mapa mental de PATRONES DE DISEÑO ESTRUCTURALES (GANG OF FOUR).\n· Dominar las 12 preguntas de autoevaluación con ≥70% de aciertos antes de avanzar.\n\n## Desarrollo teórico detallado\n\n## 1. Patrón Adapter: Adaptar interfaces incompatibles sin tocar el código fuente.\n\n**Qué es y por qué importa.** Dentro de PATRONES DE DISEÑO ESTRUCTURALES (GANG OF FOUR), este punto es central en ingeniería de software mantenible, SOLID y patrones de diseño. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Patrón Adapter: Adaptar interfaces incompatibles sin tocar el código fuente. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Patrón Adapter: Adaptar interfaces incompatibles sin tocar el código fuente.» y cuándo lo evitarías.\n\n## 2. Patrón Decorator: Añadir funcionalidades a un objeto dinámicamente en tiempo de ejecución.\n\n**Qué es y por qué importa.** Dentro de PATRONES DE DISEÑO ESTRUCTURALES (GANG OF FOUR), este punto es central en ingeniería de software mantenible, SOLID y patrones de diseño. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Patrón Decorator: Añadir funcionalidades a un objeto dinámicamente en tiempo de ejecución. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Patrón Decorator: Añadir funcionalidades a un objeto dinámicamente en tiempo de ejecución.» y cuándo lo evitarías.\n\n## 3. Patrón Facade (Fachada): Proporcionar una interfaz simplificada a un sistema complejo.\n\n**Qué es y por qué importa.** Dentro de PATRONES DE DISEÑO ESTRUCTURALES (GANG OF FOUR), este punto es central en ingeniería de software mantenible, SOLID y patrones de diseño. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Patrón Facade (Fachada): Proporcionar una interfaz simplificada a un sistema complejo. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Patrón Facade (Fachada): Proporcionar una interfaz simplificada a un sistema complejo.» y cuándo lo evitarías.\n\n## 4. Patrón Composite: Tratar objetos individuales y composiciones de objetos de forma uniforme.\n\n**Qué es y por qué importa.** Dentro de PATRONES DE DISEÑO ESTRUCTURALES (GANG OF FOUR), este punto es central en ingeniería de software mantenible, SOLID y patrones de diseño. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Patrón Composite: Tratar objetos individuales y composiciones de objetos de forma uniforme. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Patrón Composite: Tratar objetos individuales y composiciones de objetos de forma uniforme.» y cuándo lo evitarías.\n\n## 5. Patrón Proxy: Controlar el acceso a un objeto (Lazy loading, seguridad, almacenamiento en caché).\n\n**Qué es y por qué importa.** Dentro de PATRONES DE DISEÑO ESTRUCTURALES (GANG OF FOUR), este punto es central en ingeniería de software mantenible, SOLID y patrones de diseño. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Patrón Proxy: Controlar el acceso a un objeto (Lazy loading, seguridad, almacenamiento en caché). — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Patrón Proxy: Controlar el acceso a un objeto (Lazy loading, seguridad, almacenamiento en caché).» y cuándo lo evitarías.\n\n## 6. Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.\n\n**Qué es y por qué importa.** Dentro de PATRONES DE DISEÑO ESTRUCTURALES (GANG OF FOUR), este punto es central en ingeniería de software mantenible, SOLID y patrones de diseño. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.» y cuándo lo evitarías.\n\n## 7. Errores frecuentes de principiantes y cómo evitarlos en producción.\n\n**Qué es y por qué importa.** Dentro de PATRONES DE DISEÑO ESTRUCTURALES (GANG OF FOUR), este punto es central en ingeniería de software mantenible, SOLID y patrones de diseño. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Errores frecuentes de principiantes y cómo evitarlos en producción. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Errores frecuentes de principiantes y cómo evitarlos en producción.» y cuándo lo evitarías.\n\n## 8. Mapa mental de PATRONES DE DISEÑO ESTRUCTURALES (GANG OF FOUR).\n\n**Qué es y por qué importa.** Dentro de PATRONES DE DISEÑO ESTRUCTURALES (GANG OF FOUR), este punto es central en ingeniería de software mantenible, SOLID y patrones de diseño. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Mapa mental de PATRONES DE DISEÑO ESTRUCTURALES (GANG OF FOUR). — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Mapa mental de PATRONES DE DISEÑO ESTRUCTURALES (GANG OF FOUR).» y cuándo lo evitarías.\n\n## Aplicaciones en sistemas reales\n\n**Ejemplo 1:** Refactorizar hacia SOLID reduce el radio de explosión cuando un requisito de negocio cambia.\n\n**Ejemplo 2:** Refactorizar hacia SOLID reduce el radio de explosión cuando un requisito de negocio cambia.\n\n**Ejemplo 3:** Refactorizar hacia SOLID reduce el radio de explosión cuando un requisito de negocio cambia.\n\nEstos casos muestran por qué PATRONES DE DISEÑO ESTRUCTURALES (GANG OF FOUR) no es teórico: empresas y proyectos open source aplican estos principios diariamente. Al estudiar, elige uno y escribe cómo encajaría el concepto del módulo en ese escenario.\n\n## Errores comunes al estudiar\n\n· Estudiar solo la definición sin un ejemplo numérico concreto (valores pequeños de n).\n· Avanzar al siguiente módulo sin alcanzar al menos 70% en la autoevaluación.\n· Estudiar solo la definición sin un ejemplo numérico concreto (valores pequeños de n).\n· Avanzar al siguiente módulo sin alcanzar al menos 70% en la autoevaluación.\n\n## Síntesis para repasar\n\nCierra el módulo resumiendo PATRONES DE DISEÑO ESTRUCTURALES (GANG OF FOUR) en cinco líneas propias. Vuelve a leer los **Conceptos clave** del panel, ejecuta el código de referencia y completa la autoevaluación. Si fallas más de 3 preguntas, relee el bloque teórico correspondiente antes de continuar — el siguiente módulo asume que dominas este.",
-      codeSnippet: `# Ejemplo del Patrón Decorator en Python
-class NotificadorBase:
-    def enviar(self, mensaje: str):
-        print(f"Notificación por Email: {mensaje}")
-
-class NotificadorDecorator:
-    def __init__(self, wrapped: NotificadorBase):
-        self.wrapped = wrapped
-    def enviar(self, mensaje: str):
-        self.wrapped.enviar(mensaje)
-
-class DecoradorSMS(NotificadorDecorator):
-    def enviar(self, mensaje: str):
-        super().enviar(mensaje)
-        print(f"Notificación adicional por SMS: {mensaje}")
-
-notificador = DecoradorSMS(NotificadorBase())
-notificador.enviar("¡Alerta de Seguridad!") 
-# Envía Email y SMS dinámicamente`,
+      content: "## Panorama del tema: QA & LA PIRÁMIDE DE PRUEBAS: UNIT TESTING & TDD\n\nRefactorizar código sin una red de pruebas automatizadas es como lanzarse en paracaídas esperando que la tela se cosa sola en el aire. Robert C. Martin lo resume en una máxima: sin pruebas unitarias, el código limpio no puede sostenerse. El miedo a romper una funcionalidad existente paraliza a los equipos y condena al software a la obsolescencia técnica.\n\nEn este módulo aprenderás a construir la base de la ingeniería de calidad: pruebas unitarias ultrarrápidas, deterministas y legibles utilizando Vitest (el estándar moderno en TypeScript/JavaScript) y pytest (en Python).\n\n### 1. La Pirámide de Pruebas vs El Antipatrón 'Ice-Cream Cone'\nPopularizada por Mike Cohn y Martin Fowler, la Pirámide de Pruebas establece la distribución óptima de tests en una base de código saludable:\n- 70% Pruebas Unitarias (Base): Prueban una función o clase de forma completamente aislada de la red, bases de datos o sistemas de archivos. Se ejecutan en milisegundos y ofrecen retroalimentación instantánea.\n- 20% Pruebas de Integración (Cuerpo): Validan la interacción entre módulos reales (ej: base de datos local SQLite o contratos de API con MSW).\n- 10% Pruebas End-to-End E2E (Cúspide): Simulan el viaje completo del usuario en el navegador con herramientas como Playwright.\n\nEl Antipatrón Ice-Cream Cone (Cono de Helado): Ocurre cuando un equipo invierte 80% de su tiempo en tests E2E lentos y frágiles (flaky tests), casi nada en integración y muy pocos unitarios. El resultado son pipelines de CI que tardan 45 minutos y fallan aleatoriamente por problemas de red.\n\n### 2. TDD (Test-Driven Development) y el Ciclo Red-Green-Refactor\nTDD no es una técnica de testing; es una técnica de diseño de software. Consiste en un ciclo de iteración rápida:\n1. RED (Rojo): Escribe una prueba unitaria pequeña que defina el comportamiento deseado. Ejecútala y observa cómo falla (debe fallar por la razón correcta, no por un error sintáctico).\n2. GREEN (Verde): Escribe la cantidad mínima indispensable de código para que la prueba pase. No optimices ni limpies aún.\n3. REFACTOR (Refactorizar): Ahora que tienes la prueba en verde como red de seguridad, limpia el código: elimina duplicación, renombra variables, extrae funciones y aplica SOLID. Vuelve a ejecutar la prueba para certificar que sigue verde.\n\n### 3. El Patrón AAA (Arrange, Act, Assert)\nCada prueba unitaria profesional debe estructurarse en tres fases nítidas:\n- Arrange (Preparar): Configura los datos de entrada, dependencias y Test Doubles necesarios.\n- Act (Actuar): Ejecuta la función o método bajo prueba.\n- Assert (Afirmar): Verifica que el resultado o los efectos colaterales coincidan exactamente con la expectativa.\n\n### 4. Test Doubles: Dummies, Stubs, Mocks, Spies y Fakes\nPara mantener los tests unitarios rápidos y deterministas, se sustituyen las dependencias externas por dobles de prueba:\n- Dummy: Objeto que se pasa solo para llenar la lista de parámetros pero nunca se usa.\n- Stub: Devuelve respuestas predefinidas fijas (ej: simular que la BD devuelve un usuario sin consultar SQL real).\n- Spy: Registra información sobre cómo fue llamado (número de llamadas, parámetros recibidos).\n- Mock: Objeto preprogramado con expectativas de verificación (expect(mock).toHaveBeenCalledWith(...)).\n- Fake: Implementación funcional ligera no apta para producción (ej: un repositorio en memoria usando un Map en vez de PostgreSQL).\n\n### 5. Cobertura de Código (Coverage) y Mutation Testing\nTener 100% de Line Coverage no significa que tu software esté libre de errores; solo significa que cada línea se ejecutó al menos una vez, incluso si la aserción fue vacía (expect(true).toBe(true)).\n- Branch Coverage (Cobertura de Ramas): Mide que todos los caminos lógicos (if/else, catch, ternarios) hayan sido probados.\n- Mutation Testing (Stryker / Mutmut): Introduce pequeñas mutaciones automáticas en tu código fuente (cambia un > por >=, invierte un booleano). Si tu suite de pruebas sigue pasando con el código mutado, el mutante \"sobrevive\" y expone un test débil.\n\n## Aplicaciones en sistemas reales\n- Ecosistema React / Node: Vitest aprovecha la infraestructura de Vite para ejecutar miles de pruebas unitarias en paralelo mediante workers multi-hilo en milisegundos.\n- Microservicios en Go / Python: pytest fixtures permiten configurar estados de prueba reproducibles sin leaks de memoria entre ejecuciones.",
+      codeSnippet: "// ==========================================\n// Test Suite con Vitest: Patrón AAA + Mocks\n// ==========================================\nimport { describe, it, expect, vi, beforeEach } from 'vitest';\n\n// Interfaz y servicio bajo prueba\ninterface EmailNotifier {\n  send(to: string, message: string): Promise<boolean>;\n}\n\nclass AuthService {\n  constructor(private notifier: EmailNotifier) {}\n\n  async requestPasswordReset(email: string): Promise<boolean> {\n    if (!email || !email.includes('@')) {\n      throw new Error('Formato de email inválido');\n    }\n    const token = 'tok_secure_9918';\n    return await this.notifier.send(email, 'Tu token es: ' + token);\n  }\n}\n\ndescribe('AuthService Unit Tests', () => {\n  let mockNotifier: EmailNotifier;\n  let authService: AuthService;\n\n  beforeEach(() => {\n    // ARRANGE común: crear Test Double con vi.fn()\n    mockNotifier = {\n      send: vi.fn().mockResolvedValue(true)\n    };\n    authService = new AuthService(mockNotifier);\n  });\n\n  it('debe enviar correo de recuperación cuando el email es válido (Happy Path)', async () => {\n    // ACT\n    const result = await authService.requestPasswordReset('selvin@quimisell.dev');\n\n    // ASSERT\n    expect(result).toBe(true);\n    expect(mockNotifier.send).toHaveBeenCalledTimes(1);\n    expect(mockNotifier.send).toHaveBeenCalledWith(\n      'selvin@quimisell.dev',\n      expect.stringContaining('Tu token es:')\n    );\n  });\n\n  it('debe lanzar excepción si el email no contiene @ sin llamar al notificador', async () => {\n    // ACT & ASSERT\n    await expect(authService.requestPasswordReset('invalido_sin_arroba'))\n      .rejects.toThrow('Formato de email inválido');\n\n    // Verificar que el efecto secundario no se disparó\n    expect(mockNotifier.send).not.toHaveBeenCalled();\n  });\n});",
       quiz: [
         {
-          question: "¿Cuál es el objetivo principal del patrón de diseño Adapter (Adaptador)?",
-          options: ["Permitir que dos interfaces incompatibles trabajen juntas mediante una clase traductora intermedia", "Duplicar objetos", "Guardar datos en disco"],
-          answerIndex: 0,
-          explanation: "Adapter envuelve una clase existente incompatible para que coincida con la interfaz esperada por el cliente."
+                "question": "¿Cuál es el orden estricto de las fases en el ciclo TDD (Test-Driven Development)?",
+                "options": [
+                        "Refactor -> Verde -> Rojo",
+                        "Red (escribir test que falla) -> Green (código mínimo para pasar) -> Refactor (limpiar manteniendo test verde)",
+                        "Deploy a producción -> Escribir tests -> Notificar bugs"
+                ],
+                "answerIndex": 1,
+                "explanation": "El ciclo TDD exige ver primero fallar la prueba por la razón esperada (Red), hacerla pasar con el código más simple (Green) y refactorizar con confianza (Refactor)."
         },
         {
-          question: "¿Cómo añade funcionalidades nuevas el patrón Decorator (Decorador)?",
-          options: ["Mediante herencia múltiple", "Envolviendo el objeto original dentro de un objeto decorador que añade comportamiento dinámicamente en tiempo de ejecución", "Modificando el archivo .exe"],
-          answerIndex: 1,
-          explanation: "Decorator usa composición para envolver objetos de forma transparente agregando capas de comportamiento."
+                "question": "En la Pirámide de Pruebas de Mike Cohn, ¿por qué la base debe estar compuesta mayoritariamente por Pruebas Unitarias (~70%)?",
+                "options": [
+                        "Porque son ultrarrápidas de ejecutar (milisegundos), deterministas, baratas de mantener y señalan el punto exacto del fallo de forma inmediata.",
+                        "Porque las herramientas de UI no funcionan en servidores Linux.",
+                        "Porque son las únicas pruebas que revisa el cliente final."
+                ],
+                "answerIndex": 0,
+                "explanation": "Las pruebas unitarias proveen retroalimentación casi instantánea sin costo de red ni fragilidad de interfaz gráfica, permitiendo correr miles de pruebas en pocos segundos."
         },
         {
-          question: "¿Para qué sirve el patrón Facade (Fachada)?",
-          options: ["Para ofrecer una interfaz unificada y simplificada de alto nivel frente a un subsistema complejo con múltiples clases interconectadas", "Para ocultar errores", "Para crear instancias únicas"],
-          answerIndex: 0,
-          explanation: "Facade simplifica la interacción de los clientes ofreciendo una sola API limpia sobre un subsistema intrincado."
+                "question": "¿Qué diferencia conceptual existe entre un Stub y un Mock según Gerard Meszaros?",
+                "options": [
+                        "Un Stub solo provee respuestas enlatadas predefinidas para que el código bajo prueba funcione; un Mock verifica expectativas de comportamiento (ej: si fue llamado y con qué argumentos).",
+                        "Los Stubs solo existen en Python y los Mocks solo en JavaScript.",
+                        "No existe ninguna diferencia; son sinónimos absolutos."
+                ],
+                "answerIndex": 0,
+                "explanation": "Los Stubs proveen estado y datos indirectos para permitir la ejecución; los Mocks realizan verificación de comportamiento comprobando invocaciones y contratos."
         },
         {
-          question: "¿Qué patrón estructural controla y dega el acceso a un objeto remoto o costoso (ej: Carga perezosa o Caché)?",
-          options: ["Patrón Proxy", "Patrón Adapter", "Patrón Singleton"],
-          answerIndex: 0,
-          explanation: "Proxy actúa como intermediario para interceptar llamadas al objeto real y aplicar control de acceso, caché o carga diferida."
-        },
-        {
-          question: "¿Qué patrón estructural permite componer objetos en estructuras de árbol para tratar nodos y hojas de forma uniforme?",
-          options: ["Patrón Composite", "Patrón Decorator", "Patrón Builder"],
-          answerIndex: 0,
-          explanation: "Composite representa jerarquías parte-todo donde contenedores y elementos individuales comparten la misma interfaz."
+                "question": "¿Para qué sirve el Mutation Testing (Pruebas de Mutación con herramientas como Stryker)?",
+                "options": [
+                        "Para infectar el sistema operativo con malware de prueba.",
+                        "Para evaluar la calidad real de tus tests introduciendo pequeñas alteraciones (mutaciones) en el código y verificando si tus aserciones las detectan.",
+                        "Para generar código TypeScript automáticamente sin intervención humana."
+                ],
+                "answerIndex": 1,
+                "explanation": "El Mutation Testing verifica la efectividad de las pruebas: si un mutante cambia la lógica y todos tus tests siguen pasando, tus pruebas son débiles y carecen de aserciones precisas."
         }
-      ,
-        {
-          question: "Según el temario de 'MÓDULO 9: PATRONES DE DISEÑO ESTRUCTURALES (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Patrón Adapter: Adaptar interfaces incompatibles sin tocar el código fuente?",
-          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Patrón Adapter: Adaptar interfaces incompatibles sin tocar el códig...", "Ignorar casos borde y entradas vacías en el diseño."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Patrón Adapter: Adaptar interfaces incompatibles sin tocar el código fuente. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 9: PATRONES DE DISEÑO ESTRUCTURALES (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Patrón Decorator: Añadir funcionalidades a un objeto dinámicamente en tiempo ...?",
-          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Patrón Decorator: Añadir funcionalidades a un objeto dinámicamente ...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Patrón Decorator: Añadir funcionalidades a un objeto dinámicamente en tiempo de ejecución. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 9: PATRONES DE DISEÑO ESTRUCTURALES (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Patrón Facade (Fachada): Proporcionar una interfaz simplificada a un sistema ...?",
-          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Patrón Facade (Fachada): Proporcionar una interfaz simplificada a u...", "Asumir que más líneas de código siempre implican mayor eficiencia."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Patrón Facade (Fachada): Proporcionar una interfaz simplificada a un sistema complejo. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 9: PATRONES DE DISEÑO ESTRUCTURALES (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Patrón Composite: Tratar objetos individuales y composiciones de objetos de f...?",
-          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Patrón Composite: Tratar objetos individuales y composiciones de ob...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Patrón Composite: Tratar objetos individuales y composiciones de objetos de forma uniforme. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 9: PATRONES DE DISEÑO ESTRUCTURALES (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Patrón Proxy: Controlar el acceso a un objeto (Lazy loading, seguridad, almac...?",
-          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Patrón Proxy: Controlar el acceso a un objeto (Lazy loading, seguri...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Patrón Proxy: Controlar el acceso a un objeto (Lazy loading, seguridad, almacenamiento en caché). Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 9: PATRONES DE DISEÑO ESTRUCTURALES (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
-          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 9: PATRONES DE DISEÑO ESTRUCTURALES (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
-          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Ignorar casos borde y entradas vacías en el diseño."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
-        }
-      ]
+]
     },
-{
+    {
       id: 10,
-      title: "MÓDULO 10: PATRONES DE DISEÑO DE COMPORTAMIENTO (GANG OF FOUR)",
-      description: "Interacción y distribución de responsabilidades: Strategy, Observer, Command, State y Chain of Responsibility.",
+      title: "MÓDULO 10: QA AVANZADO: INTEGRACIÓN, E2E (PLAYWRIGHT), PRUEBAS DE CARGA (K6) Y AUDITORÍA ANTI-IA",
+      description: "Pruebas de Integración con MSW, automatización End-to-End con Playwright, pruebas de estrés con k6 y Property-Based Testing contra alucinaciones de código generado por IA.",
       items: [
-      "Patrón Strategy: Encapsular algoritmos intercambiables en tiempo de ejecución.",
-      "Patrón Observer: Suscripción y notificación de eventos 1 a N.",
-      "Patrón Command: Encapsular una petición como un objeto (Undo / Redo).",
-      "Patrón State: Permitir a un objeto alterar su comportamiento cuando su estado interno cambia.",
-      "Patrón Chain of Responsibility: Cadena de manejadores de peticiones independientes.",
-      "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.",
-      "Errores frecuentes de principiantes y cómo evitarlos en producción.",
-      "Mapa mental de PATRONES DE DISEÑO DE COMPORTAMIENTO (GANG OF FOUR).",
-      "Preguntas tipo entrevista técnica.",
-      "Glosario: 5 términos que defines sin diccionario.",
-      "Conexión con el laboratorio del curso.",
-      "Repaso offline sin internet ni APIs de pago."
+        "Pruebas de Integración y Contratos con MSW (Mock Service Worker): Mocking de red a nivel de socket.",
+        "Pruebas End-to-End (E2E) con Playwright: Automatización en Chromium, WebKit y Firefox.",
+        "Selectores resilientes (getByRole, getByLabel) y Aserciones Web-First (await expect(locator).toBeVisible()).",
+        "Depuración visual y análisis de fallos intermitentes con Playwright Trace Viewer.",
+        "Pruebas de Rendimiento y Estrés con k6: Virtual Users (VUs), métricas percentiles P95/P99 y Throughput (RPS).",
+        "Definición de umbrales SLA (Thresholds) en k6 para detener pipelines en caso de degradación de latencia.",
+        "Property-Based Testing (fast-check / Hypothesis): Blindar código contra alucinaciones y edge cases de la IA.",
+        "Compuerta de Calidad Integral en CI/CD: Vitest + Playwright + k6 orquestados en GitHub Actions."
 ],
-      content: "## Panorama del tema: PATRONES DE DISEÑO DE COMPORTAMIENTO (GANG OF FOUR)\n\nInteracción y distribución de responsabilidades: Strategy, Observer, Command, State y Chain of Responsibility.\n\nLos Patrones de Comportamiento gestionan los algoritmos y la asignación de responsabilidades entre objetos. El patrón **Strategy** permite seleccionar un algoritmo en tiempo de ejecución de forma intercambiable (aplicando el OCP). El patrón **Observer** establece una relación uno-a-muchos donde un objeto notifica automáticamente a sus suscriptores cuando su estado cambia (base de la arquitectura orientada a eventos). El patrón **Command** convierte solicitudes en objetos para respaldar operaciones de deshacer (Undo).\n\nEste módulo es material de estudio **autocontenido**: puedes aprenderlo completo aquí, sin pagar plataformas externas ni depender de internet después de cargar la página. Lee en orden, ejecuta el snippet, resuelve la autoevaluación y repasa los puntos que falles.\n\n## Qué aprenderás en este módulo\n\n· Patrón Strategy: Encapsular algoritmos intercambiables en tiempo de ejecución.\n· Patrón Observer: Suscripción y notificación de eventos 1 a N.\n· Patrón Command: Encapsular una petición como un objeto (Undo / Redo).\n· Patrón State: Permitir a un objeto alterar su comportamiento cuando su estado interno cambia.\n· Patrón Chain of Responsibility: Cadena de manejadores de peticiones independientes.\n· Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.\n· Errores frecuentes de principiantes y cómo evitarlos en producción.\n· Mapa mental de PATRONES DE DISEÑO DE COMPORTAMIENTO (GANG OF FOUR).\n· Dominar las 12 preguntas de autoevaluación con ≥70% de aciertos antes de avanzar.\n\n## Desarrollo teórico detallado\n\n## 1. Patrón Strategy: Encapsular algoritmos intercambiables en tiempo de ejecución.\n\n**Qué es y por qué importa.** Dentro de PATRONES DE DISEÑO DE COMPORTAMIENTO (GANG OF FOUR), este punto es central en ingeniería de software mantenible, SOLID y patrones de diseño. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Patrón Strategy: Encapsular algoritmos intercambiables en tiempo de ejecución. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Patrón Strategy: Encapsular algoritmos intercambiables en tiempo de ejecución.» y cuándo lo evitarías.\n\n## 2. Patrón Observer: Suscripción y notificación de eventos 1 a N.\n\n**Qué es y por qué importa.** Dentro de PATRONES DE DISEÑO DE COMPORTAMIENTO (GANG OF FOUR), este punto es central en ingeniería de software mantenible, SOLID y patrones de diseño. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Patrón Observer: Suscripción y notificación de eventos 1 a N. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Patrón Observer: Suscripción y notificación de eventos 1 a N.» y cuándo lo evitarías.\n\n## 3. Patrón Command: Encapsular una petición como un objeto (Undo / Redo).\n\n**Qué es y por qué importa.** Dentro de PATRONES DE DISEÑO DE COMPORTAMIENTO (GANG OF FOUR), este punto es central en ingeniería de software mantenible, SOLID y patrones de diseño. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Patrón Command: Encapsular una petición como un objeto (Undo / Redo). — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Patrón Command: Encapsular una petición como un objeto (Undo / Redo).» y cuándo lo evitarías.\n\n## 4. Patrón State: Permitir a un objeto alterar su comportamiento cuando su estado interno cambia.\n\n**Qué es y por qué importa.** Dentro de PATRONES DE DISEÑO DE COMPORTAMIENTO (GANG OF FOUR), este punto es central en ingeniería de software mantenible, SOLID y patrones de diseño. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Patrón State: Permitir a un objeto alterar su comportamiento cuando su estado interno cambia. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Patrón State: Permitir a un objeto alterar su comportamiento cuando su estado interno cambia.» y cuándo lo evitarías.\n\n## 5. Patrón Chain of Responsibility: Cadena de manejadores de peticiones independientes.\n\n**Qué es y por qué importa.** Dentro de PATRONES DE DISEÑO DE COMPORTAMIENTO (GANG OF FOUR), este punto es central en ingeniería de software mantenible, SOLID y patrones de diseño. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Patrón Chain of Responsibility: Cadena de manejadores de peticiones independientes. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Patrón Chain of Responsibility: Cadena de manejadores de peticiones independientes.» y cuándo lo evitarías.\n\n## 6. Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.\n\n**Qué es y por qué importa.** Dentro de PATRONES DE DISEÑO DE COMPORTAMIENTO (GANG OF FOUR), este punto es central en ingeniería de software mantenible, SOLID y patrones de diseño. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería.» y cuándo lo evitarías.\n\n## 7. Errores frecuentes de principiantes y cómo evitarlos en producción.\n\n**Qué es y por qué importa.** Dentro de PATRONES DE DISEÑO DE COMPORTAMIENTO (GANG OF FOUR), este punto es central en ingeniería de software mantenible, SOLID y patrones de diseño. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Errores frecuentes de principiantes y cómo evitarlos en producción. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Errores frecuentes de principiantes y cómo evitarlos en producción.» y cuándo lo evitarías.\n\n## 8. Mapa mental de PATRONES DE DISEÑO DE COMPORTAMIENTO (GANG OF FOUR).\n\n**Qué es y por qué importa.** Dentro de PATRONES DE DISEÑO DE COMPORTAMIENTO (GANG OF FOUR), este punto es central en ingeniería de software mantenible, SOLID y patrones de diseño. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Mapa mental de PATRONES DE DISEÑO DE COMPORTAMIENTO (GANG OF FOUR). — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Mapa mental de PATRONES DE DISEÑO DE COMPORTAMIENTO (GANG OF FOUR).» y cuándo lo evitarías.\n\n## Aplicaciones en sistemas reales\n\n**Ejemplo 1:** En code reviews de empresas grandes, rechazan PRs cuyos nombres no revelan intención aunque 'funcionen'.\n\n**Ejemplo 2:** En code reviews de empresas grandes, rechazan PRs cuyos nombres no revelan intención aunque 'funcionen'.\n\n**Ejemplo 3:** En code reviews de empresas grandes, rechazan PRs cuyos nombres no revelan intención aunque 'funcionen'.\n\nEstos casos muestran por qué PATRONES DE DISEÑO DE COMPORTAMIENTO (GANG OF FOUR) no es teórico: empresas y proyectos open source aplican estos principios diariamente. Al estudiar, elige uno y escribe cómo encajaría el concepto del módulo en ese escenario.\n\n## Errores comunes al estudiar\n\n· Memorizar definiciones sin resolver al menos un ejercicio o modificar el snippet del módulo.\n· Copiar código del módulo sin trazar manualmente cuántas operaciones ejecuta en el peor caso.\n· Memorizar definiciones sin resolver al menos un ejercicio o modificar el snippet del módulo.\n· Copiar código del módulo sin trazar manualmente cuántas operaciones ejecuta en el peor caso.\n\n## Síntesis para repasar\n\nCierra el módulo resumiendo PATRONES DE DISEÑO DE COMPORTAMIENTO (GANG OF FOUR) en cinco líneas propias. Vuelve a leer los **Conceptos clave** del panel, ejecuta el código de referencia y completa la autoevaluación. Si fallas más de 3 preguntas, relee el bloque teórico correspondiente antes de continuar — el siguiente módulo asume que dominas este.",
-      codeSnippet: `# Ejemplo del Patrón Observer en Python
-class SistemaEventos:
-    def __init__(self):
-        self._suscriptores = []
-
-    def suscribir(self, fn):
-        self._suscriptores.append(fn)
-
-    def notificar(self, evento: str):
-        for s in self._suscriptores:
-            s(evento)
-
-emisor = SistemaEventos()
-emisor.suscribir(lambda msg: print(f"Observer 1 recibió: {msg}"))
-emisor.suscribir(lambda msg: print(f"Observer 2 recibió: {msg}"))
-
-emisor.notificar("¡Pago de usuario procesado!")`,
+      content: "## Panorama del tema: QA AVANZADO: INTEGRACIÓN, PLAYWRIGHT E2E, K6 Y AUDITORÍA ANTI-IA\n\nUna aplicación no vive aislada en una función pura de TypeScript. Vive en un ecosistema hostil de navegadores web con latencias cambiantes, redes móviles inestables, microservicios que responden con errores 500 y millones de usuarios concurrentes en días de alta demanda.\n\nAdemás, en la era de los generadores de código por IA, el 80% de los errores más peligrosos provienen de edge cases no previstos: valores negativos, strings con emojis multilingües, caracteres nulos o desbordamientos aritméticos que los LLMs generan con aparente convicción. Este módulo te entrega las herramientas de un QA Engineer Senior para blindar aplicaciones de extremo a extremo.\n\n### 1. Pruebas de Integración con MSW (Mock Service Worker)\nTradicionalmente, testear componentes que consumen APIs REST o GraphQL requería mockear global.fetch o axios, acoplando la prueba a la biblioteca cliente específica.\n- MSW intercepta las peticiones a nivel de red mediante Service Workers (en el navegador) o a través del módulo node:net (en Node.js/Vitest).\n- Tu código de producción utiliza el cliente HTTP real sin modificaciones, garantizando que los contratos de red se prueben de manera transparente y desacoplada.\n\n### 2. Pruebas End-to-End (E2E) con Playwright\nPlaywright (creado por Microsoft) es el estándar supremo para pruebas E2E, superando a herramientas históricas como Selenium o Cypress:\n- Ejecución Multi-Navegador Nativa: Prueba simultáneamente en motores Chromium (Chrome/Edge), WebKit (Safari de iOS/macOS) y Firefox.\n- Selectores Resilientes basados en Accesibilidad: Prohíbe buscar por selectores CSS frágiles (.btn-primary-v2 > div:nth-child(3)). En su lugar, utiliza roles semánticos de accesibilidad (page.getByRole('button', { name: 'Comprar ahora' })). Si el diseñador cambia las clases CSS, el test sigue pasando; si rompen la accesibilidad del usuario, el test falla.\n- Aserciones Web-First: Métodos como await expect(locator).toBeVisible() incorporan auto-espera inteligente (auto-waiting). Esperan automáticamente a que los elementos se rendericen, animen y estén interactuables, erradicando los tiempos muertos sleep(5000) que hacen fracasar los pipelines.\n- Playwright Trace Viewer: Graba capturas de pantalla, eventos de DOM y llamadas de red paso a paso para depurar fallos en CI con una interfaz gráfica interactiva.\n\n### 3. Pruebas de Carga, Estrés y Rendimiento con k6\nUna aplicación puede pasar el 100% de sus pruebas unitarias y E2E, pero colapsar al minuto 1 del Black Friday cuando 10,000 usuarios intentan pagar a la vez.\n- k6 (de Grafana Labs) es una herramienta moderna de testing de rendimiento escrita en Go que ejecuta escenarios programados en JavaScript moderno.\n- Virtual Users (VUs): Simula cientos o miles de usuarios concurrentes ejecutando flujos de compra en bucle.\n- Percentiles P95 y P99: El promedio de latencia es un engaño estadístico. Si el 90% de tus usuarios experimenta 20ms pero el 10% sufre 8 segundos de espera, el promedio parece aceptable (800ms) pero 1 de cada 10 clientes abandona la compra. El P95 mide el tiempo máximo experimentado por el 95% de las solicitudes.\n- Thresholds (Umbrales SLA): Definen reglas de fallo automáticas en CI/CD ('http_req_duration': ['p(95)<150']). Si la latencia percentil 95 supera los 150ms o los errores superan el 1%, el pipeline se rompe automáticamente.\n\n### 4. Property-Based Testing: La Vacuna contra el Código de IA\nCuando un LLM escribe código, generalmente optimiza para el caso feliz (happy path). Si le pides un algoritmo de ordenamiento o cálculo financiero, omitirá casos extremos como arreglos con elementos idénticos, enteros negativos o caracteres Unicode especiales.\n- Property-Based Testing (con fast-check en TypeScript o Hypothesis en Python): En lugar de probar 3 o 4 entradas manuales, defines propiedades universales invariantes (ej: \"Para cualquier arreglo A, el resultado de ordenar(A) debe tener la misma longitud y cada elemento i debe ser menor o igual a i+1\").\n- El framework genera miles de entradas aleatorias y extremas en milisegundos buscando la entrada exacta que rompe tu código, aplicando Shrinking (reducción automática al contraejemplo mínimo posible).\n\n## Aplicaciones en sistemas reales\n- MercadoLibre & Amazon: Ejecutan pruebas k6 en ambientes de pre-producción antes de cada Cyber Monday para validar el auto-scaling de Kubernetes.\n- Fintechs (Stripe / Nubank): Emplean Property-Based Testing para garantizar que los cálculos de comisiones y conversiones de divisas nunca pierdan céntimos por errores de redondeo de punto flotante.",
+      codeSnippet: "// ==========================================\n// 1. Playwright E2E: Flujo de Compra Resiliente\n// ==========================================\nimport { test, expect } from '@playwright/test';\n\ntest('Flujo E2E: Usuario aplica cupón y completa checkout', async ({ page }) => {\n  // Navegar a la vista de carrito\n  await page.goto('/cart');\n\n  // Localizar elementos por rol accesible (Web-First)\n  const couponInput = page.getByPlaceholder('Ingresa cupón de descuento');\n  await couponInput.fill('PROMO2026');\n\n  const applyButton = page.getByRole('button', { name: 'Aplicar' });\n  await applyButton.click();\n\n  // Aserción Web-First con auto-waiting\n  const discountLabel = page.getByText('Descuento aplicado: 20%');\n  await expect(discountLabel).toBeVisible({ timeout: 5000 });\n\n  // Proceder al pago\n  const checkoutButton = page.getByRole('button', { name: 'Proceder al Pago' });\n  await checkoutButton.click();\n\n  // Validar URL de destino\n  await expect(page).toHaveURL(/.*checkout/);\n});\n\n// ==========================================\n// 2. k6 Performance Test: Simulación de Carga\n// ==========================================\n/*\nimport http from 'k6/http';\nimport { check, sleep } from 'k6';\n\nexport const options = {\n  stages: [\n    { duration: '30s', target: 50 },  // Ramp-up a 50 usuarios virtuales\n    { duration: '1m', target: 50 },   // Mantener carga estable\n    { duration: '15s', target: 0 },   // Ramp-down a 0\n  ],\n  thresholds: {\n    // El 95% de las peticiones deben responder en menos de 150ms\n    http_req_duration: ['p(95)<150'],\n    // Tasa de errores HTTP debe ser inferior al 1%\n    http_req_failed: ['rate<0.01'],\n  },\n};\n\nexport default function () {\n  const res = http.get('https://api.quimisell.dev/products');\n  check(res, {\n    'status es 200': (r) => r.status === 200,\n    'contenido valido': (r) => r.body.length > 0,\n  });\n  sleep(1);\n}\n*/",
       quiz: [
         {
-          question: "¿Cuál es el propósito del patrón de diseño Strategy (Estrategia)?",
-          options: ["Definir una familia de algoritmos, encapsular cada uno y hacerlos intercambiables dinámicamente en tiempo de ejecución", "Crear copias de clases", "Conectar bases de datos"],
-          answerIndex: 0,
-          explanation: "Strategy permite al cliente variar el algoritmo utilizado de forma transparente sin alterar su código."
+                "question": "¿Por qué en Playwright se recomienda usar getByRole('button') en lugar de selectores CSS como $('.btn-submit')?",
+                "options": [
+                        "Porque los selectores semánticos de rol son resilientes a refactorizaciones de estilos CSS y garantizan que la interfaz sea verdaderamente accesible para lectores de pantalla.",
+                        "Porque los selectores CSS están prohibidos en el estándar HTML5.",
+                        "Porque getByRole ejecuta el navegador más rápido sin usar CPU."
+                ],
+                "answerIndex": 0,
+                "explanation": "getByRole simula la interacción real del usuario y lectores de pantalla, previniendo tests frágiles que se rompen cada vez que un diseñador altera nombres de clases CSS."
         },
         {
-          question: "¿Qué patrón de comportamiento define una dependencia de uno a muchos para notificar cambios de estado automáticamente?",
-          options: ["Patrón Observer (Observador)", "Patrón Singleton", "Patrón Proxy"],
-          answerIndex: 0,
-          explanation: "Observer permite a múltiples objetos escuchar y reaccionar ante los eventos emitidos por un sujeto."
+                "question": "¿Por qué en pruebas de rendimiento con k6 es preferible evaluar el percentil P95 o P99 en lugar de la media aritmética (promedio)?",
+                "options": [
+                        "Porque el promedio oculta colas de latencia extremas donde un porcentaje significativo de usuarios sufre esperas inaceptables a pesar de un promedio aparentemente bajo.",
+                        "Porque k6 no sabe calcular promedios matemáticos.",
+                        "Porque el P95 es obligatorio por ley en el comercio electrónico."
+                ],
+                "answerIndex": 0,
+                "explanation": "El percentil 95 indica el tiempo máximo que esperó el 95% de los usuarios, revelando la verdadera experiencia de los clientes y detectando cuellos de botella invisibles en el promedio."
         },
         {
-          question: "¿Qué patrón de comportamiento encapsula una orden o solicitud como un objeto independiente para permitir operaciones de Deshacer (Undo)?",
-          options: ["Patrón Command (Comando)", "Patrón Strategy", "Patrón Facade"],
-          answerIndex: 0,
-          explanation: "Command transforma peticiones en objetos con métodos `execute()` y `undo()`, facilitando colas de ejecución."
+                "question": "¿Cuál es el beneficio de las 'Aserciones Web-First' en Playwright como await expect(locator).toBeVisible()?",
+                "options": [
+                        "Esperan automáticamente de forma reactiva (auto-waiting) hasta que el elemento esté en el DOM y sea visible, eliminando sleeps manuales y previniendo flaky tests.",
+                        "Descargan automáticamente el código fuente a tu computadora.",
+                        "Convierten el código TypeScript en lenguaje binario ensamblador."
+                ],
+                "answerIndex": 0,
+                "explanation": "Las aserciones Web-First reintentan la verificación continuamente durante un tiempo límite configurado, adaptándose a la naturaleza asíncrona de las SPAs modernas."
         },
         {
-          question: "¿En qué consiste el patrón Chain of Responsibility (Cadena de Responsabilidad)?",
-          options: ["En pasar una petición a lo largo de una cadena de manejadores donde cada uno decide si la procesa o la pasa al siguiente", "En encadenar cadenas de texto", "En usar un solo bucle"],
-          answerIndex: 0,
-          explanation: "Cadena de Responsabilidad desacopla al emisor del receptor pasando la solicitud por varios procesadores (ej: middlewares HTTP)."
-        },
-        {
-          question: "¿Qué patrón de comportamiento permite a un objeto cambiar su lógica cuando su estado interno varía pareciendo cambiar de clase?",
-          options: ["Patrón State (Estado)", "Patrón Template Method", "Patrón Iterator"],
-          answerIndex: 0,
-          explanation: "State modela máquinas de estado finitas encapsulando el comportamiento de cada estado en objetos separados."
+                "question": "¿Cómo ayuda el Property-Based Testing (con fast-check o Hypothesis) a auditar código generado por asistentes de IA?",
+                "options": [
+                        "Genera cientos de combinaciones estocásticas y casos límite (números negativos, cadenas infinitas, caracteres Unicode) para encontrar edge cases omitidos por la IA.",
+                        "Permite a la IA conectarse a internet para buscar respuestas en foros.",
+                        "Reemplaza la necesidad de compilar el código fuente."
+                ],
+                "answerIndex": 0,
+                "explanation": "Property-Based Testing comprueba invariantes sobre un universo masivo de entradas generadas automáticamente, cazando errores sutiles que la IA suele ignorar en el 'happy path'."
         }
-      ,
-        {
-          question: "Según el temario de 'MÓDULO 10: PATRONES DE DISEÑO DE COMPORTAMIENTO (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Patrón Strategy: Encapsular algoritmos intercambiables en tiempo de ejecución?",
-          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Patrón Strategy: Encapsular algoritmos intercambiables en tiempo de...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Patrón Strategy: Encapsular algoritmos intercambiables en tiempo de ejecución. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 10: PATRONES DE DISEÑO DE COMPORTAMIENTO (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Patrón Observer: Suscripción y notificación de eventos 1 a N?",
-          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Patrón Observer: Suscripción y notificación de eventos 1 a N", "Aplicar la regla solo en el best case ignorando el peor escenario."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Patrón Observer: Suscripción y notificación de eventos 1 a N. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 10: PATRONES DE DISEÑO DE COMPORTAMIENTO (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Patrón Command: Encapsular una petición como un objeto (Undo / Redo)?",
-          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Patrón Command: Encapsular una petición como un objeto (Undo / Redo)", "Asumir que más líneas de código siempre implican mayor eficiencia."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Patrón Command: Encapsular una petición como un objeto (Undo / Redo). Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 10: PATRONES DE DISEÑO DE COMPORTAMIENTO (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Patrón State: Permitir a un objeto alterar su comportamiento cuando su estado...?",
-          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Patrón State: Permitir a un objeto alterar su comportamiento cuando...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Patrón State: Permitir a un objeto alterar su comportamiento cuando su estado interno cambia. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 10: PATRONES DE DISEÑO DE COMPORTAMIENTO (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Patrón Chain of Responsibility: Cadena de manejadores de peticiones independi...?",
-          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Patrón Chain of Responsibility: Cadena de manejadores de peticiones...", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Patrón Chain of Responsibility: Cadena de manejadores de peticiones independientes. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 10: PATRONES DE DISEÑO DE COMPORTAMIENTO (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería?",
-          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Aplicación directa en proyectos reales y entrevistas técnicas de in...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 10: PATRONES DE DISEÑO DE COMPORTAMIENTO (GANG OF FOUR)', ¿cuál afirmación es correcta sobre: Errores frecuentes de principiantes y cómo evitarlos en producción?",
-          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Errores frecuentes de principiantes y cómo evitarlos en producción", "Optimizar prematuramente sin perfilar el cuello de botella real."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Errores frecuentes de principiantes y cómo evitarlos en producción. Las otras opciones representan malentendidos típicos."
-        }
-      ]
-    }]
+]
+    }
+  ]
 };
+// =========================================================================
+// 20 EJERCICIOS PRÁCTICOS DE TUTORÍA: CLEAN CODE, SOLID, PATRONES Y QA
+// =========================================================================
+const CLEAN_CODE_EXERCISES: Record<number, TutorExercise[]> = {
+  "1": [
+    {
+      "id": 101,
+      "instruction": "Renombra las variables crípticas `let d = 86400; let u_arr = [];` aplicando el principio de Nombres con Intención Reveladora de Robert C. Martin.",
+      "placeholder": "// Escribe las declaraciones con nombres descriptivos y claros:\nconst secondsInOneDay = 86400;\nconst activeUsersList = [];",
+      "expectedKeywords": [
+        "seconds",
+        "Day",
+        "Users"
+      ],
+      "hint": "Usa nombres como `secondsInOneDay` o `secondsPerDay` y `activeUsersList` o `registeredUsers`.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 102,
+      "instruction": "Aplica la Regla del Boy Scout (Boy Scout Rule): define en un comentario el compromiso de refactorización continua al encontrar código con comentarios obsoletos o variables confusas.",
+      "placeholder": "// Boy Scout Rule: Deja el campamento más limpio de como lo encontraste.\nfunction calculateTotal(items: { price: number }[]): number {\n  return items.reduce((sum, item) => sum + item.price, 0);\n}",
+      "expectedKeywords": [
+        "Boy Scout",
+        "limpio"
+      ],
+      "hint": "Cita la regla del Boy Scout de Robert C. Martin: 'Deja el campamento más limpio de como lo encontraste'.",
+      "isEmailSubmission": false
+    }
+  ],
+  "2": [
+    {
+      "id": 201,
+      "instruction": "Aplica el principio de Funciones Pequeñas y Un Solo Nivel de Abstracción: extrae la validación de un usuario a su propia función antes de persistir.",
+      "placeholder": "function validateUser(user: { email: string; age: number }): void {\n  if (!user.email.includes('@')) throw new Error('Email inválido');\n  if (user.age < 18) throw new Error('Debe ser mayor de edad');\n}",
+      "expectedKeywords": [
+        "validateUser",
+        "throw",
+        "Error"
+      ],
+      "hint": "Define `function validateUser(user)` que lance excepciones descriptivas cuando los datos no sean válidos.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 202,
+      "instruction": "Reemplaza el antipatrón de retornar códigos de error numéricos (-1) por el lanzamiento de excepciones semánticas tipadas.",
+      "placeholder": "class ProductNotFoundError extends Error {}\n\nfunction findProductById(id: string, catalog: Map<string, string>): string {\n  const product = catalog.get(id);\n  if (!product) throw new ProductNotFoundError(`Producto ${id} no encontrado`);\n  return product;\n}",
+      "expectedKeywords": [
+        "ProductNotFoundError",
+        "throw",
+        "catalog"
+      ],
+      "hint": "Crea una clase que herede de `Error` (ej: `ProductNotFoundError`) y lánzala con `throw new ProductNotFoundError(...)`.",
+      "isEmailSubmission": false
+    }
+  ],
+  "3": [
+    {
+      "id": 301,
+      "instruction": "Erradica un comentario redundante reemplazándolo por una constante booleana auto-documentada que revele la intención del negocio.",
+      "placeholder": "const isEligibleForScholarship = student.gpa >= 3.8 && student.creditsCompleted > 60;\nif (isEligibleForScholarship) {\n  applyScholarship(student);\n}",
+      "expectedKeywords": [
+        "isEligibleForScholarship",
+        "student",
+        "applyScholarship"
+      ],
+      "hint": "Asigna la condición compleja a una constante con nombre descriptivo como `isEligibleForScholarship`.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 302,
+      "instruction": "Corrige una violación de la Ley de Demeter (evitar encadenamientos de métodos de bajo nivel como `order.getCustomer().getAddress().getCity()`).",
+      "placeholder": "class Order {\n  constructor(private customer: Customer) {}\n\n  getShippingCity(): string {\n    return this.customer.getCity();\n  }\n}",
+      "expectedKeywords": [
+        "getShippingCity",
+        "customer"
+      ],
+      "hint": "Delega la consulta en la clase contenedora con `getShippingCity()` para que el cliente no conozca la estructura interna.",
+      "isEmailSubmission": false
+    }
+  ],
+  "4": [
+    {
+      "id": 401,
+      "instruction": "Aplica el Principio de Responsabilidad Única (SRP): desacopla la persistencia en base de datos de la entidad de negocio `Invoice`.",
+      "placeholder": "class Invoice {\n  constructor(public id: string, public amount: number) {}\n  calculateTax(): number { return this.amount * 0.16; }\n}\n\nclass InvoiceRepository {\n  save(invoice: Invoice): void {\n    db.insert('invoices', invoice);\n  }\n}",
+      "expectedKeywords": [
+        "Invoice",
+        "calculateTax",
+        "InvoiceRepository",
+        "save"
+      ],
+      "hint": "Separa la clase `Invoice` (reglas contables) de `InvoiceRepository` (persistencia en base de datos).",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 402,
+      "instruction": "Extrae la generación de formato de un reporte a una clase especializada para que los cambios visuales no alteren la lógica de facturación.",
+      "placeholder": "class InvoicePdfGenerator {\n  generatePdf(invoice: Invoice): Buffer {\n    return renderTemplateToPdf(invoice);\n  }\n}",
+      "expectedKeywords": [
+        "InvoicePdfGenerator",
+        "generatePdf",
+        "Invoice"
+      ],
+      "hint": "Crea `InvoicePdfGenerator` con su método `generatePdf(invoice)` cumpliendo SRP.",
+      "isEmailSubmission": false
+    }
+  ],
+  "5": [
+    {
+      "id": 501,
+      "instruction": "Aplica el Principio Abierto/Cerrado (OCP): define una interfaz `TaxStrategy` para calcular impuestos sin usar bloques `switch` modificables.",
+      "placeholder": "interface TaxStrategy {\n  calculate(amount: number): number;\n}\n\nclass StandardTaxStrategy implements TaxStrategy {\n  calculate(amount: number): number { return amount * 0.16; }\n}",
+      "expectedKeywords": [
+        "interface",
+        "TaxStrategy",
+        "calculate",
+        "StandardTaxStrategy"
+      ],
+      "hint": "Define `interface TaxStrategy { calculate(amount: number): number; }` e implementa `StandardTaxStrategy`.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 502,
+      "instruction": "Extiende el sistema impositivo agregando una nueva estrategia para productos exentos sin modificar ninguna clase preexistente.",
+      "placeholder": "class ExemptTaxStrategy implements TaxStrategy {\n  calculate(amount: number): number {\n    return 0; // Exento de impuestos\n  }\n}",
+      "expectedKeywords": [
+        "ExemptTaxStrategy",
+        "TaxStrategy",
+        "calculate"
+      ],
+      "hint": "Crea `class ExemptTaxStrategy implements TaxStrategy` retornando `0`.",
+      "isEmailSubmission": false
+    }
+  ],
+  "6": [
+    {
+      "id": 601,
+      "instruction": "Aplica el Principio de Sustitución de Liskov (LSP): resuelve el dilema Rectángulo/Cuadrado utilizando una interfaz común `Shape` en lugar de herencia forzada.",
+      "placeholder": "interface Shape {\n  calculateArea(): number;\n}\n\nclass Rectangle implements Shape {\n  constructor(public width: number, public height: number) {\n    this.width = width;\n    this.height = height;\n  }\n  calculateArea(): number { return this.width * this.height; }\n}\n\nclass Square implements Shape {\n  constructor(public side: number) { this.side = side; }\n  calculateArea(): number { return this.side * this.side; }\n}",
+      "expectedKeywords": [
+        "Shape",
+        "calculateArea",
+        "Rectangle",
+        "Square"
+      ],
+      "hint": "Define `interface Shape` y haz que `Rectangle` y `Square` la implementen independientemente.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 602,
+      "instruction": "Garantiza que una subclase no endurezca las precondiciones ni lance excepciones inesperadas violando el contrato de la interfaz padre.",
+      "placeholder": "interface ReadOnlyCollection<T> {\n  getItem(index: number): T;\n  count(): number;\n}\n\ninterface MutableCollection<T> extends ReadOnlyCollection<T> {\n  addItem(item: T): void;\n}",
+      "expectedKeywords": [
+        "ReadOnlyCollection",
+        "MutableCollection",
+        "getItem"
+      ],
+      "hint": "Separa la interfaz de lectura `ReadOnlyCollection` de la de escritura para no lanzar `throw new NotSupportedError()`.",
+      "isEmailSubmission": false
+    }
+  ],
+  "7": [
+    {
+      "id": 701,
+      "instruction": "Aplica el Principio de Segregación de Interfaces (ISP): divide una interfaz monolítica de dispositivo multifunción en interfaces pequeñas y específicas.",
+      "placeholder": "interface Printer { print(doc: string): void; }\ninterface Scanner { scan(): string; }\ninterface FaxMachine { sendFax(doc: string): void; }",
+      "expectedKeywords": [
+        "Printer",
+        "Scanner",
+        "FaxMachine"
+      ],
+      "hint": "Crea tres interfaces enfocadas (`Printer`, `Scanner`, `FaxMachine`) para que una impresora simple no deba implementar escaneo.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 702,
+      "instruction": "Aplica el Principio de Inversión de Dependencias (DIP): inyecta una interfaz abstracta `EmailGateway` en el constructor de `UserService`.",
+      "placeholder": "interface EmailGateway {\n  send(to: string, body: string): Promise<void>;\n}\n\nclass UserService {\n  constructor(private mailer: EmailGateway) {}\n}",
+      "expectedKeywords": [
+        "EmailGateway",
+        "send",
+        "UserService",
+        "constructor"
+      ],
+      "hint": "Recibe `private mailer: EmailGateway` en el constructor de `UserService` en vez de instanciar `new SendGridMailer()`.",
+      "isEmailSubmission": false
+    }
+  ],
+  "8": [
+    {
+      "id": 801,
+      "instruction": "Implementa el Patrón de Diseño Strategy para conmutar métodos de pago (Tarjeta y PayPal) mediante una interfaz común.",
+      "placeholder": "interface PaymentStrategy {\n  pay(amount: number): boolean;\n}\n\nclass CreditCardPayment implements PaymentStrategy {\n  pay(amount: number): boolean { return true; }\n}\n\nclass PaymentProcessor {\n  constructor(private strategy: PaymentStrategy) {}\n  execute(amount: number): boolean { return this.strategy.pay(amount); }\n}",
+      "expectedKeywords": [
+        "PaymentStrategy",
+        "CreditCardPayment",
+        "PaymentProcessor",
+        "pay"
+      ],
+      "hint": "Define `interface PaymentStrategy`, impleméntala en `CreditCardPayment` y recíbela en `PaymentProcessor`.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 802,
+      "instruction": "Implementa el Patrón Adapter para traducir una API externa legacy que devuelve XML al formato esperado por tu dominio.",
+      "placeholder": "interface ModernBillingService {\n  processBill(customerId: string, amount: number): void;\n}\n\nclass LegacyXmlAdapter implements ModernBillingService {\n  constructor(private legacySdk: LegacyXmlSdk) {}\n  processBill(customerId: string, amount: number): void {\n    this.legacySdk.executeXmlPayload('<bill id=\"' + customerId + '\" amount=\"' + amount + '\" />');\n  }\n}",
+      "expectedKeywords": [
+        "ModernBillingService",
+        "LegacyXmlAdapter",
+        "processBill"
+      ],
+      "hint": "Crea `LegacyXmlAdapter implements ModernBillingService` envolviendo el SDK externo.",
+      "isEmailSubmission": false
+    }
+  ],
+  "9": [
+    {
+      "id": 901,
+      "instruction": "Escribe una prueba unitaria con Vitest siguiendo estrictamente el patrón AAA (Arrange, Act, Assert) para verificar el cálculo de un descuento.",
+      "placeholder": "import { describe, it, expect } from 'vitest';\n\ndescribe('calculateDiscount', () => {\n  it('aplica 20% de descuento a usuarios VIP', () => {\n    // Arrange\n    const price = 100;\n    const tier = 'VIP';\n\n    // Act\n    const result = calculateDiscount(price, tier);\n\n    // Assert\n    expect(result).toBe(80);\n  });\n});",
+      "expectedKeywords": [
+        "Arrange",
+        "Act",
+        "Assert",
+        "expect",
+        "toBe"
+      ],
+      "hint": "Estructura el test con comentarios explícitos `// Arrange`, `// Act` y `// Assert`, validando `expect(result).toBe(80)`.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 902,
+      "instruction": "Crea un Mock con Vitest (`vi.fn()`) para un servicio de correo y valida que fue invocado exactamente una vez con los argumentos esperados.",
+      "placeholder": "import { describe, it, expect, vi } from 'vitest';\n\ndescribe('NotificationService', () => {\n  it('debe invocar al mailer con el destinatario correcto', async () => {\n    const mockMailer = { send: vi.fn().mockResolvedValue(true) };\n    const service = new NotificationService(mockMailer);\n\n    await service.notifyUser('user@quimisell.dev');\n\n    expect(mockMailer.send).toHaveBeenCalledTimes(1);\n    expect(mockMailer.send).toHaveBeenCalledWith('user@quimisell.dev');\n  });\n});",
+      "expectedKeywords": [
+        "vi.fn",
+        "toHaveBeenCalledTimes",
+        "toHaveBeenCalledWith"
+      ],
+      "hint": "Instancia `mockMailer = { send: vi.fn() }` y verifica con `expect(mockMailer.send).toHaveBeenCalledTimes(1)`.",
+      "isEmailSubmission": false
+    }
+  ],
+  "10": [
+    {
+      "id": 1001,
+      "instruction": "Escribe una prueba End-to-End (E2E) con Playwright que busque un producto y verifique con una aserción Web-First que el botón esté visible.",
+      "placeholder": "import { test, expect } from '@playwright/test';\n\ntest('flujo de compra E2E: añadir al carrito', async ({ page }) => {\n  await page.goto('/tienda');\n  await page.getByPlaceholder('Buscar producto...').fill('Laptop');\n  await page.getByRole('button', { name: 'Buscar' }).click();\n\n  const addBtn = page.getByRole('button', { name: 'Añadir al Carrito' });\n  await expect(addBtn).toBeVisible();\n});",
+      "expectedKeywords": [
+        "page.goto",
+        "getByRole",
+        "expect",
+        "toBeVisible"
+      ],
+      "hint": "Utiliza `await page.goto(...)`, `page.getByRole(...)` y la aserción web-first `await expect(addBtn).toBeVisible()`.",
+      "isEmailSubmission": false
+    },
+    {
+      "id": 1002,
+      "instruction": "Configura un script de pruebas de carga en k6 con 50 Usuarios Virtuales (VUs) durante 30s y un umbral SLA (Threshold) de P95 < 150ms.",
+      "placeholder": "import http from 'k6/http';\nimport { check, sleep } from 'k6';\n\nexport const options = {\n  vus: 50,\n  duration: '30s',\n  thresholds: {\n    http_req_duration: ['p(95)<150'],\n    http_req_failed: ['rate<0.01'],\n  },\n};\n\nexport default function () {\n  const res = http.get('https://api.quimisell.dev/catalog');\n  check(res, { 'status 200': (r) => r.status === 200 });\n  sleep(1);\n}",
+      "expectedKeywords": [
+        "vus: 50",
+        "thresholds",
+        "http_req_duration",
+        "p(95)<150"
+      ],
+      "hint": "Define `vus: 50`, `duration: '30s'` y en `thresholds` establece `http_req_duration: ['p(95)<150']`.",
+      "isEmailSubmission": false
+    }
+  ]
+};
+
+// Adjuntar ejercicios estructurados a cada módulo de Clean Code & QA
+CLEAN_CODE_COURSE.modules.forEach((mod) => {
+  if (CLEAN_CODE_EXERCISES[mod.id]) {
+    mod.exercises = CLEAN_CODE_EXERCISES[mod.id];
+  }
+});

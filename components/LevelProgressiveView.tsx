@@ -508,18 +508,19 @@ function getCoursePedagogy(courseId: string, moduleId: number): PedagogyData {
     case 'clean_code_solid':
       return {
         level0Metaphor:
-          'Escribir código limpio es como mantener un quirófano estéril o la cocina de un restaurante con estrellas Michelin: cada herramienta tiene un solo propósito, está etiquetada con claridad y no hay grasa acumulada en los rincones.',
+          'Escribir código limpio sin pruebas automatizadas es como caminar en la cuerda floja sin red de seguridad: Clean Code y QA son dos caras de la misma moneda. Una arquitectura limpia desacoplada (SOLID) permite testear en milisegundos, y una suite de pruebas automatizadas te otorga el coraje de refactorizar sin miedo a romper producción.',
         level0Rule:
-          'Cualquier novato puede escribir código que una computadora entienda; los ingenieros de élite escriben código que los humanos pueden entender sin esfuerzo.',
+          'Cualquier refactorización sin pruebas unitarias automatizadas no es una mejora: es solo mover bugs de sitio. Aplica la Pirámide de Pruebas (70% Unit con Vitest/pytest, 20% Integración con MSW, 10% E2E con Playwright) y el ciclo Red-Green-Refactor.',
         intermediateArchitecture:
-          'Inversión de Dependencias (DIP) y Arquitectura Hexagonal (Puertos y Adaptadores): la lógica de negocio central nunca importa controladores HTTP ni clientes de base de datos; define interfaces abstractas que los adaptadores externos implementan.',
+          'Arquitectura Hexagonal (Puertos y Adaptadores) y Testabilidad Desacoplada: la lógica de dominio puro define contratos abstractos; las pruebas unitarias inyectan Test Doubles (Mocks, Stubs, Spies con vi.fn/unittest.mock); las pruebas de integración usan MSW; los flujos E2E corren en Playwright y las compuertas de rendimiento validan umbrales SLA P95 con k6.',
         intermediatePitfalls:
-          'Herencia excesiva y frágil (Violación del principio de sustitución de Liskov - LSP). Prefiere siempre composición de objetos sobre herencia jerárquica profunda.',
+          'El Antipatrón "Ice-Cream Cone" (80% tests E2E frágiles y lentos en lugar de pruebas unitarias rápidas), testear detalles internos de implementación en lugar de comportamientos observables, o confiar en código de IA sin Property-Based Testing (fast-check / Hypothesis).',
         universityTheory:
-          'Métricas de acoplamiento y cohesión de Chidamber & Kemerer (C&K): CBO (Coupling Between Objects), WMC (Weighted Methods per Class) y LCOM (Lack of Cohesion in Methods).',
-        universityFormula: 'Instabilidad (I) = Ce / (Ca + Ce) ;  Distancia a la Secuencia Principal D = |A + I - 1|',
+          'Pirámide de Pruebas de Mike Cohn, Tres Leyes de TDD de Robert C. Martin, y Métricas de Mutación de Código (Mutation Testing con Stryker) para verificar la eficacia real de los assertions sobre la cobertura de ramas (Branch Coverage).',
+        universityFormula:
+          '\\text{Confianza QA} = \\frac{\\text{Unit}(70\\%) + \\text{Integration}(20\\%) + \\text{E2E}(10\\%)}{\\text{Deuda Técnica}} \\times \\text{MutationScore}',
         industryCase:
-          'Amazon y Netflix estructuran sus microservicios basándose en Principio de Responsabilidad Única (SRP): cada microservicio posee su propia base de datos aislada, impidiendo acoplamientos espagueti.',
+          'Amazon, Spotify y Netflix prohíben fusiones a producción sin compuertas automatizadas de QA en CI: suites unitarias en Vitest/pytest, pruebas de contrato y validación de latencia P95 en k6 para blindar eventos masivos como Black Friday.',
       };
 
     case 'git_devops_vercel':
