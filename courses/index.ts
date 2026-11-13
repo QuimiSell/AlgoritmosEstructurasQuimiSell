@@ -6,6 +6,7 @@ import { ALGORITHMIC_COMPLEXITY_COURSE } from './algorithmicComplexityCourse';
 import { MATH_COURSE } from './mathCourse';
 import { AUTOMATA_COMPILER_COURSE } from './automataCompilerCourse';
 import { CLEAN_CODE_COURSE } from './cleanCodeCourse';
+import { QA_AUTOMATION_COURSE } from './qaAutomationCourse';
 import { AI_ENGINEER_COURSE } from './aiEngineerCourse';
 import { KALI_LINUX_COURSE } from './kaliLinuxCourse';
 import { GIT_DEVOPS_COURSE } from './gitDevOpsCourse';
@@ -21,6 +22,7 @@ const ALL_COURSES_MAP: Record<string, Course> = {
   algoritmos: ALGORITHMS_COURSE,
   complejidad_algoritmica: ALGORITHMIC_COMPLEXITY_COURSE,
   clean_code_solid: CLEAN_CODE_COURSE,
+  qa_testing_automatizacion: QA_AUTOMATION_COURSE,
   git_devops_vercel: GIT_DEVOPS_COURSE,
   redes_desarrolladores: REDES_DEV_COURSE,
   sql_datos_ia: SQL_DATOS_IA_COURSE,
@@ -47,6 +49,7 @@ export {
   MATH_COURSE,
   AUTOMATA_COMPILER_COURSE,
   CLEAN_CODE_COURSE,
+  QA_AUTOMATION_COURSE,
   AI_ENGINEER_COURSE,
   GIT_DEVOPS_COURSE,
   EDGE_MOBILE_AI_COURSE,

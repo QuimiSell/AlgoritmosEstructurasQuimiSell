@@ -58,6 +58,8 @@ export default defineConfig({
           if (id.includes('/courses/mathCourse')) return 'course-math';
           if (id.includes('/courses/automataCompilerCourse')) return 'course-automata';
           if (id.includes('/courses/cleanCodeCourse')) return 'course-clean-code';
+          if (id.includes('/courses/qaAutomationCourse')) return 'course-qa';
+          if (id.includes('/courses/computationalThinkingCourse')) return 'course-thinking';
           if (id.includes('/courses/gitDevOpsCourse')) return 'course-git';
           if (id.includes('/courses/edgeMobileAiCourse')) return 'course-edge-ai';
           if (id.includes('/courses/redesDevCourse')) return 'course-redes';

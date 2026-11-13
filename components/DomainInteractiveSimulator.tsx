@@ -1229,7 +1229,7 @@ export const DomainInteractiveSimulator: React.FC<DomainInteractiveSimulatorProp
     );
   }
 
-  if (courseId === 'clean_code_solid') {
+  if (courseId === 'clean_code_solid' || courseId === 'qa_testing_automatizacion') {
     return (
       <div className="bg-slate-900 text-slate-100 rounded-3xl p-5 sm:p-7 border border-slate-800 space-y-6 shadow-2xl">
         {/* Cabecera del Simulador */}

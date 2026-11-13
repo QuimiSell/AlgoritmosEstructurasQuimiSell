@@ -1,1313 +1,918 @@
 import { Course, TutorExercise } from '../domain/models';
 
 export const REDES_DEV_COURSE: Course = {
-  id: 'redes_desarrolladores',
-  title: 'Redes para Desarrolladores, Microservicios y Arquitectura de APIs (TCP/IP, gRPC, TLS, Resiliencia)',
-  shortTitle: 'Redes Dev',
-  badge: 'Redes, Microservicios & APIs',
-  icon: '🌐',
-  description: '10 módulos prácticos: modelo OSI/TCP-IP, DNS, HTTP/3 (QUIC), TLS 1.3, gRPC vs WebSockets vs REST, resiliencia con Circuit Breakers y Rate Limiting, reverse proxies Nginx/Caddy y diagnóstico de red.',
-  whyStudyTitle: '🔌 ¿Por qué redes antes de Kali y APIs?',
-  whyStudyText: 'Sin entender DNS, TLS y HTTP, Nmap y pentesting son botones sin contexto. Todo dev que despliega en Vercel o construye APIs móviles necesita esta base — especialmente en ciberseguridad defensiva QuimiSell.',
-  studyPlanReasons: [
+  "id": "redes_desarrolladores",
+  "title": "Redes para Desarrolladores, Microservicios, Protocolos y Arquitectura de APIs",
+  "shortTitle": "Redes & Microservicios",
+  "badge": "Redes & Protocolos · 20 Módulos",
+  "icon": "🌐",
+  "description": "El curso que todo ingeniero de software necesita para no culpar al framework: del modelo OSI y TCP/IP a TLS 1.3, HTTP/2, HTTP/3 (QUIC), WebSockets, gRPC con Protobuf, proxies Nginx, seguridad Zero Trust con mTLS, Circuit Breakers y Rate Limiting.",
+  "whyStudyTitle": "🌐 ¿Por qué dominar Redes y Protocolos separa a un programador de un Arquitecto de Software?",
+  "whyStudyText": "Cada llamada a una API, microservicio o base de datos viaja a través de una red física sujeta a latencia, pérdidas de paquetes y ataques maliciosos. Culpar al framework o asumir que la red es instantánea y 100% confiable es la primera falacia de los sistemas distribuidos. Este curso te forma en los fundamentos reales de la ingeniería de redes: desde el 3-Way Handshake de TCP y los certificados TLS 1.3 hasta los protocolos binarios modernos como gRPC y HTTP/3, preparándote para diseñar sistemas de misión crítica altamente escalables y resilientes.",
+  "studyPlanReasons": [
     {
-      id: 1,
-      title: "Modelo de Capas",
-      why: "OSI y TCP/IP simplificado para devs."
+      "id": 1,
+      "title": "ARQUITECTURA DE REDES Y MODELOS OSI VS TCP/IP",
+      "why": "Las capas de abstracción: comparación entre el modelo teórico OSI de 7 capas y el modelo pragmático TCP/IP de 4 capas utilizado en internet."
     },
     {
-      id: 2,
-      title: "IP y Subnetting",
-      why: "Direcciones, CIDR y routing básico."
+      "id": 2,
+      "title": "CAPA FÍSICA Y DE ENLACE: ETHERNET, MAC Y ARP",
+      "why": "Comunicación en la red local: direcciones MAC físicas, tramas Ethernet, el protocolo ARP de resolución de direcciones y dominios de difusión."
     },
     {
-      id: 3,
-      title: "DNS",
-      why: "Resolución de nombres y registros."
+      "id": 3,
+      "title": "CAPA DE RED: IPV4, IPV6, SUBNETTING CIDR Y NAT",
+      "why": "Enrutamiento global: anatomía del paquete IPv4 e IPv6, cálculo de máscaras de subred CIDR (/24, /16) y Network Address Translation (NAT)."
     },
     {
-      id: 4,
-      title: "HTTP/HTTPS",
-      why: "Protocolo web y evolución."
+      "id": 4,
+      "title": "DNS: RESOLUCIÓN RECURSIVA, REGISTROS Y DNSSEC",
+      "why": "La guía telefónica de internet: árbol jerárquico DNS (Root, TLD, Autoritativos), tipos de registros (A, AAAA, CNAME, TXT, MX) y seguridad con DNSSEC."
     },
     {
-      id: 5,
-      title: "TLS y Certificados",
-      why: "Cifrado en tránsito."
+      "id": 5,
+      "title": "CAPA DE TRANSPORTE: TCP HANDSHAKE, CONTROL DE FLUJO Y CONGESTIÓN",
+      "why": "El protocolo confiable de internet: el 3-Way Handshake (SYN, SYN-ACK, ACK), ventanas deslizantes, números de secuencia y control de congestión."
     },
     {
-      id: 6,
-      title: "REST y WebSockets",
-      why: "APIs modernas."
+      "id": 6,
+      "title": "CAPA DE TRANSPORTE: UDP, STREAMING Y DIFERENCIAS CON TCP",
+      "why": "Transporte de baja latencia sin conexión: datagramas UDP, ausencia de retransmisión, streaming en vivo, gaming, DNS y WebRTC."
     },
     {
-      id: 7,
-      title: "Latencia y CDN",
-      why: "Caching y performance web."
+      "id": 7,
+      "title": "SEGURIDAD Y CIFRADO EN TRÁNSITO: TLS 1.3 Y CERTIFICADOS X.509",
+      "why": "Criptografía en redes: cifrado simétrico vs asimétrico, el apretón de manos TLS 1.3 (1-RTT y 0-RTT), Diffie-Hellman efímero y autoridades certificadoras (CAs)."
     },
     {
-      id: 8,
-      title: "CORS y Sesiones",
-      why: "Seguridad del navegador."
+      "id": 8,
+      "title": "EL PROTOCOLO HTTP: EVOLUCIÓN DE HTTP/1.0 A HTTP/1.1",
+      "why": "La base de la web: cabeceras HTTP, métodos REST, códigos de estado semánticos (2xx, 3xx, 4xx, 5xx), conexiones persistentes (Keep-Alive) y chunked transfer."
     },
     {
-      id: 9,
-      title: "Diagnóstico de Red",
-      why: "ping, curl, traceroute, Wireshark intro."
+      "id": 9,
+      "title": "PROTOCOLO HTTP/2: MULTIPLEXACIÓN Y COMPRESIÓN HPACK",
+      "why": "Superando las limitaciones de HTTP/1.1: formato binario en marcos (frames), multiplexación de streams en un solo socket TCP, server push y compresión HPACK."
     },
     {
-      id: 10,
-      title: "Puente a Kali",
-      why: "Fundamentos antes de pentesting."
+      "id": 10,
+      "title": "PROTOCOLO HTTP/3 (QUIC): UDP COMO BASE Y 0-RTT",
+      "why": "La revolución del transporte web: QUIC sobre UDP, eliminación del Head-of-Line Blocking de transporte TCP, migración de conexión y apretón de manos 0-RTT."
+    },
+    {
+      "id": 11,
+      "title": "TIEMPO REAL: WEBSOCKETS VS SERVER-SENT EVENTS (SSE) VS LONG POLLING",
+      "why": "Comunicación bidireccional continua: el Upgrade de HTTP a WebSocket, streaming unidireccional con Server-Sent Events (SSE) para chat de IA y Long Polling."
+    },
+    {
+      "id": 12,
+      "title": "ARQUITECTURA DE APIS RESTFUL: PRINCIPIOS DE FIELDING E IDEMPOTENCIA",
+      "why": "Diseño de APIs de alta escala: restricciones de Roy Fielding, HATEOAS, diseño de URIs semánticas, métodos HTTP (GET, POST, PUT, PATCH, DELETE) e idempotencia."
+    },
+    {
+      "id": 13,
+      "title": "RPC MODERNO: GRPC Y PROTOCOL BUFFERS (PROTOBUF)",
+      "why": "Comunicación interna de alta velocidad entre microservicios: gRPC de Google, serialización binaria con Protobuf, contratos fuertemente tipados y HTTP/2."
+    },
+    {
+      "id": 14,
+      "title": "PROXIES INVERSOS Y BALANCEO DE CARGA CON NGINX",
+      "why": "Puntos de entrada corporativos: Nginx como Reverse Proxy, terminación SSL/TLS, algoritmos de balanceo (Round-Robin, Least Connections, IP Hash) y caching."
+    },
+    {
+      "id": 15,
+      "title": "SEGURIDAD WEB EN CAPA DE APLICACIÓN: CORS, CSP Y COOKIES",
+      "why": "Defensas del navegador: la política del mismo origen (SOP), configuración correcta de CORS, Content Security Policy (CSP) y cookies seguras."
+    },
+    {
+      "id": 16,
+      "title": "AUTENTICACIÓN EN MICROSERVICIOS: MTLS, JWT Y SPIFFE",
+      "why": "Seguridad Zero Trust en la red interna: Mutual TLS (mTLS) para autenticación mutua de servidores, tokens JWT y el estándar SPIFFE/SPIRE."
+    },
+    {
+      "id": 17,
+      "title": "PATRONES DE RESILIENCIA EN RED: CIRCUIT BREAKER Y RETRIES CON JITTER",
+      "why": "Blindando la red ante fallos: el patrón Circuit Breaker (Closed, Open, Half-Open), reintentos con Exponential Backoff y la necesidad matemática de Jitter."
+    },
+    {
+      "id": 18,
+      "title": "CONTROL DE TRÁFICO Y PROTECCIÓN CONTRA ABUSO: RATE LIMITING",
+      "why": "Defensa de endpoints contra abusos y DDoS: algoritmos Token Bucket y Leaky Bucket, ventanas deslizantes con Redis y respuesta HTTP 429."
+    },
+    {
+      "id": 19,
+      "title": "DIAGNÓSTICO Y ANÁLISIS DE PAQUETES: WIRESHARK, TCPDUMP Y WATERFALLS",
+      "why": "Herramientas de diagnóstico de red: captura de paquetes con tcpdump en servidores remotos, análisis visual con Wireshark y lectura de waterfalls."
+    },
+    {
+      "id": 20,
+      "title": "PROYECTO INTEGRADOR: ARQUITECTURA DE UNA RED GLOBAL RESILIENTE",
+      "why": "Diseño integral de una arquitectura distribuida: Nginx Anycast, terminación TLS 1.3, microservicios con gRPC y mTLS, Circuit Breakers y Rate Limiting."
     }
   ],
-  labChallenge: {
-    title: "Mapa de Red y Diagnóstico Web QuimiSell",
-    badge: "Laboratorio Redes para Devs",
-    description: "Documenta el path DNS→TLS→HTTP de quimisell.com o tu deploy Vercel: dig, curl -v, traceroute, diagrama de capas, y explica cada status header. Incluye propuesta CORS/cookies si tuvieras API.",
-    requirements: [
-      "• Output dig + curl -v comentado.",
-      "• Diagrama OSI/TCP-IP del request.",
-      "• Tabla puertos comunes.",
-      "• Análisis latencia RTT.",
-      "• Puente escrito hacia módulo Nmap Kali."
+  "labChallenge": {
+    "title": "Diseño y Simulación de una Red Global de Microservicios Resiliente con mTLS, gRPC y Rate Limiting",
+    "badge": "Laboratorio de Redes & Arquitectura de Microservicios",
+    "description": "Tu objetivo es diseñar la arquitectura de comunicación de red para una plataforma de pagos distribuida: implementarás un reverse proxy Nginx con balanceo least_conn, contratos gRPC con Protocol Buffers, un interceptor de autenticación mTLS y un algoritmo de Rate Limiting Token Bucket que proteja el endpoint de cobros.",
+    "requirements": [
+      "• Contrato Protobuf: Definir un archivo `.proto` con métodos unarios y streaming.",
+      "• Reverse Proxy: Configurar Nginx con redirección HTTPS forzada y balanceo de carga.",
+      "• Resiliencia: Implementar un Circuit Breaker con estados Closed, Open y Half-Open.",
+      "• Rate Limiter: Programar un Token Bucket con límite estricto de peticiones por segundo.",
+      "• Análisis de Red: Explicar mediante un diagrama el flujo de paquetes y certificados."
     ],
-    cleanCodeRules: [
-      "• Solo targets autorizados (tuyos o QuimiSell).",
-      "• No port scan sin permiso.",
-      "• Documentar herramientas usadas.",
-      "• Enviar a quimicabless2020@gmail.com."
+    "cleanCodeRules": [
+      "• Cero Hardcoding de IPs: Utilizar resolución DNS o variables de entorno.",
+      "• Timeouts Obligatorios: Toda llamada de red debe contar con un timeout explícito.",
+      "• Idempotencia: Todos los reintentos automáticos deben aplicarse exclusivamente sobre métodos idempotentes."
     ],
-    emailSubject: "Laboratorio QuimiSell: Redes Dev - [Tu Nombre]",
-    emailBodyTemplate: `Hola Profesor QuimiSell,
-
-Repo/reporte: [ENLACE]
-
-(quimicabless2020@gmail.com)`
+    "emailSubject": "Laboratorio QuimiSell: Reto Redes & Microservicios - [Tu Nombre]",
+    "emailBodyTemplate": "Hola Profesor QuimiSell,\\n\\nAdjunto el enlace a mi repositorio con la solución al Reto de Redes y Arquitectura de Microservicios.\\n\\nRepositorio: [ENLACE DE GITHUB]\\n\\nResumen de la arquitectura:\\n- Protocolos utilizados (gRPC/HTTP3): \\n- Algoritmo de Rate Limiting: \\n- Estrategia de Resiliencia: \\n\\nSaludos cordiales."
   },
-  modules: [{
-      id: 1,
-      title: "MÓDULO 1: MODELO OSI Y TCP/IP PARA DESARROLLADORES",
-      description: "Las capas que conectan tu código con internet.",
-      items: [
-        
-      "OSI 7 capas vs TCP/IP 4 capas.",
-      "Capa aplicación: HTTP, DNS, TLS.",
-      "Transporte: TCP vs UDP.",
-      "Red: IP, routing.",
-      "Enlace/física: Ethernet, WiFi.",
-      "Definición operativa de los términos centrales de MODELO OSI Y TCP/IP PARA DESARROLLADORES.",
-      "Ejemplo numérico o de código trazado paso a paso.",
-      "Pregunta tipo entrevista técnica con respuesta esperada.",
-      "Relación explícita con el snippet de implementación del módulo.",
-        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería."
+  "modules": [
+    {
+      "id": 1,
+      "title": "MÓDULO 1: ARQUITECTURA DE REDES Y MODELOS OSI VS TCP/IP",
+      "description": "Las capas de abstracción: comparación entre el modelo teórico OSI de 7 capas y el modelo pragmático TCP/IP de 4 capas utilizado en internet.",
+      "items": [
+        "Por qué los ingenieros de software necesitan entender redes en lugar de culpar al framework.",
+        "El Modelo OSI de 7 Capas: Física, Enlace, Red, Transporte, Sesión, Presentación, Aplicación.",
+        "El Modelo TCP/IP de 4 Capas: Acceso a Red, Internet, Transporte, Aplicación.",
+        "Encapsulamiento y Desencapsulamiento de Datos: De Datos a Segmentos, Paquetes, Tramas y Bits.",
+        "Cabeceras (Headers) y MTU (Maximum Transmission Unit): El límite estándar de 1500 bytes en Ethernet."
       ],
-      content: "## Panorama del tema: MODELO OSI Y TCP/IP PARA DESARROLLADORES\\n\\nLas capas que conectan tu código con internet.\\n\\nComo desarrollador no necesitas memorizar OSI entero, pero sí entender dónde vive tu problema: ¿es DNS? ¿TLS? ¿timeout TCP? TCP/IP es el stack real de internet: aplicación → transporte (TCP/UDP) → internet (IP) → enlace. HTTP vive en aplicación sobre TCP. UDP en video streaming y DNS. Saber esto acelera debug: un fetch() lento puede ser DNS lento, no JavaScript lento.\\n\\nEste módulo es material de estudio **autocontenido**: puedes aprenderlo completo aquí, sin pagar plataformas externas ni depender de internet después de cargar la página. Lee en orden, ejecuta el snippet, resuelve la autoevaluación y repasa los puntos que falles.\\n\\n## Qué aprenderás en este módulo\\n\\n· OSI 7 capas vs TCP/IP 4 capas.\\n· Capa aplicación: HTTP, DNS, TLS.\\n· Transporte: TCP vs UDP.\\n· Red: IP, routing.\\n· Enlace/física: Ethernet, WiFi.\\n· Definición operativa de los términos centrales de MODELO OSI Y TCP/IP PARA DESARROLLADORES.\\n· Ejemplo numérico o de código trazado paso a paso.\\n· Pregunta tipo entrevista técnica con respuesta esperada.\\n· Dominar las 12 preguntas de autoevaluación con ≥70% de aciertos antes de avanzar.\\n\\n## Desarrollo teórico detallado\\n\\n## 1. OSI 7 capas vs TCP/IP 4 capas.\\n\\n**Qué es y por qué importa.** Dentro de MODELO OSI Y TCP/IP PARA DESARROLLADORES, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\\n\\n**Desarrollo.** OSI 7 capas vs TCP/IP 4 capas. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\\n\\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\\n\\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «OSI 7 capas vs TCP/IP 4 capas.» y cuándo lo evitarías.\\n\\n## 2. Capa aplicación: HTTP, DNS, TLS.\\n\\n**Qué es y por qué importa.** Dentro de MODELO OSI Y TCP/IP PARA DESARROLLADORES, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\\n\\n**Desarrollo.** Capa aplicación: HTTP, DNS, TLS. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\\n\\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\\n\\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Capa aplicación: HTTP, DNS, TLS.» y cuándo lo evitarías.\\n\\n## 3. Transporte: TCP vs UDP.\\n\\n**Qué es y por qué importa.** Dentro de MODELO OSI Y TCP/IP PARA DESARROLLADORES, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\\n\\n**Desarrollo.** Transporte: TCP vs UDP. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\\n\\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\\n\\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Transporte: TCP vs UDP.» y cuándo lo evitarías.\\n\\n## 4. Red: IP, routing.\\n\\n**Qué es y por qué importa.** Dentro de MODELO OSI Y TCP/IP PARA DESARROLLADORES, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\\n\\n**Desarrollo.** Red: IP, routing. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\\n\\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\\n\\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Red: IP, routing.» y cuándo lo evitarías.\\n\\n## 5. Enlace/física: Ethernet, WiFi.\\n\\n**Qué es y por qué importa.** Dentro de MODELO OSI Y TCP/IP PARA DESARROLLADORES, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\\n\\n**Desarrollo.** Enlace/física: Ethernet, WiFi. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\\n\\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\\n\\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Enlace/física: Ethernet, WiFi.» y cuándo lo evitarías.\\n\\n## 6. Definición operativa de los términos centrales de MODELO OSI Y TCP/IP PARA DESARROLLADORES.\\n\\n**Qué es y por qué importa.** Dentro de MODELO OSI Y TCP/IP PARA DESARROLLADORES, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\\n\\n**Desarrollo.** Definición operativa de los términos centrales de MODELO OSI Y TCP/IP PARA DESARROLLADORES. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\\n\\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\\n\\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Definición operativa de los términos centrales de MODELO OSI Y TCP/IP PARA DESARROLLADORES.» y cuándo lo evitarías.\\n\\n## 7. Ejemplo numérico o de código trazado paso a paso.\\n\\n**Qué es y por qué importa.** Dentro de MODELO OSI Y TCP/IP PARA DESARROLLADORES, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\\n\\n**Desarrollo.** Ejemplo numérico o de código trazado paso a paso. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\\n\\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\\n\\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Ejemplo numérico o de código trazado paso a paso.» y cuándo lo evitarías.\\n\\n## 8. Pregunta tipo entrevista técnica con respuesta esperada.\\n\\n**Qué es y por qué importa.** Dentro de MODELO OSI Y TCP/IP PARA DESARROLLADORES, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\\n\\n**Desarrollo.** Pregunta tipo entrevista técnica con respuesta esperada. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\\n\\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\\n\\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Pregunta tipo entrevista técnica con respuesta esperada.» y cuándo lo evitarías.\\n\\n## Aplicaciones en sistemas reales\\n\\n**Ejemplo 1:** CORS bloquea APIs cross-origin hasta que el servidor envía Access-Control-Allow-Origin explícito.\\n\\n**Ejemplo 2:** CORS bloquea APIs cross-origin hasta que el servidor envía Access-Control-Allow-Origin explícito.\\n\\n**Ejemplo 3:** CORS bloquea APIs cross-origin hasta que el servidor envía Access-Control-Allow-Origin explícito.\\n\\nEstos casos muestran por qué MODELO OSI Y TCP/IP PARA DESARROLLADORES no es teórico: empresas y proyectos open source aplican estos principios diariamente. Al estudiar, elige uno y escribe cómo encajaría el concepto del módulo en ese escenario.\\n\\n## Errores comunes al estudiar\\n\\n· Ignorar la sección de aplicaciones reales: ahí se ancla la memoria a largo plazo.\\n· Confundir el caso promedio con el peor caso al estimar rendimiento de un algoritmo.\\n· Ignorar la sección de aplicaciones reales: ahí se ancla la memoria a largo plazo.\\n· Confundir el caso promedio con el peor caso al estimar rendimiento de un algoritmo.\\n\\n## Síntesis para repasar\\n\\nCierra el módulo resumiendo MODELO OSI Y TCP/IP PARA DESARROLLADORES en cinco líneas propias. Vuelve a leer los **Conceptos clave** del panel, ejecuta el código de referencia y completa la autoevaluación. Si fallas más de 3 preguntas, relee el bloque teórico correspondiente antes de continuar — el siguiente módulo asume que dominas este. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación antes de avanzar al siguiente módulo.",
-      codeSnippet: `# Stack simplificado
-# App (HTTP) → TCP → IP → Ethernet`,
-      quiz: [
+      "content": "## Arquitectura de Redes: Modelos OSI y TCP/IP\n\nCada vez que tu aplicación hace un `fetch('https://api.quimisell.dev/datos')`, los datos no viajan por magia: atraviesan un proceso estricto de **encapsulamiento**.\n\n### Encapsulamiento de Paquetes\n1. **Capa de Aplicación:** Se genera el mensaje HTTP (`GET /datos HTTP/1.1`).\n2. **Capa de Transporte (TCP):** Se le añade una cabecera TCP con el puerto de origen y puerto de destino (443), formando un **Segmento**.\n3. **Capa de Internet (IP):** Se le añade la IP de origen y la IP de destino, formando un **Paquete**.\n4. **Capa de Enlace (Ethernet):** Se le añade la dirección MAC física del router siguiente, formando una **Trama (Frame)**.\n5. **Capa Física:** La trama se convierte en pulsos de luz (fibra) o señales eléctricas.",
+      "codeSnippet": "# Comandos esenciales para inspeccionar capas de red en Linux / macOS / Windows\n# 1. Ver la dirección IP y tarjetas de red físicas\nip addr show  # o 'ipconfig' en Windows\n\n# 2. Ver la tabla de enrutamiento del sistema operativo\nip route show\n\n# 3. Inspeccionar conexiones de transporte TCP activas y sockets abiertos\nss -tuln  # o 'netstat -ano' en Windows",
+      "quiz": [
         {
-          question: "HTTP vive en capa...",
-          options: ["Aplicación", "Física", "Enlace"],
-          answerIndex: 0,
-          explanation: "Capa 7 / Application."
-        },
-        {
-          question: "TCP vs UDP: TCP...",
-          options: ["Confiable orientado conexión", "Sin garantía orden", "Solo video"],
-          answerIndex: 0,
-          explanation: "Reliable delivery."
-        },
-        {
-          question: "IP maneja...",
-          options: ["Direccionamiento y routing", "Solo HTML", "Certificados SSL"],
-          answerIndex: 0,
-          explanation: "Capa de red."
-        },
-        {
-          question: "Debug fetch lento: revisar...",
-          options: ["DNS, TLS, TCP además de JS", "Solo React", "Solo Git"],
-          answerIndex: 0,
-          explanation: "Toda la stack."
-        },
-        {
-          question: "TCP/IP tiene...",
-          options: ["4 capas prácticas", "7 capas OSI exactas", "2 capas"],
-          answerIndex: 0,
-          explanation: "Modelo práctico internet."
-        },
-      ,
-        {
-          question: "Según el temario de 'MÓDULO 1: MODELO OSI Y TCP/IP PARA DESARROLLADORES', ¿cuál afirmación es correcta sobre: OSI 7 capas vs TCP/IP 4 capas?",
-          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: OSI 7 capas vs TCP/IP 4 capas", "Ignorar casos borde y entradas vacías en el diseño."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que OSI 7 capas vs TCP/IP 4 capas. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 1: MODELO OSI Y TCP/IP PARA DESARROLLADORES', ¿cuál afirmación es correcta sobre: Capa aplicación: HTTP, DNS, TLS?",
-          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Capa aplicación: HTTP, DNS, TLS", "Mezclar responsabilidades en una sola función o módulo monolítico."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Capa aplicación: HTTP, DNS, TLS. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 1: MODELO OSI Y TCP/IP PARA DESARROLLADORES', ¿cuál afirmación es correcta sobre: Transporte: TCP vs UDP?",
-          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Transporte: TCP vs UDP", "Confundir el concepto con una técnica ortogonal no relacionada."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Transporte: TCP vs UDP. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 1: MODELO OSI Y TCP/IP PARA DESARROLLADORES', ¿cuál afirmación es correcta sobre: Red: IP, routing?",
-          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Red: IP, routing", "Aplicar la regla solo en el best case ignorando el peor escenario."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Red: IP, routing. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 1: MODELO OSI Y TCP/IP PARA DESARROLLADORES', ¿cuál afirmación es correcta sobre: Enlace/física: Ethernet, WiFi?",
-          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Enlace/física: Ethernet, WiFi", "Descartar el análisis asintótico por constantes de hardware."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Enlace/física: Ethernet, WiFi. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 1: MODELO OSI Y TCP/IP PARA DESARROLLADORES', ¿cuál afirmación es correcta sobre: Definición operativa de los términos centrales de MODELO OSI Y TCP/IP PARA DE...?",
-          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Definición operativa de los términos centrales de MODELO OSI Y TCP/...", "Asumir que más líneas de código siempre implican mayor eficiencia."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Definición operativa de los términos centrales de MODELO OSI Y TCP/IP PARA DESARROLLADORES. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 1: MODELO OSI Y TCP/IP PARA DESARROLLADORES', ¿cuál afirmación es correcta sobre: Ejemplo numérico o de código trazado paso a paso?",
-          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Ejemplo numérico o de código trazado paso a paso", "Confundir el concepto con una técnica ortogonal no relacionada."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Ejemplo numérico o de código trazado paso a paso. Las otras opciones representan malentendidos típicos."
+          "question": "¿En qué orden ocurre el encapsulamiento de datos al enviar una petición desde una aplicación?",
+          "options": [
+            "Datos (Aplicación) -> Segmento (Transporte) -> Paquete (Red) -> Trama (Enlace) -> Bits (Física)",
+            "Bits -> Trama -> Segmento -> Datos",
+            "Paquete -> Trama -> Segmento -> Datos"
+          ],
+          "answerIndex": 0,
+          "explanation": "Cada capa inferior envuelve el paquete de la capa superior agregando su propia cabecera de control hasta llegar al medio físico."
         }
       ]
     },
-{
-      id: 2,
-      title: "MÓDULO 2: IP, SUBNETTING Y ROUTING BÁSICO",
-      description: "Direcciones que identifican cada máquina en la red.",
-      items: [
-      "IPv4: 32 bits (192.168.1.1).",
-      "IPv6: 128 bits, adopción creciente.",
-      "CIDR /24, /16 — máscara de subred.",
-      "IP privada vs pública (NAT).",
-      "Router reenvía entre subredes.",
-      "Definición operativa de los términos centrales de IP, SUBNETTING Y ROUTING BÁSICO.",
-      "Ejemplo numérico o de código trazado paso a paso.",
-      "Pregunta tipo entrevista técnica con respuesta esperada.",
-      "Relación explícita con el snippet de implementación del módulo."
-],
-      content: "## Panorama del tema: IP, SUBNETTING Y ROUTING BÁSICO\n\nDirecciones que identifican cada máquina en la red.\n\nIPv4 agotó espacio; IPv6 lo resuelve con 2^128 direcciones. CIDR /24 = 256 IPs (254 usables). 192.168.x.x es privada (NAT a internet). Tu router traduce IP privada → pública. Routing: cada router decide siguiente salto hacia destino. Para devs: localhost=127.0.0.1, docker networks usan subnets aisladas, Vercel edge tiene IPs globales.\n\nEste módulo es material de estudio **autocontenido**: puedes aprenderlo completo aquí, sin pagar plataformas externas ni depender de internet después de cargar la página. Lee en orden, ejecuta el snippet, resuelve la autoevaluación y repasa los puntos que falles.\n\n## Qué aprenderás en este módulo\n\n· IPv4: 32 bits (192.168.1.1).\n· IPv6: 128 bits, adopción creciente.\n· CIDR /24, /16 — máscara de subred.\n· IP privada vs pública (NAT).\n· Router reenvía entre subredes.\n· Definición operativa de los términos centrales de IP, SUBNETTING Y ROUTING BÁSICO.\n· Ejemplo numérico o de código trazado paso a paso.\n· Pregunta tipo entrevista técnica con respuesta esperada.\n· Dominar las 12 preguntas de autoevaluación con ≥70% de aciertos antes de avanzar.\n\n## Desarrollo teórico detallado\n\n## 1. IPv4: 32 bits (192.168.1.1).\n\n**Qué es y por qué importa.** Dentro de IP, SUBNETTING Y ROUTING BÁSICO, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** IPv4: 32 bits (192.168.1.1). — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «IPv4: 32 bits (192.168.1.1).» y cuándo lo evitarías.\n\n## 2. IPv6: 128 bits, adopción creciente.\n\n**Qué es y por qué importa.** Dentro de IP, SUBNETTING Y ROUTING BÁSICO, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** IPv6: 128 bits, adopción creciente. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «IPv6: 128 bits, adopción creciente.» y cuándo lo evitarías.\n\n## 3. CIDR /24, /16 — máscara de subred.\n\n**Qué es y por qué importa.** Dentro de IP, SUBNETTING Y ROUTING BÁSICO, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** CIDR /24, /16 — máscara de subred. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «CIDR /24, /16 — máscara de subred.» y cuándo lo evitarías.\n\n## 4. IP privada vs pública (NAT).\n\n**Qué es y por qué importa.** Dentro de IP, SUBNETTING Y ROUTING BÁSICO, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** IP privada vs pública (NAT). — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «IP privada vs pública (NAT).» y cuándo lo evitarías.\n\n## 5. Router reenvía entre subredes.\n\n**Qué es y por qué importa.** Dentro de IP, SUBNETTING Y ROUTING BÁSICO, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Router reenvía entre subredes. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Router reenvía entre subredes.» y cuándo lo evitarías.\n\n## 6. Definición operativa de los términos centrales de IP, SUBNETTING Y ROUTING BÁSICO.\n\n**Qué es y por qué importa.** Dentro de IP, SUBNETTING Y ROUTING BÁSICO, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Definición operativa de los términos centrales de IP, SUBNETTING Y ROUTING BÁSICO. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Definición operativa de los términos centrales de IP, SUBNETTING Y ROUTING BÁSICO.» y cuándo lo evitarías.\n\n## 7. Ejemplo numérico o de código trazado paso a paso.\n\n**Qué es y por qué importa.** Dentro de IP, SUBNETTING Y ROUTING BÁSICO, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Ejemplo numérico o de código trazado paso a paso. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Ejemplo numérico o de código trazado paso a paso.» y cuándo lo evitarías.\n\n## 8. Pregunta tipo entrevista técnica con respuesta esperada.\n\n**Qué es y por qué importa.** Dentro de IP, SUBNETTING Y ROUTING BÁSICO, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Pregunta tipo entrevista técnica con respuesta esperada. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Pregunta tipo entrevista técnica con respuesta esperada.» y cuándo lo evitarías.\n\n## Aplicaciones en sistemas reales\n\n**Ejemplo 1:** CORS bloquea APIs cross-origin hasta que el servidor envía Access-Control-Allow-Origin explícito.\n\n**Ejemplo 2:** CORS bloquea APIs cross-origin hasta que el servidor envía Access-Control-Allow-Origin explícito.\n\n**Ejemplo 3:** CORS bloquea APIs cross-origin hasta que el servidor envía Access-Control-Allow-Origin explícito.\n\nEstos casos muestran por qué IP, SUBNETTING Y ROUTING BÁSICO no es teórico: empresas y proyectos open source aplican estos principios diariamente. Al estudiar, elige uno y escribe cómo encajaría el concepto del módulo en ese escenario.\n\n## Errores comunes al estudiar\n\n· Confundir el caso promedio con el peor caso al estimar rendimiento de un algoritmo.\n· Ignorar la sección de aplicaciones reales: ahí se ancla la memoria a largo plazo.\n· Confundir el caso promedio con el peor caso al estimar rendimiento de un algoritmo.\n· Ignorar la sección de aplicaciones reales: ahí se ancla la memoria a largo plazo.\n\n## Síntesis para repasar\n\nCierra el módulo resumiendo IP, SUBNETTING Y ROUTING BÁSICO en cinco líneas propias. Vuelve a leer los **Conceptos clave** del panel, ejecuta el código de referencia y completa la autoevaluación. Si fallas más de 3 preguntas, relee el bloque teórico correspondiente antes de continuar — el siguiente módulo asume que dominas este.",
-      codeSnippet: `# Privadas RFC1918: 10.x, 172.16-31.x, 192.168.x
-# /24 = 255.255.255.0`,
-      quiz: [
+    {
+      "id": 2,
+      "title": "MÓDULO 2: CAPA FÍSICA Y DE ENLACE: ETHERNET, MAC Y ARP",
+      "description": "Comunicación en la red local: direcciones MAC físicas, tramas Ethernet, el protocolo ARP de resolución de direcciones y dominios de difusión.",
+      "items": [
+        "Direcciones MAC (Media Access Control): Identificadores de 48 bits grabados en hardware (OUI + NIC).",
+        "La Trama Ethernet II: Preámbulo, MAC Origen, MAC Destino, EtherType, Carga útil (Payload) y CRC Checksum.",
+        "Address Resolution Protocol (ARP): ¿Cómo sabe mi computadora a qué MAC enviar un paquete destinado a la IP 192.168.1.1?",
+        "La Tabla ARP y ataques de envenenamiento ARP (ARP Spoofing / Poisoning).",
+        "Switches de Capa 2 vs Routers de Capa 3: Tablas CAM de reenvío por dirección MAC."
+      ],
+      "content": "## Capa de Enlace: Ethernet y Protocolo ARP\n\nLas direcciones IP son lógicas y sirven para enrutar a nivel global por internet. Sin embargo, en tu red local (LAN o centro de datos), las tarjetas de red se comunican **exclusivamente por direcciones MAC**.\n\n### ¿Cómo funciona ARP?\nSi tu servidor con IP `192.168.1.10` necesita comunicarse con el gateway `192.168.1.1`:\n1. Envía un mensaje **ARP Request** en difusión (Broadcast a `FF:FF:FF:FF:FF:FF`): *\"¿Quién tiene la IP 192.168.1.1? Responda a 192.168.1.10\"*.\n2. El router responde con un **ARP Reply** unicast: *\"La IP 192.168.1.1 está en la MAC 00:1A:2B:3C:4D:5E\"*.\n3. Tu servidor guarda esa respuesta en su **Caché ARP** para no tener que preguntar en cada paquete.",
+      "codeSnippet": "# Inspeccionar y diagnosticar la tabla ARP local\n# Ver las asignaciones IP -> Dirección MAC aprendidas por el sistema\narp -a\n\n# Limpiar la caché ARP en caso de desconfiguración o conflicto de red\n# sudo ip neigh flush all",
+      "quiz": [
         {
-          question: "192.168.1.1 es IP...",
-          options: ["Privada", "Pública global", "IPv6"],
-          answerIndex: 0,
-          explanation: "RFC1918 privada."
-        },
-        {
-          question: "CIDR /24 permite...",
-          options: ["~256 direcciones", "2 direcciones", "Millones"],
-          answerIndex: 0,
-          explanation: "256 IPs en subnet."
-        },
-        {
-          question: "NAT traduce...",
-          options: ["Privada a pública", "DNS a IP", "HTTP a TCP"],
-          answerIndex: 0,
-          explanation: "Home router NAT."
-        },
-        {
-          question: "127.0.0.1 es...",
-          options: ["localhost", "Broadcast", "Gateway"],
-          answerIndex: 0,
-          explanation: "Loopback local."
-        },
-        {
-          question: "IPv6 resuelve...",
-          options: ["Agotamiento IPv4", "Solo WiFi", "Git"],
-          answerIndex: 0,
-          explanation: "Espacio de direcciones."
-        },
-      ,
-        {
-          question: "Según el temario de 'MÓDULO 2: IP, SUBNETTING Y ROUTING BÁSICO', ¿cuál afirmación es correcta sobre: IPv4: 32 bits (192.168.1.1)?",
-          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: IPv4: 32 bits (192.168.1.1)", "Confundir el concepto con una técnica ortogonal no relacionada."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que IPv4: 32 bits (192.168.1.1). Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 2: IP, SUBNETTING Y ROUTING BÁSICO', ¿cuál afirmación es correcta sobre: IPv6: 128 bits, adopción creciente?",
-          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: IPv6: 128 bits, adopción creciente", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que IPv6: 128 bits, adopción creciente. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 2: IP, SUBNETTING Y ROUTING BÁSICO', ¿cuál afirmación es correcta sobre: CIDR /24, /16 — máscara de subred?",
-          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: CIDR /24, /16 — máscara de subred", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que CIDR /24, /16 — máscara de subred. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 2: IP, SUBNETTING Y ROUTING BÁSICO', ¿cuál afirmación es correcta sobre: IP privada vs pública (NAT)?",
-          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: IP privada vs pública (NAT)", "Asumir que más líneas de código siempre implican mayor eficiencia."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que IP privada vs pública (NAT). Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 2: IP, SUBNETTING Y ROUTING BÁSICO', ¿cuál afirmación es correcta sobre: Router reenvía entre subredes?",
-          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Router reenvía entre subredes", "Confundir el concepto con una técnica ortogonal no relacionada."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Router reenvía entre subredes. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 2: IP, SUBNETTING Y ROUTING BÁSICO', ¿cuál afirmación es correcta sobre: Definición operativa de los términos centrales de IP, SUBNETTING Y ROUTING BÁ...?",
-          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Definición operativa de los términos centrales de IP, SUBNETTING Y ...", "Descartar el análisis asintótico por constantes de hardware."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Definición operativa de los términos centrales de IP, SUBNETTING Y ROUTING BÁSICO. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 2: IP, SUBNETTING Y ROUTING BÁSICO', ¿cuál afirmación es correcta sobre: Ejemplo numérico o de código trazado paso a paso?",
-          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Ejemplo numérico o de código trazado paso a paso", "Ignorar casos borde y entradas vacías en el diseño."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Ejemplo numérico o de código trazado paso a paso. Las otras opciones representan malentendidos típicos."
+          "question": "¿Cuál es el propósito del protocolo ARP en una red local?",
+          "options": [
+            "Traducir una dirección lógica IP conocida en la dirección física MAC del dispositivo en la red local",
+            "Cifrar contraseñas bancarias",
+            "Comprimir archivos en formato ZIP"
+          ],
+          "answerIndex": 0,
+          "explanation": "Las tarjetas de red solo pueden emitir tramas Ethernet hacia direcciones MAC; ARP permite descubrir qué MAC posee la IP buscada."
         }
       ]
     },
-{
-      id: 3,
-      title: "MÓDULO 3: DNS — RESOLUCIÓN DE NOMBRES",
-      description: "De quimisell.com a dirección IP.",
-      items: [
-      "Jerarquía: root → TLD → autoritativo.",
-      "Registros A, AAAA, CNAME, MX, TXT.",
-      "TTL: tiempo de cache.",
-      "Resolver recursivo (8.8.8.8).",
-      "DNS propagation y debugging.",
-      "Definición operativa de los términos centrales de DNS — RESOLUCIÓN DE NOMBRES.",
-      "Ejemplo numérico o de código trazado paso a paso.",
-      "Pregunta tipo entrevista técnica con respuesta esperada.",
-      "Relación explícita con el snippet de implementación del módulo."
-],
-      content: "## Panorama del tema: DNS — RESOLUCIÓN DE NOMBRES\n\nDe quimisell.com a dirección IP.\n\nDNS traduce nombres humanos a IPs. Consulta recursiva: tu OS → resolver ISP/Google → root → .com → servidor autoritativo. A record → IPv4; AAAA → IPv6; CNAME alias; TXT para verificación (Vercel, email SPF). TTL bajo = cambios rápidos pero más queries. nslookup/dig diagnostican. Vercel deploy requiere DNS apuntando o CNAME.\n\nEste módulo es material de estudio **autocontenido**: puedes aprenderlo completo aquí, sin pagar plataformas externas ni depender de internet después de cargar la página. Lee en orden, ejecuta el snippet, resuelve la autoevaluación y repasa los puntos que falles.\n\n## Qué aprenderás en este módulo\n\n· Jerarquía: root → TLD → autoritativo.\n· Registros A, AAAA, CNAME, MX, TXT.\n· TTL: tiempo de cache.\n· Resolver recursivo (8.8.8.8).\n· DNS propagation y debugging.\n· Definición operativa de los términos centrales de DNS — RESOLUCIÓN DE NOMBRES.\n· Ejemplo numérico o de código trazado paso a paso.\n· Pregunta tipo entrevista técnica con respuesta esperada.\n· Dominar las 12 preguntas de autoevaluación con ≥70% de aciertos antes de avanzar.\n\n## Desarrollo teórico detallado\n\n## 1. Jerarquía: root → TLD → autoritativo.\n\n**Qué es y por qué importa.** Dentro de DNS — RESOLUCIÓN DE NOMBRES, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Jerarquía: root → TLD → autoritativo. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Jerarquía: root → TLD → autoritativo.» y cuándo lo evitarías.\n\n## 2. Registros A, AAAA, CNAME, MX, TXT.\n\n**Qué es y por qué importa.** Dentro de DNS — RESOLUCIÓN DE NOMBRES, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Registros A, AAAA, CNAME, MX, TXT. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Registros A, AAAA, CNAME, MX, TXT.» y cuándo lo evitarías.\n\n## 3. TTL: tiempo de cache.\n\n**Qué es y por qué importa.** Dentro de DNS — RESOLUCIÓN DE NOMBRES, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** TTL: tiempo de cache. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «TTL: tiempo de cache.» y cuándo lo evitarías.\n\n## 4. Resolver recursivo (8.8.8.8).\n\n**Qué es y por qué importa.** Dentro de DNS — RESOLUCIÓN DE NOMBRES, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Resolver recursivo (8.8.8.8). — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Resolver recursivo (8.8.8.8).» y cuándo lo evitarías.\n\n## 5. DNS propagation y debugging.\n\n**Qué es y por qué importa.** Dentro de DNS — RESOLUCIÓN DE NOMBRES, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** DNS propagation y debugging. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «DNS propagation y debugging.» y cuándo lo evitarías.\n\n## 6. Definición operativa de los términos centrales de DNS — RESOLUCIÓN DE NOMBRES.\n\n**Qué es y por qué importa.** Dentro de DNS — RESOLUCIÓN DE NOMBRES, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Definición operativa de los términos centrales de DNS — RESOLUCIÓN DE NOMBRES. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Definición operativa de los términos centrales de DNS — RESOLUCIÓN DE NOMBRES.» y cuándo lo evitarías.\n\n## 7. Ejemplo numérico o de código trazado paso a paso.\n\n**Qué es y por qué importa.** Dentro de DNS — RESOLUCIÓN DE NOMBRES, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Ejemplo numérico o de código trazado paso a paso. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Ejemplo numérico o de código trazado paso a paso.» y cuándo lo evitarías.\n\n## 8. Pregunta tipo entrevista técnica con respuesta esperada.\n\n**Qué es y por qué importa.** Dentro de DNS — RESOLUCIÓN DE NOMBRES, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Pregunta tipo entrevista técnica con respuesta esperada. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Pregunta tipo entrevista técnica con respuesta esperada.» y cuándo lo evitarías.\n\n## Aplicaciones en sistemas reales\n\n**Ejemplo 1:** CORS bloquea APIs cross-origin hasta que el servidor envía Access-Control-Allow-Origin explícito.\n\n**Ejemplo 2:** CORS bloquea APIs cross-origin hasta que el servidor envía Access-Control-Allow-Origin explícito.\n\n**Ejemplo 3:** CORS bloquea APIs cross-origin hasta que el servidor envía Access-Control-Allow-Origin explícito.\n\nEstos casos muestran por qué DNS — RESOLUCIÓN DE NOMBRES no es teórico: empresas y proyectos open source aplican estos principios diariamente. Al estudiar, elige uno y escribe cómo encajaría el concepto del módulo en ese escenario.\n\n## Errores comunes al estudiar\n\n· Confundir el caso promedio con el peor caso al estimar rendimiento de un algoritmo.\n· Ignorar la sección de aplicaciones reales: ahí se ancla la memoria a largo plazo.\n· Confundir el caso promedio con el peor caso al estimar rendimiento de un algoritmo.\n· Ignorar la sección de aplicaciones reales: ahí se ancla la memoria a largo plazo.\n\n## Síntesis para repasar\n\nCierra el módulo resumiendo DNS — RESOLUCIÓN DE NOMBRES en cinco líneas propias. Vuelve a leer los **Conceptos clave** del panel, ejecuta el código de referencia y completa la autoevaluación. Si fallas más de 3 preguntas, relee el bloque teórico correspondiente antes de continuar — el siguiente módulo asume que dominas este.",
-      codeSnippet: `dig quimisell.com A
-nslookup github.com`,
-      quiz: [
+    {
+      "id": 3,
+      "title": "MÓDULO 3: CAPA DE RED: IPV4, IPV6, SUBNETTING CIDR Y NAT",
+      "description": "Enrutamiento global: anatomía del paquete IPv4 e IPv6, cálculo de máscaras de subred CIDR (/24, /16) y Network Address Translation (NAT).",
+      "items": [
+        "Estructura de la cabecera IPv4: TTL (Time to Live), Checksum, Fragmentación y direcciones de 32 bits.",
+        "Agotamiento de IPv4 y la arquitectura de IPv6: Direcciones de 128 bits, autoconfiguración SLAAC y ausencia de NAT.",
+        "Notación CIDR (Classless Inter-Domain Routing): Cálculo binario de máscaras de red (`/24` = 256 IPs, 254 útiles).",
+        "Direcciones IP privadas (RFC 1918): `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`.",
+        "Network Address Translation (NAT): Cómo cientos de servidores comparten una sola IP pública mediante tablas de puertos (PAT).",
+        "Diagnóstico de enrutamiento con `traceroute` / `tracert` y análisis del campo TTL."
+      ],
+      "content": "## Capa de Red: Direccionamiento IP y Subnetting CIDR\n\nEl protocolo IP es no orientado a conexión y no confiable (**Best Effort**): se encarga de transportar paquetes de origen a destino a través de múltiples routers, pero no garantiza que lleguen en orden ni que no se pierdan.\n\n### Notación CIDR en Cloud (AWS VPC, GCP, Azure)\nCuando diseñas una arquitectura de nube, debes dimensionar tus subredes con notación CIDR:\n* `/24`: 32 - 24 = 8 bits para hosts ➔ $2^8 = 256$ IPs (254 asignables).\n* `/16`: 32 - 16 = 16 bits para hosts ➔ $2^{16} = 65,536$ IPs.\n\n### El Campo TTL (Time to Live)\nCada paquete IP tiene un contador TTL (típicamente 64 o 128). Cada router por el que pasa decrementa el TTL en 1. Si llega a 0, el router lo destruye y envía un mensaje ICMP Time Exceeded, evitando que paquetes huérfanos circulen en bucles infinitos por internet.",
+      "codeSnippet": "# Análisis de rutas y salto de paquetes con traceroute\n# Rastrea cada router (salto) por el que viaja tu paquete hacia el destino\ntraceroute -n 8.8.8.8  # o 'tracert -d 8.8.8.8' en Windows\n\n# Ping para verificar latencia y pérdida de paquetes ICMP\nping -c 4 api.quimisell.dev",
+      "quiz": [
         {
-          question: "DNS traduce...",
-          options: ["Nombre a IP", "IP a HTML", "TCP a UDP"],
-          answerIndex: 0,
-          explanation: "Resolución de nombres."
-        },
-        {
-          question: "Registro A...",
-          options: ["Nombre a IPv4", "Nombre a IPv6", "Email"],
-          answerIndex: 0,
-          explanation: "Address record."
-        },
-        {
-          question: "CNAME...",
-          options: ["Alias a otro nombre", "Mail exchange", "Solo IPv6"],
-          answerIndex: 0,
-          explanation: "Canonical name alias."
-        },
-        {
-          question: "TTL controla...",
-          options: ["Tiempo cache del registro", "Velocidad TCP", "Tamaño paquete"],
-          answerIndex: 0,
-          explanation: "Time To Live cache."
-        },
-        {
-          question: "dig/nslookup...",
-          options: ["Diagnostican DNS", "Escanean puertos", "Compilan TS"],
-          answerIndex: 0,
-          explanation: "Herramientas DNS."
-        },
-      ,
-        {
-          question: "Según el temario de 'MÓDULO 3: DNS — RESOLUCIÓN DE NOMBRES', ¿cuál afirmación es correcta sobre: Jerarquía: root → TLD → autoritativo?",
-          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Jerarquía: root → TLD → autoritativo", "Asumir que más líneas de código siempre implican mayor eficiencia."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Jerarquía: root → TLD → autoritativo. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 3: DNS — RESOLUCIÓN DE NOMBRES', ¿cuál afirmación es correcta sobre: Registros A, AAAA, CNAME, MX, TXT?",
-          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Registros A, AAAA, CNAME, MX, TXT", "Ignorar casos borde y entradas vacías en el diseño."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Registros A, AAAA, CNAME, MX, TXT. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 3: DNS — RESOLUCIÓN DE NOMBRES', ¿cuál afirmación es correcta sobre: TTL: tiempo de cache?",
-          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: TTL: tiempo de cache", "Aplicar la regla solo en el best case ignorando el peor escenario."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que TTL: tiempo de cache. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 3: DNS — RESOLUCIÓN DE NOMBRES', ¿cuál afirmación es correcta sobre: Resolver recursivo (8.8.8.8)?",
-          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Resolver recursivo (8.8.8.8)", "Optimizar prematuramente sin perfilar el cuello de botella real."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Resolver recursivo (8.8.8.8). Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 3: DNS — RESOLUCIÓN DE NOMBRES', ¿cuál afirmación es correcta sobre: DNS propagation y debugging?",
-          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: DNS propagation y debugging", "Optimizar prematuramente sin perfilar el cuello de botella real."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que DNS propagation y debugging. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 3: DNS — RESOLUCIÓN DE NOMBRES', ¿cuál afirmación es correcta sobre: Definición operativa de los términos centrales de DNS — RESOLUCIÓN DE NOMBRES?",
-          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Definición operativa de los términos centrales de DNS — RESOLUCIÓN ...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Definición operativa de los términos centrales de DNS — RESOLUCIÓN DE NOMBRES. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 3: DNS — RESOLUCIÓN DE NOMBRES', ¿cuál afirmación es correcta sobre: Ejemplo numérico o de código trazado paso a paso?",
-          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Ejemplo numérico o de código trazado paso a paso", "Asumir que más líneas de código siempre implican mayor eficiencia."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Ejemplo numérico o de código trazado paso a paso. Las otras opciones representan malentendidos típicos."
+          "question": "¿Cuántas direcciones IP utilizables para servidores o hosts ofrece una subred con máscara `/24`?",
+          "options": [
+            "254 (de las 256 totales, la primera es ID de red y la última es difusión)",
+            "256",
+            "1024"
+          ],
+          "answerIndex": 0,
+          "explanation": "En IPv4, la dirección más baja (ej. `.0`) identifica a la red y la más alta (ej. `.255`) es el broadcast, dejando 254 IPs asignables a máquinas."
         }
       ]
     },
-{
-      id: 4,
-      title: "MÓDULO 4: HTTP/1.1, HTTP/2 Y HTTPS",
-      description: "El protocolo que mueve la web.",
-      items: [
-      "Request: method, path, headers, body.",
-      "Response: status code, headers, body.",
-      "HTTP/2: multiplexing, header compression.",
-      "HTTPS = HTTP + TLS.",
-      "Status: 2xx ok, 3xx redirect, 4xx client, 5xx server.",
-      "Definición operativa de los términos centrales de HTTP/1.1, HTTP/2 Y HTTPS.",
-      "Ejemplo numérico o de código trazado paso a paso.",
-      "Pregunta tipo entrevista técnica con respuesta esperada.",
-      "Relación explícita con el snippet de implementación del módulo."
-],
-      content: "## Panorama del tema: HTTP/1.1, HTTP/2 Y HTTPS\n\nEl protocolo que mueve la web.\n\nHTTP es texto (HTTP/1.1) o binario (HTTP/2) sobre TCP. GET idempotente, POST crea, PUT actualiza, DELETE elimina. Headers: Content-Type, Authorization, Cache-Control. HTTP/2 multiplexa requests en una conexión TCP. HTTPS obligatorio en producción (SEO, seguridad). 404 Not Found, 500 Internal Error — conoce códigos para debug API.\n\nEste módulo es material de estudio **autocontenido**: puedes aprenderlo completo aquí, sin pagar plataformas externas ni depender de internet después de cargar la página. Lee en orden, ejecuta el snippet, resuelve la autoevaluación y repasa los puntos que falles.\n\n## Qué aprenderás en este módulo\n\n· Request: method, path, headers, body.\n· Response: status code, headers, body.\n· HTTP/2: multiplexing, header compression.\n· HTTPS = HTTP + TLS.\n· Status: 2xx ok, 3xx redirect, 4xx client, 5xx server.\n· Definición operativa de los términos centrales de HTTP/1.1, HTTP/2 Y HTTPS.\n· Ejemplo numérico o de código trazado paso a paso.\n· Pregunta tipo entrevista técnica con respuesta esperada.\n· Dominar las 12 preguntas de autoevaluación con ≥70% de aciertos antes de avanzar.\n\n## Desarrollo teórico detallado\n\n## 1. Request: method, path, headers, body.\n\n**Qué es y por qué importa.** Dentro de HTTP/1.1, HTTP/2 Y HTTPS, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Request: method, path, headers, body. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Request: method, path, headers, body.» y cuándo lo evitarías.\n\n## 2. Response: status code, headers, body.\n\n**Qué es y por qué importa.** Dentro de HTTP/1.1, HTTP/2 Y HTTPS, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Response: status code, headers, body. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Response: status code, headers, body.» y cuándo lo evitarías.\n\n## 3. HTTP/2: multiplexing, header compression.\n\n**Qué es y por qué importa.** Dentro de HTTP/1.1, HTTP/2 Y HTTPS, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** HTTP/2: multiplexing, header compression. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «HTTP/2: multiplexing, header compression.» y cuándo lo evitarías.\n\n## 4. HTTPS = HTTP + TLS.\n\n**Qué es y por qué importa.** Dentro de HTTP/1.1, HTTP/2 Y HTTPS, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** HTTPS = HTTP + TLS. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «HTTPS = HTTP + TLS.» y cuándo lo evitarías.\n\n## 5. Status: 2xx ok, 3xx redirect, 4xx client, 5xx server.\n\n**Qué es y por qué importa.** Dentro de HTTP/1.1, HTTP/2 Y HTTPS, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Status: 2xx ok, 3xx redirect, 4xx client, 5xx server. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Status: 2xx ok, 3xx redirect, 4xx client, 5xx server.» y cuándo lo evitarías.\n\n## 6. Definición operativa de los términos centrales de HTTP/1.1, HTTP/2 Y HTTPS.\n\n**Qué es y por qué importa.** Dentro de HTTP/1.1, HTTP/2 Y HTTPS, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Definición operativa de los términos centrales de HTTP/1.1, HTTP/2 Y HTTPS. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Definición operativa de los términos centrales de HTTP/1.1, HTTP/2 Y HTTPS.» y cuándo lo evitarías.\n\n## 7. Ejemplo numérico o de código trazado paso a paso.\n\n**Qué es y por qué importa.** Dentro de HTTP/1.1, HTTP/2 Y HTTPS, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Ejemplo numérico o de código trazado paso a paso. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Ejemplo numérico o de código trazado paso a paso.» y cuándo lo evitarías.\n\n## 8. Pregunta tipo entrevista técnica con respuesta esperada.\n\n**Qué es y por qué importa.** Dentro de HTTP/1.1, HTTP/2 Y HTTPS, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Pregunta tipo entrevista técnica con respuesta esperada. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Pregunta tipo entrevista técnica con respuesta esperada.» y cuándo lo evitarías.\n\n## Aplicaciones en sistemas reales\n\n**Ejemplo 1:** Un fetch() lento suele ser DNS+TLS, no JavaScript: devtools Network muestra waterfall completo.\n\n**Ejemplo 2:** Un fetch() lento suele ser DNS+TLS, no JavaScript: devtools Network muestra waterfall completo.\n\n**Ejemplo 3:** Un fetch() lento suele ser DNS+TLS, no JavaScript: devtools Network muestra waterfall completo.\n\nEstos casos muestran por qué HTTP/1.1, HTTP/2 Y HTTPS no es teórico: empresas y proyectos open source aplican estos principios diariamente. Al estudiar, elige uno y escribe cómo encajaría el concepto del módulo en ese escenario.\n\n## Errores comunes al estudiar\n\n· Avanzar al siguiente módulo sin alcanzar al menos 70% en la autoevaluación.\n· Estudiar solo la definición sin un ejemplo numérico concreto (valores pequeños de n).\n· Avanzar al siguiente módulo sin alcanzar al menos 70% en la autoevaluación.\n· Estudiar solo la definición sin un ejemplo numérico concreto (valores pequeños de n).\n\n## Síntesis para repasar\n\nCierra el módulo resumiendo HTTP/1.1, HTTP/2 Y HTTPS en cinco líneas propias. Vuelve a leer los **Conceptos clave** del panel, ejecuta el código de referencia y completa la autoevaluación. Si fallas más de 3 preguntas, relee el bloque teórico correspondiente antes de continuar — el siguiente módulo asume que dominas este.",
-      codeSnippet: `curl -I https://api.github.com
-curl -X POST -H 'Content-Type: application/json' -d '{}' URL`,
-      quiz: [
+    {
+      "id": 4,
+      "title": "MÓDULO 4: DNS: RESOLUCIÓN RECURSIVA, REGISTROS Y DNSSEC",
+      "description": "La guía telefónica de internet: árbol jerárquico DNS (Root, TLD, Autoritativos), tipos de registros (A, AAAA, CNAME, TXT, MX) y seguridad con DNSSEC.",
+      "items": [
+        "La jerarquía global de DNS: Servidores Raíz (13 clusters mundiales), servidores TLD (.com, .dev) y servidores autoritativos.",
+        "Resolución Recursiva vs Resolución Iterativa paso a paso.",
+        "Tipos de registros fundamentales: `A` (IPv4), `AAAA` (IPv6), `CNAME` (Alias canónico), `MX` (Correo), `TXT` (SPF/DKIM/Verificación).",
+        "El valor TTL (Time To Live) de DNS y estrategias de migración de servidores sin downtime.",
+        "Ataques de DNS Spoofing / Cache Poisoning y defensas criptográficas con DNSSEC.",
+        "Diagnóstico profesional de consultas DNS con `dig` y `nslookup`."
+      ],
+      "content": "## Sistema de Nombres de Dominio (DNS)\n\nCuando escribes `api.quimisell.dev`:\n1. Tu computadora consulta a su **DNS recursivo** local (ej. `1.1.1.1` de Cloudflare o `8.8.8.8` de Google).\n2. Si no está en caché, el resolver consulta a los **Servidores Raíz (Root Servers)**: responden con los servidores del TLD `.dev`.\n3. El resolver consulta al **TLD Server de `.dev`**: responde con los **Servidores Autoritativos** de QuimiSell (ej. `ns1.vercel-dns.com`).\n4. El servidor autoritativo devuelve la IP final: `76.76.21.21` con su TTL correspondiente.",
+      "codeSnippet": "# Comandos de diagnóstico DNS profesional con dig\n# 1. Consultar registro tipo A de un dominio con respuesta detallada\ndig api.quimisell.dev A\n\n# 2. Consultar directamente a un servidor DNS específico (ej. Cloudflare 1.1.1.1)\ndig @1.1.1.1 api.quimisell.dev +short\n\n# 3. Rastrear la jerarquía completa desde la raíz hasta el servidor autoritativo\ndig +trace api.quimisell.dev",
+      "quiz": [
         {
-          question: "GET es...",
-          options: ["Idempotente lectura", "Siempre crea recurso", "Solo WebSocket"],
-          answerIndex: 0,
-          explanation: "Read sin side effects."
-        },
-        {
-          question: "HTTPS es...",
-          options: ["HTTP + TLS", "HTTP sin TCP", "Solo HTTP/2"],
-          answerIndex: 0,
-          explanation: "Cifrado en tránsito."
-        },
-        {
-          question: "404 significa...",
-          options: ["Recurso no encontrado", "Server error", "Redirect"],
-          answerIndex: 0,
-          explanation: "Client error not found."
-        },
-        {
-          question: "HTTP/2 mejora...",
-          options: ["Multiplexing en una conexión", "Elimina TCP", "Solo DNS"],
-          answerIndex: 0,
-          explanation: "Performance conexión."
-        },
-        {
-          question: "Content-Type header...",
-          options: ["Tipo de body", "IP destino", "Certificado"],
-          answerIndex: 0,
-          explanation: "MIME type del body."
-        },
-      ,
-        {
-          question: "Según el temario de 'MÓDULO 4: HTTP/1.1, HTTP/2 Y HTTPS', ¿cuál afirmación es correcta sobre: Request: method, path, headers, body?",
-          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Request: method, path, headers, body", "Asumir que más líneas de código siempre implican mayor eficiencia."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Request: method, path, headers, body. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 4: HTTP/1.1, HTTP/2 Y HTTPS', ¿cuál afirmación es correcta sobre: Response: status code, headers, body?",
-          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Response: status code, headers, body", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Response: status code, headers, body. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 4: HTTP/1.1, HTTP/2 Y HTTPS', ¿cuál afirmación es correcta sobre: HTTP/2: multiplexing, header compression?",
-          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: HTTP/2: multiplexing, header compression", "Mezclar responsabilidades en una sola función o módulo monolítico."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que HTTP/2: multiplexing, header compression. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 4: HTTP/1.1, HTTP/2 Y HTTPS', ¿cuál afirmación es correcta sobre: HTTPS = HTTP + TLS?",
-          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: HTTPS = HTTP + TLS", "Aplicar la regla solo en el best case ignorando el peor escenario."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que HTTPS = HTTP + TLS. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 4: HTTP/1.1, HTTP/2 Y HTTPS', ¿cuál afirmación es correcta sobre: Status: 2xx ok, 3xx redirect, 4xx client, 5xx server?",
-          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Status: 2xx ok, 3xx redirect, 4xx client, 5xx server", "Descartar el análisis asintótico por constantes de hardware."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Status: 2xx ok, 3xx redirect, 4xx client, 5xx server. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 4: HTTP/1.1, HTTP/2 Y HTTPS', ¿cuál afirmación es correcta sobre: Definición operativa de los términos centrales de HTTP/1.1, HTTP/2 Y HTTPS?",
-          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Definición operativa de los términos centrales de HTTP/1.1, HTTP/2 ...", "Ignorar casos borde y entradas vacías en el diseño."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Definición operativa de los términos centrales de HTTP/1.1, HTTP/2 Y HTTPS. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 4: HTTP/1.1, HTTP/2 Y HTTPS', ¿cuál afirmación es correcta sobre: Ejemplo numérico o de código trazado paso a paso?",
-          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Ejemplo numérico o de código trazado paso a paso", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Ejemplo numérico o de código trazado paso a paso. Las otras opciones representan malentendidos típicos."
+          "question": "¿Cuál es la función del registro de tipo `CNAME` en DNS?",
+          "options": [
+            "Crear un alias de un nombre de dominio hacia otro nombre de dominio canónico existente",
+            "Asignar una dirección IPv4 directa",
+            "Configurar el servidor de correo electrónico"
+          ],
+          "answerIndex": 0,
+          "explanation": "CNAME redirige un subdominio (como `www.ejemplo.com`) hacia otro nombre de host (como `ejemplo.com` o un dominio de Vercel)."
         }
       ]
     },
-{
-      id: 5,
-      title: "MÓDULO 5: TLS, SSL Y CERTIFICADOS",
-      description: "Cifrado que protege datos en tránsito.",
-      items: [
-      "Handshake TLS: acuerdo de claves.",
-      "Certificado X.509: identidad del servidor.",
-      "CA (Let's Encrypt) firma certificados.",
-      "HTTPS padlock = TLS activo.",
-      "Certificate pinning en mobile.",
-      "Definición operativa de los términos centrales de TLS, SSL Y CERTIFICADOS.",
-      "Ejemplo numérico o de código trazado paso a paso.",
-      "Pregunta tipo entrevista técnica con respuesta esperada.",
-      "Relación explícita con el snippet de implementación del módulo."
-],
-      content: "## Panorama del tema: TLS, SSL Y CERTIFICADOS\n\nCifrado que protege datos en tránsito.\n\nTLS negocia cifrado simétrico tras intercambio asimétrico en handshake. Certificado prueba que quimisell.com es quien dice ser (firmado por CA). Let's Encrypt gratis vía ACME. Mixed content (HTTP en HTTPS page) bloqueado por browser. Dev: mkcert para certs locales. Vercel provisiona TLS automático.\n\nEste módulo es material de estudio **autocontenido**: puedes aprenderlo completo aquí, sin pagar plataformas externas ni depender de internet después de cargar la página. Lee en orden, ejecuta el snippet, resuelve la autoevaluación y repasa los puntos que falles.\n\n## Qué aprenderás en este módulo\n\n· Handshake TLS: acuerdo de claves.\n· Certificado X.509: identidad del servidor.\n· CA (Let's Encrypt) firma certificados.\n· HTTPS padlock = TLS activo.\n· Certificate pinning en mobile.\n· Definición operativa de los términos centrales de TLS, SSL Y CERTIFICADOS.\n· Ejemplo numérico o de código trazado paso a paso.\n· Pregunta tipo entrevista técnica con respuesta esperada.\n· Dominar las 12 preguntas de autoevaluación con ≥70% de aciertos antes de avanzar.\n\n## Desarrollo teórico detallado\n\n## 1. Handshake TLS: acuerdo de claves.\n\n**Qué es y por qué importa.** Dentro de TLS, SSL Y CERTIFICADOS, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Handshake TLS: acuerdo de claves. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Handshake TLS: acuerdo de claves.» y cuándo lo evitarías.\n\n## 2. Certificado X.509: identidad del servidor.\n\n**Qué es y por qué importa.** Dentro de TLS, SSL Y CERTIFICADOS, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Certificado X.509: identidad del servidor. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Certificado X.509: identidad del servidor.» y cuándo lo evitarías.\n\n## 3. CA (Let's Encrypt) firma certificados.\n\n**Qué es y por qué importa.** Dentro de TLS, SSL Y CERTIFICADOS, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** CA (Let's Encrypt) firma certificados. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «CA (Let's Encrypt) firma certificados.» y cuándo lo evitarías.\n\n## 4. HTTPS padlock = TLS activo.\n\n**Qué es y por qué importa.** Dentro de TLS, SSL Y CERTIFICADOS, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** HTTPS padlock = TLS activo. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «HTTPS padlock = TLS activo.» y cuándo lo evitarías.\n\n## 5. Certificate pinning en mobile.\n\n**Qué es y por qué importa.** Dentro de TLS, SSL Y CERTIFICADOS, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Certificate pinning en mobile. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Certificate pinning en mobile.» y cuándo lo evitarías.\n\n## 6. Definición operativa de los términos centrales de TLS, SSL Y CERTIFICADOS.\n\n**Qué es y por qué importa.** Dentro de TLS, SSL Y CERTIFICADOS, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Definición operativa de los términos centrales de TLS, SSL Y CERTIFICADOS. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Definición operativa de los términos centrales de TLS, SSL Y CERTIFICADOS.» y cuándo lo evitarías.\n\n## 7. Ejemplo numérico o de código trazado paso a paso.\n\n**Qué es y por qué importa.** Dentro de TLS, SSL Y CERTIFICADOS, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Ejemplo numérico o de código trazado paso a paso. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Ejemplo numérico o de código trazado paso a paso.» y cuándo lo evitarías.\n\n## 8. Pregunta tipo entrevista técnica con respuesta esperada.\n\n**Qué es y por qué importa.** Dentro de TLS, SSL Y CERTIFICADOS, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Pregunta tipo entrevista técnica con respuesta esperada. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Pregunta tipo entrevista técnica con respuesta esperada.» y cuándo lo evitarías.\n\n## Aplicaciones en sistemas reales\n\n**Ejemplo 1:** CORS bloquea APIs cross-origin hasta que el servidor envía Access-Control-Allow-Origin explícito.\n\n**Ejemplo 2:** CORS bloquea APIs cross-origin hasta que el servidor envía Access-Control-Allow-Origin explícito.\n\n**Ejemplo 3:** CORS bloquea APIs cross-origin hasta que el servidor envía Access-Control-Allow-Origin explícito.\n\nEstos casos muestran por qué TLS, SSL Y CERTIFICADOS no es teórico: empresas y proyectos open source aplican estos principios diariamente. Al estudiar, elige uno y escribe cómo encajaría el concepto del módulo en ese escenario.\n\n## Errores comunes al estudiar\n\n· Estudiar solo la definición sin un ejemplo numérico concreto (valores pequeños de n).\n· Avanzar al siguiente módulo sin alcanzar al menos 70% en la autoevaluación.\n· Estudiar solo la definición sin un ejemplo numérico concreto (valores pequeños de n).\n· Avanzar al siguiente módulo sin alcanzar al menos 70% en la autoevaluación.\n\n## Síntesis para repasar\n\nCierra el módulo resumiendo TLS, SSL Y CERTIFICADOS en cinco líneas propias. Vuelve a leer los **Conceptos clave** del panel, ejecuta el código de referencia y completa la autoevaluación. Si fallas más de 3 preguntas, relee el bloque teórico correspondiente antes de continuar — el siguiente módulo asume que dominas este.",
-      codeSnippet: `# TLS 1.3: handshake más rápido, ciphers seguros`,
-      quiz: [
+    {
+      "id": 5,
+      "title": "MÓDULO 5: CAPA DE TRANSPORTE: TCP HANDSHAKE, CONTROL DE FLUJO Y CONGESTIÓN",
+      "description": "El protocolo confiable de internet: el 3-Way Handshake (SYN, SYN-ACK, ACK), ventanas deslizantes, números de secuencia y control de congestión.",
+      "items": [
+        "Características de TCP: Confiable, orientado a conexión, en orden y con verificación de errores.",
+        "El Three-Way Handshake: SYN ➔ SYN-ACK ➔ ACK (establecimiento de conexión y sincronización de números de secuencia ISN).",
+        "El Four-Way Teardown para cierre ordenado: FIN ➔ ACK ➔ FIN ➔ ACK y estado TIME_WAIT.",
+        "Ventanas Deslizantes (Sliding Window): Control de flujo entre emisor y receptor según el búfer disponible.",
+        "Algoritmos de Control de Congestión: Slow Start, Congestion Avoidance, Fast Retransmit y BBR de Google.",
+        "El problema del Head-of-Line Blocking a nivel de transporte TCP."
+      ],
+      "content": "## Capa de Transporte: El Protocolo TCP\n\nTCP transforma un medio físico no confiable en un canal bidireccional continuo donde los bytes llegan completos y en el orden exacto.\n\n### El 3-Way Handshake\n```\nCliente                               Servidor\n   │                                     │\n   │────────── SYN (seq=100) ───────────►│ (Cliente propone iniciar)\n   │                                     │\n   │◄────── SYN-ACK (seq=300, ack=101) ──│ (Servidor acepta y sincroniza)\n   │                                     │\n   │────────── ACK (ack=301) ───────────►│ (Conexión ESTABLISHED)\n   │                                     │\n```\nCada conexión TCP requiere este viaje de ida y vuelta (**1 RTT - Round Trip Time**) antes de que la aplicación pueda enviar el primer byte de datos.",
+      "codeSnippet": "// Ejemplo en Node.js: Creación de un Servidor TCP puro\nimport net from 'net';\n\nconst server = net.createServer((socket) => {\n  console.log('Cliente conectado desde:', socket.remoteAddress);\n\n  socket.on('data', (data) => {\n    console.log('Bytes TCP recibidos:', data.toString());\n    socket.write('ACK desde Servidor TCP\\n');\n  });\n\n  socket.on('end', () => {\n    console.log('Cliente desconectado.');\n  });\n});\n\nserver.listen(4000, () => {\n  console.log('Servidor TCP escuchando en puerto 4000');\n});",
+      "quiz": [
         {
-          question: "TLS handshake...",
-          options: ["Negocia claves de cifrado", "Resuelve DNS", "Compila JS"],
-          answerIndex: 0,
-          explanation: "Acuerdo seguro."
-        },
-        {
-          question: "Certificado X.509...",
-          options: ["Identidad del servidor", "Contraseña usuario", "IP privada"],
-          answerIndex: 0,
-          explanation: "Prueba identidad."
-        },
-        {
-          question: "Let's Encrypt...",
-          options: ["CA gratuita", "Solo pago", "Protocolo HTTP"],
-          answerIndex: 0,
-          explanation: "Certs gratis ACME."
-        },
-        {
-          question: "Mixed content...",
-          options: ["HTTP recursos en HTTPS page", "Siempre seguro", "Solo mobile"],
-          answerIndex: 0,
-          explanation: "Browser lo bloquea."
-        },
-        {
-          question: "Vercel TLS...",
-          options: ["Automático en deploy", "Manual siempre", "No soportado"],
-          answerIndex: 0,
-          explanation: "HTTPS out of box."
-        },
-      ,
-        {
-          question: "Según el temario de 'MÓDULO 5: TLS, SSL Y CERTIFICADOS', ¿cuál afirmación es correcta sobre: Handshake TLS: acuerdo de claves?",
-          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Handshake TLS: acuerdo de claves", "Aplicar la regla solo en el best case ignorando el peor escenario."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Handshake TLS: acuerdo de claves. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 5: TLS, SSL Y CERTIFICADOS', ¿cuál afirmación es correcta sobre: Certificado X.509: identidad del servidor?",
-          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Certificado X.509: identidad del servidor", "Aplicar la regla solo en el best case ignorando el peor escenario."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Certificado X.509: identidad del servidor. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 5: TLS, SSL Y CERTIFICADOS', ¿cuál afirmación es correcta sobre: CA (Let's Encrypt) firma certificados?",
-          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: CA (Let's Encrypt) firma certificados", "Mezclar responsabilidades en una sola función o módulo monolítico."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que CA (Let's Encrypt) firma certificados. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 5: TLS, SSL Y CERTIFICADOS', ¿cuál afirmación es correcta sobre: HTTPS padlock = TLS activo?",
-          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: HTTPS padlock = TLS activo", "Mezclar responsabilidades en una sola función o módulo monolítico."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que HTTPS padlock = TLS activo. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 5: TLS, SSL Y CERTIFICADOS', ¿cuál afirmación es correcta sobre: Certificate pinning en mobile?",
-          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Certificate pinning en mobile", "Descartar el análisis asintótico por constantes de hardware."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Certificate pinning en mobile. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 5: TLS, SSL Y CERTIFICADOS', ¿cuál afirmación es correcta sobre: Definición operativa de los términos centrales de TLS, SSL Y CERTIFICADOS?",
-          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Definición operativa de los términos centrales de TLS, SSL Y CERTIF...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Definición operativa de los términos centrales de TLS, SSL Y CERTIFICADOS. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 5: TLS, SSL Y CERTIFICADOS', ¿cuál afirmación es correcta sobre: Ejemplo numérico o de código trazado paso a paso?",
-          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Ejemplo numérico o de código trazado paso a paso", "Aplicar la regla solo en el best case ignorando el peor escenario."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Ejemplo numérico o de código trazado paso a paso. Las otras opciones representan malentendidos típicos."
+          "question": "¿Cuántos viajes de ida y vuelta (Round-Trip Times - RTT) requiere el 3-Way Handshake de TCP para establecer la conexión antes de enviar datos?",
+          "options": [
+            "1 RTT completo",
+            "0 RTT",
+            "5 RTT"
+          ],
+          "answerIndex": 0,
+          "explanation": "El intercambio de SYN -> SYN-ACK -> ACK consume exactamente un ciclo completo de ida y vuelta de red (1 RTT)."
         }
       ]
     },
-{
-      id: 6,
-      title: "MÓDULO 6: REST, WEBSOCKETS Y APIS",
-      description: "Comunicación cliente-servidor moderna.",
-      items: [
-      "REST: recursos como URLs, verbs HTTP.",
-      "JSON como formato dominante.",
-      "WebSocket: conexión bidireccional persistente.",
-      "GraphQL: query flexible.",
-      "Rate limiting y paginación.",
-      "Definición operativa de los términos centrales de REST, WEBSOCKETS Y APIS.",
-      "Ejemplo numérico o de código trazado paso a paso.",
-      "Pregunta tipo entrevista técnica con respuesta esperada.",
-      "Relación explícita con el snippet de implementación del módulo."
-],
-      content: "## Panorama del tema: REST, WEBSOCKETS Y APIS\n\nComunicación cliente-servidor moderna.\n\nREST mapea entidades a URLs: GET /users/1, POST /users. Stateless: cada request lleva auth. WebSockets para chat, gaming, live updates — conexión persistente vs polling HTTP. GraphQL un endpoint, cliente elige campos. API design: versionado (/v1/), paginación (cursor/offset), rate limits (429 Too Many Requests).\n\nEste módulo es material de estudio **autocontenido**: puedes aprenderlo completo aquí, sin pagar plataformas externas ni depender de internet después de cargar la página. Lee en orden, ejecuta el snippet, resuelve la autoevaluación y repasa los puntos que falles.\n\n## Qué aprenderás en este módulo\n\n· REST: recursos como URLs, verbs HTTP.\n· JSON como formato dominante.\n· WebSocket: conexión bidireccional persistente.\n· GraphQL: query flexible.\n· Rate limiting y paginación.\n· Definición operativa de los términos centrales de REST, WEBSOCKETS Y APIS.\n· Ejemplo numérico o de código trazado paso a paso.\n· Pregunta tipo entrevista técnica con respuesta esperada.\n· Dominar las 12 preguntas de autoevaluación con ≥70% de aciertos antes de avanzar.\n\n## Desarrollo teórico detallado\n\n## 1. REST: recursos como URLs, verbs HTTP.\n\n**Qué es y por qué importa.** Dentro de REST, WEBSOCKETS Y APIS, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** REST: recursos como URLs, verbs HTTP. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «REST: recursos como URLs, verbs HTTP.» y cuándo lo evitarías.\n\n## 2. JSON como formato dominante.\n\n**Qué es y por qué importa.** Dentro de REST, WEBSOCKETS Y APIS, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** JSON como formato dominante. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «JSON como formato dominante.» y cuándo lo evitarías.\n\n## 3. WebSocket: conexión bidireccional persistente.\n\n**Qué es y por qué importa.** Dentro de REST, WEBSOCKETS Y APIS, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** WebSocket: conexión bidireccional persistente. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «WebSocket: conexión bidireccional persistente.» y cuándo lo evitarías.\n\n## 4. GraphQL: query flexible.\n\n**Qué es y por qué importa.** Dentro de REST, WEBSOCKETS Y APIS, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** GraphQL: query flexible. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «GraphQL: query flexible.» y cuándo lo evitarías.\n\n## 5. Rate limiting y paginación.\n\n**Qué es y por qué importa.** Dentro de REST, WEBSOCKETS Y APIS, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Rate limiting y paginación. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Rate limiting y paginación.» y cuándo lo evitarías.\n\n## 6. Definición operativa de los términos centrales de REST, WEBSOCKETS Y APIS.\n\n**Qué es y por qué importa.** Dentro de REST, WEBSOCKETS Y APIS, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Definición operativa de los términos centrales de REST, WEBSOCKETS Y APIS. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Definición operativa de los términos centrales de REST, WEBSOCKETS Y APIS.» y cuándo lo evitarías.\n\n## 7. Ejemplo numérico o de código trazado paso a paso.\n\n**Qué es y por qué importa.** Dentro de REST, WEBSOCKETS Y APIS, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Ejemplo numérico o de código trazado paso a paso. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Ejemplo numérico o de código trazado paso a paso.» y cuándo lo evitarías.\n\n## 8. Pregunta tipo entrevista técnica con respuesta esperada.\n\n**Qué es y por qué importa.** Dentro de REST, WEBSOCKETS Y APIS, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Pregunta tipo entrevista técnica con respuesta esperada. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Pregunta tipo entrevista técnica con respuesta esperada.» y cuándo lo evitarías.\n\n## Aplicaciones en sistemas reales\n\n**Ejemplo 1:** Vercel Edge CDN cachea dist/ globalmente; Cache-Control immutable en assets hashed acelera repeat visits.\n\n**Ejemplo 2:** Vercel Edge CDN cachea dist/ globalmente; Cache-Control immutable en assets hashed acelera repeat visits.\n\n**Ejemplo 3:** Vercel Edge CDN cachea dist/ globalmente; Cache-Control immutable en assets hashed acelera repeat visits.\n\nEstos casos muestran por qué REST, WEBSOCKETS Y APIS no es teórico: empresas y proyectos open source aplican estos principios diariamente. Al estudiar, elige uno y escribe cómo encajaría el concepto del módulo en ese escenario.\n\n## Errores comunes al estudiar\n\n· Confundir el caso promedio con el peor caso al estimar rendimiento de un algoritmo.\n· Ignorar la sección de aplicaciones reales: ahí se ancla la memoria a largo plazo.\n· Confundir el caso promedio con el peor caso al estimar rendimiento de un algoritmo.\n· Ignorar la sección de aplicaciones reales: ahí se ancla la memoria a largo plazo.\n\n## Síntesis para repasar\n\nCierra el módulo resumiendo REST, WEBSOCKETS Y APIS en cinco líneas propias. Vuelve a leer los **Conceptos clave** del panel, ejecuta el código de referencia y completa la autoevaluación. Si fallas más de 3 preguntas, relee el bloque teórico correspondiente antes de continuar — el siguiente módulo asume que dominas este.",
-      codeSnippet: `# REST: GET /api/courses/1
-# WebSocket: ws://host/chat`,
-      quiz: [
+    {
+      "id": 6,
+      "title": "MÓDULO 6: CAPA DE TRANSPORTE: UDP, STREAMING Y DIFERENCIAS CON TCP",
+      "description": "Transporte de baja latencia sin conexión: datagramas UDP, ausencia de retransmisión, streaming en vivo, gaming, DNS y WebRTC.",
+      "items": [
+        "Características de UDP (User Datagram Protocol): Sin conexión, sin confirmación de entrega, sin control de congestión, mínima cabecera (8 bytes).",
+        "Por qué UDP es preferido para Streaming de Video, VoIP, Juegos en línea y consultas DNS.",
+        "El costo del reenvío: Por qué en llamadas de voz es mejor perder un paquete de audio que pausar la llamada para retransmitirlo.",
+        "WebRTC: Comunicación P2P en tiempo real sobre UDP con cifrado SRTP.",
+        "Comparativa de sobrecarga: Cabecera TCP (20-60 bytes) vs Cabecera UDP (8 bytes fijos)."
+      ],
+      "content": "## UDP: La Velocidad Máxima sin Sobrecarga\n\nMientras que TCP prioriza la **integridad absoluta** (ningún byte puede faltar), UDP prioriza la **inmediatez temporal**.\n\nSi estás en una videollamada y se pierde el paquete con la imagen de hace 200 milisegundos, retransmitirlo no tiene sentido: esa imagen ya es obsoleta. UDP descarta el paquete y sigue adelante sin introducir pausas en la transmisión.",
+      "codeSnippet": "// Servidor UDP en Node.js usando el módulo dgram\nimport dgram from 'dgram';\n\nconst server = dgram.createSocket('udp4');\n\nserver.on('message', (msg, rinfo) => {\n  console.log(\\`Datagrama UDP recibido de \\${rinfo.address}:\\${rinfo.port}: \\${msg}\\`);\n});\n\nserver.on('listening', () => {\n  const address = server.address();\n  console.log(\\`Servidor UDP escuchando en \\${address.address}:\\${address.port}\\`);\n});\n\nserver.bind(41234);",
+      "quiz": [
         {
-          question: "REST es...",
-          options: ["Recursos + HTTP verbs", "Solo WebSocket", "Solo TCP"],
-          answerIndex: 0,
-          explanation: "Architectural style."
-        },
-        {
-          question: "WebSocket vs HTTP polling...",
-          options: ["Conexión persistente bidireccional", "Solo request-response", "Sin estado"],
-          answerIndex: 0,
-          explanation: "Real-time eficiente."
-        },
-        {
-          question: "429 status...",
-          options: ["Rate limit exceeded", "Not found", "Server error"],
-          answerIndex: 0,
-          explanation: "Too Many Requests."
-        },
-        {
-          question: "JSON en APIs...",
-          options: ["Formato dominante", "Solo XML", "Prohibido"],
-          answerIndex: 0,
-          explanation: "Estándar moderno."
-        },
-        {
-          question: "Paginación evita...",
-          options: ["Responses gigantes O(n)", "TLS", "DNS"],
-          answerIndex: 0,
-          explanation: "Transferir todo de golpe."
-        },
-      ,
-        {
-          question: "Según el temario de 'MÓDULO 6: REST, WEBSOCKETS Y APIS', ¿cuál afirmación es correcta sobre: REST: recursos como URLs, verbs HTTP?",
-          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: REST: recursos como URLs, verbs HTTP", "Mezclar responsabilidades en una sola función o módulo monolítico."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que REST: recursos como URLs, verbs HTTP. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 6: REST, WEBSOCKETS Y APIS', ¿cuál afirmación es correcta sobre: JSON como formato dominante?",
-          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: JSON como formato dominante", "Descartar el análisis asintótico por constantes de hardware."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que JSON como formato dominante. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 6: REST, WEBSOCKETS Y APIS', ¿cuál afirmación es correcta sobre: WebSocket: conexión bidireccional persistente?",
-          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: WebSocket: conexión bidireccional persistente", "Descartar el análisis asintótico por constantes de hardware."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que WebSocket: conexión bidireccional persistente. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 6: REST, WEBSOCKETS Y APIS', ¿cuál afirmación es correcta sobre: GraphQL: query flexible?",
-          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: GraphQL: query flexible", "Aplicar la regla solo en el best case ignorando el peor escenario."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que GraphQL: query flexible. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 6: REST, WEBSOCKETS Y APIS', ¿cuál afirmación es correcta sobre: Rate limiting y paginación?",
-          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Rate limiting y paginación", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Rate limiting y paginación. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 6: REST, WEBSOCKETS Y APIS', ¿cuál afirmación es correcta sobre: Definición operativa de los términos centrales de REST, WEBSOCKETS Y APIS?",
-          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Definición operativa de los términos centrales de REST, WEBSOCKETS ...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Definición operativa de los términos centrales de REST, WEBSOCKETS Y APIS. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 6: REST, WEBSOCKETS Y APIS', ¿cuál afirmación es correcta sobre: Ejemplo numérico o de código trazado paso a paso?",
-          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Ejemplo numérico o de código trazado paso a paso", "Asumir que más líneas de código siempre implican mayor eficiencia."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Ejemplo numérico o de código trazado paso a paso. Las otras opciones representan malentendidos típicos."
+          "question": "¿Por qué las consultas DNS y las videollamadas en vivo utilizan UDP en lugar de TCP?",
+          "options": [
+            "Porque no necesitan la sobrecarga del handshake ni retransmisiones lentas; priorizan responder de inmediato con la menor latencia posible",
+            "Porque UDP no usa direcciones IP",
+            "Porque TCP está prohibido en servidores web"
+          ],
+          "answerIndex": 0,
+          "explanation": "UDP no tiene sobrecarga de establecimiento de conexión ni pausas por retransmisión, siendo ideal para operaciones atómicas rápidas o datos en tiempo real."
         }
       ]
     },
-{
-      id: 7,
-      title: "MÓDULO 7: LATENCIA, CDN Y CACHING HTTP",
-      description: "Performance web más allá del código.",
-      items: [
-      "RTT: round-trip time.",
-      "CDN: contenido cerca del usuario.",
-      "Cache-Control, ETag, max-age.",
-      "Vercel Edge Network.",
-      "Compresión gzip/brotli.",
-      "Definición operativa de los términos centrales de LATENCIA, CDN Y CACHING HTTP.",
-      "Ejemplo numérico o de código trazado paso a paso.",
-      "Pregunta tipo entrevista técnica con respuesta esperada.",
-      "Relación explícita con el snippet de implementación del módulo."
-],
-      content: "## Panorama del tema: LATENCIA, CDN Y CACHING HTTP\n\nPerformance web más allá del código.\n\nLatencia = distancia + procesamiento. CDN (Cloudflare, Vercel Edge) cachea estáticos en PoPs globales — O(1) lookup vs O(distancia) transcontinental. Cache-Control: max-age=31536000 para assets hashed. ETag valida freshness. brotli comprime mejor que gzip. Para QuimiSell PWA: service worker cache + CDN Vercel = offline + rápido.\n\nEste módulo es material de estudio **autocontenido**: puedes aprenderlo completo aquí, sin pagar plataformas externas ni depender de internet después de cargar la página. Lee en orden, ejecuta el snippet, resuelve la autoevaluación y repasa los puntos que falles.\n\n## Qué aprenderás en este módulo\n\n· RTT: round-trip time.\n· CDN: contenido cerca del usuario.\n· Cache-Control, ETag, max-age.\n· Vercel Edge Network.\n· Compresión gzip/brotli.\n· Definición operativa de los términos centrales de LATENCIA, CDN Y CACHING HTTP.\n· Ejemplo numérico o de código trazado paso a paso.\n· Pregunta tipo entrevista técnica con respuesta esperada.\n· Dominar las 12 preguntas de autoevaluación con ≥70% de aciertos antes de avanzar.\n\n## Desarrollo teórico detallado\n\n## 1. RTT: round-trip time.\n\n**Qué es y por qué importa.** Dentro de LATENCIA, CDN Y CACHING HTTP, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** RTT: round-trip time. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «RTT: round-trip time.» y cuándo lo evitarías.\n\n## 2. CDN: contenido cerca del usuario.\n\n**Qué es y por qué importa.** Dentro de LATENCIA, CDN Y CACHING HTTP, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** CDN: contenido cerca del usuario. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «CDN: contenido cerca del usuario.» y cuándo lo evitarías.\n\n## 3. Cache-Control, ETag, max-age.\n\n**Qué es y por qué importa.** Dentro de LATENCIA, CDN Y CACHING HTTP, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Cache-Control, ETag, max-age. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Cache-Control, ETag, max-age.» y cuándo lo evitarías.\n\n## 4. Vercel Edge Network.\n\n**Qué es y por qué importa.** Dentro de LATENCIA, CDN Y CACHING HTTP, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Vercel Edge Network. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Vercel Edge Network.» y cuándo lo evitarías.\n\n## 5. Compresión gzip/brotli.\n\n**Qué es y por qué importa.** Dentro de LATENCIA, CDN Y CACHING HTTP, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Compresión gzip/brotli. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Compresión gzip/brotli.» y cuándo lo evitarías.\n\n## 6. Definición operativa de los términos centrales de LATENCIA, CDN Y CACHING HTTP.\n\n**Qué es y por qué importa.** Dentro de LATENCIA, CDN Y CACHING HTTP, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Definición operativa de los términos centrales de LATENCIA, CDN Y CACHING HTTP. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Definición operativa de los términos centrales de LATENCIA, CDN Y CACHING HTTP.» y cuándo lo evitarías.\n\n## 7. Ejemplo numérico o de código trazado paso a paso.\n\n**Qué es y por qué importa.** Dentro de LATENCIA, CDN Y CACHING HTTP, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Ejemplo numérico o de código trazado paso a paso. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Ejemplo numérico o de código trazado paso a paso.» y cuándo lo evitarías.\n\n## 8. Pregunta tipo entrevista técnica con respuesta esperada.\n\n**Qué es y por qué importa.** Dentro de LATENCIA, CDN Y CACHING HTTP, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Pregunta tipo entrevista técnica con respuesta esperada. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Pregunta tipo entrevista técnica con respuesta esperada.» y cuándo lo evitarías.\n\n## Aplicaciones en sistemas reales\n\n**Ejemplo 1:** Vercel Edge CDN cachea dist/ globalmente; Cache-Control immutable en assets hashed acelera repeat visits.\n\n**Ejemplo 2:** Vercel Edge CDN cachea dist/ globalmente; Cache-Control immutable en assets hashed acelera repeat visits.\n\n**Ejemplo 3:** Vercel Edge CDN cachea dist/ globalmente; Cache-Control immutable en assets hashed acelera repeat visits.\n\nEstos casos muestran por qué LATENCIA, CDN Y CACHING HTTP no es teórico: empresas y proyectos open source aplican estos principios diariamente. Al estudiar, elige uno y escribe cómo encajaría el concepto del módulo en ese escenario.\n\n## Errores comunes al estudiar\n\n· Confundir el caso promedio con el peor caso al estimar rendimiento de un algoritmo.\n· Ignorar la sección de aplicaciones reales: ahí se ancla la memoria a largo plazo.\n· Confundir el caso promedio con el peor caso al estimar rendimiento de un algoritmo.\n· Ignorar la sección de aplicaciones reales: ahí se ancla la memoria a largo plazo.\n\n## Síntesis para repasar\n\nCierra el módulo resumiendo LATENCIA, CDN Y CACHING HTTP en cinco líneas propias. Vuelve a leer los **Conceptos clave** del panel, ejecuta el código de referencia y completa la autoevaluación. Si fallas más de 3 preguntas, relee el bloque teórico correspondiente antes de continuar — el siguiente módulo asume que dominas este.",
-      codeSnippet: `Cache-Control: public, max-age=31536000, immutable`,
-      quiz: [
+    {
+      "id": 7,
+      "title": "MÓDULO 7: SEGURIDAD Y CIFRADO EN TRÁNSITO: TLS 1.3 Y CERTIFICADOS X.509",
+      "description": "Criptografía en redes: cifrado simétrico vs asimétrico, el apretón de manos TLS 1.3 (1-RTT y 0-RTT), Diffie-Hellman efímero y autoridades certificadoras (CAs).",
+      "items": [
+        "La necesidad del cifrado: Proteger contra intercepción (sniffing) y manipulación (Man-in-the-Middle).",
+        "Criptografía Híbrida: Cifrado asimétrico (RSA / Curvas Elípticas) para intercambiar claves; Cifrado simétrico (AES-GCM / ChaCha20) para el tráfico de datos.",
+        "Evolución de TLS 1.2 a TLS 1.3: Eliminación de suites criptográficas inseguras y reducción del handshake a 1 solo RTT.",
+        "Zero RTT Resumption (0-RTT): Reanudación instantánea de sesiones previas en TLS 1.3.",
+        "Certificados X.509 y la Cadena de Confianza: De las Autoridades Certificadoras Raíz (Root CAs) a Let's Encrypt.",
+        "Perfect Forward Secrecy (PFS): Garantizar que revelar la clave privada del servidor en el futuro no descifre el tráfico grabado del pasado."
+      ],
+      "content": "## TLS 1.3: La Criptografía que Protege la Web\n\nTLS (Transport Layer Security) se sitúa entre la capa de transporte (TCP) y la de aplicación (HTTP).\n\n### La Revolución de TLS 1.3\nEn TLS 1.2, establecer una conexión HTTPS requería 2 viajes de ida y vuelta (2 RTTs) solo para la criptografía, sumados al 1 RTT de TCP (3 RTTs en total antes de pedir la web).\n\n**TLS 1.3 redujo esto a 1 solo RTT**:\n1. En el primer mensaje `Client Hello`, el navegador envía de una vez sus parámetros criptográficos (Diffie-Hellman keyshare).\n2. El servidor responde con su certificado y su parte de la clave, y a partir de ese instante todo el tráfico está cifrado con **Perfect Forward Secrecy (PFS)**.",
+      "codeSnippet": "# Inspeccionar el certificado TLS y handshake de cualquier servidor\nopenssl s_client -connect api.quimisell.dev:443 -tls1_3\n\n# Ver los detalles del certificado X.509 (fechas de validez, emisor, SANs)\nopenssl s_client -connect api.quimisell.dev:443 -showcerts </dev/null | openssl x509 -text -noout",
+      "quiz": [
         {
-          question: "CDN acerca...",
-          options: ["Contenido al usuario geográficamente", "Solo DNS", "Solo API"],
-          answerIndex: 0,
-          explanation: "Edge caching."
-        },
-        {
-          question: "RTT es...",
-          options: ["Round-trip time ida y vuelta", "Solo download", "Tamaño archivo"],
-          answerIndex: 0,
-          explanation: "Latencia de red."
-        },
-        {
-          question: "max-age en Cache-Control...",
-          options: ["Segundos de cache válido", "Tamaño máximo", "IP máxima"],
-          answerIndex: 0,
-          explanation: "Freshness duration."
-        },
-        {
-          question: "Vercel Edge...",
-          options: ["CDN global incluido", "Solo localhost", "Sin HTTPS"],
-          answerIndex: 0,
-          explanation: "Deploy global."
-        },
-        {
-          question: "brotli vs gzip...",
-          options: ["Mejor compresión brotli", "Igual siempre", "gzip más nuevo"],
-          answerIndex: 0,
-          explanation: "Compresión moderna."
-        },
-      ,
-        {
-          question: "Según el temario de 'MÓDULO 7: LATENCIA, CDN Y CACHING HTTP', ¿cuál afirmación es correcta sobre: RTT: round-trip time?",
-          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: RTT: round-trip time", "Aplicar la regla solo en el best case ignorando el peor escenario."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que RTT: round-trip time. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 7: LATENCIA, CDN Y CACHING HTTP', ¿cuál afirmación es correcta sobre: CDN: contenido cerca del usuario?",
-          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: CDN: contenido cerca del usuario", "Asumir que más líneas de código siempre implican mayor eficiencia."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que CDN: contenido cerca del usuario. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 7: LATENCIA, CDN Y CACHING HTTP', ¿cuál afirmación es correcta sobre: Cache-Control, ETag, max-age?",
-          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Cache-Control, ETag, max-age", "Aplicar la regla solo en el best case ignorando el peor escenario."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Cache-Control, ETag, max-age. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 7: LATENCIA, CDN Y CACHING HTTP', ¿cuál afirmación es correcta sobre: Vercel Edge Network?",
-          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Vercel Edge Network", "Optimizar prematuramente sin perfilar el cuello de botella real."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Vercel Edge Network. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 7: LATENCIA, CDN Y CACHING HTTP', ¿cuál afirmación es correcta sobre: Compresión gzip/brotli?",
-          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Compresión gzip/brotli", "Aplicar la regla solo en el best case ignorando el peor escenario."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Compresión gzip/brotli. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 7: LATENCIA, CDN Y CACHING HTTP', ¿cuál afirmación es correcta sobre: Definición operativa de los términos centrales de LATENCIA, CDN Y CACHING HTTP?",
-          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Definición operativa de los términos centrales de LATENCIA, CDN Y C...", "Ignorar casos borde y entradas vacías en el diseño."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Definición operativa de los términos centrales de LATENCIA, CDN Y CACHING HTTP. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 7: LATENCIA, CDN Y CACHING HTTP', ¿cuál afirmación es correcta sobre: Ejemplo numérico o de código trazado paso a paso?",
-          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Ejemplo numérico o de código trazado paso a paso", "Mezclar responsabilidades en una sola función o módulo monolítico."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Ejemplo numérico o de código trazado paso a paso. Las otras opciones representan malentendidos típicos."
+          "question": "¿Qué propiedad garantiza 'Perfect Forward Secrecy' (PFS) en TLS 1.3?",
+          "options": [
+            "Que incluso si la clave privada del servidor es robada en el futuro, las comunicaciones pasadas grabadas por atacantes no pueden ser descifradas porque cada sesión usó claves efímeras únicas",
+            "Que la conexión nunca se caerá",
+            "Que el certificado dura 100 años"
+          ],
+          "answerIndex": 0,
+          "explanation": "PFS genera claves de sesión efímeras e independientes que se destruyen al cerrar la conexión, impidiendo el descifrado retroactivo."
         }
       ]
     },
-{
-      id: 8,
-      title: "MÓDULO 8: CORS, COOKIES Y SESIONES",
-      description: "Seguridad del navegador que todo dev debe conocer.",
-      items: [
-      "Same-Origin Policy.",
-      "CORS headers: Access-Control-Allow-Origin.",
-      "Preflight OPTIONS request.",
-      "Cookies: HttpOnly, Secure, SameSite.",
-      "JWT en header vs cookie session.",
-      "Definición operativa de los términos centrales de CORS, COOKIES Y SESIONES.",
-      "Ejemplo numérico o de código trazado paso a paso.",
-      "Pregunta tipo entrevista técnica con respuesta esperada.",
-      "Relación explícita con el snippet de implementación del módulo."
-],
-      content: "## Panorama del tema: CORS, COOKIES Y SESIONES\n\nSeguridad del navegador que todo dev debe conocer.\n\nBrowsers bloquean requests cross-origin por seguridad. CORS permite excepciones via headers del servidor. Preflight OPTIONS para methods no simples. Cookies HttpOnly no accesibles desde JS (XSS protection). SameSite=Lax mitiga CSRF. JWT stateless en Authorization header vs session cookie en servidor.\n\nEste módulo es material de estudio **autocontenido**: puedes aprenderlo completo aquí, sin pagar plataformas externas ni depender de internet después de cargar la página. Lee en orden, ejecuta el snippet, resuelve la autoevaluación y repasa los puntos que falles.\n\n## Qué aprenderás en este módulo\n\n· Same-Origin Policy.\n· CORS headers: Access-Control-Allow-Origin.\n· Preflight OPTIONS request.\n· Cookies: HttpOnly, Secure, SameSite.\n· JWT en header vs cookie session.\n· Definición operativa de los términos centrales de CORS, COOKIES Y SESIONES.\n· Ejemplo numérico o de código trazado paso a paso.\n· Pregunta tipo entrevista técnica con respuesta esperada.\n· Dominar las 12 preguntas de autoevaluación con ≥70% de aciertos antes de avanzar.\n\n## Desarrollo teórico detallado\n\n## 1. Same-Origin Policy.\n\n**Qué es y por qué importa.** Dentro de CORS, COOKIES Y SESIONES, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Same-Origin Policy. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Same-Origin Policy.» y cuándo lo evitarías.\n\n## 2. CORS headers: Access-Control-Allow-Origin.\n\n**Qué es y por qué importa.** Dentro de CORS, COOKIES Y SESIONES, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** CORS headers: Access-Control-Allow-Origin. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «CORS headers: Access-Control-Allow-Origin.» y cuándo lo evitarías.\n\n## 3. Preflight OPTIONS request.\n\n**Qué es y por qué importa.** Dentro de CORS, COOKIES Y SESIONES, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Preflight OPTIONS request. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Preflight OPTIONS request.» y cuándo lo evitarías.\n\n## 4. Cookies: HttpOnly, Secure, SameSite.\n\n**Qué es y por qué importa.** Dentro de CORS, COOKIES Y SESIONES, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Cookies: HttpOnly, Secure, SameSite. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Cookies: HttpOnly, Secure, SameSite.» y cuándo lo evitarías.\n\n## 5. JWT en header vs cookie session.\n\n**Qué es y por qué importa.** Dentro de CORS, COOKIES Y SESIONES, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** JWT en header vs cookie session. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «JWT en header vs cookie session.» y cuándo lo evitarías.\n\n## 6. Definición operativa de los términos centrales de CORS, COOKIES Y SESIONES.\n\n**Qué es y por qué importa.** Dentro de CORS, COOKIES Y SESIONES, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Definición operativa de los términos centrales de CORS, COOKIES Y SESIONES. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Definición operativa de los términos centrales de CORS, COOKIES Y SESIONES.» y cuándo lo evitarías.\n\n## 7. Ejemplo numérico o de código trazado paso a paso.\n\n**Qué es y por qué importa.** Dentro de CORS, COOKIES Y SESIONES, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Ejemplo numérico o de código trazado paso a paso. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Ejemplo numérico o de código trazado paso a paso.» y cuándo lo evitarías.\n\n## 8. Pregunta tipo entrevista técnica con respuesta esperada.\n\n**Qué es y por qué importa.** Dentro de CORS, COOKIES Y SESIONES, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Pregunta tipo entrevista técnica con respuesta esperada. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Pregunta tipo entrevista técnica con respuesta esperada.» y cuándo lo evitarías.\n\n## Aplicaciones en sistemas reales\n\n**Ejemplo 1:** Vercel Edge CDN cachea dist/ globalmente; Cache-Control immutable en assets hashed acelera repeat visits.\n\n**Ejemplo 2:** Vercel Edge CDN cachea dist/ globalmente; Cache-Control immutable en assets hashed acelera repeat visits.\n\n**Ejemplo 3:** Vercel Edge CDN cachea dist/ globalmente; Cache-Control immutable en assets hashed acelera repeat visits.\n\nEstos casos muestran por qué CORS, COOKIES Y SESIONES no es teórico: empresas y proyectos open source aplican estos principios diariamente. Al estudiar, elige uno y escribe cómo encajaría el concepto del módulo en ese escenario.\n\n## Errores comunes al estudiar\n\n· Estudiar solo la definición sin un ejemplo numérico concreto (valores pequeños de n).\n· Avanzar al siguiente módulo sin alcanzar al menos 70% en la autoevaluación.\n· Estudiar solo la definición sin un ejemplo numérico concreto (valores pequeños de n).\n· Avanzar al siguiente módulo sin alcanzar al menos 70% en la autoevaluación.\n\n## Síntesis para repasar\n\nCierra el módulo resumiendo CORS, COOKIES Y SESIONES en cinco líneas propias. Vuelve a leer los **Conceptos clave** del panel, ejecuta el código de referencia y completa la autoevaluación. Si fallas más de 3 preguntas, relee el bloque teórico correspondiente antes de continuar — el siguiente módulo asume que dominas este.",
-      codeSnippet: `# Access-Control-Allow-Origin: https://quimisell.com`,
-      quiz: [
+    {
+      "id": 8,
+      "title": "MÓDULO 8: EL PROTOCOLO HTTP: EVOLUCIÓN DE HTTP/1.0 A HTTP/1.1",
+      "description": "La base de la web: cabeceras HTTP, métodos REST, códigos de estado semánticos (2xx, 3xx, 4xx, 5xx), conexiones persistentes (Keep-Alive) y chunked transfer.",
+      "items": [
+        "Anatomía de una solicitud HTTP: Método, URI, Versión, Cabeceras y Cuerpo.",
+        "Anatomía de una respuesta HTTP: Versión, Código de estado, Frase de motivo, Cabeceras y Cuerpo.",
+        "Semántica de Códigos de Estado: 200 (OK), 201 (Created), 204 (No Content), 301 (Moved Permanently), 400 (Bad Request), 401 (Unauthorized), 403 (Forbidden), 404 (Not Found), 500 (Internal Error), 503 (Service Unavailable).",
+        "HTTP/1.0 vs HTTP/1.1: El salto revolucionario de `Connection: keep-alive` (reutilización de sockets TCP para múltiples requests).",
+        "Chunked Transfer Encoding: Envío de streaming de datos cuando el tamaño total es desconocido de antemano.",
+        "El límite de 6 conexiones TCP concurrentes por dominio en navegadores modernos."
+      ],
+      "content": "## El Protocolo HTTP/1.1\n\nEn HTTP/1.0, cada recurso individual (el HTML, cada imagen, cada archivo CSS) abría y cerraba una conexión TCP nueva, requiriendo un handshake TCP completo para cada archivo.\n\n**HTTP/1.1 introdujo Keep-Alive por defecto**:\nLa misma conexión TCP abierta permanece viva para solicitar múltiples recursos en serie, reduciendo drásticamente la latencia de carga.",
+      "codeSnippet": "// Petición HTTP cruda con formato textual de protocolo\n// GET /api/productos HTTP/1.1\n// Host: api.quimisell.dev\n// User-Agent: Mozilla/5.0\n// Accept: application/json\n// Connection: keep-alive\n\n// Respuesta HTTP cruda:\n// HTTP/1.1 200 OK\n// Content-Type: application/json; charset=utf-8\n// Content-Length: 42\n// Connection: keep-alive\n//\n// {\"status\":\"ok\",\"mensaje\":\"Hola QuimiSell\"}",
+      "quiz": [
         {
-          question: "Same-Origin Policy...",
-          options: ["Restringe cross-origin por seguridad", "Permite todo", "Solo DNS"],
-          answerIndex: 0,
-          explanation: "Protección browser."
-        },
-        {
-          question: "CORS header clave...",
-          options: ["Access-Control-Allow-Origin", "Content-Length", "ETag"],
-          answerIndex: 0,
-          explanation: "Orígenes permitidos."
-        },
-        {
-          question: "Preflight es request...",
-          options: ["OPTIONS antes de POST cross-origin", "GET siempre", "DNS query"],
-          answerIndex: 0,
-          explanation: "Verifica permisos."
-        },
-        {
-          question: "HttpOnly cookie...",
-          options: ["No accesible desde JS", "Siempre pública", "Sin HTTPS"],
-          answerIndex: 0,
-          explanation: "Mitiga XSS."
-        },
-        {
-          question: "SameSite cookie...",
-          options: ["Mitiga CSRF", "Acelera DNS", "Reemplaza TLS"],
-          answerIndex: 0,
-          explanation: "Cross-site request."
-        },
-      ,
-        {
-          question: "Según el temario de 'MÓDULO 8: CORS, COOKIES Y SESIONES', ¿cuál afirmación es correcta sobre: Same-Origin Policy?",
-          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Same-Origin Policy", "Optimizar prematuramente sin perfilar el cuello de botella real."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Same-Origin Policy. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 8: CORS, COOKIES Y SESIONES', ¿cuál afirmación es correcta sobre: CORS headers: Access-Control-Allow-Origin?",
-          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: CORS headers: Access-Control-Allow-Origin", "Confundir el concepto con una técnica ortogonal no relacionada."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que CORS headers: Access-Control-Allow-Origin. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 8: CORS, COOKIES Y SESIONES', ¿cuál afirmación es correcta sobre: Preflight OPTIONS request?",
-          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Preflight OPTIONS request", "Mezclar responsabilidades en una sola función o módulo monolítico."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Preflight OPTIONS request. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 8: CORS, COOKIES Y SESIONES', ¿cuál afirmación es correcta sobre: Cookies: HttpOnly, Secure, SameSite?",
-          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Cookies: HttpOnly, Secure, SameSite", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Cookies: HttpOnly, Secure, SameSite. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 8: CORS, COOKIES Y SESIONES', ¿cuál afirmación es correcta sobre: JWT en header vs cookie session?",
-          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: JWT en header vs cookie session", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que JWT en header vs cookie session. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 8: CORS, COOKIES Y SESIONES', ¿cuál afirmación es correcta sobre: Definición operativa de los términos centrales de CORS, COOKIES Y SESIONES?",
-          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Definición operativa de los términos centrales de CORS, COOKIES Y S...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Definición operativa de los términos centrales de CORS, COOKIES Y SESIONES. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 8: CORS, COOKIES Y SESIONES', ¿cuál afirmación es correcta sobre: Ejemplo numérico o de código trazado paso a paso?",
-          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Ejemplo numérico o de código trazado paso a paso", "Descartar el análisis asintótico por constantes de hardware."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Ejemplo numérico o de código trazado paso a paso. Las otras opciones representan malentendidos típicos."
+          "question": "¿Cuál es la principal mejora que introdujo HTTP/1.1 frente a HTTP/1.0?",
+          "options": [
+            "Conexiones persistentes (Keep-Alive) que permiten reutilizar la misma conexión TCP para múltiples solicitudes y respuestas consecutivas",
+            "Cifrado cuántico",
+            "Transmisión de video en 4K"
+          ],
+          "answerIndex": 0,
+          "explanation": "Keep-Alive evita la sobrecarga de tener que abrir y cerrar un socket TCP (con su 3-way handshake) para cada imagen o recurso descargado."
         }
       ]
     },
-{
-      id: 9,
-      title: "MÓDULO 9: DIAGNÓSTICO — PING, CURL, TRACEROUTE",
-      description: "Herramientas esenciales cuando algo no conecta.",
-      items: [
-      "ping: ICMP echo, latencia básica.",
-      "traceroute: saltos hasta destino.",
-      "curl: HTTP client CLI completo.",
-      "netstat/ss: conexiones activas.",
-      "Wireshark intro: captura paquetes.",
-      "Definición operativa de los términos centrales de DIAGNÓSTICO — PING, CURL, TRACEROUTE.",
-      "Ejemplo numérico o de código trazado paso a paso.",
-      "Pregunta tipo entrevista técnica con respuesta esperada.",
-      "Relación explícita con el snippet de implementación del módulo."
-],
-      content: "## Panorama del tema: DIAGNÓSTICO — PING, CURL, TRACEROUTE\n\nHerramientas esenciales cuando algo no conecta.\n\nping mide latencia y reachability. traceroute muestra cada router intermedio. curl debuggea APIs (-v verbose, -I headers only). ss -tuln lista puertos escuchando. Wireshark captura paquetes para análisis profundo — base de Kali. Antes de pentesting, domina diagnóstico legal en tu propia red.\n\nEste módulo es material de estudio **autocontenido**: puedes aprenderlo completo aquí, sin pagar plataformas externas ni depender de internet después de cargar la página. Lee en orden, ejecuta el snippet, resuelve la autoevaluación y repasa los puntos que falles.\n\n## Qué aprenderás en este módulo\n\n· ping: ICMP echo, latencia básica.\n· traceroute: saltos hasta destino.\n· curl: HTTP client CLI completo.\n· netstat/ss: conexiones activas.\n· Wireshark intro: captura paquetes.\n· Definición operativa de los términos centrales de DIAGNÓSTICO — PING, CURL, TRACEROUTE.\n· Ejemplo numérico o de código trazado paso a paso.\n· Pregunta tipo entrevista técnica con respuesta esperada.\n· Dominar las 12 preguntas de autoevaluación con ≥70% de aciertos antes de avanzar.\n\n## Desarrollo teórico detallado\n\n## 1. ping: ICMP echo, latencia básica.\n\n**Qué es y por qué importa.** Dentro de DIAGNÓSTICO — PING, CURL, TRACEROUTE, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** ping: ICMP echo, latencia básica. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «ping: ICMP echo, latencia básica.» y cuándo lo evitarías.\n\n## 2. traceroute: saltos hasta destino.\n\n**Qué es y por qué importa.** Dentro de DIAGNÓSTICO — PING, CURL, TRACEROUTE, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** traceroute: saltos hasta destino. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «traceroute: saltos hasta destino.» y cuándo lo evitarías.\n\n## 3. curl: HTTP client CLI completo.\n\n**Qué es y por qué importa.** Dentro de DIAGNÓSTICO — PING, CURL, TRACEROUTE, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** curl: HTTP client CLI completo. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «curl: HTTP client CLI completo.» y cuándo lo evitarías.\n\n## 4. netstat/ss: conexiones activas.\n\n**Qué es y por qué importa.** Dentro de DIAGNÓSTICO — PING, CURL, TRACEROUTE, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** netstat/ss: conexiones activas. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «netstat/ss: conexiones activas.» y cuándo lo evitarías.\n\n## 5. Wireshark intro: captura paquetes.\n\n**Qué es y por qué importa.** Dentro de DIAGNÓSTICO — PING, CURL, TRACEROUTE, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Wireshark intro: captura paquetes. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Wireshark intro: captura paquetes.» y cuándo lo evitarías.\n\n## 6. Definición operativa de los términos centrales de DIAGNÓSTICO — PING, CURL, TRACEROUTE.\n\n**Qué es y por qué importa.** Dentro de DIAGNÓSTICO — PING, CURL, TRACEROUTE, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Definición operativa de los términos centrales de DIAGNÓSTICO — PING, CURL, TRACEROUTE. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Definición operativa de los términos centrales de DIAGNÓSTICO — PING, CURL, TRACEROUTE.» y cuándo lo evitarías.\n\n## 7. Ejemplo numérico o de código trazado paso a paso.\n\n**Qué es y por qué importa.** Dentro de DIAGNÓSTICO — PING, CURL, TRACEROUTE, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Ejemplo numérico o de código trazado paso a paso. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Ejemplo numérico o de código trazado paso a paso.» y cuándo lo evitarías.\n\n## 8. Pregunta tipo entrevista técnica con respuesta esperada.\n\n**Qué es y por qué importa.** Dentro de DIAGNÓSTICO — PING, CURL, TRACEROUTE, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Pregunta tipo entrevista técnica con respuesta esperada. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Pregunta tipo entrevista técnica con respuesta esperada.» y cuándo lo evitarías.\n\n## Aplicaciones en sistemas reales\n\n**Ejemplo 1:** Vercel Edge CDN cachea dist/ globalmente; Cache-Control immutable en assets hashed acelera repeat visits.\n\n**Ejemplo 2:** Vercel Edge CDN cachea dist/ globalmente; Cache-Control immutable en assets hashed acelera repeat visits.\n\n**Ejemplo 3:** Vercel Edge CDN cachea dist/ globalmente; Cache-Control immutable en assets hashed acelera repeat visits.\n\nEstos casos muestran por qué DIAGNÓSTICO — PING, CURL, TRACEROUTE no es teórico: empresas y proyectos open source aplican estos principios diariamente. Al estudiar, elige uno y escribe cómo encajaría el concepto del módulo en ese escenario.\n\n## Errores comunes al estudiar\n\n· Confundir el caso promedio con el peor caso al estimar rendimiento de un algoritmo.\n· Ignorar la sección de aplicaciones reales: ahí se ancla la memoria a largo plazo.\n· Confundir el caso promedio con el peor caso al estimar rendimiento de un algoritmo.\n· Ignorar la sección de aplicaciones reales: ahí se ancla la memoria a largo plazo.\n\n## Síntesis para repasar\n\nCierra el módulo resumiendo DIAGNÓSTICO — PING, CURL, TRACEROUTE en cinco líneas propias. Vuelve a leer los **Conceptos clave** del panel, ejecuta el código de referencia y completa la autoevaluación. Si fallas más de 3 preguntas, relee el bloque teórico correspondiente antes de continuar — el siguiente módulo asume que dominas este.",
-      codeSnippet: `ping google.com
-traceroute github.com
-curl -v https://api.github.com`,
-      quiz: [
+    {
+      "id": 9,
+      "title": "MÓDULO 9: PROTOCOLO HTTP/2: MULTIPLEXACIÓN Y COMPRESIÓN HPACK",
+      "description": "Superando las limitaciones de HTTP/1.1: formato binario en marcos (frames), multiplexación de streams en un solo socket TCP, server push y compresión HPACK.",
+      "items": [
+        "El cuello de botella de HTTP/1.1: El Head-of-Line Blocking a nivel de aplicación (solicitudes en cola serial).",
+        "La transición de texto plano a Protocolo Binario: Tramas (Frames), Mensajes y Flujos (Streams).",
+        "Multiplexación Real: Enviar decenas de peticiones y respuestas simultáneas intercaladas en una única conexión TCP.",
+        "Priorización de Streams y Dependencias de Carga.",
+        "Compresión de Cabeceras con HPACK: Eliminación de redundancia de headers repetitivos (User-Agent, Cookies).",
+        "Por qué HTTP/2 hizo obsoletos los viejos hacks web (sprites de imágenes, inlining y domain sharding)."
+      ],
+      "content": "## HTTP/2: Multiplexación de Streams\n\nEn HTTP/1.1, si una imagen pesada tardaba 3 segundos en descargarse, ninguna otra solicitud podía usar esa conexión TCP hasta que terminara (Head-of-Line Blocking de aplicación).\n\n**HTTP/2 solucionó esto dividiendo el tráfico en tramas binarias intercaladas sobre un solo socket TCP**:\n* El navegador abre **una sola conexión TCP** con el servidor.\n* Puede solicitar 50 recursos a la vez; el servidor responde trozos de cada archivo con un ID de stream, y el navegador los reconstruye en paralelo sin bloquearse.",
+      "codeSnippet": "# Comprobar si un servidor soporta HTTP/2 usando curl\ncurl -I --http2 https://api.quimisell.dev\n\n# Inspeccionar el protocolo negociado mediante ALPN en el handshake TLS\nopenssl s_client -connect api.quimisell.dev:443 -alpn h2",
+      "quiz": [
         {
-          question: "ping usa...",
-          options: ["ICMP echo", "HTTP GET", "DNS TXT"],
-          answerIndex: 0,
-          explanation: "Echo request/reply."
-        },
-        {
-          question: "traceroute muestra...",
-          options: ["Saltos routers al destino", "Solo IP local", "HTML response"],
-          answerIndex: 0,
-          explanation: "Path discovery."
-        },
-        {
-          question: "curl -v...",
-          options: ["Verbose HTTP debug", "Solo ping", "Compila C"],
-          answerIndex: 0,
-          explanation: "Ver headers y TLS."
-        },
-        {
-          question: "ss -tuln lista...",
-          options: ["Puertos escuchando", "Solo DNS", "Archivos"],
-          answerIndex: 0,
-          explanation: "Socket statistics."
-        },
-        {
-          question: "Wireshark...",
-          options: ["Captura y analiza paquetes", "Solo escanea puertos", "Deploy Vercel"],
-          answerIndex: 0,
-          explanation: "Packet analyzer."
-        },
-      ,
-        {
-          question: "Según el temario de 'MÓDULO 9: DIAGNÓSTICO — PING, CURL, TRACEROUTE', ¿cuál afirmación es correcta sobre: ping: ICMP echo, latencia básica?",
-          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: ping: ICMP echo, latencia básica", "Ignorar casos borde y entradas vacías en el diseño."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que ping: ICMP echo, latencia básica. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 9: DIAGNÓSTICO — PING, CURL, TRACEROUTE', ¿cuál afirmación es correcta sobre: traceroute: saltos hasta destino?",
-          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: traceroute: saltos hasta destino", "Asumir que más líneas de código siempre implican mayor eficiencia."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que traceroute: saltos hasta destino. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 9: DIAGNÓSTICO — PING, CURL, TRACEROUTE', ¿cuál afirmación es correcta sobre: curl: HTTP client CLI completo?",
-          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: curl: HTTP client CLI completo", "Confundir el concepto con una técnica ortogonal no relacionada."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que curl: HTTP client CLI completo. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 9: DIAGNÓSTICO — PING, CURL, TRACEROUTE', ¿cuál afirmación es correcta sobre: netstat/ss: conexiones activas?",
-          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: netstat/ss: conexiones activas", "Aplicar la regla solo en el best case ignorando el peor escenario."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que netstat/ss: conexiones activas. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 9: DIAGNÓSTICO — PING, CURL, TRACEROUTE', ¿cuál afirmación es correcta sobre: Wireshark intro: captura paquetes?",
-          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Wireshark intro: captura paquetes", "Optimizar prematuramente sin perfilar el cuello de botella real."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Wireshark intro: captura paquetes. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 9: DIAGNÓSTICO — PING, CURL, TRACEROUTE', ¿cuál afirmación es correcta sobre: Definición operativa de los términos centrales de DIAGNÓSTICO — PING, CURL, T...?",
-          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Definición operativa de los términos centrales de DIAGNÓSTICO — PIN...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Definición operativa de los términos centrales de DIAGNÓSTICO — PING, CURL, TRACEROUTE. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 9: DIAGNÓSTICO — PING, CURL, TRACEROUTE', ¿cuál afirmación es correcta sobre: Ejemplo numérico o de código trazado paso a paso?",
-          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Ejemplo numérico o de código trazado paso a paso", "Confundir el concepto con una técnica ortogonal no relacionada."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Ejemplo numérico o de código trazado paso a paso. Las otras opciones representan malentendidos típicos."
+          "question": "¿Qué problema resuelve la multiplexación de HTTP/2?",
+          "options": [
+            "Elimina el bloqueo de cabecera de línea (Head-of-Line Blocking) a nivel de HTTP, permitiendo enviar múltiples peticiones y respuestas simultáneas en un solo socket TCP",
+            "Permite navegar sin internet",
+            "Reduce el consumo de batería del teclado"
+          ],
+          "answerIndex": 0,
+          "explanation": "La multiplexación permite que decenas de peticiones viajen en paralelo por la misma conexión TCP sin tener que esperar a que la anterior termine."
         }
       ]
     },
-{
-      id: 10,
-      title: "MÓDULO 10: PUENTE HACIA KALI — REDES ANTES DE PENTESTING",
-      description: "Fundamentos éticos y legales antes del curso Kali.",
-      items: [
-      "Entender la red que vas a auditar.",
-      "Puertos: 80 HTTP, 443 HTTPS, 22 SSH.",
-      "Recon pasivo vs activo (legal).",
-      "Tu propia red/lab primero.",
-      "Conecta con Nmap del curso Kali.",
-      "Definición operativa de los términos centrales de PUENTE HACIA KALI — REDES ANTES DE PENTESTING.",
-      "Ejemplo numérico o de código trazado paso a paso.",
-      "Pregunta tipo entrevista técnica con respuesta esperada.",
-      "Relación explícita con el snippet de implementación del módulo."
-],
-      content: "## Panorama del tema: PUENTE HACIA KALI — REDES ANTES DE PENTESTING\n\nFundamentos éticos y legales antes del curso Kali.\n\nKali enseña Nmap, Wireshark, Metasploit — pero sin fundamentos de red es ruido. Saber qué es un puerto, SYN scan, y por qué HTTPS protege antes de intentar bypass. Recon pasivo (OSINT, DNS público) vs activo (port scan) tiene implicaciones legales. Practica SOLO en redes propias o labs autorizados (TryHackMe, HTB). QuimiSell: redes dev → Kali → ciber defensiva.\n\nEste módulo es material de estudio **autocontenido**: puedes aprenderlo completo aquí, sin pagar plataformas externas ni depender de internet después de cargar la página. Lee en orden, ejecuta el snippet, resuelve la autoevaluación y repasa los puntos que falles.\n\n## Qué aprenderás en este módulo\n\n· Entender la red que vas a auditar.\n· Puertos: 80 HTTP, 443 HTTPS, 22 SSH.\n· Recon pasivo vs activo (legal).\n· Tu propia red/lab primero.\n· Conecta con Nmap del curso Kali.\n· Definición operativa de los términos centrales de PUENTE HACIA KALI — REDES ANTES DE PENTESTING.\n· Ejemplo numérico o de código trazado paso a paso.\n· Pregunta tipo entrevista técnica con respuesta esperada.\n· Dominar las 12 preguntas de autoevaluación con ≥70% de aciertos antes de avanzar.\n\n## Desarrollo teórico detallado\n\n## 1. Entender la red que vas a auditar.\n\n**Qué es y por qué importa.** Dentro de PUENTE HACIA KALI — REDES ANTES DE PENTESTING, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Entender la red que vas a auditar. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Entender la red que vas a auditar.» y cuándo lo evitarías.\n\n## 2. Puertos: 80 HTTP, 443 HTTPS, 22 SSH.\n\n**Qué es y por qué importa.** Dentro de PUENTE HACIA KALI — REDES ANTES DE PENTESTING, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Puertos: 80 HTTP, 443 HTTPS, 22 SSH. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Puertos: 80 HTTP, 443 HTTPS, 22 SSH.» y cuándo lo evitarías.\n\n## 3. Recon pasivo vs activo (legal).\n\n**Qué es y por qué importa.** Dentro de PUENTE HACIA KALI — REDES ANTES DE PENTESTING, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Recon pasivo vs activo (legal). — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Recon pasivo vs activo (legal).» y cuándo lo evitarías.\n\n## 4. Tu propia red/lab primero.\n\n**Qué es y por qué importa.** Dentro de PUENTE HACIA KALI — REDES ANTES DE PENTESTING, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Tu propia red/lab primero. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Tu propia red/lab primero.» y cuándo lo evitarías.\n\n## 5. Conecta con Nmap del curso Kali.\n\n**Qué es y por qué importa.** Dentro de PUENTE HACIA KALI — REDES ANTES DE PENTESTING, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Conecta con Nmap del curso Kali. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Conecta con Nmap del curso Kali.» y cuándo lo evitarías.\n\n## 6. Definición operativa de los términos centrales de PUENTE HACIA KALI — REDES ANTES DE PENTESTING.\n\n**Qué es y por qué importa.** Dentro de PUENTE HACIA KALI — REDES ANTES DE PENTESTING, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Definición operativa de los términos centrales de PUENTE HACIA KALI — REDES ANTES DE PENTESTING. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Definición operativa de los términos centrales de PUENTE HACIA KALI — REDES ANTES DE PENTESTING.» y cuándo lo evitarías.\n\n## 7. Ejemplo numérico o de código trazado paso a paso.\n\n**Qué es y por qué importa.** Dentro de PUENTE HACIA KALI — REDES ANTES DE PENTESTING, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Ejemplo numérico o de código trazado paso a paso. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Ejemplo numérico o de código trazado paso a paso.» y cuándo lo evitarías.\n\n## 8. Pregunta tipo entrevista técnica con respuesta esperada.\n\n**Qué es y por qué importa.** Dentro de PUENTE HACIA KALI — REDES ANTES DE PENTESTING, este punto es central en redes TCP/IP, protocolos web y diagnóstico de conectividad. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Pregunta tipo entrevista técnica con respuesta esperada. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Pregunta tipo entrevista técnica con respuesta esperada.» y cuándo lo evitarías.\n\n## Aplicaciones en sistemas reales\n\n**Ejemplo 1:** CORS bloquea APIs cross-origin hasta que el servidor envía Access-Control-Allow-Origin explícito.\n\n**Ejemplo 2:** CORS bloquea APIs cross-origin hasta que el servidor envía Access-Control-Allow-Origin explícito.\n\n**Ejemplo 3:** CORS bloquea APIs cross-origin hasta que el servidor envía Access-Control-Allow-Origin explícito.\n\nEstos casos muestran por qué PUENTE HACIA KALI — REDES ANTES DE PENTESTING no es teórico: empresas y proyectos open source aplican estos principios diariamente. Al estudiar, elige uno y escribe cómo encajaría el concepto del módulo en ese escenario.\n\n## Errores comunes al estudiar\n\n· Confundir el caso promedio con el peor caso al estimar rendimiento de un algoritmo.\n· Ignorar la sección de aplicaciones reales: ahí se ancla la memoria a largo plazo.\n· Confundir el caso promedio con el peor caso al estimar rendimiento de un algoritmo.\n· Ignorar la sección de aplicaciones reales: ahí se ancla la memoria a largo plazo.\n\n## Síntesis para repasar\n\nCierra el módulo resumiendo PUENTE HACIA KALI — REDES ANTES DE PENTESTING en cinco líneas propias. Vuelve a leer los **Conceptos clave** del panel, ejecuta el código de referencia y completa la autoevaluación. Si fallas más de 3 preguntas, relee el bloque teórico correspondiente antes de continuar — el siguiente módulo asume que dominas este.",
-      codeSnippet: `# Puertos comunes: 22 SSH, 80 HTTP, 443 HTTPS, 53 DNS
-# Siguiente: Curso Kali Linux Nmap`,
-      quiz: [
+    {
+      "id": 10,
+      "title": "MÓDULO 10: PROTOCOLO HTTP/3 (QUIC): UDP COMO BASE Y 0-RTT",
+      "description": "La revolución del transporte web: QUIC sobre UDP, eliminación del Head-of-Line Blocking de transporte TCP, migración de conexión y apretón de manos 0-RTT.",
+      "items": [
+        "La ironía de HTTP/2: Si se pierde un solo paquete TCP en la red, TODOS los streams multiplexados se congelan.",
+        "El Head-of-Line Blocking a nivel de Transporte de TCP y por qué TCP no podía evolucionar más.",
+        "QUIC (Quick UDP Internet Connections): Diseñado por Google y estandarizado por el IETF.",
+        "HTTP/3: HTTP sobre QUIC y UDP en lugar de TCP.",
+        "Cero RTT Handshake: Unificación del apretón de transporte y criptográfico TLS 1.3 en un solo viaje.",
+        "Migración de Conexión: Cambiar de WiFi a 4G/5G en tu teléfono sin que la llamada o descarga se interrumpa (Connection ID independiente de la IP)."
+      ],
+      "content": "## HTTP/3 y el Protocolo QUIC\n\nHTTP/2 tenía un defecto fatal heredado de TCP: si en una red móvil con mala cobertura se perdía un solo paquete, el kernel de TCP detenía **todos los streams multiplexados** hasta que ese paquete fuera retransmitido y confirmado.\n\n**HTTP/3 resolvió esto reemplazando a TCP por QUIC sobre UDP**:\n* Cada stream en QUIC es completamente independiente: si se pierde un paquete del stream 3, los streams 1, 2, 4 y 5 siguen recibiendo datos a máxima velocidad.\n* **Migración de Conexión:** Las conexiones QUIC no se identifican por la tupla IP:Puerto, sino por un **Connection ID criptográfico**. Si sales de tu casa y tu teléfono pasa de WiFi a datos móviles (cambiando tu dirección IP pública), tu descarga continúa sin reiniciar la conexión.",
+      "codeSnippet": "# Verificar soporte de HTTP/3 con curl (requiere versión compilada con nghttp3/quiche)\ncurl --http3 -I https://cloudflare.com\n\n# En cabeceras de respuesta, el servidor anuncia HTTP/3 mediante Alt-Svc:\n# alt-svc: h3=\":443\"; ma=86400",
+      "quiz": [
         {
-          question: "Antes de Kali domina...",
-          options: ["Fundamentos de red y puertos", "Solo Metasploit", "Solo Python"],
-          answerIndex: 0,
-          explanation: "Base teórica."
-        },
-        {
-          question: "Puerto 443...",
-          options: ["HTTPS", "SSH", "DNS"],
-          answerIndex: 0,
-          explanation: "TLS web."
-        },
-        {
-          question: "Recon activo (port scan)...",
-          options: ["Implicaciones legales", "Siempre legal", "Solo OSINT"],
-          answerIndex: 0,
-          explanation: "Autorización necesaria."
-        },
-        {
-          question: "Practica pentest en...",
-          options: ["Red propia o lab autorizado", "Cualquier sitio", "Bancos"],
-          answerIndex: 0,
-          explanation: "Ética y legalidad."
-        },
-        {
-          question: "Tras este curso sigue...",
-          options: ["Kali Linux & Nmap QuimiSell", "Solo matemática", "Autómatas"],
-          answerIndex: 0,
-          explanation: "Puente curricular."
-        },
-      ,
-        {
-          question: "Según el temario de 'MÓDULO 10: PUENTE HACIA KALI — REDES ANTES DE PENTESTING', ¿cuál afirmación es correcta sobre: Entender la red que vas a auditar?",
-          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Entender la red que vas a auditar", "Optimizar prematuramente sin perfilar el cuello de botella real."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Entender la red que vas a auditar. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 10: PUENTE HACIA KALI — REDES ANTES DE PENTESTING', ¿cuál afirmación es correcta sobre: Puertos: 80 HTTP, 443 HTTPS, 22 SSH?",
-          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Puertos: 80 HTTP, 443 HTTPS, 22 SSH", "Descartar el análisis asintótico por constantes de hardware."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Puertos: 80 HTTP, 443 HTTPS, 22 SSH. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 10: PUENTE HACIA KALI — REDES ANTES DE PENTESTING', ¿cuál afirmación es correcta sobre: Recon pasivo vs activo (legal)?",
-          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Recon pasivo vs activo (legal)", "Asumir que más líneas de código siempre implican mayor eficiencia."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Recon pasivo vs activo (legal). Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 10: PUENTE HACIA KALI — REDES ANTES DE PENTESTING', ¿cuál afirmación es correcta sobre: Tu propia red/lab primero?",
-          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Tu propia red/lab primero", "Confundir el concepto con una técnica ortogonal no relacionada."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Tu propia red/lab primero. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 10: PUENTE HACIA KALI — REDES ANTES DE PENTESTING', ¿cuál afirmación es correcta sobre: Conecta con Nmap del curso Kali?",
-          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Conecta con Nmap del curso Kali", "Ignorar casos borde y entradas vacías en el diseño."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Conecta con Nmap del curso Kali. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 10: PUENTE HACIA KALI — REDES ANTES DE PENTESTING', ¿cuál afirmación es correcta sobre: Definición operativa de los términos centrales de PUENTE HACIA KALI — REDES A...?",
-          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Definición operativa de los términos centrales de PUENTE HACIA KALI...", "Mezclar responsabilidades en una sola función o módulo monolítico."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Definición operativa de los términos centrales de PUENTE HACIA KALI — REDES ANTES DE PENTESTING. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 10: PUENTE HACIA KALI — REDES ANTES DE PENTESTING', ¿cuál afirmación es correcta sobre: Ejemplo numérico o de código trazado paso a paso?",
-          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Ejemplo numérico o de código trazado paso a paso", "Mezclar responsabilidades en una sola función o módulo monolítico."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Ejemplo numérico o de código trazado paso a paso. Las otras opciones representan malentendidos típicos."
+          "question": "¿Qué ocurre en HTTP/3 cuando tu teléfono móvil cambia de la red WiFi del hogar a la red de datos móviles 4G/5G?",
+          "options": [
+            "La conexión se mantiene viva sin interrupción gracias a la 'Migración de Conexión' basada en Connection ID, en lugar de desconectarse como ocurría con TCP",
+            "El teléfono debe reiniciarse",
+            "La página web se borra del navegador"
+          ],
+          "answerIndex": 0,
+          "explanation": "QUIC identifica las sesiones con un Connection ID único independiente de la dirección IP, permitiendo roaming transparente entre redes."
         }
       ]
-    }]
+    },
+    {
+      "id": 11,
+      "title": "MÓDULO 11: TIEMPO REAL: WEBSOCKETS VS SERVER-SENT EVENTS (SSE) VS LONG POLLING",
+      "description": "Comunicación bidireccional continua: el Upgrade de HTTP a WebSocket, streaming unidireccional con Server-Sent Events (SSE) para chat de IA y Long Polling.",
+      "items": [
+        "Limitaciones del modelo Request-Response de HTTP para experiencias en tiempo real.",
+        "Long Polling: El hack histórico de retener la respuesta abierta en el servidor.",
+        "WebSockets (RFC 6455): Conexión bidireccional (Full-Duplex) persistente iniciada mediante un HTTP Upgrade.",
+        "Server-Sent Events (SSE): Streaming unidireccional del servidor al cliente sobre HTTP estándar (`Content-Type: text/event-stream`).",
+        "Por qué las interfaces de Inteligencia Artificial (ChatGPT, Gemini) prefieren SSE sobre WebSockets.",
+        "Manejo de Heartbeats (Ping/Pong) y reconexión automática ante cortes de red."
+      ],
+      "content": "## WebSockets vs Server-Sent Events (SSE)\n\nPara aplicaciones en tiempo real existen dos tecnologías principales:\n\n1. **WebSockets (Full-Duplex Bidireccional):** Cliente y servidor pueden enviarse mensajes en cualquier momento con mínima sobrecarga (cabecera de 2 bytes). Ideal para videojuegos multijugador, plataformas de trading financiero o herramientas colaborativas (estilo Figma).\n2. **Server-Sent Events - SSE (Unidireccional Servidor -> Cliente):** Corre sobre HTTP estándar. Si el cliente solo necesita recibir texto en streaming (como tokens de un modelo LLM o cotizaciones de bolsa), SSE es superior porque soporta compresión HTTP, HTTP/2 multiplexing y reconexión automática nativa sin librerías complejas.",
+      "codeSnippet": "// Ejemplo: Servidor de Streaming SSE en Node.js (Patrón ChatGPT)\nimport express from 'express';\nconst app = express();\n\napp.get('/api/stream-ia', (req, res) => {\n  // Configuración de cabeceras SSE obligatorias\n  res.setHeader('Content-Type', 'text/event-stream');\n  res.setHeader('Cache-Control', 'no-cache');\n  res.setHeader('Connection', 'keep-alive');\n\n  let tokenCount = 0;\n  const interval = setInterval(() => {\n    tokenCount++;\n    // Enviar evento SSE con formato data: <contenido>\\n\\n\n    res.write(\\`data: \\${JSON.stringify({ token: \\`Palabra \\${tokenCount}\\` })}\\n\\n\\`);\n\n    if (tokenCount >= 5) {\n      clearInterval(interval);\n      res.write('data: [DONE]\\n\\n');\n      res.end();\n    }\n  }, 500);\n});",
+      "quiz": [
+        {
+          "question": "¿Por qué las aplicaciones de streaming de IA (como ChatGPT) utilizan Server-Sent Events (SSE) en lugar de WebSockets?",
+          "options": [
+            "Porque es un flujo unidireccional simple sobre HTTP estándar que se integra nativamente con balanceadores, proxies y HTTP/2 sin requerir un protocolo especial",
+            "Porque WebSockets está prohibido en navegadores",
+            "Porque SSE es más lento"
+          ],
+          "answerIndex": 0,
+          "explanation": "El streaming de texto de IA es unidireccional (del servidor al cliente); SSE sobre HTTP estándar ofrece reconexión automática y funciona detrás de cualquier proxy."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "title": "MÓDULO 12: ARQUITECTURA DE APIS RESTFUL: PRINCIPIOS DE FIELDING E IDEMPOTENCIA",
+      "description": "Diseño de APIs de alta escala: restricciones de Roy Fielding, HATEOAS, diseño de URIs semánticas, métodos HTTP (GET, POST, PUT, PATCH, DELETE) e idempotencia.",
+      "items": [
+        "La tesis doctoral de Roy Fielding (2000): REST no es un framework, es un estilo arquitectónico.",
+        "Restricciones formales de REST: Cliente-Servidor, Sin Estado (Stateless), Cacheable, Interfaz Uniforme, Sistema en Capas.",
+        "Métodos Seguros vs Métodos Idempotentes: La propiedad matemática de la Idempotencia ($f(f(x)) = f(x)$).",
+        "Diferencia crítica entre PUT (reemplazo completo idempotente) y PATCH (modificación parcial no necesariamente idempotente).",
+        "Diseño de URIs limpias orientadas a sustantivos (`/usuarios/123/pedidos` vs `/obtenerPedidosUsuario`).",
+        "Estrategias de versionado de APIs: Por URI (`/v1/`), por cabeceras (`Accept: application/vnd.quimisell.v1+json`) o por query params."
+      ],
+      "content": "## Principios de APIs RESTful e Idempotencia\n\nUna operación es **Idempotente** si ejecutarla una sola vez produce exactamente el mismo resultado y estado en el sistema que ejecutarla diez veces consecutivas.\n\n| Método HTTP | ¿Es Seguro? | ¿Es Idempotente? | Semántica de Operación |\n|---|---|---|---|\n| `GET` | ✅ Sí | ✅ Sí | Consulta de lectura (no muta estado) |\n| `POST` | ❌ No | ❌ No | Creación de recursos (genera un nuevo ID en cada llamada) |\n| `PUT` | ❌ No | ✅ Sí | Reemplazo completo del recurso en ese ID |\n| `DELETE` | ❌ No | ✅ Sí | Eliminación del recurso (una vez borrado, sigue borrado) |\n| `PATCH` | ❌ No | Depende | Modificación parcial de campos específicos |",
+      "codeSnippet": "// Ejemplo de API RESTful semántica con Express\nimport express from 'express';\nconst app = express();\napp.use(express.json());\n\n// GET: Seguro e Idempotente\napp.get('/api/v1/usuarios/:id', (req, res) => {\n  res.status(200).json({ id: req.params.id, nombre: 'Selvin' });\n});\n\n// POST: Ni seguro ni idempotente (Crea nuevo recurso)\napp.post('/api/v1/usuarios', (req, res) => {\n  res.status(201).json({ id: 'nuevo-uuid-123', ...req.body });\n});\n\n// PUT: Idempotente (Reemplaza el recurso completo en ese ID)\napp.put('/api/v1/usuarios/:id', (req, res) => {\n  res.status(200).json({ id: req.params.id, ...req.body });\n});",
+      "quiz": [
+        {
+          "question": "Si una conexión de red falla tras enviar un request y el cliente reintenta la petición automáticamente, ¿cuál de los siguientes métodos garantiza que no se crearán duplicados por su idempotencia?",
+          "options": [
+            "`PUT`",
+            "`POST`",
+            "Ninguno"
+          ],
+          "answerIndex": 0,
+          "explanation": "`PUT` opera sobre una URI fija reemplazando su contenido; reintentar un `PUT` 5 veces deja el recurso en el mismo estado, mientras que `POST` crearía 5 registros nuevos."
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "title": "MÓDULO 13: RPC MODERNO: GRPC Y PROTOCOL BUFFERS (PROTOBUF)",
+      "description": "Comunicación interna de alta velocidad entre microservicios: gRPC de Google, serialización binaria con Protobuf, contratos fuertemente tipados y HTTP/2.",
+      "items": [
+        "Por qué JSON sobre HTTP/1.1 es lento para comunicación interna entre microservicios en centros de datos.",
+        "Protocol Buffers (Protobuf): Esquemas binarios compactos con codificación Varint y TLV.",
+        "Ahorro de ancho de banda y CPU: Comparación de tamaño y velocidad de serialización (Protobuf vs JSON).",
+        "Los 4 Tipos de Métodos en gRPC: Unario, Server Streaming, Client Streaming y Streaming Bidireccional.",
+        "Generación automática de clientes y servidores en TypeScript, Go, Python, Java y Rust desde un archivo `.proto`.",
+        "Manejo de códigos de estado de gRPC (OK, CANCELLED, DEADLINE_EXCEEDED, NOT_FOUND)."
+      ],
+      "content": "## gRPC y Protocol Buffers: La Red de los Microservicios\n\nEn arquitecturas de microservicios con cientos de llamadas por segundo, parsear texto JSON y serializar strings consume gigabytes de ancho de banda y ciclos de CPU innecesarios.\n\n**gRPC (creado por Google)** utiliza:\n1. **HTTP/2 como transporte subyacente:** Multiplexación nativa y streams bidireccionales.\n2. **Protocol Buffers:** Un payload de 1,400 bytes en JSON se reduce a 300 bytes binarios en Protobuf, y la deserialización es hasta 10 veces más rápida.",
+      "codeSnippet": "// archivo: usuario.proto\nsyntax = \"proto3\";\n\npackage quimisell.usuarios;\n\nservice UsuarioService {\n  // Método RPC Unario estándar\n  rpc ObtenerUsuario (UsuarioRequest) returns (UsuarioResponse);\n  \n  // Método RPC con Streaming de servidor\n  rpc ListarUsuariosActivos (Vacio) returns (stream UsuarioResponse);\n}\n\nmessage UsuarioRequest {\n  string id = 1; // El número 1 es el tag binario del campo\n}\n\nmessage UsuarioResponse {\n  string id = 1;\n  string email = 2;\n  int32 saldo_centavos = 3;\n  bool esta_activo = 4;\n}\n\nmessage Vacio {}",
+      "quiz": [
+        {
+          "question": "¿Por qué gRPC con Protocol Buffers es mucho más rápido y ligero que REST con JSON?",
+          "options": [
+            "Porque codifica los datos en formato binario compacto usando tags numéricos en lugar de nombres de texto repetitivos, y corre sobre HTTP/2 multiplexado",
+            "Porque no requiere tarjeta de red",
+            "Porque solo funciona en servidores Google"
+          ],
+          "answerIndex": 0,
+          "explanation": "Protobuf no serializa los nombres de las claves en cada mensaje (usa tags de 1 byte) y genera representaciones binarias compactas que la CPU procesa en microsegundos."
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "title": "MÓDULO 14: PROXIES INVERSOS Y BALANCEO DE CARGA CON NGINX",
+      "description": "Puntos de entrada corporativos: Nginx como Reverse Proxy, terminación SSL/TLS, algoritmos de balanceo (Round-Robin, Least Connections, IP Hash) y caching.",
+      "items": [
+        "Forward Proxy (Proxy hacia adelante) vs Reverse Proxy (Proxy inverso).",
+        "Roles del Reverse Proxy: Ocultar topología interna, Terminación SSL/TLS, Compresión Gzip/Brotli y Caching estático.",
+        "Algoritmos de Balanceo de Carga: Round-Robin, Least Connections (Menor número de conexiones activas), IP Hash (Afinidad de sesión).",
+        "Configuración de bloques `upstream` y `server` en Nginx.",
+        "Healthchecks activos y pasivos para retirar servidores caídos del pool de balanceo.",
+        "Inyección de cabeceras de proxy: `X-Forwarded-For`, `X-Forwarded-Proto`, `X-Real-IP`."
+      ],
+      "content": "## Proxies Inversos y Balanceo de Carga con Nginx\n\nUn **Reverse Proxy** se sitúa frente a tus servidores de aplicación:\n* Los clientes solo conocen la IP pública de Nginx.\n* Nginx descarga a los servidores de Node.js/Python de la costosa tarea de descifrar TLS.\n* Distribuye las peticiones entre 5 instancias backend según su carga.",
+      "codeSnippet": "# Configuración de Nginx (/etc/nginx/nginx.conf)\nhttp {\n  # Definición del grupo de servidores backend (Upstream)\n  upstream api_cluster {\n    least_conn; # Algoritmo: enviar a la instancia con menos conexiones\n    server 10.0.1.10:3000 max_fails=3 fail_timeout=10s;\n    server 10.0.1.11:3000 max_fails=3 fail_timeout=10s;\n    server 10.0.1.12:3000 backup; # Servidor de respaldo\n  }\n\n  server {\n    listen 80;\n    server_name api.quimisell.dev;\n    return 301 https://$host$request_uri; # Redirección forzada a HTTPS\n  }\n\n  server {\n    listen 443 ssl http2;\n    server_name api.quimisell.dev;\n\n    ssl_certificate /etc/letsencrypt/live/api.quimisell.dev/fullchain.pem;\n    ssl_certificate_key /etc/letsencrypt/live/api.quimisell.dev/privkey.pem;\n\n    location / {\n      proxy_pass http://api_cluster;\n      proxy_set_header Host $host;\n      proxy_set_header X-Real-IP $remote_addr;\n      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\n      proxy_set_header X-Forwarded-Proto $scheme;\n    }\n  }\n}",
+      "quiz": [
+        {
+          "question": "¿Qué algoritmo de balanceo de carga en Nginx distribuye cada petición al servidor que tiene menos conexiones activas en ese instante?",
+          "options": [
+            "`least_conn`",
+            "`round_robin`",
+            "`ip_hash`"
+          ],
+          "answerIndex": 0,
+          "explanation": "`least_conn` previene que un servidor que está procesando peticiones lentas se sobrecargue, enviando nuevo tráfico a servidores con menor carga activa."
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "title": "MÓDULO 15: SEGURIDAD WEB EN CAPA DE APLICACIÓN: CORS, CSP Y COOKIES",
+      "description": "Defensas del navegador: la política del mismo origen (SOP), configuración correcta de CORS, Content Security Policy (CSP) y cookies seguras.",
+      "items": [
+        "Same-Origin Policy (SOP): La regla de oro del navegador (mismo protocolo, dominio y puerto).",
+        "Cross-Origin Resource Sharing (CORS): Cabeceras `Access-Control-Allow-Origin`, preflight requests (OPTIONS).",
+        "El grave error de seguridad de configurar `Access-Control-Allow-Origin: *` con credenciales.",
+        "Content Security Policy (CSP): La defensa definitiva contra Cross-Site Scripting (XSS).",
+        "Atributos de Cookies de Sesión: `HttpOnly` (inmune a robo por JavaScript), `Secure` (solo HTTPS), `SameSite=Strict/Lax` (anti-CSRF)."
+      ],
+      "content": "## Seguridad Web: CORS y Content Security Policy (CSP)\n\n### El Mito Común sobre CORS\nMuchos desarrolladores creen erróneamente que CORS es un mecanismo para bloquear hackers. **CORS es una protección para el navegador del usuario, no para el servidor**:\n* Un atacante usando `curl` o Python puede llamar a tu API sin que CORS lo detenga.\n* CORS le dice al navegador de un usuario en `sitio-malicioso.com` que no tiene permiso para leer las respuestas de `tu-banco.com`.",
+      "codeSnippet": "// Configuración segura de CORS y Cookies en Express\nimport cors from 'cors';\nimport cookieParser from 'cookie-parser';\n\napp.use(cors({\n  origin: 'https://app.quimisell.dev', // Dominio explícito permitido (NUNCA '*' si hay credenciales)\n  credentials: true, // Permitir envío de cookies de autenticación\n  methods: ['GET', 'POST', 'PUT', 'DELETE'],\n}));\n\n// Generación de Cookie de Sesión con máxima seguridad\nres.cookie('token_sesion', jwtToken, {\n  httpOnly: true,  // Previene que document.cookie sea robado por ataques XSS\n  secure: true,    // Solo viaja a través de conexiones cifradas HTTPS\n  sameSite: 'lax', // Protección nativa contra Cross-Site Request Forgery (CSRF)\n  maxAge: 3600000, // 1 hora de expiración\n});",
+      "quiz": [
+        {
+          "question": "¿Por qué es crucial marcar las cookies de sesión con el atributo `HttpOnly`?",
+          "options": [
+            "Porque impide que el código JavaScript del navegador (como scripts inyectados mediante ataques XSS) pueda leer o robar la cookie",
+            "Porque hace que las cookies se descarguen más rápido",
+            "Porque activa el modo oscuro"
+          ],
+          "answerIndex": 0,
+          "explanation": "`HttpOnly` bloquea el acceso desde `document.cookie`; incluso si un atacante logra inyectar JavaScript en tu página, no podrá extraer la sesión."
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "title": "MÓDULO 16: AUTENTICACIÓN EN MICROSERVICIOS: MTLS, JWT Y SPIFFE",
+      "description": "Seguridad Zero Trust en la red interna: Mutual TLS (mTLS) para autenticación mutua de servidores, tokens JWT y el estándar SPIFFE/SPIRE.",
+      "items": [
+        "La falacia de la seguridad perimetral: 'La red interna es confiable'.",
+        "Filosofía Zero Trust (Cero Confianza): Autenticar y autorizar cada llamada, incluso dentro del datacenter.",
+        "Mutual TLS (mTLS): El cliente verifica al servidor Y el servidor verifica el certificado del cliente.",
+        "JSON Web Tokens (JWT): Anatomía (Header, Payload, Firma), algoritmos seguros (RS256 vs HS256) y riesgos de revocación.",
+        "Identidad de cargas de trabajo con el estándar SPIFFE (Secure Production Identity Framework for Everyone).",
+        "Service Meshes (Istio, Linkerd) automatizando mTLS transparente entre pods."
+      ],
+      "content": "## Mutual TLS (mTLS) y Zero Trust\n\nEn el TLS estándar de la web, solo el cliente verifica que el servidor sea legítimo (tú verificas que estás en `google.com`).\n\nEn **mTLS (Mutual TLS)** para microservicios:\n1. El Servidor presenta su certificado al Cliente.\n2. El Cliente **también presenta su certificado criptográfico** al Servidor.\n3. Si el microservicio que llama no posee un certificado emitido por la Autoridad Certificadora interna de la empresa, la conexión TCP se cierra de inmediato en el handshake, antes de procesar ninguna petición.",
+      "codeSnippet": "// Cliente HTTPS en Node.js configurado con mTLS (Certificado de Cliente)\nimport https from 'https';\nimport fs from 'fs';\n\nconst agenteSeguro = new https.Agent({\n  cert: fs.readFileSync('cliente-cert.pem'), // Certificado de identidad del cliente\n  key: fs.readFileSync('cliente-key.pem'),   // Clave privada del cliente\n  ca: fs.readFileSync('ca-interna.pem'),     // Certificado de la CA que firmó al servidor\n  rejectUnauthorized: true,                  // Rechazar si el servidor no es confiable\n});\n\n// Solicitud interna entre microservicios con autenticación mutua\nhttps.get('https://servicio-pagos.interno:8443/cobrar', { agent: agenteSeguro }, (res) => {\n  console.log('Autenticación mTLS exitosa. Status:', res.statusCode);\n});",
+      "quiz": [
+        {
+          "question": "¿En qué se diferencia Mutual TLS (mTLS) del TLS estándar que usamos en los navegadores web?",
+          "options": [
+            "En mTLS ambas partes deben presentar certificados digitales válidos para autenticarse mutuamente, en lugar de autenticar solo al servidor",
+            "mTLS usa contraseñas en lugar de certificados",
+            "mTLS solo funciona en redes satelitales"
+          ],
+          "answerIndex": 0,
+          "explanation": "mTLS exige que tanto el cliente como el servidor certifiquen su identidad criptográfica antes de transmitir datos."
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "title": "MÓDULO 17: PATRONES DE RESILIENCIA EN RED: CIRCUIT BREAKER Y RETRIES CON JITTER",
+      "description": "Blindando la red ante fallos: el patrón Circuit Breaker (Closed, Open, Half-Open), reintentos con Exponential Backoff y la necesidad matemática de Jitter.",
+      "items": [
+        "El efecto avalancha (Thundering Herd Problem) y las fallas en cascada en redes de microservicios.",
+        "El Patrón Circuit Breaker: Estados Closed (Normal), Open (Fallo masivo, no llamar) y Half-Open (Prueba de salud).",
+        "Estrategia de Retries: Cuándo es seguro reintentar (solo operaciones idempotentes) y cuándo es destructivo.",
+        "Exponential Backoff: Duplicar el tiempo de espera entre intentos ($100\\text{ms}, 200\\text{ms}, 400\\text{ms}, 800\\text{ms}$).",
+        "Jitter (Ruido Aleatorio): Por qué los reintentos sincronizados colapsan a los servidores recuperados.",
+        "Timeouts estrictos en todas las capas de transporte y aplicación."
+      ],
+      "content": "## Resiliencia de Red: Circuit Breaker y Jitter\n\nCuando un microservicio downstream se degrada y empieza a responder lento:\n1. Las peticiones se acumulan consumiendo hilos de ejecución en los servicios upstream.\n2. Si los clientes reintentan todos al mismo tiempo a intervalos fijos (ej. cada 1 segundo), generan una ola de tráfico que vuelve a tumbar al servidor recién levantado (**Thundering Herd**).\n\n### La Fórmula de Backoff con Jitter Completo\n$$\\text{Espera} = \\text{random}(0, \\min(\\text{MaxEspera}, \\text{Base} \\times 2^{\\text{intento}}))$$\nAñadir ruido aleatorio (Jitter) dispersa los reintentos en el tiempo, permitiendo que el servidor se recupere suavemente.",
+      "codeSnippet": "// Implementación de Reintentos con Exponential Backoff y Jitter Completo\nexport async function fetchConResiliencia<T>(\n  operacion: () => Promise<T>,\n  maxIntentos = 3,\n  baseMs = 100\n): Promise<T> {\n  for (let intento = 0; intento < maxIntentos; intento++) {\n    try {\n      return await operacion();\n    } catch (error) {\n      if (intento === maxIntentos - 1) throw error;\n\n      // Cálculo de Exponential Backoff con Jitter aleatorio\n      const backoff = baseMs * Math.pow(2, intento);\n      const jitter = Math.random() * backoff;\n      const tiempoEspera = Math.min(3000, jitter);\n\n      console.warn(\\`Fallo intento \\${intento + 1}. Reintentando en \\${tiempoEspera.toFixed(0)}ms...\\`);\n      await new Promise(r => setTimeout(r, tiempoEspera));\n    }\n  }\n  throw new Error('Inalcanzable');\n}",
+      "quiz": [
+        {
+          "question": "¿Por qué es crucial añadir 'Jitter' (aleatoriedad) a los reintentos con Exponential Backoff?",
+          "options": [
+            "Para desincronizar los reintentos de múltiples clientes, evitando que todos ataquen al servidor al mismo milisegundo provocando una nueva caída",
+            "Para consumir menos CPU",
+            "Porque los servidores no tienen reloj"
+          ],
+          "answerIndex": 0,
+          "explanation": "El Jitter rompe la sincronización del reintento masivo de miles de clientes, distribuyendo la carga de reconexión de forma homogénea."
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "title": "MÓDULO 18: CONTROL DE TRÁFICO Y PROTECCIÓN CONTRA ABUSO: RATE LIMITING",
+      "description": "Defensa de endpoints contra abusos y DDoS: algoritmos Token Bucket y Leaky Bucket, ventanas deslizantes con Redis y respuesta HTTP 429.",
+      "items": [
+        "La necesidad de Rate Limiting: Proteger la infraestructura, prevenir raspado de datos y controlar costos de APIs.",
+        "Algoritmo Token Bucket (Cubo de Tokens): Permite ráfagas cortas mientras mantiene una tasa promedio constante.",
+        "Algoritmo Leaky Bucket (Cubo con Fugas): Salida constante y suave sin ráfagas.",
+        "Sliding Window Log vs Sliding Window Counter con Redis distribuido.",
+        "Códigos de estado y cabeceras estándar: `HTTP 429 Too Many Requests`, `Retry-After`, `X-RateLimit-Remaining`.",
+        "Web Application Firewalls (WAF) mitigando ataques DDoS en Cloudflare y AWS Shield."
+      ],
+      "content": "## Control de Tráfico: El Algoritmo Token Bucket\n\nEl algoritmo **Token Bucket** es el estándar de la industria (usado por AWS, Stripe y Cloudflare):\n* Un cubo tiene una capacidad máxima de $B$ tokens.\n* Se añaden tokens al cubo a una tasa fija $r$ tokens por segundo.\n* Cada solicitud entrante toma 1 token del cubo:\n  * Si hay tokens disponibles: la solicitud pasa de inmediato.\n  * Si el cubo está vacío: la solicitud se rechaza con código `HTTP 429 Too Many Requests` y la cabecera `Retry-After`.",
+      "codeSnippet": "// Implementación limpia en memoria del Algoritmo Token Bucket\nexport class TokenBucketRateLimiter {\n  private tokens: number;\n  private ultimoRefresco: number;\n\n  constructor(\n    private readonly capacidadMaxima: number, // Ej: 10 peticiones\n    private readonly tasaRefrescoPorSegundo: number // Ej: 2 tokens por segundo\n  ) {\n    this.tokens = capacidadMaxima;\n    this.ultimoRefresco = Date.now();\n  }\n\n  intentarConsumir(): boolean {\n    this.refrescarTokens();\n\n    if (this.tokens >= 1) {\n      this.tokens -= 1;\n      return true; // Permitir petición\n    }\n    return false; // Rechazar con HTTP 429\n  }\n\n  private refrescarTokens(): void {\n    const ahora = Date.now();\n    const tiempoPasadoSegundos = (ahora - this.ultimoRefresco) / 1000;\n    const nuevosTokens = tiempoPasadoSegundos * this.tasaRefrescoPorSegundo;\n\n    this.tokens = Math.min(this.capacidadMaxima, this.tokens + nuevosTokens);\n    this.ultimoRefresco = ahora;\n  }\n}",
+      "quiz": [
+        {
+          "question": "¿Qué código de estado HTTP debe devolver una API cuando un cliente supera el límite de peticiones permitido?",
+          "options": [
+            "`HTTP 429 Too Many Requests`",
+            "`HTTP 500 Internal Server Error`",
+            "`HTTP 401 Unauthorized`"
+          ],
+          "answerIndex": 0,
+          "explanation": "El código formal de la RFC 6585 para sobrepasar la cuota de rate limiting es 429 Too Many Requests, complementado con la cabecera Retry-After."
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "title": "MÓDULO 19: DIAGNÓSTICO Y ANÁLISIS DE PAQUETES: WIRESHARK, TCPDUMP Y WATERFALLS",
+      "description": "Herramientas de diagnóstico de red: captura de paquetes con tcpdump en servidores remotos, análisis visual con Wireshark y lectura de waterfalls.",
+      "items": [
+        "Cuando los logs no dicen nada: Diagnóstico a nivel de paquete en la interfaz de red.",
+        "Captura en servidores headless con `tcpdump`: Filtros BPF (`port 443`, `src net 10.0.0.0/16`).",
+        "Análisis forense con Wireshark: Seguimiento de Streams TCP (`Follow TCP Stream`), filtros de visualización y análisis de retransmisiones.",
+        "Lectura del Waterfall de red en navegadores: Queueing, DNS Lookup, Initial Connection, SSL Handshake, TTFB (Time to First Byte) y Content Download.",
+        "Diagnóstico con `curl` avanzado midiendo tiempos exactos (`time_connect`, `time_starttransfer`)."
+      ],
+      "content": "## Diagnóstico de Paquetes con Wireshark y tcpdump\n\nLos mejores ingenieros no adivinan: capturan el tráfico de la tarjeta de red.\n\n### Lectura de Tiempos en un Waterfall de Red\n* **DNS Lookup:** Tiempo dedicado a resolver el nombre de dominio a IP.\n* **Initial Connection:** Tiempo consumido por el 3-Way Handshake de TCP.\n* **SSL Handshake:** Tiempo dedicado a la negociación TLS 1.3.\n* **TTFB (Time to First Byte):** Tiempo desde que se envió la petición hasta que el servidor emitió el primer byte (mide el tiempo de cómputo del backend).\n* **Content Download:** Tiempo transmitiendo el cuerpo de la respuesta.",
+      "codeSnippet": "# Comandos de captura y diagnóstico con tcpdump y curl\n# 1. Capturar 100 paquetes TCP en el puerto 443 y guardarlos en archivo pcap para Wireshark\nsudo tcpdump -i eth0 -c 100 -w captura_red.pcap port 443\n\n# 2. Medir con precisión quirúrgica el desglose de tiempos de red con curl\ncurl -w \"\\nDNS: %{time_namelookup}s\\nTCP: %{time_connect}s\\nTLS: %{time_appconnect}s\\nTTFB: %{time_starttransfer}s\\nTotal: %{time_total}s\\n\" \\\n     -o /dev/null -s https://api.quimisell.dev",
+      "quiz": [
+        {
+          "question": "En el análisis de un Waterfall de red, ¿qué indica un valor de TTFB (Time to First Byte) muy alto si el DNS y la conexión inicial fueron casi instantáneos?",
+          "options": [
+            "Que el cuello de botella está en el procesamiento interno del servidor backend (consultas lentas de BD o cómputo pesado) antes de empezar a responder",
+            "Que el cable de red del cliente está roto",
+            "Que la velocidad de la luz cambió"
+          ],
+          "answerIndex": 0,
+          "explanation": "El TTFB mide el tiempo de respuesta del servidor: si la red ya conectó pero el primer byte tarda 2 segundos, el problema es lentitud interna en el backend."
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "title": "MÓDULO 20: PROYECTO INTEGRADOR: ARQUITECTURA DE UNA RED GLOBAL RESILIENTE",
+      "description": "Diseño integral de una arquitectura distribuida: Nginx Anycast, terminación TLS 1.3, microservicios con gRPC y mTLS, Circuit Breakers y Rate Limiting.",
+      "items": [
+        "Diseño de la topología de red completa para una plataforma distribuida global de alto rendimiento.",
+        "Capa Perimetral: CDN global Anycast con mitigación de DDoS y compresión Brotli.",
+        "Capa de Entrada: Reverse Proxy Nginx con balanceo `least_conn` y Rate Limiting Token Bucket.",
+        "Capa Interna: Malla de microservicios comunicándose vía gRPC binario sobre HTTP/2 con mTLS mutuo.",
+        "Patrones de Resiliencia integrados: Circuit Breaker y Retries con Jitter en cada cliente interno.",
+        "Observabilidad de Red: Monitoreo de latencias p95/p99 y dashboards de tráfico."
+      ],
+      "content": "## Proyecto Integrador: La Red Global de Microservicios\n\nEn este proyecto integrador ensamblamos la arquitectura de red completa:\n\n```\n[ Usuario Global ]\n        │\n        ▼ (HTTPS / HTTP/3 QUIC)\n┌─────────────────────────────────┐\n│ CDN Edge / Anycast + WAF        │\n└───────────────┬─────────────────┘\n                ▼ (TLS 1.3)\n┌─────────────────────────────────┐\n│ Nginx Reverse Proxy / Ingress   │ ──► Rate Limiting (Token Bucket)\n└───────────────┬─────────────────┘\n                ▼ (mTLS Mutuo + gRPC Binario / HTTP/2)\n┌────────────────────────────────────────────────────────┐\n│ Malla de Microservicios Internos (Zero Trust)          │\n│ ├─ Microservicio Usuarios                              │\n│ ├─ Microservicio Pagos (Con Circuit Breaker activo)    │\n│ └─ Microservicio Catálogo (Con Fallback en memoria)    │\n└────────────────────────────────────────────────────────┘\n```",
+      "codeSnippet": "// Ejemplo del Proyecto Integrador: Cliente gRPC Resiliente con Circuit Breaker\nexport class ClienteMicroservicioResiliente {\n  private fallasConsecutivas = 0;\n  private circuitoAbierto = false;\n  private ultimoFallo = 0;\n\n  async invocar<T>(llamada: () => Promise<T>, fallback: () => T): Promise<T> {\n    // Si el circuito está abierto, responder con fallback inmediatamente sin tocar la red\n    if (this.circuitoAbierto) {\n      if (Date.now() - this.ultimoFallo > 5000) {\n        this.circuitoAbierto = false; // Estado Half-Open de prueba\n      } else {\n        return fallback();\n      }\n    }\n\n    try {\n      const respuesta = await llamada();\n      this.fallasConsecutivas = 0;\n      return respuesta;\n    } catch (err) {\n      this.fallasConsecutivas++;\n      this.ultimoFallo = Date.now();\n      if (this.fallasConsecutivas >= 3) {\n        this.circuitoAbierto = true; // Abrir circuito para proteger la red\n      }\n      return fallback();\n    }\n  }\n}",
+      "quiz": [
+        {
+          "question": "¿Por qué las arquitecturas de microservicios modernas combinan mTLS interno con gRPC binario?",
+          "options": [
+            "Porque mTLS garantiza autenticación criptográfica mutua Zero Trust entre servicios y gRPC ofrece máxima velocidad binaria y compresión sobre HTTP/2",
+            "Porque es obligatorio por la ley de internet",
+            "Para que las bases de datos no usen contraseñas"
+          ],
+          "answerIndex": 0,
+          "explanation": "Esta combinación une seguridad estricta (nadie puede suplantar a un servicio) con rendimiento extremo (mínima sobrecarga de CPU y red)."
+        }
+      ]
+    }
+  ]
 };
-// =========================================================================
-// 20 EJERCICIOS PRÁCTICOS DE TUTORÍA: REDES DEV, MICROSERVICIOS Y APIS
-// =========================================================================
-const REDES_DEV_EXERCISES: Record<number, TutorExercise[]> = {
+
+export const REDES_DEV_EXERCISES: Record<string, TutorExercise[]> = {
   "1": [
     {
       "id": 101,
-      "instruction": "Diferencia la Capa 4 (Transporte: TCP/UDP con puertos) de la Capa 7 (Aplicación: HTTP/gRPC). Explica por qué TCP garantiza entrega ordenada mediante números de secuencia.",
-      "placeholder": "// Capa 4 vs Capa 7:\n// TCP utiliza números de secuencia (SYN, ACK) para reordenar y retransmitir paquetes perdidos;\n// HTTP/gRPC operan en Capa 7 transmitiendo payloads de negocio sobre el socket confiable de Capa 4.",
+      "instruction": "Aplica los conceptos o configuraciones de red explicados en el MÓDULO 1: ARQUITECTURA DE REDES Y MODELOS OSI VS TCP/IP.",
+      "placeholder": "# Comandos esenciales para inspeccionar capas de red en Linux / macOS / Windows\n# 1. Ver la dirección IP y tarjetas de red físicas\nip addr show  # o 'ipconfig' en Windows\n\n# 2. Ver la tabla de enrutamiento del sistema operativo\nip route show\n\n# 3. Inspeccionar conexiones de transporte TCP activas y sockets abiertos\nss -tuln  # o 'netstat -ano' en Windows",
       "expectedKeywords": [
-        "Capa 4",
-        "Capa 7",
-        "TCP",
-        "secuencia"
+        "arquitectura"
       ],
-      "hint": "Menciona que TCP opera en Capa 4 con números de secuencia y acuse de recibo (ACK), mientras HTTP opera en Capa 7.",
-      "isEmailSubmission": false
-    },
-    {
-      "id": 102,
-      "instruction": "Describe el Three-Way Handshake de TCP (SYN, SYN-ACK, ACK) y explica por qué previene conexiones fantasma antes de enviar datos.",
-      "placeholder": "// Three-Way Handshake TCP:\n// 1. Cliente envía SYN (Sequence Number x)\n// 2. Servidor responde SYN-ACK (Ack x+1, Seq y)\n// 3. Cliente confirma ACK (Ack y+1) y se establece la conexión ESTABLISHED.",
-      "expectedKeywords": [
-        "SYN",
-        "SYN-ACK",
-        "ACK",
-        "Handshake"
-      ],
-      "hint": "Estructura los 3 pasos: Cliente envía SYN, Servidor responde SYN-ACK, Cliente envía ACK final.",
+      "hint": "Revisa los conceptos del protocolo y aplica la sintaxis o comando adecuado.",
       "isEmailSubmission": false
     }
   ],
   "2": [
     {
       "id": 201,
-      "instruction": "Calcula la máscara de red y la cantidad de hosts utilizables para la subred privada `192.168.1.0/24`.",
-      "placeholder": "const subnetMask = '255.255.255.0';\nconst totalIps = 256;\nconst usableHosts = 254; // Se descuentan la IP de red (192.168.1.0) y broadcast (192.168.1.255)",
+      "instruction": "Aplica los conceptos o configuraciones de red explicados en el MÓDULO 2: CAPA FÍSICA Y DE ENLACE: ETHERNET, MAC Y ARP.",
+      "placeholder": "# Inspeccionar y diagnosticar la tabla ARP local\n# Ver las asignaciones IP -> Dirección MAC aprendidas por el sistema\narp -a\n\n# Limpiar la caché ARP en caso de desconfiguración o conflicto de red\n# sudo ip neigh flush all",
       "expectedKeywords": [
-        "255.255.255.0",
-        "254",
-        "broadcast"
+        "capa"
       ],
-      "hint": "Un bloque /24 posee máscara 255.255.255.0 y 254 hosts utilizables tras descontar red y broadcast.",
-      "isEmailSubmission": false
-    },
-    {
-      "id": 202,
-      "instruction": "Identifica los rangos de IPs privadas definidos en el estándar RFC 1918 y explica el rol de NAT (Network Address Translation).",
-      "placeholder": "// Rangos RFC 1918 Privados:\n// Clase A: 10.0.0.0/8\n// Clase B: 172.16.0.0/12\n// Clase C: 192.168.0.0/16\n// NAT traduce múltiples IPs privadas a una IP pública para navegar en Internet.",
-      "expectedKeywords": [
-        "10.0.0.0",
-        "172.16.0.0",
-        "192.168.0.0",
-        "NAT"
-      ],
-      "hint": "Lista 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16 y explica cómo NAT traduce hacia la IP pública.",
+      "hint": "Revisa los conceptos del protocolo y aplica la sintaxis o comando adecuado.",
       "isEmailSubmission": false
     }
   ],
   "3": [
     {
       "id": 301,
-      "instruction": "Configura los registros DNS esenciales para el dominio `quimisell.dev`: registro A (IPv4), CNAME (subdominio) y TXT (verificación SPF).",
-      "placeholder": "// Registros DNS para quimisell.dev:\n// A      @            76.76.21.21      (Vercel Edge)\n// CNAME  app          quimisell.dev\n// TXT    @            v=spf1 include:_spf.google.com ~all",
+      "instruction": "Aplica los conceptos o configuraciones de red explicados en el MÓDULO 3: CAPA DE RED: IPV4, IPV6, SUBNETTING CIDR Y NAT.",
+      "placeholder": "# Análisis de rutas y salto de paquetes con traceroute\n# Rastrea cada router (salto) por el que viaja tu paquete hacia el destino\ntraceroute -n 8.8.8.8  # o 'tracert -d 8.8.8.8' en Windows\n\n# Ping para verificar latencia y pérdida de paquetes ICMP\nping -c 4 api.quimisell.dev",
       "expectedKeywords": [
-        "A",
-        "CNAME",
-        "TXT",
-        "quimisell.dev"
+        "capa"
       ],
-      "hint": "Incluye el registro A apuntando a la IP pública, CNAME para alias y TXT para verificación de correo o dominio.",
-      "isEmailSubmission": false
-    },
-    {
-      "id": 302,
-      "instruction": "Explica el ciclo de vida de una consulta DNS: diferencia un Servidor Recursivo (ej: 8.8.8.8) de un Servidor Autoritativo y el rol del TTL.",
-      "placeholder": "// Flujo DNS:\n// 1. Resolver Recursivo (ISP / 8.8.8.8) consulta cache; si expira el TTL, escala a Root Server -> TLD (.dev) -> Autoritativo.\n// 2. El servidor Autoritativo devuelve la IP definitiva con un TTL (Time To Live).",
-      "expectedKeywords": [
-        "Recursivo",
-        "Autoritativo",
-        "TTL"
-      ],
-      "hint": "Explica que el resolver recursivo busca la IP en nombre del cliente y el autoritativo posee la respuesta definitiva.",
+      "hint": "Revisa los conceptos del protocolo y aplica la sintaxis o comando adecuado.",
       "isEmailSubmission": false
     }
   ],
   "4": [
     {
       "id": 401,
-      "instruction": "Compara HTTP/1.1 con HTTP/2: explica cómo la multiplexación de streams binarios sobre una única conexión TCP elimina el Head-of-Line Blocking de HTTP/1.1.",
-      "placeholder": "// HTTP/1.1 sufre Head-of-Line Blocking porque cada petición requiere una conexión TCP o se encola secuencialmente.\n// HTTP/2 divide los mensajes en tramas binarias multiplexadas en streams paralelos sobre un solo socket TCP.",
+      "instruction": "Aplica los conceptos o configuraciones de red explicados en el MÓDULO 4: DNS: RESOLUCIÓN RECURSIVA, REGISTROS Y DNSSEC.",
+      "placeholder": "# Comandos de diagnóstico DNS profesional con dig\n# 1. Consultar registro tipo A de un dominio con respuesta detallada\ndig api.quimisell.dev A\n\n# 2. Consultar directamente a un servidor DNS específico (ej. Cloudflare 1.1.1.1)\ndig @1.1.1.1 api.quimisell.dev +short\n\n# 3. Rastrear la jerarquía completa desde la raíz hasta el servidor autoritativo\ndig +trace api.quimisell.dev",
       "expectedKeywords": [
-        "HTTP/1.1",
-        "HTTP/2",
-        "multiplexación",
-        "Head-of-Line"
+        "dns"
       ],
-      "hint": "Enfatiza que HTTP/2 introduce framing binario y multiplexación de múltiples streams concurrentes en una sola conexión TCP.",
-      "isEmailSubmission": false
-    },
-    {
-      "id": 402,
-      "instruction": "Explica por qué HTTP/3 reemplaza TCP por el protocolo QUIC sobre UDP y cómo logra conexiones con 0-RTT (Zero Round Trip Time).",
-      "placeholder": "// HTTP/3 utiliza QUIC sobre UDP para eliminar el bloqueo de transporte a nivel de paquete de TCP.\n// Incorpora cifrado TLS 1.3 nativo en el handshake inicial, permitiendo reanudar sesiones con 0-RTT de latencia.",
-      "expectedKeywords": [
-        "QUIC",
-        "UDP",
-        "0-RTT",
-        "HTTP/3"
-      ],
-      "hint": "Menciona que QUIC opera sobre UDP integrando TLS 1.3 nativamente y eliminando el retraso de retransmisión TCP.",
+      "hint": "Revisa los conceptos del protocolo y aplica la sintaxis o comando adecuado.",
       "isEmailSubmission": false
     }
   ],
   "5": [
     {
       "id": 501,
-      "instruction": "Detalla el protocolo de negociación TLS 1.3: explica el intercambio de llaves Diffie-Hellman efímero y la validación de certificados X.509.",
-      "placeholder": "// TLS 1.3 Handshake:\n// 1. ClientHello con extensiones de llaves Diffie-Hellman efímeras (ECDHE).\n// 2. ServerHello con certificado X.509 firmado por una CA y cálculo inmediato de la llave simétrica AES-GCM.\n// Reduce la latencia a 1 solo RTT.",
+      "instruction": "Aplica los conceptos o configuraciones de red explicados en el MÓDULO 5: CAPA DE TRANSPORTE: TCP HANDSHAKE, CONTROL DE FLUJO Y CONGESTIÓN.",
+      "placeholder": "// Ejemplo en Node.js: Creación de un Servidor TCP puro\nimport net from 'net';\n\nconst server = net.createServer((socket) => {\n  console.log('Cliente conectado desde:', socket.remoteAddress);\n\n  socket.on('data', (data) => {\n    console.log('Bytes TCP recibidos:', data.toString());\n    socket.write('ACK desde Servidor TCP\\n');\n  });\n\n  socket.on('end', () => {\n    console.log('Cliente desconectado.');\n  });\n});\n\nserver.listen(4000, () => {\n  console.log('Servidor TCP escuchando en puerto 4000');\n});",
       "expectedKeywords": [
-        "TLS 1.3",
-        "Diffie-Hellman",
-        "X.509",
-        "CA"
+        "capa"
       ],
-      "hint": "Describe cómo TLS 1.3 logra cifrado con Perfect Forward Secrecy usando ECDHE y certificados validados por Autoridades Certificadoras (CA).",
-      "isEmailSubmission": false
-    },
-    {
-      "id": 502,
-      "instruction": "Implementa y explica la arquitectura mTLS (Mutual TLS): ¿por qué es fundamental para la seguridad Zero-Trust en una malla de microservicios?",
-      "placeholder": "// mTLS (Mutual TLS):\n// Tanto el cliente como el servidor se autentican mutuamente mediante certificados X.509.\n// Garantiza Zero-Trust: ningún microservicio confía en el tráfico interno de la red sin verificar la identidad criptográfica.",
-      "expectedKeywords": [
-        "mTLS",
-        "Mutual TLS",
-        "Zero-Trust",
-        "certificados"
-      ],
-      "hint": "Enfatiza que en mTLS ambos extremos presentan y verifican certificados, impidiendo ataques Man-in-the-Middle dentro del cluster.",
+      "hint": "Revisa los conceptos del protocolo y aplica la sintaxis o comando adecuado.",
       "isEmailSubmission": false
     }
   ],
   "6": [
     {
       "id": 601,
-      "instruction": "Define un servicio gRPC con Protocol Buffers (`syntax = 'proto3'`) y explica por qué su serialización binaria supera a JSON REST en microservicios de alta concurrencia.",
-      "placeholder": "syntax = \"proto3\";\n\nmessage OrderRequest {\n  string order_id = 1;\n  double amount = 2;\n}\n\nservice OrderService {\n  rpc ProcessOrder (OrderRequest) returns (OrderResponse);\n}\n// Protobuf serializa campos en binario compacto con tipado estricto, reduciendo hasta un 70% el payload frente a JSON.",
+      "instruction": "Aplica los conceptos o configuraciones de red explicados en el MÓDULO 6: CAPA DE TRANSPORTE: UDP, STREAMING Y DIFERENCIAS CON TCP.",
+      "placeholder": "// Servidor UDP en Node.js usando el módulo dgram\nimport dgram from 'dgram';\n\nconst server = dgram.createSocket('udp4');\n\nserver.on('message', (msg, rinfo) => {\n  console.log(\\`Datagrama UDP recibido de \\${rinfo.address}:\\${rinfo.port}: \\${msg}\\`);\n});\n\nserver.on('listening', () => {\n  const address = server.address();\n  console.log(\\`Servidor UDP escuchando en \\${address.address}:\\${address.port}\\`);\n});\n\nserver.bind(41234);",
       "expectedKeywords": [
-        "proto3",
-        "message",
-        "service",
-        "rpc"
+        "capa"
       ],
-      "hint": "Escribe un bloque con `syntax = \"proto3\"`, `message OrderRequest` y `service OrderService` con método `rpc`.",
-      "isEmailSubmission": false
-    },
-    {
-      "id": 602,
-      "instruction": "Implementa un servidor WebSocket en Node.js para transmitir cotizaciones financieras en tiempo real y explica la diferencia con sondeo HTTP (Polling).",
-      "placeholder": "import { WebSocketServer } from 'ws';\nconst wss = new WebSocketServer({ port: 8080 });\n\nwss.on('connection', (ws) => {\n  console.log('Cliente conectado');\n  const timer = setInterval(() => {\n    ws.send(JSON.stringify({ price: 150.25, time: Date.now() }));\n  }, 1000);\n  ws.on('close', () => clearInterval(timer));\n});",
-      "expectedKeywords": [
-        "WebSocketServer",
-        "connection",
-        "ws.send"
-      ],
-      "hint": "Utiliza `WebSocketServer`, escucha el evento `connection` y envía mensajes con `ws.send()` en un canal bidireccional continuo.",
+      "hint": "Revisa los conceptos del protocolo y aplica la sintaxis o comando adecuado.",
       "isEmailSubmission": false
     }
   ],
   "7": [
     {
       "id": 701,
-      "instruction": "Configura los encabezados HTTP de caching óptimos para archivos estáticos inmutables y para respuestas dinámicas que requieren revalidación.",
-      "placeholder": "// Para archivos estáticos con hash de compilación (JS, CSS, imágenes):\n// Cache-Control: public, max-age=31536000, immutable\n\n// Para datos dinámicos de API:\n// Cache-Control: no-cache, must-revalidate\n// ETag: W/\"33a64df551425fcc55e4d42a148795d9f25f89d4\"",
+      "instruction": "Aplica los conceptos o configuraciones de red explicados en el MÓDULO 7: SEGURIDAD Y CIFRADO EN TRÁNSITO: TLS 1.3 Y CERTIFICADOS X.509.",
+      "placeholder": "# Inspeccionar el certificado TLS y handshake de cualquier servidor\nopenssl s_client -connect api.quimisell.dev:443 -tls1_3\n\n# Ver los detalles del certificado X.509 (fechas de validez, emisor, SANs)\nopenssl s_client -connect api.quimisell.dev:443 -showcerts </dev/null | openssl x509 -text -noout",
       "expectedKeywords": [
-        "Cache-Control",
-        "max-age",
-        "immutable",
-        "ETag"
+        "seguridad"
       ],
-      "hint": "Aplica `Cache-Control: public, max-age=31536000, immutable` para estáticos y `ETag` para validación condicional 304 Not Modified.",
-      "isEmailSubmission": false
-    },
-    {
-      "id": 702,
-      "instruction": "Implementa el patrón Circuit Breaker en TypeScript con sus tres estados: CLOSED (tráfico normal), OPEN (fallo detectado, rechazo inmediato) y HALF-OPEN (prueba de recuperación).",
-      "placeholder": "type CircuitState = 'CLOSED' | 'OPEN' | 'HALF_OPEN';\nclass CircuitBreaker {\n  private state: CircuitState = 'CLOSED';\n  private failureCount = 0;\n  private lastFailureTime = 0;\n  \n  async execute<T>(action: () => Promise<T>): Promise<T> {\n    if (this.state === 'OPEN') {\n      if (Date.now() - this.lastFailureTime > 10000) this.state = 'HALF_OPEN';\n      else throw new Error('Circuit Breaker OPEN: Servicio temporalmente degradado');\n    }\n    try {\n      const res = await action();\n      this.state = 'CLOSED'; this.failureCount = 0;\n      return res;\n    } catch (err) {\n      this.failureCount++; this.lastFailureTime = Date.now();\n      if (this.failureCount >= 3) this.state = 'OPEN';\n      throw err;\n    }\n  }\n}",
-      "expectedKeywords": [
-        "CircuitState",
-        "CLOSED",
-        "OPEN",
-        "HALF_OPEN"
-      ],
-      "hint": "Modela los tres estados `CLOSED`, `OPEN` y `HALF_OPEN` con umbral de fallos y tiempo de enfriamiento.",
+      "hint": "Revisa los conceptos del protocolo y aplica la sintaxis o comando adecuado.",
       "isEmailSubmission": false
     }
   ],
   "8": [
     {
       "id": 801,
-      "instruction": "Configura los encabezados CORS seguros en un servidor backend para permitir peticiones únicamente desde el frontend `https://quimisell.dev` y gestionar solicitudes Preflight OPTIONS.",
-      "placeholder": "app.use((req, res, next) => {\n  res.setHeader('Access-Control-Allow-Origin', 'https://quimisell.dev');\n  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');\n  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');\n  if (req.method === 'OPTIONS') return res.sendStatus(204);\n  next();\n});",
+      "instruction": "Aplica los conceptos o configuraciones de red explicados en el MÓDULO 8: EL PROTOCOLO HTTP: EVOLUCIÓN DE HTTP/1.0 A HTTP/1.1.",
+      "placeholder": "// Petición HTTP cruda con formato textual de protocolo\n// GET /api/productos HTTP/1.1\n// Host: api.quimisell.dev\n// User-Agent: Mozilla/5.0\n// Accept: application/json\n// Connection: keep-alive\n\n// Respuesta HTTP cruda:\n// HTTP/1.1 200 OK\n// Content-Type: application/json; charset=utf-8\n// Content-Length: 42\n// Connection: keep-alive\n//\n// {\"status\":\"ok\",\"mensaje\":\"Hola QuimiSell\"}",
       "expectedKeywords": [
-        "Access-Control-Allow-Origin",
-        "Access-Control-Allow-Methods",
-        "OPTIONS"
+        "el"
       ],
-      "hint": "Establece `Access-Control-Allow-Origin: https://quimisell.dev` y responde 204 No Content en peticiones preflight `OPTIONS`.",
-      "isEmailSubmission": false
-    },
-    {
-      "id": 802,
-      "instruction": "Configura una Cookie de sesión con todos los atributos de seguridad requeridos por la industria bancaria para prevenir robo por XSS y ataques CSRF.",
-      "placeholder": "res.setHeader('Set-Cookie', [\n  'session_token=secret_jwt_xyz',\n  'Secure',             // Solo viaja por HTTPS\n  'HttpOnly',           // Inaccesible desde JavaScript (previene XSS)\n  'SameSite=Strict',    // No se envía en peticiones cross-site (previene CSRF)\n  'Path=/',\n  'Max-Age=86400'\n].join('; '));",
-      "expectedKeywords": [
-        "Secure",
-        "HttpOnly",
-        "SameSite=Strict"
-      ],
-      "hint": "Incluye obligatoriamente las tres directivas de protección: `Secure`, `HttpOnly` y `SameSite=Strict`.",
+      "hint": "Revisa los conceptos del protocolo y aplica la sintaxis o comando adecuado.",
       "isEmailSubmission": false
     }
   ],
   "9": [
     {
       "id": 901,
-      "instruction": "Escribe un comando `curl` avanzado para inspeccionar el tiempo de DNS, TLS Handshake, TTFT (Time to First Byte) y cabeceras de respuesta de una API.",
-      "placeholder": "curl -w \"@curl-format.txt\" -o /dev/null -s -v -I https://api.quimisell.dev/v1/health\n# Donde curl-format.txt mide: time_namelookup, time_connect, time_appconnect, time_starttransfer, time_total",
+      "instruction": "Aplica los conceptos o configuraciones de red explicados en el MÓDULO 9: PROTOCOLO HTTP/2: MULTIPLEXACIÓN Y COMPRESIÓN HPACK.",
+      "placeholder": "# Comprobar si un servidor soporta HTTP/2 usando curl\ncurl -I --http2 https://api.quimisell.dev\n\n# Inspeccionar el protocolo negociado mediante ALPN en el handshake TLS\nopenssl s_client -connect api.quimisell.dev:443 -alpn h2",
       "expectedKeywords": [
-        "curl",
-        "-v",
-        "-I",
-        "time_total"
+        "protocolo"
       ],
-      "hint": "Utiliza `curl -v -I` con opciones de formateo `-w` para auditar tiempos de latencia y código de estado HTTP.",
-      "isEmailSubmission": false
-    },
-    {
-      "id": 902,
-      "instruction": "Explica cómo diagnosticar un cuello de botella o pérdida de paquetes en la red utilizando `traceroute` (o `tracert` en Windows) e interpretando el TTL de los paquetes IP.",
-      "placeholder": "// traceroute envía paquetes UDP/ICMP incrementando el TTL (Time To Live) de 1 en 1.\n// Cada router intermedio descuenta 1 al TTL; al llegar a 0 devuelve ICMP Time Exceeded.\n// Si un salto muestra '* * *', indica descarte de paquetes, firewall restrictivo o congestión en ese nodo.",
-      "expectedKeywords": [
-        "traceroute",
-        "TTL",
-        "ICMP",
-        "Time Exceeded"
-      ],
-      "hint": "Menciona cómo el incremento sucesivo del TTL fuerza a cada router a responder con ICMP Time Exceeded.",
+      "hint": "Revisa los conceptos del protocolo y aplica la sintaxis o comando adecuado.",
       "isEmailSubmission": false
     }
   ],
   "10": [
     {
       "id": 1001,
-      "instruction": "Configura un bloque de Reverse Proxy en Nginx con balanceo de carga `upstream` round-robin hacia dos instancias backend y pase de cabeceras reales.",
-      "placeholder": "upstream backend_cluster {\n  server 10.0.0.1:3000;\n  server 10.0.0.2:3000;\n}\n\nserver {\n  listen 443 ssl http2;\n  server_name api.quimisell.dev;\n\n  location / {\n    proxy_pass http://backend_cluster;\n    proxy_set_header Host $host;\n    proxy_set_header X-Real-IP $remote_addr;\n    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\n  }\n}",
+      "instruction": "Aplica los conceptos o configuraciones de red explicados en el MÓDULO 10: PROTOCOLO HTTP/3 (QUIC): UDP COMO BASE Y 0-RTT.",
+      "placeholder": "# Verificar soporte de HTTP/3 con curl (requiere versión compilada con nghttp3/quiche)\ncurl --http3 -I https://cloudflare.com\n\n# En cabeceras de respuesta, el servidor anuncia HTTP/3 mediante Alt-Svc:\n# alt-svc: h3=\":443\"; ma=86400",
       "expectedKeywords": [
-        "upstream",
-        "proxy_pass",
-        "proxy_set_header",
-        "X-Real-IP"
+        "protocolo"
       ],
-      "hint": "Define el bloque `upstream backend_cluster` y usa `proxy_pass http://backend_cluster` con cabeceras de forward.",
+      "hint": "Revisa los conceptos del protocolo y aplica la sintaxis o comando adecuado.",
       "isEmailSubmission": false
-    },
+    }
+  ],
+  "11": [
     {
-      "id": 1002,
-      "instruction": "Implementa el algoritmo de Rate Limiting Token Bucket en TypeScript para limitar clientes a 10 peticiones por segundo con recarga continua.",
-      "placeholder": "class TokenBucketRateLimiter {\n  private tokens: number;\n  private lastRefill: number;\n  constructor(private capacity = 10, private refillRatePerSec = 10) {\n    this.tokens = capacity; this.lastRefill = Date.now();\n  }\n  allowRequest(): boolean {\n    const now = Date.now();\n    const elapsed = (now - this.lastRefill) / 1000;\n    this.tokens = Math.min(this.capacity, this.tokens + elapsed * this.refillRatePerSec);\n    this.lastRefill = now;\n    if (this.tokens >= 1) { this.tokens -= 1; return true; }\n    return false; // Retornar HTTP 429 Too Many Requests\n  }\n}",
+      "id": 1101,
+      "instruction": "Aplica los conceptos o configuraciones de red explicados en el MÓDULO 11: TIEMPO REAL: WEBSOCKETS VS SERVER-SENT EVENTS (SSE) VS LONG POLLING.",
+      "placeholder": "// Ejemplo: Servidor de Streaming SSE en Node.js (Patrón ChatGPT)\nimport express from 'express';\nconst app = express();\n\napp.get('/api/stream-ia', (req, res) => {\n  // Configuración de cabeceras SSE obligatorias\n  res.setHeader('Content-Type', 'text/event-stream');\n  res.setHeader('Cache-Control', 'no-cache');\n  res.setHeader('Connection', 'keep-alive');\n\n  let tokenCount = 0;\n  const interval = setInterval(() => {\n    tokenCount++;\n    // Enviar evento SSE con formato data: <contenido>\\n\\n\n    res.write(\\`data: \\${JSON.stringify({ token: \\`Palabra \\${tokenCount}\\` })}\\n\\n\\`);\n\n    if (tokenCount >= 5) {\n      clearInterval(interval);\n      res.write('data: [DONE]\\n\\n');\n      res.end();\n    }\n  }, 500);\n});",
       "expectedKeywords": [
-        "TokenBucket",
-        "tokens",
-        "capacity",
-        "refill"
+        "tiempo"
       ],
-      "hint": "Calcula los tokens recargados en función del tiempo transcurrido y rechaza la petición con `HTTP 429` si el bucket está vacío.",
+      "hint": "Revisa los conceptos del protocolo y aplica la sintaxis o comando adecuado.",
+      "isEmailSubmission": false
+    }
+  ],
+  "12": [
+    {
+      "id": 1201,
+      "instruction": "Aplica los conceptos o configuraciones de red explicados en el MÓDULO 12: ARQUITECTURA DE APIS RESTFUL: PRINCIPIOS DE FIELDING E IDEMPOTENCIA.",
+      "placeholder": "// Ejemplo de API RESTful semántica con Express\nimport express from 'express';\nconst app = express();\napp.use(express.json());\n\n// GET: Seguro e Idempotente\napp.get('/api/v1/usuarios/:id', (req, res) => {\n  res.status(200).json({ id: req.params.id, nombre: 'Selvin' });\n});\n\n// POST: Ni seguro ni idempotente (Crea nuevo recurso)\napp.post('/api/v1/usuarios', (req, res) => {\n  res.status(201).json({ id: 'nuevo-uuid-123', ...req.body });\n});\n\n// PUT: Idempotente (Reemplaza el recurso completo en ese ID)\napp.put('/api/v1/usuarios/:id', (req, res) => {\n  res.status(200).json({ id: req.params.id, ...req.body });\n});",
+      "expectedKeywords": [
+        "arquitectura"
+      ],
+      "hint": "Revisa los conceptos del protocolo y aplica la sintaxis o comando adecuado.",
+      "isEmailSubmission": false
+    }
+  ],
+  "13": [
+    {
+      "id": 1301,
+      "instruction": "Aplica los conceptos o configuraciones de red explicados en el MÓDULO 13: RPC MODERNO: GRPC Y PROTOCOL BUFFERS (PROTOBUF).",
+      "placeholder": "// archivo: usuario.proto\nsyntax = \"proto3\";\n\npackage quimisell.usuarios;\n\nservice UsuarioService {\n  // Método RPC Unario estándar\n  rpc ObtenerUsuario (UsuarioRequest) returns (UsuarioResponse);\n  \n  // Método RPC con Streaming de servidor\n  rpc ListarUsuariosActivos (Vacio) returns (stream UsuarioResponse);\n}\n\nmessage UsuarioRequest {\n  string id = 1; // El número 1 es el tag binario del campo\n}\n\nmessage UsuarioResponse {\n  string id = 1;\n  string email = 2;\n  int32 saldo_centavos = 3;\n  bool esta_activo = 4;\n}\n\nmessage Vacio {}",
+      "expectedKeywords": [
+        "rpc"
+      ],
+      "hint": "Revisa los conceptos del protocolo y aplica la sintaxis o comando adecuado.",
+      "isEmailSubmission": false
+    }
+  ],
+  "14": [
+    {
+      "id": 1401,
+      "instruction": "Aplica los conceptos o configuraciones de red explicados en el MÓDULO 14: PROXIES INVERSOS Y BALANCEO DE CARGA CON NGINX.",
+      "placeholder": "# Configuración de Nginx (/etc/nginx/nginx.conf)\nhttp {\n  # Definición del grupo de servidores backend (Upstream)\n  upstream api_cluster {\n    least_conn; # Algoritmo: enviar a la instancia con menos conexiones\n    server 10.0.1.10:3000 max_fails=3 fail_timeout=10s;\n    server 10.0.1.11:3000 max_fails=3 fail_timeout=10s;\n    server 10.0.1.12:3000 backup; # Servidor de respaldo\n  }\n\n  server {\n    listen 80;\n    server_name api.quimisell.dev;\n    return 301 https://$host$request_uri; # Redirección forzada a HTTPS\n  }\n\n  server {\n    listen 443 ssl http2;\n    server_name api.quimisell.dev;\n\n    ssl_certificate /etc/letsencrypt/live/api.quimisell.dev/fullchain.pem;\n    ssl_certificate_key /etc/letsencrypt/live/api.quimisell.dev/privkey.pem;\n\n    location / {\n      proxy_pass http://api_cluster;\n      proxy_set_header Host $host;\n      proxy_set_header X-Real-IP $remote_addr;\n      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\n      proxy_set_header X-Forwarded-Proto $scheme;\n    }\n  }\n}",
+      "expectedKeywords": [
+        "proxies"
+      ],
+      "hint": "Revisa los conceptos del protocolo y aplica la sintaxis o comando adecuado.",
+      "isEmailSubmission": false
+    }
+  ],
+  "15": [
+    {
+      "id": 1501,
+      "instruction": "Aplica los conceptos o configuraciones de red explicados en el MÓDULO 15: SEGURIDAD WEB EN CAPA DE APLICACIÓN: CORS, CSP Y COOKIES.",
+      "placeholder": "// Configuración segura de CORS y Cookies en Express\nimport cors from 'cors';\nimport cookieParser from 'cookie-parser';\n\napp.use(cors({\n  origin: 'https://app.quimisell.dev', // Dominio explícito permitido (NUNCA '*' si hay credenciales)\n  credentials: true, // Permitir envío de cookies de autenticación\n  methods: ['GET', 'POST', 'PUT', 'DELETE'],\n}));\n\n// Generación de Cookie de Sesión con máxima seguridad\nres.cookie('token_sesion', jwtToken, {\n  httpOnly: true,  // Previene que document.cookie sea robado por ataques XSS\n  secure: true,    // Solo viaja a través de conexiones cifradas HTTPS\n  sameSite: 'lax', // Protección nativa contra Cross-Site Request Forgery (CSRF)\n  maxAge: 3600000, // 1 hora de expiración\n});",
+      "expectedKeywords": [
+        "seguridad"
+      ],
+      "hint": "Revisa los conceptos del protocolo y aplica la sintaxis o comando adecuado.",
+      "isEmailSubmission": false
+    }
+  ],
+  "16": [
+    {
+      "id": 1601,
+      "instruction": "Aplica los conceptos o configuraciones de red explicados en el MÓDULO 16: AUTENTICACIÓN EN MICROSERVICIOS: MTLS, JWT Y SPIFFE.",
+      "placeholder": "// Cliente HTTPS en Node.js configurado con mTLS (Certificado de Cliente)\nimport https from 'https';\nimport fs from 'fs';\n\nconst agenteSeguro = new https.Agent({\n  cert: fs.readFileSync('cliente-cert.pem'), // Certificado de identidad del cliente\n  key: fs.readFileSync('cliente-key.pem'),   // Clave privada del cliente\n  ca: fs.readFileSync('ca-interna.pem'),     // Certificado de la CA que firmó al servidor\n  rejectUnauthorized: true,                  // Rechazar si el servidor no es confiable\n});\n\n// Solicitud interna entre microservicios con autenticación mutua\nhttps.get('https://servicio-pagos.interno:8443/cobrar', { agent: agenteSeguro }, (res) => {\n  console.log('Autenticación mTLS exitosa. Status:', res.statusCode);\n});",
+      "expectedKeywords": [
+        "autenticación"
+      ],
+      "hint": "Revisa los conceptos del protocolo y aplica la sintaxis o comando adecuado.",
+      "isEmailSubmission": false
+    }
+  ],
+  "17": [
+    {
+      "id": 1701,
+      "instruction": "Aplica los conceptos o configuraciones de red explicados en el MÓDULO 17: PATRONES DE RESILIENCIA EN RED: CIRCUIT BREAKER Y RETRIES CON JITTER.",
+      "placeholder": "// Implementación de Reintentos con Exponential Backoff y Jitter Completo\nexport async function fetchConResiliencia<T>(\n  operacion: () => Promise<T>,\n  maxIntentos = 3,\n  baseMs = 100\n): Promise<T> {\n  for (let intento = 0; intento < maxIntentos; intento++) {\n    try {\n      return await operacion();\n    } catch (error) {\n      if (intento === maxIntentos - 1) throw error;\n\n      // Cálculo de Exponential Backoff con Jitter aleatorio\n      const backoff = baseMs * Math.pow(2, intento);\n      const jitter = Math.random() * backoff;\n      const tiempoEspera = Math.min(3000, jitter);\n\n      console.warn(\\`Fallo intento \\${intento + 1}. Reintentando en \\${tiempoEspera.toFixed(0)}ms...\\`);\n      await new Promise(r => setTimeout(r, tiempoEspera));\n    }\n  }\n  throw new Error('Inalcanzable');\n}",
+      "expectedKeywords": [
+        "patrones"
+      ],
+      "hint": "Revisa los conceptos del protocolo y aplica la sintaxis o comando adecuado.",
+      "isEmailSubmission": false
+    }
+  ],
+  "18": [
+    {
+      "id": 1801,
+      "instruction": "Aplica los conceptos o configuraciones de red explicados en el MÓDULO 18: CONTROL DE TRÁFICO Y PROTECCIÓN CONTRA ABUSO: RATE LIMITING.",
+      "placeholder": "// Implementación limpia en memoria del Algoritmo Token Bucket\nexport class TokenBucketRateLimiter {\n  private tokens: number;\n  private ultimoRefresco: number;\n\n  constructor(\n    private readonly capacidadMaxima: number, // Ej: 10 peticiones\n    private readonly tasaRefrescoPorSegundo: number // Ej: 2 tokens por segundo\n  ) {\n    this.tokens = capacidadMaxima;\n    this.ultimoRefresco = Date.now();\n  }\n\n  intentarConsumir(): boolean {\n    this.refrescarTokens();\n\n    if (this.tokens >= 1) {\n      this.tokens -= 1;\n      return true; // Permitir petición\n    }\n    return false; // Rechazar con HTTP 429\n  }\n\n  private refrescarTokens(): void {\n    const ahora = Date.now();\n    const tiempoPasadoSegundos = (ahora - this.ultimoRefresco) / 1000;\n    const nuevosTokens = tiempoPasadoSegundos * this.tasaRefrescoPorSegundo;\n\n    this.tokens = Math.min(this.capacidadMaxima, this.tokens + nuevosTokens);\n    this.ultimoRefresco = ahora;\n  }\n}",
+      "expectedKeywords": [
+        "control"
+      ],
+      "hint": "Revisa los conceptos del protocolo y aplica la sintaxis o comando adecuado.",
+      "isEmailSubmission": false
+    }
+  ],
+  "19": [
+    {
+      "id": 1901,
+      "instruction": "Aplica los conceptos o configuraciones de red explicados en el MÓDULO 19: DIAGNÓSTICO Y ANÁLISIS DE PAQUETES: WIRESHARK, TCPDUMP Y WATERFALLS.",
+      "placeholder": "# Comandos de captura y diagnóstico con tcpdump y curl\n# 1. Capturar 100 paquetes TCP en el puerto 443 y guardarlos en archivo pcap para Wireshark\nsudo tcpdump -i eth0 -c 100 -w captura_red.pcap port 443\n\n# 2. Medir con precisión quirúrgica el desglose de tiempos de red con curl\ncurl -w \"\\nDNS: %{time_namelookup}s\\nTCP: %{time_connect}s\\nTLS: %{time_appconnect}s\\nTTFB: %{time_starttransfer}s\\nTotal: %{time_total}s\\n\" \\\n     -o /dev/null -s https://api.quimisell.dev",
+      "expectedKeywords": [
+        "diagnóstico"
+      ],
+      "hint": "Revisa los conceptos del protocolo y aplica la sintaxis o comando adecuado.",
+      "isEmailSubmission": false
+    }
+  ],
+  "20": [
+    {
+      "id": 2001,
+      "instruction": "Aplica los conceptos o configuraciones de red explicados en el MÓDULO 20: PROYECTO INTEGRADOR: ARQUITECTURA DE UNA RED GLOBAL RESILIENTE.",
+      "placeholder": "// Ejemplo del Proyecto Integrador: Cliente gRPC Resiliente con Circuit Breaker\nexport class ClienteMicroservicioResiliente {\n  private fallasConsecutivas = 0;\n  private circuitoAbierto = false;\n  private ultimoFallo = 0;\n\n  async invocar<T>(llamada: () => Promise<T>, fallback: () => T): Promise<T> {\n    // Si el circuito está abierto, responder con fallback inmediatamente sin tocar la red\n    if (this.circuitoAbierto) {\n      if (Date.now() - this.ultimoFallo > 5000) {\n        this.circuitoAbierto = false; // Estado Half-Open de prueba\n      } else {\n        return fallback();\n      }\n    }\n\n    try {\n      const respuesta = await llamada();\n      this.fallasConsecutivas = 0;\n      return respuesta;\n    } catch (err) {\n      this.fallasConsecutivas++;\n      this.ultimoFallo = Date.now();\n      if (this.fallasConsecutivas >= 3) {\n        this.circuitoAbierto = true; // Abrir circuito para proteger la red\n      }\n      return fallback();\n    }\n  }\n}",
+      "expectedKeywords": [
+        "proyecto"
+      ],
+      "hint": "Revisa los conceptos del protocolo y aplica la sintaxis o comando adecuado.",
       "isEmailSubmission": false
     }
   ]
 };
 
-// Adjuntar ejercicios estructurados a cada módulo de Redes Dev
+// Adjuntar ejercicios estructurados a cada módulo de Redes para Desarrolladores
 REDES_DEV_COURSE.modules.forEach((mod) => {
   if (REDES_DEV_EXERCISES[mod.id]) {
     mod.exercises = REDES_DEV_EXERCISES[mod.id];

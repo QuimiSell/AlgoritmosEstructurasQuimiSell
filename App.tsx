@@ -113,6 +113,12 @@ function moduleTrackLabel(courseId: string, modId: number): string {
   if (courseId === 'evaluacion_ia') return 'Eval · Guardrails · SLO';
   if (courseId === 'ingeniero_ia') return 'Arquitectura IA';
   if (courseId === 'clean_code_solid') return 'Clean Code · SOLID';
+  if (courseId === 'qa_testing_automatizacion') {
+    if (modId <= 5) return 'Nivel 0: Unit & TDD';
+    if (modId <= 10) return 'Nivel 1: Contratos & E2E';
+    if (modId <= 15) return 'Nivel 2: Carga, Caos & Mutación';
+    return 'Nivel 3: SDET & Pipeline CI';
+  }
   if (courseId === 'automatas_compiladores') return 'Teoría formal';
   if (courseId === 'complejidad_algoritmica' && modId >= 16) return 'Big-O en IA';
   if (courseId === 'kali_linux') {
@@ -143,6 +149,8 @@ function getPerspectiveText(courseId: string): string {
       return 'Kotlin, Compose y Room son el estándar industrial. Dominar MVVM, Retrofit y FLAG_SECURE en pantallas sensibles te prepara para apps reales en Play Store, no solo tutoriales de botones.';
     case 'clean_code_solid':
       return 'Cualquier programador puede escribir código que una computadora entienda; los ingenieros de elite escriben código que los humanos pueden entender (Robert C. Martin).';
+    case 'qa_testing_automatizacion':
+      return 'Probar manualmente es una ilusión de seguridad. Un verdadero SDET diseña la pirámide completa de pruebas automatizadas: TDD, Testcontainers, E2E con Playwright, pruebas de carga con k6 y Chaos Engineering para certificar que el software no falle bajo fuego en producción.';
     case 'ingeniero_ia':
       return 'En la era de la IA, teclear sintaxis es un commodity. Tu mayor activo es el razonamiento de sistemas, el criterio de arquitectura y la verificación formal.';
     case 'automatas_compiladores':

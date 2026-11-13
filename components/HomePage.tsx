@@ -32,6 +32,7 @@ function getCourseCategory(courseId: string): 'cs' | 'ai' | 'security' | 'dev' {
     case 'redes_desarrolladores':
       return 'security';
     case 'clean_code_solid':
+    case 'qa_testing_automatizacion':
     case 'git_devops_vercel':
     case 'android_kotlin':
     default:

@@ -23,6 +23,7 @@ export const COURSE_STUDY_ORDER: readonly string[] = [
   'complejidad_algoritmica',
   'matematica',
   'clean_code_solid',
+  'qa_testing_automatizacion',
   'git_devops_vercel',
   'redes_desarrolladores',
   'sql_datos_ia',

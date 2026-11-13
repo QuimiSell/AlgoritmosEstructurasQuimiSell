@@ -27,6 +27,10 @@ const ALIASES: Record<string, string> = {
   automatas: 'automatas_compiladores',
   clean: 'clean_code_solid',
   solid: 'clean_code_solid',
+  qa: 'qa_testing_automatizacion',
+  testing: 'qa_testing_automatizacion',
+  sdet: 'qa_testing_automatizacion',
+  test: 'qa_testing_automatizacion',
   math: 'matematica',
 };
 

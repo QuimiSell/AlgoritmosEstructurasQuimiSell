@@ -1,1311 +1,928 @@
 import { Course, TutorExercise } from '../domain/models';
 
 export const GIT_DEVOPS_COURSE: Course = {
-  id: 'git_devops_vercel',
-  title: 'Git, GitHub, DevSecOps y CI/CD: De Pipelines a Producción Segura',
-  shortTitle: 'Git & DevSecOps',
-  badge: 'DevSecOps, CI/CD & Seguridad en Pipelines',
-  icon: '🛡️',
-  description:
-    '10 módulos prácticos: control de versiones Git, colaboración en GitHub, análisis estático SAST (Semgrep/CodeQL), análisis dinámico DAST (OWASP ZAP), auditoría SCA (Trivy), detección de secretos (TruffleHog), pipelines CI/CD y deploy inmutable $0.',
-  whyStudyTitle: '🛡️ ¿Por qué DevSecOps (SAST, DAST, SCA y Secrets) es el nuevo estándar indispensable?',
-  whyStudyText:
-    'El desarrollo de software tradicional delegaba la seguridad al final, resultando en brechas catastróficas y filtraciones masivas de datos. En la era moderna de la IA y la computación en la nube, DevSecOps traslada la seguridad hacia la izquierda ("Shift-Left"): cada Pull Request es escaneado automáticamente contra secretos expuestos (TruffleHog), vulnerabilidades semánticas del OWASP Top 10 (Semgrep/CodeQL SAST), paquetes comprometidos en la cadena de suministro (Trivy SCA) y debilidades activas en tiempo de ejecución (OWASP ZAP DAST) antes de llegar a producción.',
-  studyPlanReasons: [
+  "id": "git_devops_vercel",
+  "title": "Git Internals, Flujos de Trabajo Avanzados, Docker, CI/CD y DevSecOps",
+  "shortTitle": "Git, DevOps & Cloud",
+  "badge": "DevOps & Cloud · 20 Módulos",
+  "icon": "🚀",
+  "description": "De los bytes de Git a la nube: arquitectura interna de objetos y DAG, rebase interactivo, recuperación con reflog, Linux para DevOps, Docker multi-stage, CI/CD con GitHub Actions, DevSecOps (TruffleHog, Semgrep, Trivy), Terraform y despliegue global en el Edge con Vercel.",
+  "whyStudyTitle": "🚀 ¿Por qué dominar Git Internals, DevOps y DevSecOps es indispensable para liderar proyectos?",
+  "whyStudyText": "Escribir código es solo el 30% del trabajo de un ingeniero de software; el 70% restante consiste en colaborar en equipo sin pisarse los cambios, automatizar la verificación de calidad en pipelines de integración continua, aislar entornos con contenedores Docker, blindar la seguridad contra fugas de credenciales y vulnerabilidades CVE, y desplegar en la nube con disponibilidad del 99.99%. Este curso te lleva desde el modelo matemático de objetos y punteros de Git hasta la infraestructura moderna como código y la automatización DevSecOps completa.",
+  "studyPlanReasons": [
     {
-      id: 1,
-      title: "Fundamentos Git",
-      why: "Comprende snapshots, staging y commits inmutables antes de colaborar."
+      "id": 1,
+      "title": "ARQUITECTURA INTERNA DE GIT: EL MODELO DE OBJETOS",
+      "why": "Las entrañas de Git: sistema de archivos direccionable por contenido, objetos inmutables (Blobs, Trees, Commits, Annotated Tags) y cálculo de hashes SHA."
     },
     {
-      id: 2,
-      title: "Comandos Diarios y Conventional Commits",
-      why: "status, diff, log, Conventional Commits y recuperación de errores locales."
+      "id": 2,
+      "title": "EL DIRECTED ACYCLIC GRAPH (DAG) DE GIT Y PUNTEROS HEAD",
+      "why": "La estructura matemática de Git: el grafo acíclico dirigido, punteros de ramas, referencias simbólicas y el estado 'Detached HEAD'."
     },
     {
-      id: 3,
-      title: "Ramas, Merge y Rebase",
-      why: "Feature branches, merge sin fast-forward, rebase interactivo y resolución de conflictos."
+      "id": 3,
+      "title": "STAGING AREA, INDEX Y CICLO DE VIDA DE ARCHIVOS",
+      "why": "El Index como intermediario: los 4 estados de archivos (Untracked, Unmodified, Modified, Staged), `.gitignore` profundo y `git add -p`."
     },
     {
-      id: 4,
-      title: "GitHub Remoto y Autenticación",
-      why: "clone, push, pull con rebase y llaves SSH / tokens con alcance mínimo."
+      "id": 4,
+      "title": "OPERACIONES AVANZADAS: REBASE INTERACTIVO, SQUASH Y CHERRY-PICK",
+      "why": "Limpieza y reescritura de historia: Rebase interactivo (`git rebase -i`), squash de commits sucios, fixup, reword y cherry-pick quirúrgico."
     },
     {
-      id: 5,
-      title: "Colaboración y Protección de Código",
-      why: "Forks, issues, .gitignore estricto y políticas de protección de ramas principales."
+      "id": 5,
+      "title": "RECUPERACIÓN DE DESASTRES: REFLOG, BISECT Y RESTAURACIÓN",
+      "why": "Salvar proyectos en situaciones críticas: el diario de bitácora `git reflog`, búsqueda binaria de bugs con `git bisect` y rescate de ramas borradas."
     },
     {
-      id: 6,
-      title: "Pull Requests Profesionales",
-      why: "Plantillas de PR, code review técnico, aprobación de pares y squash merge."
+      "id": 6,
+      "title": "ESTRATEGIAS DE RAMIFICACIÓN: TRUNK-BASED VS GITFLOW",
+      "why": "Estrategias de branching profesional: la obsolescencia de GitFlow en equipos ágiles, Trunk-Based Development, ramas de vida corta y Feature Flags."
     },
     {
-      id: 7,
-      title: "DevSecOps: Secret Scanning y Pre-commit",
-      why: "Detección de claves API con TruffleHog y hooks con Husky antes de tocar git."
+      "id": 7,
+      "title": "COLABORACIÓN: WORKTREES, SUBMODULES Y CONFLICTOS COMPLEJOS",
+      "why": "Colaboración avanzada sin fricción: Git Worktrees para trabajar en múltiples ramas a la vez sin clonar, resolución de conflictos 3-way y submodules."
     },
     {
-      id: 8,
-      title: "CI Automatizado y SAST (Semgrep & CodeQL)",
-      why: "Análisis estático de AST contra OWASP Top 10 integrado en GitHub Actions."
+      "id": 8,
+      "title": "LINUX PARA DEVOPS: PROCESOS, PERMISOS, SIGNALS Y SYSTEMD",
+      "why": "El sistema operativo de la nube: arquitectura del kernel Linux, file descriptors, señales POSIX (SIGTERM vs SIGKILL) y gestión con systemd."
     },
     {
-      id: 9,
-      title: "Auditoría SCA (Trivy) y DAST (OWASP ZAP)",
-      why: "Escaneo de CVEs en dependencias y pruebas dinámicas en preview deployments."
+      "id": 9,
+      "title": "DOCKER & CONTENEDORIZACIÓN: NAMESPACES Y CGROUPS",
+      "why": "La ilusión del contenedor: cómo Linux Namespaces y Control Groups (cgroups) construyen Docker sin máquinas virtuales pesadas."
     },
     {
-      id: 10,
-      title: "Despliegue Inmutable $0 y Políticas Zero Trust",
-      why: "Hosting estático global en Vercel, cabeceras CSP/HSTS y rollbacks instantáneos."
+      "id": 10,
+      "title": "OPTIMIZACIÓN DE DOCKERFILES: BUILDS MULTI-STAGE Y SEGURIDAD",
+      "why": "Empaquetado eficiente de imágenes: Builds multietapa (Multi-Stage), orden de capas para maximizar caché y ejecución como usuario no-root."
+    },
+    {
+      "id": 11,
+      "title": "DOCKER COMPOSE: REDES Y AMBIENTES MULTI-CONTENEDOR",
+      "why": "Orquestación en desarrollo local: archivos `docker-compose.yml`, redes internas DNS automáticas, volúmenes con nombre y variables de entorno."
+    },
+    {
+      "id": 12,
+      "title": "CI/CD FUNDAMENTOS: AUTOMATIZACIÓN CON GITHUB ACTIONS",
+      "why": "Integración Continua moderna: triggers, runners, jobs, steps, matrices de compilación y la sintaxis declarativa de GitHub Actions."
+    },
+    {
+      "id": 13,
+      "title": "PIPELINES DE CI AVANZADOS: MATRICES, CACHÉ Y DAG DE JOBS",
+      "why": "Optimización extrema de CI: matrices de compatibilidad (multi-OS, multi-node), caché de dependencias y grafos de dependencia entre jobs."
+    },
+    {
+      "id": 14,
+      "title": "DEVSECOPS: ESCANEO DE SECRETOS CON TRUFFLEHOG",
+      "why": "Seguridad proactiva en el commit: detección de claves API, tokens de AWS, llaves SSH y certificados con TruffleHog y hooks de pre-commit."
+    },
+    {
+      "id": 15,
+      "title": "DEVSECOPS: ANÁLISIS ESTÁTICO DE CÓDIGO (SAST) CON SEMGREP",
+      "why": "Seguridad a nivel de código fuente: reglas de Semgrep, detección de OWASP Top 10 (SQL Injection, XSS, Path Traversal) y remediación guiada."
+    },
+    {
+      "id": 16,
+      "title": "DEVSECOPS: ANÁLISIS DE COMPONENTES (SCA) CON TRIVY",
+      "why": "Seguridad en la cadena de suministro (Supply Chain Security): escaneo de dependencias con Trivy, detección de vulnerabilidades CVE y Software Bill of Materials (SBOM)."
+    },
+    {
+      "id": 17,
+      "title": "ESTRATEGIAS DE DESPLIEGUE CONTINUO: BLUE/GREEN Y CANARY",
+      "why": "Entrega continua sin tiempo de inactividad (Zero-Downtime): Blue/Green Deployments, Canary Releases, Rolling Updates y Circuit Breakers de despliegue."
+    },
+    {
+      "id": 18,
+      "title": "DESPLIEGUE EN EL EDGE & SERVERLESS CON VERCEL",
+      "why": "Arquitectura Cloud moderna sin servidores: Edge Functions, Vercel Edge Middleware, CDN global Anycast, ISR (Incremental Static Regeneration) y $0 de costo base."
+    },
+    {
+      "id": 19,
+      "title": "INFRAESTRUCTURA COMO CÓDIGO (IAC) CON TERRAFORM",
+      "why": "Gestión declarativa de la nube: lenguaje HCL de HashiCorp, proveedores (AWS/Cloudflare), estado de Terraform (tfstate) y el ciclo Init-Plan-Apply."
+    },
+    {
+      "id": 20,
+      "title": "PROYECTO INTEGRADOR: PIPELINE CORPORATIVO DEVSECOPS COMPLETO",
+      "why": "Arquitectura completa de ingeniería: de commit local a producción inmutable con escaneo de secretos (TruffleHog), SAST (Semgrep), SCA (Trivy) y despliegue inmutable."
     }
   ],
-  labChallenge: {
-    title: "Pipeline DevSecOps Completo: Git → Secret Scanning → SAST/SCA → DAST → Deploy $0",
-    badge: "Laboratorio Profesional DevSecOps & CI/CD",
-    description:
-      "Diseña e implementa un pipeline integral DevSecOps en GitHub Actions para un proyecto estático React/Vite. El pipeline debe bloquear secrets con TruffleHog, realizar análisis estático SAST con Semgrep OSS contra OWASP Top 10, auditar dependencias con Trivy SCA, ejecutar pruebas automatizadas y publicar el sitio con cabeceras estrictas de seguridad en Vercel por $0.",
-    requirements: [
-      "• Repositorio GitHub con .gitignore estricto y pre-commit hook de secret scanning.",
-      "• Pipeline GitHub Actions (.github/workflows/devsecops.yml) con jobs paralelos de SAST (Semgrep) y SCA (Trivy).",
-      "• Bloqueo estricto del Pull Request si Semgrep detecta vulnerabilidades OWASP o Trivy detecta CVEs CRITICAL.",
-      "• Escaneo dinámico DAST con OWASP ZAP Baseline sobre la URL de staging/preview.",
-      "• Despliegue estático inmutable en Vercel ($0) configurando cabeceras de seguridad CSP, HSTS y X-Frame-Options en vercel.json."
+  "labChallenge": {
+    "title": "Arquitectura de Pipeline DevSecOps Completo: Git Commit a Producción Inmutable en Vercel",
+    "badge": "Laboratorio de Git, DevOps & DevSecOps",
+    "description": "Tu objetivo es configurar un repositorio profesional con Trunk-Based Development, un Dockerfile multi-stage optimizado para producción, un hook de pre-commit contra fugas de secretos y un workflow de GitHub Actions que ejecute SAST con Semgrep, escaneo de dependencias con Trivy y despliegue automatizado inmutable en Vercel con cabeceras de seguridad estrictas en el Edge.",
+    "requirements": [
+      "• Historial Impecable: Aplicar Rebase Interactivo para consolidar commits atómicos siguiendo Conventional Commits.",
+      "• Docker Multi-Stage: Crear un Dockerfile con usuario no-root e imagen final de menos de 100MB.",
+      "• Pipeline de CI: Configurar GitHub Actions con jobs de Typecheck, Lint y Pruebas Unitarias.",
+      "• DevSecOps Gates: Integrar TruffleHog (secretos), Semgrep (SAST) y Trivy (SCA).",
+      "• Edge Deployment: Configurar `vercel.json` con cabeceras HSTS, CSP y X-Content-Type-Options."
     ],
-    cleanCodeRules: [
-      "• Shift-Left estricto: la seguridad se valida en local y en el PR, nunca después del deploy.",
-      "• Secretos inyectados exclusivamente mediante GitHub Secrets o Vercel Environment Variables.",
-      "• Conventional Commits (feat:, fix:, sec:, ci:) y Branch Protection en main.",
-      "• Enviar evidencia y URL con el informe de seguridad a quimicabless2020@gmail.com."
+    "cleanCodeRules": [
+      "• Cero Secretos: Ningún token, API key ni archivo .env debe ser commiteado al repositorio.",
+      "• Pipeline Inmutable: Ningún despliegue se realiza sin que todos los Quality Gates de seguridad estén en verde.",
+      "• Nombres Estándar: Utilizar Conventional Commits (feat, fix, refactor, security, chore)."
     ],
-    emailSubject: "Laboratorio QuimiSell: Reto DevSecOps Pipeline Completo - [Tu Nombre]",
-    emailBodyTemplate: `Hola Profesor QuimiSell,
-
-Adjunto mi laboratorio de DevSecOps con pipeline automatizado en GitHub Actions:
-
-Enlace del Repositorio GitHub: [PEGA TU ENLACE AQUÍ]
-URL Vercel en Producción: [PEGA TU URL .vercel.app]
-
-Evidencias del Pipeline DevSecOps:
-1. Secret Scanning (TruffleHog / Husky pre-commit): [ENLACE O DETALLE]
-2. SAST con Semgrep OSS (OWASP Top 10): [JOB STATUS EN ACTIONS]
-3. SCA con Trivy (Auditoría de package-lock.json): [CVEs EVALUADOS]
-4. DAST con OWASP ZAP Baseline Scan (Preview URL): [REPORTE DE CABECERAS]
-5. Despliegue seguro en Vercel con vercel.json: [CABECERAS CONFIGURADAS]
-
-Saludos cordiales.
-(Correo catedrático: quimicabless2020@gmail.com)`
+    "emailSubject": "Laboratorio QuimiSell: Reto DevOps - [Tu Nombre]",
+    "emailBodyTemplate": "Hola Profesor QuimiSell,\\n\\nAdjunto el enlace a mi repositorio con el Pipeline Corporativo DevSecOps configurado.\\n\\nRepositorio: [ENLACE DE GITHUB]\\n\\nResumen de herramientas integradas:\\n- CI/CD Actions: \\n- DevSecOps (TruffleHog/Semgrep/Trivy): \\n- Despliegue en Edge / Vercel: \\n\\nSaludos cordiales."
   },
-  modules: [{
-
-      id: 1,
-      title: "MÓDULO 1: CONTROL DE VERSIONES Y FILOSOFÍA GIT",
-      description: "Por qué Git es el estándar de la industria y cómo piensa en snapshots, no en copias.",
-      items: [
-        
-      "Historia: de CVS/SVN centralizados a Git distribuido (Linus Torvalds, 2005).",
-      "Repositorio local vs remoto: cada clon es copia completa del historial.",
-      "Working tree, staging area (index) y commits inmutables.",
-      "SHA-1/SHA-256 como identificadores de objetos Git.",
-      "Ventajas para equipos: ramas baratas, merges y trabajo offline.",
-      "Definición operativa de los términos centrales de CONTROL DE VERSIONES Y FILOSOFÍA GIT.",
-      "Ejemplo numérico o de código trazado paso a paso.",
-      "Pregunta tipo entrevista técnica con respuesta esperada.",
-      "Relación explícita con el snippet de implementación del módulo.",
-        "Aplicación directa en proyectos reales y entrevistas técnicas de ingeniería."
+  "modules": [
+    {
+      "id": 1,
+      "title": "MÓDULO 1: ARQUITECTURA INTERNA DE GIT: EL MODELO DE OBJETOS",
+      "description": "Las entrañas de Git: sistema de archivos direccionable por contenido, objetos inmutables (Blobs, Trees, Commits, Annotated Tags) y cálculo de hashes SHA.",
+      "items": [
+        "Git no almacena diferencias (diffs); almacena instantáneas (snapshots) inmutables en el tiempo.",
+        "El directorio `.git`: `HEAD`, `config`, `index`, carpeta `objects/` y `refs/`.",
+        "Los 4 Tipos de Objetos Fundamentales: Blob (contenido), Tree (directorio), Commit (metadatos) y Tag.",
+        "Cálculo del hash SHA-1 / SHA-256: Tipo + Tamaño en bytes + Null byte + Contenido.",
+        "Inspección a bajo nivel con comandos 'plumbing': `git cat-file -p`, `git hash-object`, `git ls-tree`.",
+        "Empaquetado de objetos (Packfiles) y recolección de basura con `git gc`."
       ],
-      content: "## Panorama del tema: CONTROL DE VERSIONES Y FILOSOFÍA GIT\\n\\nPor qué Git es el estándar de la industria y cómo piensa en snapshots, no en copias.\\n\\nGit no es un simple 'guardar versión': es un sistema de contenido direccionable donde cada commit es un snapshot completo del proyecto identificado por un hash criptográfico. A diferencia de SVN, no necesitas servidor para commitear: tu laptop es un repositorio completo. El flujo mental es working directory → staging (git add) → repositorio (git commit). Esta separación te permite preparar commits atómicos y revisar exactamente qué entra en cada cambio. En QuimiSell y cualquier startup moderna, dominar Git es requisito antes de tocar GitHub Actions o Vercel.\\n\\nEste módulo es material de estudio **autocontenido**: puedes aprenderlo completo aquí, sin pagar plataformas externas ni depender de internet después de cargar la página. Lee en orden, ejecuta el snippet, resuelve la autoevaluación y repasa los puntos que falles.\\n\\n## Qué aprenderás en este módulo\\n\\n· Historia: de CVS/SVN centralizados a Git distribuido (Linus Torvalds, 2005).\\n· Repositorio local vs remoto: cada clon es copia completa del historial.\\n· Working tree, staging area (index) y commits inmutables.\\n· SHA-1/SHA-256 como identificadores de objetos Git.\\n· Ventajas para equipos: ramas baratas, merges y trabajo offline.\\n· Definición operativa de los términos centrales de CONTROL DE VERSIONES Y FILOSOFÍA GIT.\\n· Ejemplo numérico o de código trazado paso a paso.\\n· Pregunta tipo entrevista técnica con respuesta esperada.\\n· Dominar las 12 preguntas de autoevaluación con ≥70% de aciertos antes de avanzar.\\n\\n## Desarrollo teórico detallado\\n\\n## 1. Historia: de CVS/SVN centralizados a Git distribuido (Linus Torvalds, 2005).\\n\\n**Qué es y por qué importa.** Dentro de CONTROL DE VERSIONES Y FILOSOFÍA GIT, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\\n\\n**Desarrollo.** Historia: de CVS/SVN centralizados a Git distribuido (Linus Torvalds, 2005). — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\\n\\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\\n\\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Historia: de CVS/SVN centralizados a Git distribuido (Linus Torvalds, 2005).» y cuándo lo evitarías.\\n\\n## 2. Repositorio local vs remoto: cada clon es copia completa del historial.\\n\\n**Qué es y por qué importa.** Dentro de CONTROL DE VERSIONES Y FILOSOFÍA GIT, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\\n\\n**Desarrollo.** Repositorio local vs remoto: cada clon es copia completa del historial. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\\n\\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\\n\\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Repositorio local vs remoto: cada clon es copia completa del historial.» y cuándo lo evitarías.\\n\\n## 3. Working tree, staging area (index) y commits inmutables.\\n\\n**Qué es y por qué importa.** Dentro de CONTROL DE VERSIONES Y FILOSOFÍA GIT, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\\n\\n**Desarrollo.** Working tree, staging area (index) y commits inmutables. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\\n\\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\\n\\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Working tree, staging area (index) y commits inmutables.» y cuándo lo evitarías.\\n\\n## 4. SHA-1/SHA-256 como identificadores de objetos Git.\\n\\n**Qué es y por qué importa.** Dentro de CONTROL DE VERSIONES Y FILOSOFÍA GIT, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\\n\\n**Desarrollo.** SHA-1/SHA-256 como identificadores de objetos Git. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\\n\\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\\n\\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «SHA-1/SHA-256 como identificadores de objetos Git.» y cuándo lo evitarías.\\n\\n## 5. Ventajas para equipos: ramas baratas, merges y trabajo offline.\\n\\n**Qué es y por qué importa.** Dentro de CONTROL DE VERSIONES Y FILOSOFÍA GIT, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\\n\\n**Desarrollo.** Ventajas para equipos: ramas baratas, merges y trabajo offline. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\\n\\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\\n\\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Ventajas para equipos: ramas baratas, merges y trabajo offline.» y cuándo lo evitarías.\\n\\n## 6. Definición operativa de los términos centrales de CONTROL DE VERSIONES Y FILOSOFÍA GIT.\\n\\n**Qué es y por qué importa.** Dentro de CONTROL DE VERSIONES Y FILOSOFÍA GIT, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\\n\\n**Desarrollo.** Definición operativa de los términos centrales de CONTROL DE VERSIONES Y FILOSOFÍA GIT. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\\n\\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\\n\\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Definición operativa de los términos centrales de CONTROL DE VERSIONES Y FILOSOFÍA GIT.» y cuándo lo evitarías.\\n\\n## 7. Ejemplo numérico o de código trazado paso a paso.\\n\\n**Qué es y por qué importa.** Dentro de CONTROL DE VERSIONES Y FILOSOFÍA GIT, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\\n\\n**Desarrollo.** Ejemplo numérico o de código trazado paso a paso. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\\n\\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\\n\\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Ejemplo numérico o de código trazado paso a paso.» y cuándo lo evitarías.\\n\\n## 8. Pregunta tipo entrevista técnica con respuesta esperada.\\n\\n**Qué es y por qué importa.** Dentro de CONTROL DE VERSIONES Y FILOSOFÍA GIT, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\\n\\n**Desarrollo.** Pregunta tipo entrevista técnica con respuesta esperada. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\\n\\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\\n\\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Pregunta tipo entrevista técnica con respuesta esperada.» y cuándo lo evitarías.\\n\\n## Aplicaciones en sistemas reales\\n\\n**Ejemplo 1:** Este repo QuimiSell despliega a Vercel solo cuando GitHub Actions pasa typecheck + build en el PR.\\n\\n**Ejemplo 2:** Este repo QuimiSell despliega a Vercel solo cuando GitHub Actions pasa typecheck + build en el PR.\\n\\n**Ejemplo 3:** Este repo QuimiSell despliega a Vercel solo cuando GitHub Actions pasa typecheck + build en el PR.\\n\\nEstos casos muestran por qué CONTROL DE VERSIONES Y FILOSOFÍA GIT no es teórico: empresas y proyectos open source aplican estos principios diariamente. Al estudiar, elige uno y escribe cómo encajaría el concepto del módulo en ese escenario.\\n\\n## Errores comunes al estudiar\\n\\n· Confundir el caso promedio con el peor caso al estimar rendimiento de un algoritmo.\\n· Ignorar la sección de aplicaciones reales: ahí se ancla la memoria a largo plazo.\\n· Confundir el caso promedio con el peor caso al estimar rendimiento de un algoritmo.\\n· Ignorar la sección de aplicaciones reales: ahí se ancla la memoria a largo plazo.\\n\\n## Síntesis para repasar\\n\\nCierra el módulo resumiendo CONTROL DE VERSIONES Y FILOSOFÍA GIT en cinco líneas propias. Vuelve a leer los **Conceptos clave** del panel, ejecuta el código de referencia y completa la autoevaluación. Si fallas más de 3 preguntas, relee el bloque teórico correspondiente antes de continuar — el siguiente módulo asume que dominas este. En la práctica profesional, este tema exige relacionar la teoría con decisiones concretas de diseño: qué estructura elegir, qué complejidad aceptar y qué trade-offs negociar con el equipo. Repasa los ítems clave, implementa el snippet de referencia y valida tu comprensión con la autoevaluación antes de avanzar al siguiente módulo.",
-      codeSnippet: `# Inicializar repositorio y primer commit
-git init mi-proyecto
-cd mi-proyecto
-echo "# QuimiSell Landing" > README.md
-git add README.md
-git commit -m "feat: README inicial"
-
-# Ver historial compacto
-git log --oneline --graph`,
-      quiz: [
-        {
-          question: "¿Qué diferencia principal tiene Git respecto a SVN?",
-          options: ["Git es centralizado obligatoriamente", "Git es distribuido: cada clon tiene historial completo", "Git no permite ramas"],
-          answerIndex: 1,
-          explanation: "Git replica el historial completo en cada máquina; SVN depende de un servidor central."
-        },
-        {
-          question: "¿Qué hace git add?",
-          options: ["Publica en GitHub", "Mueve cambios al staging area", "Elimina archivos"],
-          answerIndex: 1,
-          explanation: "add prepara cambios para el próximo commit sin guardarlos aún en el historial."
-        },
-        {
-          question: "Un commit en Git se identifica por...",
-          options: ["Nombre de rama", "Hash SHA del objeto", "Fecha solamente"],
-          answerIndex: 1,
-          explanation: "Cada commit es un objeto con hash único derivado de su contenido."
-        },
-        {
-          question: "¿Puedes commitear sin conexión a internet?",
-          options: ["Sí, Git es local primero", "No, siempre requiere GitHub", "Solo en Linux"],
-          answerIndex: 0,
-          explanation: "Commits son locales; push/pull sincronizan después."
-        },
-        {
-          question: "El staging area sirve para...",
-          options: ["Ejecutar tests", "Seleccionar qué cambios incluir en el commit", "Desplegar en Vercel"],
-          answerIndex: 1,
-          explanation: "Permite commits parciales y revisión antes de grabar."
-        },
-      ,
-        {
-          question: "Según el temario de 'MÓDULO 1: CONTROL DE VERSIONES Y FILOSOFÍA GIT', ¿cuál afirmación es correcta sobre: Historia: de CVS/SVN centralizados a Git distribuido (Linus Torvalds, 2005)?",
-          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Historia: de CVS/SVN centralizados a Git distribuido (Linus Torvald...", "Asumir que más líneas de código siempre implican mayor eficiencia."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Historia: de CVS/SVN centralizados a Git distribuido (Linus Torvalds, 2005). Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 1: CONTROL DE VERSIONES Y FILOSOFÍA GIT', ¿cuál afirmación es correcta sobre: Repositorio local vs remoto: cada clon es copia completa del historial?",
-          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Repositorio local vs remoto: cada clon es copia completa del historial", "Asumir que más líneas de código siempre implican mayor eficiencia."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Repositorio local vs remoto: cada clon es copia completa del historial. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 1: CONTROL DE VERSIONES Y FILOSOFÍA GIT', ¿cuál afirmación es correcta sobre: Working tree, staging area (index) y commits inmutables?",
-          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Working tree, staging area (index) y commits inmutables", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Working tree, staging area (index) y commits inmutables. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 1: CONTROL DE VERSIONES Y FILOSOFÍA GIT', ¿cuál afirmación es correcta sobre: SHA-1/SHA-256 como identificadores de objetos Git?",
-          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: SHA-1/SHA-256 como identificadores de objetos Git", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que SHA-1/SHA-256 como identificadores de objetos Git. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 1: CONTROL DE VERSIONES Y FILOSOFÍA GIT', ¿cuál afirmación es correcta sobre: Ventajas para equipos: ramas baratas, merges y trabajo offline?",
-          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Ventajas para equipos: ramas baratas, merges y trabajo offline", "Ignorar casos borde y entradas vacías en el diseño."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Ventajas para equipos: ramas baratas, merges y trabajo offline. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 1: CONTROL DE VERSIONES Y FILOSOFÍA GIT', ¿cuál afirmación es correcta sobre: Definición operativa de los términos centrales de CONTROL DE VERSIONES Y FILO...?",
-          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Definición operativa de los términos centrales de CONTROL DE VERSIO...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Definición operativa de los términos centrales de CONTROL DE VERSIONES Y FILOSOFÍA GIT. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 1: CONTROL DE VERSIONES Y FILOSOFÍA GIT', ¿cuál afirmación es correcta sobre: Ejemplo numérico o de código trazado paso a paso?",
-          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Ejemplo numérico o de código trazado paso a paso", "Optimizar prematuramente sin perfilar el cuello de botella real."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Ejemplo numérico o de código trazado paso a paso. Las otras opciones representan malentendidos típicos."
-        }
-      ]
-    },
-{
-      id: 2,
-      title: "MÓDULO 2: COMANDOS ESENCIALES — INIT, STATUS, DIFF, LOG",
-      description: "El kit diario: inspeccionar cambios, deshacer errores y navegar el historial.",
-      items: [
-      "git status: archivos tracked, untracked, modified, staged.",
-      "git diff y git diff --staged para revisar antes de commitear.",
-      "git log --oneline --graph --all para visualizar ramas.",
-      "git restore y git checkout -- para descartar cambios locales.",
-      "git commit --amend para corregir el último commit (con cuidado).",
-      "Definición operativa de los términos centrales de COMANDOS ESENCIALES — INIT, STATUS, DIFF, LOG.",
-      "Ejemplo numérico o de código trazado paso a paso.",
-      "Pregunta tipo entrevista técnica con respuesta esperada.",
-      "Relación explícita con el snippet de implementación del módulo."
-],
-      content: "## Panorama del tema: COMANDOS ESENCIALES — INIT, STATUS, DIFF, LOG\n\nEl kit diario: inspeccionar cambios, deshacer errores y navegar el historial.\n\nEl 80% del trabajo diario con Git son cinco comandos: status, diff, add, commit y log. Antes de cada commit, ejecuta git status y git diff --staged para verificar que no subes secretos (.env), archivos generados (node_modules, dist) ni cambios accidentales. git log --graph te muestra cómo evolucionaron las ramas. Si cometiste un error antes de push, git restore deshace cambios en working tree; git commit --amend corrige mensaje o archivos del último commit local. Nunca hagas amend en commits ya pusheados sin coordinar con el equipo.\n\nEste módulo es material de estudio **autocontenido**: puedes aprenderlo completo aquí, sin pagar plataformas externas ni depender de internet después de cargar la página. Lee en orden, ejecuta el snippet, resuelve la autoevaluación y repasa los puntos que falles.\n\n## Qué aprenderás en este módulo\n\n· git status: archivos tracked, untracked, modified, staged.\n· git diff y git diff --staged para revisar antes de commitear.\n· git log --oneline --graph --all para visualizar ramas.\n· git restore y git checkout -- para descartar cambios locales.\n· git commit --amend para corregir el último commit (con cuidado).\n· Definición operativa de los términos centrales de COMANDOS ESENCIALES — INIT, STATUS, DIFF, LOG.\n· Ejemplo numérico o de código trazado paso a paso.\n· Pregunta tipo entrevista técnica con respuesta esperada.\n· Dominar las 12 preguntas de autoevaluación con ≥70% de aciertos antes de avanzar.\n\n## Desarrollo teórico detallado\n\n## 1. git status: archivos tracked, untracked, modified, staged.\n\n**Qué es y por qué importa.** Dentro de COMANDOS ESENCIALES — INIT, STATUS, DIFF, LOG, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** git status: archivos tracked, untracked, modified, staged. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «git status: archivos tracked, untracked, modified, staged.» y cuándo lo evitarías.\n\n## 2. git diff y git diff --staged para revisar antes de commitear.\n\n**Qué es y por qué importa.** Dentro de COMANDOS ESENCIALES — INIT, STATUS, DIFF, LOG, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** git diff y git diff --staged para revisar antes de commitear. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «git diff y git diff --staged para revisar antes de commitear.» y cuándo lo evitarías.\n\n## 3. git log --oneline --graph --all para visualizar ramas.\n\n**Qué es y por qué importa.** Dentro de COMANDOS ESENCIALES — INIT, STATUS, DIFF, LOG, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** git log --oneline --graph --all para visualizar ramas. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «git log --oneline --graph --all para visualizar ramas.» y cuándo lo evitarías.\n\n## 4. git restore y git checkout -- para descartar cambios locales.\n\n**Qué es y por qué importa.** Dentro de COMANDOS ESENCIALES — INIT, STATUS, DIFF, LOG, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** git restore y git checkout -- para descartar cambios locales. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «git restore y git checkout -- para descartar cambios locales.» y cuándo lo evitarías.\n\n## 5. git commit --amend para corregir el último commit (con cuidado).\n\n**Qué es y por qué importa.** Dentro de COMANDOS ESENCIALES — INIT, STATUS, DIFF, LOG, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** git commit --amend para corregir el último commit (con cuidado). — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «git commit --amend para corregir el último commit (con cuidado).» y cuándo lo evitarías.\n\n## 6. Definición operativa de los términos centrales de COMANDOS ESENCIALES — INIT, STATUS, DIFF, LOG.\n\n**Qué es y por qué importa.** Dentro de COMANDOS ESENCIALES — INIT, STATUS, DIFF, LOG, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Definición operativa de los términos centrales de COMANDOS ESENCIALES — INIT, STATUS, DIFF, LOG. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Definición operativa de los términos centrales de COMANDOS ESENCIALES — INIT, STATUS, DIFF, LOG.» y cuándo lo evitarías.\n\n## 7. Ejemplo numérico o de código trazado paso a paso.\n\n**Qué es y por qué importa.** Dentro de COMANDOS ESENCIALES — INIT, STATUS, DIFF, LOG, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Ejemplo numérico o de código trazado paso a paso. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Ejemplo numérico o de código trazado paso a paso.» y cuándo lo evitarías.\n\n## 8. Pregunta tipo entrevista técnica con respuesta esperada.\n\n**Qué es y por qué importa.** Dentro de COMANDOS ESENCIALES — INIT, STATUS, DIFF, LOG, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Pregunta tipo entrevista técnica con respuesta esperada. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Pregunta tipo entrevista técnica con respuesta esperada.» y cuándo lo evitarías.\n\n## Aplicaciones en sistemas reales\n\n**Ejemplo 1:** Este repo QuimiSell despliega a Vercel solo cuando GitHub Actions pasa typecheck + build en el PR.\n\n**Ejemplo 2:** Este repo QuimiSell despliega a Vercel solo cuando GitHub Actions pasa typecheck + build en el PR.\n\n**Ejemplo 3:** Este repo QuimiSell despliega a Vercel solo cuando GitHub Actions pasa typecheck + build en el PR.\n\nEstos casos muestran por qué COMANDOS ESENCIALES — INIT, STATUS, DIFF, LOG no es teórico: empresas y proyectos open source aplican estos principios diariamente. Al estudiar, elige uno y escribe cómo encajaría el concepto del módulo en ese escenario.\n\n## Errores comunes al estudiar\n\n· Copiar código del módulo sin trazar manualmente cuántas operaciones ejecuta en el peor caso.\n· Memorizar definiciones sin resolver al menos un ejercicio o modificar el snippet del módulo.\n· Copiar código del módulo sin trazar manualmente cuántas operaciones ejecuta en el peor caso.\n· Memorizar definiciones sin resolver al menos un ejercicio o modificar el snippet del módulo.\n\n## Síntesis para repasar\n\nCierra el módulo resumiendo COMANDOS ESENCIALES — INIT, STATUS, DIFF, LOG en cinco líneas propias. Vuelve a leer los **Conceptos clave** del panel, ejecuta el código de referencia y completa la autoevaluación. Si fallas más de 3 preguntas, relee el bloque teórico correspondiente antes de continuar — el siguiente módulo asume que dominas este.",
-      codeSnippet: `# Flujo de inspección diario
-git status
-git diff                    # cambios no staged
-git add src/App.tsx
-git diff --staged           # lo que irá al commit
-
-# Descartar cambios en un archivo
-git restore src/App.tsx
-
-# Historial visual
-git log --oneline --graph -10`,
-      quiz: [
-        {
-          question: "git diff sin flags muestra...",
-          options: ["Solo commits remotos", "Cambios en working tree no staged", "Solo archivos eliminados"],
-          answerIndex: 1,
-          explanation: "Compara working tree vs index para archivos modificados."
-        },
-        {
-          question: "¿Qué archivo NUNCA debe commitearse?",
-          options: [".gitignore", ".env con API keys", "README.md"],
-          answerIndex: 1,
-          explanation: "Secretos en .env deben quedar fuera del historial."
-        },
-        {
-          question: "git log --oneline --graph ayuda a...",
-          options: ["Compilar TypeScript", "Visualizar ramas y merges", "Desplegar en Vercel"],
-          answerIndex: 1,
-          explanation: "Muestra historial compacto con estructura de ramas."
-        },
-        {
-          question: "git restore archivo deshace...",
-          options: ["Commits remotos", "Cambios locales no commiteados en ese archivo", "Todas las ramas"],
-          answerIndex: 1,
-          explanation: "Vuelve el archivo al estado del último commit."
-        },
-        {
-          question: "git commit --amend modifica...",
-          options: ["Cualquier commit antiguo sin límite", "Solo el último commit local", "Solo ramas remotas"],
-          answerIndex: 1,
-          explanation: "Reescribe el HEAD commit; peligroso si ya fue pusheado."
-        },
-      ,
-        {
-          question: "Según el temario de 'MÓDULO 2: COMANDOS ESENCIALES — INIT, STATUS, DIFF, LOG', ¿cuál afirmación es correcta sobre: git status: archivos tracked, untracked, modified, staged?",
-          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: git status: archivos tracked, untracked, modified, staged", "Confundir el concepto con una técnica ortogonal no relacionada."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que git status: archivos tracked, untracked, modified, staged. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 2: COMANDOS ESENCIALES — INIT, STATUS, DIFF, LOG', ¿cuál afirmación es correcta sobre: git diff y git diff --staged para revisar antes de commitear?",
-          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: git diff y git diff --staged para revisar antes de commitear", "Aplicar la regla solo en el best case ignorando el peor escenario."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que git diff y git diff --staged para revisar antes de commitear. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 2: COMANDOS ESENCIALES — INIT, STATUS, DIFF, LOG', ¿cuál afirmación es correcta sobre: git log --oneline --graph --all para visualizar ramas?",
-          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: git log --oneline --graph --all para visualizar ramas", "Ignorar casos borde y entradas vacías en el diseño."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que git log --oneline --graph --all para visualizar ramas. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 2: COMANDOS ESENCIALES — INIT, STATUS, DIFF, LOG', ¿cuál afirmación es correcta sobre: git restore y git checkout -- para descartar cambios locales?",
-          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: git restore y git checkout -- para descartar cambios locales", "Ignorar casos borde y entradas vacías en el diseño."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que git restore y git checkout -- para descartar cambios locales. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 2: COMANDOS ESENCIALES — INIT, STATUS, DIFF, LOG', ¿cuál afirmación es correcta sobre: git commit --amend para corregir el último commit (con cuidado)?",
-          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: git commit --amend para corregir el último commit (con cuidado)", "Ignorar casos borde y entradas vacías en el diseño."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que git commit --amend para corregir el último commit (con cuidado). Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 2: COMANDOS ESENCIALES — INIT, STATUS, DIFF, LOG', ¿cuál afirmación es correcta sobre: Definición operativa de los términos centrales de COMANDOS ESENCIALES — INIT,...?",
-          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Definición operativa de los términos centrales de COMANDOS ESENCIAL...", "Aplicar la regla solo en el best case ignorando el peor escenario."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Definición operativa de los términos centrales de COMANDOS ESENCIALES — INIT, STATUS, DIFF, LOG. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 2: COMANDOS ESENCIALES — INIT, STATUS, DIFF, LOG', ¿cuál afirmación es correcta sobre: Ejemplo numérico o de código trazado paso a paso?",
-          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Ejemplo numérico o de código trazado paso a paso", "Ignorar casos borde y entradas vacías en el diseño."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Ejemplo numérico o de código trazado paso a paso. Las otras opciones representan malentendidos típicos."
-        }
-      ]
-    },
-{
-      id: 3,
-      title: "MÓDULO 3: RAMAS, MERGE Y REBASE",
-      description: "Trabajo paralelo sin romper main: feature branches y estrategias de integración.",
-      items: [
-      "git branch, git switch / git checkout para crear y cambiar ramas.",
-      "Feature branch workflow: una rama por ticket o funcionalidad.",
-      "Merge commit vs fast-forward: cuándo aparece el nodo de merge.",
-      "Rebase interactivo para historial lineal (squash, reordenar).",
-      "Conflictos de merge: marcadores <<<<<<< y resolución manual.",
-      "Definición operativa de los términos centrales de RAMAS, MERGE Y REBASE.",
-      "Ejemplo numérico o de código trazado paso a paso.",
-      "Pregunta tipo entrevista técnica con respuesta esperada.",
-      "Relación explícita con el snippet de implementación del módulo."
-],
-      content: "## Panorama del tema: RAMAS, MERGE Y REBASE\n\nTrabajo paralelo sin romper main: feature branches y estrategias de integración.\n\nLas ramas en Git son punteros móviles a commits: crear una rama cuesta microsegundos. El flujo estándar en equipos profesionales es trunk-based o GitFlow simplificado: main protegida, desarrollo en feature branches (feat/login-oauth), integración vía Pull Request. Merge une historiales preservando contexto; rebase reaplica commits sobre otra base para historial lineal. Los conflictos ocurren cuando dos ramas editan las mismas líneas: Git marca el archivo y tú decides qué conservar. En QuimiSell, nunca commitees directo a main: siempre rama + PR + CI verde.\n\nEste módulo es material de estudio **autocontenido**: puedes aprenderlo completo aquí, sin pagar plataformas externas ni depender de internet después de cargar la página. Lee en orden, ejecuta el snippet, resuelve la autoevaluación y repasa los puntos que falles.\n\n## Qué aprenderás en este módulo\n\n· git branch, git switch / git checkout para crear y cambiar ramas.\n· Feature branch workflow: una rama por ticket o funcionalidad.\n· Merge commit vs fast-forward: cuándo aparece el nodo de merge.\n· Rebase interactivo para historial lineal (squash, reordenar).\n· Conflictos de merge: marcadores <<<<<<< y resolución manual.\n· Definición operativa de los términos centrales de RAMAS, MERGE Y REBASE.\n· Ejemplo numérico o de código trazado paso a paso.\n· Pregunta tipo entrevista técnica con respuesta esperada.\n· Dominar las 12 preguntas de autoevaluación con ≥70% de aciertos antes de avanzar.\n\n## Desarrollo teórico detallado\n\n## 1. git branch, git switch / git checkout para crear y cambiar ramas.\n\n**Qué es y por qué importa.** Dentro de RAMAS, MERGE Y REBASE, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** git branch, git switch / git checkout para crear y cambiar ramas. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «git branch, git switch / git checkout para crear y cambiar ramas.» y cuándo lo evitarías.\n\n## 2. Feature branch workflow: una rama por ticket o funcionalidad.\n\n**Qué es y por qué importa.** Dentro de RAMAS, MERGE Y REBASE, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Feature branch workflow: una rama por ticket o funcionalidad. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Feature branch workflow: una rama por ticket o funcionalidad.» y cuándo lo evitarías.\n\n## 3. Merge commit vs fast-forward: cuándo aparece el nodo de merge.\n\n**Qué es y por qué importa.** Dentro de RAMAS, MERGE Y REBASE, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Merge commit vs fast-forward: cuándo aparece el nodo de merge. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Merge commit vs fast-forward: cuándo aparece el nodo de merge.» y cuándo lo evitarías.\n\n## 4. Rebase interactivo para historial lineal (squash, reordenar).\n\n**Qué es y por qué importa.** Dentro de RAMAS, MERGE Y REBASE, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Rebase interactivo para historial lineal (squash, reordenar). — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Rebase interactivo para historial lineal (squash, reordenar).» y cuándo lo evitarías.\n\n## 5. Conflictos de merge: marcadores <<<<<<< y resolución manual.\n\n**Qué es y por qué importa.** Dentro de RAMAS, MERGE Y REBASE, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Conflictos de merge: marcadores <<<<<<< y resolución manual. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Conflictos de merge: marcadores <<<<<<< y resolución manual.» y cuándo lo evitarías.\n\n## 6. Definición operativa de los términos centrales de RAMAS, MERGE Y REBASE.\n\n**Qué es y por qué importa.** Dentro de RAMAS, MERGE Y REBASE, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Definición operativa de los términos centrales de RAMAS, MERGE Y REBASE. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Definición operativa de los términos centrales de RAMAS, MERGE Y REBASE.» y cuándo lo evitarías.\n\n## 7. Ejemplo numérico o de código trazado paso a paso.\n\n**Qué es y por qué importa.** Dentro de RAMAS, MERGE Y REBASE, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Ejemplo numérico o de código trazado paso a paso. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Ejemplo numérico o de código trazado paso a paso.» y cuándo lo evitarías.\n\n## 8. Pregunta tipo entrevista técnica con respuesta esperada.\n\n**Qué es y por qué importa.** Dentro de RAMAS, MERGE Y REBASE, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Pregunta tipo entrevista técnica con respuesta esperada. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Pregunta tipo entrevista técnica con respuesta esperada.» y cuándo lo evitarías.\n\n## Aplicaciones en sistemas reales\n\n**Ejemplo 1:** Conventional Commits permiten changelogs automáticos y semver en proyectos open source maduros.\n\n**Ejemplo 2:** Conventional Commits permiten changelogs automáticos y semver en proyectos open source maduros.\n\n**Ejemplo 3:** Conventional Commits permiten changelogs automáticos y semver en proyectos open source maduros.\n\nEstos casos muestran por qué RAMAS, MERGE Y REBASE no es teórico: empresas y proyectos open source aplican estos principios diariamente. Al estudiar, elige uno y escribe cómo encajaría el concepto del módulo en ese escenario.\n\n## Errores comunes al estudiar\n\n· Avanzar al siguiente módulo sin alcanzar al menos 70% en la autoevaluación.\n· Estudiar solo la definición sin un ejemplo numérico concreto (valores pequeños de n).\n· Avanzar al siguiente módulo sin alcanzar al menos 70% en la autoevaluación.\n· Estudiar solo la definición sin un ejemplo numérico concreto (valores pequeños de n).\n\n## Síntesis para repasar\n\nCierra el módulo resumiendo RAMAS, MERGE Y REBASE en cinco líneas propias. Vuelve a leer los **Conceptos clave** del panel, ejecuta el código de referencia y completa la autoevaluación. Si fallas más de 3 preguntas, relee el bloque teórico correspondiente antes de continuar — el siguiente módulo asume que dominas este.",
-      codeSnippet: `# Feature branch típico
-git switch -c feat/hero-section
-# ... editar archivos ...
-git add .
-git commit -m "feat: sección hero responsive"
-
-git switch main
-git merge feat/hero-section   # o abrir PR en GitHub
-
-# Rebase para historial lineal (antes de PR)
-git switch feat/hero-section
-git rebase main`,
-      quiz: [
-        {
-          question: "¿Qué es una rama en Git?",
-          options: ["Copia completa del disco", "Puntero móvil a un commit", "Servidor remoto"],
-          answerIndex: 1,
-          explanation: "Las ramas son referencias ligeras a commits."
-        },
-        {
-          question: "Fast-forward merge ocurre cuando...",
-          options: ["Hay conflictos", "La rama destino no avanzó desde el fork", "Siempre crea merge commit"],
-          answerIndex: 1,
-          explanation: "main puede avanzar el puntero sin commit de merge extra."
-        },
-        {
-          question: "git rebase sobre main hace...",
-          options: ["Elimina main", "Reaplica commits de la feature sobre main actualizado", "Borra el remoto"],
-          answerIndex: 1,
-          explanation: "Reescribe commits locales encima de la nueva base."
-        },
-        {
-          question: "Los marcadores <<<<<<< en un archivo indican...",
-          options: ["Error de sintaxis", "Conflicto de merge sin resolver", "Commit exitoso"],
-          answerIndex: 1,
-          explanation: "Debes editar manualmente y quitar los marcadores."
-        },
-        {
-          question: "Buena práctica en equipos: desarrollar en...",
-          options: ["main directamente", "Feature branches con PR", "Sin commits"],
-          answerIndex: 1,
-          explanation: "Ramas aisladas + revisión protegen producción."
-        },
-      ,
-        {
-          question: "Según el temario de 'MÓDULO 3: RAMAS, MERGE Y REBASE', ¿cuál afirmación es correcta sobre: git branch, git switch / git checkout para crear y cambiar ramas?",
-          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: git branch, git switch / git checkout para crear y cambiar ramas", "Ignorar casos borde y entradas vacías en el diseño."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que git branch, git switch / git checkout para crear y cambiar ramas. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 3: RAMAS, MERGE Y REBASE', ¿cuál afirmación es correcta sobre: Feature branch workflow: una rama por ticket o funcionalidad?",
-          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Feature branch workflow: una rama por ticket o funcionalidad", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Feature branch workflow: una rama por ticket o funcionalidad. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 3: RAMAS, MERGE Y REBASE', ¿cuál afirmación es correcta sobre: Merge commit vs fast-forward: cuándo aparece el nodo de merge?",
-          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Merge commit vs fast-forward: cuándo aparece el nodo de merge", "Ignorar casos borde y entradas vacías en el diseño."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Merge commit vs fast-forward: cuándo aparece el nodo de merge. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 3: RAMAS, MERGE Y REBASE', ¿cuál afirmación es correcta sobre: Rebase interactivo para historial lineal (squash, reordenar)?",
-          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Rebase interactivo para historial lineal (squash, reordenar)", "Mezclar responsabilidades en una sola función o módulo monolítico."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Rebase interactivo para historial lineal (squash, reordenar). Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 3: RAMAS, MERGE Y REBASE', ¿cuál afirmación es correcta sobre: Conflictos de merge: marcadores <<<<<<< y resolución manual?",
-          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Conflictos de merge: marcadores <<<<<<< y resolución manual", "Optimizar prematuramente sin perfilar el cuello de botella real."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Conflictos de merge: marcadores <<<<<<< y resolución manual. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 3: RAMAS, MERGE Y REBASE', ¿cuál afirmación es correcta sobre: Definición operativa de los términos centrales de RAMAS, MERGE Y REBASE?",
-          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Definición operativa de los términos centrales de RAMAS, MERGE Y RE...", "Optimizar prematuramente sin perfilar el cuello de botella real."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Definición operativa de los términos centrales de RAMAS, MERGE Y REBASE. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 3: RAMAS, MERGE Y REBASE', ¿cuál afirmación es correcta sobre: Ejemplo numérico o de código trazado paso a paso?",
-          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Ejemplo numérico o de código trazado paso a paso", "Ignorar casos borde y entradas vacías en el diseño."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Ejemplo numérico o de código trazado paso a paso. Las otras opciones representan malentendidos típicos."
-        }
-      ]
-    },
-{
-      id: 4,
-      title: "MÓDULO 4: GITHUB — REMOTES, CLONE, PUSH Y PULL",
-      description: "Conectar repositorio local con GitHub y sincronizar cambios de forma segura.",
-      items: [
-      "git remote add origin y URLs HTTPS vs SSH.",
-      "git clone para obtener copia completa con historial.",
-      "git push -u origin main para publicar rama y establecer upstream.",
-      "git pull = fetch + merge (o pull --rebase).",
-      "Autenticación: PAT (Personal Access Token) y SSH keys.",
-      "Definición operativa de los términos centrales de GITHUB — REMOTES, CLONE, PUSH Y PULL.",
-      "Ejemplo numérico o de código trazado paso a paso.",
-      "Pregunta tipo entrevista técnica con respuesta esperada.",
-      "Relación explícita con el snippet de implementación del módulo."
-],
-      content: "## Panorama del tema: GITHUB — REMOTES, CLONE, PUSH Y PULL\n\nConectar repositorio local con GitHub y sincronizar cambios de forma segura.\n\nGitHub es la plataforma social y de hosting sobre Git. Tu repositorio local se vincula con git remote add origin https://github.com/usuario/repo.git. El primer push usa -u para recordar upstream: git push -u origin main. git pull trae cambios del remoto; en equipos activos prefieren git pull --rebase para evitar merge commits innecesarios. Autenticación HTTPS requiere Personal Access Token (no contraseña); SSH usa par de claves (~/.ssh/id_ed25519). Nunca subas tokens en el código: usa GitHub Secrets en Actions y variables de entorno en Vercel.\n\nEste módulo es material de estudio **autocontenido**: puedes aprenderlo completo aquí, sin pagar plataformas externas ni depender de internet después de cargar la página. Lee en orden, ejecuta el snippet, resuelve la autoevaluación y repasa los puntos que falles.\n\n## Qué aprenderás en este módulo\n\n· git remote add origin y URLs HTTPS vs SSH.\n· git clone para obtener copia completa con historial.\n· git push -u origin main para publicar rama y establecer upstream.\n· git pull = fetch + merge (o pull --rebase).\n· Autenticación: PAT (Personal Access Token) y SSH keys.\n· Definición operativa de los términos centrales de GITHUB — REMOTES, CLONE, PUSH Y PULL.\n· Ejemplo numérico o de código trazado paso a paso.\n· Pregunta tipo entrevista técnica con respuesta esperada.\n· Dominar las 12 preguntas de autoevaluación con ≥70% de aciertos antes de avanzar.\n\n## Desarrollo teórico detallado\n\n## 1. git remote add origin y URLs HTTPS vs SSH.\n\n**Qué es y por qué importa.** Dentro de GITHUB — REMOTES, CLONE, PUSH Y PULL, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** git remote add origin y URLs HTTPS vs SSH. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «git remote add origin y URLs HTTPS vs SSH.» y cuándo lo evitarías.\n\n## 2. git clone para obtener copia completa con historial.\n\n**Qué es y por qué importa.** Dentro de GITHUB — REMOTES, CLONE, PUSH Y PULL, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** git clone para obtener copia completa con historial. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «git clone para obtener copia completa con historial.» y cuándo lo evitarías.\n\n## 3. git push -u origin main para publicar rama y establecer upstream.\n\n**Qué es y por qué importa.** Dentro de GITHUB — REMOTES, CLONE, PUSH Y PULL, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** git push -u origin main para publicar rama y establecer upstream. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «git push -u origin main para publicar rama y establecer upstream.» y cuándo lo evitarías.\n\n## 4. git pull = fetch + merge (o pull --rebase).\n\n**Qué es y por qué importa.** Dentro de GITHUB — REMOTES, CLONE, PUSH Y PULL, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** git pull = fetch + merge (o pull --rebase). — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «git pull = fetch + merge (o pull --rebase).» y cuándo lo evitarías.\n\n## 5. Autenticación: PAT (Personal Access Token) y SSH keys.\n\n**Qué es y por qué importa.** Dentro de GITHUB — REMOTES, CLONE, PUSH Y PULL, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Autenticación: PAT (Personal Access Token) y SSH keys. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Autenticación: PAT (Personal Access Token) y SSH keys.» y cuándo lo evitarías.\n\n## 6. Definición operativa de los términos centrales de GITHUB — REMOTES, CLONE, PUSH Y PULL.\n\n**Qué es y por qué importa.** Dentro de GITHUB — REMOTES, CLONE, PUSH Y PULL, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Definición operativa de los términos centrales de GITHUB — REMOTES, CLONE, PUSH Y PULL. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Definición operativa de los términos centrales de GITHUB — REMOTES, CLONE, PUSH Y PULL.» y cuándo lo evitarías.\n\n## 7. Ejemplo numérico o de código trazado paso a paso.\n\n**Qué es y por qué importa.** Dentro de GITHUB — REMOTES, CLONE, PUSH Y PULL, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Ejemplo numérico o de código trazado paso a paso. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Ejemplo numérico o de código trazado paso a paso.» y cuándo lo evitarías.\n\n## 8. Pregunta tipo entrevista técnica con respuesta esperada.\n\n**Qué es y por qué importa.** Dentro de GITHUB — REMOTES, CLONE, PUSH Y PULL, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Pregunta tipo entrevista técnica con respuesta esperada. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Pregunta tipo entrevista técnica con respuesta esperada.» y cuándo lo evitarías.\n\n## Aplicaciones en sistemas reales\n\n**Ejemplo 1:** Linux kernel usa Git desde 2002; miles de contribuidores coordinan ramas sin bloquear el trunk.\n\n**Ejemplo 2:** Linux kernel usa Git desde 2002; miles de contribuidores coordinan ramas sin bloquear el trunk.\n\n**Ejemplo 3:** Linux kernel usa Git desde 2002; miles de contribuidores coordinan ramas sin bloquear el trunk.\n\nEstos casos muestran por qué GITHUB — REMOTES, CLONE, PUSH Y PULL no es teórico: empresas y proyectos open source aplican estos principios diariamente. Al estudiar, elige uno y escribe cómo encajaría el concepto del módulo en ese escenario.\n\n## Errores comunes al estudiar\n\n· Estudiar solo la definición sin un ejemplo numérico concreto (valores pequeños de n).\n· Avanzar al siguiente módulo sin alcanzar al menos 70% en la autoevaluación.\n· Estudiar solo la definición sin un ejemplo numérico concreto (valores pequeños de n).\n· Avanzar al siguiente módulo sin alcanzar al menos 70% en la autoevaluación.\n\n## Síntesis para repasar\n\nCierra el módulo resumiendo GITHUB — REMOTES, CLONE, PUSH Y PULL en cinco líneas propias. Vuelve a leer los **Conceptos clave** del panel, ejecuta el código de referencia y completa la autoevaluación. Si fallas más de 3 preguntas, relee el bloque teórico correspondiente antes de continuar — el siguiente módulo asume que dominas este.",
-      codeSnippet: `# Conectar repo local con GitHub
-git remote add origin git@github.com:quimisell/landing.git
-git branch -M main
-git push -u origin main
-
-# Actualizar desde remoto
-git fetch origin
-git pull --rebase origin main
-
-# Ver remotos configurados
-git remote -v`,
-      quiz: [
-        {
-          question: "git push -u origin main hace...",
-          options: ["Elimina main remoto", "Publica commits y configura upstream", "Solo descarga"],
-          answerIndex: 1,
-          explanation: "-u vincula la rama local con la remota para futuros push/pull."
-        },
-        {
-          question: "git pull equivale a...",
-          options: ["Solo push", "fetch + integración (merge o rebase)", "Solo clone"],
-          answerIndex: 1,
-          explanation: "Trae objetos remotos y los fusiona con tu rama actual."
-        },
-        {
-          question: "Autenticación HTTPS en GitHub usa...",
-          options: ["Contraseña de la cuenta", "Personal Access Token (PAT)", "No requiere auth"],
-          answerIndex: 1,
-          explanation: "GitHub deprecó contraseñas para operaciones Git HTTPS."
-        },
-        {
-          question: "git clone copia...",
-          options: ["Solo el último archivo", "Repositorio completo con historial", "Solo ramas remotas sin commits"],
-          answerIndex: 1,
-          explanation: "Clone es réplica completa incluyendo .git."
-        },
-        {
-          question: "SSH evita escribir token en cada push porque...",
-          options: ["No usa red", "Usa par de claves pública/privada", "Es menos seguro"],
-          answerIndex: 1,
-          explanation: "La clave privada local autentica sin PAT repetido."
-        },
-      ,
-        {
-          question: "Según el temario de 'MÓDULO 4: GITHUB — REMOTES, CLONE, PUSH Y PULL', ¿cuál afirmación es correcta sobre: git remote add origin y URLs HTTPS vs SSH?",
-          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: git remote add origin y URLs HTTPS vs SSH", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que git remote add origin y URLs HTTPS vs SSH. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 4: GITHUB — REMOTES, CLONE, PUSH Y PULL', ¿cuál afirmación es correcta sobre: git clone para obtener copia completa con historial?",
-          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: git clone para obtener copia completa con historial", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que git clone para obtener copia completa con historial. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 4: GITHUB — REMOTES, CLONE, PUSH Y PULL', ¿cuál afirmación es correcta sobre: git push -u origin main para publicar rama y establecer upstream?",
-          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: git push -u origin main para publicar rama y establecer upstream", "Optimizar prematuramente sin perfilar el cuello de botella real."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que git push -u origin main para publicar rama y establecer upstream. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 4: GITHUB — REMOTES, CLONE, PUSH Y PULL', ¿cuál afirmación es correcta sobre: git pull = fetch + merge (o pull --rebase)?",
-          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: git pull = fetch + merge (o pull --rebase)", "Optimizar prematuramente sin perfilar el cuello de botella real."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que git pull = fetch + merge (o pull --rebase). Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 4: GITHUB — REMOTES, CLONE, PUSH Y PULL', ¿cuál afirmación es correcta sobre: Autenticación: PAT (Personal Access Token) y SSH keys?",
-          options: ["Mezclar responsabilidades en una sola función o módulo monolítico.", "Describe correctamente el concepto: Autenticación: PAT (Personal Access Token) y SSH keys", "Implementar la solución más rápida de escribir sin medir escalabilidad."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Autenticación: PAT (Personal Access Token) y SSH keys. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 4: GITHUB — REMOTES, CLONE, PUSH Y PULL', ¿cuál afirmación es correcta sobre: Definición operativa de los términos centrales de GITHUB — REMOTES, CLONE, PU...?",
-          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Definición operativa de los términos centrales de GITHUB — REMOTES,...", "Asumir que más líneas de código siempre implican mayor eficiencia."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Definición operativa de los términos centrales de GITHUB — REMOTES, CLONE, PUSH Y PULL. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 4: GITHUB — REMOTES, CLONE, PUSH Y PULL', ¿cuál afirmación es correcta sobre: Ejemplo numérico o de código trazado paso a paso?",
-          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Ejemplo numérico o de código trazado paso a paso", "Confundir el concepto con una técnica ortogonal no relacionada."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Ejemplo numérico o de código trazado paso a paso. Las otras opciones representan malentendidos típicos."
-        }
-      ]
-    },
-{
-      id: 5,
-      title: "MÓDULO 5: COLABORACIÓN — FORKS, ISSUES Y PERMISOS",
-      description: "Trabajar en equipo y open source: forks, colaboradores y gestión de tareas.",
-      items: [
-      "Repositorio organización vs personal; roles read/write/admin.",
-      "Fork para contribuir a proyectos ajenos sin acceso directo.",
-      "Issues: bugs, features, templates y vinculación a PRs.",
-      "Labels, milestones y assignees para organización.",
-      "CODEOWNERS y branch protection rules en repos críticos.",
-      "Definición operativa de los términos centrales de COLABORACIÓN — FORKS, ISSUES Y PERMISOS.",
-      "Ejemplo numérico o de código trazado paso a paso.",
-      "Pregunta tipo entrevista técnica con respuesta esperada.",
-      "Relación explícita con el snippet de implementación del módulo."
-],
-      content: "## Panorama del tema: COLABORACIÓN — FORKS, ISSUES Y PERMISOS\n\nTrabajar en equipo y open source: forks, colaboradores y gestión de tareas.\n\nGitHub extiende Git con colaboración. En equipos, el repo vive bajo una organización con permisos granulares. Los forks permiten a externos clonar, modificar y proponer cambios vía PR sin tocar el original. Issues documentan bugs y features; vincular un PR con 'Fixes #42' cierra el issue al mergear. Branch protection en main exige: PR obligatorio, revisión aprobada, CI verde y prohibición de force-push. Para QuimiSell, configura protección en main desde el día uno aunque seas equipo de uno: disciplina que escala.\n\nEste módulo es material de estudio **autocontenido**: puedes aprenderlo completo aquí, sin pagar plataformas externas ni depender de internet después de cargar la página. Lee en orden, ejecuta el snippet, resuelve la autoevaluación y repasa los puntos que falles.\n\n## Qué aprenderás en este módulo\n\n· Repositorio organización vs personal; roles read/write/admin.\n· Fork para contribuir a proyectos ajenos sin acceso directo.\n· Issues: bugs, features, templates y vinculación a PRs.\n· Labels, milestones y assignees para organización.\n· CODEOWNERS y branch protection rules en repos críticos.\n· Definición operativa de los términos centrales de COLABORACIÓN — FORKS, ISSUES Y PERMISOS.\n· Ejemplo numérico o de código trazado paso a paso.\n· Pregunta tipo entrevista técnica con respuesta esperada.\n· Dominar las 12 preguntas de autoevaluación con ≥70% de aciertos antes de avanzar.\n\n## Desarrollo teórico detallado\n\n## 1. Repositorio organización vs personal; roles read/write/admin.\n\n**Qué es y por qué importa.** Dentro de COLABORACIÓN — FORKS, ISSUES Y PERMISOS, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Repositorio organización vs personal; roles read/write/admin. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Repositorio organización vs personal; roles read/write/admin.» y cuándo lo evitarías.\n\n## 2. Fork para contribuir a proyectos ajenos sin acceso directo.\n\n**Qué es y por qué importa.** Dentro de COLABORACIÓN — FORKS, ISSUES Y PERMISOS, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Fork para contribuir a proyectos ajenos sin acceso directo. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Fork para contribuir a proyectos ajenos sin acceso directo.» y cuándo lo evitarías.\n\n## 3. Issues: bugs, features, templates y vinculación a PRs.\n\n**Qué es y por qué importa.** Dentro de COLABORACIÓN — FORKS, ISSUES Y PERMISOS, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Issues: bugs, features, templates y vinculación a PRs. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Issues: bugs, features, templates y vinculación a PRs.» y cuándo lo evitarías.\n\n## 4. Labels, milestones y assignees para organización.\n\n**Qué es y por qué importa.** Dentro de COLABORACIÓN — FORKS, ISSUES Y PERMISOS, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Labels, milestones y assignees para organización. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Labels, milestones y assignees para organización.» y cuándo lo evitarías.\n\n## 5. CODEOWNERS y branch protection rules en repos críticos.\n\n**Qué es y por qué importa.** Dentro de COLABORACIÓN — FORKS, ISSUES Y PERMISOS, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** CODEOWNERS y branch protection rules en repos críticos. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «CODEOWNERS y branch protection rules en repos críticos.» y cuándo lo evitarías.\n\n## 6. Definición operativa de los términos centrales de COLABORACIÓN — FORKS, ISSUES Y PERMISOS.\n\n**Qué es y por qué importa.** Dentro de COLABORACIÓN — FORKS, ISSUES Y PERMISOS, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Definición operativa de los términos centrales de COLABORACIÓN — FORKS, ISSUES Y PERMISOS. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Definición operativa de los términos centrales de COLABORACIÓN — FORKS, ISSUES Y PERMISOS.» y cuándo lo evitarías.\n\n## 7. Ejemplo numérico o de código trazado paso a paso.\n\n**Qué es y por qué importa.** Dentro de COLABORACIÓN — FORKS, ISSUES Y PERMISOS, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Ejemplo numérico o de código trazado paso a paso. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Ejemplo numérico o de código trazado paso a paso.» y cuándo lo evitarías.\n\n## 8. Pregunta tipo entrevista técnica con respuesta esperada.\n\n**Qué es y por qué importa.** Dentro de COLABORACIÓN — FORKS, ISSUES Y PERMISOS, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Pregunta tipo entrevista técnica con respuesta esperada. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Pregunta tipo entrevista técnica con respuesta esperada.» y cuándo lo evitarías.\n\n## Aplicaciones en sistemas reales\n\n**Ejemplo 1:** Este repo QuimiSell despliega a Vercel solo cuando GitHub Actions pasa typecheck + build en el PR.\n\n**Ejemplo 2:** Este repo QuimiSell despliega a Vercel solo cuando GitHub Actions pasa typecheck + build en el PR.\n\n**Ejemplo 3:** Este repo QuimiSell despliega a Vercel solo cuando GitHub Actions pasa typecheck + build en el PR.\n\nEstos casos muestran por qué COLABORACIÓN — FORKS, ISSUES Y PERMISOS no es teórico: empresas y proyectos open source aplican estos principios diariamente. Al estudiar, elige uno y escribe cómo encajaría el concepto del módulo en ese escenario.\n\n## Errores comunes al estudiar\n\n· Avanzar al siguiente módulo sin alcanzar al menos 70% en la autoevaluación.\n· Estudiar solo la definición sin un ejemplo numérico concreto (valores pequeños de n).\n· Avanzar al siguiente módulo sin alcanzar al menos 70% en la autoevaluación.\n· Estudiar solo la definición sin un ejemplo numérico concreto (valores pequeños de n).\n\n## Síntesis para repasar\n\nCierra el módulo resumiendo COLABORACIÓN — FORKS, ISSUES Y PERMISOS en cinco líneas propias. Vuelve a leer los **Conceptos clave** del panel, ejecuta el código de referencia y completa la autoevaluación. Si fallas más de 3 preguntas, relee el bloque teórico correspondiente antes de continuar — el siguiente módulo asume que dominas este.",
-      codeSnippet: `# .github/CODEOWNERS (ejemplo)
-# Todo el frontend requiere revisión del lead
-src/**       @quimisell/frontend-lead
-*.yml        @quimisell/devops
-
-# En commit message para cerrar issue al mergear:
-# fix: corrige redirect en login (Fixes #17)
-
-# Sincronizar fork con upstream
-git remote add upstream git@github.com:original/proyecto.git
-git fetch upstream
-git merge upstream/main`,
-      quiz: [
-        {
-          question: "Un fork en GitHub es...",
-          options: ["Rama local", "Copia del repo bajo tu cuenta para contribuir", "Tipo de commit"],
-          answerIndex: 1,
-          explanation: "Permite PRs sin acceso write al repo original."
-        },
-        {
-          question: "Branch protection en main típicamente exige...",
-          options: ["Commits directos sin revisión", "PR + checks pasando", "Solo force-push"],
-          answerIndex: 1,
-          explanation: "Protege la rama de producción de cambios no revisados."
-        },
-        {
-          question: "'Fixes #42' en un PR...",
-          options: ["Crea 42 ramas", "Cierra el issue #42 al mergear", "Elimina el repo"],
-          answerIndex: 1,
-          explanation: "Palabras clave vinculan PR e issues automáticamente."
-        },
-        {
-          question: "CODEOWNERS sirve para...",
-          options: ["Compilar código", "Asignar revisores automáticos por ruta", "Desplegar en Vercel"],
-          answerIndex: 1,
-          explanation: "GitHub solicita review de owners según archivos tocados."
-        },
-        {
-          question: "Issue en GitHub documenta...",
-          options: ["Solo código compilado", "Bugs, features y discusión técnica", "Solo releases"],
-          answerIndex: 1,
-          explanation: "Issues son el backlog colaborativo del proyecto."
-        },
-      ,
-        {
-          question: "Según el temario de 'MÓDULO 5: COLABORACIÓN — FORKS, ISSUES Y PERMISOS', ¿cuál afirmación es correcta sobre: Repositorio organización vs personal; roles read/write/admin?",
-          options: ["Ignorar casos borde y entradas vacías en el diseño.", "Describe correctamente el concepto: Repositorio organización vs personal; roles read/write/admin", "Mezclar responsabilidades en una sola función o módulo monolítico."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Repositorio organización vs personal; roles read/write/admin. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 5: COLABORACIÓN — FORKS, ISSUES Y PERMISOS', ¿cuál afirmación es correcta sobre: Fork para contribuir a proyectos ajenos sin acceso directo?",
-          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Fork para contribuir a proyectos ajenos sin acceso directo", "Descartar el análisis asintótico por constantes de hardware."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Fork para contribuir a proyectos ajenos sin acceso directo. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 5: COLABORACIÓN — FORKS, ISSUES Y PERMISOS', ¿cuál afirmación es correcta sobre: Issues: bugs, features, templates y vinculación a PRs?",
-          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Issues: bugs, features, templates y vinculación a PRs", "Asumir que más líneas de código siempre implican mayor eficiencia."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Issues: bugs, features, templates y vinculación a PRs. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 5: COLABORACIÓN — FORKS, ISSUES Y PERMISOS', ¿cuál afirmación es correcta sobre: Labels, milestones y assignees para organización?",
-          options: ["Asumir que más líneas de código siempre implican mayor eficiencia.", "Describe correctamente el concepto: Labels, milestones y assignees para organización", "Aplicar la regla solo en el best case ignorando el peor escenario."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Labels, milestones y assignees para organización. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 5: COLABORACIÓN — FORKS, ISSUES Y PERMISOS', ¿cuál afirmación es correcta sobre: CODEOWNERS y branch protection rules en repos críticos?",
-          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: CODEOWNERS y branch protection rules en repos críticos", "Confundir el concepto con una técnica ortogonal no relacionada."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que CODEOWNERS y branch protection rules en repos críticos. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 5: COLABORACIÓN — FORKS, ISSUES Y PERMISOS', ¿cuál afirmación es correcta sobre: Definición operativa de los términos centrales de COLABORACIÓN — FORKS, ISSUE...?",
-          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Definición operativa de los términos centrales de COLABORACIÓN — FO...", "Descartar el análisis asintótico por constantes de hardware."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Definición operativa de los términos centrales de COLABORACIÓN — FORKS, ISSUES Y PERMISOS. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 5: COLABORACIÓN — FORKS, ISSUES Y PERMISOS', ¿cuál afirmación es correcta sobre: Ejemplo numérico o de código trazado paso a paso?",
-          options: ["Descartar el análisis asintótico por constantes de hardware.", "Describe correctamente el concepto: Ejemplo numérico o de código trazado paso a paso", "Asumir que más líneas de código siempre implican mayor eficiencia."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Ejemplo numérico o de código trazado paso a paso. Las otras opciones representan malentendidos típicos."
-        }
-      ]
-    },
-{
-      id: 6,
-      title: "MÓDULO 6: PULL REQUESTS — FLUJO PROFESIONAL",
-      description: "De la rama local a producción: crear, revisar y mergear Pull Requests.",
-      items: [
-      "Crear PR: título convencional (feat:, fix:, docs:).",
-      "Descripción con contexto, screenshots y checklist de pruebas.",
-      "Draft PR para trabajo en progreso sin revisión prematura.",
-      "Review comments: sugerencias, approvals, request changes.",
-      "Merge strategies: merge commit, squash, rebase (pros/cons).",
-      "Definición operativa de los términos centrales de PULL REQUESTS — FLUJO PROFESIONAL.",
-      "Ejemplo numérico o de código trazado paso a paso.",
-      "Pregunta tipo entrevista técnica con respuesta esperada.",
-      "Relación explícita con el snippet de implementación del módulo."
-],
-      content: "## Panorama del tema: PULL REQUESTS — FLUJO PROFESIONAL\n\nDe la rama local a producción: crear, revisar y mergear Pull Requests.\n\nEl Pull Request es el contrato de calidad del equipo: resume QUÉ cambia, POR QUÉ y CÓMO probarlo. Títulos con Conventional Commits (feat: add dark mode) facilitan changelogs automáticos. La descripción debe incluir: problema resuelto, approach técnico, pasos de prueba manual y riesgos. Draft PRs comunican 'aún no revisen'. Los revisores usan comentarios inline; 'Request changes' bloquea merge hasta resolver. Squash merge deja historial limpio en main; merge commit preserva commits individuales. Para landing estática en Vercel, un PR con preview deployment permite validar UI antes de merge.\n\nEste módulo es material de estudio **autocontenido**: puedes aprenderlo completo aquí, sin pagar plataformas externas ni depender de internet después de cargar la página. Lee en orden, ejecuta el snippet, resuelve la autoevaluación y repasa los puntos que falles.\n\n## Qué aprenderás en este módulo\n\n· Crear PR: título convencional (feat:, fix:, docs:).\n· Descripción con contexto, screenshots y checklist de pruebas.\n· Draft PR para trabajo en progreso sin revisión prematura.\n· Review comments: sugerencias, approvals, request changes.\n· Merge strategies: merge commit, squash, rebase (pros/cons).\n· Definición operativa de los términos centrales de PULL REQUESTS — FLUJO PROFESIONAL.\n· Ejemplo numérico o de código trazado paso a paso.\n· Pregunta tipo entrevista técnica con respuesta esperada.\n· Dominar las 12 preguntas de autoevaluación con ≥70% de aciertos antes de avanzar.\n\n## Desarrollo teórico detallado\n\n## 1. Crear PR: título convencional (feat:, fix:, docs:).\n\n**Qué es y por qué importa.** Dentro de PULL REQUESTS — FLUJO PROFESIONAL, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Crear PR: título convencional (feat:, fix:, docs:). — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Crear PR: título convencional (feat:, fix:, docs:).» y cuándo lo evitarías.\n\n## 2. Descripción con contexto, screenshots y checklist de pruebas.\n\n**Qué es y por qué importa.** Dentro de PULL REQUESTS — FLUJO PROFESIONAL, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Descripción con contexto, screenshots y checklist de pruebas. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Descripción con contexto, screenshots y checklist de pruebas.» y cuándo lo evitarías.\n\n## 3. Draft PR para trabajo en progreso sin revisión prematura.\n\n**Qué es y por qué importa.** Dentro de PULL REQUESTS — FLUJO PROFESIONAL, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Draft PR para trabajo en progreso sin revisión prematura. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Draft PR para trabajo en progreso sin revisión prematura.» y cuándo lo evitarías.\n\n## 4. Review comments: sugerencias, approvals, request changes.\n\n**Qué es y por qué importa.** Dentro de PULL REQUESTS — FLUJO PROFESIONAL, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Review comments: sugerencias, approvals, request changes. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Review comments: sugerencias, approvals, request changes.» y cuándo lo evitarías.\n\n## 5. Merge strategies: merge commit, squash, rebase (pros/cons).\n\n**Qué es y por qué importa.** Dentro de PULL REQUESTS — FLUJO PROFESIONAL, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Merge strategies: merge commit, squash, rebase (pros/cons). — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Merge strategies: merge commit, squash, rebase (pros/cons).» y cuándo lo evitarías.\n\n## 6. Definición operativa de los términos centrales de PULL REQUESTS — FLUJO PROFESIONAL.\n\n**Qué es y por qué importa.** Dentro de PULL REQUESTS — FLUJO PROFESIONAL, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Definición operativa de los términos centrales de PULL REQUESTS — FLUJO PROFESIONAL. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Definición operativa de los términos centrales de PULL REQUESTS — FLUJO PROFESIONAL.» y cuándo lo evitarías.\n\n## 7. Ejemplo numérico o de código trazado paso a paso.\n\n**Qué es y por qué importa.** Dentro de PULL REQUESTS — FLUJO PROFESIONAL, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Ejemplo numérico o de código trazado paso a paso. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Ejemplo numérico o de código trazado paso a paso.» y cuándo lo evitarías.\n\n## 8. Pregunta tipo entrevista técnica con respuesta esperada.\n\n**Qué es y por qué importa.** Dentro de PULL REQUESTS — FLUJO PROFESIONAL, este punto es central en control de versiones, colaboración en equipo y pipelines CI/CD. No basta reconocer el término: debes poder explicar qué problema resuelve, qué datos necesita y qué garantías ofrece.\n\n**Desarrollo.** Pregunta tipo entrevista técnica con respuesta esperada. — Profundiza leyendo el enunciado como una pregunta de examen: ¿cómo se define?, ¿cuál es el mecanismo?, ¿qué pasa si la entrada crece?, ¿existe alternativa mejor? Relaciona la respuesta con el código de demostración del módulo: identifica línea por línea dónde se aplica.\n\n**Ejemplo para fijar ideas.** Plantea un caso con números pequeños (n=5, n=10) y ejecuta el razonamiento manualmente. Luego generaliza: ¿cómo cambia el costo o el comportamiento cuando n pasa a 10⁶?\n\n**Pregunta de autoexamen.** Sin mirar apuntes, escribe en una frase cuándo usarías «Pregunta tipo entrevista técnica con respuesta esperada.» y cuándo lo evitarías.\n\n## Aplicaciones en sistemas reales\n\n**Ejemplo 1:** Este repo QuimiSell despliega a Vercel solo cuando GitHub Actions pasa typecheck + build en el PR.\n\n**Ejemplo 2:** Este repo QuimiSell despliega a Vercel solo cuando GitHub Actions pasa typecheck + build en el PR.\n\n**Ejemplo 3:** Este repo QuimiSell despliega a Vercel solo cuando GitHub Actions pasa typecheck + build en el PR.\n\nEstos casos muestran por qué PULL REQUESTS — FLUJO PROFESIONAL no es teórico: empresas y proyectos open source aplican estos principios diariamente. Al estudiar, elige uno y escribe cómo encajaría el concepto del módulo en ese escenario.\n\n## Errores comunes al estudiar\n\n· Avanzar al siguiente módulo sin alcanzar al menos 70% en la autoevaluación.\n· Estudiar solo la definición sin un ejemplo numérico concreto (valores pequeños de n).\n· Avanzar al siguiente módulo sin alcanzar al menos 70% en la autoevaluación.\n· Estudiar solo la definición sin un ejemplo numérico concreto (valores pequeños de n).\n\n## Síntesis para repasar\n\nCierra el módulo resumiendo PULL REQUESTS — FLUJO PROFESIONAL en cinco líneas propias. Vuelve a leer los **Conceptos clave** del panel, ejecuta el código de referencia y completa la autoevaluación. Si fallas más de 3 preguntas, relee el bloque teórico correspondiente antes de continuar — el siguiente módulo asume que dominas este.",
-      codeSnippet: `# Título PR ejemplo (Conventional Commits)
-feat: añade formulario de contacto estático
-
-# Descripción PR template (.github/pull_request_template.md)
-## Qué cambia
-- Formulario con validación client-side
-- Sin backend ni base de datos
-
-## Cómo probar
-1. npm run dev
-2. Ir a /contacto
-3. Enviar con campos vacíos → error visible
-
-## Checklist
-- [ ] Lint pasa
-- [ ] Build de producción OK`,
-      quiz: [
-        {
-          question: "Draft PR significa...",
-          options: ["Listo para merge inmediato", "Trabajo en progreso, revisión opcional", "PR cerrado"],
-          answerIndex: 1,
-          explanation: "Indica que aún no está listo para review formal."
-        },
-        {
-          question: "Squash merge en main...",
-          options: ["Conserva todos los commits de la rama", "Combina commits del PR en uno", "Elimina el historial"],
-          answerIndex: 1,
-          explanation: "Un solo commit en main con mensaje del PR."
-        },
-        {
-          question: "Conventional Commits usan prefijos como...",
-          options: ["random:, maybe:", "feat:, fix:, docs:", "push:, pull:"],
-          answerIndex: 1,
-          explanation: "Prefijos estándar para changelog y semántica."
-        },
-        {
-          question: "Request changes en review...",
-          options: ["Mergea automáticamente", "Bloquea merge hasta resolver comentarios", "Cierra el PR"],
-          answerIndex: 1,
-          explanation: "El autor debe atender feedback antes de aprobar."
-        },
-        {
-          question: "Preview deployment en PR permite...",
-          options: ["Editar producción directo", "Probar cambios en URL temporal antes de merge", "Eliminar CI"],
-          answerIndex: 1,
-          explanation: "Vercel/Netlify generan preview por PR."
-        },
-      ,
-        {
-          question: "Según el temario de 'MÓDULO 6: PULL REQUESTS — FLUJO PROFESIONAL', ¿cuál afirmación es correcta sobre: Crear PR: título convencional (feat:, fix:, docs:)?",
-          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Crear PR: título convencional (feat:, fix:, docs:)", "Ignorar casos borde y entradas vacías en el diseño."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Crear PR: título convencional (feat:, fix:, docs:). Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 6: PULL REQUESTS — FLUJO PROFESIONAL', ¿cuál afirmación es correcta sobre: Descripción con contexto, screenshots y checklist de pruebas?",
-          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Descripción con contexto, screenshots y checklist de pruebas", "Ignorar casos borde y entradas vacías en el diseño."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Descripción con contexto, screenshots y checklist de pruebas. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 6: PULL REQUESTS — FLUJO PROFESIONAL', ¿cuál afirmación es correcta sobre: Draft PR para trabajo en progreso sin revisión prematura?",
-          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Draft PR para trabajo en progreso sin revisión prematura", "Confundir el concepto con una técnica ortogonal no relacionada."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Draft PR para trabajo en progreso sin revisión prematura. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 6: PULL REQUESTS — FLUJO PROFESIONAL', ¿cuál afirmación es correcta sobre: Review comments: sugerencias, approvals, request changes?",
-          options: ["Optimizar prematuramente sin perfilar el cuello de botella real.", "Describe correctamente el concepto: Review comments: sugerencias, approvals, request changes", "Ignorar casos borde y entradas vacías en el diseño."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Review comments: sugerencias, approvals, request changes. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 6: PULL REQUESTS — FLUJO PROFESIONAL', ¿cuál afirmación es correcta sobre: Merge strategies: merge commit, squash, rebase (pros/cons)?",
-          options: ["Confundir el concepto con una técnica ortogonal no relacionada.", "Describe correctamente el concepto: Merge strategies: merge commit, squash, rebase (pros/cons)", "Optimizar prematuramente sin perfilar el cuello de botella real."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Merge strategies: merge commit, squash, rebase (pros/cons). Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 6: PULL REQUESTS — FLUJO PROFESIONAL', ¿cuál afirmación es correcta sobre: Definición operativa de los términos centrales de PULL REQUESTS — FLUJO PROFE...?",
-          options: ["Implementar la solución más rápida de escribir sin medir escalabilidad.", "Describe correctamente el concepto: Definición operativa de los términos centrales de PULL REQUESTS — F...", "Descartar el análisis asintótico por constantes de hardware."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Definición operativa de los términos centrales de PULL REQUESTS — FLUJO PROFESIONAL. Las otras opciones representan malentendidos típicos."
-        },
-        {
-          question: "Según el temario de 'MÓDULO 6: PULL REQUESTS — FLUJO PROFESIONAL', ¿cuál afirmación es correcta sobre: Ejemplo numérico o de código trazado paso a paso?",
-          options: ["Aplicar la regla solo en el best case ignorando el peor escenario.", "Describe correctamente el concepto: Ejemplo numérico o de código trazado paso a paso", "Confundir el concepto con una técnica ortogonal no relacionada."],
-          answerIndex: 1,
-          explanation: "El ítem del módulo establece que Ejemplo numérico o de código trazado paso a paso. Las otras opciones representan malentendidos típicos."
-        }
-      ]
-    },
-{
-      id: 7,
-      title: "MÓDULO 7: DEVSECOPS, PRE-COMMIT HOOKS Y SECRET SCANNING (TRUFFLEHOG & GITGUARDIAN)",
-      description: "Shift-Left Security: Bloquea claves API, tokens de AWS y secretos privados antes de que toquen el servidor Git.",
-      items: [
-        "Filosofía DevSecOps: De la seguridad perimetral reactiva a la seguridad embebida (Shift-Left).",
-        "El vector de riesgo de credenciales filtradas: API keys de OpenAI, Stripe, AWS y tokens JWT en el historial.",
-        "Por qué git rm y .gitignore no borran secretos: la inmutabilidad de los Blobs en .git/objects.",
-        "Secret Scanning en local con Husky y lint-staged.",
-        "Detección con TruffleHog y GitGuardian: expresiones regulares de alta precisión y análisis de entropía de Shannon.",
-        "Sanitización y respuesta a incidentes: git-filter-repo y revocación forzosa de llaves comprometidas."
-      ],
-      content: `## Panorama: DevSecOps y la Filosofía Shift-Left
-
-En el desarrollo de software tradicional, la seguridad era una fase tardía: los desarrolladores escribían código durante meses, lo entregaban al equipo de operaciones (Ops) y, justo antes del lanzamiento, un auditor de seguridad (Sec) realizaba pruebas de penetración. Si se descubría una falla crítica o una credencial expuesta, el proyecto se retrasaba semanas o se lanzaba con parches improvisados.
-
-**DevSecOps** revoluciona este paradigma introduciendo el principio de **Shift-Left (mover la seguridad hacia la izquierda)**: integrar la verificación de seguridad en cada paso del ciclo de vida, desde el primer commit en la máquina del desarrollador hasta el pipeline de CI/CD.
-
-### 1. La Trampa de las Credenciales en Git
-Uno de los errores más costosos en la industria es commitear accidentalmente un archivo con credenciales (por ejemplo, un archivo .env o una constante con una API key de OpenAI, AWS o Stripe). 
-
-* **El Mito del .gitignore Tardío:** Si agregas una clave a un commit, haces push y luego añades el archivo a .gitignore, **la clave sigue visible en el historial perpetuo de Git**. Cualquier clon del repositorio puede leer el commit anterior y extraer la credencial.
-* **Bots de Escaneo en GitHub:** Existen actores maliciosos que monitorean la API de eventos públicos de GitHub en tiempo real. Una llave de AWS expuesta en un commit público suele ser secuestrada en menos de **2 minutos** para minar criptomonedas o exfiltrar bases de datos.
-
-### 2. Detección Local con Husky y TruffleHog
-Para evitar que un secreto abandone tu laptop:
-1. **Husky:** Permite ejecutar hooks nativos de Git (pre-commit, pre-push) de forma automática en el equipo de desarrollo.
-2. **TruffleHog:** Herramienta open source de vanguardia para escaneo de secretos. No solo busca strings simples; utiliza detectores especializados para más de 700 tipos de credenciales y calcula la **entropía de Shannon** para identificar cadenas aleatorias de alta densidad criptográfica.
-
-### 3. Respuesta a Incidentes: Purgado de Secretos
-Si una clave llegó al historial:
-1. **Paso 0 Obligatorio:** Revocar la credencial de inmediato en la consola del proveedor (AWS, Stripe, OpenAI). Asume que la clave ya fue copiada.
-2. **Limpieza del Historial:** Utilizar git-filter-repo (sucesor moderno de git filter-branch) para reescribir los árboles de Git eliminando el archivo del pasado, seguido de un push forzado controlado.`,
-      codeSnippet: `# 1. Configurar Husky en el proyecto
-npx husky-init && npm install
-
-# 2. Agregar hook de pre-commit para escanear secretos con TruffleHog
-cat << 'EOF' > .husky/pre-commit
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-
-echo "🔍 Escaneando cambios staged en busca de secretos..."
-# TruffleHog analiza solo los archivos preparados para el commit
-trufflehog git file://. --since-commit HEAD --only-verified --fail
-EOF
-
-chmod +x .husky/pre-commit
-
-# 3. .gitignore estricto para evitar filtraciones
-# .gitignore
-.env
-.env.local
-.env.*.local
-*.pem
-*.key
-id_rsa
-node_modules/
-dist/`,
-      quiz: [
-        {
-          question: "¿Por qué agregar un archivo con secretos a .gitignore después de haber hecho commit NO soluciona la filtración?",
-          options: [
-            "Porque .gitignore solo funciona en sistemas Linux",
-            "Porque Git es inmutable y el archivo permanece guardado en los Blobs históricos del repositorio",
-            "Porque GitHub ignora automáticamente el archivo .gitignore",
-            "Porque los archivos secretos se suben por Bluetooth"
+      "content": "## Arquitectura Interna de Git: El Modelo de Objetos\n\nGit es un **sistema de archivos direccionable por contenido** disfrazado de herramienta de control de versiones. Todo objeto se identifica por el hash criptográfico SHA de su contenido.\n\n### Los 4 Objetos de Git\n1. **Blob (Binary Large Object):** Almacena el contenido crudo de un archivo. No conoce el nombre del archivo ni sus permisos.\n2. **Tree (Árbol):** Representa un directorio. Mapea nombres de archivos, permisos UNIX (`100644`) y hashes SHA a blobs u otros trees secundarios.\n3. **Commit:** Apunta a un Tree raíz, contiene referencias a los commits padres (parents), autor, committer, timestamp y mensaje.\n4. **Annotated Tag:** Puntero permanente con mensaje propio firmado con GPG.",
+      "codeSnippet": "# Comandos Plumbing para inspeccionar las entrañas de Git\n# 1. Crear un blob en la base de objetos de Git sin tocar el staging\necho \"Hola QuimiSell\" | git hash-object -w --stdin\n# Devuelve el SHA: e69de29bb2d1d6434b8b29ae775ad8c2e48c5391\n\n# 2. Inspeccionar el tipo y contenido de cualquier hash\ngit cat-file -t e69de29bb2d1d6434b8b29ae775ad8c2e48c5391  # Muestra: blob\ngit cat-file -p e69de29bb2d1d6434b8b29ae775ad8c2e48c5391  # Muestra: Hola QuimiSell\n\n# 3. Ver la estructura de directorios de un commit\ngit ls-tree -r HEAD",
+      "quiz": [
+        {
+          "question": "¿Qué contiene exactamente un objeto 'Blob' en el almacén interno de Git?",
+          "options": [
+            "Únicamente el contenido en bytes del archivo, sin su nombre ni sus permisos",
+            "El nombre del archivo y la fecha de creación",
+            "El historial completo de ramas"
           ],
-          answerIndex: 1,
-          explanation: "Los commits en Git son inmutables. Si un archivo fue versionado una vez, permanecerá en el historial de objetos .git hasta que se reescriba todo el grafo con herramientas como git-filter-repo."
-        },
-        {
-          question: "¿Cuál es la primera acción obligatoria que debe realizar un ingeniero si commitea por error una API key de producción a GitHub?",
-          options: [
-            "Borrar el repositorio entero de GitHub",
-            "Revocar e invalidar la credencial de inmediato en el panel del proveedor (AWS, Stripe, OpenAI)",
-            "Hacer otro commit diciendo 'secreto borrado'",
-            "Apagar la laptop"
-          ],
-          answerIndex: 1,
-          explanation: "Los escáneres automáticos capturan secretos en segundos. Lo primero y más crítico es revocar la clave para que cualquier copia robada quede inutilizable."
-        },
-        {
-          question: "¿Qué técnica utiliza TruffleHog para detectar contraseñas y llaves que no coinciden con patrones de texto conocidos?",
-          options: [
-            "Análisis de Entropía de Shannon para detectar cadenas de alta aleatoriedad criptográfica",
-            "Adivinanza por fuerza bruta",
-            "Lectura del historial del navegador",
-            "Compresión gzip"
-          ],
-          answerIndex: 0,
-          explanation: "La entropía de Shannon mide el desorden o aleatoriedad de un conjunto de caracteres. Las llaves criptográficas tienen una entropía muy superior a palabras del lenguaje natural."
+          "answerIndex": 0,
+          "explanation": "Un Blob solo guarda los bytes puros; los nombres de archivos y permisos residen en los objetos Tree que apuntan a dicho Blob."
         }
       ]
     },
     {
-      id: 8,
-      title: "MÓDULO 8: GITHUB ACTIONS CI Y ANÁLISIS ESTÁTICO DE SEGURIDAD (SAST CON SEMGREP & CODEQL)",
-      description: "Automatiza la detección de vulnerabilidades del OWASP Top 10 en cada Pull Request mediante análisis sintáctico semántico.",
-      items: [
-        "Qué es SAST (Static Application Security Testing): inspección de AST sin ejecutar el código.",
-        "Diferencia entre Linter (estilo/formato) y SAST (análisis semántico y flujo de datos contaminados).",
-        "Reglas de Semgrep OSS: sintaxis pattern-matching agnóstica para JavaScript, TypeScript y Python.",
-        "Detección de vectores OWASP Top 10: Inyección SQL, Cross-Site Scripting (XSS), eval() inseguro y Path Traversal.",
-        "Workflow de GitHub Actions: runners, triggers en pull_request y generación de reportes SARIF.",
-        "Integración con GitHub Code Scanning y branch protection para bloquear merges vulnerables."
+      "id": 2,
+      "title": "MÓDULO 2: EL DIRECTED ACYCLIC GRAPH (DAG) DE GIT Y PUNTEROS HEAD",
+      "description": "La estructura matemática de Git: el grafo acíclico dirigido, punteros de ramas, referencias simbólicas y el estado 'Detached HEAD'.",
+      "items": [
+        "Git como un Grafo Acíclico Dirigido (DAG): Cada commit apunta a su(s) padre(s) en orden causal.",
+        "Una rama en Git no es una carpeta ni una copia de código; es un puntero móvil de 41 bytes que guarda un hash.",
+        "El puntero especial `HEAD`: Referencia simbólica a la rama activa actual (`ref: refs/heads/main`).",
+        "El estado 'Detached HEAD' (HEAD Desconectado): Cuándo ocurre y cómo recuperar commits huérfanos.",
+        "Navegación relativa en el grafo: `HEAD~1` (padre en línea temporal) vs `HEAD^2` (segundo padre en merge commits).",
+        "Inspección gráfica con `git log --graph --oneline --all`."
       ],
-      content: `## Panorama: Análisis Estático de Seguridad (SAST)
-
-En un pipeline DevSecOps maduro, la revisión de código por humanos no es suficiente para garantizar la ausencia de fallos de seguridad. Un revisor humano puede pasar por alto una inyección de dependencias o un uso peligroso de dangerouslySetInnerHTML. Aquí es donde entra el **SAST (Static Application Security Testing)**.
-
-### 1. ¿Cómo Funciona el SAST?
-A diferencia de los linters tradicionales (como ESLint o Prettier) que analizan el estilo sintáctico o malas prácticas superficiales, los analizadores SAST modernos como **Semgrep** y **GitHub CodeQL** convierten el código fuente en un **Árbol de Sintaxis Abstracta (AST)** y realizan **Análisis de Flujo de Datos Contaminados (Taint Analysis)**:
-* Rastrean la entrada del usuario desde una fuente no confiable (req.query, input) hasta un sumidero crítico (eval(), consulta SQL, innerHTML).
-* Si el dato viaja sin sanitización o validación previa, el analizador detecta la vulnerabilidad y falla el build.
-
-### 2. Semgrep OSS: La Herramienta Estrella de la Industria
-Semgrep es un motor de análisis estático ultra-rápido que permite buscar patrones de código utilizando la propia sintaxis del lenguaje objetivo:
-* Incluye paquetes de reglas de la comunidad como p/owasp-top-ten, p/security-audit y p/react.
-* Es completamente open source y se ejecuta en segundos en los runners de GitHub Actions.
-
-### 3. El Formato SARIF y GitHub Security
-Los resultados del análisis SAST se exportan en formato **SARIF (Static Analysis Results Interchange Format)**. GitHub interpreta este archivo estándar y muestra las alertas de seguridad directamente en las líneas de código afectadas dentro del Pull Request, impidiendo que el desarrollador haga merge hasta corregir la vulnerabilidad.`,
-      codeSnippet: `# .github/workflows/sast.yml
-name: "DevSecOps: SAST Security Scan"
-
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
-
-jobs:
-  semgrep-sast:
-    name: "Semgrep OSS SAST Scan"
-    runs-on: ubuntu-latest
-    permissions:
-      security-events: write # Permite subir alertas a la pestaña Security
-      contents: read
-
-    steps:
-      - name: "Checkout del Código"
-        uses: actions/checkout@v4
-
-      - name: "Ejecutar Semgrep con reglas OWASP Top 10"
-        run: |
-          docker run --rm -v "\${{ github.workspace }}:/src" returntocorp/semgrep:latest \\
-            semgrep scan \\
-            --config=p/owasp-top-ten \\
-            --config=p/security-audit \\
-            --sarif --output=semgrep-results.sarif \\
-            --error
-
-      - name: "Subir reporte SARIF a GitHub Security"
-        if: always()
-        uses: github/codeql-action/upload-sarif@v3
-        with:
-          sarif_file: semgrep-results.sarif`,
-      quiz: [
+      "content": "## El Grafo Acíclico Dirigido (DAG) de Git\n\nLa historia de un proyecto en Git no es una lista lineal; es un grafo dirigido sin ciclos:\n* Cada nodo es un commit inmutable.\n* Cada arista apunta hacia atrás (hacia los commits padres).\n* Un merge commit es un nodo con dos o más padres.\n\n### ¿Qué es una Rama (Branch)?\nUna rama es simplemente un archivo de texto en `.git/refs/heads/nombre-rama` que contiene 40 caracteres hexadecimales (el SHA del último commit). Crear una rama tarda 0 milisegundos y cuesta 41 bytes.",
+      "codeSnippet": "# Navegación y Referencias en el DAG de Git\n# Ver a qué apunta HEAD en este momento\ncat .git/HEAD\n# Resultado típico: ref: refs/heads/main\n\n# Inspeccionar el hash al que apunta la rama main\ncat .git/refs/heads/main\n\n# Entrar deliberadamente en Detached HEAD para examinar un commit antiguo\ngit checkout HEAD~3\n\n# Salir de Detached HEAD regresando a la rama activa\ngit switch main",
+      "quiz": [
         {
-          question: "¿Cuál es la diferencia fundamental entre un Linter tradicional (como ESLint) y un motor SAST (como Semgrep o CodeQL)?",
-          options: [
-            "El linter solo funciona en Windows y SAST en Mac",
-            "El linter revisa formato y convenciones sintácticas; SAST realiza análisis semántico profundo y rastrea flujos de datos no confiables (Taint Analysis)",
-            "El motor SAST compila el código a binario x86",
-            "No hay ninguna diferencia"
+          "question": "¿Qué representa físicamente una rama (branch) en el sistema de archivos de Git?",
+          "options": [
+            "Un archivo de texto plano de 41 bytes que contiene el hash SHA del commit más reciente de esa línea de trabajo",
+            "Una copia completa de todos los archivos del repositorio en una carpeta oculta",
+            "Un puntero en la memoria RAM del sistema operativo"
           ],
-          answerIndex: 1,
-          explanation: "SAST analiza la estructura semántica y la procedencia de datos para identificar fallos de seguridad (inyecciones, desbordamientos, ejecución remota), mientras que los linters se enfocan en coherencia estilística."
-        },
-        {
-          question: "¿Qué es el estándar SARIF en el ecosistema de CI/CD?",
-          options: [
-            "Un tipo de base de datos en memoria",
-            "Un formato JSON estandarizado para intercambiar resultados de análisis estático entre escáneres y plataformas como GitHub",
-            "Un protocolo de compresión de imágenes",
-            "Un nuevo lenguaje de programación"
-          ],
-          answerIndex: 1,
-          explanation: "SARIF (Static Analysis Results Interchange Format) es el formato estándar de la industria que permite a herramientas como Semgrep, Trivy y CodeQL mostrar sus hallazgos en la interfaz unificada de GitHub Security."
-        },
-        {
-          question: "¿Qué vulnerabilidad del OWASP Top 10 previene Semgrep al detectar patrones como 'SELECT * FROM users WHERE id = ' + userId?",
-          options: [
-            "Cross-Site Request Forgery (CSRF)",
-            "Inyección SQL (SQL Injection - A03)",
-            "Fallo de memoria Heap",
-            "Ataque de denegación de servicio distribuido (DDoS)"
-          ],
-          answerIndex: 1,
-          explanation: "Concatenar variables no sanitizadas directamente en consultas SQL es el patrón clásico de inyección SQL (OWASP A03), el cual se previene utilizando consultas parametrizadas o Prepared Statements."
+          "answerIndex": 0,
+          "explanation": "Una rama es una simple referencia que guarda un hash; por eso crear o borrar ramas en Git es una operación instantánea y ligera."
         }
       ]
     },
     {
-      id: 9,
-      title: "MÓDULO 9: AUDITORÍA DE DEPENDENCIAS (SCA CON TRIVY) Y ANÁLISIS DINÁMICO DAST (OWASP ZAP)",
-      description: "Defensa de la cadena de suministro de software y verificación dinámica en tiempo de ejecución contra entornos de preview.",
-      items: [
-        "Seguridad en la Cadena de Suministro (Supply Chain): por qué el 85% de tu código son dependencias de terceros.",
-        "SCA (Software Composition Analysis): escaneo de package-lock.json y contenedores con Trivy.",
-        "Métricas CVSS (Common Vulnerability Scoring System) y base de datos CVE / NVD.",
-        "DAST (Dynamic Application Security Testing): pruebas de caja negra contra aplicaciones web en ejecución.",
-        "OWASP ZAP (Zed Attack Proxy): Baseline Scan automatizado en GitHub Actions.",
-        "Validación de cabeceras de seguridad HTTP: Content-Security-Policy (CSP), HSTS, X-Frame-Options y cookies seguras."
+      "id": 3,
+      "title": "MÓDULO 3: STAGING AREA, INDEX Y CICLO DE VIDA DE ARCHIVOS",
+      "description": "El Index como intermediario: los 4 estados de archivos (Untracked, Unmodified, Modified, Staged), `.gitignore` profundo y `git add -p`.",
+      "items": [
+        "Los 3 Árboles de Git: Working Directory (Directorio de Trabajo), Index (Staging Area) y HEAD (Repositorio).",
+        "El archivo binario `.git/index`: La preparación precisa del próximo commit.",
+        "La técnica de 'Staging Parcial' con `git add -p` (Patch mode) para crear commits atómicos y limpios.",
+        "Reglas avanzadas de `.gitignore`: Comodines, exclusión de directorios y operadores de negación (`!`).",
+        "Descartar cambios de forma segura: `git restore --staged` vs `git restore`.",
+        "Diferencias entre `git diff` (working tree vs index) y `git diff --staged` (index vs HEAD)."
       ],
-      content: `## Panorama: Cadena de Suministro (SCA) y Pruebas Dinámicas (DAST)
-
-Una aplicación web moderna rara vez se escribe desde cero. Cuando ejecutas npm install react, no solo instalas React: instalas un árbol transitivo de cientos de paquetes desarrollados por terceros. Si uno solo de esos paquetes contiene una vulnerabilidad conocida o es víctima de un ataque de secuestro de cuenta (Dependency Confusion o Typosquatting), tu aplicación entera queda comprometida.
-
-### 1. SCA: Software Composition Analysis con Trivy
-El análisis **SCA** inspecciona los archivos de bloqueo (package-lock.json, requirements.txt, Pipfile.lock) y compara las versiones instaladas contra las bases de datos globales de vulnerabilidades conocidas:
-* **CVE (Common Vulnerabilities and Exposures)** y **NVD (National Vulnerability Database)**.
-* **Trivy (de Aqua Security):** Es el estándar de oro en SCA por su velocidad y capacidad para escanear dependencias de lenguajes, imágenes de contenedores Docker y configuraciones de infraestructura como código (IaC).
-* **Política de Puerta de Enlace (Gate):** En CI/CD configuramos Trivy con --exit-code 1 --severity CRITICAL,HIGH para abortar el despliegue si existe una vulnerabilidad severa con exploit conocido.
-
-### 2. DAST: Dynamic Application Security Testing con OWASP ZAP
-Mientras que el SAST analiza el código fuente sin ejecutarlo, el **DAST** ataca la aplicación desde el exterior como lo haría un ciberdelincuente real (análisis de caja negra):
-* No necesita acceso al código fuente.
-* Evalúa la aplicación desplegada en una URL de **Preview / Staging** (como las que genera Vercel en cada Pull Request).
-* **OWASP ZAP (Zed Attack Proxy):** Es la herramienta DAST open source más adoptada del mundo. Su modo Baseline Scan analiza en segundos:
-  * Cabeceras de seguridad ausentes: Content-Security-Policy (previene XSS), X-Frame-Options: DENY (previene Clickjacking), Strict-Transport-Security (fuerza HTTPS).
-  * Cookies sin banderas Secure, HttpOnly o SameSite.
-  * Exposición de archivos de depuración o rutas administrativas (/.git, /.env, /admin).`,
-      codeSnippet: `# .github/workflows/devsecops-audit.yml
-name: "DevSecOps: SCA & DAST Audit"
-
-on:
-  pull_request:
-    branches: [main]
-
-jobs:
-  trivy-sca:
-    name: "Trivy: Auditoría de Dependencias (SCA)"
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: "Escanear dependencias con Trivy"
-        uses: aquasecurity/trivy-action@master
-        with:
-          scan-type: 'fs'
-          scan-ref: '.'
-          severity: 'CRITICAL,HIGH'
-          exit-code: '1' # Falla el PR si hay vulnerabilidades críticas
-
-  owasp-zap-dast:
-    name: "OWASP ZAP: Dynamic Security Testing (DAST)"
-    runs-on: ubuntu-latest
-    # Se ejecuta sobre la URL de staging o preview deployment
-    steps:
-      - name: "ZAP Baseline Scan contra Staging"
-        uses: zaproxy/action-baseline@v0.12.0
-        with:
-          token: \${{ secrets.GITHUB_TOKEN }}
-          target: 'https://staging.tu-proyecto.vercel.app'
-          issue_title: 'ZAP Security Report: Fallos detectados en Preview'
-          fail_action: false`,
-      quiz: [
+      "content": "## El Index (Staging Area)\n\nEl **Index** es la herramienta más poderosa de Git para garantizar commits atómicos. Te permite seleccionar con precisión quirúrgica qué líneas de código formarán parte del siguiente snapshot histórico.\n\n### Los 3 Árboles de Git\n1. **Working Directory:** Tus archivos reales en el disco duro donde editas el código.\n2. **Index (Staging):** La instantánea propuesta que se convertirá en commit al ejecutar `git commit`.\n3. **HEAD:** El último commit confirmado en el repositorio.",
+      "codeSnippet": "# Ciclo de vida y Staging granular\n# 1. Ver qué cambios están en el disco vs en el staging\ngit diff           # Cambios no agregados al staging\ngit diff --staged  # Cambios listos para el commit\n\n# 2. Agregar cambios interactivamente por bloques (Hunks)\ngit add -p src/usuario.ts\n# Responde: [y] sí agregar, [n] no agregar, [s] dividir bloque más pequeño\n\n# 3. Sacar un archivo del staging sin perder tus modificaciones en disco\ngit restore --staged src/config.ts",
+      "quiz": [
         {
-          question: "¿Por qué el análisis SCA (Software Composition Analysis) es indispensable en aplicaciones modernas de JavaScript/Python?",
-          options: [
-            "Porque más del 80% del código en producción proviene de librerías de terceros en npm o pip",
-            "Porque permite que la aplicación cargue más rápido en teléfonos",
-            "Porque reemplaza a la base de datos SQL",
-            "Porque formatea el código con sangría de 2 espacios"
+          "question": "¿Qué comando permite inspeccionar las diferencias entre el Staging Area (Index) y el último commit (HEAD)?",
+          "options": [
+            "`git diff --staged` (o `git diff --cached`)",
+            "`git diff`",
+            "`git status -s`"
           ],
-          answerIndex: 0,
-          explanation: "La inmensa mayoría del código ejecutado en un servidor o navegador son librerías de terceros; el SCA garantiza que ninguna de esas dependencias contenga CVEs conocidos con exploits activos."
-        },
-        {
-          question: "¿Qué ventaja crítica ofrece el análisis DAST (OWASP ZAP) sobre el análisis estático SAST?",
-          options: [
-            "DAST evalúa la aplicación en ejecución real en la red, detectando malas configuraciones de cabeceras HTTP, cookies y rutas expuestas que el código estático no muestra",
-            "DAST lee el código ensamblador del microprocesador",
-            "DAST permite programar sin necesidad de escribir código",
-            "DAST solo funciona si la aplicación tiene fallos de ortografía"
-          ],
-          answerIndex: 0,
-          explanation: "DAST interactúa con la aplicación viva a través del protocolo HTTP, probando exactamente lo que experimenta un atacante en la red e identificando fallos de configuración de servidor."
-        },
-        {
-          question: "¿Qué ataque web previene la cabecera HTTP 'X-Frame-Options: DENY' detectada por escáneres DAST?",
-          options: [
-            "Inyección de comandos en el shell",
-            "Clickjacking (hacer que el usuario haga clic en un iframe oculto transparente sobre un sitio legítimo)",
-            "Desbordamiento de búfer en memoria RAM",
-            "Infección de virus por correo electrónico"
-          ],
-          answerIndex: 1,
-          explanation: "X-Frame-Options: DENY prohíbe que navegadores embeban tu aplicación dentro de un <iframe> en otro dominio, neutralizando por completo el vector de Clickjacking."
+          "answerIndex": 0,
+          "explanation": "`git diff` muestra los cambios entre disco e index; `git diff --staged` compara el index con el commit actual que vas a generar."
         }
       ]
     },
     {
-      id: 10,
-      title: "MÓDULO 10: DESPLIEGUE INMUTABLE $0 (CD), POLÍTICAS ZERO TRUST Y ROLLBACKS",
-      description: "De la integración continua a la entrega continua: despliegues inmutables en Edge Networks, protección de producción y arquitectura Zero Trust.",
-      items: [
-        "Despliegues Inmutables (Immutable Deployments): cada release es un artefacto sellado que nunca muta.",
-        "Orquestación de CI/CD: encadenar jobs con la directiva 'needs' para condicionar el deploy al éxito de SAST, SCA y tests.",
-        "Arquitectura Zero-Trust en CI/CD: tokens efímeros OIDC (OpenID Connect) y mínimo privilegio en GITHUB_TOKEN.",
-        "Branch Protection en GitHub: requerir aprobación de Code Owners y checks verdes obligatorios.",
-        "Configuración de cabeceras web defensivas en vercel.json (CSP, HSTS, Referrer-Policy).",
-        "Estrategias de Rollback Automático y Health Checks posteriores al deploy."
+      "id": 4,
+      "title": "MÓDULO 4: OPERACIONES AVANZADAS: REBASE INTERACTIVO, SQUASH Y CHERRY-PICK",
+      "description": "Limpieza y reescritura de historia: Rebase interactivo (`git rebase -i`), squash de commits sucios, fixup, reword y cherry-pick quirúrgico.",
+      "items": [
+        "La Regla de Oro del Rebase: Nunca reescribas la historia de una rama pública compartida (main).",
+        "Rebase Interactivo (`git rebase -i HEAD~N`): pick, reword, edit, squash, fixup, drop.",
+        "El comando `git commit --fixup` y `git rebase -i --autosquash` para flujos automatizados de limpieza.",
+        "Cherry-Pick: Aplicar un commit específico de una rama a otra sin hacer merge de toda la historia.",
+        "Resolución de conflictos durante un rebase paso a paso (`git rebase --continue` / `--abort`).",
+        "Mantener un historial de commits lineal y legible para auditorías técnicas."
       ],
-      content: `## Panorama: Despliegue Inmutable y Zero Trust
-
-El objetivo final de un pipeline DevSecOps es entregar valor al usuario de forma continua y automatizada, pero con **garantías matemáticas de seguridad y estabilidad**. Ya no es aceptable conectarse por SSH a un servidor y editar archivos con nano o reiniciar servicios manualmente.
-
-### 1. Despliegues Inmutables en la Red Edge
-En plataformas serverless y estáticas modernas como Vercel y Cloudflare Pages:
-* Cada Pull Request y cada commit en main genera una **construcción inmutable (Immutable Build)**: un paquete sellado con un hash criptográfico único.
-* La versión se distribuye a cientos de servidores perimetrales (Edge CDN) alrededor del planeta por **$0/mes** en planes gratuitos.
-* **Rollbacks Instantáneos:** Si se detecta un incidente en producción, volver a la versión anterior toma exactamente **0.5 segundos**, pues basta redirigir el puntero DNS/Edge a la construcción inmutable previa sin tener que reconstruir ni reinstalar dependencias.
-
-### 2. Principio de Mínimo Privilegio y Zero-Trust
-Un error común en GitHub Actions es otorgar permisos de lectura y escritura totales a los workflows. En un entorno Zero-Trust:
-* Declaramos permissions: { contents: read, security-events: write } explícitamente en el YAML.
-* Para conectar con proveedores en la nube (AWS, GCP, Vercel), empleamos **OIDC (OpenID Connect)** para obtener credenciales criptográficas de vida corta (15 minutos), eliminando por completo las contraseñas estáticas de larga duración.
-
-### 3. El Pipeline DevSecOps Completo: Resumen de Flujo
-1. **Developer:** Escribe código y ejecuta git commit.
-2. **Husky (Local):** Escanea secretos con TruffleHog. Si detecta claves, bloquea el commit.
-3. **Pull Request:** Dispara el workflow de GitHub Actions.
-4. **Job SAST:** Semgrep OSS analiza el AST en busca de patrones OWASP Top 10.
-5. **Job SCA:** Trivy analiza package-lock.json en busca de CVEs conocidos.
-6. **Job Tests:** Vitest corre la suite de pruebas unitarias y de integración.
-7. **Job Preview Deploy:** Vercel genera una URL efímera de vista previa.
-8. **Job DAST:** OWASP ZAP ataca la URL de vista previa y verifica cabeceras HTTP.
-9. **Branch Protection:** Si todos los checks están en verde y los Code Owners aprueban, se hace **Squash & Merge** a main.
-10. **CD Producción:** Publicación global instantánea con cabeceras de seguridad estrictas.`,
-      codeSnippet: `# vercel.json: Cabeceras estrictas de seguridad web en producción
-{
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "framework": "vite",
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" },
-        { 
-          "key": "Content-Security-Policy", 
-          "value": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:;" 
-        },
-        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" }
+      "content": "## Rebase Interactivo: Esculpiendo la Historia\n\nDurante el desarrollo de una feature, es normal cometer commits sucios como `\"fix typo\"`, `\"wip\"`, `\"ahora sí compila\"`. Antes de abrir un Pull Request, un ingeniero profesional limpia su rama local usando **Rebase Interactivo**.\n\n### Operaciones de `git rebase -i`\n* `pick`: Conservar el commit.\n* `reword`: Conservar el commit pero modificar el mensaje.\n* `squash`: Fundir el commit con el anterior combinando sus mensajes.\n* `fixup`: Fundir el commit con el anterior descartando el mensaje secundario.\n* `drop`: Eliminar el commit por completo.",
+      "codeSnippet": "# Limpieza de historial con Rebase Interactivo\n# 1. Abrir editor con los últimos 4 commits de la rama\ngit rebase -i HEAD~4\n\n# Dentro del editor interactivo:\n# pick a1b2c3d feat(auth): implementar inicio de sesión con JWT\n# fixup d4e5f6a fix: corregir typo en token\n# fixup 7g8h9i0 test: añadir pruebas de expiración\n# squash 1j2k3l4 docs: documentar variables de entorno de auth\n\n# 2. Cherry-pick de un hotfix urgente a producción\ngit checkout main\ngit cherry-pick 9a8b7c6  # Aplica únicamente ese commit específico",
+      "quiz": [
+        {
+          "question": "¿Cuál es la 'Regla de Oro' que jamás debe violarse al usar `git rebase`?",
+          "options": [
+            "Nunca hacer rebase sobre ramas públicas compartidas (como `main`) porque altera los hashes y causa estragos en el equipo",
+            "No usar rebase los días viernes",
+            "El rebase solo se permite en proyectos de menos de 10 archivos"
+          ],
+          "answerIndex": 0,
+          "explanation": "El rebase reescribe los hashes SHA; si otros desarrolladores basaron su trabajo en la rama original, sus repositorios entrarán en conflicto destructivo."
+        }
       ]
-    }
-  ],
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
-  ]
-}`,
-      quiz: [
+    },
+    {
+      "id": 5,
+      "title": "MÓDULO 5: RECUPERACIÓN DE DESASTRES: REFLOG, BISECT Y RESTAURACIÓN",
+      "description": "Salvar proyectos en situaciones críticas: el diario de bitácora `git reflog`, búsqueda binaria de bugs con `git bisect` y rescate de ramas borradas.",
+      "items": [
+        "En Git, casi nada se pierde realmente hasta que corre la recolección de basura (`git gc`).",
+        "El Reference Log (`git reflog`): El historial cronológico de cada movimiento de `HEAD` en tu máquina local.",
+        "Rescatar una rama borrada por error (`git branch recuperada <SHA-de-reflog>`).",
+        "Deshacer un `git reset --hard` catastrófico recuperando el puntero previo.",
+        "Debugging Binario con `git bisect`: Encontrar el commit exacto que introdujo un bug en $O(\\log n)$ pasos.",
+        "Automatización de `git bisect run ./test.sh` para auditoría desatendida."
+      ],
+      "content": "## Recuperación de Desastres con Git Reflog y Bisect\n\n### El Salvador Supremo: `git reflog`\nIncluso si ejecutas `git reset --hard` y crees haber borrado una semana de trabajo, los commits siguen viviendo en la base de objetos de Git. `git reflog` guarda un registro de cada vez que `HEAD` se movió. Con solo buscar el hash donde te encontrabas antes del desastre, puedes restaurar la rama en un segundo.\n\n### Debugging Eficiente con `git bisect`\nSi una aplicación tiene 1,000 commits y de pronto algo falla en producción, revisar uno por uno tardaría días. `git bisect` realiza una **Búsqueda Binaria**:\n1. Marcas el commit actual como `bad` y un commit antiguo funcional como `good`.\n2. Git se sitúa a la mitad (commit 500) y te pide probar.\n3. En apenas 10 pasos ($2^{10} = 1024$), localiza el commit culpable exacto.",
+      "codeSnippet": "# 1. Recuperar rama borrada por accidente usando Reflog\ngit branch -D feature-pagos     # ¡Borrada por error!\ngit reflog\n# 7c9a12b HEAD@{1}: commit: feat(pagos): integración lista\n# 4b8c34d HEAD@{2}: checkout: moving from main to feature-pagos\n\n# Resucitar la rama exactamente en ese estado:\ngit branch feature-pagos 7c9a12b\n\n# 2. Localizar un bug automáticamente con Git Bisect\ngit bisect start\ngit bisect bad                 # El commit actual falla\ngit bisect good v1.2.0         # La versión v1.2.0 funcionaba bien\ngit bisect run npm run test    # Git prueba automáticamente en binario",
+      "quiz": [
         {
-          question: "¿Cuál es la principal ventaja técnica de los Despliegues Inmutables (Immutable Deployments)?",
-          options: [
-            "Permiten editar el código directamente en el servidor de producción con nano",
-            "Cada versión es un artefacto sellado con hash único; si hay un fallo, el rollback a una versión previa es instantáneo en la CDN sin recompilar",
-            "Consumen el doble de ancho de banda",
-            "Obligan a apagar el servidor durante 2 horas"
+          "question": "¿Por qué `git reflog` es capaz de salvar tu trabajo incluso tras un `git reset --hard`?",
+          "options": [
+            "Porque registra cronológicamente cada cambio del puntero HEAD local, permitiendo apuntar una rama de vuelta al commit 'perdido'",
+            "Porque guarda copias de seguridad en la nube de Microsoft",
+            "Porque crea archivos zip ocultos en el escritorio"
           ],
-          answerIndex: 1,
-          explanation: "Los despliegues inmutables garantizan que el código nunca se corrompa en vivo y permiten revertir cualquier versión problemática en milisegundos redirigiendo el enrutamiento del Edge."
-        },
+          "answerIndex": 0,
+          "explanation": "Git nunca borra commits inmediatamente; solo desvincula referencias. El reflog conserva los SHAs de donde estuvo HEAD para recuperarlos."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "MÓDULO 6: ESTRATEGIAS DE RAMIFICACIÓN: TRUNK-BASED VS GITFLOW",
+      "description": "Estrategias de branching profesional: la obsolescencia de GitFlow en equipos ágiles, Trunk-Based Development, ramas de vida corta y Feature Flags.",
+      "items": [
+        "Evolución de las estrategias de branching: De branches de meses a integración diaria.",
+        "El modelo GitFlow: `develop`, `release`, `hotfix`, `feature` y por qué colapsa en CI/CD moderno.",
+        "Trunk-Based Development (TBD): La práctica estándar de Google, Meta y Netflix.",
+        "Ramas de vida corta (Short-lived branches) con ciclos de vida menores a 24 horas.",
+        "Feature Flags (Feature Toggles): Separar el despliegue de código a producción de la activación de la funcionalidad.",
+        "DORA Metrics: Cómo Trunk-Based Development dispara la frecuencia de despliegue y reduce el MTTR."
+      ],
+      "content": "## Estrategias de Ramificación: Trunk-Based Development\n\nHistóricamente, **GitFlow** proponía ramas de desarrollo gigantes (`develop`) que permanecían abiertas durante meses. El resultado inevitable era el **Merge Hell**: semanas resolviendo cientos de conflictos dolorosos.\n\n### Trunk-Based Development (TBD)\nEn TBD, todos los desarrolladores integran su trabajo frecuentemente (al menos una vez al día) en una única rama principal (**Trunk** o `main`):\n* Las ramas de feature duran horas, no días.\n* Si una funcionalidad no está terminada pero se necesita integrar para evitar desincronización, se envuelve en un **Feature Flag**: el código está en producción pero inactivo para los usuarios finales.",
+      "codeSnippet": "// Patrón Feature Flag en TypeScript para Trunk-Based Development\nexport class PasarelaCompra {\n  async checkout(usuario: Usuario, monto: number): Promise<void> {\n    // Feature Flag: Permite mergear a main sin activar la feature al público\n    const usarNuevaPasarelaStripe = process.env.FEATURE_STRIPE_V3 === 'true';\n\n    if (usarNuevaPasarelaStripe) {\n      await this.ejecutarStripeV3(usuario, monto);\n    } else {\n      await this.ejecutarPasarelaLegacy(usuario, monto);\n    }\n  }\n\n  private async ejecutarStripeV3(u: Usuario, m: number) { /* Nuevo */ }\n  private async ejecutarPasarelaLegacy(u: Usuario, m: number) { /* Estable */ }\n}",
+      "quiz": [
         {
-          question: "¿Por qué en GitHub Actions se debe configurar 'permissions' con alcance mínimo en lugar de usar los permisos por defecto?",
-          options: [
-            "Para ahorrar batería en los servidores de GitHub",
-            "Para seguir el Principio de Mínimo Privilegio (Zero-Trust): si una acción de terceros es vulnerada, no podrá secuestrar ni escribir en el repositorio",
-            "Porque GitHub cobra más dinero por cada permiso habilitado",
-            "Porque los permisos impiden que el código compile"
+          "question": "¿Cuál es el principio central de Trunk-Based Development?",
+          "options": [
+            "Todos los desarrolladores integran ramas de vida muy corta (menos de 1-2 días) directamente en la rama principal frecuentemente",
+            "Mantener ramas de feature abiertas durante meses hasta que estén perfectas",
+            "No usar Git para desarrollo colaborativo"
           ],
-          answerIndex: 1,
-          explanation: "La directiva permissions restringe las capacidades del GITHUB_TOKEN; limitarlo a solo lectura previene ataques en la cadena de suministro dentro de los propios workflows."
-        },
+          "answerIndex": 0,
+          "explanation": "Trunk-Based promueve fusiones continuas de pequeños cambios incrementales, evitando desincronizaciones masivas de código."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "MÓDULO 7: COLABORACIÓN: WORKTREES, SUBMODULES Y CONFLICTOS COMPLEJOS",
+      "description": "Colaboración avanzada sin fricción: Git Worktrees para trabajar en múltiples ramas a la vez sin clonar, resolución de conflictos 3-way y submodules.",
+      "items": [
+        "Git Worktrees: Mantener múltiples ramas activas simultáneamente en diferentes directorios sin clonar de nuevo.",
+        "Solución al problema del 'Hotfix urgente': Atender un bug en producción sin cambiar de rama ni hacer `git stash`.",
+        "Anatomía de un conflicto de Merge: Marcadores `<<<<<<<`, `=======`, `>>>>>>>` y merge tridireccional (3-way merge).",
+        "Configuración del editor de diffs y merges (`git config --global merge.tool`).",
+        "Git Submodules: Incorporación de repositorios externos independientes dentro de tu proyecto.",
+        "Políticas de protección de ramas en GitHub: Code Reviews obligatorios, CI verde y firmas GPG."
+      ],
+      "content": "## Git Worktrees: El Fin del `git stash` Apresurado\n\nEstás a mitad de una refactorización compleja con 40 archivos modificados en tu rama `feature-grande`. De repente, el servidor de producción se cae y debes lanzar un hotfix inmediato.\n\nLa solución típica era hacer `git stash`, cambiar de rama y rezar para que al volver nada se desconfigure.\n\nCon **Git Worktrees**, vinculas tu mismo repositorio `.git` a un segundo directorio físico en tu disco:\n```bash\ngit worktree add ../proyecto-hotfix main\n```\nAbres esa carpeta en otra ventana de VS Code, corriges el bug, haces push a producción y regresas a tu refactorización intacta sin haber tocado tu directorio principal.",
+      "codeSnippet": "# Comandos esenciales de Git Worktree\n# 1. Crear un nuevo árbol de trabajo en otra carpeta basado en la rama hotfix\ngit worktree add ../quimisell-hotfix -b hotfix-urgente main\n\n# 2. Listar todos los worktrees activos en tu máquina\ngit worktree list\n\n# 3. Tras resolver el incidente y hacer push, eliminar el worktree limpio\ngit worktree remove ../quimisell-hotfix",
+      "quiz": [
         {
-          question: "¿Qué directiva en un workflow de GitHub Actions asegura que el job de Despliegue a Producción solo se ejecute si los jobs de SAST, SCA y Tests terminaron con éxito?",
-          options: [
-            "await: [all]",
-            "needs: [sast-scan, sca-audit, test-suite]",
-            "run-after: true",
-            "delay: 500"
+          "question": "¿Qué problema resuelve `git worktree` frente a `git stash`?",
+          "options": [
+            "Permite trabajar en dos ramas simultáneamente en carpetas separadas del disco compartiendo el mismo repositorio .git sin alterar tu espacio de trabajo actual",
+            "Aumenta la velocidad de descarga de Git",
+            "Borra los archivos duplicados del disco duro"
           ],
-          answerIndex: 1,
-          explanation: "La palabra clave 'needs' define el Grafo Acíclico Dirigido (DAG) de dependencias entre jobs; si cualquiera de los jobs listados en 'needs' falla, el job dependiente se omite automáticamente."
+          "answerIndex": 0,
+          "explanation": "Git Worktree crea un espacio de trabajo físico adicional vinculado al mismo historial `.git`, eliminando la necesidad de guardar en stash o cambiar de rama."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "MÓDULO 8: LINUX PARA DEVOPS: PROCESOS, PERMISOS, SIGNALS Y SYSTEMD",
+      "description": "El sistema operativo de la nube: arquitectura del kernel Linux, file descriptors, señales POSIX (SIGTERM vs SIGKILL) y gestión con systemd.",
+      "items": [
+        "Linux como estándar industrial absoluto: Todos los contenedores Docker y servidores cloud corren Linux.",
+        "Procesos en Linux: PID 1, árbol de procesos, estados (Running, Sleeping, Zombie) y `top`/`htop`.",
+        "Señales POSIX fundamentales: `SIGTERM` (15 - apagado ordenado), `SIGINT` (2 - Ctrl+C), `SIGKILL` (9 - muerte forzada inmediata).",
+        "Manejo de señales en Node.js y Python para 'Graceful Shutdown' (cerrar conexiones de BD antes de salir).",
+        "Permisos UNIX: Lectura (4), Escritura (2), Ejecución (1), máscara umask y `chmod`/`chown`.",
+        "File Descriptors y Redirecciones: `stdin` (0), `stdout` (1), `stderr` (2), tuberías (pipes `|`) y logs.",
+        "Gestión de servicios en background con `systemd` y `systemctl`."
+      ],
+      "content": "## Linux para DevOps y Graceful Shutdown\n\nEn entornos de contenedores (Docker/Kubernetes), cuando una aplicación se escala hacia abajo o se despliega una nueva versión, el orquestador envía una señal **`SIGTERM` (Signal Terminate)** al proceso:\n* La aplicación dispone de un periodo de gracia (ej. 30 segundos) para dejar de recibir nuevas conexiones HTTP, terminar de procesar las transacciones activas y cerrar el pool de conexiones de base de datos.\n* Si el proceso no escucha `SIGTERM` o no finaliza a tiempo, el kernel le envía un **`SIGKILL` (Signal 9)** implacable, abortando transacciones a mitad de camino y corrompiendo datos.",
+      "codeSnippet": "// Graceful Shutdown en Node.js / Express escuchando señales POSIX\nimport express from 'express';\nimport http from 'http';\n\nconst app = express();\nconst server = http.createServer(app);\n\n// Escuchar la señal SIGTERM enviada por Docker / Kubernetes\nprocess.on('SIGTERM', () => {\n  console.log('Recibida señal SIGTERM. Iniciando Graceful Shutdown...');\n\n  // 1. Dejar de aceptar nuevas conexiones HTTP\n  server.close(async () => {\n    console.log('Servidor HTTP cerrado.');\n\n    // 2. Cerrar pools de base de datos y clientes Redis\n    try {\n      // await db.disconnect();\n      console.log('Conexiones a bases de datos cerradas con éxito.');\n      process.exit(0); // Salida limpia\n    } catch (err) {\n      console.error('Error al cerrar conexiones:', err);\n      process.exit(1);\n    }\n  });\n});",
+      "quiz": [
+        {
+          "question": "¿Cuál es la diferencia crítica entre enviar una señal `SIGTERM` y una señal `SIGKILL` a un proceso en Linux?",
+          "options": [
+            "SIGTERM puede ser capturada por la aplicación para realizar un Graceful Shutdown ordenado; SIGKILL la envía el kernel directamente matando el proceso de inmediato sin posibilidad de limpieza",
+            "SIGKILL solo apaga el monitor",
+            "No hay diferencia, son idénticas"
+          ],
+          "answerIndex": 0,
+          "explanation": "SIGTERM da la oportunidad al software de cerrar transacciones y sockets; SIGKILL aborta el proceso instantáneamente a nivel de kernel."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "MÓDULO 9: DOCKER & CONTENEDORIZACIÓN: NAMESPACES Y CGROUPS",
+      "description": "La ilusión del contenedor: cómo Linux Namespaces y Control Groups (cgroups) construyen Docker sin máquinas virtuales pesadas.",
+      "items": [
+        "Contenedores vs Máquinas Virtuales: Compartir el kernel del Host vs emular hardware e hipervisores.",
+        "Linux Namespaces (Aislamiento): PID (procesos), NET (red), MNT (puntos de montaje), IPC, UTS, USER.",
+        "Linux Control Groups (cgroups): Límites estrictos de hardware (memoria máxima, cuotas de CPU, I/O de disco).",
+        "Anatomía de una imagen Docker: Capas inmutables de solo lectura y sistema de archivos Copy-on-Write (OverlayFS).",
+        "Comandos fundamentales: `docker run`, `docker ps`, `docker exec`, `docker logs`, `docker inspect`.",
+        "Manejo de almacenamiento efímero vs Volúmenes persistentes (`-v /datos:/var/lib/postgresql/data`)."
+      ],
+      "content": "## Cómo Funciona Docker por Dentro: Namespaces y cgroups\n\nUn contenedor Docker **NO es una máquina virtual**. Es simplemente un proceso estándar de Linux que corre sobre el mismo kernel del anfitrión, pero con dos mecanismos del kernel aplicados:\n\n1. **Linux Namespaces (Visibilidad):** Le hacen creer al proceso que es el único en la máquina:\n   * `PID Namespace:` El proceso dentro del contenedor ve su propio PID como `1`.\n   * `NET Namespace:` Tiene su propia tarjeta de red virtual y tabla de enrutamiento.\n   * `MNT Namespace:` Ve un sistema de archivos raíz (`/`) independiente.\n2. **Control Groups - cgroups (Límites de Recursos):** Aseguran que el contenedor no consuma más de 512MB de RAM o 1 núcleo de CPU, evitando que un contenedor tumbe al servidor completo.",
+      "codeSnippet": "# Comandos de inspección de contenedores\n# 1. Correr un contenedor con límites estrictos de hardware (cgroups)\ndocker run -d --name api-quimisell \\\n  --memory=\"512m\" \\\n  --cpus=\"1.5\" \\\n  -p 3000:3000 \\\n  node:20-alpine\n\n# 2. Inspeccionar el uso real de CPU y memoria en tiempo real\ndocker stats api-quimisell\n\n# 3. Entrar a una shell interactiva dentro del namespace del contenedor\ndocker exec -it api-quimisell sh",
+      "quiz": [
+        {
+          "question": "¿Cuáles son las dos tecnologías fundamentales del kernel Linux en las que se basa Docker para aislar procesos?",
+          "options": [
+            "Namespaces (para aislamiento de visibilidad) y Control Groups / cgroups (para limitar consumo de CPU y memoria)",
+            "VirtualBox y VMware",
+            "HTML5 y WebSockets"
+          ],
+          "answerIndex": 0,
+          "explanation": "Namespaces proveen la ilusión de tener un sistema operativo dedicado y cgroups imponen límites estrictos al consumo de recursos."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "title": "MÓDULO 10: OPTIMIZACIÓN DE DOCKERFILES: BUILDS MULTI-STAGE Y SEGURIDAD",
+      "description": "Empaquetado eficiente de imágenes: Builds multietapa (Multi-Stage), orden de capas para maximizar caché y ejecución como usuario no-root.",
+      "items": [
+        "El problema de las imágenes infladas: De imágenes de 1.5GB a contenedores ultraligeros de 80MB.",
+        "Estrategia Multi-Stage Build: Etapa de compilación (con SDK pesado) vs Etapa de producción (solo runtime mínimo).",
+        "Optimización de la Caché de Capas: Copiar `package.json` antes del código fuente.",
+        "Selección de imágenes base seguras: Alpine Linux vs Distroless de Google (sin shell ni utilidades para atacantes).",
+        "Principio de Menor Privilegio: Creación y uso de un usuario no-root (`USER appuser`) para prevenir escapes de contenedor.",
+        "El archivo `.dockerignore`: Evitar filtrar `node_modules`, `.git` y variables `.env` en la imagen pública."
+      ],
+      "content": "## Optimización de Dockerfiles: Multi-Stage y Seguridad\n\nEn una aplicación TypeScript, necesitas herramientas pesadas durante la compilación (`typescript`, `@types/*`, `build-essentials`), pero en producción solo requieres Node.js y los archivos `.js` compilados.\n\nCon **Multi-Stage Builds**, compilas en la primera etapa y solo copias los artefactos generados a la imagen final limpia, reduciendo el tamaño de 1.2GB a 70MB y eliminando herramientas que un atacante podría usar para compilar exploits.",
+      "codeSnippet": "# Dockerfile Multi-Stage de Grado Corporativo para Node.js / TypeScript\n# ETAPA 1: Compilación (Build Stage)\nFROM node:20-alpine AS builder\nWORKDIR /app\nCOPY package*.json ./\nRUN npm ci\nCOPY tsconfig.json ./\nCOPY src/ ./src/\nRUN npm run build\nRUN npm prune --production\n\n# ETAPA 2: Producción Mínima (Production Stage)\nFROM node:20-alpine AS runner\nWORKDIR /app\nENV NODE_ENV=production\n\n# Crear usuario sin privilegios root\nRUN addgroup -S appgroup && adduser -S appuser -G appgroup\n\n# Copiar solo dependencias de producción y código transpilado\nCOPY --from=builder /app/package*.json ./\nCOPY --from=builder /app/node_modules ./node_modules\nCOPY --from=builder /app/dist ./dist\n\n# Cambiar al usuario seguro\nUSER appuser\nEXPOSE 3000\nCMD [\"node\", \"dist/index.js\"]",
+      "quiz": [
+        {
+          "question": "¿Cuál es la ventaja de utilizar 'Multi-Stage Builds' en un Dockerfile?",
+          "options": [
+            "Permite usar herramientas pesadas de compilación en una etapa previa y copiar únicamente los archivos compilados finales a una imagen limpia y pequeña para producción",
+            "Permite correr dos sistemas operativos a la vez",
+            "Elimina la necesidad de instalar dependencias"
+          ],
+          "answerIndex": 0,
+          "explanation": "Multi-Stage separa el entorno de build del entorno de ejecución, logrando imágenes hasta 10 veces más pequeñas y seguras."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "title": "MÓDULO 11: DOCKER COMPOSE: REDES Y AMBIENTES MULTI-CONTENEDOR",
+      "description": "Orquestación en desarrollo local: archivos `docker-compose.yml`, redes internas DNS automáticas, volúmenes con nombre y variables de entorno.",
+      "items": [
+        "De ejecutar comandos docker gigantes a infraestructura declarativa reproducible con Compose.",
+        "Estructura del archivo `docker-compose.yml`: services, networks, volumes, environment, ports.",
+        "Resolución de nombres por DNS interno de Docker: Comunicación entre servicios por nombre de servicio (`http://database:5432`).",
+        "Mapeo de puertos vs Redes internas aisladas (`expose` vs `ports`).",
+        "Healthchecks de servicios: Condicionar el inicio de la API a que la base de datos esté lista (`depends_on: { condition: service_healthy }`).",
+        "Manejo seguro de variables de entorno con archivos `.env.local`.",
+        "Comandos de ciclo de vida: `docker compose up -d`, `docker compose down -v`, `docker compose logs -f`."
+      ],
+      "content": "## Docker Compose para Desarrollo de Microservicios\n\nDesarrollar una aplicación moderna requiere una base de datos PostgreSQL, una caché Redis y un broker Kafka. Forzar a cada desarrollador a instalar estas dependencias en su máquina física genera incompatibilidades constantes.\n\n**Docker Compose** permite levantar toda la arquitectura con un solo comando:\n```bash\ndocker compose up -d\n```\nDocker crea automáticamente una red interna donde los contenedores se descubren mediante su nombre de servicio (DNS integrado). La API se conecta a la base de datos usando `postgres://usuario:clave@db:5432/quimisell` sin preocuparse por direcciones IP dinámicas.",
+      "codeSnippet": "# docker-compose.yml\nversion: '3.8'\n\nservices:\n  db:\n    image: postgres:16-alpine\n    restart: always\n    environment:\n      POSTGRES_DB: quimisell_dev\n      POSTGRES_USER: devuser\n      POSTGRES_PASSWORD: devpassword123\n    volumes:\n      - postgres_data:/var/lib/postgresql/data\n    healthcheck:\n      test: [\"CMD-SHELL\", \"pg_isready -U devuser -d quimisell_dev\"]\n      interval: 5s\n      timeout: 5s\n      retries: 5\n\n  api:\n    build: .\n    ports:\n      - \"3000:3000\"\n    environment:\n      DATABASE_URL: postgres://devuser:devpassword123@db:5432/quimisell_dev\n    depends_on:\n      db:\n        condition: service_healthy\n\nvolumes:\n  postgres_data:",
+      "quiz": [
+        {
+          "question": "¿Cómo se comunican entre sí dos contenedores que forman parte del mismo archivo `docker-compose.yml`?",
+          "options": [
+            "A través del servidor DNS interno de Docker usando el nombre del servicio declarado en el archivo (ej. `http://db:5432`)",
+            "Por bluetooth local",
+            "Mediante la dirección IP pública del router de internet"
+          ],
+          "answerIndex": 0,
+          "explanation": "Docker Compose crea una red compartida donde cada nombre de servicio funciona como un nombre de host resoluble por DNS interno."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "title": "MÓDULO 12: CI/CD FUNDAMENTOS: AUTOMATIZACIÓN CON GITHUB ACTIONS",
+      "description": "Integración Continua moderna: triggers, runners, jobs, steps, matrices de compilación y la sintaxis declarativa de GitHub Actions.",
+      "items": [
+        "Definición formal de Integración Continua (CI) y Despliegue Continuo (CD).",
+        "Anatomía de un Workflow en `.github/workflows/*.yml`.",
+        "Eventos disparadores (Triggers): `push`, `pull_request`, `workflow_dispatch`, `schedule` (cron).",
+        "Runners: Ambientes virtuales en la nube (Ubuntu, macOS, Windows) y self-hosted runners.",
+        "Jobs paralelos vs secuenciales (`needs: [lint_job]`).",
+        "Steps y Actions oficiales del Marketplace (`actions/checkout@v4`, `actions/setup-node@v4`).",
+        "Gestión segura de credenciales con GitHub Secrets (`${{ secrets.VERCEL_TOKEN }}`)."
+      ],
+      "content": "## Fundamentos de GitHub Actions\n\n**GitHub Actions** es la plataforma líder de automatización integrada directamente en los repositorios de GitHub. Permite ejecutar pipelines completos de compilación, prueba y despliegue ante cualquier evento de Git.\n\n### Jerarquía de Conceptos\n* **Workflow:** El archivo YAML que define el proceso completo.\n* **Event (Trigger):** La acción que enciende el pipeline (ej. abrir un Pull Request a `main`).\n* **Job:** Conjunto de pasos que se ejecutan en una misma máquina virtual aislada (Runner). Por defecto los jobs corren en paralelo a menos que se use `needs`.\n* **Step:** Tarea individual (ejecutar un comando shell o invocar una Action comunitaria).",
+      "codeSnippet": "# .github/workflows/ci.yml\nname: Integración Continua (CI)\n\non:\n  push:\n    branches: [main]\n  pull_request:\n    branches: [main]\n\njobs:\n  verificacion:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Descargar repositorio\n        uses: actions/checkout@v4\n\n      - name: Configurar Node.js 20\n        uses: actions/setup-node@v4\n        with:\n          node-version: 20\n          cache: 'npm'\n\n      - name: Instalar dependencias limpias\n        run: npm ci\n\n      - name: Verificación estricta de TypeScript\n        run: npx tsc --noEmit\n\n      - name: Ejecutar pruebas automatizadas\n        run: npm test",
+      "quiz": [
+        {
+          "question": "¿Cuál es la diferencia entre `npm install` y `npm ci` en un pipeline de CI en GitHub Actions?",
+          "options": [
+            "`npm ci` realiza una instalación limpia, rápida y estrictamente idéntica basada en `package-lock.json`, fallando si hay desajustes",
+            "`npm ci` solo sirve para paquetes de C++",
+            "No hay diferencia técnica"
+          ],
+          "answerIndex": 0,
+          "explanation": "`npm ci` borra `node_modules` y descarga exactamente las versiones bloqueadas en el lockfile sin mutarlo, garantizando reproducibilidad absoluta."
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "title": "MÓDULO 13: PIPELINES DE CI AVANZADOS: MATRICES, CACHÉ Y DAG DE JOBS",
+      "description": "Optimización extrema de CI: matrices de compatibilidad (multi-OS, multi-node), caché de dependencias y grafos de dependencia entre jobs.",
+      "items": [
+        "El costo del tiempo de CI: Cómo reducir pipelines de 15 minutos a 2 minutos.",
+        "Estrategia de Matrices (Matrix Strategy): Probar simultáneamente en múltiples versiones de Node.js (18, 20, 22) y sistemas operativos (Ubuntu, Windows).",
+        "Caché de dependencias (`actions/cache`): Almacenar carpetas `node_modules` o cachés de compilación entre ejecuciones.",
+        "Grafos de Dependencia de Jobs (DAG en Actions): Configuración de `needs: [lint, unit_tests]`.",
+        "Gestión de Artefactos de Build (`actions/upload-artifact` y `download-artifact`).",
+        "Condicionales de ejecución (`if: github.ref == 'refs/heads/main'`)."
+      ],
+      "content": "## Optimización de Pipelines de CI: Matrices y DAG\n\nEn proyectos grandes, ejecutar todos los pasos en un solo job secuencial es ineficiente. Un pipeline moderno modela un **Grafo Acíclico Dirigido (DAG)** de jobs independientes:\n\n```\n                  ┌──────────────┐\n                  │  Lint & Type │\n                  └──────┬───────┘\n                         │\n        ┌────────────────┴────────────────┐\n        ▼                                 ▼\n┌───────────────┐                 ┌───────────────┐\n│ Tests Unit    │                 │ SAST Semgrep  │\n└───────┬───────┘                 └───────┬───────┘\n        │                                 │\n        └────────────────┬────────────────┘\n                         ▼\n                  ┌──────────────┐\n                  │ Build & Pack │\n                  └──────────────┘\n```\n\nSi el Lint o Typecheck falla en 30 segundos, el pipeline aborta de inmediato sin gastar minutos de cómputo en builds pesados.",
+      "codeSnippet": "# Pipeline con Matriz y Dependencias (DAG)\njobs:\n  pruebas_matriz:\n    runs-on: ubuntu-latest\n    strategy:\n      matrix:\n        node-version: [18.x, 20.x, 22.x]\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: ${{ matrix.node-version }}\n      - run: npm ci\n      - run: npm test\n\n  build_produccion:\n    needs: pruebas_matriz # Solo corre si TODA la matriz pasó con éxito\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - run: npm run build",
+      "quiz": [
+        {
+          "question": "¿Qué ventaja aporta el uso de la directiva `strategy: matrix` en GitHub Actions?",
+          "options": [
+            "Permite ejecutar el mismo job en paralelo a través de múltiples combinaciones de versiones de lenguaje o sistemas operativos",
+            "Cifra los archivos con una clave cuántica",
+            "Aumenta la memoria RAM del servidor"
+          ],
+          "answerIndex": 0,
+          "explanation": "La matriz genera jobs paralelos para cada combinación definida, permitiendo certificar compatibilidad multiplataforma en minutos."
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "title": "MÓDULO 14: DEVSECOPS: ESCANEO DE SECRETOS CON TRUFFLEHOG",
+      "description": "Seguridad proactiva en el commit: detección de claves API, tokens de AWS, llaves SSH y certificados con TruffleHog y hooks de pre-commit.",
+      "items": [
+        "El peligro de las fugas de credenciales en GitHub: Bots maliciosos que vacían cuentas de AWS en minutos.",
+        "Diferencia entre escanear el commit actual vs escanear el historial completo de Git.",
+        "TruffleHog: Motor de detección de secretos de alta precisión mediante entropía y firmas verificables.",
+        "Verificación activa de secretos: Cómo TruffleHog comprueba si una clave encontrada sigue viva.",
+        "Hooks de Git con `pre-commit`: Bloquear commits localmente en la máquina del programador antes de que salgan.",
+        "Qué hacer si subiste un secreto a GitHub: Invalidadción inmediata, rotación de credenciales y purga con `git-filter-repo`."
+      ],
+      "content": "## DevSecOps: Escaneo de Secretos con TruffleHog\n\nEl error más común de los desarrolladores es subir por accidente un archivo `.env` o una clave de API a un repositorio público o privado. Existen redes de bots escaneando GitHub en tiempo real que clonan repositorios recién creados en milisegundos para minar criptomonedas con tus credenciales de AWS.\n\n### La Solución DevSecOps en Dos Capas\n1. **Capa Local (Pre-commit Hook):** Un script que corre antes de confirmar el commit en tu máquina. Si detecta una cadena con alta entropía o patrón de clave, aborta el commit.\n2. **Capa de Servidor (CI Pipeline):** TruffleHog corre en GitHub Actions analizando todos los commits del Pull Request.",
+      "codeSnippet": "# Integración de TruffleHog en GitHub Actions\nname: Escaneo de Secretos DevSecOps\n\non: [push, pull_request]\n\njobs:\n  trufflehog:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Descargar repositorio completo (con historial)\n        uses: actions/checkout@v4\n        with:\n          fetch-depth: 0 # TruffleHog necesita el historial completo para auditar\n\n      - name: Escaneo de Secretos con TruffleHog\n        uses: trufflesecurity/trufflehog@main\n        with:\n          path: ./\n          base: ${{ github.event.repository.default_branch }}\n          head: HEAD\n          extra_args: --only-verified # Solo reportar secretos cuya validez fue confirmada",
+      "quiz": [
+        {
+          "question": "¿Por qué es fundamental configurar `fetch-depth: 0` al ejecutar TruffleHog en GitHub Actions?",
+          "options": [
+            "Porque un secreto pudo haber sido subido en un commit anterior y borrado en el siguiente; TruffleHog necesita revisar todo el historial para detectarlo",
+            "Para que el clon de Git sea más rápido",
+            "Porque Linux no soporta clones superficiales"
+          ],
+          "answerIndex": 0,
+          "explanation": "Borrar un secreto en un commit posterior no lo elimina del historial de Git. `fetch-depth: 0` permite auditar cada commit histórico."
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "title": "MÓDULO 15: DEVSECOPS: ANÁLISIS ESTÁTICO DE CÓDIGO (SAST) CON SEMGREP",
+      "description": "Seguridad a nivel de código fuente: reglas de Semgrep, detección de OWASP Top 10 (SQL Injection, XSS, Path Traversal) y remediación guiada.",
+      "items": [
+        "Static Application Security Testing (SAST): Auditoría automática del código fuente sin ejecutarlo.",
+        "Por qué Semgrep superó a las herramientas tradicionales: Reglas declarativas con sintaxis del propio lenguaje de programación.",
+        "Detección de inyecciones SQL por concatenación de cadenas (`db.query('SELECT ' + input)`).",
+        "Detección de vulnerabilidades de Path Traversal y deserialización insegura.",
+        "Creación de reglas personalizadas de Semgrep para estandarizar buenas prácticas en la empresa.",
+        "Configuración de Semgrep en GitHub Actions como Quality Gate de seguridad bloqueante."
+      ],
+      "content": "## SAST con Semgrep: Defensas en el Código Fuente\n\nEl análisis estático tradicional (como SonarQube clásico) dependía de árboles de sintaxis abstracta (AST) crípticos. **Semgrep** revolucionó el campo al permitir escribir reglas de seguridad usando el mismo lenguaje de tu proyecto.\n\nPor ejemplo, la regla para detectar una inyección SQL en Python es tan simple como:\n```yaml\npattern: $DB.query(\"... \" + $INPUT)\n```\nSemgrep rastrea el flujo de datos (Taint Analysis): si una variable no confiable que proviene de un parámetro de URL llega sin sanitizar a una consulta SQL, alerta inmediatamente.",
+      "codeSnippet": "# .github/workflows/sast.yml\nname: Auditoría SAST con Semgrep\n\non: [pull_request]\n\njobs:\n  semgrep:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n\n      - name: Ejecutar Semgrep con reglas de OWASP Top 10\n        uses: returntocorp/semgrep-action@v1\n        with:\n          config: >-\n            p/security-audit\n            p/owasp-top-ten\n            p/typescript\n        env:\n          SEMGREP_RULES: p/owasp-top-ten",
+      "quiz": [
+        {
+          "question": "¿Qué tipo de vulnerabilidad detecta prioritariamente una herramienta SAST como Semgrep?",
+          "options": [
+            "Patrones de código inseguros en el texto fuente, como concatenación de consultas SQL, deserialización insegura o uso de criptografía débil",
+            "Ataques DDoS en la red física",
+            "Cables de red desconectados"
+          ],
+          "answerIndex": 0,
+          "explanation": "SAST analiza la sintaxis y flujo de datos dentro de tus archivos de código fuente para interceptar patrones inseguros antes de compilar."
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "title": "MÓDULO 16: DEVSECOPS: ANÁLISIS DE COMPONENTES (SCA) CON TRIVY",
+      "description": "Seguridad en la cadena de suministro (Supply Chain Security): escaneo de dependencias con Trivy, detección de vulnerabilidades CVE y Software Bill of Materials (SBOM).",
+      "items": [
+        "El 80% del código de una aplicación moderna proviene de librerías de terceros (npm, pip, maven).",
+        "Software Composition Analysis (SCA): Auditoría de paquetes contra bases de datos mundiales de vulnerabilidades (CVE / NVD).",
+        "Trivy de Aqua Security: Escaneo integral de archivos lock (`package-lock.json`), imágenes Docker y configuraciones de Terraform.",
+        "Concepto de CVE (Common Vulnerabilities and Exposures) y severidades (Critical, High, Medium, Low).",
+        "Generación de SBOM (Software Bill of Materials) en formatos CycloneDX y SPDX para cumplimiento normativo.",
+        "Políticas de rechazo: Bloquear el despliegue si existe una vulnerabilidad Critical o High con parche disponible."
+      ],
+      "content": "## Software Composition Analysis (SCA) con Trivy\n\nEl ataque a la cadena de suministro más destructivo de la historia (como Log4Shell o la inyección maliciosa en `xz-utils`) no atacó el código propio de las empresas, sino sus dependencias de terceros.\n\n**Trivy** es una herramienta open-source ultrarrápida que analiza:\n1. Las dependencias declaradas en tus archivos lock (`package-lock.json`, `poetry.lock`).\n2. Las capas del sistema operativo de tus imágenes de Docker (`alpine`, `debian`).\n3. Si existe una vulnerabilidad conocida (CVE), Trivy te indica exactamente qué versión mínima debes instalar para corregirla.",
+      "codeSnippet": "# Ejecución de Trivy en GitHub Actions\nname: Auditoría SCA con Trivy\n\non: [push]\n\njobs:\n  trivy_sca:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n\n      - name: Escanear dependencias npm en busca de CVEs\n        uses: aquasecurity/trivy-action@master\n        with:\n          scan-type: 'fs'\n          scan-ref: '.'\n          severity: 'CRITICAL,HIGH'\n          exit-code: '1' # Romper el build si hay vulnerabilidades críticas con parche",
+      "quiz": [
+        {
+          "question": "¿Qué información aporta una vulnerabilidad identificada con código CVE?",
+          "options": [
+            "Un identificador único internacional de una falla de seguridad públicamente conocida en una versión específica de un software o librería",
+            "El número de serie del procesador",
+            "El nombre de la empresa creadora del software"
+          ],
+          "answerIndex": 0,
+          "explanation": "CVE (Common Vulnerabilities and Exposures) es el catálogo universal estandarizado para referenciar y rastrear fallas de seguridad conocidas."
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "title": "MÓDULO 17: ESTRATEGIAS DE DESPLIEGUE CONTINUO: BLUE/GREEN Y CANARY",
+      "description": "Entrega continua sin tiempo de inactividad (Zero-Downtime): Blue/Green Deployments, Canary Releases, Rolling Updates y Circuit Breakers de despliegue.",
+      "items": [
+        "El costo del Downtime: Por qué el despliegue tradicional con corte de servicio es inaceptable.",
+        "Rolling Updates: Reemplazo gradual de réplicas en orquestadores.",
+        "Blue/Green Deployments: Dos entornos idénticos de producción y conmutación instantánea a nivel de balanceador.",
+        "Canary Releases: Envío del 5% del tráfico de usuarios a la nueva versión para validar métricas antes del 100%.",
+        "Monitoreo de métricas clave durante el despliegue: Tasa de error HTTP 5xx y latencia p95.",
+        "Mecanismos de Rollback automatizado en segundos ante anomalías de producción."
+      ],
+      "content": "## Estrategias de Despliegue Continuo (CD)\n\n### Blue/Green Deployment\nMantienes dos entornos idénticos:\n* **Blue:** El entorno activo actual recibiendo el 100% de los usuarios.\n* **Green:** El nuevo entorno donde se despliega la nueva versión sin recibir tráfico.\nSe ejecutan pruebas de humo en Green. Si todo está correcto, el balanceador de carga o CDN cambia el enrutamiento a Green instantáneamente. Si algo falla, el switch regresa a Blue en 1 segundo.\n\n### Canary Release\nInspirado en los canarios que los mineros llevaban a las minas de carbón para detectar gases tóxicos: despliegas la nueva versión solo para el 5% de los usuarios. Si la tasa de error 5xx sube un 0.5%, el despliegue se cancela automáticamente sin haber impactado al 95% restante.",
+      "codeSnippet": "// Ejemplo conceptual: Enrutamiento Canary a nivel de Edge / Reverse Proxy\nexport function enrutarCanary(userId: string): 'version_estable' | 'version_canary' {\n  // Función hash determinista sobre el ID de usuario\n  const hash = Array.from(userId).reduce((acc, char) => acc + char.charCodeAt(0), 0);\n  const porcentaje = hash % 100;\n\n  // Enviar el 10% de los usuarios a la nueva versión Canary\n  if (porcentaje < 10) {\n    return 'version_canary';\n  }\n  return 'version_estable';\n}",
+      "quiz": [
+        {
+          "question": "¿Cuál es la principal ventaja de una estrategia de despliegue 'Canary Release'?",
+          "options": [
+            "Permite validar la nueva versión con un porcentaje mínimo de usuarios reales en producción, aislando el impacto y permitiendo abortar antes de afectar a todos",
+            "Reduce el costo de la factura eléctrica",
+            "Obliga a que todos los usuarios actualicen su navegador"
+          ],
+          "answerIndex": 0,
+          "explanation": "El despliegue Canary minimiza el radio de impacto: si existe un bug crítico oculto, solo lo experimenta un pequeño porcentaje de usuarios."
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "title": "MÓDULO 18: DESPLIEGUE EN EL EDGE & SERVERLESS CON VERCEL",
+      "description": "Arquitectura Cloud moderna sin servidores: Edge Functions, Vercel Edge Middleware, CDN global Anycast, ISR (Incremental Static Regeneration) y $0 de costo base.",
+      "items": [
+        "De servidores dedicados a computación en el Edge: Ejecución a milisegundos del usuario.",
+        "La arquitectura de Vercel: Plataforma de entrega global optimizada para aplicaciones web modernas.",
+        "Edge Functions vs Serverless Functions tradicionales (Cold Starts de microsegundos con V8 Isolates).",
+        "Vercel Edge Middleware: Interceptación y mutación de requests antes del renderizado.",
+        "Configuración del archivo `vercel.json`: Headers de seguridad, redirecciones y reescrituras.",
+        "Despliegues atómicos e inmutables con URLs de Preview automáticas por cada Pull Request.",
+        "Monitoreo de Core Web Vitals y analíticas de rendimiento en el Edge."
+      ],
+      "content": "## Despliegue en el Edge con Vercel\n\nLas arquitecturas clásicas alojaban un servidor en una sola región (ej. `us-east-1` en Virginia). Un usuario en Madrid o Buenos Aires sufría cientos de milisegundos de latencia por la distancia física transoceánica.\n\n**Vercel y la Computación en el Edge** distribuyen tu código a cientos de centros de datos alrededor del mundo usando una red Anycast:\n* **V8 Isolates:** En lugar de levantar contenedores pesados que tardan segundos en arrancar (**Cold Starts**), las Edge Functions corren sobre instancias ligeras de V8 que inician en menos de 5 milisegundos.\n* **Inmutabilidad:** Cada commit genera un despliegue inmutable único con su propia URL permanente, permitiendo probar cualquier versión previa sin riesgo.",
+      "codeSnippet": "// Ejemplo: Edge Middleware en Vercel (middleware.ts)\n// Se ejecuta en el CDN de borde en < 5ms antes de llegar al servidor\nexport function middleware(request: Request) {\n  const url = new URL(request.url);\n\n  // Redirección de seguridad en el Edge\n  if (url.protocol === 'http:') {\n    return Response.redirect('https://' + url.host + url.pathname, 301);\n  }\n\n  // Inyección de Headers de Seguridad globales en el Edge\n  const response = new Response(null, {\n    headers: {\n      'X-Content-Type-Options': 'nosniff',\n      'X-Frame-Options': 'DENY',\n      'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',\n    },\n  });\n\n  return response;\n}",
+      "quiz": [
+        {
+          "question": "¿Por qué las Edge Functions en plataformas como Vercel tienen un tiempo de arranque (Cold Start) prácticamente nulo comparadas con contenedores tradicionales?",
+          "options": [
+            "Porque utilizan V8 Isolates ligeros en lugar de iniciar sistemas operativos o contenedores completos para cada petición",
+            "Porque solo admiten archivos HTML estáticos",
+            "Porque no tienen conexión a internet"
+          ],
+          "answerIndex": 0,
+          "explanation": "Los V8 Isolates comparten un mismo proceso seguro asignando memoria en microsegundos, eliminando la sobrecarga de arranque de máquinas virtuales o contenedores."
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "title": "MÓDULO 19: INFRAESTRUCTURA COMO CÓDIGO (IAC) CON TERRAFORM",
+      "description": "Gestión declarativa de la nube: lenguaje HCL de HashiCorp, proveedores (AWS/Cloudflare), estado de Terraform (tfstate) y el ciclo Init-Plan-Apply.",
+      "items": [
+        "El anti-patrón de 'ClickOps': Configurar servidores y redes a mano en la consola web de AWS.",
+        "Infraestructura como Código (IaC): Versionar servidores, bases de datos y redes en Git.",
+        "Introducción a Terraform y sintaxis HCL (HashiCorp Configuration Language).",
+        "El ciclo fundamental de Terraform: `terraform init`, `terraform plan`, `terraform apply`.",
+        "El archivo de estado `terraform.tfstate`: Cómo mapea el código con la realidad física de la nube.",
+        "Bloqueo de estado remoto en S3 + DynamoDB para evitar colisiones de equipo.",
+        "Módulos reutilizables de Terraform para estandarizar infraestructura."
+      ],
+      "content": "## Infraestructura como Código (IaC) con Terraform\n\nConfigurar servidores haciendo clics en paneles de control es una receta para el desastre: nadie documenta los cambios, es imposible replicar el entorno en caso de catástrofe y no hay historial de auditoría.\n\n**Terraform** te permite declarar toda tu infraestructura en archivos `.tf` versionados en Git:\n* Si necesitas un cluster de Kubernetes, una base de datos PostgreSQL y una regla de firewall, los escribes en HCL.\n* `terraform plan` compara tu código con la infraestructura real y te muestra un diff exacto de lo que se creará, modificará o destruirá antes de aplicar cambios.",
+      "codeSnippet": "# main.tf: Declaración de Infraestructura en HCL\nterraform {\n  required_providers {\n    aws = {\n      source  = \"hashicorp/aws\"\n      version = \"~> 5.0\"\n    }\n  }\n}\n\nprovider \"aws\" {\n  region = \"us-east-1\"\n}\n\n# Crear un bucket S3 seguro para almacenamiento de artefactos\nresource \"aws_s3_bucket\" \"artefactos_quimisell\" {\n  bucket = \"quimisell-build-artifacts-prod\"\n\n  tags = {\n    Ambiente   = \"Produccion\"\n    Gestionado = \"Terraform\"\n  }\n}\n\nresource \"aws_s3_bucket_versioning\" \"versionado\" {\n  bucket = aws_s3_bucket.artefactos_quimisell.id\n  versioning_configuration {\n    status = \"Enabled\"\n  }\n}",
+      "quiz": [
+        {
+          "question": "¿Cuál es la función del comando `terraform plan`?",
+          "options": [
+            "Compara el código HCL con el estado real de la nube y genera un plan de ejecución detallado mostrando qué recursos se van a crear, cambiar o destruir sin aplicar nada todavía",
+            "Ejecuta el código en producción inmediatamente sin preguntar",
+            "Formatea el texto del archivo"
+          ],
+          "answerIndex": 0,
+          "explanation": "`terraform plan` es la red de seguridad de IaC: permite auditar exactamente qué cambios ocurrirán antes de confirmar su aplicación con `terraform apply`."
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "title": "MÓDULO 20: PROYECTO INTEGRADOR: PIPELINE CORPORATIVO DEVSECOPS COMPLETO",
+      "description": "Arquitectura completa de ingeniería: de commit local a producción inmutable con escaneo de secretos (TruffleHog), SAST (Semgrep), SCA (Trivy) y despliegue inmutable.",
+      "items": [
+        "Integración de todas las disciplinas de Git, DevOps y DevSecOps en un pipeline corporativo.",
+        "Estructuración de Quality Gates infranqueables en GitHub Actions.",
+        "Manejo de variables de entorno y secrets protegidos en Vercel y Cloudflare.",
+        "Políticas de Branch Protection estrictas en GitHub (Zero Trust).",
+        "Trazabilidad de despliegue: Relación biunívoca entre Commit SHA, Artifact ID y URL de producción.",
+        "Simulación de un incidente de seguridad y respuesta automatizada de contención."
+      ],
+      "content": "## Proyecto Integrador: El Pipeline Corporativo DevSecOps\n\nEn este módulo final, ensamblamos la arquitectura completa de automatización y seguridad que protege las aplicaciones en empresas de tecnología de clase mundial.\n\n### El Flujo Inmutable de Extremo a Extremo\n```\n[ Desarrollador ]\n       │\n       ▼ (1. Git Commit local)\n[ Pre-commit Hook ] ➔ Bloquea si hay claves o formato deficiente\n       │\n       ▼ (2. Push a rama feature)\n[ GitHub Actions ]\n       ├─► Gate 1: Lint & Strict Typecheck (tsc)\n       ├─► Gate 2: Secret Scanning (TruffleHog)\n       ├─► Gate 3: SAST Code Analysis (Semgrep OWASP Top 10)\n       ├─► Gate 4: SCA Dependency Audit (Trivy CVE Scan)\n       └─► Gate 5: Pruebas Automatizadas Unitarias\n       │\n       ▼ (3. Pull Request Aprobado & Merge a Main)\n[ Vercel Edge Deployment ]\n       ├─► Inmutable Build\n       ├─► Edge Middleware (Headers de Seguridad HSTS/CSP)\n       └─► Despliegue en 300+ ciudades en < 2 minutos\n```",
+      "codeSnippet": "# Pipeline Completo de DevSecOps Corporativo (.github/workflows/devsecops-master.yml)\nname: Pipeline Corporativo DevSecOps QuimiSell\n\non:\n  push:\n    branches: [main]\n  pull_request:\n    branches: [main]\n\njobs:\n  auditoria_seguridad:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n        with:\n          fetch-depth: 0\n\n      - name: 1. Escaneo de Secretos (TruffleHog)\n        uses: trufflesecurity/trufflehog@main\n        with:\n          path: ./\n          head: HEAD\n\n      - name: 2. Análisis Estático SAST (Semgrep)\n        uses: returntocorp/semgrep-action@v1\n        with:\n          config: p/owasp-top-ten\n\n      - name: 3. Auditoría de Dependencias SCA (Trivy)\n        uses: aquasecurity/trivy-action@master\n        with:\n          scan-type: 'fs'\n          severity: 'CRITICAL,HIGH'\n\n  compilacion_y_despliegue:\n    needs: auditoria_seguridad # Solo si la seguridad está 100% limpia\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 20\n          cache: 'npm'\n      - run: npm ci\n      - run: npx tsc --noEmit\n      - run: npm run build",
+      "quiz": [
+        {
+          "question": "¿Por qué el job de compilación y despliegue debe tener la directiva `needs: auditoria_seguridad`?",
+          "options": [
+            "Para garantizar que ningún código con vulnerabilidades críticas o secretos expuestos pueda compilarse o desplegarse jamás en producción",
+            "Porque GitHub Actions lo exige obligatoriamente en todos los archivos",
+            "Para que los logs se vean de color verde"
+          ],
+          "answerIndex": 0,
+          "explanation": "El principio DevSecOps exige que la seguridad sea un control bloqueante (Quality Gate): si se detecta un riesgo, la entrega se interrumpe de inmediato."
         }
       ]
     }
   ]
 };
 
-// =========================================================================
-// EJERCICIOS PRÁCTICOS DEVSECOPS & GIT (20 DESAFÍOS: 2 POR MÓDULO)
-// =========================================================================
-const GIT_DEVOPS_EXERCISES: Record<number, TutorExercise[]> = {
-  1: [
+export const GIT_DEVOPS_EXERCISES: Record<string, TutorExercise[]> = {
+  "1": [
     {
-      id: 7011,
-      instruction: "Configuración de Identidad Git: Escribe los dos comandos oficiales para configurar tu nombre y correo global en Git.",
-      placeholder: "# Configura user.name y user.email\n",
-      expectedKeywords: ["git", "config", "--global", "user.name", "user.email"],
-      hint: "Usa: 'git config --global user.name \"Tu Nombre\"' y 'git config --global user.email \"tu@correo.com\"'.",
-      isEmailSubmission: false
-    },
-    {
-      id: 7012,
-      instruction: "Inspección Criptográfica de Commits: Escribe el comando para ver el hash SHA y los metadatos completos del commit más reciente.",
-      placeholder: "# Comando git para inspeccionar el último commit\n",
-      expectedKeywords: ["git", "log", "-1"],
-      hint: "Usa 'git log -1' o 'git show HEAD' para examinar el hash, autor, fecha y diff del commit.",
-      isEmailSubmission: false
+      "id": 101,
+      "instruction": "Aplica los comandos o configuraciones aprendidas en el MÓDULO 1: ARQUITECTURA INTERNA DE GIT: EL MODELO DE OBJETOS.",
+      "placeholder": "# Comandos Plumbing para inspeccionar las entrañas de Git\n# 1. Crear un blob en la base de objetos de Git sin tocar el staging\necho \"Hola QuimiSell\" | git hash-object -w --stdin\n# Devuelve el SHA: e69de29bb2d1d6434b8b29ae775ad8c2e48c5391\n\n# 2. Inspeccionar el tipo y contenido de cualquier hash\ngit cat-file -t e69de29bb2d1d6434b8b29ae775ad8c2e48c5391  # Muestra: blob\ngit cat-file -p e69de29bb2d1d6434b8b29ae775ad8c2e48c5391  # Muestra: Hola QuimiSell\n\n# 3. Ver la estructura de directorios de un commit\ngit ls-tree -r HEAD",
+      "expectedKeywords": [
+        "arquitectura"
+      ],
+      "hint": "Revisa los conceptos del módulo y utiliza la sintaxis correcta de Git, Docker, Actions o Linux.",
+      "isEmailSubmission": false
     }
   ],
-  2: [
+  "2": [
     {
-      id: 7021,
-      instruction: "Conventional Commits: Escribe el comando para preparar todos los cambios modificados y hacer un commit que cumpla el estándar Conventional Commits para una nueva función de autenticación.",
-      placeholder: "# git add y git commit siguiendo Conventional Commits\n",
-      expectedKeywords: ["git", "add", "git", "commit", "-m", "feat"],
-      hint: "Usa 'git add .' seguido de 'git commit -m \"feat(auth): implementar inicio de sesion seguro\"'.",
-      isEmailSubmission: false
-    },
-    {
-      id: 7022,
-      instruction: "Recuperación Local Segura: Escribe el comando para desmarcar (unstage) un archivo 'config.json' que agregaste por error con 'git add' sin perder los cambios en tu disco.",
-      placeholder: "# Desmarcar archivo de staging area\n",
-      expectedKeywords: ["git", "restore", "--staged"],
-      hint: "Usa 'git restore --staged config.json' para sacarlo del index manteniendo las modificaciones en tu editor.",
-      isEmailSubmission: false
+      "id": 201,
+      "instruction": "Aplica los comandos o configuraciones aprendidas en el MÓDULO 2: EL DIRECTED ACYCLIC GRAPH (DAG) DE GIT Y PUNTEROS HEAD.",
+      "placeholder": "# Navegación y Referencias en el DAG de Git\n# Ver a qué apunta HEAD en este momento\ncat .git/HEAD\n# Resultado típico: ref: refs/heads/main\n\n# Inspeccionar el hash al que apunta la rama main\ncat .git/refs/heads/main\n\n# Entrar deliberadamente en Detached HEAD para examinar un commit antiguo\ngit checkout HEAD~3\n\n# Salir de Detached HEAD regresando a la rama activa\ngit switch main",
+      "expectedKeywords": [
+        "el"
+      ],
+      "hint": "Revisa los conceptos del módulo y utiliza la sintaxis correcta de Git, Docker, Actions o Linux.",
+      "isEmailSubmission": false
     }
   ],
-  3: [
+  "3": [
     {
-      id: 7031,
-      instruction: "Creación de Feature Branch: Escribe el comando para crear una nueva rama llamada 'feature/recuperar-password' y moverte a ella en una sola instrucción.",
-      placeholder: "# Crear y cambiar a rama feature\n",
-      expectedKeywords: ["git", "checkout", "-b"],
-      hint: "Usa 'git checkout -b feature/recuperar-password' o 'git switch -c feature/recuperar-password'.",
-      isEmailSubmission: false
-    },
-    {
-      id: 7032,
-      instruction: "Merge sin Fast-Forward: Escribe el comando para fusionar la rama 'feature/pagos' en la rama actual preservando explícitamente el commit de merge en el historial.",
-      placeholder: "# Merge preservando el nodo del grafo\n",
-      expectedKeywords: ["git", "merge", "--no-ff"],
-      hint: "Usa 'git merge --no-ff feature/pagos' para crear un commit de integración visible en el DAG de Git.",
-      isEmailSubmission: false
+      "id": 301,
+      "instruction": "Aplica los comandos o configuraciones aprendidas en el MÓDULO 3: STAGING AREA, INDEX Y CICLO DE VIDA DE ARCHIVOS.",
+      "placeholder": "# Ciclo de vida y Staging granular\n# 1. Ver qué cambios están en el disco vs en el staging\ngit diff           # Cambios no agregados al staging\ngit diff --staged  # Cambios listos para el commit\n\n# 2. Agregar cambios interactivamente por bloques (Hunks)\ngit add -p src/usuario.ts\n# Responde: [y] sí agregar, [n] no agregar, [s] dividir bloque más pequeño\n\n# 3. Sacar un archivo del staging sin perder tus modificaciones en disco\ngit restore --staged src/config.ts",
+      "expectedKeywords": [
+        "staging"
+      ],
+      "hint": "Revisa los conceptos del módulo y utiliza la sintaxis correcta de Git, Docker, Actions o Linux.",
+      "isEmailSubmission": false
     }
   ],
-  4: [
+  "4": [
     {
-      id: 7041,
-      instruction: "Conexión con Remoto Seguro: Escribe los comandos para vincular tu repositorio local con el remoto de GitHub y realizar el primer push vinculando la rama main upstream.",
-      placeholder: "# Vincular origen remoto y hacer push -u\n",
-      expectedKeywords: ["git", "remote", "add", "origin", "git", "push", "-u"],
-      hint: "Usa 'git remote add origin https://github.com/usuario/repo.git' y luego 'git push -u origin main'.",
-      isEmailSubmission: false
-    },
-    {
-      id: 7042,
-      instruction: "Sincronización Limpia con Rebase: Escribe el comando para descargar los cambios del servidor y aplicarlos sobre tu trabajo local sin crear commits de merge 'Merge branch' innecesarios.",
-      placeholder: "# Pull con rebase automático\n",
-      expectedKeywords: ["git", "pull", "--rebase"],
-      hint: "Usa 'git pull --rebase origin main' para mantener un historial lineal y limpio.",
-      isEmailSubmission: false
+      "id": 401,
+      "instruction": "Aplica los comandos o configuraciones aprendidas en el MÓDULO 4: OPERACIONES AVANZADAS: REBASE INTERACTIVO, SQUASH Y CHERRY-PICK.",
+      "placeholder": "# Limpieza de historial con Rebase Interactivo\n# 1. Abrir editor con los últimos 4 commits de la rama\ngit rebase -i HEAD~4\n\n# Dentro del editor interactivo:\n# pick a1b2c3d feat(auth): implementar inicio de sesión con JWT\n# fixup d4e5f6a fix: corregir typo en token\n# fixup 7g8h9i0 test: añadir pruebas de expiración\n# squash 1j2k3l4 docs: documentar variables de entorno de auth\n\n# 2. Cherry-pick de un hotfix urgente a producción\ngit checkout main\ngit cherry-pick 9a8b7c6  # Aplica únicamente ese commit específico",
+      "expectedKeywords": [
+        "operaciones"
+      ],
+      "hint": "Revisa los conceptos del módulo y utiliza la sintaxis correcta de Git, Docker, Actions o Linux.",
+      "isEmailSubmission": false
     }
   ],
-  5: [
+  "5": [
     {
-      id: 7051,
-      instruction: "Reglas Esenciales de .gitignore: Escribe el contenido de un archivo .gitignore para proteger un proyecto web bloqueando dependencias, archivos de variables de entorno y llaves privadas.",
-      placeholder: "# Escribe al menos 4 patrones esenciales en .gitignore\n",
-      expectedKeywords: ["node_modules", ".env", "dist", "*.pem"],
-      hint: "Incluye: 'node_modules/', '.env', '.env.local', 'dist/', '*.pem', '*.key'.",
-      isEmailSubmission: false
-    },
-    {
-      id: 7052,
-      instruction: "Sincronización de Fork con Upstream: Escribe el comando para agregar el repositorio original de la organización como 'upstream' en tu fork local.",
-      placeholder: "# Agregar remoto upstream\n",
-      expectedKeywords: ["git", "remote", "add", "upstream"],
-      hint: "Usa 'git remote add upstream https://github.com/organizacion/proyecto-original.git'.",
-      isEmailSubmission: false
+      "id": 501,
+      "instruction": "Aplica los comandos o configuraciones aprendidas en el MÓDULO 5: RECUPERACIÓN DE DESASTRES: REFLOG, BISECT Y RESTAURACIÓN.",
+      "placeholder": "# 1. Recuperar rama borrada por accidente usando Reflog\ngit branch -D feature-pagos     # ¡Borrada por error!\ngit reflog\n# 7c9a12b HEAD@{1}: commit: feat(pagos): integración lista\n# 4b8c34d HEAD@{2}: checkout: moving from main to feature-pagos\n\n# Resucitar la rama exactamente en ese estado:\ngit branch feature-pagos 7c9a12b\n\n# 2. Localizar un bug automáticamente con Git Bisect\ngit bisect start\ngit bisect bad                 # El commit actual falla\ngit bisect good v1.2.0         # La versión v1.2.0 funcionaba bien\ngit bisect run npm run test    # Git prueba automáticamente en binario",
+      "expectedKeywords": [
+        "recuperación"
+      ],
+      "hint": "Revisa los conceptos del módulo y utiliza la sintaxis correcta de Git, Docker, Actions o Linux.",
+      "isEmailSubmission": false
     }
   ],
-  6: [
+  "6": [
     {
-      id: 7061,
-      instruction: "Plantilla de Pull Request: Escribe la estructura Markdown básica para '.github/pull_request_template.md' que contenga descripción, tipo de cambio y checklist de seguridad.",
-      placeholder: "## Descripción del Cambio\n\n### Tipo de Cambio\n- [ ] feat\n- [ ] fix\n- [ ] security\n\n### Checklist DevSecOps\n",
-      expectedKeywords: ["Descripción", "security", "Checklist", "tests"],
-      hint: "Las plantillas profesionales exigen verificar que se ejecutaron linters, tests y que no se incluyeron credenciales.",
-      isEmailSubmission: false
-    },
-    {
-      id: 7062,
-      instruction: "Resolución Local de Conflictos de PR: Escribe los pasos en comandos Git para actualizar tu feature branch con los cambios de main antes de enviar el Pull Request a revisión.",
-      placeholder: "# Comandos para actualizar feature branch con main\n",
-      expectedKeywords: ["git", "checkout", "main", "git", "pull", "git", "merge"],
-      hint: "Actualiza main con 'git checkout main && git pull', luego 'git checkout feature/mi-rama' y 'git merge main' para resolver conflictos en tu entorno local.",
-      isEmailSubmission: false
+      "id": 601,
+      "instruction": "Aplica los comandos o configuraciones aprendidas en el MÓDULO 6: ESTRATEGIAS DE RAMIFICACIÓN: TRUNK-BASED VS GITFLOW.",
+      "placeholder": "// Patrón Feature Flag en TypeScript para Trunk-Based Development\nexport class PasarelaCompra {\n  async checkout(usuario: Usuario, monto: number): Promise<void> {\n    // Feature Flag: Permite mergear a main sin activar la feature al público\n    const usarNuevaPasarelaStripe = process.env.FEATURE_STRIPE_V3 === 'true';\n\n    if (usarNuevaPasarelaStripe) {\n      await this.ejecutarStripeV3(usuario, monto);\n    } else {\n      await this.ejecutarPasarelaLegacy(usuario, monto);\n    }\n  }\n\n  private async ejecutarStripeV3(u: Usuario, m: number) { /* Nuevo */ }\n  private async ejecutarPasarelaLegacy(u: Usuario, m: number) { /* Estable */ }\n}",
+      "expectedKeywords": [
+        "estrategias"
+      ],
+      "hint": "Revisa los conceptos del módulo y utiliza la sintaxis correcta de Git, Docker, Actions o Linux.",
+      "isEmailSubmission": false
     }
   ],
-  7: [
+  "7": [
     {
-      id: 7071,
-      instruction: "Husky & TruffleHog Pre-Commit Hook: Escribe el script de shell que ejecuta TruffleHog en el hook '.husky/pre-commit' para bloquear el commit si detecta secretos verificados.",
-      placeholder: "#!/usr/bin/env sh\n# Ejecuta TruffleHog sobre archivos locales staged\n",
-      expectedKeywords: ["trufflehog", "git", "file://.", "--fail"],
-      hint: "El comando es: 'trufflehog git file://. --since-commit HEAD --only-verified --fail'. Retorna código de salida distinto de cero si halla secretos.",
-      isEmailSubmission: false
-    },
-    {
-      id: 7072,
-      instruction: "Remediación y Purgado de Secretos: Escribe el comando de desecho inmediato si hiciste un commit local con un secreto y necesitas deshacerlo conservando tus archivos de código.",
-      placeholder: "# Deshacer el último commit local sin perder archivos\n",
-      expectedKeywords: ["git", "reset", "HEAD~1"],
-      hint: "Usa 'git reset --soft HEAD~1' para desarmar el commit peligroso manteniendo los cambios en staging, y quita el secreto antes de volver a commitear.",
-      isEmailSubmission: false
+      "id": 701,
+      "instruction": "Aplica los comandos o configuraciones aprendidas en el MÓDULO 7: COLABORACIÓN: WORKTREES, SUBMODULES Y CONFLICTOS COMPLEJOS.",
+      "placeholder": "# Comandos esenciales de Git Worktree\n# 1. Crear un nuevo árbol de trabajo en otra carpeta basado en la rama hotfix\ngit worktree add ../quimisell-hotfix -b hotfix-urgente main\n\n# 2. Listar todos los worktrees activos en tu máquina\ngit worktree list\n\n# 3. Tras resolver el incidente y hacer push, eliminar el worktree limpio\ngit worktree remove ../quimisell-hotfix",
+      "expectedKeywords": [
+        "colaboración"
+      ],
+      "hint": "Revisa los conceptos del módulo y utiliza la sintaxis correcta de Git, Docker, Actions o Linux.",
+      "isEmailSubmission": false
     }
   ],
-  8: [
+  "8": [
     {
-      id: 7081,
-      instruction: "GitHub Actions SAST Workflow: Escribe la definición YAML de un job en GitHub Actions que ejecute Semgrep con la configuración 'p/owasp-top-ten' y exporte resultados SARIF.",
-      placeholder: "name: SAST Scan\njobs:\n  semgrep:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n",
-      expectedKeywords: ["semgrep", "owasp-top-ten", "sarif", "runs-on"],
-      hint: "Usa el contenedor oficial 'returntocorp/semgrep' o el action oficial con '--config=p/owasp-top-ten --sarif'.",
-      isEmailSubmission: false
-    },
-    {
-      id: 7082,
-      instruction: "Regla Personalizada Semgrep: Escribe una regla YAML básica de Semgrep que busque llamadas a la función prohibida 'eval(...)'.",
-      placeholder: "rules:\n  - id: prohibir-eval-inseguro\n    message: 'El uso de eval() permite ejecución arbitraria de código (RCE)'\n    severity: ERROR\n    languages: [javascript, typescript]\n    pattern: \n",
-      expectedKeywords: ["rules", "id", "pattern", "eval(...)"],
-      hint: "El patrón de Semgrep es directo: 'pattern: eval(...)'. Semgrep identificará cualquier llamada a eval sin importar el espaciado.",
-      isEmailSubmission: false
+      "id": 801,
+      "instruction": "Aplica los comandos o configuraciones aprendidas en el MÓDULO 8: LINUX PARA DEVOPS: PROCESOS, PERMISOS, SIGNALS Y SYSTEMD.",
+      "placeholder": "// Graceful Shutdown en Node.js / Express escuchando señales POSIX\nimport express from 'express';\nimport http from 'http';\n\nconst app = express();\nconst server = http.createServer(app);\n\n// Escuchar la señal SIGTERM enviada por Docker / Kubernetes\nprocess.on('SIGTERM', () => {\n  console.log('Recibida señal SIGTERM. Iniciando Graceful Shutdown...');\n\n  // 1. Dejar de aceptar nuevas conexiones HTTP\n  server.close(async () => {\n    console.log('Servidor HTTP cerrado.');\n\n    // 2. Cerrar pools de base de datos y clientes Redis\n    try {\n      // await db.disconnect();\n      console.log('Conexiones a bases de datos cerradas con éxito.');\n      process.exit(0); // Salida limpia\n    } catch (err) {\n      console.error('Error al cerrar conexiones:', err);\n      process.exit(1);\n    }\n  });\n});",
+      "expectedKeywords": [
+        "linux"
+      ],
+      "hint": "Revisa los conceptos del módulo y utiliza la sintaxis correcta de Git, Docker, Actions o Linux.",
+      "isEmailSubmission": false
     }
   ],
-  9: [
+  "9": [
     {
-      id: 7091,
-      instruction: "Trivy SCA en GitHub Actions: Escribe el step de GitHub Actions que utilice 'aquasecurity/trivy-action' para auditar el sistema de archivos buscando vulnerabilidades CRITICAL y HIGH.",
-      placeholder: "- name: Trivy SCA Scan\n  uses: aquasecurity/trivy-action@master\n  with:\n",
-      expectedKeywords: ["aquasecurity/trivy-action", "scan-type", "severity", "CRITICAL"],
-      hint: "Configura 'scan-type: fs', 'scan-ref: .' y 'severity: CRITICAL,HIGH'.",
-      isEmailSubmission: false
-    },
-    {
-      id: 7092,
-      instruction: "OWASP ZAP Baseline DAST Scan: Escribe el step de GitHub Actions que utilice 'zaproxy/action-baseline' para escanear una URL de preview de Vercel.",
-      placeholder: "- name: OWASP ZAP DAST Scan\n  uses: zaproxy/action-baseline@v0.12.0\n  with:\n",
-      expectedKeywords: ["zaproxy/action-baseline", "target", "token"],
-      hint: "Pasa 'target: https://tu-preview.vercel.app' y 'token: ${{ secrets.GITHUB_TOKEN }}'.",
-      isEmailSubmission: false
+      "id": 901,
+      "instruction": "Aplica los comandos o configuraciones aprendidas en el MÓDULO 9: DOCKER & CONTENEDORIZACIÓN: NAMESPACES Y CGROUPS.",
+      "placeholder": "# Comandos de inspección de contenedores\n# 1. Correr un contenedor con límites estrictos de hardware (cgroups)\ndocker run -d --name api-quimisell \\\n  --memory=\"512m\" \\\n  --cpus=\"1.5\" \\\n  -p 3000:3000 \\\n  node:20-alpine\n\n# 2. Inspeccionar el uso real de CPU y memoria en tiempo real\ndocker stats api-quimisell\n\n# 3. Entrar a una shell interactiva dentro del namespace del contenedor\ndocker exec -it api-quimisell sh",
+      "expectedKeywords": [
+        "docker"
+      ],
+      "hint": "Revisa los conceptos del módulo y utiliza la sintaxis correcta de Git, Docker, Actions o Linux.",
+      "isEmailSubmission": false
     }
   ],
-  10: [
+  "10": [
     {
-      id: 7101,
-      instruction: "Cabeceras Defensivas en vercel.json: Escribe la sección de cabeceras de seguridad para 'vercel.json' bloqueando Clickjacking con 'X-Frame-Options: DENY' y forzando tipado MIME estricto.",
-      placeholder: "{\n  \"headers\": [\n    {\n      \"source\": \"/(.*)\",\n      \"headers\": [\n        { \"key\": \"X-Frame-Options\", \"value\": \"DENY\" },\n        \"...\"\n",
-      expectedKeywords: ["headers", "X-Frame-Options", "DENY", "X-Content-Type-Options", "nosniff"],
-      hint: "Agrega '{ \"key\": \"X-Content-Type-Options\", \"value\": \"nosniff\" }' y '{ \"key\": \"X-Frame-Options\", \"value\": \"DENY\" }'.",
-      isEmailSubmission: false
-    },
+      "id": 1001,
+      "instruction": "Aplica los comandos o configuraciones aprendidas en el MÓDULO 10: OPTIMIZACIÓN DE DOCKERFILES: BUILDS MULTI-STAGE Y SEGURIDAD.",
+      "placeholder": "# Dockerfile Multi-Stage de Grado Corporativo para Node.js / TypeScript\n# ETAPA 1: Compilación (Build Stage)\nFROM node:20-alpine AS builder\nWORKDIR /app\nCOPY package*.json ./\nRUN npm ci\nCOPY tsconfig.json ./\nCOPY src/ ./src/\nRUN npm run build\nRUN npm prune --production\n\n# ETAPA 2: Producción Mínima (Production Stage)\nFROM node:20-alpine AS runner\nWORKDIR /app\nENV NODE_ENV=production\n\n# Crear usuario sin privilegios root\nRUN addgroup -S appgroup && adduser -S appuser -G appgroup\n\n# Copiar solo dependencias de producción y código transpilado\nCOPY --from=builder /app/package*.json ./\nCOPY --from=builder /app/node_modules ./node_modules\nCOPY --from=builder /app/dist ./dist\n\n# Cambiar al usuario seguro\nUSER appuser\nEXPOSE 3000\nCMD [\"node\", \"dist/index.js\"]",
+      "expectedKeywords": [
+        "optimización"
+      ],
+      "hint": "Revisa los conceptos del módulo y utiliza la sintaxis correcta de Git, Docker, Actions o Linux.",
+      "isEmailSubmission": false
+    }
+  ],
+  "11": [
     {
-      id: 7102,
-      instruction: "Orquestación Segura con 'needs': Escribe la cabecera de un job de 'deploy-produccion' en GitHub Actions que exija que los jobs 'sast' y 'sca' hayan pasado con éxito.",
-      placeholder: "deploy-produccion:\n  name: Deploy Seguro a Vercel\n  runs-on: ubuntu-latest\n  # Requiere que sast y sca sean exitosos\n",
-      expectedKeywords: ["needs", "sast", "sca"],
-      hint: "Agrega: 'needs: [sast, sca]'. Esto impide el despliegue automático si se detectan vulnerabilidades de seguridad.",
-      isEmailSubmission: false
+      "id": 1101,
+      "instruction": "Aplica los comandos o configuraciones aprendidas en el MÓDULO 11: DOCKER COMPOSE: REDES Y AMBIENTES MULTI-CONTENEDOR.",
+      "placeholder": "# docker-compose.yml\nversion: '3.8'\n\nservices:\n  db:\n    image: postgres:16-alpine\n    restart: always\n    environment:\n      POSTGRES_DB: quimisell_dev\n      POSTGRES_USER: devuser\n      POSTGRES_PASSWORD: devpassword123\n    volumes:\n      - postgres_data:/var/lib/postgresql/data\n    healthcheck:\n      test: [\"CMD-SHELL\", \"pg_isready -U devuser -d quimisell_dev\"]\n      interval: 5s\n      timeout: 5s\n      retries: 5\n\n  api:\n    build: .\n    ports:\n      - \"3000:3000\"\n    environment:\n      DATABASE_URL: postgres://devuser:devpassword123@db:5432/quimisell_dev\n    depends_on:\n      db:\n        condition: service_healthy\n\nvolumes:\n  postgres_data:",
+      "expectedKeywords": [
+        "docker"
+      ],
+      "hint": "Revisa los conceptos del módulo y utiliza la sintaxis correcta de Git, Docker, Actions o Linux.",
+      "isEmailSubmission": false
+    }
+  ],
+  "12": [
+    {
+      "id": 1201,
+      "instruction": "Aplica los comandos o configuraciones aprendidas en el MÓDULO 12: CI/CD FUNDAMENTOS: AUTOMATIZACIÓN CON GITHUB ACTIONS.",
+      "placeholder": "# .github/workflows/ci.yml\nname: Integración Continua (CI)\n\non:\n  push:\n    branches: [main]\n  pull_request:\n    branches: [main]\n\njobs:\n  verificacion:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Descargar repositorio\n        uses: actions/checkout@v4\n\n      - name: Configurar Node.js 20\n        uses: actions/setup-node@v4\n        with:\n          node-version: 20\n          cache: 'npm'\n\n      - name: Instalar dependencias limpias\n        run: npm ci\n\n      - name: Verificación estricta de TypeScript\n        run: npx tsc --noEmit\n\n      - name: Ejecutar pruebas automatizadas\n        run: npm test",
+      "expectedKeywords": [
+        "ci/cd"
+      ],
+      "hint": "Revisa los conceptos del módulo y utiliza la sintaxis correcta de Git, Docker, Actions o Linux.",
+      "isEmailSubmission": false
+    }
+  ],
+  "13": [
+    {
+      "id": 1301,
+      "instruction": "Aplica los comandos o configuraciones aprendidas en el MÓDULO 13: PIPELINES DE CI AVANZADOS: MATRICES, CACHÉ Y DAG DE JOBS.",
+      "placeholder": "# Pipeline con Matriz y Dependencias (DAG)\njobs:\n  pruebas_matriz:\n    runs-on: ubuntu-latest\n    strategy:\n      matrix:\n        node-version: [18.x, 20.x, 22.x]\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: ${{ matrix.node-version }}\n      - run: npm ci\n      - run: npm test\n\n  build_produccion:\n    needs: pruebas_matriz # Solo corre si TODA la matriz pasó con éxito\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - run: npm run build",
+      "expectedKeywords": [
+        "pipelines"
+      ],
+      "hint": "Revisa los conceptos del módulo y utiliza la sintaxis correcta de Git, Docker, Actions o Linux.",
+      "isEmailSubmission": false
+    }
+  ],
+  "14": [
+    {
+      "id": 1401,
+      "instruction": "Aplica los comandos o configuraciones aprendidas en el MÓDULO 14: DEVSECOPS: ESCANEO DE SECRETOS CON TRUFFLEHOG.",
+      "placeholder": "# Integración de TruffleHog en GitHub Actions\nname: Escaneo de Secretos DevSecOps\n\non: [push, pull_request]\n\njobs:\n  trufflehog:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Descargar repositorio completo (con historial)\n        uses: actions/checkout@v4\n        with:\n          fetch-depth: 0 # TruffleHog necesita el historial completo para auditar\n\n      - name: Escaneo de Secretos con TruffleHog\n        uses: trufflesecurity/trufflehog@main\n        with:\n          path: ./\n          base: ${{ github.event.repository.default_branch }}\n          head: HEAD\n          extra_args: --only-verified # Solo reportar secretos cuya validez fue confirmada",
+      "expectedKeywords": [
+        "devsecops"
+      ],
+      "hint": "Revisa los conceptos del módulo y utiliza la sintaxis correcta de Git, Docker, Actions o Linux.",
+      "isEmailSubmission": false
+    }
+  ],
+  "15": [
+    {
+      "id": 1501,
+      "instruction": "Aplica los comandos o configuraciones aprendidas en el MÓDULO 15: DEVSECOPS: ANÁLISIS ESTÁTICO DE CÓDIGO (SAST) CON SEMGREP.",
+      "placeholder": "# .github/workflows/sast.yml\nname: Auditoría SAST con Semgrep\n\non: [pull_request]\n\njobs:\n  semgrep:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n\n      - name: Ejecutar Semgrep con reglas de OWASP Top 10\n        uses: returntocorp/semgrep-action@v1\n        with:\n          config: >-\n            p/security-audit\n            p/owasp-top-ten\n            p/typescript\n        env:\n          SEMGREP_RULES: p/owasp-top-ten",
+      "expectedKeywords": [
+        "devsecops"
+      ],
+      "hint": "Revisa los conceptos del módulo y utiliza la sintaxis correcta de Git, Docker, Actions o Linux.",
+      "isEmailSubmission": false
+    }
+  ],
+  "16": [
+    {
+      "id": 1601,
+      "instruction": "Aplica los comandos o configuraciones aprendidas en el MÓDULO 16: DEVSECOPS: ANÁLISIS DE COMPONENTES (SCA) CON TRIVY.",
+      "placeholder": "# Ejecución de Trivy en GitHub Actions\nname: Auditoría SCA con Trivy\n\non: [push]\n\njobs:\n  trivy_sca:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n\n      - name: Escanear dependencias npm en busca de CVEs\n        uses: aquasecurity/trivy-action@master\n        with:\n          scan-type: 'fs'\n          scan-ref: '.'\n          severity: 'CRITICAL,HIGH'\n          exit-code: '1' # Romper el build si hay vulnerabilidades críticas con parche",
+      "expectedKeywords": [
+        "devsecops"
+      ],
+      "hint": "Revisa los conceptos del módulo y utiliza la sintaxis correcta de Git, Docker, Actions o Linux.",
+      "isEmailSubmission": false
+    }
+  ],
+  "17": [
+    {
+      "id": 1701,
+      "instruction": "Aplica los comandos o configuraciones aprendidas en el MÓDULO 17: ESTRATEGIAS DE DESPLIEGUE CONTINUO: BLUE/GREEN Y CANARY.",
+      "placeholder": "// Ejemplo conceptual: Enrutamiento Canary a nivel de Edge / Reverse Proxy\nexport function enrutarCanary(userId: string): 'version_estable' | 'version_canary' {\n  // Función hash determinista sobre el ID de usuario\n  const hash = Array.from(userId).reduce((acc, char) => acc + char.charCodeAt(0), 0);\n  const porcentaje = hash % 100;\n\n  // Enviar el 10% de los usuarios a la nueva versión Canary\n  if (porcentaje < 10) {\n    return 'version_canary';\n  }\n  return 'version_estable';\n}",
+      "expectedKeywords": [
+        "estrategias"
+      ],
+      "hint": "Revisa los conceptos del módulo y utiliza la sintaxis correcta de Git, Docker, Actions o Linux.",
+      "isEmailSubmission": false
+    }
+  ],
+  "18": [
+    {
+      "id": 1801,
+      "instruction": "Aplica los comandos o configuraciones aprendidas en el MÓDULO 18: DESPLIEGUE EN EL EDGE & SERVERLESS CON VERCEL.",
+      "placeholder": "// Ejemplo: Edge Middleware en Vercel (middleware.ts)\n// Se ejecuta en el CDN de borde en < 5ms antes de llegar al servidor\nexport function middleware(request: Request) {\n  const url = new URL(request.url);\n\n  // Redirección de seguridad en el Edge\n  if (url.protocol === 'http:') {\n    return Response.redirect('https://' + url.host + url.pathname, 301);\n  }\n\n  // Inyección de Headers de Seguridad globales en el Edge\n  const response = new Response(null, {\n    headers: {\n      'X-Content-Type-Options': 'nosniff',\n      'X-Frame-Options': 'DENY',\n      'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',\n    },\n  });\n\n  return response;\n}",
+      "expectedKeywords": [
+        "despliegue"
+      ],
+      "hint": "Revisa los conceptos del módulo y utiliza la sintaxis correcta de Git, Docker, Actions o Linux.",
+      "isEmailSubmission": false
+    }
+  ],
+  "19": [
+    {
+      "id": 1901,
+      "instruction": "Aplica los comandos o configuraciones aprendidas en el MÓDULO 19: INFRAESTRUCTURA COMO CÓDIGO (IAC) CON TERRAFORM.",
+      "placeholder": "# main.tf: Declaración de Infraestructura en HCL\nterraform {\n  required_providers {\n    aws = {\n      source  = \"hashicorp/aws\"\n      version = \"~> 5.0\"\n    }\n  }\n}\n\nprovider \"aws\" {\n  region = \"us-east-1\"\n}\n\n# Crear un bucket S3 seguro para almacenamiento de artefactos\nresource \"aws_s3_bucket\" \"artefactos_quimisell\" {\n  bucket = \"quimisell-build-artifacts-prod\"\n\n  tags = {\n    Ambiente   = \"Produccion\"\n    Gestionado = \"Terraform\"\n  }\n}\n\nresource \"aws_s3_bucket_versioning\" \"versionado\" {\n  bucket = aws_s3_bucket.artefactos_quimisell.id\n  versioning_configuration {\n    status = \"Enabled\"\n  }\n}",
+      "expectedKeywords": [
+        "infraestructura"
+      ],
+      "hint": "Revisa los conceptos del módulo y utiliza la sintaxis correcta de Git, Docker, Actions o Linux.",
+      "isEmailSubmission": false
+    }
+  ],
+  "20": [
+    {
+      "id": 2001,
+      "instruction": "Aplica los comandos o configuraciones aprendidas en el MÓDULO 20: PROYECTO INTEGRADOR: PIPELINE CORPORATIVO DEVSECOPS COMPLETO.",
+      "placeholder": "# Pipeline Completo de DevSecOps Corporativo (.github/workflows/devsecops-master.yml)\nname: Pipeline Corporativo DevSecOps QuimiSell\n\non:\n  push:\n    branches: [main]\n  pull_request:\n    branches: [main]\n\njobs:\n  auditoria_seguridad:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n        with:\n          fetch-depth: 0\n\n      - name: 1. Escaneo de Secretos (TruffleHog)\n        uses: trufflesecurity/trufflehog@main\n        with:\n          path: ./\n          head: HEAD\n\n      - name: 2. Análisis Estático SAST (Semgrep)\n        uses: returntocorp/semgrep-action@v1\n        with:\n          config: p/owasp-top-ten\n\n      - name: 3. Auditoría de Dependencias SCA (Trivy)\n        uses: aquasecurity/trivy-action@master\n        with:\n          scan-type: 'fs'\n          severity: 'CRITICAL,HIGH'\n\n  compilacion_y_despliegue:\n    needs: auditoria_seguridad # Solo si la seguridad está 100% limpia\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 20\n          cache: 'npm'\n      - run: npm ci\n      - run: npx tsc --noEmit\n      - run: npm run build",
+      "expectedKeywords": [
+        "proyecto"
+      ],
+      "hint": "Revisa los conceptos del módulo y utiliza la sintaxis correcta de Git, Docker, Actions o Linux.",
+      "isEmailSubmission": false
     }
   ]
 };
 
-// Adjuntar ejercicios estructurados a cada módulo de Git & DevSecOps
+// Adjuntar ejercicios estructurados a cada módulo de Git & DevOps
 GIT_DEVOPS_COURSE.modules.forEach((mod) => {
   if (GIT_DEVOPS_EXERCISES[mod.id]) {
     mod.exercises = GIT_DEVOPS_EXERCISES[mod.id];
